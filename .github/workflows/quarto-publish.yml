@@ -1,0 +1,65 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Render and Publish
+
+permissions:
+    contents: write
+    pages: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Disable man-db triggers
+        run: |
+          # <https://github.com/actions/runner-images/issues/10977>
+          echo "set man-db/auto-update false" | sudo debconf-communicate
+          sudo dpkg-reconfigure man-db
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # To install LaTeX to build PDF book
+          tinytex: true
+          # uncomment below and fill to pin a version
+          # version: SPECIFIC-QUARTO-VERSION-HERE
+
+      # Setup Python and install dependencies using uv
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+
+      - name: Install LibreOffice
+        run: sudo apt-get update && sudo apt-get install libreoffice --no-install-recommends
+
+      - name: Install ttf-mscorefonts-installer
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get update && sudo apt-get install ttf-mscorefonts-installer
+          sudo fc-cache -f
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install dependencies and activate virtual environment
+        run: |
+          uv sync
+          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
+      - name: Publish to GitHub Pages (and render)
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions

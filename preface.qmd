@@ -1,0 +1,24 @@
+# Preface {.unnumbered}
+
+## In this book {.unnumbered}
+
+This book is designed for people who are interested in using AI for clinical development.
+Each part of the book makes certain assumptions about the readers' background:
+
+- Part 1, TBD
+- Part 2, TBD
+- Part 3, TBD
+- Part 4, TBD
+
+## Authors and contributors {.unnumbered}
+
+This document is a collaborative effort maintained by a community.
+As you read through it, you also have the opportunity to contribute
+and enhance its quality. Your input and involvement play a vital role
+in shaping the excellence of this document.
+
+- Authors: made significant contributions to at least one chapter,
+  constituting the majority of the content.
+
+  [Yilong Zhang](https://elong0527.github.io/),
+  [Nan Xiao](https://nanx.me/),
