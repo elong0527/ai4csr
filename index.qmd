@@ -1,0 +1,29 @@
+# Welcome {.unnumbered}
+
+Welcome to AI for Clinical Study Reports and Submission.
+Clinical study reports (CSRs) sit at the heart of clinical trial development.
+They bring the design, analysis, and interpretation of a study together
+in an integrated document.
+
+This book shows how to use AI to plan, build, and automate CSRs,
+from data and analyses to tables, figures, and listings.
+We follow the [ICH E3 guidance on structure and content
+](https://database.ich.org/sites/default/files/E3_Guideline.pdf) and
+demonstrate practical, reproducible workflows that help you meet those expectations.
+
+Whether you are new to AI-native workflows or already working in clinical reporting,
+you will find small, reusable examples you can adopt right away,
+along with patterns and checklists for organizing work for
+regulatory submission and effective team collaboration.
+
+**This is a work-in-progress draft.**
+
+::: {.content-visible when-format="html"}
+
+## Events {.unnumbered}
+
+| Venue | Type | Date | Materials |
+|-------|------|------|-----------|
+| TBD   | TBD  | TBD  | TBD       |
+
+:::

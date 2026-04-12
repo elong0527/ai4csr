@@ -1,0 +1,11 @@
+/env/
+.Rproj.user
+
+/.quarto/
+/_book/
+/site_libs/
+**/*.quarto_ipynb
+
+# Output directories
+.DS_Store
+pdf/

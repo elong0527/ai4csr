@@ -1,0 +1,50 @@
+/*-- scss:defaults --*/
+
+$primary: #385898 !default;
+
+/*-- scss:rules --*/
+
+/* Lato build from https://github.com/applecuckoo/lato-builds */
+
+@font-face {
+    font-display: swap;
+    font-family: "Lato";
+    src: url("fonts/Lato-VF.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Lato";
+    src: url("fonts/Lato-Italic-VF.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "JetBrains Mono";
+    src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-feature-settings: "calt", "liga";
+}
+
+/* Cover image shadow */
+img.quarto-cover-image {
+    border: 1px solid rgb(206, 212, 218);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+}
+
+/* Unfixing font-smoothing */
+body {
+    -webkit-font-smoothing: auto;
+}

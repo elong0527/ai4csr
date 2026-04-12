@@ -1,0 +1,67 @@
+project:
+  type: book
+  resources:
+    - CNAME
+    - slides/
+
+book:
+  title: "AI for Clinical Study Reports and Submission"
+  author:
+    - Yilong Zhang
+    - Nan Xiao
+  description: |
+    Learn how to prepare tables, listings, and figures for
+    clinical study report and submit to regulatory agencies,
+    the essential part of clinical trial development.
+
+  output-file: "ai4csr"
+
+  cover-image: "assets/cover.jpg"
+  image: "assets/preview.png"
+  favicon: "assets/favicon.png"
+
+  site-url: https://ai4csr.org/
+  repo-url: https://github.com/elong0527/ai4csr
+  repo-actions: [edit, issue, source]
+  sharing: [twitter, linkedin]
+  reader-mode: true
+
+  open-graph:
+    image: assets/preview.png
+    description: |
+      Learn how to prepare tables, listings, and figures for
+      clinical study report and submit to regulatory agencies,
+      the essential part of clinical trial development.
+  twitter-card:
+    image: assets/preview.png
+    description: |
+      Learn how to prepare tables, listings, and figures for
+      clinical study report and submit to regulatory agencies,
+      the essential part of clinical trial development.
+    card-style: summary_large_image
+
+  chapters:
+    - index.qmd
+    - preface.qmd
+    - part: "Principles"
+      chapters:
+        - principle-overview.qmd
+    - part: "Documentation as code"
+      chapters:
+        - docs-overview.qmd
+    - part: "Analysis and reporting"
+      chapters:
+        - reporting-overview.qmd
+    - part: "Governance"
+      chapters: 
+        - governance-overview.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: [cosmo, custom.scss]
+    mainfont: "Lato, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
+  pdf:
+    documentclass: scrreprt
