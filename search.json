@@ -1,0 +1,96 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "AI for Clinical Study Reports and Submission",
+    "section": "",
+    "text": "Welcome\nWelcome to AI for Clinical Study Reports and Submission. Clinical study reports (CSRs) sit at the heart of clinical trial development. They bring the design, analysis, and interpretation of a study together in an integrated document.\nThis book shows how to use AI to plan, build, and automate CSRs, from data and analyses to tables, figures, and listings. We follow the ICH E3 guidance on structure and content and demonstrate practical, reproducible workflows that help you meet those expectations.\nWhether you are new to AI-native workflows or already working in clinical reporting, you will find small, reusable examples you can adopt right away, along with patterns and checklists for organizing work for regulatory submission and effective team collaboration.\nThis is a work-in-progress draft.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#events",
+    "href": "index.html#events",
+    "title": "AI for Clinical Study Reports and Submission",
+    "section": "Events",
+    "text": "Events\n\n\n\nVenue\nType\nDate\nMaterials\n\n\n\n\nTBD\nTBD\nTBD\nTBD",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "preface.html",
+    "href": "preface.html",
+    "title": "Preface",
+    "section": "",
+    "text": "In this book\nThis book is designed for people who are interested in using AI for clinical development. Each part of the book makes certain assumptions about the readers’ background:",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "preface.html#in-this-book",
+    "href": "preface.html#in-this-book",
+    "title": "Preface",
+    "section": "",
+    "text": "Part 1, TBD\nPart 2, TBD\nPart 3, TBD\nPart 4, TBD",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "preface.html#authors-and-contributors",
+    "href": "preface.html#authors-and-contributors",
+    "title": "Preface",
+    "section": "Authors and contributors",
+    "text": "Authors and contributors\nThis document is a collaborative effort maintained by a community. As you read through it, you also have the opportunity to contribute and enhance its quality. Your input and involvement play a vital role in shaping the excellence of this document.\n\nAuthors: made significant contributions to at least one chapter, constituting the majority of the content.\nYilong Zhang, Nan Xiao,",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "principle-overview.html",
+    "href": "principle-overview.html",
+    "title": "1  Principles overview",
+    "section": "",
+    "text": "1.1 TBD\nTBD",
+    "crumbs": [
+      "Principles",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
+    ]
+  },
+  {
+    "objectID": "docs-overview.html",
+    "href": "docs-overview.html",
+    "title": "2  Documentation overview",
+    "section": "",
+    "text": "2.1 TBD\nTBD",
+    "crumbs": [
+      "Documentation as code",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Documentation overview</span>"
+    ]
+  },
+  {
+    "objectID": "reporting-overview.html",
+    "href": "reporting-overview.html",
+    "title": "3  Reporting overview",
+    "section": "",
+    "text": "3.1 TBD\nTBD",
+    "crumbs": [
+      "Analysis and reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reporting overview</span>"
+    ]
+  },
+  {
+    "objectID": "governance-overview.html",
+    "href": "governance-overview.html",
+    "title": "4  Governance overview",
+    "section": "",
+    "text": "4.1 TBD\nTBD",
+    "crumbs": [
+      "Governance",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Governance overview</span>"
+    ]
+  }
+]
