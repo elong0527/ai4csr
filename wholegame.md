@@ -2,73 +2,55 @@
 
 ## One-sentence positioning
 
-This book demonstrates an AI-native way to work through selected clinical trial workflows.
+This book demonstrates how 
+AI agents can complete selected clinical trial workflows in an AI-first way.
 
-This is a **demo, not a prescription**. The book focuses on how clinical teams can work with AI on selected workflows. It intentionally does not cover full compliance implementation, because compliance depends on each company's or organization's infrastructure, policies, validation process, and regulatory obligations.
+AI-first means the AI agent proactively start a prespecified workflow and 
+engage with human when needed to handle edge cases.
+
+This is a **demo, not a prescription**. 
+the book intentionally does not cover full compliance implementation, because compliance depends on each company's or organization's infrastructure, policies, validation process, and regulatory obligations.
 
 ## Audience
 
-The first audience is:
+We assume readers have hands on experience for clinical trial workflow following ICH guidance, CDSIC standard. 
+The book should help them understand how AI agents can empower you in a systematic way.
 
-- clinical statisticians;
-- statistical programmers;
-- statistical programming leads;
-- study reviewers who work with SAP, ADaM, and TLF deliverables.
+## What's an AI agents
 
-Readers already understand clinical study work. The book should help them understand how AI agents can support that work without replacing human scientific and programming judgment.
+We have been working with different type of AI agents every day.
+For example, you might ask ChatGPT to review your SAP or ask Claude code to create R code in building a baseline charactistic table.
+They are AI agents to simplify your daily work in an adhoc way.
 
-## Simple agent framing
+In short, AI agents is an LLM in a harness that can call tools iteratively to complete a task.
 
-For this book, start simple:
+There are three terms that worth look into. 
+LLM, harness and tools. As an exercise, asking an AI agent to explain them to you.
 
-```text
-Agent = LLM + Tools
-```
+## Why workflow
 
-The **LLM** reasons, reads, explains, and plans.
+By look into the two examples, a common pattern is that 
+thise tasks typically requires to follow a workflow 
+in clinical trial development. 
+Your AI agent needs to understand such workflow 
+like when you assign the task to a colleague.
 
-**Tools** let the agent inspect real workflow artifacts and take bounded actions. For example, tools may:
+## Example
 
-- read the SAP;
-- inspect ADaM datasets;
-- search analysis code;
-- parse TLF outputs;
-- run consistency checks;
-- produce a structured finding log.
+Let's pick a teidious and time consuming work to an AI-first workflow.
 
-Without tools, the LLM mostly talks about pasted text. With tools, the agent can work inside the study workflow and cite evidence from actual files.
+> Verify that TLF package of a CSR derived from ADaM datasets follow the Statistical Analysis Plan before database lock.
 
-Later, we can introduce the fuller operational view:
+The workflow connects 3 key deliverables:
 
-```text
-Agent = LLM + Tools + Harness + Running Environment
-```
+- SAP;
+- ADaM datasets;
+- TLF packages
 
-The **harness** defines prompts, schemas, guardrails, and human checkpoints. The **running environment** contains the study files, code, packages, permissions, and logs.
+The AI agent should use LLM and tools to inspect the deliverables copedinate by harness, check consistency across the deliverables. 
+Escalate to right human members when decisions or judgements are needed.
 
-## Running example
-
-The main worked example is:
-
-> Verify that TLF outputs derived from ADaM datasets follow the Statistical Analysis Plan.
-
-Short form:
-
-```text
-SAP -> ADaM -> TLF verification
-```
-
-This example is useful because it is familiar, bounded, and high-value for clinical statisticians and programmers.
-
-The workflow connects:
-
-- SAP requirements;
-- ADaM datasets and derivations;
-- analysis programs;
-- generated TLF outputs;
-- review findings for human judgment.
-
-The agent should use tools to inspect the artifacts, check consistency against the SAP, and produce an evidence-backed issue log. Human review remains required for clinical and statistical judgment.
+Our goal is to design a workflow that AI agents handle majority of the work to deliver high quality work for human sign off.
 
 ## Compliance boundary
 
@@ -85,7 +67,7 @@ Out of scope for this book:
 
 - full GxP implementation;
 - computer system validation;
-- 21 CFR Part 11 or Annex 11 implementation;
+- 21 CFR Part 11 implementation;
 - production access control;
 - company-specific audit trail infrastructure;
 - organization-specific change control.
