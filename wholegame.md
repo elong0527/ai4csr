@@ -12,7 +12,7 @@ This is a **demo, not a prescription**. The book intentionally does not cover fu
 
 We assume readers have hands-on experience with clinical trial workflows following ICH guidance and CDISC standards. The book aims to help you understand how AI agents can empower your work in a systematic way.
 
-## What Is an AI Agent?
+## What is an AI Agent?
 
 You have likely worked with AI agents already. For example, you might ask ChatGPT to review your SAP, or ask Claude to write R code for a baseline characteristics table. These are AI agents helping you with ad hoc tasks.
 
@@ -22,13 +22,11 @@ At its core, an AI agent is an LLM in a harness that can call tools iteratively 
 - **Harness** — the framework that controls the agent loop: calling the LLM, invoking tools, and deciding when to stop or escalate.
 - **Tools** — functions the agent can call to interact with the outside world, such as reading files, running code, or querying a database.
 
-The key characteristic: an LLM in a harness can call tools iteratively to complete a prespecified workflow and escalate to humans when judgment is needed.
-
 ## Why Workflow?
 
 Ad hoc AI assistance is useful, but clinical trial work is fundamentally workflow-driven. Tasks follow defined sequences, connect multiple deliverables, and require coordinated review across teams. When you assign such a task to a colleague, you hand them a workflow, not just a prompt. AI agents work the same way — they need to understand the workflow to do the job reliably.
 
-## Running Example
+## Example
 
 Throughout the book we use one concrete, tedious, and time-consuming task as our running example:
 
