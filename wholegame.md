@@ -1,53 +1,45 @@
 # Whole Game: AI Agents for Clinical Study Workflows
 
-## One-sentence positioning
+## Positioning
 
-This book demonstrates how 
-AI agents can complete selected clinical trial workflows in an AI-first way.
+This book demonstrates how AI agents can complete selected clinical trial workflows in an AI-first way.
 
-AI-first means the AI agent proactively start a prespecified workflow and 
-engage with human when needed to handle edge cases.
+AI-first means the AI agent proactively starts a prespecified workflow and engages with humans when judgment is needed to handle edge cases.
 
-This is a **demo, not a prescription**. 
-the book intentionally does not cover full compliance implementation, because compliance depends on each company's or organization's infrastructure, policies, validation process, and regulatory obligations.
+This is a **demo, not a prescription**. The book intentionally does not cover full compliance implementation, because compliance depends on each organization's infrastructure, policies, validation process, and regulatory obligations.
 
 ## Audience
 
-We assume readers have hands on experience for clinical trial workflow following ICH guidance, CDSIC standard. 
-The book should help them understand how AI agents can empower you in a systematic way.
+We assume readers have hands-on experience with clinical trial workflows following ICH guidance and CDISC standards. The book aims to help you understand how AI agents can empower your work in a systematic way.
 
-## What's an AI agents
+## What Is an AI Agent?
 
-We have been working with different type of AI agents every day.
-For example, you might ask ChatGPT to review your SAP or ask Claude code to create R code in building a baseline charactistic table.
-They are AI agents to simplify your daily work in an adhoc way.
+You have likely worked with AI agents already. For example, you might ask ChatGPT to review your SAP, or ask Claude to write R code for a baseline characteristics table. These are AI agents helping you with ad hoc tasks.
 
-In short, AI agents is an LLM in a harness that can call tools iteratively to complete a task.
+At its core, an AI agent is an LLM in a harness that can call tools iteratively to complete a task. Three terms are worth unpacking:
 
-There are three terms that worth look into. 
-LLM, harness and tools. As an exercise, asking an AI agent to explain them to you.
+- **LLM** — the language model that reasons and generates responses.
+- **Harness** — the framework that controls the agent loop: calling the LLM, invoking tools, and deciding when to stop or escalate.
+- **Tools** — functions the agent can call to interact with the outside world, such as reading files, running code, or querying a database.
 
-## Why workflow
+The key characteristic: an LLM in a harness can call tools iteratively to complete a prespecified workflow and escalate to humans when judgment is needed.
 
-By look into the two examples, a common pattern is that 
-thise tasks typically requires to follow a workflow 
-in clinical trial development. 
-Your AI agent needs to understand such workflow 
-like when you assign the task to a colleague.
+## Why Workflow?
 
-## Example
+Ad hoc AI assistance is useful, but clinical trial work is fundamentally workflow-driven. Tasks follow defined sequences, connect multiple deliverables, and require coordinated review across teams. When you assign such a task to a colleague, you hand them a workflow, not just a prompt. AI agents work the same way — they need to understand the workflow to do the job reliably.
 
-Let's pick a teidious and time consuming work to an AI-first workflow.
+## Running Example
 
-> Verify that TLF package of a CSR derived from ADaM datasets follow the Statistical Analysis Plan before database lock.
+Throughout the book we use one concrete, tedious, and time-consuming task as our running example:
 
-The workflow connects 3 key deliverables:
+> Verify that a CSR TLF package derived from ADaM datasets follows the Statistical Analysis Plan before database lock.
 
-- SAP;
-- ADaM datasets;
-- TLF packages
+This workflow connects three key deliverables:
 
-The AI agent should use LLM and tools to inspect the deliverables copedinate by harness, check consistency across the deliverables. 
-Escalate to right human members when decisions or judgements are needed.
+- SAP
+- ADaM datasets
+- TLF package
 
-Our goal is to design a workflow that AI agents handle majority of the work to deliver high quality work for human sign off.
+The AI agent uses the LLM and tools, coordinated by the harness, to inspect each deliverable and check consistency across them. When a decision or judgment call is needed, it escalates to the right team members.
+
+The goal is a workflow where AI agents handle the majority of the work and deliver a high-quality output ready for human sign-off.
