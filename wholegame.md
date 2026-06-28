@@ -4,7 +4,7 @@
 
 This book demonstrates how AI agents can complete selected clinical trial workflows in an AI-first way.
 
-AI-first means the workflow is designed for an AI agent to perform the first structured pass and rerun when the work changes. The agent is triggered by events and rules: when a person or another AI agent updates the SAP, ADaM datasets, TLF package, or related specifications, the workflow runs the relevant checks again, prepares evidence-backed findings, and escalates judgment calls to humans.
+AI-first means the workflow is designed for an AI agent to perform the first structured pass, then rerun when events and rules indicate that the work has changed.
 
 This is a **demo, not a prescription**. The book intentionally does not cover full compliance implementation, because compliance depends on each organization's infrastructure, policies, validation process, and regulatory obligations.
 
@@ -42,6 +42,6 @@ This workflow connects three key deliverables:
 - ADaM datasets
 - TLF package
 
-The AI agent acts as an independent reviewer assistant. It uses the LLM and tools, coordinated by the harness, to inspect each deliverable and check consistency across them. The workflow can be triggered by rules and events, such as a new SAP version, updated ADaM metadata, refreshed TLF output, or a human request to rerun a review. When a decision or judgment call is needed, it escalates to the right team members.
+The AI agent acts as an independent reviewer assistant. It uses the LLM and tools, coordinated by the harness, to inspect each deliverable and check consistency across them. Rules and events decide when to run or rerun the workflow, such as a new SAP version, updated ADaM metadata, refreshed TLF output, or a human request. When a judgment call is needed, the agent escalates to the right team members.
 
 The goal is to design a workflow where the AI agent handles mechanical consistency checks, prepares evidence-backed findings, and supports human review and sign-off.
