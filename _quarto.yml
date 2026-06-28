@@ -45,7 +45,7 @@ book:
     - preface.qmd
     - part: "Principles"
       chapters:
-        - principle-overview.qmd
+        - principle-overview.md
     - part: "Documentation as code"
       chapters:
         - docs-overview.qmd
