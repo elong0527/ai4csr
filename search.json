@@ -54,62 +54,73 @@
     "href": "principle-overview.html",
     "title": "1  Principles overview",
     "section": "",
-    "text": "1.1 What is an AI-first workflow?\nThis chapter defines the first principles for designing an AI-first workflow.\nThe goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence, and ask humans to make accountable decisions.\nAn AI-first workflow represents work as inspectable artifacts, tracks explicit state, triggers agent action through events and rules, grounds reasoning in tools and evidence, and keeps humans accountable for judgment.\nIn this book, the agent is an independent reviewer assistant.\nIt can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.",
+    "text": "1.1 What is an AI-first workflow?\nThis chapter defines the principles for designing an AI-first clinical study workflow.\nThe goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence-backed findings, and ask humans to make accountable decisions.\nAn AI-first workflow represents work as inspectable artifacts, tracks explicit state, triggers agent action through events and rules, grounds reasoning in tools and evidence, and keeps humans accountable for judgment.\nIn this book, the agent is an independent reviewer assistant.\nIt can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#first-principle-1-inspectable-artifacts",
-    "href": "principle-overview.html#first-principle-1-inspectable-artifacts",
+    "objectID": "principle-overview.html#root-principle-trustworthy-assistance",
+    "href": "principle-overview.html#root-principle-trustworthy-assistance",
     "title": "1  Principles overview",
-    "section": "1.2 First principle 1: Inspectable artifacts",
-    "text": "1.2 First principle 1: Inspectable artifacts\nThe workflow should use artifacts that humans and AI agents can inspect.\nArtifacts should be readable, structured where possible, versioned, citable, and diffable.\nPlaintext and structured metadata are useful because they make work easier to search, parse, compare, and cite.\nExamples:\n\nSAP sections should be searchable and citable.\nADaM metadata should expose dataset names, variable names, labels, types, codelists, and analysis flags.\nTLF outputs should have stable table IDs, titles, footnotes, and source references.\nFindings should be structured records, not only narrative comments.\n\n\nIf the agent cannot inspect the work, it cannot reliably help with the work.",
+    "section": "1.2 Root principle: Trustworthy assistance",
+    "text": "1.2 Root principle: Trustworthy assistance\nThe first principle of an AI-first clinical workflow is trustworthy assistance.\nTrustworthy assistance means the agent’s work can be inspected, repeated, challenged, and reviewed. The agent should not rely on hidden memory, unsupported claims, or vague reasoning. It should work from visible artifacts, preserve explicit state, act through defined events and rules, use tools to gather evidence, and escalate judgment to accountable humans.\nThese principles do not replace organizational validation, quality systems, access control, audit trail requirements, or regulatory accountability. They describe how to design the working pattern so AI assistance remains inspectable and reviewable.\nThe remaining principles describe what trustworthy assistance requires in practice.\n\nA workflow is trustworthy when its inputs are visible, its actions are traceable, its findings are evidence-backed, and its limits are clear.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#first-principle-2-explicit-state",
-    "href": "principle-overview.html#first-principle-2-explicit-state",
+    "objectID": "principle-overview.html#principle-1-inspectable-artifacts",
+    "href": "principle-overview.html#principle-1-inspectable-artifacts",
     "title": "1  Principles overview",
-    "section": "1.3 First principle 2: Explicit state",
-    "text": "1.3 First principle 2: Explicit state\nThe workflow should remember through artifacts, not through chat.\nState should show:\n\nwhich artifact versions are current;\nwhat changed;\nwhat was checked;\nwhat findings were produced;\nwhat humans decided;\nwhat remains unresolved.\n\nThis matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review.\n\nThe workflow state should be visible, reusable, and reviewable.",
+    "section": "1.3 Principle 1: Inspectable artifacts",
+    "text": "1.3 Principle 1: Inspectable artifacts\nTrust requires the agent and humans to inspect the same source materials.\nThe workflow should use artifacts that humans and AI agents can inspect. Artifacts should be readable, structured where possible, versioned, citable, and diffable.\nExamples:\n\nSAP sections should be searchable and citable.\nADaM metadata should expose dataset names, variable names, labels, types, codelists, and analysis flags.\nTLF outputs should have stable table IDs, titles, footnotes, and source references.\nFindings should be structured records, not only narrative comments.\n\n\nIf the agent cannot inspect the work, it cannot reliably help with the work.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#first-principle-3-events-and-rules",
-    "href": "principle-overview.html#first-principle-3-events-and-rules",
+    "objectID": "principle-overview.html#principle-2-explicit-state",
+    "href": "principle-overview.html#principle-2-explicit-state",
     "title": "1  Principles overview",
-    "section": "1.4 First principle 3: Events and rules",
-    "text": "1.4 First principle 3: Events and rules\nThe workflow should not depend only on manual prompting.\nAn event says something changed. A rule decides what the agent should do next.\n\n\n\nEvent\nRule\n\n\n\n\nSAP section updated\nrerun affected SAP-to-TLF checks\n\n\nADaM metadata changed\nrerun checks using changed variables\n\n\nADaM dataset refreshed\nrerun affected population and value checks\n\n\nTLF output regenerated\nrerun affected TLF checks\n\n\nHuman asks for recheck\nrun the requested review\n\n\nAnother AI agent changes a deliverable\nverify downstream impact\n\n\n\n\nEvents trigger attention; rules trigger action.",
+    "section": "1.4 Principle 2: Explicit state",
+    "text": "1.4 Principle 2: Explicit state\nTrust requires knowing what changed, what was checked, what was decided, and what remains unresolved.\nThe workflow should remember through artifacts, not through chat.\nState should show:\n\nwhich artifact versions are current;\nwhat changed;\nwhat was checked;\nwhat findings were produced;\nwhat humans decided and why;\nwhat remains unresolved.\n\nThis matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review. With explicit state, the workflow can report which findings are new, repeated, fixed, acknowledged, or still open.\n\nThe workflow state should be visible, reusable, and reviewable.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#first-principle-4-tools-and-evidence",
-    "href": "principle-overview.html#first-principle-4-tools-and-evidence",
+    "objectID": "principle-overview.html#principle-3-events-and-rules",
+    "href": "principle-overview.html#principle-3-events-and-rules",
     "title": "1  Principles overview",
-    "section": "1.5 First principle 4: Tools and evidence",
-    "text": "1.5 First principle 4: Tools and evidence\nThe LLM should not guess what is in the study artifacts. Tools should expose the real content.\nThe LLM reasons. Tools observe. Evidence justifies.\nExample tools:\n\nparse_sap_requirements()\ninspect_adam_metadata()\nquery_adam_population()\nextract_tlf_metadata()\ncompare_expected_actual()\n\nA good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it.\n\nNo finding without evidence.",
+    "section": "1.5 Principle 3: Events and rules",
+    "text": "1.5 Principle 3: Events and rules\nTrust requires predictable triggers, not random or purely chat-driven action.\nThe workflow should not depend only on manual prompting.\nAn event says something changed. A rule decides what the agent should do next.\n\n\n\nEvent\nRule\n\n\n\n\nSAP section updated\nrerun affected SAP-to-TLF checks\n\n\nADaM metadata changed\nrerun checks using changed variables\n\n\nADaM dataset refreshed\nrerun affected population and value checks\n\n\nTLF output regenerated\nrerun affected TLF checks\n\n\nHuman asks for recheck\nrun the requested review\n\n\nAnother AI agent changes a deliverable\nverify downstream impact\n\n\n\nWithout explicit triggers, review coverage depends on who remembered to ask. Events and rules make the workflow easier to repeat, explain, and audit.\n\nEvents trigger attention; rules trigger action.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#first-principle-5-human-judgment",
-    "href": "principle-overview.html#first-principle-5-human-judgment",
+    "objectID": "principle-overview.html#principle-4-tools-and-evidence",
+    "href": "principle-overview.html#principle-4-tools-and-evidence",
     "title": "1  Principles overview",
-    "section": "1.6 First principle 5: Human judgment",
-    "text": "1.6 First principle 5: Human judgment\nAI-first does not mean AI-only.\nThe agent prepares the review. Humans remain accountable for judgment.\nThe agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.\n\nAgents prepare evidence; humans make accountable decisions.",
+    "section": "1.6 Principle 4: Tools and evidence",
+    "text": "1.6 Principle 4: Tools and evidence\nTrust requires findings grounded in real SAP, ADaM, and TLF artifacts, not model memory or guesses.\nThe LLM should not guess what is in the study artifacts. Tools should expose the real content.\nThe LLM reasons. Tools observe. Evidence justifies.\nExample tools:\n\nparse_sap_requirements()\ninspect_adam_metadata()\nquery_adam_population()\nextract_tlf_metadata()\ncompare_expected_actual()\n\nA good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it. A finding without traceable evidence is not a finding; it is an unsupported opinion.\n\nNo finding without evidence.",
+    "crumbs": [
+      "Principles",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
+    ]
+  },
+  {
+    "objectID": "principle-overview.html#principle-5-human-judgment",
+    "href": "principle-overview.html#principle-5-human-judgment",
+    "title": "1  Principles overview",
+    "section": "1.7 Principle 5: Human judgment",
+    "text": "1.7 Principle 5: Human judgment\nTrust requires clear accountability.\nAI-first does not mean AI-only.\nThe agent may identify discrepancies, assemble evidence, classify likely severity, and recommend who should review the issue. The accountable human role decides whether the finding is valid, whether the artifact should change, and how the decision should be documented.\nThe agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.\n\nAgents prepare evidence; humans make accountable decisions.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
@@ -119,8 +130,8 @@
     "objectID": "principle-overview.html#applying-the-principles-to-sap-adam-tlf-review",
     "href": "principle-overview.html#applying-the-principles-to-sap-adam-tlf-review",
     "title": "1  Principles overview",
-    "section": "1.7 Applying the principles to SAP → ADaM → TLF review",
-    "text": "1.7 Applying the principles to SAP → ADaM → TLF review\nThe running example is an AI agent that reviews whether selected CSR TLF outputs derived from ADaM datasets follow the SAP.\n\n1.7.1 Workflow objective\nVerify consistency across SAP requirements, ADaM metadata/data, and TLF outputs before database lock.\n\n\n1.7.2 Agent role\nThe agent is an independent reviewer assistant for clinical statisticians, statistical programmers, programming leads, and study reviewers.\n\n\n1.7.3 Inputs\n\nSAP version;\nADaM metadata snapshot;\nADaM dataset snapshot;\nTLF package;\nworkflow rules;\nprior findings and decisions, if available.\n\n\n\n1.7.4 Example checks\n\n\n\n\n\n\n\nCheck\nEvidence\n\n\n\n\nSAP population exists in ADaM\npopulation flag in ADSL or relevant dataset\n\n\nSAP endpoint variable exists\nvariable name, label, type, and codelist in ADaM metadata\n\n\nTLF title matches intended display\ntitle/subtitle from TLF output and SAP reference\n\n\nTLF N values are explainable\ncounts from ADaM population rules\n\n\nfootnotes match analysis method\nfootnote text and SAP method section\n\n\nrerun scope is justified\nevent and rule that triggered the run\n\n\n\n\n\n1.7.5 Outputs\n\nevidence matrix;\nfindings grouped by severity;\nescalation list by reviewer role;\ndelta report showing fixed, new, repeated, and acknowledged findings.",
+    "section": "1.8 Applying the principles to SAP → ADaM → TLF review",
+    "text": "1.8 Applying the principles to SAP → ADaM → TLF review\nThe running example is an AI agent that reviews whether selected CSR TLF outputs derived from ADaM datasets follow the SAP.\n\n1.8.1 Workflow objective\nVerify consistency across SAP requirements, ADaM metadata and data, and TLF outputs before database lock.\n\n\n1.8.2 Agent role\nThe agent is an independent reviewer assistant for clinical statisticians, statistical programmers, programming leads, and study reviewers.\n\n\n1.8.3 Inputs\n\nSAP version;\nADaM metadata snapshot;\nADaM dataset snapshot;\nTLF package;\nworkflow rules;\nprior findings and decisions, if available.\n\n\n\n1.8.4 Example checks\n\n\n\n\n\n\n\nCheck\nEvidence\n\n\n\n\nSAP population exists in ADaM\npopulation flag in ADSL or relevant dataset\n\n\nSAP population definition is applied consistently\nSAP population definition, ADaM flags, and TLF population counts\n\n\nSAP endpoint variable exists\nvariable name, label, type, and codelist in ADaM metadata\n\n\nTreatment group labels are consistent\nSAP or TLF display labels and ADaM treatment variables\n\n\nTLF title matches intended display\ntitle and subtitle from TLF output and SAP reference\n\n\nTLF N values are explainable\ncounts from ADaM population rules\n\n\nFootnotes match analysis method\nfootnote text and SAP method section\n\n\nMissing or imputed values are handled as specified\nSAP method section, ADaM derivation metadata, and TLF footnotes\n\n\nRerun scope is justified\nevent and rule that triggered the run\n\n\n\n\n\n1.8.5 Outputs\n\nevidence matrix;\nfindings grouped by severity;\nescalation list by reviewer role;\ndelta report showing fixed, new, repeated, and acknowledged findings.\n\n\n\n1.8.6 When the workflow should stop\nThe agent should not continue as if the review is complete when a required artifact is missing, SAP language is ambiguous, metadata cannot be inspected, or evidence conflicts across sources.\nIn those cases, the correct output is an escalation or limited finding, not a confident conclusion.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
@@ -130,8 +141,8 @@
     "objectID": "principle-overview.html#summary",
     "href": "principle-overview.html#summary",
     "title": "1  Principles overview",
-    "section": "1.8 Summary",
-    "text": "1.8 Summary\nThe first principles are:\n\nInspectable artifacts: make work readable, structured, versioned, citable, and diffable.\nExplicit state: remember what changed, what was checked, and what was decided.\nEvents and rules: trigger the agent when work changes and define what action is needed.\nTools and evidence: inspect reality with tools and require evidence for findings.\nHuman judgment: agents prepare the review; humans make accountable decisions.\n\nThese principles keep the workflow simple, reviewable, and suitable for iterative clinical study work.",
+    "section": "1.9 Summary",
+    "text": "1.9 Summary\nThe root principle is trustworthy assistance: the agent’s work must be inspectable, repeatable, evidence-backed, and accountable.\nThe five derived principles are:\n\nInspectable artifacts: make work readable, structured, versioned, citable, and diffable.\nExplicit state: remember what changed, what was checked, what was decided, and what remains unresolved.\nEvents and rules: trigger the agent when work changes and define what action is needed.\nTools and evidence: inspect reality with tools and require evidence for findings.\nHuman judgment: agents prepare the review; humans make accountable decisions.\n\nTogether, these principles keep AI-first clinical study workflows simple, reviewable, and trustworthy.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
