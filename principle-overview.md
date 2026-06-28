@@ -1,8 +1,8 @@
 # Principles overview {#sec-principle-overview}
 
-This chapter defines the first principles for designing an AI-first workflow.
+This chapter defines the principles for designing an AI-first clinical study workflow.
 
-The goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence, and ask humans to make accountable decisions.
+The goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence-backed findings, and ask humans to make accountable decisions.
 
 ## What is an AI-first workflow?
 
@@ -12,13 +12,23 @@ In this book, the agent is an **independent reviewer assistant**.
 
 It can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.
 
-## First principle 1: Inspectable artifacts
+## Root principle: Trustworthy assistance
 
-The workflow should use artifacts that humans and AI agents can inspect.
+The first principle of an AI-first clinical workflow is **trustworthy assistance**.
 
-Artifacts should be readable, structured where possible, versioned, citable, and diffable.
+Trustworthy assistance means the agent's work can be inspected, repeated, challenged, and reviewed. The agent should not rely on hidden memory, unsupported claims, or vague reasoning. It should work from visible artifacts, preserve explicit state, act through defined events and rules, use tools to gather evidence, and escalate judgment to accountable humans.
 
-Plaintext and structured metadata are useful because they make work easier to search, parse, compare, and cite.
+These principles do not replace organizational validation, quality systems, access control, audit trail requirements, or regulatory accountability. They describe how to design the working pattern so AI assistance remains inspectable and reviewable.
+
+The remaining principles describe what trustworthy assistance requires in practice.
+
+> A workflow is trustworthy when its inputs are visible, its actions are traceable, its findings are evidence-backed, and its limits are clear.
+
+## Principle 1: Inspectable artifacts
+
+Trust requires the agent and humans to inspect the same source materials.
+
+The workflow should use artifacts that humans and AI agents can inspect. Artifacts should be readable, structured where possible, versioned, citable, and diffable.
 
 Examples:
 
@@ -29,7 +39,9 @@ Examples:
 
 > If the agent cannot inspect the work, it cannot reliably help with the work.
 
-## First principle 2: Explicit state
+## Principle 2: Explicit state
+
+Trust requires knowing what changed, what was checked, what was decided, and what remains unresolved.
 
 The workflow should remember through artifacts, not through chat.
 
@@ -39,14 +51,16 @@ State should show:
 - what changed;
 - what was checked;
 - what findings were produced;
-- what humans decided;
+- what humans decided and why;
 - what remains unresolved.
 
-This matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review.
+This matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review. With explicit state, the workflow can report which findings are new, repeated, fixed, acknowledged, or still open.
 
 > The workflow state should be visible, reusable, and reviewable.
 
-## First principle 3: Events and rules
+## Principle 3: Events and rules
+
+Trust requires predictable triggers, not random or purely chat-driven action.
 
 The workflow should not depend only on manual prompting.
 
@@ -61,9 +75,13 @@ An **event** says something changed. A **rule** decides what the agent should do
 | Human asks for recheck | run the requested review |
 | Another AI agent changes a deliverable | verify downstream impact |
 
+Without explicit triggers, review coverage depends on who remembered to ask. Events and rules make the workflow easier to repeat, explain, and audit.
+
 > Events trigger attention; rules trigger action.
 
-## First principle 4: Tools and evidence
+## Principle 4: Tools and evidence
+
+Trust requires findings grounded in real SAP, ADaM, and TLF artifacts, not model memory or guesses.
 
 The LLM should not guess what is in the study artifacts. Tools should expose the real content.
 
@@ -77,15 +95,17 @@ Example tools:
 - `extract_tlf_metadata()`
 - `compare_expected_actual()`
 
-A good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it.
+A good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it. A finding without traceable evidence is not a finding; it is an unsupported opinion.
 
 > No finding without evidence.
 
-## First principle 5: Human judgment
+## Principle 5: Human judgment
+
+Trust requires clear accountability.
 
 AI-first does not mean AI-only.
 
-The agent prepares the review. Humans remain accountable for judgment.
+The agent may identify discrepancies, assemble evidence, classify likely severity, and recommend who should review the issue. The accountable human role decides whether the finding is valid, whether the artifact should change, and how the decision should be documented.
 
 The agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.
 
@@ -97,7 +117,7 @@ The running example is an AI agent that reviews whether selected CSR TLF outputs
 
 ### Workflow objective
 
-Verify consistency across SAP requirements, ADaM metadata/data, and TLF outputs before database lock.
+Verify consistency across SAP requirements, ADaM metadata and data, and TLF outputs before database lock.
 
 ### Agent role
 
@@ -117,11 +137,14 @@ The agent is an independent reviewer assistant for clinical statisticians, stati
 | Check | Evidence |
 |---|---|
 | SAP population exists in ADaM | population flag in ADSL or relevant dataset |
+| SAP population definition is applied consistently | SAP population definition, ADaM flags, and TLF population counts |
 | SAP endpoint variable exists | variable name, label, type, and codelist in ADaM metadata |
-| TLF title matches intended display | title/subtitle from TLF output and SAP reference |
+| Treatment group labels are consistent | SAP or TLF display labels and ADaM treatment variables |
+| TLF title matches intended display | title and subtitle from TLF output and SAP reference |
 | TLF N values are explainable | counts from ADaM population rules |
-| footnotes match analysis method | footnote text and SAP method section |
-| rerun scope is justified | event and rule that triggered the run |
+| Footnotes match analysis method | footnote text and SAP method section |
+| Missing or imputed values are handled as specified | SAP method section, ADaM derivation metadata, and TLF footnotes |
+| Rerun scope is justified | event and rule that triggered the run |
 
 ### Outputs
 
@@ -130,14 +153,22 @@ The agent is an independent reviewer assistant for clinical statisticians, stati
 - escalation list by reviewer role;
 - delta report showing fixed, new, repeated, and acknowledged findings.
 
+### When the workflow should stop
+
+The agent should not continue as if the review is complete when a required artifact is missing, SAP language is ambiguous, metadata cannot be inspected, or evidence conflicts across sources.
+
+In those cases, the correct output is an escalation or limited finding, not a confident conclusion.
+
 ## Summary
 
-The first principles are:
+The root principle is **trustworthy assistance**: the agent's work must be inspectable, repeatable, evidence-backed, and accountable.
+
+The five derived principles are:
 
 1. **Inspectable artifacts**: make work readable, structured, versioned, citable, and diffable.
-2. **Explicit state**: remember what changed, what was checked, and what was decided.
+2. **Explicit state**: remember what changed, what was checked, what was decided, and what remains unresolved.
 3. **Events and rules**: trigger the agent when work changes and define what action is needed.
 4. **Tools and evidence**: inspect reality with tools and require evidence for findings.
 5. **Human judgment**: agents prepare the review; humans make accountable decisions.
 
-These principles keep the workflow simple, reviewable, and suitable for iterative clinical study work.
+Together, these principles keep AI-first clinical study workflows simple, reviewable, and trustworthy.
