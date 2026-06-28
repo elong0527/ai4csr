@@ -54,139 +54,73 @@
     "href": "principle-overview.html",
     "title": "1  Principles overview",
     "section": "",
-    "text": "1.1 A simple model\nAn AI-first workflow is not simply a human workflow with an LLM added at the end. It is designed so an AI agent can perform the first structured pass, use tools to inspect study artifacts, produce evidence-backed findings, and rerun when events and rules indicate that the work has changed.\nThe accountable human remains the reviewer and decision-maker. The agent helps by doing systematic, repetitive, evidence-gathering work.\nFor this book, we use a practical model:\nThe design goal is not to make the LLM guess better. The design goal is to give the agent a workflow, tools, rules, evidence requirements, and escalation paths so it can behave like a reliable independent reviewer assistant.",
+    "text": "1.1 What is an AI-first workflow?\nThis chapter defines the first principles for designing an AI-first workflow.\nThe goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence, and ask humans to make accountable decisions.\nAn AI-first workflow represents work as inspectable artifacts, tracks explicit state, triggers agent action through events and rules, grounds reasoning in tools and evidence, and keeps humans accountable for judgment.\nIn this book, the agent is an independent reviewer assistant.\nIt can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#a-simple-model",
-    "href": "principle-overview.html#a-simple-model",
+    "objectID": "principle-overview.html#first-principle-1-inspectable-artifacts",
+    "href": "principle-overview.html#first-principle-1-inspectable-artifacts",
     "title": "1  Principles overview",
-    "section": "",
-    "text": "AI agent = LLM + tools + harness + running environment\n\n\nLLM: reasons over the task, interprets structured outputs, and drafts findings.\nTools: inspect real study artifacts, such as SAP text, ADaM metadata, datasets, TLF outputs, logs, and specifications.\nHarness: controls the workflow loop, routes tool calls, stores state, applies rules, and decides when to stop or escalate.\nRunning environment: provides the file system, compute environment, permissions, credentials, and execution context where the workflow runs.",
+    "section": "1.2 First principle 1: Inspectable artifacts",
+    "text": "1.2 First principle 1: Inspectable artifacts\nThe workflow should use artifacts that humans and AI agents can inspect.\nArtifacts should be readable, structured where possible, versioned, citable, and diffable.\nPlaintext and structured metadata are useful because they make work easier to search, parse, compare, and cite.\nExamples:\n\nSAP sections should be searchable and citable.\nADaM metadata should expose dataset names, variable names, labels, types, codelists, and analysis flags.\nTLF outputs should have stable table IDs, titles, footnotes, and source references.\nFindings should be structured records, not only narrative comments.\n\n\nIf the agent cannot inspect the work, it cannot reliably help with the work.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#principle-1-define-the-workflow-boundary",
-    "href": "principle-overview.html#principle-1-define-the-workflow-boundary",
+    "objectID": "principle-overview.html#first-principle-2-explicit-state",
+    "href": "principle-overview.html#first-principle-2-explicit-state",
     "title": "1  Principles overview",
-    "section": "1.2 Principle 1: Define the workflow boundary",
-    "text": "1.2 Principle 1: Define the workflow boundary\nStart by defining the workflow using handoff points, not tools.\nA useful boundary statement answers four questions:\n\nWhat artifacts does the agent receive?\nWhat question is the agent allowed to answer?\nWhat output does the agent produce?\nWhat remains a human responsibility?\n\nFor the running example:\n\nGiven a specific SAP version, ADaM metadata snapshot, ADaM dataset snapshot, and TLF package, the agent produces a structured consistency report and escalation list for human review.\n\nIn scope:\n\nidentify SAP requirements relevant to selected TLFs;\ninspect ADaM variable metadata, dataset structure, and analysis flags;\ninspect TLF titles, footnotes, columns, populations, and displayed values;\ncompare SAP expectations with ADaM and TLF evidence;\nproduce findings with source references.\n\nOut of scope:\n\ndeciding whether the SAP is scientifically appropriate;\nmaking final statistical judgments;\nediting study deliverables directly;\nreplacing formal organizational review, validation, or sign-off.",
+    "section": "1.3 First principle 2: Explicit state",
+    "text": "1.3 First principle 2: Explicit state\nThe workflow should remember through artifacts, not through chat.\nState should show:\n\nwhich artifact versions are current;\nwhat changed;\nwhat was checked;\nwhat findings were produced;\nwhat humans decided;\nwhat remains unresolved.\n\nThis matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review.\n\nThe workflow state should be visible, reusable, and reviewable.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#principle-2-treat-deliverables-as-typed-versioned-artifacts",
-    "href": "principle-overview.html#principle-2-treat-deliverables-as-typed-versioned-artifacts",
+    "objectID": "principle-overview.html#first-principle-3-events-and-rules",
+    "href": "principle-overview.html#first-principle-3-events-and-rules",
     "title": "1  Principles overview",
-    "section": "1.3 Principle 2: Treat deliverables as typed, versioned artifacts",
-    "text": "1.3 Principle 2: Treat deliverables as typed, versioned artifacts\nThe agent should not treat inputs as random files. Each artifact should have a type, version, owner, and role in the workflow.\nFor the running example:\n\n\n\n\n\n\n\n\nArtifact\nRole in workflow\nExample version key\n\n\n\n\nSAP\nSource of planned analyses and display requirements\namendment number, date, document ID\n\n\nADaM metadata\nSource of dataset and variable structure\ndefine.xml version, metadata freeze ID\n\n\nADaM datasets\nSource of analysis data and population flags\ndata cut, transfer ID, checksum\n\n\nTLF package\nSource of generated CSR displays\noutput run ID, table/listing/figure ID\n\n\nAgent report\nEvidence output for review\nagent run ID\n\n\n\nTyped artifacts make reruns easier. If only ADaM metadata changes, the workflow can identify which checks depend on changed variables instead of rerunning everything blindly.",
+    "section": "1.4 First principle 3: Events and rules",
+    "text": "1.4 First principle 3: Events and rules\nThe workflow should not depend only on manual prompting.\nAn event says something changed. A rule decides what the agent should do next.\n\n\n\nEvent\nRule\n\n\n\n\nSAP section updated\nrerun affected SAP-to-TLF checks\n\n\nADaM metadata changed\nrerun checks using changed variables\n\n\nADaM dataset refreshed\nrerun affected population and value checks\n\n\nTLF output regenerated\nrerun affected TLF checks\n\n\nHuman asks for recheck\nrun the requested review\n\n\nAnother AI agent changes a deliverable\nverify downstream impact\n\n\n\n\nEvents trigger attention; rules trigger action.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#principle-3-design-events-and-rules-before-agent-behavior",
-    "href": "principle-overview.html#principle-3-design-events-and-rules-before-agent-behavior",
+    "objectID": "principle-overview.html#first-principle-4-tools-and-evidence",
+    "href": "principle-overview.html#first-principle-4-tools-and-evidence",
     "title": "1  Principles overview",
-    "section": "1.4 Principle 3: Design events and rules before agent behavior",
-    "text": "1.4 Principle 3: Design events and rules before agent behavior\nAn AI-first workflow is iterative. It should rerun when the work changes.\nAn event says something happened. A rule decides what the agent should do next.\nExamples:\n\n\n\n\n\n\n\n\nEvent\nRule\nRerun scope\n\n\n\n\nSAP amendment issued\nRe-map SAP requirements\nFull or affected endpoint review\n\n\nADaM metadata updated\nCompare metadata differences\nChecks touching changed datasets or variables\n\n\nADaM datasets refreshed\nRecompute affected evidence\nPopulation and value checks\n\n\nTLF output regenerated\nCompare display changes\nAffected TLFs\n\n\nHuman reviewer requests recheck\nRun targeted review\nRequested endpoint, table, or finding\n\n\nAnother AI agent updates a deliverable\nVerify downstream impact\nRule-dependent\n\n\n\nThis is a core part of AI-first design. The workflow does not wait for a human to remember every follow-up check. The harness watches for events, applies rules, and triggers the agent when useful.",
+    "section": "1.5 First principle 4: Tools and evidence",
+    "text": "1.5 First principle 4: Tools and evidence\nThe LLM should not guess what is in the study artifacts. Tools should expose the real content.\nThe LLM reasons. Tools observe. Evidence justifies.\nExample tools:\n\nparse_sap_requirements()\ninspect_adam_metadata()\nquery_adam_population()\nextract_tlf_metadata()\ncompare_expected_actual()\n\nA good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it.\n\nNo finding without evidence.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#principle-4-build-narrow-deterministic-tools",
-    "href": "principle-overview.html#principle-4-build-narrow-deterministic-tools",
+    "objectID": "principle-overview.html#first-principle-5-human-judgment",
+    "href": "principle-overview.html#first-principle-5-human-judgment",
     "title": "1  Principles overview",
-    "section": "1.5 Principle 4: Build narrow, deterministic tools",
-    "text": "1.5 Principle 4: Build narrow, deterministic tools\nTools should answer focused questions and return structured data. They should not return long prose that the LLM has to reinterpret.\nGood tool design principles:\n\nNarrow: one tool answers one kind of question.\nRead-only by default: review workflows should inspect before they modify.\nStructured: return JSON, tables, or typed records.\nIdempotent: same input snapshot returns the same output.\nLoud on failure: missing files or unreadable metadata should create explicit errors.\n\nFor the running example, useful tools might include:\n\n\n\n\n\n\n\n\nTool\nPurpose\nExample output\n\n\n\n\nparse_sap_requirements()\nExtract endpoints, populations, estimands, displays, and required analyses from SAP sections\nendpoint-to-display map\n\n\ninspect_adam_metadata()\nInspect ADaM variable metadata\ndataset, variable, label, type, codelist, analysis flag\n\n\nquery_adam_population()\nCount subjects or records for a population flag\npopulation count with dataset reference\n\n\nextract_tlf_metadata()\nRead titles, footnotes, columns, and N values from TLF outputs\ndisplay metadata\n\n\ncompare_expected_actual()\nCompare expected SAP/ADaM/TLF elements\npass/fail finding record\n\n\n\nThe ADaM metadata tool is especially useful as an early example. It can inspect dataset names, variable names, labels, types, controlled terminology, and analysis flags so the agent can compare what exists in the data against what the SAP or TLF specification requires.",
+    "section": "1.6 First principle 5: Human judgment",
+    "text": "1.6 First principle 5: Human judgment\nAI-first does not mean AI-only.\nThe agent prepares the review. Humans remain accountable for judgment.\nThe agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.\n\nAgents prepare evidence; humans make accountable decisions.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
     ]
   },
   {
-    "objectID": "principle-overview.html#principle-5-let-the-harness-control-the-workflow",
-    "href": "principle-overview.html#principle-5-let-the-harness-control-the-workflow",
+    "objectID": "principle-overview.html#applying-the-principles-to-sap-adam-tlf-review",
+    "href": "principle-overview.html#applying-the-principles-to-sap-adam-tlf-review",
     "title": "1  Principles overview",
-    "section": "1.6 Principle 5: Let the harness control the workflow",
-    "text": "1.6 Principle 5: Let the harness control the workflow\nThe harness is the operational layer around the LLM. It should control the workflow structure so the agent does not become an open-ended conversation.\nHarness responsibilities include:\n\nstart the workflow from an event or human request;\nselect the relevant artifact versions;\nroute tool calls;\nstore intermediate state;\nenforce stopping conditions;\nrerun only affected checks when possible;\ncollect findings and escalations;\nproduce final outputs.\n\nFor the running example, a simple harness can follow three stages:\n\nMap: map SAP requirements to ADaM datasets, variables, population flags, and TLF IDs.\nVerify: run checks for each mapped requirement.\nSynthesize: group findings, summarize evidence, and prepare human review outputs.\n\nThis structure keeps the LLM focused. The LLM reasons inside a workflow; it does not invent the workflow from scratch every time.",
-    "crumbs": [
-      "Principles",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
-    ]
-  },
-  {
-    "objectID": "principle-overview.html#principle-6-require-evidence-backed-outputs",
-    "href": "principle-overview.html#principle-6-require-evidence-backed-outputs",
-    "title": "1  Principles overview",
-    "section": "1.7 Principle 6: Require evidence-backed outputs",
-    "text": "1.7 Principle 6: Require evidence-backed outputs\nThe output of an AI-first workflow should be evidence, not just a summary.\nEvery finding should answer:\n\nWhat was checked?\nWhat was expected?\nWhat was observed?\nWhere did the evidence come from?\nWhat is the severity?\nWho should review it?\n\nA finding record could look like this:\n{\n  \"finding_id\": \"F-012\",\n  \"display_id\": \"T_14_2_1\",\n  \"check_type\": \"population_mismatch\",\n  \"expected\": \"Per-protocol population based on PPROTFL\",\n  \"actual\": \"TLF title indicates Safety Population; ADaM metadata includes SAFFL and PPROTFL\",\n  \"evidence\": {\n    \"sap_section\": \"9.1.2\",\n    \"adam_dataset\": \"ADSL\",\n    \"adam_variables\": [\"SAFFL\", \"PPROTFL\"],\n    \"tlf_file\": \"t_14_2_1.rtf\"\n  },\n  \"severity\": \"needs_review\",\n  \"suggested_reviewer\": \"study statistician\"\n}\nThe human-readable report should be a rendering of structured evidence. That makes the workflow easier to review, test, compare across runs, and reuse.",
-    "crumbs": [
-      "Principles",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
-    ]
-  },
-  {
-    "objectID": "principle-overview.html#principle-7-design-human-escalation-as-part-of-the-workflow",
-    "href": "principle-overview.html#principle-7-design-human-escalation-as-part-of-the-workflow",
-    "title": "1  Principles overview",
-    "section": "1.8 Principle 7: Design human escalation as part of the workflow",
-    "text": "1.8 Principle 7: Design human escalation as part of the workflow\nEscalation is not failure. It is a designed output.\nThe agent should escalate when:\n\nSAP language is ambiguous;\na required artifact is missing;\na tool returns inconsistent evidence;\na check requires statistical judgment;\nthe agent cannot confidently map SAP text to ADaM or TLF elements.\n\nEscalations should be routed by role:\n\n\n\n\n\n\n\nEscalation type\nSuggested reviewer\n\n\n\n\nendpoint definition ambiguity\nstudy statistician\n\n\nmissing or inconsistent ADaM metadata\nstatistical programmer\n\n\ndisplay formatting or table shell mismatch\nTLF reviewer or programming lead\n\n\nrepeated blocking findings across many displays\nprogramming lead\n\n\n\nA good escalation is self-contained. The reviewer should see the source references, observed evidence, why the agent could not resolve it, and what decision is needed.",
-    "crumbs": [
-      "Principles",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
-    ]
-  },
-  {
-    "objectID": "principle-overview.html#principle-8-test-the-workflow-at-multiple-layers",
-    "href": "principle-overview.html#principle-8-test-the-workflow-at-multiple-layers",
-    "title": "1  Principles overview",
-    "section": "1.9 Principle 8: Test the workflow at multiple layers",
-    "text": "1.9 Principle 8: Test the workflow at multiple layers\nTesting an AI-first workflow is not only testing whether tools run. We need to test whether the system produces correct findings and escalates appropriately.\nRecommended test layers:\n\nTool tests: each tool returns the expected structured output for known fixtures.\nWorkflow tests: the harness runs the expected sequence for a given event.\nGolden-set evaluation: curated SAP/ADaM/TLF examples with known findings.\nAdversarial cases: ambiguous SAP language, missing variables, label mismatches, population mismatches, and harmless formatting changes.\nRegression tests: rerun prior examples after prompt, model, tool, or rule changes.\n\nFor the running example, a golden set might include:\n\n\n\nCase\nExpected behavior\n\n\n\n\nall mappings correct\nno active findings; complete evidence matrix\n\n\npopulation flag missing\nblocking finding and programmer escalation\n\n\nSAP population wording ambiguous\nstatistician escalation\n\n\nTLF title changed but data unchanged\ndisplay-level finding only\n\n\nADaM label changed\nrerun checks touching that variable",
-    "crumbs": [
-      "Principles",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
-    ]
-  },
-  {
-    "objectID": "principle-overview.html#principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow",
-    "href": "principle-overview.html#principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow",
-    "title": "1  Principles overview",
-    "section": "1.10 Principle 9: Deploy where the artifacts live and monitor the workflow",
-    "text": "1.10 Principle 9: Deploy where the artifacts live and monitor the workflow\nThe agent should run in an environment where it can access the right artifact versions safely and reproducibly.\nFor this demo, we focus on workflow design rather than full compliance implementation. In a real organization, deployment details depend on internal infrastructure, access controls, validation processes, and policies.\nEven in a demo, the workflow should track operational signals:\n\nrun status: completed, failed, or escalated;\ncoverage: which endpoints, datasets, and TLFs were checked;\nfinding distribution: blocking, needs review, informational, pass;\nescalation rate and routing accuracy;\nruntime and cost;\nchanges between runs.\n\nMonitoring should tell us whether the workflow is useful, not just whether it finished.",
-    "crumbs": [
-      "Principles",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
-    ]
-  },
-  {
-    "objectID": "principle-overview.html#principle-10-design-for-iteration-after-changes",
-    "href": "principle-overview.html#principle-10-design-for-iteration-after-changes",
-    "title": "1  Principles overview",
-    "section": "1.11 Principle 10: Design for iteration after changes",
-    "text": "1.11 Principle 10: Design for iteration after changes\nClinical study deliverables change repeatedly. AI-first workflows should be designed for dry runs, updates, partial reruns, and delta reports.\nUseful state across runs includes:\n\nartifact versions used in each run;\nrules applied;\ntools called;\nfindings produced;\nhuman decisions or acknowledgments;\nfindings resolved, repeated, or newly introduced.\n\nFor the running example, after an ADaM metadata update, the agent should not simply issue the same full report again. It should identify:\n\nfindings fixed since the previous run;\nnew findings introduced by the change;\nprior findings still unresolved;\nacknowledged deviations that should remain visible but not distract reviewers.\n\nThis turns the agent from a one-time reviewer into an iterative reviewer assistant that follows the study as it evolves.",
-    "crumbs": [
-      "Principles",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
-    ]
-  },
-  {
-    "objectID": "principle-overview.html#applying-the-principles-to-the-agent-example",
-    "href": "principle-overview.html#applying-the-principles-to-the-agent-example",
-    "title": "1  Principles overview",
-    "section": "1.12 Applying the principles to the agent example",
-    "text": "1.12 Applying the principles to the agent example\nThe running example can be designed as the following AI-first workflow.\n\n1.12.1 Workflow objective\nVerify that selected CSR TLF outputs derived from ADaM datasets are consistent with SAP requirements before database lock.\n\n\n1.12.2 Agent role\nThe agent acts as an independent reviewer assistant. It performs mechanical consistency checks, prepares evidence-backed findings, and escalates judgment calls to humans.\n\n\n1.12.3 Inputs\n\nSAP version or amendment;\nADaM metadata snapshot;\nADaM dataset snapshot;\nTLF package;\nworkflow rules defining when to run or rerun checks.\n\n\n\n1.12.4 Trigger examples\n\nSAP section updated;\nADaM metadata refreshed;\nADaM datasets regenerated;\nTLF output regenerated;\nhuman requests targeted recheck;\nanother AI agent changes a related artifact.\n\n\n\n1.12.5 Tool set\n\nSAP requirement parser;\nADaM metadata inspector;\nADaM population and summary query tool;\nTLF metadata extractor;\nconsistency checker;\nreport generator.\n\n\n\n1.12.6 Workflow stages\n\nMap requirements: identify SAP endpoints, populations, required variables, and target TLFs.\nInspect artifacts: use tools to inspect ADaM metadata, ADaM data summaries, and TLF outputs.\nCheck consistency: compare SAP expectations against ADaM and TLF evidence.\nClassify findings: assign severity, source references, and suggested reviewer role.\nEscalate judgment calls: route ambiguous or high-impact findings to humans.\nProduce evidence report: create structured output plus a readable summary.\nTrack state: compare with previous runs to identify fixed, new, repeated, and acknowledged findings.\n\n\n\n1.12.7 Example checks\n\n\n\n\n\n\n\nCheck\nExpected evidence\n\n\n\n\nSAP population is represented in ADaM\npopulation flag exists in ADSL or relevant dataset\n\n\nSAP endpoint variable exists\nvariable exists with expected label/type in ADaM metadata\n\n\nTLF title matches SAP display intent\ndisplay title/subtitle align with SAP or shell\n\n\nTLF N values are explainable\ncounts can be reproduced from ADaM population rules\n\n\nfootnotes match analysis method\nfootnote text aligns with SAP method description\n\n\nrerun scope is correct\nevent/rule mapping explains why checks ran\n\n\n\n\n\n1.12.8 Expected outputs\n\nstructured evidence matrix;\nhuman-readable review summary;\nfinding list grouped by severity;\nescalation memo routed by role;\ndelta report comparing current and previous runs.",
+    "section": "1.7 Applying the principles to SAP → ADaM → TLF review",
+    "text": "1.7 Applying the principles to SAP → ADaM → TLF review\nThe running example is an AI agent that reviews whether selected CSR TLF outputs derived from ADaM datasets follow the SAP.\n\n1.7.1 Workflow objective\nVerify consistency across SAP requirements, ADaM metadata/data, and TLF outputs before database lock.\n\n\n1.7.2 Agent role\nThe agent is an independent reviewer assistant for clinical statisticians, statistical programmers, programming leads, and study reviewers.\n\n\n1.7.3 Inputs\n\nSAP version;\nADaM metadata snapshot;\nADaM dataset snapshot;\nTLF package;\nworkflow rules;\nprior findings and decisions, if available.\n\n\n\n1.7.4 Example checks\n\n\n\n\n\n\n\nCheck\nEvidence\n\n\n\n\nSAP population exists in ADaM\npopulation flag in ADSL or relevant dataset\n\n\nSAP endpoint variable exists\nvariable name, label, type, and codelist in ADaM metadata\n\n\nTLF title matches intended display\ntitle/subtitle from TLF output and SAP reference\n\n\nTLF N values are explainable\ncounts from ADaM population rules\n\n\nfootnotes match analysis method\nfootnote text and SAP method section\n\n\nrerun scope is justified\nevent and rule that triggered the run\n\n\n\n\n\n1.7.5 Outputs\n\nevidence matrix;\nfindings grouped by severity;\nescalation list by reviewer role;\ndelta report showing fixed, new, repeated, and acknowledged findings.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
@@ -196,8 +130,8 @@
     "objectID": "principle-overview.html#summary",
     "href": "principle-overview.html#summary",
     "title": "1  Principles overview",
-    "section": "1.13 Summary",
-    "text": "1.13 Summary\nDesigning an AI-first workflow means designing the work so an AI agent can execute a structured, tool-supported, evidence-producing review cycle. The important design questions are not only “what can the LLM answer?” but also:\n\nWhat artifacts does the workflow depend on?\nWhat tools expose those artifacts reliably?\nWhat events and rules trigger the agent?\nWhat evidence must the agent produce?\nWhen does the agent escalate?\nHow do we test and monitor the workflow?\nHow does the workflow rerun as the study changes?\n\nFor clinical study workflows, this framing keeps the agent useful and bounded: it becomes an independent reviewer assistant that follows the evolution of study deliverables and helps humans focus on judgment, interpretation, and sign-off.",
+    "section": "1.8 Summary",
+    "text": "1.8 Summary\nThe first principles are:\n\nInspectable artifacts: make work readable, structured, versioned, citable, and diffable.\nExplicit state: remember what changed, what was checked, and what was decided.\nEvents and rules: trigger the agent when work changes and define what action is needed.\nTools and evidence: inspect reality with tools and require evidence for findings.\nHuman judgment: agents prepare the review; humans make accountable decisions.\n\nThese principles keep the workflow simple, reviewable, and suitable for iterative clinical study work.",
     "crumbs": [
       "Principles",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Principles overview</span>"
