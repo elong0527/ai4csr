@@ -24,6 +24,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -245,7 +280,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tbd" id="toc-tbd" class="nav-link active" data-scroll-target="#tbd"><span class="header-section-number">1.1</span> TBD</a></li>
+  <li><a href="#a-simple-model" id="toc-a-simple-model" class="nav-link active" data-scroll-target="#a-simple-model"><span class="header-section-number">1.1</span> A simple model</a></li>
+  <li><a href="#principle-1-define-the-workflow-boundary" id="toc-principle-1-define-the-workflow-boundary" class="nav-link" data-scroll-target="#principle-1-define-the-workflow-boundary"><span class="header-section-number">1.2</span> Principle 1: Define the workflow boundary</a></li>
+  <li><a href="#principle-2-treat-deliverables-as-typed-versioned-artifacts" id="toc-principle-2-treat-deliverables-as-typed-versioned-artifacts" class="nav-link" data-scroll-target="#principle-2-treat-deliverables-as-typed-versioned-artifacts"><span class="header-section-number">1.3</span> Principle 2: Treat deliverables as typed, versioned artifacts</a></li>
+  <li><a href="#principle-3-design-events-and-rules-before-agent-behavior" id="toc-principle-3-design-events-and-rules-before-agent-behavior" class="nav-link" data-scroll-target="#principle-3-design-events-and-rules-before-agent-behavior"><span class="header-section-number">1.4</span> Principle 3: Design events and rules before agent behavior</a></li>
+  <li><a href="#principle-4-build-narrow-deterministic-tools" id="toc-principle-4-build-narrow-deterministic-tools" class="nav-link" data-scroll-target="#principle-4-build-narrow-deterministic-tools"><span class="header-section-number">1.5</span> Principle 4: Build narrow, deterministic tools</a></li>
+  <li><a href="#principle-5-let-the-harness-control-the-workflow" id="toc-principle-5-let-the-harness-control-the-workflow" class="nav-link" data-scroll-target="#principle-5-let-the-harness-control-the-workflow"><span class="header-section-number">1.6</span> Principle 5: Let the harness control the workflow</a></li>
+  <li><a href="#principle-6-require-evidence-backed-outputs" id="toc-principle-6-require-evidence-backed-outputs" class="nav-link" data-scroll-target="#principle-6-require-evidence-backed-outputs"><span class="header-section-number">1.7</span> Principle 6: Require evidence-backed outputs</a></li>
+  <li><a href="#principle-7-design-human-escalation-as-part-of-the-workflow" id="toc-principle-7-design-human-escalation-as-part-of-the-workflow" class="nav-link" data-scroll-target="#principle-7-design-human-escalation-as-part-of-the-workflow"><span class="header-section-number">1.8</span> Principle 7: Design human escalation as part of the workflow</a></li>
+  <li><a href="#principle-8-test-the-workflow-at-multiple-layers" id="toc-principle-8-test-the-workflow-at-multiple-layers" class="nav-link" data-scroll-target="#principle-8-test-the-workflow-at-multiple-layers"><span class="header-section-number">1.9</span> Principle 8: Test the workflow at multiple layers</a></li>
+  <li><a href="#principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow" id="toc-principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow" class="nav-link" data-scroll-target="#principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow"><span class="header-section-number">1.10</span> Principle 9: Deploy where the artifacts live and monitor the workflow</a></li>
+  <li><a href="#principle-10-design-for-iteration-after-changes" id="toc-principle-10-design-for-iteration-after-changes" class="nav-link" data-scroll-target="#principle-10-design-for-iteration-after-changes"><span class="header-section-number">1.11</span> Principle 10: Design for iteration after changes</a></li>
+  <li><a href="#applying-the-principles-to-the-agent-example" id="toc-applying-the-principles-to-the-agent-example" class="nav-link" data-scroll-target="#applying-the-principles-to-the-agent-example"><span class="header-section-number">1.12</span> Applying the principles to the agent example</a>
+  <ul class="collapse">
+  <li><a href="#workflow-objective" id="toc-workflow-objective" class="nav-link" data-scroll-target="#workflow-objective"><span class="header-section-number">1.12.1</span> Workflow objective</a></li>
+  <li><a href="#agent-role" id="toc-agent-role" class="nav-link" data-scroll-target="#agent-role"><span class="header-section-number">1.12.2</span> Agent role</a></li>
+  <li><a href="#inputs" id="toc-inputs" class="nav-link" data-scroll-target="#inputs"><span class="header-section-number">1.12.3</span> Inputs</a></li>
+  <li><a href="#trigger-examples" id="toc-trigger-examples" class="nav-link" data-scroll-target="#trigger-examples"><span class="header-section-number">1.12.4</span> Trigger examples</a></li>
+  <li><a href="#tool-set" id="toc-tool-set" class="nav-link" data-scroll-target="#tool-set"><span class="header-section-number">1.12.5</span> Tool set</a></li>
+  <li><a href="#workflow-stages" id="toc-workflow-stages" class="nav-link" data-scroll-target="#workflow-stages"><span class="header-section-number">1.12.6</span> Workflow stages</a></li>
+  <li><a href="#example-checks" id="toc-example-checks" class="nav-link" data-scroll-target="#example-checks"><span class="header-section-number">1.12.7</span> Example checks</a></li>
+  <li><a href="#expected-outputs" id="toc-expected-outputs" class="nav-link" data-scroll-target="#expected-outputs"><span class="header-section-number">1.12.8</span> Expected outputs</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.13</span> Summary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/principle-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/principle-overview.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -281,12 +338,505 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TBD</p>
+<p>This chapter introduces practical principles for designing an AI-first workflow for clinical study work. We use one running example throughout: an AI agent acting as an independent reviewer assistant to verify that a CSR TLF package derived from ADaM datasets follows the SAP.</p>
 </div>
 </div>
-<section id="tbd" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="tbd"><span class="header-section-number">1.1</span> TBD</h2>
-<p>TBD</p>
+<p>An AI-first workflow is not simply a human workflow with an LLM added at the end. It is designed so an AI agent can perform the first structured pass, use tools to inspect study artifacts, produce evidence-backed findings, and rerun when events and rules indicate that the work has changed.</p>
+<p>The accountable human remains the reviewer and decision-maker. The agent helps by doing systematic, repetitive, evidence-gathering work.</p>
+<section id="a-simple-model" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="a-simple-model"><span class="header-section-number">1.1</span> A simple model</h2>
+<p>For this book, we use a practical model:</p>
+<blockquote class="blockquote">
+<p>AI agent = LLM + tools + harness + running environment</p>
+</blockquote>
+<ul>
+<li><strong>LLM</strong>: reasons over the task, interprets structured outputs, and drafts findings.</li>
+<li><strong>Tools</strong>: inspect real study artifacts, such as SAP text, ADaM metadata, datasets, TLF outputs, logs, and specifications.</li>
+<li><strong>Harness</strong>: controls the workflow loop, routes tool calls, stores state, applies rules, and decides when to stop or escalate.</li>
+<li><strong>Running environment</strong>: provides the file system, compute environment, permissions, credentials, and execution context where the workflow runs.</li>
+</ul>
+<p>The design goal is not to make the LLM guess better. The design goal is to give the agent a workflow, tools, rules, evidence requirements, and escalation paths so it can behave like a reliable independent reviewer assistant.</p>
+</section>
+<section id="principle-1-define-the-workflow-boundary" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="principle-1-define-the-workflow-boundary"><span class="header-section-number">1.2</span> Principle 1: Define the workflow boundary</h2>
+<p>Start by defining the workflow using handoff points, not tools.</p>
+<p>A useful boundary statement answers four questions:</p>
+<ol type="1">
+<li>What artifacts does the agent receive?</li>
+<li>What question is the agent allowed to answer?</li>
+<li>What output does the agent produce?</li>
+<li>What remains a human responsibility?</li>
+</ol>
+<p>For the running example:</p>
+<blockquote class="blockquote">
+<p>Given a specific SAP version, ADaM metadata snapshot, ADaM dataset snapshot, and TLF package, the agent produces a structured consistency report and escalation list for human review.</p>
+</blockquote>
+<p>In scope:</p>
+<ul>
+<li>identify SAP requirements relevant to selected TLFs;</li>
+<li>inspect ADaM variable metadata, dataset structure, and analysis flags;</li>
+<li>inspect TLF titles, footnotes, columns, populations, and displayed values;</li>
+<li>compare SAP expectations with ADaM and TLF evidence;</li>
+<li>produce findings with source references.</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>deciding whether the SAP is scientifically appropriate;</li>
+<li>making final statistical judgments;</li>
+<li>editing study deliverables directly;</li>
+<li>replacing formal organizational review, validation, or sign-off.</li>
+</ul>
+</section>
+<section id="principle-2-treat-deliverables-as-typed-versioned-artifacts" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="principle-2-treat-deliverables-as-typed-versioned-artifacts"><span class="header-section-number">1.3</span> Principle 2: Treat deliverables as typed, versioned artifacts</h2>
+<p>The agent should not treat inputs as random files. Each artifact should have a type, version, owner, and role in the workflow.</p>
+<p>For the running example:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Artifact</th>
+<th>Role in workflow</th>
+<th>Example version key</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SAP</td>
+<td>Source of planned analyses and display requirements</td>
+<td>amendment number, date, document ID</td>
+</tr>
+<tr class="even">
+<td>ADaM metadata</td>
+<td>Source of dataset and variable structure</td>
+<td>define.xml version, metadata freeze ID</td>
+</tr>
+<tr class="odd">
+<td>ADaM datasets</td>
+<td>Source of analysis data and population flags</td>
+<td>data cut, transfer ID, checksum</td>
+</tr>
+<tr class="even">
+<td>TLF package</td>
+<td>Source of generated CSR displays</td>
+<td>output run ID, table/listing/figure ID</td>
+</tr>
+<tr class="odd">
+<td>Agent report</td>
+<td>Evidence output for review</td>
+<td>agent run ID</td>
+</tr>
+</tbody>
+</table>
+<p>Typed artifacts make reruns easier. If only ADaM metadata changes, the workflow can identify which checks depend on changed variables instead of rerunning everything blindly.</p>
+</section>
+<section id="principle-3-design-events-and-rules-before-agent-behavior" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="principle-3-design-events-and-rules-before-agent-behavior"><span class="header-section-number">1.4</span> Principle 3: Design events and rules before agent behavior</h2>
+<p>An AI-first workflow is iterative. It should rerun when the work changes.</p>
+<p>An <strong>event</strong> says something happened. A <strong>rule</strong> decides what the agent should do next.</p>
+<p>Examples:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Event</th>
+<th>Rule</th>
+<th>Rerun scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SAP amendment issued</td>
+<td>Re-map SAP requirements</td>
+<td>Full or affected endpoint review</td>
+</tr>
+<tr class="even">
+<td>ADaM metadata updated</td>
+<td>Compare metadata differences</td>
+<td>Checks touching changed datasets or variables</td>
+</tr>
+<tr class="odd">
+<td>ADaM datasets refreshed</td>
+<td>Recompute affected evidence</td>
+<td>Population and value checks</td>
+</tr>
+<tr class="even">
+<td>TLF output regenerated</td>
+<td>Compare display changes</td>
+<td>Affected TLFs</td>
+</tr>
+<tr class="odd">
+<td>Human reviewer requests recheck</td>
+<td>Run targeted review</td>
+<td>Requested endpoint, table, or finding</td>
+</tr>
+<tr class="even">
+<td>Another AI agent updates a deliverable</td>
+<td>Verify downstream impact</td>
+<td>Rule-dependent</td>
+</tr>
+</tbody>
+</table>
+<p>This is a core part of AI-first design. The workflow does not wait for a human to remember every follow-up check. The harness watches for events, applies rules, and triggers the agent when useful.</p>
+</section>
+<section id="principle-4-build-narrow-deterministic-tools" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="principle-4-build-narrow-deterministic-tools"><span class="header-section-number">1.5</span> Principle 4: Build narrow, deterministic tools</h2>
+<p>Tools should answer focused questions and return structured data. They should not return long prose that the LLM has to reinterpret.</p>
+<p>Good tool design principles:</p>
+<ul>
+<li><strong>Narrow</strong>: one tool answers one kind of question.</li>
+<li><strong>Read-only by default</strong>: review workflows should inspect before they modify.</li>
+<li><strong>Structured</strong>: return JSON, tables, or typed records.</li>
+<li><strong>Idempotent</strong>: same input snapshot returns the same output.</li>
+<li><strong>Loud on failure</strong>: missing files or unreadable metadata should create explicit errors.</li>
+</ul>
+<p>For the running example, useful tools might include:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Purpose</th>
+<th>Example output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>parse_sap_requirements()</code></td>
+<td>Extract endpoints, populations, estimands, displays, and required analyses from SAP sections</td>
+<td>endpoint-to-display map</td>
+</tr>
+<tr class="even">
+<td><code>inspect_adam_metadata()</code></td>
+<td>Inspect ADaM variable metadata</td>
+<td>dataset, variable, label, type, codelist, analysis flag</td>
+</tr>
+<tr class="odd">
+<td><code>query_adam_population()</code></td>
+<td>Count subjects or records for a population flag</td>
+<td>population count with dataset reference</td>
+</tr>
+<tr class="even">
+<td><code>extract_tlf_metadata()</code></td>
+<td>Read titles, footnotes, columns, and N values from TLF outputs</td>
+<td>display metadata</td>
+</tr>
+<tr class="odd">
+<td><code>compare_expected_actual()</code></td>
+<td>Compare expected SAP/ADaM/TLF elements</td>
+<td>pass/fail finding record</td>
+</tr>
+</tbody>
+</table>
+<p>The ADaM metadata tool is especially useful as an early example. It can inspect dataset names, variable names, labels, types, controlled terminology, and analysis flags so the agent can compare what exists in the data against what the SAP or TLF specification requires.</p>
+</section>
+<section id="principle-5-let-the-harness-control-the-workflow" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="principle-5-let-the-harness-control-the-workflow"><span class="header-section-number">1.6</span> Principle 5: Let the harness control the workflow</h2>
+<p>The harness is the operational layer around the LLM. It should control the workflow structure so the agent does not become an open-ended conversation.</p>
+<p>Harness responsibilities include:</p>
+<ul>
+<li>start the workflow from an event or human request;</li>
+<li>select the relevant artifact versions;</li>
+<li>route tool calls;</li>
+<li>store intermediate state;</li>
+<li>enforce stopping conditions;</li>
+<li>rerun only affected checks when possible;</li>
+<li>collect findings and escalations;</li>
+<li>produce final outputs.</li>
+</ul>
+<p>For the running example, a simple harness can follow three stages:</p>
+<ol type="1">
+<li><strong>Map</strong>: map SAP requirements to ADaM datasets, variables, population flags, and TLF IDs.</li>
+<li><strong>Verify</strong>: run checks for each mapped requirement.</li>
+<li><strong>Synthesize</strong>: group findings, summarize evidence, and prepare human review outputs.</li>
+</ol>
+<p>This structure keeps the LLM focused. The LLM reasons inside a workflow; it does not invent the workflow from scratch every time.</p>
+</section>
+<section id="principle-6-require-evidence-backed-outputs" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="principle-6-require-evidence-backed-outputs"><span class="header-section-number">1.7</span> Principle 6: Require evidence-backed outputs</h2>
+<p>The output of an AI-first workflow should be evidence, not just a summary.</p>
+<p>Every finding should answer:</p>
+<ul>
+<li>What was checked?</li>
+<li>What was expected?</li>
+<li>What was observed?</li>
+<li>Where did the evidence come from?</li>
+<li>What is the severity?</li>
+<li>Who should review it?</li>
+</ul>
+<p>A finding record could look like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"finding_id"</span><span class="fu">:</span> <span class="st">"F-012"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"display_id"</span><span class="fu">:</span> <span class="st">"T_14_2_1"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"check_type"</span><span class="fu">:</span> <span class="st">"population_mismatch"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"expected"</span><span class="fu">:</span> <span class="st">"Per-protocol population based on PPROTFL"</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"actual"</span><span class="fu">:</span> <span class="st">"TLF title indicates Safety Population; ADaM metadata includes SAFFL and PPROTFL"</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"evidence"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"sap_section"</span><span class="fu">:</span> <span class="st">"9.1.2"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"adam_dataset"</span><span class="fu">:</span> <span class="st">"ADSL"</span><span class="fu">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"adam_variables"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"SAFFL"</span><span class="ot">,</span> <span class="st">"PPROTFL"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tlf_file"</span><span class="fu">:</span> <span class="st">"t_14_2_1.rtf"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"severity"</span><span class="fu">:</span> <span class="st">"needs_review"</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"suggested_reviewer"</span><span class="fu">:</span> <span class="st">"study statistician"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The human-readable report should be a rendering of structured evidence. That makes the workflow easier to review, test, compare across runs, and reuse.</p>
+</section>
+<section id="principle-7-design-human-escalation-as-part-of-the-workflow" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="principle-7-design-human-escalation-as-part-of-the-workflow"><span class="header-section-number">1.8</span> Principle 7: Design human escalation as part of the workflow</h2>
+<p>Escalation is not failure. It is a designed output.</p>
+<p>The agent should escalate when:</p>
+<ul>
+<li>SAP language is ambiguous;</li>
+<li>a required artifact is missing;</li>
+<li>a tool returns inconsistent evidence;</li>
+<li>a check requires statistical judgment;</li>
+<li>the agent cannot confidently map SAP text to ADaM or TLF elements.</li>
+</ul>
+<p>Escalations should be routed by role:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Escalation type</th>
+<th>Suggested reviewer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>endpoint definition ambiguity</td>
+<td>study statistician</td>
+</tr>
+<tr class="even">
+<td>missing or inconsistent ADaM metadata</td>
+<td>statistical programmer</td>
+</tr>
+<tr class="odd">
+<td>display formatting or table shell mismatch</td>
+<td>TLF reviewer or programming lead</td>
+</tr>
+<tr class="even">
+<td>repeated blocking findings across many displays</td>
+<td>programming lead</td>
+</tr>
+</tbody>
+</table>
+<p>A good escalation is self-contained. The reviewer should see the source references, observed evidence, why the agent could not resolve it, and what decision is needed.</p>
+</section>
+<section id="principle-8-test-the-workflow-at-multiple-layers" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="principle-8-test-the-workflow-at-multiple-layers"><span class="header-section-number">1.9</span> Principle 8: Test the workflow at multiple layers</h2>
+<p>Testing an AI-first workflow is not only testing whether tools run. We need to test whether the system produces correct findings and escalates appropriately.</p>
+<p>Recommended test layers:</p>
+<ul>
+<li><strong>Tool tests</strong>: each tool returns the expected structured output for known fixtures.</li>
+<li><strong>Workflow tests</strong>: the harness runs the expected sequence for a given event.</li>
+<li><strong>Golden-set evaluation</strong>: curated SAP/ADaM/TLF examples with known findings.</li>
+<li><strong>Adversarial cases</strong>: ambiguous SAP language, missing variables, label mismatches, population mismatches, and harmless formatting changes.</li>
+<li><strong>Regression tests</strong>: rerun prior examples after prompt, model, tool, or rule changes.</li>
+</ul>
+<p>For the running example, a golden set might include:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Case</th>
+<th>Expected behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>all mappings correct</td>
+<td>no active findings; complete evidence matrix</td>
+</tr>
+<tr class="even">
+<td>population flag missing</td>
+<td>blocking finding and programmer escalation</td>
+</tr>
+<tr class="odd">
+<td>SAP population wording ambiguous</td>
+<td>statistician escalation</td>
+</tr>
+<tr class="even">
+<td>TLF title changed but data unchanged</td>
+<td>display-level finding only</td>
+</tr>
+<tr class="odd">
+<td>ADaM label changed</td>
+<td>rerun checks touching that variable</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="principle-9-deploy-where-the-artifacts-live-and-monitor-the-workflow"><span class="header-section-number">1.10</span> Principle 9: Deploy where the artifacts live and monitor the workflow</h2>
+<p>The agent should run in an environment where it can access the right artifact versions safely and reproducibly.</p>
+<p>For this demo, we focus on workflow design rather than full compliance implementation. In a real organization, deployment details depend on internal infrastructure, access controls, validation processes, and policies.</p>
+<p>Even in a demo, the workflow should track operational signals:</p>
+<ul>
+<li>run status: completed, failed, or escalated;</li>
+<li>coverage: which endpoints, datasets, and TLFs were checked;</li>
+<li>finding distribution: blocking, needs review, informational, pass;</li>
+<li>escalation rate and routing accuracy;</li>
+<li>runtime and cost;</li>
+<li>changes between runs.</li>
+</ul>
+<p>Monitoring should tell us whether the workflow is useful, not just whether it finished.</p>
+</section>
+<section id="principle-10-design-for-iteration-after-changes" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="principle-10-design-for-iteration-after-changes"><span class="header-section-number">1.11</span> Principle 10: Design for iteration after changes</h2>
+<p>Clinical study deliverables change repeatedly. AI-first workflows should be designed for dry runs, updates, partial reruns, and delta reports.</p>
+<p>Useful state across runs includes:</p>
+<ul>
+<li>artifact versions used in each run;</li>
+<li>rules applied;</li>
+<li>tools called;</li>
+<li>findings produced;</li>
+<li>human decisions or acknowledgments;</li>
+<li>findings resolved, repeated, or newly introduced.</li>
+</ul>
+<p>For the running example, after an ADaM metadata update, the agent should not simply issue the same full report again. It should identify:</p>
+<ul>
+<li>findings fixed since the previous run;</li>
+<li>new findings introduced by the change;</li>
+<li>prior findings still unresolved;</li>
+<li>acknowledged deviations that should remain visible but not distract reviewers.</li>
+</ul>
+<p>This turns the agent from a one-time reviewer into an iterative reviewer assistant that follows the study as it evolves.</p>
+</section>
+<section id="applying-the-principles-to-the-agent-example" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="applying-the-principles-to-the-agent-example"><span class="header-section-number">1.12</span> Applying the principles to the agent example</h2>
+<p>The running example can be designed as the following AI-first workflow.</p>
+<section id="workflow-objective" class="level3" data-number="1.12.1">
+<h3 data-number="1.12.1" class="anchored" data-anchor-id="workflow-objective"><span class="header-section-number">1.12.1</span> Workflow objective</h3>
+<p>Verify that selected CSR TLF outputs derived from ADaM datasets are consistent with SAP requirements before database lock.</p>
+</section>
+<section id="agent-role" class="level3" data-number="1.12.2">
+<h3 data-number="1.12.2" class="anchored" data-anchor-id="agent-role"><span class="header-section-number">1.12.2</span> Agent role</h3>
+<p>The agent acts as an independent reviewer assistant. It performs mechanical consistency checks, prepares evidence-backed findings, and escalates judgment calls to humans.</p>
+</section>
+<section id="inputs" class="level3" data-number="1.12.3">
+<h3 data-number="1.12.3" class="anchored" data-anchor-id="inputs"><span class="header-section-number">1.12.3</span> Inputs</h3>
+<ul>
+<li>SAP version or amendment;</li>
+<li>ADaM metadata snapshot;</li>
+<li>ADaM dataset snapshot;</li>
+<li>TLF package;</li>
+<li>workflow rules defining when to run or rerun checks.</li>
+</ul>
+</section>
+<section id="trigger-examples" class="level3" data-number="1.12.4">
+<h3 data-number="1.12.4" class="anchored" data-anchor-id="trigger-examples"><span class="header-section-number">1.12.4</span> Trigger examples</h3>
+<ul>
+<li>SAP section updated;</li>
+<li>ADaM metadata refreshed;</li>
+<li>ADaM datasets regenerated;</li>
+<li>TLF output regenerated;</li>
+<li>human requests targeted recheck;</li>
+<li>another AI agent changes a related artifact.</li>
+</ul>
+</section>
+<section id="tool-set" class="level3" data-number="1.12.5">
+<h3 data-number="1.12.5" class="anchored" data-anchor-id="tool-set"><span class="header-section-number">1.12.5</span> Tool set</h3>
+<ul>
+<li>SAP requirement parser;</li>
+<li>ADaM metadata inspector;</li>
+<li>ADaM population and summary query tool;</li>
+<li>TLF metadata extractor;</li>
+<li>consistency checker;</li>
+<li>report generator.</li>
+</ul>
+</section>
+<section id="workflow-stages" class="level3" data-number="1.12.6">
+<h3 data-number="1.12.6" class="anchored" data-anchor-id="workflow-stages"><span class="header-section-number">1.12.6</span> Workflow stages</h3>
+<ol type="1">
+<li><strong>Map requirements</strong>: identify SAP endpoints, populations, required variables, and target TLFs.</li>
+<li><strong>Inspect artifacts</strong>: use tools to inspect ADaM metadata, ADaM data summaries, and TLF outputs.</li>
+<li><strong>Check consistency</strong>: compare SAP expectations against ADaM and TLF evidence.</li>
+<li><strong>Classify findings</strong>: assign severity, source references, and suggested reviewer role.</li>
+<li><strong>Escalate judgment calls</strong>: route ambiguous or high-impact findings to humans.</li>
+<li><strong>Produce evidence report</strong>: create structured output plus a readable summary.</li>
+<li><strong>Track state</strong>: compare with previous runs to identify fixed, new, repeated, and acknowledged findings.</li>
+</ol>
+</section>
+<section id="example-checks" class="level3" data-number="1.12.7">
+<h3 data-number="1.12.7" class="anchored" data-anchor-id="example-checks"><span class="header-section-number">1.12.7</span> Example checks</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SAP population is represented in ADaM</td>
+<td>population flag exists in ADSL or relevant dataset</td>
+</tr>
+<tr class="even">
+<td>SAP endpoint variable exists</td>
+<td>variable exists with expected label/type in ADaM metadata</td>
+</tr>
+<tr class="odd">
+<td>TLF title matches SAP display intent</td>
+<td>display title/subtitle align with SAP or shell</td>
+</tr>
+<tr class="even">
+<td>TLF N values are explainable</td>
+<td>counts can be reproduced from ADaM population rules</td>
+</tr>
+<tr class="odd">
+<td>footnotes match analysis method</td>
+<td>footnote text aligns with SAP method description</td>
+</tr>
+<tr class="even">
+<td>rerun scope is correct</td>
+<td>event/rule mapping explains why checks ran</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="expected-outputs" class="level3" data-number="1.12.8">
+<h3 data-number="1.12.8" class="anchored" data-anchor-id="expected-outputs"><span class="header-section-number">1.12.8</span> Expected outputs</h3>
+<ul>
+<li>structured evidence matrix;</li>
+<li>human-readable review summary;</li>
+<li>finding list grouped by severity;</li>
+<li>escalation memo routed by role;</li>
+<li>delta report comparing current and previous runs.</li>
+</ul>
+</section>
+</section>
+<section id="summary" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="summary"><span class="header-section-number">1.13</span> Summary</h2>
+<p>Designing an AI-first workflow means designing the work so an AI agent can execute a structured, tool-supported, evidence-producing review cycle. The important design questions are not only “what can the LLM answer?” but also:</p>
+<ul>
+<li>What artifacts does the workflow depend on?</li>
+<li>What tools expose those artifacts reliably?</li>
+<li>What events and rules trigger the agent?</li>
+<li>What evidence must the agent produce?</li>
+<li>When does the agent escalate?</li>
+<li>How do we test and monitor the workflow?</li>
+<li>How does the workflow rerun as the study changes?</li>
+</ul>
+<p>For clinical study workflows, this framing keeps the agent useful and bounded: it becomes an independent reviewer assistant that follows the evolution of study deliverables and helps humans focus on judgment, interpretation, and sign-off.</p>
 
 
 </section>
