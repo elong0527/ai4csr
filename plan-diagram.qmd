@@ -1,0 +1,338 @@
+# The planning diagram {#sec-plan-diagram}
+
+::: callout-tip
+## Objective
+
+Use a hand-drawn diagram as the medium for reaching shared understanding with an
+AI agent at the planning stage, keep it in the repository as structured JSON so
+it survives as the blueprint later sessions compare the implementation against,
+and refine it as the design becomes clearer.
+:::
+
+## The goal: think with the agent, not at it
+
+Planning with an agent through chat alone has a characteristic failure.
+You describe what you want, the agent restates it convincingly, and you both
+proceed, without ever confirming you were picturing the same system.
+The misunderstanding is invisible because prose describes components one at a
+time, and the thing you disagreed about was how they fit together.
+
+A diagram removes that hiding place.
+When the shape is on the canvas, "where does this arrow go?" and "should these
+two be separate boxes?" become questions someone can actually ask.
+The drawing is not documentation of a decision already made.
+It is the surface on which the decision gets made, together.
+
+> The diagram is not the output of planning. It is how planning happens.
+
+This chapter proposes drawing that diagram in
+[Excalidraw](https://excalidraw.com/) and committing it to the repository,
+for one specific reason: the file is plaintext JSON.
+The human sees a picture; the agent reads structured data.
+Neither is working from a translation of the other.
+
+## Start rough
+
+The first draft should not be good.
+
+Its only job is to be concrete enough to be wrong in a visible way.
+Five boxes and four arrows, drawn in two minutes, will surface more real
+disagreement than an hour of careful prose, because the agent can point at a
+box and say *I don't know what this is*, or *this needs a connection you
+haven't drawn*, or *these two look like the same thing*.
+
+A useful first pass:
+
+1. Sketch the components you are confident exist, and the flow between them.
+2. Do not agonize over what you are unsure about. Leave it out, or draw it as a
+   single vague box. The gap is information.
+3. Ask the agent to read the file and restate the design in its own words:
+   what each box is, what each arrow implies, and **what it cannot tell from
+   the diagram**.
+4. Fix what the restatement got wrong. Usually the diagram was wrong, not the agent.
+
+That last list, what the agent cannot tell, is the most valuable output of the
+first round. It is your ambiguity, made visible while it is still cheap to
+resolve on a canvas rather than expensive to resolve in code.
+
+Expect two or three rounds. The diagram gets better because you are arguing
+about something specific.
+
+> A rough diagram you iterate on beats a polished one you defend.
+
+## Then it becomes the blueprint
+
+Once you and the agent agree on the picture, the drawing changes role.
+It stops being a conversation and becomes memory.
+
+This matters because agent sessions are short and the work is not.
+The session that plans a component is rarely the session that builds it,
+and almost never the session that tests it.
+Everything said in the planning conversation is gone by then, but the
+committed diagram is still in the repository, and the next session reads it
+as a first-class input.
+
+The design intent survives the context window.
+
+That gives every later stage something to check against:
+
+| Stage | What the diagram is used for |
+|---|---|
+| Implementation | The boundaries to build within; an undrawn dependency is a question, not a liberty |
+| Review | Walk each box and arrow against the built system; report what is missing, reversed, or unplanned |
+| Testing | Each arrow is an interface worth a test; each boundary is something worth trying to violate |
+| Onboarding | A new person, or a fresh session, gets the intended shape in one look |
+
+The review use is the one that earns the file's keep.
+The agent can report on each element:
+
+- **Box**: does a corresponding component exist? *present, missing, renamed*
+- **Arrow**: does the dependency exist, in that direction? *present, missing, reversed*
+- **Boundary**: does anything cross it that should not? *conforms, violated*
+- **Built component**: does it appear in the diagram at all? *planned, unplanned*
+
+That last check catches what prose plans never do: components that exist but
+were never designed. Scope creep has a shape, and it shows up as boxes on the
+canvas that nobody drew.
+
+Every divergence has two valid resolutions: change the code to match the
+diagram, or change the diagram because the design genuinely improved during the
+build. The agent reports which elements diverged and cites both sides.
+Deciding which side was wrong is a human's job.
+
+> The agent reports the divergence. The human decides which side was wrong.
+
+## Keep refining it
+
+The diagram is not finished when the build starts.
+Implementation always teaches you something the plan did not know,
+and when it does, the change belongs in the drawing before the session ends.
+
+The rule is simple and unforgiving: **a design change is not done until the
+diagram is updated.** A drawing that has silently gone stale is worse than no
+drawing, because it is a confident description of a system that no longer
+exists, and the next session will trust it.
+
+Because the file is JSON, this is checkable.
+`git diff` shows which elements were added, removed, or relabelled, so the
+diagram accumulates history: when a component appeared, and what else changed
+in the same commit.
+
+A working rhythm:
+
+- **Before building**: draw, argue with the agent, commit the agreed version.
+- **During building**: when reality diverges, stop and ask which side is right.
+- **After building**: run the conformance walk, then commit the corrected diagram
+  alongside the code.
+
+## The trade-off you have to master
+
+Here is the part that takes practice.
+
+The diagram has to serve two readers with opposite appetites:
+
+- **A human** needs it simple enough to hold in one look. Past roughly fifteen
+  boxes, nobody is really reading it. They are recognizing it. A diagram
+  nobody reads cannot catch a mistake.
+- **An agent** needs enough detail to verify something. A diagram of three boxes
+  labelled *input*, *processing*, *output* is technically a plan, but every
+  possible implementation conforms to it, so it can never report a divergence.
+
+Too simple and it is decorative. Too detailed and it is unmaintained.
+Both failure modes end the same way: the file stops being consulted.
+
+There is no formula, and the balance shifts by project.
+Some guidance that helps:
+
+- **Draw the things that would be expensive to get wrong.**
+  Boundaries, ownership, and the direction of dependencies are worth a box.
+  Field names and function signatures are not. The agent handles those, and
+  they change too fast to keep drawn.
+- **Prefer one diagram per concern over one diagram for everything.**
+  Several small drawings each stay under the human limit; one large drawing
+  fails both readers at once.
+- **Detail is earned.** Add a box when its absence caused a real
+  misunderstanding, not in anticipation. Diagrams grow well and shrink badly.
+- **Every visual property should mean something.** Colour, fill, line weight,
+  and shape are channels, and each one spent on decoration is a channel you
+  cannot later spend on meaning. If a reader asks what the green boxes have in
+  common and the answer is "nothing, it looked nice", the colour is costing
+  attention and returning none. Draw in black and white first, then add a
+  distinction only when you can say in one sentence what it encodes.
+- **Watch the token cost.** Excalidraw JSON is verbose and low in information
+  density, roughly 4k to 22k tokens for a typical file. A diagram large enough to
+  be an expensive agent input is already too large for a human to check.
+
+Notice that these pressures point the same way.
+The size at which a human stops reading is close to the size at which the file
+stops being worth its context. That is a convenient coincidence, and a good
+sanity check: **if it is getting annoying to send to the agent, it is already
+too big to be useful to you.**
+
+Expect to be bad at this at first. Calibration comes from noticing which
+divergences your diagram caught and which it missed, and adjusting the
+granularity in that direction.
+
+> Simple enough for a human to check. Detailed enough for an agent to verify.
+> Finding that line is the skill.
+
+## A worked example
+
+The practice in this chapter is itself drawn as a diagram, in
+`diagrams/plan-diagram-workflow.excalidraw` in this repository.
+
+It has four boxes and five arrows:
+
+- **Human draws a rough diagram**, then **Agent restates it and names gaps**,
+  with a loop arrow back, labelled *iterate: the first draft is meant to be rough*.
+- Then **Blueprint committed as JSON**, the artifact that survives the session.
+- Then **Build, review, test vs. the blueprint**, reached *later sessions* on,
+  with a loop arrow back to the blueprint labelled
+  *divergence? a human decides, then update the diagram*.
+
+Note what is not in it. There is no box for the agent's tools, no arrow for
+every file it reads, and no detail about how the comparison is run.
+Those are implementation, and drawing them would push the diagram past the
+point where anyone checks it. The two loops are the design decisions worth
+committing to a picture, so they are what the picture shows.
+
+It is drawn in black and white with a single exception: the blueprint box is
+filled. That fill is the one visual property carrying information the layout
+does not: three boxes are activities, and one is the artifact those activities
+produce and check against. An earlier draft coloured the planning boxes blue and
+the checking boxes green, which looked organized but told the reader nothing:
+left-to-right order and the *later sessions* label already said which stage was
+which.
+
+To display it in the book, open it in Excalidraw and export it as
+`.excalidraw.svg` with the scene embedded. That keeps one artifact that both
+renders here and stays editable and agent-readable, the same file, not a copy.
+
+## Why Excalidraw
+
+The requirement is a format comfortable enough for a human to sketch in and
+structured enough for an agent to parse. Most formats give up one or the other.
+
+| Format | Human sketching | Machine readable | Diffable in git |
+|---|---|---|---|
+| Whiteboard photo, PNG, PDF | Excellent | No, requires vision | No |
+| Mermaid, PlantUML, Graphviz | Poor, it is code | Yes | Yes |
+| Visio, Lucidchart, draw\.io | Good | Partly, proprietary or verbose XML | Poorly |
+| **Excalidraw** | **Good** | **Yes, plain JSON** | **Yes** |
+
+An `.excalidraw` file is plaintext JSON, so the agent reads it the way it reads
+source code, with no vision, screenshot, or OCR step in between:
+
+``` json
+{
+  "id": "routerText",
+  "type": "text",
+  "x": 490,
+  "y": 373,
+  "width": 99,
+  "height": 25,
+  "text": "Tool Router",
+  "containerId": null
+}
+```
+
+Arrows drawn onto shapes carry `startBinding` and `endBinding` fields naming the
+elements they connect, so the file is not just a list of labels.
+It is a graph the agent can walk: these are the components, this one depends on
+that one, this arrow crosses that boundary.
+
+The deliberately rough, hand-drawn look does useful social work too.
+A sketchy diagram reads as provisional and invites correction;
+a polished one reads as settled and discourages it.
+At the planning stage you want the first.
+
+Practical notes:
+
+- **Export with the scene embedded.** Saving as `.excalidraw.svg` or
+  `.excalidraw.png` keeps the full JSON inside the file, so one artifact both
+  renders in the book and stays editable and parseable.
+- **Edit it in the editor.** The
+  [Excalidraw VS Code extension](https://github.com/excalidraw/excalidraw-vscode)
+  opens these files in place, so the diagram is updated in the same session as
+  the code rather than in a different tool that nobody opens.
+
+## How this relates to the principles
+
+The planning diagram is a concrete instance of the principles in
+@sec-principle-overview rather than a separate idea.
+
+- **Inspectable artifacts** (Principle 1). The design becomes readable,
+  structured, versioned, and diffable instead of living in a chat transcript.
+- **Explicit state** (Principle 2). The committed diagram records what the design
+  is now and what it was before, without depending on anyone's memory of a
+  planning conversation that has scrolled out of context.
+- **Events and rules** (Principle 3). A change to the diagram is an event.
+  The rule it triggers is a conformance recheck of the affected components.
+- **Tools and evidence** (Principle 4). A conformance finding cites a diagram
+  element and a code location. Both sides are inspectable, so the finding can be
+  challenged.
+- **Human judgment** (Principle 5). The human draws the plan and rules on every
+  divergence. The agent prepares the comparison and does not resolve it.
+
+## Limits
+
+**Conformance is not correctness.** A build can match the diagram exactly and
+still be wrong, because the diagram was wrong. This practice catches drift from
+the plan, not flaws in the plan.
+
+**Diagrams rot.** Keeping diagrams in sync with reality is the known unsolved
+problem with diagrams-as-code generally. Putting the file in the repository
+makes drift visible in `git diff`, but visibility is not prevention. Only the
+habit is.
+
+**The calibration is real work.** The trade-off above is not a detail to settle
+once. It is a judgment you re-make on every project, and being bad at it at
+first is normal.
+
+## Prior work
+
+This practice combines two threads that already exist separately.
+
+Spec-driven development argues that a structured, human-authored specification
+should be the shared source of truth AI executes against
+([Thoughtworks](https://www.thoughtworks.com/en-us/insights/blog/agile-engineering-practices/spec-driven-development-unpacking-2025-new-engineering-practices),
+[Microsoft](https://developer.microsoft.com/blog/spec-driven-development-ai-native-engineering/)).
+Those specs are almost always prose.
+
+The empirical support is more specific. @cervantes2026 evaluated LLM-assisted
+code generation with and without architectural documentation as a first-class
+input, and found that including it substantially improved architectural
+conformance, with an explicit implementation plan further improving functional
+correctness and modularity. The claim that a human-authored architecture
+artifact makes the generated system conform better is measured, not assumed.
+
+Meanwhile, tooling for agents and Excalidraw runs mostly in the opposite
+direction: available skills and MCP servers have the agent *generate* diagrams
+and render them for visual self-checking
+([excalidraw-diagram-skill](https://github.com/coleam00/excalidraw-diagram-skill),
+[mcp_excalidraw](https://github.com/yctimlin/mcp_excalidraw)).
+Useful, and evidence that agents handle the format fluently, but a diagram the
+agent drew from its own plan cannot audit that plan, because it encodes the same
+misunderstanding.
+
+What this chapter proposes is the join: the architecture artifact from the
+research is drawn by a human rather than written, used as the medium of the
+planning conversation rather than its output, and stored in a format the agent
+can parse directly rather than one it has to look at.
+
+## Summary
+
+1. Draw a rough diagram to reach shared understanding with the agent.
+   The first draft is a conversation starter, not a specification.
+2. Iterate until the agent's restatement matches your intent.
+   What it says it *cannot* tell from the diagram is the most useful output.
+3. Commit the file as plaintext JSON so the design intent outlives the session
+   and becomes the blueprint later sessions read.
+4. Compare implementation, review, and testing against it. Divergences are
+   reported with evidence from both sides; a human decides which side was wrong.
+5. Refine it as the design changes. A design change is not done until the
+   diagram is updated.
+6. Keep it simple enough for a human to check and detailed enough for an agent
+   to verify. That balance is the skill, and it takes time to learn.
+
+> If the plan cannot be inspected, the build cannot be checked against it.
