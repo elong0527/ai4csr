@@ -1,38 +1,27 @@
 # Day 1 onboarding exercise
 
-Teaching material for the chapter
-[A minimal AI agent](https://ai4csr.org/intro-ai-agent.html).
-Nothing here is real study data.
-
 ## Setup
 
-The KEYNOTE-189 protocol is not stored in this repository. Download it into
-this folder:
-
-```sh
-curl -O https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
-```
-
-Source: MK-3475-189-12, 31-May-2022, trial record
-[NCT02578680](https://clinicaltrials.gov/study/NCT02578680).
-PDFs in this folder are gitignored.
+This exercise uses a synthetic dataset and the
+[KN189 study protocol](https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf).
 
 ## The dataset
 
-`kn189-synthetic-adsl.csv` has 28 synthetic subjects. Columns: `STUDYID`,
-`USUBJID`, `TRT01A`, `AGE`, `AGEU`, `ENRLFL`, `ITTFL`.
+`kn189-synthetic-adsl.csv` contains 28 synthetic subjects. It has these columns:
+`STUDYID`, `USUBJID`, `TRT01A`, `AGE`, `AGEU`, `ENRLFL`, `ITTFL`.
 
-Three issues are planted on purpose:
+The dataset contains three problems on purpose:
 
-| Issue | Subjects | Basis in the protocol |
+| Problem | Subjects | Protocol rule |
 |---|---|---|
-| Age below the minimum of 18 | `KN189-103-025` (age 17) | Inclusion criterion 6 |
-| Enrolled but not randomized, so outside ITT | `-026`, `-027`, `-028` | ITT is "all randomized subjects" |
+| Age below 18 | `KN189-103-025` (age 17) | Inclusion criterion 6 |
+| Enrolled but not randomized, so not in ITT | `-026`, `-027`, `-028` | ITT is "all randomized subjects" |
 | Missing `AGE` | `-024` (in ITT), `-027` (not in ITT) | n/a |
 
-The subject aged 17 is flagged `ITTFL = "Y"` on purpose. The protocol puts every
-randomized subject in ITT regardless of eligibility violations, so that subject
-belongs in the analysis and in an escalation. Dropping them quietly is the
-mistake this exercise is built to catch.
+The subject aged 17 has `ITTFL = "Y"`. This is not an error in the data. The
+protocol keeps every randomized subject in the ITT population, even when the
+subject did not meet the entry criteria. So this subject stays in the analysis,
+and the problem is reported to the study statistician. Removing the subject
+without telling anyone is the mistake this exercise is designed to catch.
 
-Expected results are in the chapter.
+The expected results are in the book chapter.
