@@ -1,0 +1,14 @@
+Package: ai4csr
+Title: AI for Clinical Study Workflows
+Version: 0.1.0
+Authors@R: c(
+    person("Yilong", "Zhang", email = "elong0527@gmail.com", role = c("aut", "cre")),
+    person("Nan", "Xiao", email = "hello@nanx.me", role = "aut")
+  )
+Description: Source files and examples for the AI for Clinical Study
+    Workflows book.
+Encoding: UTF-8
+Imports:
+    knitr,
+    reticulate,
+    rmarkdown

@@ -26,6 +26,20 @@ uv sync
 source .venv/bin/activate
 ```
 
+Install the R dependencies declared in `DESCRIPTION`:
+
+```bash
+Rscript -e 'install.packages("pak", repos = "https://cloud.r-project.org")'
+Rscript -e 'pak::pak("deps::.")'
+```
+
+When a chapter uses R and Python in the same document, point `reticulate` to
+the project virtual environment:
+
+```bash
+export RETICULATE_PYTHON="$PWD/.venv/bin/python"
+```
+
 Render all formats:
 
 ```bash
