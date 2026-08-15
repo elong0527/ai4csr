@@ -110,48 +110,32 @@ and it is decided by you, not by the model.
 
 ## What happens during one turn
 
-The request looks like a single question. Behind it, the harness runs several
-steps.
+You ask one question. The harness turns it into a short loop and repeats that
+loop until the model has what it needs.
 
 ```{mermaid}
 sequenceDiagram
     actor U as Mentor
     participant H as Harness
     participant L as LLM
-    participant P as Protocol PDF
-    participant R as R tool
-    participant D as Synthetic ADSL
+    participant T as Tools
 
     U->>H: Summarize AGE in ADSL
-    H->>L: Question + context + available tools
-    L-->>H: Read the protocol first
-    H->>P: Extract population definition
-    P-->>H: ITT = all randomized subjects
-    H->>L: Protocol text
-    L-->>H: Summarize AGE for the ITT population
-    H->>R: Execute deterministic R code
-    R->>D: Read AGE and ITTFL
-    D-->>R: Values stay inside the environment
-    R-->>H: Aggregate statistics
-    H->>L: Tool result
-    L-->>H: Interpret and flag what looks wrong
-    H-->>U: Summary + assumptions + code
+    loop until the model has what it needs
+        H->>L: Question, context, results so far
+        L-->>H: Which tool to call
+        H->>T: Run the call
+        T-->>H: Result
+    end
+    H-->>U: Summary, code, open questions
 ```
 
-Reading the sequence:
+Here the loop runs twice. First to open the protocol and find the population
+definition. Then to run R over the subjects that definition selects.
 
-1. The harness receives the question and adds instructions and tool
-   descriptions.
-2. The model decides it needs the population definition before it can count
-   anyone.
-3. The harness retrieves the protocol text.
-4. The model asks for a calculation on the population it selected.
-5. R reads the dataset and returns aggregate results.
-6. The model explains those results and raises anything that looks wrong.
-7. The harness retains the messages, tool calls, and results in the session.
-
-Notice the division of labour. The model chose the population and interpreted
-the outcome. It never computed a number.
+The model never opened a file and never computed a number. It chose the
+population, chose the tool, and explained the answer. Everything else was done
+by tools, inside the environment you granted.
 
 > The model decides and explains. Deterministic software calculates.
 
