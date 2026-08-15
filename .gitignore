@@ -9,3 +9,6 @@
 # Output directories
 .DS_Store
 pdf/
+
+# Fetched locally by the reader, not redistributed
+exercise/day1/*.pdf
