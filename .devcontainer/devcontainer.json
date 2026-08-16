@@ -1,0 +1,55 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "AI4CSR Day 1 exercise",
+	// Same base image as the book container, so the exercise matches the book environment.
+	"image": "mcr.microsoft.com/devcontainers/python:2-3.14-trixie",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// r-apt is pinned to :0 because the feature is still on a 0.x version; there is no :1 tag.
+	// node is pinned to 22 because the agent harness requires node >= 22.19.0.
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/r-apt:0": {
+			"vscodeRSupport": "minimal"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "22"
+		}
+	},
+	// Recommended secret. Codespaces prompts for this only through "New with options",
+	// so set it in advance at https://github.com/settings/codespaces
+	"secrets": {
+		"ANTHROPIC_API_KEY": {
+			"description": "Model provider key for the agent harness. Never commit this to a file."
+		}
+	},
+	// Install the agent harness, then stage the protocol so the exercise needs no network.
+	"postCreateCommand": "sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent && curl -fsSL --retry 3 -o exercise/day1/Prot_SAP_001.pdf https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf",
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"REditorSupport.r",
+				"ms-python.python",
+				"nanxstats.textmate-rstheme"
+			],
+			"settings": {
+				"editor.fontSize": 20,
+				"editor.rulers": [
+					80
+				],
+				"editor.inlineSuggest.enabled": true,
+				"editor.copyWithSyntaxHighlighting": false,
+				"editor.unicodeHighlight.nonBasicASCII": true,
+				"editor.renderWhitespace": "trailing",
+				"diffEditor.ignoreTrimWhitespace": false,
+				"terminal.integrated.fontSize": 18,
+				"workbench.preferredLightColorTheme": "textmate.rstheme",
+				"workbench.preferredDarkColorTheme": "textmate.rstheme"
+			}
+		}
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
