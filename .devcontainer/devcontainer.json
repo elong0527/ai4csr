@@ -6,7 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/python:2-3.14-trixie",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// r-apt is pinned to :0 because the feature is still on a 0.x version; there is no :1 tag.
-	// node is pinned to 22 because the agent harness requires node >= 22.19.0.
+	// node is pinned to 22 so an agent harness can be installed inside the running codespace.
 	"features": {
 		"ghcr.io/rocker-org/devcontainer-features/r-apt:0": {
 			"vscodeRSupport": "minimal"
@@ -16,9 +16,9 @@
 		}
 	},
 	// No secrets are declared, so the container starts without prompting.
-	// Authenticate the agent harness inside the running codespace.
-	// Install the agent harness, then stage the protocol so the exercise needs no network.
-	"postCreateCommand": "sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent && curl -fsSL --retry 3 -o Prot_SAP_001.pdf https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf",
+	// Stage the protocol so the exercise itself needs no network access.
+	// The agent harness is installed by the participant inside the running codespace.
+	"postCreateCommand": "curl -fsSL --retry 3 -o Prot_SAP_001.pdf https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf",
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
