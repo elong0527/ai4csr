@@ -4,7 +4,6 @@ project:
     - CNAME
     - slides/
     - diagrams/
-    - examples/
 
 book:
   title: "AI for Clinical Study Reports and Submission"
@@ -52,13 +51,9 @@ book:
     - part: "Documentation as code"
       chapters:
         - docs-overview.qmd
-        - plan-diagram.qmd
     - part: "Analysis and reporting"
       chapters:
         - reporting-overview.qmd
-    - part: "Governance"
-      chapters: 
-        - governance-overview.qmd
     - references.qmd
 
 bibliography: references.bib
