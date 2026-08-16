@@ -15,15 +15,10 @@
 			"version": "22"
 		}
 	},
-	// Recommended secret. Codespaces prompts for this only through "New with options",
-	// so set it in advance at https://github.com/settings/codespaces
-	"secrets": {
-		"ANTHROPIC_API_KEY": {
-			"description": "Model provider key for the agent harness. Never commit this to a file."
-		}
-	},
+	// No secrets are declared, so the container starts without prompting.
+	// Authenticate the agent harness inside the running codespace.
 	// Install the agent harness, then stage the protocol so the exercise needs no network.
-	"postCreateCommand": "sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent && curl -fsSL --retry 3 -o exercise/day1/Prot_SAP_001.pdf https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf",
+	"postCreateCommand": "sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent && curl -fsSL --retry 3 -o Prot_SAP_001.pdf https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf",
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
