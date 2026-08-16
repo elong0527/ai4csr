@@ -1,216 +1,307 @@
 # Onboarding an AI agent {#sec-intro-ai-agent}
 
 ::: callout-tip
-
-Adding AI agent to your workflow is an onboarding problem before it is a technical one.
-
+Adding an AI agent to a clinical study workflow is an onboarding problem before
+it is a technology problem.
 :::
 
-## The first task
 
-Before working with an AI agent, let's start with a situation you should know
-well.
+## Day 1 onboarding scenario
 
-A new member is joining your team. They finished school recently
-and may have taken a class on clinical trials, so they understand what a
-statistical analysis plan is. However, they have never seen how your organization
-actually works: SOPs, folder structures, naming conventions, and
-the dozen unwritten habits your team follows.
+Imagine that a new team member has joined. They recently finished school and
+understand the basics of clinical trials. They know what a protocol and
+statistical analysis plan (SAP) are, but they do not yet know your standard
+operating procedures (SOPs), computing environment, folder structure, naming
+conventions, or review habits.
 
-It is their first day. They are eager, and they want to be useful.
-As their mentor, you give them a first task.
+For their first assignment, you choose a simple task:
 
-> Summarize the age distribution in an ongoing clinical trial's ADSL dataset.
+> Summarize the age distribution in a clinical trial's ADSL dataset.
 
-You already know the answer to this question, or could get it in five minutes.
-That is the point. The task is not really about the summary statistics. It is
-about whether the new member can find the artifacts, follow the process, notice
-what looks wrong, and ask before assuming.
+The task is deliberately small. You are onboarding them more on the workflow
+than the tool. Can the new colleague find and use the relevant documents? Can
+they identify the correct analysis population, handle missing values, notice
+protocol deviations, and report findings and assumptions?
 
-You are checking two things:
+Now replace "new colleague" with "AI agent." Almost everything you would set up
+for a person still applies, but each item has to become something written down
+rather than something learned by sitting nearby.
 
-1. that they can reach the artifacts they need: protocol, SAP, datasets; and
-2. that they work the way your team works, following established procedures,
-   the approved computing environment, and the local conventions.
-
-This chapter onboards exactly one new member.
-The only unusual thing about them is that they are an AI agent.
-
-When a team first considers embed AI agent in their workflow, 
-the discussion usually turns to technology: 
-which model to choose, which tools to connect, how to install it.
-Those questions are real, but they are not the ones that decide whether
-the work can be delegated to an AI agent. 
-The decisive questions are the same ones you
-answer for any new colleague. What may they access? Which process must they
-follow? What do you expect that nobody wrote down? Who reviews the result
-before it is used?
-
-Every one of those is an onboarding question, and every one of them is yours to
-answer. The model does not decide what it may read, and it does not decide who
-signs off on its output. You do. The rest of this chapter walks through those
-decisions in the order you would meet them on a real first day.
-
-## What you hand over
-
-A new member does not arrive knowing anything about your study. You give them a
-starting package:
-
-- a working environment with the software they need;
-- access to the study artifacts;
-- one task.
-
-For this exercise the package is two documents, and you hand them over as two
-links:
-
-| Artifact | What it is |
+| For a new colleague | For an agent |
 |---|---|
-| [KEYNOTE-189 protocol](https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf) | A Phase 3 randomized controlled trial protocol for lung cancer |
-| [`kn189-synthetic-adsl.csv`](https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv) | A synthetic ADSL dataset |
+| Orientation and SOP training | Written instructions the agent reads on every run |
+| "Ask me if you are not sure" | Explicit rules for when to stop and escalate |
+| Shadowing and code review | A record of what it read, ran, and produced |
+| An access request for the study drive | A bounded set of files, tools, and destinations |
+| Their manager signs off | A named person accountable for the result |
 
-The dataset is deliberately small and deliberately imperfect. It carries the
-kind of untidiness a real study database has while enrolment is still open:
+Every row on the left is something a team handles informally for a person. On
+the right, it has to exist as an artifact that someone can inspect.
 
-- **Randomization pending.** Subjects are enrolled but not yet randomized.
-- **Missing data.** `AGE` was never recorded for some subjects.
-- **Protocol deviation.** A subject's age falls outside the inclusion criteria.
+Technical questions like which model to use, how much context it can take, how
+to keep responses consistent across sessions, or how to design prompts that
+reduce hallucinations matter a lot. But those are implementation choices. 
+A better model can improve the answer;
+only the workflow tells you whether the answer is acceptable.
 
-You then go back to your own busy day and let the new member work independently. 
-At the end of the day, you sit down together and review what happened.
+## What an AI agent actually is
 
-## Unstated expectations
+A **large language model (LLM)** generates a response from the text it is given.
+Think of a very well-read colleague who answers only from what is placed in
+front of them, cannot get up to fetch a file, and cannot run code. Everything
+the model knows about your task has to arrive as text.
 
-Notice what you did not do. You did not write down which subjects to include,
-where the data may go, or when to stop and ask. There was no time. And if you
-had written it all down, you would be handing over a script rather than training
-someone to think.
+That text is called the **context**: your request, plus any documents,
+instructions, and previous results the system chose to include. A chatbot stops
+here. It talks; it does not act.
 
-You expect all of it anyway:
+An **AI agent** adds a controlled loop around the model so it can act:
 
-- **Read the protocol** before deciding who counts, rather than summarizing
-  every row in the file.
-- **Read the SOP** be compliant, e.g. data and code do not move somewhere
-  they do not belong.
-- **Ask** when the instruction is ambiguous, instead of guessing and moving on.
-- **Report what looks wrong.** You already know about the subject outside the
-  age range and the missing values. You want to hear about them without asking.
+1. interpret the task and choose a next step;
+2. use an allowed tool, such as a document reader or R;
+3. observe the tool result and update the plan;
+4. repeat until the task is complete, blocked, or requires approval.
 
-And you expect a short write-up at the end of the day:
+For the age-summary task, that loop looks like: download the protocol, read the
+population definition, load the CSV, write R code, run it, read the output,
+notice a 17-year-old subject, and write up the result with a question attached.
 
-- the code they ran;
-- the statistics they found;
-- the questions they still have.
+The pieces that make this possible are easier to understand by what they do:
 
-None of this was said out loud, which is exactly how expectations arrive in real
-work. Onboarding AI agents like a new colleague absorbs team conventions over time, 
-by working alongside your team and by being corrected when they get something wrong.
-
-## The new member is an agent
-
-A large language model (LLM) on its own cannot do this task. An LLM is a function
-over text: given a sequence of text, it returns a probability distribution for the
-next token, a word or fragment of one, and sampling from that distribution
-repeatedly produces a sentence, a table, or a block of code. Everything it can
-draw on must already be in the text it was handed, and everything it produces is
-more text. It can write the code that summarizes AGE; it cannot open the
-protocol, read ADSL, or run that code. An **AI agent** is the system built around
-an LLM so that it can act. It usually consists of:
-
-- **harness** that assembles context, calls the model, invokes tools, feeds the
-  results back, and keeps the loop moving;
-- **model gateway** that connects the harness to a chosen LLM;
-- **memory** that holds the messages and working state for the task, and anything
-  the agent should still know next time;
-- **tool interfaces** that expose actions such as reading a file or running R;
-- **accessible environment** that is the set of files, commands, APIs, and
-  credentials those tools can actually reach.
+| Component | What it does |
+|---|---|
+| **LLM** | Interprets evidence, plans steps, drafts an explanation |
+| **Harness** | Assembles context, calls the model, invokes tools, records events, and controls the loop |
+| **Model gateway** | Routes model requests and may apply authentication, logging, or policy controls |
+| **Tools** | Perform observable actions, such as reading a PDF, querying data, or running R |
+| **Memory / working state** | Holds the current messages, plan, tool results, and unresolved questions |
+| **Accessible environment** | Defines the files, commands, APIs, network destinations, and credentials the agent can reach |
 
 ::: {.content-visible when-format="html"}
-![A general AI-agent architecture. The harness coordinates the language model,
-memory, and tool interfaces while users or applications submit requests.](assets/diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces."}
+![A general AI-agent architecture. The harness coordinates the model, working
+state, and tool interfaces. The accessible environment limits which resources
+the agent can reach.](assets/diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces inside a limited accessible environment."}
 :::
 
-The accessible environment deserves the most attention. The accessible environment is the
-agent's equivalent of the access you granted the new member on their first day,
-and it is decided by you, not by the model.
+Two distinctions matter in practice:
 
-## Try it yourself
+- **Working state is not organizational memory.** Some systems retain a session;
+  others do not. What the agent "remembers" from last Tuesday is not a governed
+  record. Durable rules and decisions should live in artifacts that both people
+  and agents can inspect.
+- **Tool access is not authority.** The ability to edit a file or call an API
+  does not mean the agent should do so without a workflow rule or human
+  approval.
 
-Open [arena.ai/agent](https://arena.ai/agent). It runs an agent in the browser
-and shows each step along the way, which makes the loop above easy to watch.
-Any agent that can read a document and run code will do. This one is convenient
-because there is nothing to install.
+### What an agent can still get wrong
 
-Give it the task the way you would give it to a person, plainly and without the
-answer:
+Adding tools does not make a model reliable by default. The model produces the
+most plausible continuation of the text it was given, and plausible is not the
+same as correct. An agent can still:
 
-``` text
-Based on the KN189 study protocol, summarize the age distribution in the data.
+- skip a governing document or cite a section that does not support its claim;
+- resolve an ambiguity silently and present the assumption as a fact;
+- draft code without executing it, or misread the output of a tool;
+- treat an instruction embedded in an untrusted document as if it came from the
+  user or workflow;
+- expose data through a model request, log, temporary file, or network-enabled
+  tool;
+- take a different path, and report different numbers, when the same request is
+  run twice; and
+- change behavior again after a model, prompt, tool, or artifact is updated.
 
-protocol: https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
+These are expected failure modes to design for, not unusual exceptions. Bounded
+access limits their impact; recorded evidence and human review make them easier
+to detect.
 
-data: https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
+## Make the task contract explicit
 
-Show me the results, R code, and any questions you have.
-```
+People learn local conventions by observation and correction. An agent does not
+reliably absorb those conventions unless the workflow records them and supplies
+them again when needed. Important expectations therefore belong in inspectable
+instructions, not in a team member's memory or an old chat session.
+
+A useful way to think about it: the task contract is a small SAP for the
+delegation itself. It has six parts:
+
+| Part | Question to answer | Example for this task |
+|---|---|---|
+| Objective | What should be produced? | An age summary and a short review note |
+| Inputs | Which artifact versions govern the work? | Protocol version and ADSL snapshot |
+| Scope | Which population and variables are relevant? | To be confirmed from the protocol |
+| Output | What must the response contain? | Results, executable code, sources, assumptions, and open questions |
+| Boundaries | Which data, tools, and destinations are allowed? | Read-only access in an approved environment |
+| Escalation | When should the agent stop or ask? | Missing artifact, ambiguous population, conflicting evidence, or suspected data issue |
+
+In a production workflow, make these items as explicit as the task permits, so a
+human can review them. Ambiguity is not a test of intelligence when the cost of
+a wrong assumption is high.
+
+The exercise later in this chapter deliberately breaks that rule: it leaves the
+population and summary statistics unspecified. That makes the agent's
+assumptions visible in a low-risk setting. It is a teaching device, not a
+recommended pattern for a production request.
+
+::: callout-note
+An instruction to "follow the SOP" is useful only if the agent can access the
+applicable SOP and identify its version. If a required document is unavailable,
+the correct behavior is to report the gap and stop the affected work.
+:::
+
+## Increase autonomy gradually
+
+A safe first assignment is small, observable, reversible, and easy for a human
+to verify. Access and autonomy can increase only after the team understands how
+the agent behaves.
+
+One practical progression is:
+
+| Level | The agent may | Example |
+|---|---|---|
+| 1. Observe | Read approved artifacts and explain what they contain | Summarize how the SAP defines each analysis population |
+| 2. Analyze | Run read-only checks or calculations in a sandbox | The age summary in this chapter |
+| 3. Propose | Prepare code or changes for human review | Draft an independent QC program for a table |
+| 4. Act with approval | Make a bounded change after an accountable person approves it | Commit the reviewed program to the study repository |
+
+The age-summary exercise sits at level 2. The agent may read public teaching
+artifacts and run code, but it should not change data or make a study decision.
+
+## Try it yourself {#sec-try-it-yourself}
+
+The exercise below runs the age-summary task end to end. Running it takes only a
+few minutes; the value is in the review that follows.
+
+### Step 1: Get the materials
+
+The exercise uses two public artifacts:
+
+| Artifact | Purpose |
+|---|---|
+| [KEYNOTE-189 protocol](https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf) | Provides the entry criteria, analysis-population definitions, and demographic-summary guidance |
+| [`kn189-synthetic-adsl.csv`](https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv) | Provides a small, synthetic ADSL-style teaching extract |
+
+The extract mimics an in-progress data snapshot of 28 subjects. It contains
+three planted problems:
+
+- three enrolled subjects who have not been randomized;
+- missing `AGE` values;
+- one randomized subject whose recorded age is below the protocol threshold.
+
+It is a teaching extract, not a submission-ready ADaM dataset. Its simplified
+structure is another reason to state what can and cannot be concluded from it.
+
+### Step 2: Choose an appropriate agent
+
+Use an approved agent that can read a PDF and CSV file and execute R. One public
+option is [Arena Agent](https://arena.ai/agent), which displays tool activity in
+the browser so you can watch each step. Availability and features of hosted
+tools can change; the exercise does not depend on this particular product.
 
 ::: callout-warning
-The exercise hands a browser based AI agent a link to subject level records.
-That is acceptable, because the dataset is synthetic and already public.
-
-Do not do this with proprietary artifacts. A hosted AI agent sends whatever you give it to a
-third party.
+The linked dataset is safe for this exercise because it is synthetic and already
+public. Do not upload confidential or proprietary data to a hosted agent unless
+that specific environment and data flow have been approved by your organization.
 :::
 
-Note what the prompt does not say: which subjects to include, and which
-statistics to report. The dataset carries `ENRLFL` and `ITTFL`, and the protocol
-defines the Intention-to-Treat population as all randomized subjects. Choosing a
-population is the first judgment the new member has to make, and nobody told
-them to make it.
+### Step 3: Send the request
 
-Watch the interaction, not only the final answer:
+Give the agent the following request, without supplying the answer:
 
-- Did the agent open the protocol, or only the data?
-- Which population did it summarize, and did it say which one?
-- Did it write code, and did that code produce the numbers?
-- Did it flag the subject aged 17, or quietly include them?
+``` text
+Based on the KEYNOTE-189 study protocol, summarize the age distribution in the data.
 
-## End-of-day review
+Protocol:
+https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
 
-This is the review meeting you scheduled. You are not checking whether the
-numbers are pretty; you are checking whether the work can be trusted. Read what
-the agent produced, then make it account for the parts it decided on its own.
-That second half is the review. A new colleague who cannot explain a choice has
-not made one, and neither has an agent.
+Data:
+https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
 
-Work through the items below in order, since each one depends on the last. Most
-end in a question you put to the agent directly.
+Show the results, the R code, and questions.
 
-### The population
+Use only these two documents. Do not search the web for published results of this trial.
+```
 
-Start here, because every number downstream depends on it. The prompt never said
-which subjects to count, so the agent either made that decision or skipped past
-it.
+The last instruction matters. KEYNOTE-189 is a published trial, so an agent that
+searches instead of reading can return demographics from online information and
+never open your dataset at all.
 
-> Which subjects did you include, and where in the protocol did you find that
-> definition?
+### Step 4: Watch the process, not only the answer
 
-A sound answer names a population and points to the text that defines it. A weak
-answer describes the file it was given. The dataset carries `ENRLFL` and
-`ITTFL`, and the protocol defines the Intention-to-Treat population as all
-randomized subjects, so an agent that summarized every row has answered a
-different question than the protocol asks.
+Some things are visible only while the agent works, so watch the tool activity
+instead of waiting for the final text:
 
-### The numbers
+- Did it open the protocol and the CSV, or answer from published knowledge of
+  the trial?
+- Did it execute code, or only display code that looks plausible?
+- Where did it pause, backtrack, or retry?
 
-You know what the answer should be, because you know the dataset. The prompt
-did not say which statistics to report, so compare whichever ones the agent
-chose to give you:
+Then send the same request a second time. The agent may take a different route
+and may report different numbers. Seeing that once is the fastest way to
+understand why the review below examines evidence rather than prose.
+
+## Review the result
+
+Reviewing an agent means checking its evidence and actions, not asking whether
+its prose sounds confident. It is closer to reviewing an independent QC program
+than to reading a memo. Use these five checks in order:
+
+| Check | The question it answers |
+|---|---|
+| 1. Sources | Did it read the right documents? |
+| 2. Scope and assumptions | Does it say what it decided on your behalf? |
+| 3. Reproducible calculations | Did the reported numbers come from code that ran? |
+| 4. Exceptions and open questions | Did it surface what it could not resolve? |
+| 5. Trail and data boundary | Can the work be reconstructed, and did data stay put? |
+
+### 1. Sources
+
+Ask:
+
+> Which artifact versions and sections did you use? Show the evidence for each
+> analysis rule.
+
+For this task, a sound response should find at least three pieces of protocol
+evidence:
+
+- Section 5.1.2, criterion 6 sets the minimum age at 18 years;
+- Section 8.5.1 defines the intention-to-treat (ITT) population as all
+  randomized subjects;
+- Section 8.6.3 says demographic variables such as age are summarized by
+  treatment using descriptive statistics or categorical tables.
+
+A citation shows where a claim came from. It does not prove that the agent
+interpreted the claim correctly, so the next checks still matter.
+
+### 2. Scope and assumptions
+
+Ask:
+
+> Which subjects and treatment variable did you use, and which choices remain
+> assumptions?
+
+The original request does not identify an analysis population or say whether the
+summary should be overall or by treatment. The protocol makes ITT a reasonable
+choice for a randomized-subject summary, but it does not remove every ambiguity
+from the request. A good response states its choice and asks for confirmation.
+
+### 3. Reproducible calculations
+
+Ask:
+
+> Show the exact code that produced the reported numbers. How did you handle
+> missing values and calculate quartiles?
+
+Run the code in the approved environment. Confirm that the executed filter,
+missing-value handling, and statistical functions match the written method.
+Generated code that was never run is not reproducible evidence.
+
+For reference, these are the results for two possible populations:
 
 | Statistic | ITT (`ITTFL == "Y"`) | All enrolled (`ENRLFL == "Y"`) |
 |---|---:|---:|
-| Nonmissing N | 24 | 26 |
-| Missing N | 1 | 2 |
+| Total subjects | 25 | 28 |
+| Nonmissing `AGE` | 24 | 26 |
+| Missing `AGE` | 1 | 2 |
 | Mean | 50.58 | 51.46 |
 | Standard deviation | 14.97 | 14.73 |
 | Q1 | 41.25 | 42.50 |
@@ -219,122 +310,170 @@ chose to give you:
 | Minimum | 17 | 17 |
 | Maximum | 76 | 76 |
 
-Two columns, because the question has two defensible readings and only one of
-them follows the protocol. An answer that reports a single set of numbers
-without naming its population has skipped a decision rather than made one.
+The table uses R's default sample-quantile method (`type = 7`). Quartiles are
+method-dependent: the default SAS definition gives Q1 = 40.50 and Q3 = 61.50
+for the same ITT records. Neither method should be substituted silently for the
+other. State the software and method, then compare results calculated with the
+same definition.
 
-There is a third reading the table deliberately omits: dropping the underage
-subject. That one is wrong. The protocol defines ITT as *all randomized
-subjects*, so subject `KN189-103-025` belongs in the analysis **and** belongs in
-an escalation. Removing them quietly is the specific failure this exercise is
-built to expose, because the resulting table looks entirely reasonable.
+::: {.callout-note collapse="true" title="Reference R code"}
 
-Q1 and Q3 depend on the quantile method. The values above use the default in R.
-The default in SAS gives 39.00 and 61.00 for the ITT population, and both are
-correct. Any value in that range is fine, provided the method is stated.
+``` r
+data_url <- paste0(
+  "https://raw.githubusercontent.com/elong0527/ai4csr/",
+  "refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv"
+)
 
-If the agent reports different values, that is something to investigate, not
-something to explain away.
+adsl <- read.csv(
+  data_url,
+  na.strings = c("", "NA")
+)
 
-### The code
+summarize_age <- function(data) {
+  age <- data$AGE
 
-A number you cannot reproduce is an anecdote. The agent was asked for code, so
-run it yourself against the same file and confirm it returns the table you were
-shown. Read it closely enough to see which population it filters to and how it
-treats missing values, because those two lines carry the decisions the prose
-may only claim.
+  c(
+    total = length(age),
+    nonmissing = sum(!is.na(age)),
+    missing = sum(is.na(age)),
+    mean = mean(age, na.rm = TRUE),
+    sd = sd(age, na.rm = TRUE),
+    q1 = unname(quantile(age, 0.25, na.rm = TRUE, type = 7)),
+    median = median(age, na.rm = TRUE),
+    q3 = unname(quantile(age, 0.75, na.rm = TRUE, type = 7)),
+    minimum = min(age, na.rm = TRUE),
+    maximum = max(age, na.rm = TRUE)
+  )
+}
 
-> Show me the code that produced these numbers, and tell me which quantile
-> method it used.
+summarize_age(subset(adsl, ITTFL == "Y"))
+summarize_age(subset(adsl, ENRLFL == "Y"))
+```
+:::
 
-### What it should have raised
+### 4. Exceptions and open questions
 
-The dataset was seeded with three things worth reporting: subjects enrolled but
-not yet randomized, missing `AGE`, and one subject outside the protocol's age
-range. Nobody asked the agent to mention any of them, which is the point.
+Ask:
 
-> What in this data looked wrong to you, and what did you do about it?
+> What looked incomplete, inconsistent, or out of scope? What did you do about
+> it?
 
-Ask for the open questions too. An empty list is rarely a sign that the task was
-unambiguous; it usually means the agent resolved an ambiguity silently and moved
-on. A colleague who never asks anything on the first day is not the reassuring
-one.
+The agent should report at least these observations:
 
-### The trail
+- three enrolled subjects have `ITTFL == "N"` and no treatment value;
+- two subjects have missing `AGE`, one of them inside the ITT population; and
+- subject `KN189-103-025` is randomized with `AGE == 17`, below the protocol's
+  minimum age.
 
-A matching number is not the same as acceptable work. Ask what the agent
-actually did: which files it touched, which commands it ran, what it sent to the
-model, and whether anything left the environment that should not have.
+The 17-year-old subject illustrates the difference between **analysis** and
+**escalation**. If ITT is used, the subject remains in the summary because ITT
+includes all randomized subjects. The apparent protocol deviation is reported
+for human review; it is not quietly "fixed" by deleting the record. An agent
+that drops the record and reports a clean mean of 52.04 has produced the most
+dangerous kind of answer: correct-looking and wrong.
 
-> Which files did you open, which commands did you run, and what left this
-> environment?
+Useful open questions include:
 
-Treat the answer as a claim, not as evidence. The agent is describing its own
-behavior from the same context it used to do the work. The session record kept
-by the harness is the evidence, and a harness that keeps one is what makes this
-question answerable at all.
+- Should the requested summary use ITT, all enrolled subjects, or another
+  population defined in a study specification?
+- Is an overall summary sufficient, or is a by-treatment display required?
+- Is the missing or underage value a source-data issue, a derivation issue, or a
+  confirmed protocol deviation?
 
-### The gaps
+An unresolved question is not a failure. Hiding an unresolved choice behind a
+confident answer is.
 
-The last part of the review is the honest one. A demo that produces the right
-mean is not yet a validated process. Compare what you observed against your own
-requirements for access control, audit trail, environment qualification, and
-review, and note the gaps. Those gaps are the subject of the rest of the book.
+### 5. Trail and data boundary
 
-## Keeping data separate
+Ask:
 
-The exercise also introduces a design choice that outlives it. The model rarely
-needs every subject-level record. Statistical software can process the raw data
-inside a controlled environment and return only aggregates or metadata:
+> Which files did you open, which commands did you run, and what data left the
+> approved environment?
+
+Treat the agent's narrative as a claim. The stronger evidence is the harness or
+platform record showing tool calls, command output, approvals, errors, and data
+transfers. If the platform cannot provide enough evidence to reconstruct the
+work, record that as a workflow gap.
+
+A correct mean does not demonstrate that the process is acceptable. Compare the
+observed trail with your requirements for access control, audit trails, software
+qualification or validation, reproducibility, and review.
+
+### When a check fails
+
+A failed check is usually information about the request, not a verdict on the
+agent. If the summary quietly excluded the underage subject, the request never
+said what to do with an apparent protocol deviation. If the population is wrong,
+the request never named one. The productive response is to supply the missing
+part of the task contract and run the task again, not to argue with the model or
+to accept a second answer that merely sounds more careful.
+
+Some gaps cannot be closed by a better request. If the platform cannot show
+which files were opened and which commands ran, no wording will produce that
+evidence. Record it as a workflow gap and decide whether the task belongs on
+that platform at all.
+
+## Keep raw data separate when possible
+
+The model often does not need subject-level records. Statistical software can
+process raw data inside a controlled environment and return only the information
+needed for reasoning or reporting:
 
 ``` text
-Raw ADSL >> deterministic R/SAS/Python calculation >> aggregate result >> LLM
+Raw ADSL -> controlled R/SAS/Python calculation -> aggregate result -> LLM
 ```
 
-This reduces the chance that sensitive records end up in a model request. A
-sandbox can restrict the files, commands, network destinations, and credentials
-the agent can reach, and tool policies can inspect, approve, redact, or block
-operations at that boundary.
+The exercise above does not follow this pattern, which is worth noticing. The
+request hands the agent a link to the CSV, so the agent will most likely read
+all 28 records into its context before computing anything. That is acceptable
+here because the extract is small, synthetic, and already public. With a real
+ADSL snapshot it would not be: the data should stay in the controlled
+environment, and only the summary should reach the model.
 
-These mechanisms reduce risk; they do not create a guarantee. Model requests,
-tool output, logs, session history, temporary files, and telemetry each need
-deliberate treatment. An agent normally inherits whatever permissions the
-process that started it already holds, so isolation has to be arranged on
-purpose. It is never the default.
+This pattern applies two useful controls:
 
+- **Least privilege:** the agent can reach only the files, commands, network
+  destinations, and credentials needed for the task.
+- **Data minimization:** the model receives only the fields or aggregates needed
+  for its role.
 
-
-The implementation belongs in later chapters. The principle belongs here:
+These controls reduce exposure; they do not guarantee confidentiality. Model
+requests, tool output, logs, session history, temporary files, caches, and
+telemetry all require deliberate treatment. A process often inherits the
+permissions of the account that launched it, so isolation must be configured
+and tested.
 
 > Give the agent access to what the task requires, not everything the running
 > environment happens to expose.
 
-## Human judgment
+## Keep human accountability explicit
 
-The agent can assemble the calculation and the explanation. It cannot be
-accountable for the analytical meaning. Even for a task this small, a
-responsible human still confirms that `AGE` and its units are appropriate,
-that the analysis population is the intended one, that missing values were
-handled sensibly, that the executed code does what it claims, and that
-descriptive statistics answer the question that was actually asked.
+The agent can gather evidence, execute a deterministic calculation, identify
+exceptions, and draft an explanation. It cannot own the scientific or
+regulatory decision.
 
-This example is deliberately trivial. The same division of responsibility
-matters far more once population flags, treatment groups, imputation, derived
-variables, or inferential methods are involved.
+For this small task, an accountable reviewer still confirms that:
 
-## Takeaways
+- `AGE` and `AGEU` represent the intended concept and unit;
+- the chosen population and treatment variable match the analysis objective;
+- missing values and protocol deviations are handled as specified;
+- the code actually produced the reported values;
+- the result is appropriate for its intended use.
 
-1. An agent is more than a language model: it adds a harness, state, tools, and
-   an accessible environment.
-2. Onboarding an agent raises the same questions as onboarding a person: access,
-   process, and unstated expectations. Answering them is your job, not the
-   model's.
-3. The model decides and interprets; deterministic statistical software
-   calculates.
-4. The harness makes the loop observable, which is what lets you review the work
-   rather than just the answer.
-5. A plausible-looking result is not a verified one. Human review remains
-   accountable for the statistical meaning and the final use.
+The same division of responsibility becomes more important when the work
+involves treatment groups, derived variables, imputation, endpoints, inferential
+methods, or submission deliverables.
 
-Later chapters develop context construction, tool design, memory, security,
-governance, reproducibility, and validation in more depth.
+## A reusable onboarding checklist
+
+Before assigning an agent a new kind of task, confirm that you can answer these
+questions:
+
+- **Task:** Is the objective, scope, output, and stopping condition clear?
+- **Context:** Can the agent access the correct, versioned artifacts and local
+  instructions?
+- **Tools:** Are its actions bounded, observable, and appropriate for the risk?
+- **Data:** Is the environment approved, and is model exposure minimized?
+- **Evidence:** Can another reviewer reproduce the result and inspect the trail?
+- **Escalation:** Does the agent know when and how to involve a human?
+- **Accountability:** Is a named role responsible for the final decision?
