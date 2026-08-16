@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1394.78" height="1123.79" viewBox="-65.9475 71.1744 1394.78 1123.79">
+<rect x="-65.9475" y="71.1744" width="1394.78" height="1123.79" fill="#ffffff"/>
+<rect x="260" y="95.1744" width="1044.83" height="459.823" rx="32" ry="32" fill="transparent" stroke="#1e1e1e" stroke-width="3" opacity="1" stroke-dasharray="12,9"/>
+<rect x="-36.1409" y="418.787" width="219.344" height="80" rx="20" ry="20" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<rect x="445" y="155" width="188.195" height="75" rx="18.75" ry="18.75" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<rect x="345.456" y="324.151" width="838.661" height="180" rx="32" ry="32" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="3" opacity="1"/>
+<rect x="683.75" y="152.418" width="170.867" height="77.484" rx="19.371" ry="19.371" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<rect x="872.202" y="153.687" width="305.744" height="75.2319" rx="18.808" ry="18.808" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<path d="M 185.287 462.304 L 340.287 462.304" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="340.287" y1="462.304" x2="329.071" y2="470.682" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="340.287" y1="462.304" x2="329.071" y2="453.925" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="185.287" y1="462.304" x2="196.503" y2="453.925" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="185.287" y1="462.304" x2="196.503" y2="470.682" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<path d="M 543.512 230.375 L 544.119 324.581" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="544.119" y1="324.581" x2="535.669" y2="313.419" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="544.119" y1="324.581" x2="552.426" y2="313.311" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="543.512" y1="230.375" x2="551.963" y2="241.537" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="543.512" y1="230.375" x2="535.206" y2="241.645" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<rect x="-41.9475" y="323.848" width="225.367" height="80" rx="20" ry="20" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<path d="M 185.996 367.623 L 340.996 367.623" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="340.996" y1="367.623" x2="329.78" y2="376.001" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="340.996" y1="367.623" x2="329.78" y2="359.244" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="185.996" y1="367.623" x2="197.212" y2="359.244" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="185.996" y1="367.623" x2="197.212" y2="376.001" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<path d="M 774.773 230.97 L 776.331 320.88" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="776.331" y1="320.88" x2="767.76" y2="309.811" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="776.331" y1="320.88" x2="784.514" y2="309.52" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="774.773" y1="230.97" x2="783.345" y2="242.039" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="774.773" y1="230.97" x2="766.59" y2="242.33" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1023.71 229.01 L 1025.27 318.92" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="1025.27" y1="318.92" x2="1016.7" y2="307.851" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="1025.27" y1="318.92" x2="1033.45" y2="307.56" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="1023.71" y1="229.01" x2="1032.28" y2="240.079" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="1023.71" y1="229.01" x2="1015.53" y2="240.37" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<rect x="241.055" y="645.967" width="1060" height="525" rx="32" ry="32" fill="transparent" stroke="#1e1e1e" stroke-width="3" opacity="1" stroke-dasharray="12,9"/>
+<rect x="309.199" y="731.328" width="920" height="340" rx="32" ry="32" fill="#f1f3f5" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<rect x="386.064" y="815.977" width="364.863" height="190" rx="32" ry="32" fill="transparent" stroke="#1e1e1e" stroke-width="3" opacity="1"/>
+<rect x="901.807" y="815.684" width="259.248" height="190" rx="32" ry="32" fill="transparent" stroke="#1e1e1e" stroke-width="2" opacity="1"/>
+<path d="M 761.426 908.926 L 894.072 910.342" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="894.072" y1="910.342" x2="882.767" y2="918.6" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="894.072" y1="910.342" x2="882.946" y2="901.844" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="761.426" y1="908.926" x2="772.731" y2="900.667" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<line x1="761.426" y1="908.926" x2="772.552" y2="917.424" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+<rect x="386.055" y="1100.97" width="775" height="48" rx="12" ry="12" fill="transparent" stroke="#1e1e1e" stroke-width="2" opacity="1" stroke-dasharray="8,6"/>
+<text x="280" y="134.8" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#1e1e1e" text-anchor="start" opacity="1" style="white-space:pre">AI Agent</text>
+<text x="69.2539" y="453.873" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Application /</text>
+<text x="69.2539" y="476.373" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Parent Agent</text>
+<text x="543.578" y="197.328" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">LLM</text>
+<text x="419.029" y="363.249" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Harness</text>
+<text x="763.969" y="418.045" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Context Assembly • Agent Loop • State &amp; Queues</text>
+<text x="763.969" y="440.545" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Tool Orchestration • Recovery • Hooks / Policies</text>
+<text x="771.543" y="192.694" font-family="Helvetica, Arial, sans-serif" font-size="18.5883" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Memory</text>
+<text x="1025.07" y="197.803" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Tool Interfaces</text>
+<text x="388.043" y="280.776" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="start" opacity="1" style="white-space:pre">Model Gateway</text>
+<text x="79.9156" y="370.257" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">User</text>
+<text x="265.742" y="688.454" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#1e1e1e" text-anchor="start" opacity="1" style="white-space:pre">Running Environment (Host / Container / VM)</text>
+<text x="336.055" y="771.867" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1e1e1e" text-anchor="start" opacity="1" style="white-space:pre">Accessible Environment / Sandbox</text>
+<text x="523.447" y="916.185" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1e1e1e" text-anchor="start" opacity="1" style="white-space:pre">AI Agent</text>
+<text x="1034.11" y="857.996" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Accessible Resources</text>
+<text x="1036.21" y="900.98" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Workspace</text>
+<text x="1036.21" y="922.23" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">CLI</text>
+<text x="1036.21" y="943.48" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Allowed APIs</text>
+<text x="1036.21" y="964.73" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Scoped Credentials</text>
+<text x="773.555" y="1131.07" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#1e1e1e" text-anchor="middle" opacity="1" style="white-space:pre">Protected / Unavailable Resources</text>
+</svg>

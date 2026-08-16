@@ -107,30 +107,28 @@ by working alongside your team and by being corrected when they get something wr
 
 ## The new member is an agent
 
-A language model on its own cannot do this task. It generates and interprets
-text; it cannot open a protocol, read a file, or execute code. An **AI agent** is the
-system built around a model so that it can act:
+A large language model (LLM) on its own cannot do this task. An LLM is a function
+over text: given a sequence of text, it returns a probability distribution for the
+next token, a word or fragment of one, and sampling from that distribution
+repeatedly produces a sentence, a table, or a block of code. Everything it can
+draw on must already be in the text it was handed, and everything it produces is
+more text. It can write the code that summarizes AGE; it cannot open the
+protocol, read ADSL, or run that code. An **AI agent** is the system built around
+an LLM so that it can act. It usually consists of:
 
-- the **harness** assembles context, calls the model, invokes tools, feeds the
+- **harness** that assembles context, calls the model, invokes tools, feeds the
   results back, and keeps the loop moving;
-- the **model gateway** connects the harness to a chosen language model;
-- **session state and memory** hold the messages and working state for the task;
-- **tool interfaces** expose actions such as reading a file or running R;
-- the **accessible environment** is the set of files, commands, APIs, and
+- **model gateway** that connects the harness to a chosen LLM;
+- **memory** that holds the messages and working state for the task, and anything
+  the agent should still know next time;
+- **tool interfaces** that expose actions such as reading a file or running R;
+- **accessible environment** that is the set of files, commands, APIs, and
   credentials those tools can actually reach.
 
 ::: {.content-visible when-format="html"}
 ![A general AI-agent architecture. The harness coordinates the language model,
-memory, and tool interfaces while users or applications submit requests.](diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces."}
+memory, and tool interfaces while users or applications submit requests.](assets/diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces."}
 :::
-
-::: {.content-visible unless-format="html"}
-![A general AI-agent architecture. The harness coordinates the language model,
-memory, and tool interfaces while users or applications submit requests.](diagrams/intro-ai-agent.pdf){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces."}
-:::
-
-The editable source for @fig-agent-anatomy is
-[`diagrams/intro-ai-agent.excalidraw`](diagrams/intro-ai-agent.excalidraw).
 
 The last item deserves the most attention. The accessible environment is the
 agent's equivalent of the access you granted the new member on their first day,

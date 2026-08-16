@@ -1,5 +1,6 @@
 project:
   type: book
+  pre-render: scripts/build-diagrams.py
   resources:
     - CNAME
     - slides/
@@ -62,5 +63,3 @@ format:
   html:
     theme: [cosmo, custom.scss]
     mainfont: "Lato, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Noto Sans, Liberation Sans, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
-  pdf:
-    documentclass: scrreprt
