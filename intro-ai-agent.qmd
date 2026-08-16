@@ -6,7 +6,7 @@ Adding AI agent to your workflow is an onboarding problem before it is a technic
 
 :::
 
-## Day 1
+## The first task
 
 Before working with an AI agent, let's start with a situation you should know
 well.
@@ -51,7 +51,7 @@ answer. The model does not decide what it may read, and it does not decide who
 signs off on its output. You do. The rest of this chapter walks through those
 decisions in the order you would meet them on a real first day.
 
-## Day 1: what you hand over
+## What you hand over
 
 A new member does not arrive knowing anything about your study. You give them a
 starting package:
@@ -78,21 +78,22 @@ kind of untidiness a real study database has while enrolment is still open:
 You then go back to your own busy day and let the new member work independently. 
 At the end of the day, you sit down together and review what happened.
 
-## What you expect without saying it
+## Unstated expectations
 
-Here is the part that makes this a fair test. You did not write any of the
-following down. There was no time, and spelling out every step is not
-mentorship. It is dictation.
+Notice what you did not do. You did not write down which subjects to include,
+where the data may go, or when to stop and ask. There was no time. And if you
+had written it all down, you would be handing over a script rather than training
+someone to think.
 
-You expect the new member to:
+You expect all of it anyway:
 
-- **read the protocol** before deciding who counts, rather than summarizing
-  every row in the file;
-- **stay inside the controlled environment**, and not move data or code
-  somewhere it does not belong;
-- **ask questions** instead of guessing when the instruction is ambiguous;
-- **report what looks wrong**. You happen to know there is a subject outside
-  the protocol's age range, and a few missing values.
+- **Read the protocol** before deciding who counts, rather than summarizing
+  every row in the file.
+- **Read the SOP** be compliant, e.g. data and code do not move somewhere
+  they do not belong.
+- **Ask** when the instruction is ambiguous, instead of guessing and moving on.
+- **Report what looks wrong.** You already know about the subject outside the
+  age range and the missing values. You want to hear about them without asking.
 
 And you expect a short write-up at the end of the day:
 
@@ -100,13 +101,14 @@ And you expect a short write-up at the end of the day:
 - the statistics they found;
 - the questions they still have.
 
-Every one of these is an unstated expectation, which is exactly how they arrive
-in real work.
+None of this was said out loud, which is exactly how expectations arrive in real
+work. Onboarding AI agents like a new colleague absorbs team conventions over time, 
+by working alongside your team and by being corrected when they get something wrong.
 
-## The new member is an AI agent
+## The new member is an agent
 
 A language model on its own cannot do this task. It generates and interprets
-text; it cannot open a protocol, read a file, or run R. An **AI agent** is the
+text; it cannot open a protocol, read a file, or execute code. An **AI agent** is the
 system built around a model so that it can act:
 
 - the **harness** assembles context, calls the model, invokes tools, feeds the
@@ -134,7 +136,7 @@ The last item deserves the most attention. The accessible environment is the
 agent's equivalent of the access you granted the new member on their first day,
 and it is decided by you, not by the model.
 
-## What happens during one turn
+## Inside one turn
 
 You ask one question. The harness turns it into a short loop and repeats that
 loop until the model has what it needs.
@@ -212,12 +214,12 @@ Watch the interaction, not only the final answer:
 - Did it flag the subject aged 17, or quietly include them?
 - Did it search the web anyway?
 
-## The end-of-day review
+## End-of-day review
 
 This is the 1:1 you scheduled. You are not checking whether the numbers are
 pretty; you are checking whether the work can be trusted.
 
-### Do the numbers match?
+### The numbers
 
 You know what the answer should be, because you know the dataset. The prompt
 did not say which statistics to report, so compare whichever ones the agent
@@ -252,7 +254,7 @@ correct. Any value in that range is fine, provided the method is stated.
 If the agent reports different values, that is something to investigate, not
 something to explain away.
 
-### What actually happened?
+### The process
 
 A matching number is not the same as acceptable work. Read back through the
 session and ask what the agent actually did: which files it touched, which
@@ -260,14 +262,14 @@ commands it ran, what it sent to the model, and whether anything left the
 environment that should not have. A harness that keeps this record is what
 makes the question answerable at all.
 
-### Would this pass in your organization?
+### The gaps
 
 The last part of the review is the honest one. A demo that produces the right
 mean is not yet a validated process. Compare what you observed against your own
 requirements for access control, audit trail, environment qualification, and
 review, and note the gaps. Those gaps are the subject of the rest of the book.
 
-## Keep data and model reasoning separate
+## Keeping data separate
 
 The exercise also introduces a design choice that outlives it. The model rarely
 needs every subject-level record. Statistical software can process the raw data
@@ -306,7 +308,7 @@ The implementation belongs in later chapters. The principle belongs here:
 > Give the agent access to what the task requires, not everything the running
 > environment happens to expose.
 
-## Human judgment closes the loop
+## Human judgment
 
 The agent can assemble the calculation and the explanation. It cannot be
 accountable for the analytical meaning. Even for a task this small, a
