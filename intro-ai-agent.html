@@ -77,9 +77,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <meta property="og:title" content="2&nbsp; Onboarding an AI agent – AI for Clinical Study Reports and Submission">
@@ -244,17 +241,19 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-you-hand-over" id="toc-what-you-hand-over" class="nav-link" data-scroll-target="#what-you-hand-over"><span class="header-section-number">2.2</span> What you hand over</a></li>
   <li><a href="#unstated-expectations" id="toc-unstated-expectations" class="nav-link" data-scroll-target="#unstated-expectations"><span class="header-section-number">2.3</span> Unstated expectations</a></li>
   <li><a href="#the-new-member-is-an-agent" id="toc-the-new-member-is-an-agent" class="nav-link" data-scroll-target="#the-new-member-is-an-agent"><span class="header-section-number">2.4</span> The new member is an agent</a></li>
-  <li><a href="#inside-one-turn" id="toc-inside-one-turn" class="nav-link" data-scroll-target="#inside-one-turn"><span class="header-section-number">2.5</span> Inside one turn</a></li>
-  <li><a href="#run-the-exercise" id="toc-run-the-exercise" class="nav-link" data-scroll-target="#run-the-exercise"><span class="header-section-number">2.6</span> Run the exercise</a></li>
-  <li><a href="#end-of-day-review" id="toc-end-of-day-review" class="nav-link" data-scroll-target="#end-of-day-review"><span class="header-section-number">2.7</span> End-of-day review</a>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself"><span class="header-section-number">2.5</span> Try it yourself</a></li>
+  <li><a href="#end-of-day-review" id="toc-end-of-day-review" class="nav-link" data-scroll-target="#end-of-day-review"><span class="header-section-number">2.6</span> End-of-day review</a>
   <ul class="collapse">
-  <li><a href="#the-numbers" id="toc-the-numbers" class="nav-link" data-scroll-target="#the-numbers"><span class="header-section-number">2.7.1</span> The numbers</a></li>
-  <li><a href="#the-process" id="toc-the-process" class="nav-link" data-scroll-target="#the-process"><span class="header-section-number">2.7.2</span> The process</a></li>
-  <li><a href="#the-gaps" id="toc-the-gaps" class="nav-link" data-scroll-target="#the-gaps"><span class="header-section-number">2.7.3</span> The gaps</a></li>
+  <li><a href="#the-population" id="toc-the-population" class="nav-link" data-scroll-target="#the-population"><span class="header-section-number">2.6.1</span> The population</a></li>
+  <li><a href="#the-numbers" id="toc-the-numbers" class="nav-link" data-scroll-target="#the-numbers"><span class="header-section-number">2.6.2</span> The numbers</a></li>
+  <li><a href="#the-code" id="toc-the-code" class="nav-link" data-scroll-target="#the-code"><span class="header-section-number">2.6.3</span> The code</a></li>
+  <li><a href="#what-it-should-have-raised" id="toc-what-it-should-have-raised" class="nav-link" data-scroll-target="#what-it-should-have-raised"><span class="header-section-number">2.6.4</span> What it should have raised</a></li>
+  <li><a href="#the-trail" id="toc-the-trail" class="nav-link" data-scroll-target="#the-trail"><span class="header-section-number">2.6.5</span> The trail</a></li>
+  <li><a href="#the-gaps" id="toc-the-gaps" class="nav-link" data-scroll-target="#the-gaps"><span class="header-section-number">2.6.6</span> The gaps</a></li>
   </ul></li>
-  <li><a href="#keeping-data-separate" id="toc-keeping-data-separate" class="nav-link" data-scroll-target="#keeping-data-separate"><span class="header-section-number">2.8</span> Keeping data separate</a></li>
-  <li><a href="#human-judgment" id="toc-human-judgment" class="nav-link" data-scroll-target="#human-judgment"><span class="header-section-number">2.9</span> Human judgment</a></li>
-  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways"><span class="header-section-number">2.10</span> Takeaways</a></li>
+  <li><a href="#keeping-data-separate" id="toc-keeping-data-separate" class="nav-link" data-scroll-target="#keeping-data-separate"><span class="header-section-number">2.7</span> Keeping data separate</a></li>
+  <li><a href="#human-judgment" id="toc-human-judgment" class="nav-link" data-scroll-target="#human-judgment"><span class="header-section-number">2.8</span> Human judgment</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways"><span class="header-section-number">2.9</span> Takeaways</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/intro-ai-agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/intro-ai-agent.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -384,44 +383,10 @@ Figure&nbsp;2.1: A general AI-agent architecture. The harness coordinates the la
 </figcaption>
 </figure>
 </div>
-<p>The last item deserves the most attention. The accessible environment is the agent’s equivalent of the access you granted the new member on their first day, and it is decided by you, not by the model.</p>
+<p>The accessible environment deserves the most attention. The accessible environment is the agent’s equivalent of the access you granted the new member on their first day, and it is decided by you, not by the model.</p>
 </section>
-<section id="inside-one-turn" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="inside-one-turn"><span class="header-section-number">2.5</span> Inside one turn</h2>
-<p>You ask one question. The harness turns it into a short loop and repeats that loop until the model has what it needs.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">sequenceDiagram
-    actor U as Mentor
-    participant H as Harness
-    participant L as LLM
-    participant T as Tools
-
-    U-&gt;&gt;H: Summarize AGE in ADSL
-    loop until the model has what it needs
-        H-&gt;&gt;L: Question, context, results so far
-        L--&gt;&gt;H: Which tool to call
-        H-&gt;&gt;T: Run the call
-        T--&gt;&gt;H: Result
-    end
-    H--&gt;&gt;U: Summary, code, open questions
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Here the loop runs twice. First to open the protocol and find the population definition. Then to run code over the subjects that definition selects.</p>
-<p>The model never opened a file and never computed a number. It chose the population, chose the tool, and explained the answer. Everything else was done by tools, inside the environment you granted.</p>
-<blockquote class="blockquote">
-<p>The model decides and explains. Deterministic software calculates.</p>
-</blockquote>
-</section>
-<section id="run-the-exercise" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="run-the-exercise"><span class="header-section-number">2.6</span> Run the exercise</h2>
+<section id="try-it-yourself" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="try-it-yourself"><span class="header-section-number">2.5</span> Try it yourself</h2>
 <p>Open <a href="https://arena.ai/agent">arena.ai/agent</a>. It runs an agent in the browser and shows each step along the way, which makes the loop above easy to watch. Any agent that can read a document and run code will do. This one is convenient because there is nothing to install.</p>
 <p>Give it the task the way you would give it to a person, plainly and without the answer:</p>
 <pre class="text"><code>Based on the KN189 study protocol, summarize the age distribution in the data.
@@ -430,20 +395,19 @@ protocol: https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.
 
 data: https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
 
-Important: disable all web search capability, address the question only use
-provided protocol and data.</code></pre>
-<div class="callout callout-style-default callout-important callout-titled">
+Show me the results, R code, and any questions you have.</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Why the last line matters
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>KEYNOTE-189 is a published trial. Without that instruction, the agent can search the web and answer from journal articles instead of from the documents you gave it. The numbers it returns would then describe the real study, not your dataset, and they would look entirely credible.</p>
-<p>This is the difference between a colleague who reads your protocol and one who remembers a similar study. Only one of them is reviewing your trial.</p>
+<p>The exercise hands a browser based AI agent a link to subject level records. That is acceptable, because the dataset is synthetic and already public.</p>
+<p>Do not do this with proprietary artifacts. A hosted AI agent sends whatever you give it to a third party.</p>
 </div>
 </div>
 <p>Note what the prompt does not say: which subjects to include, and which statistics to report. The dataset carries <code>ENRLFL</code> and <code>ITTFL</code>, and the protocol defines the Intention-to-Treat population as all randomized subjects. Choosing a population is the first judgment the new member has to make, and nobody told them to make it.</p>
@@ -453,14 +417,22 @@ provided protocol and data.</code></pre>
 <li>Which population did it summarize, and did it say which one?</li>
 <li>Did it write code, and did that code produce the numbers?</li>
 <li>Did it flag the subject aged 17, or quietly include them?</li>
-<li>Did it search the web anyway?</li>
 </ul>
 </section>
-<section id="end-of-day-review" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="end-of-day-review"><span class="header-section-number">2.7</span> End-of-day review</h2>
-<p>This is the 1:1 you scheduled. You are not checking whether the numbers are pretty; you are checking whether the work can be trusted.</p>
-<section id="the-numbers" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="the-numbers"><span class="header-section-number">2.7.1</span> The numbers</h3>
+<section id="end-of-day-review" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="end-of-day-review"><span class="header-section-number">2.6</span> End-of-day review</h2>
+<p>This is the review meeting you scheduled. You are not checking whether the numbers are pretty; you are checking whether the work can be trusted. Read what the agent produced, then make it account for the parts it decided on its own. That second half is the review. A new colleague who cannot explain a choice has not made one, and neither has an agent.</p>
+<p>Work through the items below in order, since each one depends on the last. Most end in a question you put to the agent directly.</p>
+<section id="the-population" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="the-population"><span class="header-section-number">2.6.1</span> The population</h3>
+<p>Start here, because every number downstream depends on it. The prompt never said which subjects to count, so the agent either made that decision or skipped past it.</p>
+<blockquote class="blockquote">
+<p>Which subjects did you include, and where in the protocol did you find that definition?</p>
+</blockquote>
+<p>A sound answer names a population and points to the text that defines it. A weak answer describes the file it was given. The dataset carries <code>ENRLFL</code> and <code>ITTFL</code>, and the protocol defines the Intention-to-Treat population as all randomized subjects, so an agent that summarized every row has answered a different question than the protocol asks.</p>
+</section>
+<section id="the-numbers" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="the-numbers"><span class="header-section-number">2.6.2</span> The numbers</h3>
 <p>You know what the answer should be, because you know the dataset. The prompt did not say which statistics to report, so compare whichever ones the agent chose to give you:</p>
 <table class="caption-top table">
 <thead>
@@ -523,47 +495,52 @@ provided protocol and data.</code></pre>
 <p>Q1 and Q3 depend on the quantile method. The values above use the default in R. The default in SAS gives 39.00 and 61.00 for the ITT population, and both are correct. Any value in that range is fine, provided the method is stated.</p>
 <p>If the agent reports different values, that is something to investigate, not something to explain away.</p>
 </section>
-<section id="the-process" class="level3" data-number="2.7.2">
-<h3 data-number="2.7.2" class="anchored" data-anchor-id="the-process"><span class="header-section-number">2.7.2</span> The process</h3>
-<p>A matching number is not the same as acceptable work. Read back through the session and ask what the agent actually did: which files it touched, which commands it ran, what it sent to the model, and whether anything left the environment that should not have. A harness that keeps this record is what makes the question answerable at all.</p>
+<section id="the-code" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="the-code"><span class="header-section-number">2.6.3</span> The code</h3>
+<p>A number you cannot reproduce is an anecdote. The agent was asked for code, so run it yourself against the same file and confirm it returns the table you were shown. Read it closely enough to see which population it filters to and how it treats missing values, because those two lines carry the decisions the prose may only claim.</p>
+<blockquote class="blockquote">
+<p>Show me the code that produced these numbers, and tell me which quantile method it used.</p>
+</blockquote>
 </section>
-<section id="the-gaps" class="level3" data-number="2.7.3">
-<h3 data-number="2.7.3" class="anchored" data-anchor-id="the-gaps"><span class="header-section-number">2.7.3</span> The gaps</h3>
+<section id="what-it-should-have-raised" class="level3" data-number="2.6.4">
+<h3 data-number="2.6.4" class="anchored" data-anchor-id="what-it-should-have-raised"><span class="header-section-number">2.6.4</span> What it should have raised</h3>
+<p>The dataset was seeded with three things worth reporting: subjects enrolled but not yet randomized, missing <code>AGE</code>, and one subject outside the protocol’s age range. Nobody asked the agent to mention any of them, which is the point.</p>
+<blockquote class="blockquote">
+<p>What in this data looked wrong to you, and what did you do about it?</p>
+</blockquote>
+<p>Ask for the open questions too. An empty list is rarely a sign that the task was unambiguous; it usually means the agent resolved an ambiguity silently and moved on. A colleague who never asks anything on the first day is not the reassuring one.</p>
+</section>
+<section id="the-trail" class="level3" data-number="2.6.5">
+<h3 data-number="2.6.5" class="anchored" data-anchor-id="the-trail"><span class="header-section-number">2.6.5</span> The trail</h3>
+<p>A matching number is not the same as acceptable work. Ask what the agent actually did: which files it touched, which commands it ran, what it sent to the model, and whether anything left the environment that should not have.</p>
+<blockquote class="blockquote">
+<p>Which files did you open, which commands did you run, and what left this environment?</p>
+</blockquote>
+<p>Treat the answer as a claim, not as evidence. The agent is describing its own behavior from the same context it used to do the work. The session record kept by the harness is the evidence, and a harness that keeps one is what makes this question answerable at all.</p>
+</section>
+<section id="the-gaps" class="level3" data-number="2.6.6">
+<h3 data-number="2.6.6" class="anchored" data-anchor-id="the-gaps"><span class="header-section-number">2.6.6</span> The gaps</h3>
 <p>The last part of the review is the honest one. A demo that produces the right mean is not yet a validated process. Compare what you observed against your own requirements for access control, audit trail, environment qualification, and review, and note the gaps. Those gaps are the subject of the rest of the book.</p>
 </section>
 </section>
-<section id="keeping-data-separate" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="keeping-data-separate"><span class="header-section-number">2.8</span> Keeping data separate</h2>
+<section id="keeping-data-separate" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="keeping-data-separate"><span class="header-section-number">2.7</span> Keeping data separate</h2>
 <p>The exercise also introduces a design choice that outlives it. The model rarely needs every subject-level record. Statistical software can process the raw data inside a controlled environment and return only aggregates or metadata:</p>
 <pre class="text"><code>Raw ADSL &gt;&gt; deterministic R/SAS/Python calculation &gt;&gt; aggregate result &gt;&gt; LLM</code></pre>
 <p>This reduces the chance that sensitive records end up in a model request. A sandbox can restrict the files, commands, network destinations, and credentials the agent can reach, and tool policies can inspect, approve, redact, or block operations at that boundary.</p>
 <p>These mechanisms reduce risk; they do not create a guarantee. Model requests, tool output, logs, session history, temporary files, and telemetry each need deliberate treatment. An agent normally inherits whatever permissions the process that started it already holds, so isolation has to be arranged on purpose. It is never the default.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>What this exercise does, and why you should not copy it
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The exercise hands a browser based service a link to subject level records. That is acceptable here for one reason only: the dataset is synthetic and already public.</p>
-<p>Do not do this with study data. A hosted agent sends whatever you give it to a third party, which is the exact situation the separation above is meant to prevent. This chapter trades that protection away to keep the setup to a single browser tab. Later chapters describe the arrangement you would use instead.</p>
-</div>
-</div>
 <p>The implementation belongs in later chapters. The principle belongs here:</p>
 <blockquote class="blockquote">
 <p>Give the agent access to what the task requires, not everything the running environment happens to expose.</p>
 </blockquote>
 </section>
-<section id="human-judgment" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="human-judgment"><span class="header-section-number">2.9</span> Human judgment</h2>
+<section id="human-judgment" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="human-judgment"><span class="header-section-number">2.8</span> Human judgment</h2>
 <p>The agent can assemble the calculation and the explanation. It cannot be accountable for the analytical meaning. Even for a task this small, a responsible human still confirms that <code>AGE</code> and its units are appropriate, that the analysis population is the intended one, that missing values were handled sensibly, that the executed code does what it claims, and that descriptive statistics answer the question that was actually asked.</p>
 <p>This example is deliberately trivial. The same division of responsibility matters far more once population flags, treatment groups, imputation, derived variables, or inferential methods are involved.</p>
 </section>
-<section id="takeaways" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="takeaways"><span class="header-section-number">2.10</span> Takeaways</h2>
+<section id="takeaways" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="takeaways"><span class="header-section-number">2.9</span> Takeaways</h2>
 <ol type="1">
 <li>An agent is more than a language model: it adds a harness, state, tools, and an accessible environment.</li>
 <li>Onboarding an agent raises the same questions as onboarding a person: access, process, and unstated expectations. Answering them is your job, not the model’s.</li>
