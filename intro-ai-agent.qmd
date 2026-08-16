@@ -1,7 +1,7 @@
 # Onboarding an AI agent {#sec-intro-ai-agent}
 
 ::: callout-tip
-Adding an AI agent to a clinical study workflow is an onboarding problem before
+Adding an AI agent to a clinical trial workflow is an onboarding problem before
 it is a technology problem.
 :::
 
@@ -10,9 +10,9 @@ it is a technology problem.
 
 Imagine that a new team member has joined. They recently finished school and
 understand the basics of clinical trials. They know what a protocol and
-statistical analysis plan (SAP) are, but they do not yet know your standard
+statistical analysis plan (SAP) are, but they do not yet know standard
 operating procedures (SOPs), computing environment, folder structure, naming
-conventions, or review habits.
+conventions, or review habits of your organization.
 
 For their first assignment, you choose a simple task:
 
@@ -36,13 +36,13 @@ rather than something learned by sitting nearby.
 | Their manager signs off | A named person accountable for the result |
 
 Every row on the left is something a team handles informally for a person. On
-the right, it has to exist as an artifact that someone can inspect.
+the right, it has to exist as an artifact that can be inspected.
 
 Technical questions like which model to use, how much context it can take, how
 to keep responses consistent across sessions, or how to design prompts that
-reduce hallucinations matter a lot. But those are implementation choices. 
-A better model can improve the answer;
-only the workflow tells you whether the answer is acceptable.
+reduce hallucinations matter a lot. But those are implementation choices. A
+better model can improve the answer, but only the workflow tells you whether the
+answer is acceptable.
 
 ## What an AI agent actually is
 
@@ -73,19 +73,19 @@ The pieces that make this possible are easier to understand by what they do:
 | **LLM** | Interprets evidence, plans steps, drafts an explanation |
 | **Harness** | Assembles context, calls the model, invokes tools, records events, and controls the loop |
 | **Model gateway** | Routes model requests and may apply authentication, logging, or policy controls |
-| **Tools** | Perform observable actions, such as reading a PDF, querying data, or running R |
-| **Memory / working state** | Holds the current messages, plan, tool results, and unresolved questions |
+| **Tool interfaces** | Perform observable actions, such as reading a PDF, querying data, or running R |
+| **Working state** | Holds the current messages, plan, tool results, and unresolved questions for this session |
 | **Accessible environment** | Defines the files, commands, APIs, network destinations, and credentials the agent can reach |
 
 ::: {.content-visible when-format="html"}
 ![A general AI-agent architecture. The harness coordinates the model, working
 state, and tool interfaces. The accessible environment limits which resources
-the agent can reach.](assets/diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces inside a limited accessible environment."}
+the agent can reach.](assets/diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, working state, and tool interfaces inside a limited accessible environment."}
 :::
 
 Two distinctions matter in practice:
 
-- **Working state is not organizational memory.** Some systems retain a session;
+- **Working state is not project memory.** Some systems retain a session;
   others do not. What the agent "remembers" from last Tuesday is not a governed
   record. Durable rules and decisions should live in artifacts that both people
   and agents can inspect.
@@ -148,28 +148,12 @@ applicable SOP and identify its version. If a required document is unavailable,
 the correct behavior is to report the gap and stop the affected work.
 :::
 
-## Increase autonomy gradually
-
-A safe first assignment is small, observable, reversible, and easy for a human
-to verify. Access and autonomy can increase only after the team understands how
-the agent behaves.
-
-One practical progression is:
-
-| Level | The agent may | Example |
-|---|---|---|
-| 1. Observe | Read approved artifacts and explain what they contain | Summarize how the SAP defines each analysis population |
-| 2. Analyze | Run read-only checks or calculations in a sandbox | The age summary in this chapter |
-| 3. Propose | Prepare code or changes for human review | Draft an independent QC program for a table |
-| 4. Act with approval | Make a bounded change after an accountable person approves it | Commit the reviewed program to the study repository |
-
-The age-summary exercise sits at level 2. The agent may read public teaching
-artifacts and run code, but it should not change data or make a study decision.
-
 ## Try it yourself {#sec-try-it-yourself}
 
 The exercise below runs the age-summary task end to end. Running it takes only a
-few minutes; the value is in the review that follows.
+few minutes; the value is in the review that follows. It is deliberately a
+read-and-compute assignment: the agent may read the public artifacts and run
+code, but it should not change data or make a study decision.
 
 ### Step 1: Get the materials
 
@@ -452,28 +436,11 @@ The agent can gather evidence, execute a deterministic calculation, identify
 exceptions, and draft an explanation. It cannot own the scientific or
 regulatory decision.
 
-For this small task, an accountable reviewer still confirms that:
-
-- `AGE` and `AGEU` represent the intended concept and unit;
-- the chosen population and treatment variable match the analysis objective;
-- missing values and protocol deviations are handled as specified;
-- the code actually produced the reported values;
-- the result is appropriate for its intended use.
+Even for a task this small, a named reviewer still has to accept that the
+variables mean what the analysis assumes, that the population and handling of
+exceptions match the objective, and that the result is fit for its intended use.
 
 The same division of responsibility becomes more important when the work
 involves treatment groups, derived variables, imputation, endpoints, inferential
 methods, or submission deliverables.
 
-## A reusable onboarding checklist
-
-Before assigning an agent a new kind of task, confirm that you can answer these
-questions:
-
-- **Task:** Is the objective, scope, output, and stopping condition clear?
-- **Context:** Can the agent access the correct, versioned artifacts and local
-  instructions?
-- **Tools:** Are its actions bounded, observable, and appropriate for the risk?
-- **Data:** Is the environment approved, and is model exposure minimized?
-- **Evidence:** Can another reviewer reproduce the result and inspect the trail?
-- **Escalation:** Does the agent know when and how to involve a human?
-- **Accountability:** Is a named role responsible for the final decision?
