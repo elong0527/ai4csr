@@ -130,42 +130,11 @@ an LLM so that it can act. It usually consists of:
 memory, and tool interfaces while users or applications submit requests.](assets/diagrams/intro-ai-agent.svg){#fig-agent-anatomy fig-alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces."}
 :::
 
-The last item deserves the most attention. The accessible environment is the
+The accessible environment deserves the most attention. The accessible environment is the
 agent's equivalent of the access you granted the new member on their first day,
 and it is decided by you, not by the model.
 
-## Inside one turn
-
-You ask one question. The harness turns it into a short loop and repeats that
-loop until the model has what it needs.
-
-```{mermaid}
-sequenceDiagram
-    actor U as Mentor
-    participant H as Harness
-    participant L as LLM
-    participant T as Tools
-
-    U->>H: Summarize AGE in ADSL
-    loop until the model has what it needs
-        H->>L: Question, context, results so far
-        L-->>H: Which tool to call
-        H->>T: Run the call
-        T-->>H: Result
-    end
-    H-->>U: Summary, code, open questions
-```
-
-Here the loop runs twice. First to open the protocol and find the population
-definition. Then to run code over the subjects that definition selects.
-
-The model never opened a file and never computed a number. It chose the
-population, chose the tool, and explained the answer. Everything else was done
-by tools, inside the environment you granted.
-
-> The model decides and explains. Deterministic software calculates.
-
-## Run the exercise
+## Try it yourself
 
 Open [arena.ai/agent](https://arena.ai/agent). It runs an agent in the browser
 and shows each step along the way, which makes the loop above easy to watch.
@@ -182,20 +151,15 @@ protocol: https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.
 
 data: https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
 
-Important: disable all web search capability, address the question only use
-provided protocol and data.
+Show me the results, R code, and any questions you have.
 ```
 
-::: callout-important
-## Why the last line matters
+::: callout-warning
+The exercise hands a browser based AI agent a link to subject level records.
+That is acceptable, because the dataset is synthetic and already public.
 
-KEYNOTE-189 is a published trial. Without that instruction, the agent can search
-the web and answer from journal articles instead of from the documents you gave
-it. The numbers it returns would then describe the real study, not your dataset,
-and they would look entirely credible.
-
-This is the difference between a colleague who reads your protocol and one who
-remembers a similar study. Only one of them is reviewing your trial.
+Do not do this with proprietary artifacts. A hosted AI agent sends whatever you give it to a
+third party.
 :::
 
 Note what the prompt does not say: which subjects to include, and which
@@ -210,12 +174,32 @@ Watch the interaction, not only the final answer:
 - Which population did it summarize, and did it say which one?
 - Did it write code, and did that code produce the numbers?
 - Did it flag the subject aged 17, or quietly include them?
-- Did it search the web anyway?
 
 ## End-of-day review
 
-This is the 1:1 you scheduled. You are not checking whether the numbers are
-pretty; you are checking whether the work can be trusted.
+This is the review meeting you scheduled. You are not checking whether the
+numbers are pretty; you are checking whether the work can be trusted. Read what
+the agent produced, then make it account for the parts it decided on its own.
+That second half is the review. A new colleague who cannot explain a choice has
+not made one, and neither has an agent.
+
+Work through the items below in order, since each one depends on the last. Most
+end in a question you put to the agent directly.
+
+### The population
+
+Start here, because every number downstream depends on it. The prompt never said
+which subjects to count, so the agent either made that decision or skipped past
+it.
+
+> Which subjects did you include, and where in the protocol did you find that
+> definition?
+
+A sound answer names a population and points to the text that defines it. A weak
+answer describes the file it was given. The dataset carries `ENRLFL` and
+`ITTFL`, and the protocol defines the Intention-to-Treat population as all
+randomized subjects, so an agent that summarized every row has answered a
+different question than the protocol asks.
 
 ### The numbers
 
@@ -252,13 +236,43 @@ correct. Any value in that range is fine, provided the method is stated.
 If the agent reports different values, that is something to investigate, not
 something to explain away.
 
-### The process
+### The code
 
-A matching number is not the same as acceptable work. Read back through the
-session and ask what the agent actually did: which files it touched, which
-commands it ran, what it sent to the model, and whether anything left the
-environment that should not have. A harness that keeps this record is what
-makes the question answerable at all.
+A number you cannot reproduce is an anecdote. The agent was asked for code, so
+run it yourself against the same file and confirm it returns the table you were
+shown. Read it closely enough to see which population it filters to and how it
+treats missing values, because those two lines carry the decisions the prose
+may only claim.
+
+> Show me the code that produced these numbers, and tell me which quantile
+> method it used.
+
+### What it should have raised
+
+The dataset was seeded with three things worth reporting: subjects enrolled but
+not yet randomized, missing `AGE`, and one subject outside the protocol's age
+range. Nobody asked the agent to mention any of them, which is the point.
+
+> What in this data looked wrong to you, and what did you do about it?
+
+Ask for the open questions too. An empty list is rarely a sign that the task was
+unambiguous; it usually means the agent resolved an ambiguity silently and moved
+on. A colleague who never asks anything on the first day is not the reassuring
+one.
+
+### The trail
+
+A matching number is not the same as acceptable work. Ask what the agent
+actually did: which files it touched, which commands it ran, what it sent to the
+model, and whether anything left the environment that should not have.
+
+> Which files did you open, which commands did you run, and what left this
+> environment?
+
+Treat the answer as a claim, not as evidence. The agent is describing its own
+behavior from the same context it used to do the work. The session record kept
+by the harness is the evidence, and a harness that keeps one is what makes this
+question answerable at all.
 
 ### The gaps
 
@@ -288,18 +302,7 @@ deliberate treatment. An agent normally inherits whatever permissions the
 process that started it already holds, so isolation has to be arranged on
 purpose. It is never the default.
 
-::: callout-warning
-## What this exercise does, and why you should not copy it
 
-The exercise hands a browser based service a link to subject level records.
-That is acceptable here for one reason only: the dataset is synthetic and
-already public.
-
-Do not do this with study data. A hosted agent sends whatever you give it to a
-third party, which is the exact situation the separation above is meant to
-prevent. This chapter trades that protection away to keep the setup to a single
-browser tab. Later chapters describe the arrangement you would use instead.
-:::
 
 The implementation belongs in later chapters. The principle belongs here:
 
