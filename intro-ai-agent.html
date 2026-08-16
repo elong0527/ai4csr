@@ -366,25 +366,24 @@ Tip
 </section>
 <section id="the-new-member-is-an-agent" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="the-new-member-is-an-agent"><span class="header-section-number">2.4</span> The new member is an agent</h2>
-<p>A language model on its own cannot do this task. It generates and interprets text; it cannot open a protocol, read a file, or execute code. An <strong>AI agent</strong> is the system built around a model so that it can act:</p>
+<p>A large language model (LLM) on its own cannot do this task. An LLM is a function over text: given a sequence of text, it returns a probability distribution for the next token, a word or fragment of one, and sampling from that distribution repeatedly produces a sentence, a table, or a block of code. Everything it can draw on must already be in the text it was handed, and everything it produces is more text. It can write the code that summarizes AGE; it cannot open the protocol, read ADSL, or run that code. An <strong>AI agent</strong> is the system built around an LLM so that it can act. It usually consists of:</p>
 <ul>
-<li>the <strong>harness</strong> assembles context, calls the model, invokes tools, feeds the results back, and keeps the loop moving;</li>
-<li>the <strong>model gateway</strong> connects the harness to a chosen language model;</li>
-<li><strong>session state and memory</strong> hold the messages and working state for the task;</li>
-<li><strong>tool interfaces</strong> expose actions such as reading a file or running R;</li>
-<li>the <strong>accessible environment</strong> is the set of files, commands, APIs, and credentials those tools can actually reach.</li>
+<li><strong>harness</strong> that assembles context, calls the model, invokes tools, feeds the results back, and keeps the loop moving;</li>
+<li><strong>model gateway</strong> that connects the harness to a chosen LLM;</li>
+<li><strong>memory</strong> that holds the messages and working state for the task, and anything the agent should still know next time;</li>
+<li><strong>tool interfaces</strong> that expose actions such as reading a file or running R;</li>
+<li><strong>accessible environment</strong> that is the set of files, commands, APIs, and credentials those tools can actually reach.</li>
 </ul>
 <div id="fig-agent-anatomy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-agent-anatomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="diagrams/intro-ai-agent.svg" class="img-fluid figure-img" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces.">
+<img src="assets/diagrams/intro-ai-agent.svg" class="img-fluid figure-img" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, memory, and tool interfaces.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agent-anatomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.1: A general AI-agent architecture. The harness coordinates the language model, memory, and tool interfaces while users or applications submit requests.
 </figcaption>
 </figure>
 </div>
-<p>The editable source for <a href="#fig-agent-anatomy" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> is <a href="diagrams/intro-ai-agent.excalidraw"><code>diagrams/intro-ai-agent.excalidraw</code></a>.</p>
 <p>The last item deserves the most attention. The accessible environment is the agent’s equivalent of the access you granted the new member on their first day, and it is decided by you, not by the model.</p>
 </section>
 <section id="inside-one-turn" class="level2" data-number="2.5">
