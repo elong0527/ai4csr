@@ -7,14 +7,14 @@ project:
     - diagrams/
 
 book:
-  title: "AI for Clinical Study Reports and Submission"
+  title: "AI-First Workflows for Clinical Study Reporting"
   author:
     - Yilong Zhang
     - Nan Xiao
   description: |
-    Learn how to prepare tables, listings, and figures for
-    clinical study report and submit to regulatory agencies,
-    the essential part of clinical trial development.
+    Learn how to design trustworthy AI-first workflows for clinical study
+    reporting and regulatory submission, combining agent-assisted execution,
+    evidence-backed review, and accountable human decisions.
 
   output-file: "ai4csr"
 
@@ -30,16 +30,8 @@ book:
 
   open-graph:
     image: assets/preview.png
-    description: |
-      Learn how to prepare tables, listings, and figures for
-      clinical study report and submit to regulatory agencies,
-      the essential part of clinical trial development.
   twitter-card:
     image: assets/preview.png
-    description: |
-      Learn how to prepare tables, listings, and figures for
-      clinical study report and submit to regulatory agencies,
-      the essential part of clinical trial development.
     card-style: summary_large_image
 
   chapters:
@@ -47,6 +39,7 @@ book:
     - preface.qmd
     - part: "Principles"
       chapters:
+        - ai-first-workflow.qmd
         - principle-overview.md
         - intro-ai-agent.qmd
         - workflow-rounding.qmd
