@@ -49,6 +49,7 @@ book:
       chapters:
         - principle-overview.md
         - intro-ai-agent.qmd
+        - workflow-rounding.qmd
     - part: "Documentation as code"
       chapters:
         - docs-overview.qmd
