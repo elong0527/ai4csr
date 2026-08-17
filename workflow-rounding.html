@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to prepare tables, listings, and figures for clinical study report and submit to regulatory agencies, the essential part of clinical trial development.">
 
-<title>1&nbsp; Principles overview – AI for Clinical Study Reports and Submission</title>
+<title>3&nbsp; AI-first workflow for business rules – AI for Clinical Study Reports and Submission</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -37,8 +72,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro-ai-agent.html" rel="next">
-<link href="./preface.html" rel="prev">
+<link href="./docs-overview.html" rel="next">
+<link href="./intro-ai-agent.html" rel="prev">
 <link href="./assets/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,13 +114,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="1&nbsp; Principles overview – AI for Clinical Study Reports and Submission">
+<meta property="og:title" content="3&nbsp; AI-first workflow for business rules – AI for Clinical Study Reports and Submission">
 <meta property="og:description" content="Learn how to prepare tables, listings, and figures for clinical study report and submit to regulatory agencies, the essential part of clinical trial development.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI for Clinical Study Reports and Submission">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="1&nbsp; Principles overview – AI for Clinical Study Reports and Submission">
+<meta name="twitter:title" content="3&nbsp; AI-first workflow for business rules – AI for Clinical Study Reports and Submission">
 <meta name="twitter:description" content="Learn how to prepare tables, listings, and figures for clinical study report and submit to regulatory agencies, the essential part of clinical trial development.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -102,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./principle-overview.html">Principles</a></li><li class="breadcrumb-item"><a href="./principle-overview.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Principles overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./principle-overview.html">Principles</a></li><li class="breadcrumb-item"><a href="./workflow-rounding.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">AI-first workflow for business rules</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -175,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./principle-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./principle-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Principles overview</span></span></a>
   </div>
 </li>
@@ -187,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./workflow-rounding.html" class="sidebar-item-text sidebar-link">
+  <a href="./workflow-rounding.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">AI-first workflow for business rules</span></span></a>
   </div>
 </li>
@@ -243,32 +278,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-an-ai-first-workflow" id="toc-what-is-an-ai-first-workflow" class="nav-link active" data-scroll-target="#what-is-an-ai-first-workflow"><span class="header-section-number">1.1</span> What is an AI-first workflow?</a></li>
-  <li><a href="#root-principle-trustworthy-assistance" id="toc-root-principle-trustworthy-assistance" class="nav-link" data-scroll-target="#root-principle-trustworthy-assistance"><span class="header-section-number">1.2</span> Root principle: Trustworthy assistance</a></li>
-  <li><a href="#principle-1-inspectable-artifacts" id="toc-principle-1-inspectable-artifacts" class="nav-link" data-scroll-target="#principle-1-inspectable-artifacts"><span class="header-section-number">1.3</span> Principle 1: Inspectable artifacts</a></li>
-  <li><a href="#principle-2-explicit-state" id="toc-principle-2-explicit-state" class="nav-link" data-scroll-target="#principle-2-explicit-state"><span class="header-section-number">1.4</span> Principle 2: Explicit state</a></li>
-  <li><a href="#principle-3-events-and-rules" id="toc-principle-3-events-and-rules" class="nav-link" data-scroll-target="#principle-3-events-and-rules"><span class="header-section-number">1.5</span> Principle 3: Events and rules</a></li>
-  <li><a href="#principle-4-tools-and-evidence" id="toc-principle-4-tools-and-evidence" class="nav-link" data-scroll-target="#principle-4-tools-and-evidence"><span class="header-section-number">1.6</span> Principle 4: Tools and evidence</a></li>
-  <li><a href="#principle-5-human-judgment" id="toc-principle-5-human-judgment" class="nav-link" data-scroll-target="#principle-5-human-judgment"><span class="header-section-number">1.7</span> Principle 5: Human judgment</a></li>
-  <li><a href="#applying-the-principles-to-sap-adam-tlf-review" id="toc-applying-the-principles-to-sap-adam-tlf-review" class="nav-link" data-scroll-target="#applying-the-principles-to-sap-adam-tlf-review"><span class="header-section-number">1.8</span> Applying the principles to SAP → ADaM → TLF review</a>
+  <li><a href="#why-business-rules-need-active-enforcement" id="toc-why-business-rules-need-active-enforcement" class="nav-link active" data-scroll-target="#why-business-rules-need-active-enforcement"><span class="header-section-number">3.1</span> Why business rules need active enforcement</a>
   <ul class="collapse">
-  <li><a href="#workflow-objective" id="toc-workflow-objective" class="nav-link" data-scroll-target="#workflow-objective"><span class="header-section-number">1.8.1</span> Workflow objective</a></li>
-  <li><a href="#agent-role" id="toc-agent-role" class="nav-link" data-scroll-target="#agent-role"><span class="header-section-number">1.8.2</span> Agent role</a></li>
-  <li><a href="#inputs" id="toc-inputs" class="nav-link" data-scroll-target="#inputs"><span class="header-section-number">1.8.3</span> Inputs</a></li>
-  <li><a href="#example-checks" id="toc-example-checks" class="nav-link" data-scroll-target="#example-checks"><span class="header-section-number">1.8.4</span> Example checks</a></li>
-  <li><a href="#outputs" id="toc-outputs" class="nav-link" data-scroll-target="#outputs"><span class="header-section-number">1.8.5</span> Outputs</a></li>
-  <li><a href="#when-the-workflow-should-stop" id="toc-when-the-workflow-should-stop" class="nav-link" data-scroll-target="#when-the-workflow-should-stop"><span class="header-section-number">1.8.6</span> When the workflow should stop</a></li>
+  <li><a href="#rounding-exposes-the-problem" id="toc-rounding-exposes-the-problem" class="nav-link" data-scroll-target="#rounding-exposes-the-problem"><span class="header-section-number">3.1.1</span> Rounding exposes the problem</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.9</span> Summary</a></li>
+  <li><a href="#define-rules-that-can-be-enforced" id="toc-define-rules-that-can-be-enforced" class="nav-link" data-scroll-target="#define-rules-that-can-be-enforced"><span class="header-section-number">3.2</span> Define rules that can be enforced</a></li>
+  <li><a href="#design-the-workflow-around-one-change" id="toc-design-the-workflow-around-one-change" class="nav-link" data-scroll-target="#design-the-workflow-around-one-change"><span class="header-section-number">3.3</span> Design the workflow around one change</a>
+  <ul class="collapse">
+  <li><a href="#walk-through-one-code-change" id="toc-walk-through-one-code-change" class="nav-link" data-scroll-target="#walk-through-one-code-change"><span class="header-section-number">3.3.1</span> Walk through one code change</a></li>
+  <li><a href="#return-a-finding-not-an-essay" id="toc-return-a-finding-not-an-essay" class="nav-link" data-scroll-target="#return-a-finding-not-an-essay"><span class="header-section-number">3.3.2</span> Return a finding, not an essay</a></li>
+  </ul></li>
+  <li><a href="#build-the-minimum-viable-workflow" id="toc-build-the-minimum-viable-workflow" class="nav-link" data-scroll-target="#build-the-minimum-viable-workflow"><span class="header-section-number">3.4</span> Build the minimum viable workflow</a></li>
+  <li><a href="#know-the-boundary" id="toc-know-the-boundary" class="nav-link" data-scroll-target="#know-the-boundary"><span class="header-section-number">3.5</span> Know the boundary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.6</span> Summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/principle-overview.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/principle-overview.md" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/workflow-rounding.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/workflow-rounding.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./principle-overview.html">Principles</a></li><li class="breadcrumb-item"><a href="./principle-overview.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Principles overview</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./principle-overview.html">Principles</a></li><li class="breadcrumb-item"><a href="./workflow-rounding.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">AI-first workflow for business rules</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-principle-overview" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Principles overview</span></span></h1>
+<h1 class="title"><span id="sec-workflow-business-rules" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">AI-first workflow for business rules</span></span></h1>
 </div>
 
 
@@ -285,153 +316,171 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This chapter defines the principles for designing an AI-first clinical study workflow.</p>
-<p>The goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence-backed findings, and ask humans to make accountable decisions.</p>
-<section id="what-is-an-ai-first-workflow" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-an-ai-first-workflow"><span class="header-section-number">1.1</span> What is an AI-first workflow?</h2>
-<p>An AI-first workflow represents work as inspectable artifacts, tracks explicit state, triggers agent action through events and rules, grounds reasoning in tools and evidence, and keeps humans accountable for judgment.</p>
-<p>In this book, the agent is an <strong>independent reviewer assistant</strong>.</p>
-<p>It can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.</p>
-</section>
-<section id="root-principle-trustworthy-assistance" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="root-principle-trustworthy-assistance"><span class="header-section-number">1.2</span> Root principle: Trustworthy assistance</h2>
-<p>The first principle of an AI-first clinical workflow is <strong>trustworthy assistance</strong>.</p>
-<p>Trustworthy assistance means the agent’s work can be inspected, repeated, challenged, and reviewed. The agent should not rely on hidden memory, unsupported claims, or vague reasoning. It should work from visible artifacts, preserve explicit state, act through defined events and rules, use tools to gather evidence, and escalate judgment to accountable humans.</p>
-<p>These principles do not replace organizational validation, quality systems, access control, audit trail requirements, or regulatory accountability. They describe how to design the working pattern so AI assistance remains inspectable and reviewable.</p>
-<p>The remaining principles describe what trustworthy assistance requires in practice.</p>
-<blockquote class="blockquote">
-<p>A workflow is trustworthy when its inputs are visible, its actions are traceable, its findings are evidence-backed, and its limits are clear.</p>
-</blockquote>
-</section>
-<section id="principle-1-inspectable-artifacts" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="principle-1-inspectable-artifacts"><span class="header-section-number">1.3</span> Principle 1: Inspectable artifacts</h2>
-<p>Trust requires the agent and humans to inspect the same source materials.</p>
-<p>The workflow should use artifacts that humans and AI agents can inspect. Artifacts should be readable, structured where possible, versioned, citable, and diffable.</p>
-<p>Examples:</p>
-<ul>
-<li>SAP sections should be searchable and citable.</li>
-<li>ADaM metadata should expose dataset names, variable names, labels, types, codelists, and analysis flags.</li>
-<li>TLF outputs should have stable table IDs, titles, footnotes, and source references.</li>
-<li>Findings should be structured records, not only narrative comments.</li>
-</ul>
-<blockquote class="blockquote">
-<p>If the agent cannot inspect the work, it cannot reliably help with the work.</p>
-</blockquote>
-</section>
-<section id="principle-2-explicit-state" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="principle-2-explicit-state"><span class="header-section-number">1.4</span> Principle 2: Explicit state</h2>
-<p>Trust requires knowing what changed, what was checked, what was decided, and what remains unresolved.</p>
-<p>The workflow should remember through artifacts, not through chat.</p>
-<p>State should show:</p>
-<ul>
-<li>which artifact versions are current;</li>
-<li>what changed;</li>
-<li>what was checked;</li>
-<li>what findings were produced;</li>
-<li>what humans decided and why;</li>
-<li>what remains unresolved.</li>
-</ul>
-<p>This matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review. With explicit state, the workflow can report which findings are new, repeated, fixed, acknowledged, or still open.</p>
-<blockquote class="blockquote">
-<p>The workflow state should be visible, reusable, and reviewable.</p>
-</blockquote>
-</section>
-<section id="principle-3-events-and-rules" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="principle-3-events-and-rules"><span class="header-section-number">1.5</span> Principle 3: Events and rules</h2>
-<p>Trust requires predictable triggers, not random or purely chat-driven action.</p>
-<p>The workflow should not depend only on manual prompting.</p>
-<p>An <strong>event</strong> says something changed. A <strong>rule</strong> decides what the agent should do next.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An AI-first workflow turns business rules into continuous, evidence-backed checks while keeping accountable decisions with people.</p>
+</div>
+</div>
+<p>Clinical teams rely on business rules to produce consistent work across studies, tools, and programmers. The rules may govern derivations, naming, rounding, display conventions, or escalation. A rule is useful only when the team can tell where it applies, whether it was followed, and who decides an exception.</p>
+<p>This chapter builds one small workflow for clinical analysis and reporting. When project code changes, the workflow checks three rules for numeric rounding and display precision. The example is intentionally narrow, but the design can be reused for other organizational rules.</p>
+<section id="why-business-rules-need-active-enforcement" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="why-business-rules-need-active-enforcement"><span class="header-section-number">3.1</span> Why business rules need active enforcement</h2>
+<p>Business rules translate an organization’s policies, standards, and experience into repeatable constraints on how work is done. Many never appear in a protocol or SAP. They live in standards documents, review comments, and the memory of experienced colleagues.</p>
+<p>Manual review is therefore fragile. It depends on the right reviewer noticing the right detail at the right time. As code moves between projects and languages, an unstated convention can quietly become several different implementations. An AI-first workflow makes the rule available at the moment of change, checks what can be checked mechanically, and brings unresolved edge cases to the subject matter expert for a decision.</p>
+<section id="rounding-exposes-the-problem" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="rounding-exposes-the-problem"><span class="header-section-number">3.1.1</span> Rounding exposes the problem</h3>
+<p>Numeric rounding looks universal, but common programming tools disagree at exact ties:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Event</th>
-<th>Rule</th>
+<th>Language or tool</th>
+<th>Default tie behavior</th>
+<th style="text-align: right;"><code>-2.5</code></th>
+<th style="text-align: right;"><code>2.5</code></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>SAP section updated</td>
-<td>rerun affected SAP-to-TLF checks</td>
+<td>SAS <code>ROUND()</code></td>
+<td>half away from zero</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
-<td>ADaM metadata changed</td>
-<td>rerun checks using changed variables</td>
+<td>R <code>round()</code></td>
+<td>half to even</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="odd">
-<td>ADaM dataset refreshed</td>
-<td>rerun affected population and value checks</td>
-</tr>
-<tr class="even">
-<td>TLF output regenerated</td>
-<td>rerun affected TLF checks</td>
-</tr>
-<tr class="odd">
-<td>Human asks for recheck</td>
-<td>run the requested review</td>
-</tr>
-<tr class="even">
-<td>Another AI agent changes a deliverable</td>
-<td>verify downstream impact</td>
+<td>Python <code>round()</code></td>
+<td>half to even</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">2</td>
 </tr>
 </tbody>
 </table>
-<p>Without explicit triggers, review coverage depends on who remembered to ask. Events and rules make the workflow easier to repeat, explain, and audit.</p>
+<p>Display adds a separate choice. The values <code>76</code>, <code>76.0</code>, and <code>76.00</code> are numerically equal, but they communicate different precision in a table. A program can therefore calculate the expected number and still produce an output that violates the organization’s reporting convention.</p>
+<p>The lesson is not that one language is correct. A language default is an implementation choice, not organizational policy. The workflow needs an explicit rule that applies independently of the tool used to implement it.</p>
+</section>
+</section>
+<section id="define-rules-that-can-be-enforced" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="define-rules-that-can-be-enforced"><span class="header-section-number">3.2</span> Define rules that can be enforced</h2>
+<p>An organization must define the method, the point in the calculation when it applies, and the required display. For this example, suppose it adopts three rules:</p>
 <blockquote class="blockquote">
-<p>Events trigger attention; rules trigger action.</p>
+<p><strong>Business rule 1:</strong> Exact decimal ties are rounded half away from zero.</p>
 </blockquote>
-</section>
-<section id="principle-4-tools-and-evidence" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="principle-4-tools-and-evidence"><span class="header-section-number">1.6</span> Principle 4: Tools and evidence</h2>
-<p>Trust requires findings grounded in real SAP, ADaM, and TLF artifacts, not model memory or guesses.</p>
-<p>The LLM should not guess what is in the study artifacts. Tools should expose the real content.</p>
-<p>The LLM reasons. Tools observe. Evidence justifies.</p>
-<p>Example tools:</p>
-<ul>
-<li><code>parse_sap_requirements()</code></li>
-<li><code>inspect_adam_metadata()</code></li>
-<li><code>query_adam_population()</code></li>
-<li><code>extract_tlf_metadata()</code></li>
-<li><code>compare_expected_actual()</code></li>
-</ul>
-<p>A good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it. A finding without traceable evidence is not a finding; it is an unsupported opinion.</p>
 <blockquote class="blockquote">
-<p>No finding without evidence.</p>
+<p><strong>Business rule 2:</strong> Calculations use unrounded values; rounding occurs once, when the final result is prepared for display.</p>
 </blockquote>
-</section>
-<section id="principle-5-human-judgment" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="principle-5-human-judgment"><span class="header-section-number">1.7</span> Principle 5: Human judgment</h2>
-<p>Trust requires clear accountability.</p>
-<p>AI-first does not mean AI-only.</p>
-<p>The agent may identify discrepancies, assemble evidence, classify likely severity, and recommend who should review the issue. The accountable human role decides whether the finding is valid, whether the artifact should change, and how the decision should be documented.</p>
-<p>The agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.</p>
 <blockquote class="blockquote">
-<p>Agents prepare evidence; humans make accountable decisions.</p>
+<p><strong>Business rule 3:</strong> Display precision is specified for each reported statistic and preserved, including trailing zeros.</p>
 </blockquote>
+<p>Together, the rules form one reporting contract:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>What it prevents</th>
+<th>Evidence needed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tie method</td>
+<td>Tool defaults changing a result</td>
+<td>Boundary-test results and the formatter used</td>
+</tr>
+<tr class="even">
+<td>Rounding stage</td>
+<td>Double or intermediate rounding</td>
+<td>The calculation path from source value to display</td>
+</tr>
+<tr class="odd">
+<td>Display precision</td>
+<td>Suppressed or inconsistent decimals</td>
+<td>The precision specification and rendered output</td>
+</tr>
+</tbody>
+</table>
+<p>Store the contract as a versioned artifact that both people and tools can read. The format is less important than the content. The business rules need an owner, scope, version history, and examples that determine the expected result. If a rule cannot determine an answer, the first workflow finding should be a request to clarify the rule.</p>
 </section>
-<section id="applying-the-principles-to-sap-adam-tlf-review" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="applying-the-principles-to-sap-adam-tlf-review"><span class="header-section-number">1.8</span> Applying the principles to SAP → ADaM → TLF review</h2>
-<p>The running example is an AI agent that reviews whether selected CSR TLF outputs derived from ADaM datasets follow the SAP.</p>
-<section id="workflow-objective" class="level3" data-number="1.8.1">
-<h3 data-number="1.8.1" class="anchored" data-anchor-id="workflow-objective"><span class="header-section-number">1.8.1</span> Workflow objective</h3>
-<p>Verify consistency across SAP requirements, ADaM metadata and data, and TLF outputs before database lock.</p>
-</section>
-<section id="agent-role" class="level3" data-number="1.8.2">
-<h3 data-number="1.8.2" class="anchored" data-anchor-id="agent-role"><span class="header-section-number">1.8.2</span> Agent role</h3>
-<p>The agent is an independent reviewer assistant for clinical statisticians, statistical programmers, programming leads, and study reviewers.</p>
-</section>
-<section id="inputs" class="level3" data-number="1.8.3">
-<h3 data-number="1.8.3" class="anchored" data-anchor-id="inputs"><span class="header-section-number">1.8.3</span> Inputs</h3>
-<ul>
-<li>SAP version;</li>
-<li>ADaM metadata snapshot;</li>
-<li>ADaM dataset snapshot;</li>
-<li>TLF package;</li>
-<li>workflow rules;</li>
-<li>prior findings and decisions, if available.</li>
-</ul>
-</section>
-<section id="example-checks" class="level3" data-number="1.8.4">
-<h3 data-number="1.8.4" class="anchored" data-anchor-id="example-checks"><span class="header-section-number">1.8.4</span> Example checks</h3>
+<section id="design-the-workflow-around-one-change" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="design-the-workflow-around-one-change"><span class="header-section-number">3.3</span> Design the workflow around one change</h2>
+<p>The workflow starts when project source code changes. Keeping one trigger makes each finding easy to explain: <em>this change, at this location, conflicts with this rule</em>.</p>
+<div id="fig-code-review" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A project code change feeds deterministic checks and then an AI agent. The workflow produces a CI signal, task, code review comment, and a coverage report. A human reviews findings, records decisions, and approves any update to the business rules.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-code-review-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/diagrams/workflow-code-review.svg" class="img-fluid figure-img" alt="A project code change feeds deterministic checks and then an AI agent. The workflow produces a CI signal, task, code review comment, and a coverage report. A human reviews findings, records decisions, and approves any update to the business rules.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-code-review-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: A project code change triggers deterministic checks followed by a focused AI review. Findings go to a human reviewer, whose decisions are recorded and may lead to an approved rule update.
+</figcaption>
+</figure>
+</div>
+<p>The workflow has five steps:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Action</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Trigger</td>
+<td>Identify the changed files and affected outputs</td>
+<td>Version-control system</td>
+</tr>
+<tr class="even">
+<td>2. Load context</td>
+<td>Read the current rule contract and prior approved decisions</td>
+<td>Workflow</td>
+</tr>
+<tr class="odd">
+<td>3. Check</td>
+<td>Scan call sites, run boundary tests, and compare rendered output</td>
+<td>Deterministic tools</td>
+</tr>
+<tr class="even">
+<td>4. Interpret</td>
+<td>Trace data flow and explain cases the checks cannot settle</td>
+<td>AI agent</td>
+</tr>
+<tr class="odd">
+<td>5. Decide</td>
+<td>Accept, reject, or request a change; record the reason</td>
+<td>Accountable reviewer</td>
+</tr>
+</tbody>
+</table>
+<p>Two design choices matter. Deterministic checks run before the model, because repeatable facts should not depend on model judgment. The human reviewer acts last, because an agent can prepare evidence but cannot approve an exception or change organizational policy.</p>
+<section id="walk-through-one-code-change" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="walk-through-one-code-change"><span class="header-section-number">3.3.1</span> Walk through one code change</h3>
+<p>Suppose a programmer adds this code while preparing a mean change from baseline:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>subject_change <span class="ot">&lt;-</span> <span class="fu">round</span>(adam<span class="sc">$</span>CHG, <span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mean_change <span class="ot">&lt;-</span> <span class="fu">mean</span>(subject_change, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>display_mean <span class="ot">&lt;-</span> <span class="fu">as.character</span>(mean_change)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The workflow evaluates the change against all three rules:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -439,77 +488,78 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Check</th>
-<th>Evidence</th>
+<th>Rule</th>
+<th>Finding</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>SAP population exists in ADaM</td>
-<td>population flag in ADSL or relevant dataset</td>
+<td>1</td>
+<td><code>round()</code> uses R’s default tie method rather than the approved method.</td>
 </tr>
 <tr class="even">
-<td>SAP population definition is applied consistently</td>
-<td>SAP population definition, ADaM flags, and TLF population counts</td>
+<td>2</td>
+<td>Subject-level values are rounded before the mean is calculated.</td>
 </tr>
 <tr class="odd">
-<td>SAP endpoint variable exists</td>
-<td>variable name, label, type, and codelist in ADaM metadata</td>
-</tr>
-<tr class="even">
-<td>Treatment group labels are consistent</td>
-<td>SAP or TLF display labels and ADaM treatment variables</td>
-</tr>
-<tr class="odd">
-<td>TLF title matches intended display</td>
-<td>title and subtitle from TLF output and SAP reference</td>
-</tr>
-<tr class="even">
-<td>TLF N values are explainable</td>
-<td>counts from ADaM population rules</td>
-</tr>
-<tr class="odd">
-<td>Footnotes match analysis method</td>
-<td>footnote text and SAP method section</td>
-</tr>
-<tr class="even">
-<td>Missing or imputed values are handled as specified</td>
-<td>SAP method section, ADaM derivation metadata, and TLF footnotes</td>
-</tr>
-<tr class="odd">
-<td>Rerun scope is justified</td>
-<td>event and rule that triggered the run</td>
+<td>3</td>
+<td><code>as.character()</code> does not apply the specified precision or preserve trailing zeros.</td>
 </tr>
 </tbody>
 </table>
+<p>A source scanner can locate <code>round()</code> and <code>as.character()</code>. Boundary tests can show the tie behavior, and an output comparison can detect lost zeros. The AI agent adds value by tracing <code>subject_change</code> into <code>mean_change</code> and explaining that the first rounding occurs before aggregation.</p>
+<p>A compliant implementation should keep the values unrounded and route the final statistic through an organization-approved formatter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mean_change <span class="ot">&lt;-</span> <span class="fu">mean</span>(adam<span class="sc">$</span>CHG, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>display_mean <span class="ot">&lt;-</span> <span class="fu">format_org_number</span>(mean_change)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, <code>format_org_number()</code> represents a validated helper that implements the rule contract. Centralizing the convention reduces the number of places the workflow must monitor.</p>
 </section>
-<section id="outputs" class="level3" data-number="1.8.5">
-<h3 data-number="1.8.5" class="anchored" data-anchor-id="outputs"><span class="header-section-number">1.8.5</span> Outputs</h3>
-<ul>
-<li>evidence matrix;</li>
-<li>findings grouped by severity;</li>
-<li>escalation list by reviewer role;</li>
-<li>delta report showing fixed, new, repeated, and acknowledged findings.</li>
-</ul>
+<section id="return-a-finding-not-an-essay" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="return-a-finding-not-an-essay"><span class="header-section-number">3.3.2</span> Return a finding, not an essay</h3>
+<p>Each finding should be a small record that a reviewer can verify and close:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> BR-NUM-001-0042</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rule</span><span class="kw">:</span><span class="at"> BR-NUM-001.2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">location</span><span class="kw">:</span><span class="at"> R/table-change.R:18</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">observed</span><span class="kw">:</span><span class="at"> subject values are rounded before the mean is calculated</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">evidence</span><span class="kw">:</span><span class="at"> subject_change flows into mean_change on line 19</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">status</span><span class="kw">:</span><span class="at"> needs_review</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">owner</span><span class="kw">:</span><span class="at"> statistical-programming-lead</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">question</span><span class="kw">:</span><span class="at"> Should the intermediate rounding be removed?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use a CI failure only when a deterministic check proves a violation. Use a code review comment or task when interpretation is required. Every run should also report its coverage: files checked, outputs compared, and anything it could not resolve. Silence must not be interpreted as proof that every rule was checked.</p>
 </section>
-<section id="when-the-workflow-should-stop" class="level3" data-number="1.8.6">
-<h3 data-number="1.8.6" class="anchored" data-anchor-id="when-the-workflow-should-stop"><span class="header-section-number">1.8.6</span> When the workflow should stop</h3>
-<p>The agent should not continue as if the review is complete when a required artifact is missing, SAP language is ambiguous, metadata cannot be inspected, or evidence conflicts across sources.</p>
-<p>In those cases, the correct output is an escalation or limited finding, not a confident conclusion.</p>
 </section>
-</section>
-<section id="summary" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="summary"><span class="header-section-number">1.9</span> Summary</h2>
-<p>The root principle is <strong>trustworthy assistance</strong>: the agent’s work must be inspectable, repeatable, evidence-backed, and accountable.</p>
-<p>The five derived principles are:</p>
+<section id="build-the-minimum-viable-workflow" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="build-the-minimum-viable-workflow"><span class="header-section-number">3.4</span> Build the minimum viable workflow</h2>
+<p>A team can pilot this pattern without building a large agent platform:</p>
 <ol type="1">
-<li><strong>Inspectable artifacts</strong>: make work readable, structured, versioned, citable, and diffable.</li>
-<li><strong>Explicit state</strong>: remember what changed, what was checked, what was decided, and what remains unresolved.</li>
-<li><strong>Events and rules</strong>: trigger the agent when work changes and define what action is needed.</li>
-<li><strong>Tools and evidence</strong>: inspect reality with tools and require evidence for findings.</li>
-<li><strong>Human judgment</strong>: agents prepare the review; humans make accountable decisions.</li>
+<li><strong>Choose one rule and one trigger.</strong> Name the rule owner and limit the first workflow to project code changes.</li>
+<li><strong>Write executable examples.</strong> Include positive and negative ties, intermediate rounding, and trailing-zero expectations.</li>
+<li><strong>Automate repeatable checks.</strong> Run source scans, boundary tests, and output comparisons in CI.</li>
+<li><strong>Use AI only for the remainder.</strong> Give the agent the changed code, rule contract, test results, and prior approved decisions. Require locations, evidence, uncertainty, and a question for the reviewer.</li>
+<li><strong>Record the human decision.</strong> Preserve the resolution with the code commit, rule version, check version, and reviewer. Repeated questions may justify a human-approved rule update.</li>
 </ol>
-<p>Together, these principles keep AI-first clinical study workflows simple, reviewable, and trustworthy.</p>
+<p>Start by running the workflow in advisory mode. Review false positives, missed cases, and coverage reports before allowing any deterministic check to block a change. Model-generated findings should remain advisory unless a human converts the underlying condition into an approved deterministic rule.</p>
+</section>
+<section id="know-the-boundary" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="know-the-boundary"><span class="header-section-number">3.5</span> Know the boundary</h2>
+<p>This workflow is intentionally limited:</p>
+<ul>
+<li>It reacts to project code changes. Dependency updates, specification changes, and data refreshes need their own triggers and checks.</li>
+<li>It enforces an organizational convention; it does not validate the statistical method or replace independent QC.</li>
+<li>It can identify missing or ambiguous policy, but only the rule owner can resolve it.</li>
+<li>It must run inside an approved environment when code or data are confidential.</li>
+</ul>
+<p>These limits are part of the result. A trustworthy workflow says what it checked, what it did not check, and who must decide what remains.</p>
+</section>
+<section id="summary" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.6</span> Summary</h2>
+<p>Business rules become practical when they are explicit, versioned, testable, and connected to a trigger. For each rule:</p>
+<ol type="1">
+<li>use deterministic tools for facts that can be reproduced;</li>
+<li>use an AI agent for narrow interpretation and evidence assembly;</li>
+<li>send judgment and policy changes to an accountable human; and</li>
+<li>record the decision and the workflow’s coverage.</li>
+</ol>
+<p>That is the reusable AI-first pattern: <strong>rules define expectations, tools check facts, agents explain context, and people decide.</strong></p>
 
 
 </section>
@@ -917,13 +967,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./preface.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./intro-ai-agent.html" class="pagination-link" aria-label="Onboarding an AI agent">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro-ai-agent.html" class="pagination-link" aria-label="Onboarding an AI agent">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./docs-overview.html" class="pagination-link" aria-label="Documentation overview">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Documentation overview</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -932,4 +982,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/principle-overview.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/principle-overview.md" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/workflow-rounding.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/workflow-rounding.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
