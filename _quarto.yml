@@ -37,7 +37,7 @@ book:
   chapters:
     - index.qmd
     - preface.qmd
-    - part: "Principles"
+    - part: "Introduction"
       chapters:
         - ai-first-workflow.qmd
         - principle-overview.md
