@@ -187,6 +187,10 @@ example, not a vendor tutorial or ranking based on marketing claims.
 
 - Prefer synthetic or public data that can be distributed with the book.
 - Never imply that synthetic teaching data are submission-ready clinical data.
+- When synthetic data are paired with a real study artifact, state prominently
+  that the data contain no real participant records and cannot support a
+  conclusion about the actual study. Describe the real artifact as teaching
+  context, and avoid repeating the same disclaimer throughout the example.
 - Make benchmark success criteria explicit during planning, before presenting
   results.
 - Separate deterministic checks from model judgment and record which produced
@@ -201,19 +205,28 @@ example, not a vendor tutorial or ranking based on marketing claims.
 
 ## Writing style
 
-- Use an objective, professional voice. Avoid second-person address, including
-  “you” and “your,” except inside a quoted prompt or source.
+- Use a professional voice for definitions, requirements, and conclusions.
+  Brief scenarios and guided exercises may use “you” or direct questions when
+  placing the reader in a concrete role makes the lesson easier to understand.
+  Return to objective prose after the scenario.
 - Write for Biometrics professionals rather than AI engineers.
 - Use plain, direct language and define AI or software terms on first use.
 - Begin with the clinical workflow problem before introducing technology.
-- Avoid hype, anthropomorphism, vendor marketing language, and unsupported
-  claims.
+- Prefer a recognizable clinical story before an abstract explanation. Retain
+  useful details such as the team role, assignment, protocol, SAP, SOPs, data,
+  and review questions rather than compressing them into a generic task.
+- Use analogies and diagnostic questions to make unfamiliar agent concepts
+  concrete, while keeping actual agent capabilities and human accountability
+  explicit.
+- Avoid hype, vendor marketing language, and unsupported claims.
 - Clearly distinguish agent actions from accountable human decisions.
 - Keep the main narrative focused on requirements, prototypes, evidence, and
   evaluation.
 - Put production engineering details in optional technical callouts or
   “Further technical detail” sections.
 - Use examples and concrete artifacts to explain abstract concepts.
+- State an important limitation clearly and prominently once. Do not dilute it
+  through defensive repetition in adjacent paragraphs.
 - Keep headings descriptive and ensure each section advances the chapter's
   declared purpose.
 
