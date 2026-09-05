@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "AI-First Workflows for Clinical Study Reporting",
     "section": "",
-    "text": "Welcome\nWelcome to AI workflow for clinical study reports.\nThe goal of this book is to demonstrate the SDLC of building and maintain AI-first workflow for clinical trial development.\nThe book focus on showing general principals instead of detail implementations as that highly depends on the organization’s AI strategy.\nWhether you are new to AI-native workflows or already working in clinical reporting, you will find small, reusable examples you can adopt right away, along with patterns and checklists for organizing work for regulatory submission and effective team collaboration.\nThis is a work-in-progress draft.",
+    "text": "Welcome\nWelcome to a practical guide to AI-first workflows for clinical study reports.\nThis book explores how organizations can move from isolated AI adoption toward an AI-native way of working by building AI-first workflows across clinical study reports. In these workflows, an AI agent performs a bounded, repeatable first pass; people define and monitor the process, review the evidence, and remain responsible for decisions.\nThe focus is not a particular model or software stack. Instead, it is on durable principles that teams can adapt to their own technology, governance, and operating environment.\nThe book is written for people who design, perform, review, or govern clinical study reports and want to integrate AI systematically into their work. No prior experience building AI agents is required. Familiarity with clinical study artifacts and review processes will help readers connect the examples to their own work.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#events",
     "title": "AI-First Workflows for Clinical Study Reporting",
     "section": "Events",
-    "text": "Events\n\n\n\nVenue\nType\nDate\nMaterials\n\n\n\n\nDeming Conference\nWorkshop\nTBD 2026-12-07\nTBD",
+    "text": "Events\n\n\n\nVenue\nFormat\nDate\nMaterials\n\n\n\n\nDeming Conference\nWorkshop\nDecember 7, 2026\nTo be announced",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
     ]
@@ -24,7 +24,7 @@
     "href": "01-preface.html",
     "title": "Preface",
     "section": "",
-    "text": "In this book\nThis book is designed for people who are interested in using AI for clinical development. Each part of the book makes certain assumptions about the readers’ background:",
+    "text": "In this book\nThis book is designed for people who are interested in using AI for clinical trial development. Each part of the book makes certain assumptions about the readers’ background:",
     "crumbs": [
       "Preface"
     ]
