@@ -1,57 +1,92 @@
-# AI-first workflow {#sec-ai-first-workflow}
+# AI-first workflows in Biometrics {#sec-ai-first-workflow}
 
 ::: callout-tip
-AI-first workflows are practical building blocks for moving an organization
-toward an AI-native operating model.
+AI adoption adds AI to an existing task. An AI-first workflow redesigns a
+bounded process so an agent can perform structured work under explicit rules,
+evidence requirements, and human decision rights.
 :::
 
-Clinical trial development is already organized as a chain of governed
-workflows. The study protocol informs trial operations and the statistical analysis
-plan (SAP). Data collected in an electronic data capture system moves through
-SDTM and ADaM into tables, listings, and figures (TLFs). Those results support
-the clinical study report and regulatory submission. Every step has inputs,
-rules, handoffs, reviews, and accountable owners.
+Clinical trial development is already organized as a chain of connected
+workflows. The study protocol informs trial operations and the statistical
+analysis plan (SAP). Collected data move through SDTM and ADaM into tables,
+listings, and figures (TLFs). Those results support the clinical study report
+and regulatory submission. Every step has inputs, rules, handoffs, reviews, and
+accountable owners.
 
-AI can do more than accelerate one task. An agent can read across artifacts,
-use tools, execute multiple steps, observe results, and return with evidences or
-recommendations. Using that capability reliably requires a workflow designed for
-human-agent collaboration.
+AI can do more than accelerate one isolated task. An agent can inspect
+artifacts, use tools, execute several steps, observe results, and return
+evidence-backed findings or recommendations. Using that capability reliably
+requires the surrounding workflow to be designed for human-agent
+collaboration.
 
-In this book, an **AI-first workflow** is a repeatable way of working in which
-an AI agent performs a bounded first pass for human-agent collaboration, 
-and people retain responsibility for judgment and approval.
+In this book, an **AI-first workflow** is a bounded, repeatable process designed
+for an AI agent to perform structured work with tools, while explicit
+artifacts, rules, events, benchmarks, and human decision rights govern its
+execution and improvement.
 
-## From AI adoption to AI-native
+## From AI adoption to AI-first
 
-**AI adoption** begins when individuals use AI for isolated tasks inside an
-existing workflow. A person decides when to invoke AI, assembles the context,
-reviews the response, and moves the work forward. This may improve personal
-productivity, but the workflow itself remains unchanged.
+**AI adoption** begins when an individual uses AI for an isolated task inside
+an existing workflow. A person decides when to invoke AI, assembles the
+context, reviews the response, and moves the work forward. This can improve
+personal productivity, but the workflow itself remains unchanged. The
+KEYNOTE-189 demonstration in @sec-intro-ai-agent uses this pattern to show what
+a single prompt can accomplish and why a repeatable workflow needs more than a
+prompt.
 
-AI-first workflow is the practical focus of this book. It does not mean AI performs every
-task or makes final decisions. It means the team considers AI when designing the
-workflow, then assigns each step to the component best suited to it.
+An **AI-first workflow** begins with the work rather than the model. The team
+defines the objective, boundary, evidence, success measures, and decision
+rights, then assigns each step to the component best suited to perform it. AI
+does not need to perform every task or make final decisions.
 
-AI-native is the broader operating model: AI is a normal collaborator,
-documentation is designed for people and agents, and team members increasingly
-orchestrate work rather than execute every step manually. AI-first workflows
-help an organization move in that direction, alongside the necessary
-governance, infrastructure, skills, and culture.
-
-
-| Stage | How work is organized | Clinical example |
+| Characteristic | AI adoption | AI-first workflow |
 |---|---|---|
-| **AI adoption** | AI is added to an existing task | Ask a chatbot to summarize meeting notes |
-| **AI-first** | The workflow is designed for AI to make a structured first pass | Trigger an agent to compare a changed TLF with its SAP requirements |
-| **AI-native** | Human-agent collaboration shapes the operating model | Reusable agents and skills work across data, analysis, reporting, documentation, and QC |
+| **Unit of work** | An isolated task | A bounded, repeatable process |
+| **Invocation** | A person starts a prompt | A defined event or rule starts the work |
+| **Context** | Assembled for the interaction | Supplied through controlled, versioned artifacts |
+| **Output** | A response for a person to interpret | A structured artifact with evidence, coverage, and uncertainty |
+| **Success** | Immediate usefulness | Performance against a defined benchmark |
+| **Continuity** | The next interaction starts largely anew | State and human decisions inform the next run |
+
+## How an AI-first workflow works
+
+An AI-first workflow does not begin and end with a prompt. It connects AI to a
+repeatable process:
+
+> Event -> Task -> Tools and agent -> Evidence -> Human decision ->
+> Recorded state
+
+An event starts the workflow, such as a change to an SAP, dataset, program, or
+output. The task definition states the objective, source artifacts, allowed
+tools, expected result, conditions for stopping, and responsible reviewer.
+
+The workflow gives the agent current, versioned artifacts instead of relying
+on whatever happens to be available in a chat. The agent returns a structured
+finding that states what was checked, the supporting evidence, any uncertainty,
+and what it could not cover. A human reviews the finding, makes the decision,
+and records that decision for the next run.
+
+The design separates three kinds of work:
+
+| Work | Best-suited component |
+|---|---|
+| Apply an exact rule, calculation, or comparison | Deterministic software |
+| Interpret written requirements, trace context, or plan variable steps | AI agent |
+| Exercise domain judgment, approve policy, or accept accountability | Human role |
+
+The simplest capable component should perform each step. An AI agent should
+not replace a deterministic test, and access to a tool should never be confused
+with approval authority. @sec-principle-overview develops the design principles
+that make this division of work inspectable and trustworthy.
 
 ## Human accountability is not optional
 
-In an AI-native team, the human role shifts from manually executing each task to
-orchestrating agents, tools, and human review. The agent can retrieve, compare,
-draft, run approved tools, and monitor routine conditions. The human
-defines the objective, reviews exceptions, challenges the evidence, improves
-the workflow, and remains accountable for the decision.
+In an AI-first workflow, the human role shifts from manually executing every
+step toward defining the work, supervising agents and tools, reviewing
+exceptions, challenging evidence, and improving the workflow. The agent can
+retrieve, compare, draft, run approved tools, and monitor routine conditions.
+The accountable human retains responsibility for the decision and its
+consequences.
 
 This makes three human capabilities especially valuable: systems thinking,
 end-to-end knowledge, and exception handling.
@@ -73,39 +108,9 @@ the evidence behind the decision. An agent cannot be the source of regulatory
 truth or its own approver.
 :::
 
-## How an AI-first workflow works
+## Where AI-first workflows apply in Biometrics
 
-An AI-first workflow does not begin and end with a prompt. It connects AI to a
-repeatable process:
-
-> Event -> Task -> Tools and agent -> Evidence -> Human decision ->
-> Recorded state
-
-An event starts the workflow, such as a change to an SAP, dataset, program, or
-output. The task definition states the goal, source artifacts, allowed tools,
-expected result, conditions for stopping, and responsible reviewer.
-
-The workflow gives the agent current, versioned artifacts instead of relying on
-whatever happens to be available in a chat. The agent returns a structured
-finding that states what it checked, the supporting evidence, any uncertainty,
-and what it could not cover. A human reviews the finding, makes the decision,
-and records that decision for the next run.
-
-The design separates three kinds of work:
-
-| Work | Best component |
-|---|---|
-| Apply an exact rule, calculation, or comparison | Deterministic software |
-| Interpret written requirements, trace context, or plan variable steps | AI agent |
-| Exercise domain knowledge judgement, approve policy, or accept accountability | Human role |
-
-The simplest capable component should do each job. An AI agent should not
-replace a deterministic test and the tool access should never be confused with
-approval authority.
-
-## Where it applies in biometrics
-
-AI-first workflows can support each biometrics pillar without changing who is
+AI-first workflows can support each Biometrics pillar without changing who is
 accountable for the work.
 
 | Pillar | Useful first pass | Human decision |
@@ -122,9 +127,8 @@ expertise and end-to-end knowledge therefore become more important, not less.
 
 An organization does not need to begin with autonomous, end-to-end execution.
 A useful first workflow is small enough to observe closely but valuable enough
-to improve real work. It should have a clear beginning and end, accessible
-source artifacts, a reviewable output, and a named person responsible for the
-decision.
+to improve real work. It has a clear beginning and end, accessible source
+artifacts, a reviewable output, and a named person responsible for the decision.
 
 A workflow is **bounded** when the team can state:
 
@@ -135,14 +139,11 @@ A workflow is **bounded** when the team can state:
 - when it must stop or escalate; and
 - who reviews the result and makes the decision.
 
-Use the following sequence to design the first implementation.
-
-1. **Choose the minimum valuable workflow.**
-2. **Write the task contract.**
-3. **Build the deterministic foundation.**
-4. **Require a reviewable result.**
-5. **Pilot in advisory mode.**
-6. **Expand one boundary at a time.**
+The initial implementation should include a task contract, a deterministic
+foundation wherever exact rules can be encoded, and a reviewable result. It can
+begin in advisory mode and expand one boundary at a time. The applied examples
+develop these implementations through the shared AI-first SDLC rather than
+introducing a separate development sequence for each workflow.
 
 For example, a first workflow for reviewing a changed table could be defined as
 follows:
@@ -159,4 +160,5 @@ follows:
 This workflow is deliberately narrow, but it establishes reusable capabilities:
 artifact retrieval, traceable review, structured findings, escalation, and a
 recorded human decision. Those capabilities become the foundation for broader
-AI-first workflows.
+AI-first workflows and for the AI-first software development lifecycle used by
+the applied examples in this book.

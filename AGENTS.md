@@ -13,7 +13,7 @@ companies. The book should help them:
 - build and evaluate a prototype;
 - communicate effectively with AI engineers throughout planning, development,
   deployment, and monitoring; and
-- use AI with appropriate confidence in a regulated environment.
+- establish a foundation for later regulatory and quality recommendations.
 
 The main objective is to prepare readers to own requirements, benchmarks,
 risks, oversight, and prototypes. Production implementation is useful context,
@@ -33,13 +33,14 @@ The Introduction defines shared concepts once. It should cover:
 - the task contract: objective, inputs, scope, outputs, boundaries, and
   escalation conditions;
 - the principles of trustworthy assistance;
-- the shared AI-native development lifecycle used by the examples; and
-- a dedicated regulatory perspective for AI-assisted work in Biometrics.
+- the shared AI-first software development lifecycle (AI-first SDLC) used by
+  the examples.
 
-Do not place a detailed applied example in the Introduction when it can be a
-lifecycle example chapter. The concepts and task-contract material currently in
-`intro-ai-agent.qmd` belong in the Introduction; its KEYNOTE-189 age-summary
-exercise should become the first applied example.
+The KEYNOTE-189 age-summary exercise in `04-ai-agent.qmd` is an AI-adoption
+demonstration, not an AI-first workflow example. Keep it in the Introduction to
+show what a single Arena.ai prompt can accomplish and to motivate the move from
+a prompt to a governed, repeatable workflow. Do not force this demonstration
+into the shared lifecycle or give it a workflow maturity label.
 
 ### Applied examples
 
@@ -50,18 +51,16 @@ exist to justify them.
 
 Order the current and planned examples by increasing workflow maturity:
 
-1. **Age summary:** a bounded read, compute, and review workflow using the
-   synthetic KEYNOTE-189 teaching data.
-2. **Study-design anti-example:** explain why “study design” as a whole is not a
+1. **Study-design anti-example:** explain why “study design” as a whole is not a
    well-defined AI-first workflow, then reframe it as design parameter ->
    analytical approximation -> simulation confirmation -> design report.
-3. **Rounding:** encode and enforce explicit business rules in a small R
+2. **Rounding:** encode and enforce explicit business rules in a small R
    workflow.
-4. **Agentic R code review:** survey and benchmark mature code-review workflows
+3. **Agentic R code review:** survey and benchmark mature code-review workflows
    in Codex, Claude Code, and GitHub Copilot.
-5. **SAP -> code -> results:** manage changes and traceability across connected
+4. **SAP -> code -> results:** manage changes and traceability across connected
    artifacts.
-6. **YAMAA:** illustrate a governed, self-improving workflow in which approved
+5. **YAMAA:** illustrate a governed, self-improving workflow in which approved
    business rules guide the work and feedback closes the loop.
 
 When adding an example, identify its distinct teaching purpose and place it in
@@ -145,48 +144,24 @@ book-level content map for approval. The map should show each chapter's purpose,
 material to keep, material to move, overlap to remove, and missing content.
 Small local improvements do not require a separate content-map proposal.
 
-The current part names and placeholder chapters are not permanent constraints.
-In particular, reassess `docs-overview.qmd`, `reporting-overview.qmd`, and the
-unlisted `wholegame.md` when preparing the content map. Do not delete their
-unique material without first assigning it a destination or documenting why it
-is no longer needed.
+The current part names are not permanent constraints. Reassess them when enough
+applied examples exist to justify thematic parts.
 
 ## Regulatory perspective
 
-The book provides educational recommendations from a regulatory and quality
-perspective. It must not claim that the book, an example, a model, a vendor, a
-cloud provider, or a workflow is compliant, validated, or approved for GxP use.
+Detailed regulatory and quality recommendations are deferred until the core
+concepts and examples are more mature. Do not require a dedicated regulatory
+chapter or a regulatory section in every example during the current stage of
+development.
 
-Use two layers:
+The FDA warning-letter callout in `02-ai-first.qmd` is an intentional exception.
+Keep it as a concrete illustration that AI output does not transfer human
+responsibility or approval authority.
 
-1. Maintain a dedicated Introduction chapter for the shared regulatory and
-   quality considerations.
-2. Include a concise **Regulatory perspective** section in every example
-   chapter that applies those considerations to the example.
-
-Apply these principles consistently:
-
-- The agent assists; accountable humans retain responsibility for decisions,
-  approvals, and intended use.
-- Existing quality systems and GxP processes continue to govern the work.
-- Controls should be proportionate to intended use, risk, and the consequence
-  of an incorrect result.
-- Delegating work to a vendor or agent does not delegate the responsible
-  organization's accountability.
-- Describe cloud and model choices as deployment options that require
-  organization-specific assessment. Do not call a provider inherently “GxP
-  compliant.”
-- Data-leakage risk can be mitigated through combinations of data minimization,
-  approved internal environments, internally deployed open-weight models,
-  assessed cloud services, contractual controls, access controls, and technical
-  monitoring.
-- Address data classification, confidentiality, retention, provenance,
-  traceability, reproducibility, audit trails, identity, least privilege,
-  separation of duties, vendor oversight, validation or qualification for
-  intended use, versioning, change control, incident handling, business
-  continuity, and ongoing monitoring when relevant.
-- State residual risks, assumptions, and limitations. Mitigation is not a claim
-  that risk has been eliminated.
+Until the deferred topic is developed, do not claim that the book, an example,
+a model, a vendor, a cloud provider, or a workflow is compliant, validated, or
+approved for GxP use. Treat any regulatory expansion as separately scoped
+future work rather than adding it incidentally to unrelated chapters.
 
 ## Special requirements for the code-review survey
 
@@ -303,7 +278,8 @@ assets under `assets/diagrams/`.
 ## Background references
 
 Use these as design inputs, not as prescriptions that override the needs of a
-regulated Biometrics workflow:
+Biometrics workflow. The source titles use “AI-native”; the book's canonical
+term for its lifecycle is **AI-first SDLC**.
 
 - Anthropic, *The AI-Native SDLC Playbook*: six-stage lifecycle, committed
   artifacts, continuous evaluation, and human gates.
