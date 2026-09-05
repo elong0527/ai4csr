@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ai4csr.org/index.html</loc>
-    <lastmod>2026-08-18T12:34:17.414Z</lastmod>
+    <lastmod>2026-09-05T19:44:25.342Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/preface.html</loc>
-    <lastmod>2026-08-18T12:34:17.414Z</lastmod>
+    <loc>https://ai4csr.org/01-preface.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/ai-first-workflow.html</loc>
-    <lastmod>2026-08-18T12:34:17.411Z</lastmod>
+    <loc>https://ai4csr.org/02-ai-first-workflow.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/principle-overview.html</loc>
-    <lastmod>2026-08-18T12:34:17.414Z</lastmod>
+    <loc>https://ai4csr.org/03-principle-overview.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/intro-ai-agent.html</loc>
-    <lastmod>2026-08-18T12:34:17.414Z</lastmod>
+    <loc>https://ai4csr.org/04-intro-ai-agent.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/workflow-rounding.html</loc>
-    <lastmod>2026-08-18T12:34:17.417Z</lastmod>
+    <loc>https://ai4csr.org/05-workflow-rounding.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/docs-overview.html</loc>
-    <lastmod>2026-08-18T12:34:17.413Z</lastmod>
+    <loc>https://ai4csr.org/06-docs-overview.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/reporting-overview.html</loc>
-    <lastmod>2026-08-18T12:34:17.415Z</lastmod>
+    <loc>https://ai4csr.org/07-reporting-overview.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/references.html</loc>
-    <lastmod>2026-08-18T12:34:17.415Z</lastmod>
+    <loc>https://ai4csr.org/08-references.html</loc>
+    <lastmod>2026-09-05T19:44:25.339Z</lastmod>
   </url>
 </urlset>
