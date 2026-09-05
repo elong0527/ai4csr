@@ -50,8 +50,8 @@
     ]
   },
   {
-    "objectID": "02-ai-first-workflow.html",
-    "href": "02-ai-first-workflow.html",
+    "objectID": "02-ai-first.html",
+    "href": "02-ai-first.html",
     "title": "2  AI-first workflow",
     "section": "",
     "text": "2.1 From AI adoption to AI-native\nClinical trial development is already organized as a chain of governed workflows. The study protocol informs trial operations and the statistical analysis plan (SAP). Data collected in an electronic data capture system moves through SDTM and ADaM into tables, listings, and figures (TLFs). Those results support the clinical study report and regulatory submission. Every step has inputs, rules, handoffs, reviews, and accountable owners.\nAI can do more than accelerate one task. An agent can read across artifacts, use tools, execute multiple steps, observe results, and return with evidences or recommendations. Using that capability reliably requires a workflow designed for human-agent collaboration.\nIn this book, an AI-first workflow is a repeatable way of working in which an AI agent performs a bounded first pass for human-agent collaboration, and people retain responsibility for judgment and approval.\nAI adoption begins when individuals use AI for isolated tasks inside an existing workflow. A person decides when to invoke AI, assembles the context, reviews the response, and moves the work forward. This may improve personal productivity, but the workflow itself remains unchanged.\nAI-first workflow is the practical focus of this book. It does not mean AI performs every task or makes final decisions. It means the team considers AI when designing the workflow, then assigns each step to the component best suited to it.\nAI-native is the broader operating model: AI is a normal collaborator, documentation is designed for people and agents, and team members increasingly orchestrate work rather than execute every step manually. AI-first workflows help an organization move in that direction, alongside the necessary governance, infrastructure, skills, and culture.",
@@ -61,8 +61,8 @@
     ]
   },
   {
-    "objectID": "02-ai-first-workflow.html#from-ai-adoption-to-ai-native",
-    "href": "02-ai-first-workflow.html#from-ai-adoption-to-ai-native",
+    "objectID": "02-ai-first.html#from-ai-adoption-to-ai-native",
+    "href": "02-ai-first.html#from-ai-adoption-to-ai-native",
     "title": "2  AI-first workflow",
     "section": "",
     "text": "Stage\nHow work is organized\nClinical example\n\n\n\n\nAI adoption\nAI is added to an existing task\nAsk a chatbot to summarize meeting notes\n\n\nAI-first\nThe workflow is designed for AI to make a structured first pass\nTrigger an agent to compare a changed TLF with its SAP requirements\n\n\nAI-native\nHuman-agent collaboration shapes the operating model\nReusable agents and skills work across data, analysis, reporting, documentation, and QC",
@@ -72,8 +72,8 @@
     ]
   },
   {
-    "objectID": "02-ai-first-workflow.html#human-accountability-is-not-optional",
-    "href": "02-ai-first-workflow.html#human-accountability-is-not-optional",
+    "objectID": "02-ai-first.html#human-accountability-is-not-optional",
+    "href": "02-ai-first.html#human-accountability-is-not-optional",
     "title": "2  AI-first workflow",
     "section": "2.2 Human accountability is not optional",
     "text": "2.2 Human accountability is not optional\nIn an AI-native team, the human role shifts from manually executing each task to orchestrating agents, tools, and human review. The agent can retrieve, compare, draft, run approved tools, and monitor routine conditions. The human defines the objective, reviews exceptions, challenges the evidence, improves the workflow, and remains accountable for the decision.\nThis makes three human capabilities especially valuable: systems thinking, end-to-end knowledge, and exception handling.\n\n\n\n\n\n\nWarningAI output is not regulatory clearance\n\n\n\nAn April 2026 FDA warning letter to Purolea Cosmetics Lab described a drug manufacturer that used AI agents to create specifications, procedures, and production records. FDA found that the firm had not adequately reviewed the generated documents for accuracy and CGMP compliance. The firm also reportedly relied on the agent’s failure to mention a requirement as a reason for not knowing that the requirement applied.\nThe letter concerns pharmaceutical manufacturing and CGMP, not clinical study reporting. Its workflow lesson still transfers: AI-generated content remains a draft until an authorized person verifies and approves it. The workflow must check authoritative requirements, disclose what it did not cover, and preserve the evidence behind the decision. An agent cannot be the source of regulatory truth or its own approver.",
@@ -83,8 +83,8 @@
     ]
   },
   {
-    "objectID": "02-ai-first-workflow.html#how-an-ai-first-workflow-works",
-    "href": "02-ai-first-workflow.html#how-an-ai-first-workflow-works",
+    "objectID": "02-ai-first.html#how-an-ai-first-workflow-works",
+    "href": "02-ai-first.html#how-an-ai-first-workflow-works",
     "title": "2  AI-first workflow",
     "section": "2.3 How an AI-first workflow works",
     "text": "2.3 How an AI-first workflow works\nAn AI-first workflow does not begin and end with a prompt. It connects AI to a repeatable process:\n\nEvent -&gt; Task -&gt; Tools and agent -&gt; Evidence -&gt; Human decision -&gt; Recorded state\n\nAn event starts the workflow, such as a change to an SAP, dataset, program, or output. The task definition states the goal, source artifacts, allowed tools, expected result, conditions for stopping, and responsible reviewer.\nThe workflow gives the agent current, versioned artifacts instead of relying on whatever happens to be available in a chat. The agent returns a structured finding that states what it checked, the supporting evidence, any uncertainty, and what it could not cover. A human reviews the finding, makes the decision, and records that decision for the next run.\nThe design separates three kinds of work:\n\n\n\n\n\n\n\nWork\nBest component\n\n\n\n\nApply an exact rule, calculation, or comparison\nDeterministic software\n\n\nInterpret written requirements, trace context, or plan variable steps\nAI agent\n\n\nExercise domain knowledge judgement, approve policy, or accept accountability\nHuman role\n\n\n\nThe simplest capable component should do each job. An AI agent should not replace a deterministic test and the tool access should never be confused with approval authority.",
@@ -94,8 +94,8 @@
     ]
   },
   {
-    "objectID": "02-ai-first-workflow.html#where-it-applies-in-biometrics",
-    "href": "02-ai-first-workflow.html#where-it-applies-in-biometrics",
+    "objectID": "02-ai-first.html#where-it-applies-in-biometrics",
+    "href": "02-ai-first.html#where-it-applies-in-biometrics",
     "title": "2  AI-first workflow",
     "section": "2.4 Where it applies in biometrics",
     "text": "2.4 Where it applies in biometrics\nAI-first workflows can support each biometrics pillar without changing who is accountable for the work.\n\n\n\n\n\n\n\n\nPillar\nUseful first pass\nHuman decision\n\n\n\n\nData management\nCompare edit checks, draft queries, trace unresolved issues\nApprove queries and database readiness\n\n\nStatistical science\nFind inconsistencies across the protocol and SAP, assemble evidence, draft questions\nApprove design, methods, and interpretation\n\n\nAnalysis and reporting\nCheck traceability, execute code, compare TLFs, draft findings\nValidate results and approve deliverables\n\n\n\nMany valuable workflows cross these boundaries. Reviewing a TLF may require the SAP, ADaM metadata, executed code, rendered output, and prior decisions. Domain expertise and end-to-end knowledge therefore become more important, not less.",
@@ -105,8 +105,8 @@
     ]
   },
   {
-    "objectID": "02-ai-first-workflow.html#start-with-one-bounded-workflow",
-    "href": "02-ai-first-workflow.html#start-with-one-bounded-workflow",
+    "objectID": "02-ai-first.html#start-with-one-bounded-workflow",
+    "href": "02-ai-first.html#start-with-one-bounded-workflow",
     "title": "2  AI-first workflow",
     "section": "2.5 Start with one bounded workflow",
     "text": "2.5 Start with one bounded workflow\nAn organization does not need to begin with autonomous, end-to-end execution. A useful first workflow is small enough to observe closely but valuable enough to improve real work. It should have a clear beginning and end, accessible source artifacts, a reviewable output, and a named person responsible for the decision.\nA workflow is bounded when the team can state:\n\nwhat event starts it;\nwhich artifacts and tools it may use;\nwhich actions the agent may take;\nwhat output it must return;\nwhen it must stop or escalate; and\nwho reviews the result and makes the decision.\n\nUse the following sequence to design the first implementation.\n\nChoose the minimum valuable workflow.\nWrite the task contract.\nBuild the deterministic foundation.\nRequire a reviewable result.\nPilot in advisory mode.\nExpand one boundary at a time.\n\nFor example, a first workflow for reviewing a changed table could be defined as follows:\n\n\n\n\n\n\n\nElement\nDefinition\n\n\n\n\nTrigger\nA pull request changes a table program or rendered output\n\n\nInputs\nCurrent SAP, output specification, analysis metadata, source code, and rendered table\n\n\nAgent task\nCompare the change with the requirements and identify inconsistencies or missing evidence\n\n\nRequired output\nStructured findings with source references, coverage, uncertainty, and recommended follow-up\n\n\nStop conditions\nA required artifact is missing, versions conflict, or the finding requires statistical judgment\n\n\nHuman decision\nThe accountable reviewer accepts, rejects, or investigates each finding\n\n\n\nThis workflow is deliberately narrow, but it establishes reusable capabilities: artifact retrieval, traceable review, structured findings, escalation, and a recorded human decision. Those capabilities become the foundation for broader AI-first workflows.",
@@ -116,8 +116,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html",
-    "href": "03-principle-overview.html",
+    "objectID": "03-principle.html",
+    "href": "03-principle.html",
     "title": "3  Principles overview",
     "section": "",
     "text": "3.1 What is an AI-first workflow?\nThis chapter defines the principles for designing an AI-first clinical study workflow.\nThe goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence-backed findings, and ask humans to make accountable decisions.\nAn AI-first workflow represents work as inspectable artifacts, tracks explicit state, triggers agent action through events and rules, grounds reasoning in tools and evidence, and keeps humans accountable for judgment.\nIn this book, the agent is an independent reviewer assistant.\nIt can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.",
@@ -127,8 +127,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#root-principle-trustworthy-assistance",
-    "href": "03-principle-overview.html#root-principle-trustworthy-assistance",
+    "objectID": "03-principle.html#root-principle-trustworthy-assistance",
+    "href": "03-principle.html#root-principle-trustworthy-assistance",
     "title": "3  Principles overview",
     "section": "3.2 Root principle: Trustworthy assistance",
     "text": "3.2 Root principle: Trustworthy assistance\nThe first principle of an AI-first clinical workflow is trustworthy assistance.\nTrustworthy assistance means the agent’s work can be inspected, repeated, challenged, and reviewed. The agent should not rely on hidden memory, unsupported claims, or vague reasoning. It should work from visible artifacts, preserve explicit state, act through defined events and rules, use tools to gather evidence, and escalate judgment to accountable humans.\nThese principles do not replace organizational validation, quality systems, access control, audit trail requirements, or regulatory accountability. They describe how to design the working pattern so AI assistance remains inspectable and reviewable.\nThe remaining principles describe what trustworthy assistance requires in practice.\n\nA workflow is trustworthy when its inputs are visible, its actions are traceable, its findings are evidence-backed, and its limits are clear.",
@@ -138,8 +138,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#principle-1-inspectable-artifacts",
-    "href": "03-principle-overview.html#principle-1-inspectable-artifacts",
+    "objectID": "03-principle.html#principle-1-inspectable-artifacts",
+    "href": "03-principle.html#principle-1-inspectable-artifacts",
     "title": "3  Principles overview",
     "section": "3.3 Principle 1: Inspectable artifacts",
     "text": "3.3 Principle 1: Inspectable artifacts\nTrust requires the agent and humans to inspect the same source materials.\nThe workflow should use artifacts that humans and AI agents can inspect. Artifacts should be readable, structured where possible, versioned, citable, and diffable.\nExamples:\n\nSAP sections should be searchable and citable.\nADaM metadata should expose dataset names, variable names, labels, types, codelists, and analysis flags.\nTLF outputs should have stable table IDs, titles, footnotes, and source references.\nFindings should be structured records, not only narrative comments.\n\n\nIf the agent cannot inspect the work, it cannot reliably help with the work.",
@@ -149,8 +149,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#principle-2-explicit-state",
-    "href": "03-principle-overview.html#principle-2-explicit-state",
+    "objectID": "03-principle.html#principle-2-explicit-state",
+    "href": "03-principle.html#principle-2-explicit-state",
     "title": "3  Principles overview",
     "section": "3.4 Principle 2: Explicit state",
     "text": "3.4 Principle 2: Explicit state\nTrust requires knowing what changed, what was checked, what was decided, and what remains unresolved.\nThe workflow should remember through artifacts, not through chat.\nState should show:\n\nwhich artifact versions are current;\nwhat changed;\nwhat was checked;\nwhat findings were produced;\nwhat humans decided and why;\nwhat remains unresolved.\n\nThis matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review. With explicit state, the workflow can report which findings are new, repeated, fixed, acknowledged, or still open.\n\nThe workflow state should be visible, reusable, and reviewable.",
@@ -160,8 +160,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#principle-3-events-and-rules",
-    "href": "03-principle-overview.html#principle-3-events-and-rules",
+    "objectID": "03-principle.html#principle-3-events-and-rules",
+    "href": "03-principle.html#principle-3-events-and-rules",
     "title": "3  Principles overview",
     "section": "3.5 Principle 3: Events and rules",
     "text": "3.5 Principle 3: Events and rules\nTrust requires predictable triggers, not random or purely chat-driven action.\nThe workflow should not depend only on manual prompting.\nAn event says something changed. A rule decides what the agent should do next.\n\n\n\nEvent\nRule\n\n\n\n\nSAP section updated\nrerun affected SAP-to-TLF checks\n\n\nADaM metadata changed\nrerun checks using changed variables\n\n\nADaM dataset refreshed\nrerun affected population and value checks\n\n\nTLF output regenerated\nrerun affected TLF checks\n\n\nHuman asks for recheck\nrun the requested review\n\n\nAnother AI agent changes a deliverable\nverify downstream impact\n\n\n\nWithout explicit triggers, review coverage depends on who remembered to ask. Events and rules make the workflow easier to repeat, explain, and audit.\n\nEvents trigger attention; rules trigger action.",
@@ -171,8 +171,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#principle-4-tools-and-evidence",
-    "href": "03-principle-overview.html#principle-4-tools-and-evidence",
+    "objectID": "03-principle.html#principle-4-tools-and-evidence",
+    "href": "03-principle.html#principle-4-tools-and-evidence",
     "title": "3  Principles overview",
     "section": "3.6 Principle 4: Tools and evidence",
     "text": "3.6 Principle 4: Tools and evidence\nTrust requires findings grounded in real SAP, ADaM, and TLF artifacts, not model memory or guesses.\nThe LLM should not guess what is in the study artifacts. Tools should expose the real content.\nThe LLM reasons. Tools observe. Evidence justifies.\nExample tools:\n\nparse_sap_requirements()\ninspect_adam_metadata()\nquery_adam_population()\nextract_tlf_metadata()\ncompare_expected_actual()\n\nA good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it. A finding without traceable evidence is not a finding; it is an unsupported opinion.\n\nNo finding without evidence.",
@@ -182,8 +182,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#principle-5-human-judgment",
-    "href": "03-principle-overview.html#principle-5-human-judgment",
+    "objectID": "03-principle.html#principle-5-human-judgment",
+    "href": "03-principle.html#principle-5-human-judgment",
     "title": "3  Principles overview",
     "section": "3.7 Principle 5: Human judgment",
     "text": "3.7 Principle 5: Human judgment\nTrust requires clear accountability.\nAI-first does not mean AI-only.\nThe agent may identify discrepancies, assemble evidence, classify likely severity, and recommend who should review the issue. The accountable human role decides whether the finding is valid, whether the artifact should change, and how the decision should be documented.\nThe agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.\n\nAgents prepare evidence; humans make accountable decisions.",
@@ -193,8 +193,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#applying-the-principles-to-sap-adam-tlf-review",
-    "href": "03-principle-overview.html#applying-the-principles-to-sap-adam-tlf-review",
+    "objectID": "03-principle.html#applying-the-principles-to-sap-adam-tlf-review",
+    "href": "03-principle.html#applying-the-principles-to-sap-adam-tlf-review",
     "title": "3  Principles overview",
     "section": "3.8 Applying the principles to SAP → ADaM → TLF review",
     "text": "3.8 Applying the principles to SAP → ADaM → TLF review\nThe running example is an AI agent that reviews whether selected CSR TLF outputs derived from ADaM datasets follow the SAP.\n\n3.8.1 Workflow objective\nVerify consistency across SAP requirements, ADaM metadata and data, and TLF outputs before database lock.\n\n\n3.8.2 Agent role\nThe agent is an independent reviewer assistant for clinical statisticians, statistical programmers, programming leads, and study reviewers.\n\n\n3.8.3 Inputs\n\nSAP version;\nADaM metadata snapshot;\nADaM dataset snapshot;\nTLF package;\nworkflow rules;\nprior findings and decisions, if available.\n\n\n\n3.8.4 Example checks\n\n\n\n\n\n\n\nCheck\nEvidence\n\n\n\n\nSAP population exists in ADaM\npopulation flag in ADSL or relevant dataset\n\n\nSAP population definition is applied consistently\nSAP population definition, ADaM flags, and TLF population counts\n\n\nSAP endpoint variable exists\nvariable name, label, type, and codelist in ADaM metadata\n\n\nTreatment group labels are consistent\nSAP or TLF display labels and ADaM treatment variables\n\n\nTLF title matches intended display\ntitle and subtitle from TLF output and SAP reference\n\n\nTLF N values are explainable\ncounts from ADaM population rules\n\n\nFootnotes match analysis method\nfootnote text and SAP method section\n\n\nMissing or imputed values are handled as specified\nSAP method section, ADaM derivation metadata, and TLF footnotes\n\n\nRerun scope is justified\nevent and rule that triggered the run\n\n\n\n\n\n3.8.5 Outputs\n\nevidence matrix;\nfindings grouped by severity;\nescalation list by reviewer role;\ndelta report showing fixed, new, repeated, and acknowledged findings.\n\n\n\n3.8.6 When the workflow should stop\nThe agent should not continue as if the review is complete when a required artifact is missing, SAP language is ambiguous, metadata cannot be inspected, or evidence conflicts across sources.\nIn those cases, the correct output is an escalation or limited finding, not a confident conclusion.",
@@ -204,8 +204,8 @@
     ]
   },
   {
-    "objectID": "03-principle-overview.html#summary",
-    "href": "03-principle-overview.html#summary",
+    "objectID": "03-principle.html#summary",
+    "href": "03-principle.html#summary",
     "title": "3  Principles overview",
     "section": "3.9 Summary",
     "text": "3.9 Summary\nThe root principle is trustworthy assistance: the agent’s work must be inspectable, repeatable, evidence-backed, and accountable.\nThe five derived principles are:\n\nInspectable artifacts: make work readable, structured, versioned, citable, and diffable.\nExplicit state: remember what changed, what was checked, what was decided, and what remains unresolved.\nEvents and rules: trigger the agent when work changes and define what action is needed.\nTools and evidence: inspect reality with tools and require evidence for findings.\nHuman judgment: agents prepare the review; humans make accountable decisions.\n\nTogether, these principles keep AI-first clinical study workflows simple, reviewable, and trustworthy.",
@@ -215,8 +215,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html",
-    "href": "04-intro-ai-agent.html",
+    "objectID": "04-ai-agent.html",
+    "href": "04-ai-agent.html",
     "title": "4  Onboarding an AI agent",
     "section": "",
     "text": "4.1 Day 1 onboarding scenario\nImagine that a new team member has joined. They recently finished school and understand the basics of clinical trials. They know what a protocol and statistical analysis plan (SAP) are, but they do not yet know standard operating procedures (SOPs), computing environment, folder structure, naming conventions, or review habits of your organization.\nFor their first assignment, you choose a simple task:\nThe task is deliberately small. You are onboarding them more on the workflow than the tool. Can the new colleague find and use the relevant documents? Can they identify the correct analysis population, handle missing values, notice protocol deviations, and report findings and assumptions?\nNow replace “new colleague” with “AI agent.” Almost everything you would set up for a person still applies, but each item has to become something written down rather than something learned by sitting nearby.\nEvery row on the left is something a team handles informally for a person. On the right, it has to exist as an artifact that can be inspected.\nTechnical questions like which model to use, how much context it can take, how to keep responses consistent across sessions, or how to design prompts that reduce hallucinations matter a lot. But those are implementation choices. A better model can improve the answer, but only the workflow tells you whether the answer is acceptable.",
@@ -226,8 +226,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#day-1-onboarding-scenario",
-    "href": "04-intro-ai-agent.html#day-1-onboarding-scenario",
+    "objectID": "04-ai-agent.html#day-1-onboarding-scenario",
+    "href": "04-ai-agent.html#day-1-onboarding-scenario",
     "title": "4  Onboarding an AI agent",
     "section": "",
     "text": "Summarize the age distribution in a clinical trial’s ADSL dataset.\n\n\n\n\n\n\n\n\n\n\nFor a new colleague\nFor an agent\n\n\n\n\nOrientation and SOP training\nWritten instructions the agent reads on every run\n\n\n“Ask me if you are not sure”\nExplicit rules for when to stop and escalate\n\n\nShadowing and code review\nA record of what it read, ran, and produced\n\n\nAn access request for the study drive\nA bounded set of files, tools, and destinations\n\n\nTheir manager signs off\nA named person accountable for the result",
@@ -237,8 +237,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#what-an-ai-agent-actually-is",
-    "href": "04-intro-ai-agent.html#what-an-ai-agent-actually-is",
+    "objectID": "04-ai-agent.html#what-an-ai-agent-actually-is",
+    "href": "04-ai-agent.html#what-an-ai-agent-actually-is",
     "title": "4  Onboarding an AI agent",
     "section": "4.2 What an AI agent actually is",
     "text": "4.2 What an AI agent actually is\nA large language model (LLM) generates a response from the text it is given. Think of a very well-read colleague who answers only from what is placed in front of them, cannot get up to fetch a file, and cannot run code. Everything the model knows about your task has to arrive as text.\nThat text is called the context: your request, plus any documents, instructions, and previous results the system chose to include. A chatbot stops here. It talks; it does not act.\nAn AI agent adds a controlled loop around the model so it can act:\n\ninterpret the task and choose a next step;\nuse an allowed tool, such as a document reader or R;\nobserve the tool result and update the plan;\nrepeat until the task is complete, blocked, or requires approval.\n\nFor the age-summary task, that loop looks like: download the protocol, read the population definition, load the CSV, write R code, run it, read the output, notice a 17-year-old subject, and write up the result with a question attached.\nThe pieces that make this possible are easier to understand by what they do:\n\n\n\n\n\n\n\nComponent\nWhat it does\n\n\n\n\nLLM\nInterprets evidence, plans steps, drafts an explanation\n\n\nHarness\nAssembles context, calls the model, invokes tools, records events, and controls the loop\n\n\nModel gateway\nRoutes model requests and may apply authentication, logging, or policy controls\n\n\nTool interfaces\nPerform observable actions, such as reading a PDF, querying data, or running R\n\n\nWorking state\nHolds the current messages, plan, tool results, and unresolved questions for this session\n\n\nAccessible environment\nDefines the files, commands, APIs, network destinations, and credentials the agent can reach\n\n\n\n\n\n\n\n\n\nFigure 4.1: A general AI-agent architecture. The harness coordinates the model, working state, and tool interfaces. The accessible environment limits which resources the agent can reach.\n\n\n\nTwo distinctions matter in practice:\n\nWorking state is not project memory. Some systems retain a session; others do not. What the agent “remembers” from last Tuesday is not a governed record. Durable rules and decisions should live in artifacts that both people and agents can inspect.\nTool access is not authority. The ability to edit a file or call an API does not mean the agent should do so without a workflow rule or human approval.\n\n\n4.2.1 What an agent can still get wrong\nAdding tools does not make a model reliable by default. The model produces the most plausible continuation of the text it was given, and plausible is not the same as correct. An agent can still:\n\nskip a governing document or cite a section that does not support its claim;\nresolve an ambiguity silently and present the assumption as a fact;\ndraft code without executing it, or misread the output of a tool;\ntreat an instruction embedded in an untrusted document as if it came from the user or workflow;\nexpose data through a model request, log, temporary file, or network-enabled tool;\ntake a different path, and report different numbers, when the same request is run twice; and\nchange behavior again after a model, prompt, tool, or artifact is updated.\n\nThese are expected failure modes to design for, not unusual exceptions. Bounded access limits their impact; recorded evidence and human review make them easier to detect.",
@@ -248,8 +248,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#make-the-task-contract-explicit",
-    "href": "04-intro-ai-agent.html#make-the-task-contract-explicit",
+    "objectID": "04-ai-agent.html#make-the-task-contract-explicit",
+    "href": "04-ai-agent.html#make-the-task-contract-explicit",
     "title": "4  Onboarding an AI agent",
     "section": "4.3 Make the task contract explicit",
     "text": "4.3 Make the task contract explicit\nPeople learn local conventions by observation and correction. An agent does not reliably absorb those conventions unless the workflow records them and supplies them again when needed. Important expectations therefore belong in inspectable instructions, not in a team member’s memory or an old chat session.\nA useful way to think about it: the task contract is a small SAP for the delegation itself. It has six parts:\n\n\n\n\n\n\n\n\nPart\nQuestion to answer\nExample for this task\n\n\n\n\nObjective\nWhat should be produced?\nAn age summary and a short review note\n\n\nInputs\nWhich artifact versions govern the work?\nProtocol version and ADSL snapshot\n\n\nScope\nWhich population and variables are relevant?\nTo be confirmed from the protocol\n\n\nOutput\nWhat must the response contain?\nResults, executable code, sources, assumptions, and open questions\n\n\nBoundaries\nWhich data, tools, and destinations are allowed?\nRead-only access in an approved environment\n\n\nEscalation\nWhen should the agent stop or ask?\nMissing artifact, ambiguous population, conflicting evidence, or suspected data issue\n\n\n\nIn a production workflow, make these items as explicit as the task permits, so a human can review them. Ambiguity is not a test of intelligence when the cost of a wrong assumption is high.\nThe exercise later in this chapter deliberately breaks that rule: it leaves the population and summary statistics unspecified. That makes the agent’s assumptions visible in a low-risk setting. It is a teaching device, not a recommended pattern for a production request.\n\n\n\n\n\n\nNote\n\n\n\nAn instruction to “follow the SOP” is useful only if the agent can access the applicable SOP and identify its version. If a required document is unavailable, the correct behavior is to report the gap and stop the affected work.",
@@ -259,8 +259,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#sec-try-it-yourself",
-    "href": "04-intro-ai-agent.html#sec-try-it-yourself",
+    "objectID": "04-ai-agent.html#sec-try-it-yourself",
+    "href": "04-ai-agent.html#sec-try-it-yourself",
     "title": "4  Onboarding an AI agent",
     "section": "4.4 Try it yourself",
     "text": "4.4 Try it yourself\nThe exercise below runs the age-summary task end to end. Running it takes only a few minutes; the value is in the review that follows. It is deliberately a read-and-compute assignment: the agent may read the public artifacts and run code, but it should not change data or make a study decision.\n\n4.4.1 Step 1: Get the materials\nThe exercise uses two public artifacts:\n\n\n\nArtifact\nPurpose\n\n\n\n\nKEYNOTE-189 protocol\nProvides the entry criteria, analysis-population definitions, and demographic-summary guidance\n\n\nkn189-synthetic-adsl.csv\nProvides a small, synthetic ADSL-style teaching extract\n\n\n\nThe extract mimics an in-progress data snapshot of 28 subjects. It contains three planted problems:\n\nthree enrolled subjects who have not been randomized;\nmissing AGE values;\none randomized subject whose recorded age is below the protocol threshold.\n\nIt is a teaching extract, not a submission-ready ADaM dataset. Its simplified structure is another reason to state what can and cannot be concluded from it.\n\n\n4.4.2 Step 2: Choose an appropriate agent\nUse an approved agent that can read a PDF and CSV file and execute R. One public option is Arena Agent, which displays tool activity in the browser so you can watch each step. Availability and features of hosted tools can change; the exercise does not depend on this particular product.\n\n\n\n\n\n\nWarning\n\n\n\nThe linked dataset is safe for this exercise because it is synthetic and already public. Do not upload confidential or proprietary data to a hosted agent unless that specific environment and data flow have been approved by your organization.\n\n\n\n\n4.4.3 Step 3: Send the request\nGive the agent the following request, without supplying the answer:\nBased on the KEYNOTE-189 study protocol, summarize the age distribution in the data.\n\nProtocol:\nhttps://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf\n\nData:\nhttps://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv\n\nShow the results, the R code, and questions.\n\nUse only these two documents. Do not search the web for published results of this trial.\nThe last instruction matters. KEYNOTE-189 is a published trial, so an agent that searches instead of reading can return demographics from online information and never open your dataset at all.\n\n\n4.4.4 Step 4: Watch the process, not only the answer\nSome things are visible only while the agent works, so watch the tool activity instead of waiting for the final text:\n\nDid it open the protocol and the CSV, or answer from published knowledge of the trial?\nDid it execute code, or only display code that looks plausible?\nWhere did it pause, backtrack, or retry?\n\nThen send the same request a second time. The agent may take a different route and may report different numbers. Seeing that once is the fastest way to understand why the review below examines evidence rather than prose.",
@@ -270,8 +270,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#review-the-result",
-    "href": "04-intro-ai-agent.html#review-the-result",
+    "objectID": "04-ai-agent.html#review-the-result",
+    "href": "04-ai-agent.html#review-the-result",
     "title": "4  Onboarding an AI agent",
     "section": "4.5 Review the result",
     "text": "4.5 Review the result\nReviewing an agent means checking its evidence and actions, not asking whether its prose sounds confident. It is closer to reviewing an independent QC program than to reading a memo. Use these five checks in order:\n\n\n\n\n\n\n\nCheck\nThe question it answers\n\n\n\n\n1. Sources\nDid it read the right documents?\n\n\n2. Scope and assumptions\nDoes it say what it decided on your behalf?\n\n\n3. Reproducible calculations\nDid the reported numbers come from code that ran?\n\n\n4. Exceptions and open questions\nDid it surface what it could not resolve?\n\n\n5. Trail and data boundary\nCan the work be reconstructed, and did data stay put?\n\n\n\n\n4.5.1 1. Sources\nAsk:\n\nWhich artifact versions and sections did you use? Show the evidence for each analysis rule.\n\nFor this task, a sound response should find at least three pieces of protocol evidence:\n\nSection 5.1.2, criterion 6 sets the minimum age at 18 years;\nSection 8.5.1 defines the intention-to-treat (ITT) population as all randomized subjects;\nSection 8.6.3 says demographic variables such as age are summarized by treatment using descriptive statistics or categorical tables.\n\nA citation shows where a claim came from. It does not prove that the agent interpreted the claim correctly, so the next checks still matter.\n\n\n4.5.2 2. Scope and assumptions\nAsk:\n\nWhich subjects and treatment variable did you use, and which choices remain assumptions?\n\nThe original request does not identify an analysis population or say whether the summary should be overall or by treatment. The protocol makes ITT a reasonable choice for a randomized-subject summary, but it does not remove every ambiguity from the request. A good response states its choice and asks for confirmation.\n\n\n4.5.3 3. Reproducible calculations\nAsk:\n\nShow the exact code that produced the reported numbers. How did you handle missing values and calculate quartiles?\n\nRun the code in the approved environment. Confirm that the executed filter, missing-value handling, and statistical functions match the written method. Generated code that was never run is not reproducible evidence.\nFor reference, these are the results for two possible populations:\n\n\n\nStatistic\nITT (ITTFL == \"Y\")\nAll enrolled (ENRLFL == \"Y\")\n\n\n\n\nTotal subjects\n25\n28\n\n\nNonmissing AGE\n24\n26\n\n\nMissing AGE\n1\n2\n\n\nMean\n50.58\n51.46\n\n\nStandard deviation\n14.97\n14.73\n\n\nQ1\n41.25\n42.50\n\n\nMedian\n51.00\n52.50\n\n\nQ3\n61.25\n61.75\n\n\nMinimum\n17\n17\n\n\nMaximum\n76\n76\n\n\n\nThe table uses R’s default sample-quantile method (type = 7). Quartiles are method-dependent: the default SAS definition gives Q1 = 40.50 and Q3 = 61.50 for the same ITT records. Neither method should be substituted silently for the other. State the software and method, then compare results calculated with the same definition.\n\n\n\n\n\n\nNoteReference R code\n\n\n\n\n\ndata_url &lt;- paste0(\n  \"https://raw.githubusercontent.com/elong0527/ai4csr/\",\n  \"refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv\"\n)\n\nadsl &lt;- read.csv(\n  data_url,\n  na.strings = c(\"\", \"NA\")\n)\n\nsummarize_age &lt;- function(data) {\n  age &lt;- data$AGE\n\n  c(\n    total = length(age),\n    nonmissing = sum(!is.na(age)),\n    missing = sum(is.na(age)),\n    mean = mean(age, na.rm = TRUE),\n    sd = sd(age, na.rm = TRUE),\n    q1 = unname(quantile(age, 0.25, na.rm = TRUE, type = 7)),\n    median = median(age, na.rm = TRUE),\n    q3 = unname(quantile(age, 0.75, na.rm = TRUE, type = 7)),\n    minimum = min(age, na.rm = TRUE),\n    maximum = max(age, na.rm = TRUE)\n  )\n}\n\nsummarize_age(subset(adsl, ITTFL == \"Y\"))\nsummarize_age(subset(adsl, ENRLFL == \"Y\"))\n\n\n\n\n\n4.5.4 4. Exceptions and open questions\nAsk:\n\nWhat looked incomplete, inconsistent, or out of scope? What did you do about it?\n\nThe agent should report at least these observations:\n\nthree enrolled subjects have ITTFL == \"N\" and no treatment value;\ntwo subjects have missing AGE, one of them inside the ITT population; and\nsubject KN189-103-025 is randomized with AGE == 17, below the protocol’s minimum age.\n\nThe 17-year-old subject illustrates the difference between analysis and escalation. If ITT is used, the subject remains in the summary because ITT includes all randomized subjects. The apparent protocol deviation is reported for human review; it is not quietly “fixed” by deleting the record. An agent that drops the record and reports a clean mean of 52.04 has produced the most dangerous kind of answer: correct-looking and wrong.\nUseful open questions include:\n\nShould the requested summary use ITT, all enrolled subjects, or another population defined in a study specification?\nIs an overall summary sufficient, or is a by-treatment display required?\nIs the missing or underage value a source-data issue, a derivation issue, or a confirmed protocol deviation?\n\nAn unresolved question is not a failure. Hiding an unresolved choice behind a confident answer is.\n\n\n4.5.5 5. Trail and data boundary\nAsk:\n\nWhich files did you open, which commands did you run, and what data left the approved environment?\n\nTreat the agent’s narrative as a claim. The stronger evidence is the harness or platform record showing tool calls, command output, approvals, errors, and data transfers. If the platform cannot provide enough evidence to reconstruct the work, record that as a workflow gap.\nA correct mean does not demonstrate that the process is acceptable. Compare the observed trail with your requirements for access control, audit trails, software qualification or validation, reproducibility, and review.\n\n\n4.5.6 When a check fails\nA failed check is usually information about the request, not a verdict on the agent. If the summary quietly excluded the underage subject, the request never said what to do with an apparent protocol deviation. If the population is wrong, the request never named one. The productive response is to supply the missing part of the task contract and run the task again, not to argue with the model or to accept a second answer that merely sounds more careful.\nSome gaps cannot be closed by a better request. If the platform cannot show which files were opened and which commands ran, no wording will produce that evidence. Record it as a workflow gap and decide whether the task belongs on that platform at all.",
@@ -281,8 +281,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#keep-raw-data-separate-when-possible",
-    "href": "04-intro-ai-agent.html#keep-raw-data-separate-when-possible",
+    "objectID": "04-ai-agent.html#keep-raw-data-separate-when-possible",
+    "href": "04-ai-agent.html#keep-raw-data-separate-when-possible",
     "title": "4  Onboarding an AI agent",
     "section": "4.6 Keep raw data separate when possible",
     "text": "4.6 Keep raw data separate when possible\nThe model often does not need subject-level records. Statistical software can process raw data inside a controlled environment and return only the information needed for reasoning or reporting:\nRaw ADSL -&gt; controlled R/SAS/Python calculation -&gt; aggregate result -&gt; LLM\nThe exercise above does not follow this pattern, which is worth noticing. The request hands the agent a link to the CSV, so the agent will most likely read all 28 records into its context before computing anything. That is acceptable here because the extract is small, synthetic, and already public. With a real ADSL snapshot it would not be: the data should stay in the controlled environment, and only the summary should reach the model.\nThis pattern applies two useful controls:\n\nLeast privilege: the agent can reach only the files, commands, network destinations, and credentials needed for the task.\nData minimization: the model receives only the fields or aggregates needed for its role.\n\nThese controls reduce exposure; they do not guarantee confidentiality. Model requests, tool output, logs, session history, temporary files, caches, and telemetry all require deliberate treatment. A process often inherits the permissions of the account that launched it, so isolation must be configured and tested.\n\nGive the agent access to what the task requires, not everything the running environment happens to expose.",
@@ -292,8 +292,8 @@
     ]
   },
   {
-    "objectID": "04-intro-ai-agent.html#keep-human-accountability-explicit",
-    "href": "04-intro-ai-agent.html#keep-human-accountability-explicit",
+    "objectID": "04-ai-agent.html#keep-human-accountability-explicit",
+    "href": "04-ai-agent.html#keep-human-accountability-explicit",
     "title": "4  Onboarding an AI agent",
     "section": "4.7 Keep human accountability explicit",
     "text": "4.7 Keep human accountability explicit\nThe agent can gather evidence, execute a deterministic calculation, identify exceptions, and draft an explanation. It cannot own the scientific or regulatory decision.\nEven for a task this small, a named reviewer still has to accept that the variables mean what the analysis assumes, that the population and handling of exceptions match the objective, and that the result is fit for its intended use.\nThe same division of responsibility becomes more important when the work involves treatment groups, derived variables, imputation, endpoints, inferential methods, or submission deliverables.",
@@ -377,28 +377,6 @@
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
-    ]
-  },
-  {
-    "objectID": "06-docs-overview.html",
-    "href": "06-docs-overview.html",
-    "title": "6  Documentation overview",
-    "section": "",
-    "text": "6.1 TBD\nTBD",
-    "crumbs": [
-      "Documentation as code",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Documentation overview</span>"
-    ]
-  },
-  {
-    "objectID": "07-reporting-overview.html",
-    "href": "07-reporting-overview.html",
-    "title": "7  Reporting overview",
-    "section": "",
-    "text": "7.1 TBD\nTBD",
-    "crumbs": [
-      "Analysis and reporting",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reporting overview</span>"
     ]
   }
 ]
