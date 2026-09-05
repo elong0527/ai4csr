@@ -52,166 +52,166 @@
   {
     "objectID": "02-ai-first.html",
     "href": "02-ai-first.html",
-    "title": "2  AI-first workflow",
+    "title": "2  AI-first workflows in Biometrics",
     "section": "",
-    "text": "2.1 From AI adoption to AI-native\nClinical trial development is already organized as a chain of governed workflows. The study protocol informs trial operations and the statistical analysis plan (SAP). Data collected in an electronic data capture system moves through SDTM and ADaM into tables, listings, and figures (TLFs). Those results support the clinical study report and regulatory submission. Every step has inputs, rules, handoffs, reviews, and accountable owners.\nAI can do more than accelerate one task. An agent can read across artifacts, use tools, execute multiple steps, observe results, and return with evidences or recommendations. Using that capability reliably requires a workflow designed for human-agent collaboration.\nIn this book, an AI-first workflow is a repeatable way of working in which an AI agent performs a bounded first pass for human-agent collaboration, and people retain responsibility for judgment and approval.\nAI adoption begins when individuals use AI for isolated tasks inside an existing workflow. A person decides when to invoke AI, assembles the context, reviews the response, and moves the work forward. This may improve personal productivity, but the workflow itself remains unchanged.\nAI-first workflow is the practical focus of this book. It does not mean AI performs every task or makes final decisions. It means the team considers AI when designing the workflow, then assigns each step to the component best suited to it.\nAI-native is the broader operating model: AI is a normal collaborator, documentation is designed for people and agents, and team members increasingly orchestrate work rather than execute every step manually. AI-first workflows help an organization move in that direction, alongside the necessary governance, infrastructure, skills, and culture.",
+    "text": "2.1 From AI adoption to AI-first\nClinical trial development is already organized as a chain of connected workflows. The study protocol informs trial operations and the statistical analysis plan (SAP). Collected data move through SDTM and ADaM into tables, listings, and figures (TLFs). Those results support the clinical study report and regulatory submission. Every step has inputs, rules, handoffs, reviews, and accountable owners.\nAI can do more than accelerate one isolated task. An agent can inspect artifacts, use tools, execute several steps, observe results, and return evidence-backed findings or recommendations. Using that capability reliably requires the surrounding workflow to be designed for human-agent collaboration.\nIn this book, an AI-first workflow is a bounded, repeatable process designed for an AI agent to perform structured work with tools, while explicit artifacts, rules, events, benchmarks, and human decision rights govern its execution and improvement.\nAI adoption begins when an individual uses AI for an isolated task inside an existing workflow. A person decides when to invoke AI, assembles the context, reviews the response, and moves the work forward. This can improve personal productivity, but the workflow itself remains unchanged. The KEYNOTE-189 demonstration in Chapter 4 uses this pattern to show what a single prompt can accomplish and why a repeatable workflow needs more than a prompt.\nAn AI-first workflow begins with the work rather than the model. The team defines the objective, boundary, evidence, success measures, and decision rights, then assigns each step to the component best suited to perform it. AI does not need to perform every task or make final decisions.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflow</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
     ]
   },
   {
-    "objectID": "02-ai-first.html#from-ai-adoption-to-ai-native",
-    "href": "02-ai-first.html#from-ai-adoption-to-ai-native",
-    "title": "2  AI-first workflow",
+    "objectID": "02-ai-first.html#from-ai-adoption-to-ai-first",
+    "href": "02-ai-first.html#from-ai-adoption-to-ai-first",
+    "title": "2  AI-first workflows in Biometrics",
     "section": "",
-    "text": "Stage\nHow work is organized\nClinical example\n\n\n\n\nAI adoption\nAI is added to an existing task\nAsk a chatbot to summarize meeting notes\n\n\nAI-first\nThe workflow is designed for AI to make a structured first pass\nTrigger an agent to compare a changed TLF with its SAP requirements\n\n\nAI-native\nHuman-agent collaboration shapes the operating model\nReusable agents and skills work across data, analysis, reporting, documentation, and QC",
+    "text": "Characteristic\nAI adoption\nAI-first workflow\n\n\n\n\nUnit of work\nAn isolated task\nA bounded, repeatable process\n\n\nInvocation\nA person starts a prompt\nA defined event or rule starts the work\n\n\nContext\nAssembled for the interaction\nSupplied through controlled, versioned artifacts\n\n\nOutput\nA response for a person to interpret\nA structured artifact with evidence, coverage, and uncertainty\n\n\nSuccess\nImmediate usefulness\nPerformance against a defined benchmark\n\n\nContinuity\nThe next interaction starts largely anew\nState and human decisions inform the next run",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflow</span>"
-    ]
-  },
-  {
-    "objectID": "02-ai-first.html#human-accountability-is-not-optional",
-    "href": "02-ai-first.html#human-accountability-is-not-optional",
-    "title": "2  AI-first workflow",
-    "section": "2.2 Human accountability is not optional",
-    "text": "2.2 Human accountability is not optional\nIn an AI-native team, the human role shifts from manually executing each task to orchestrating agents, tools, and human review. The agent can retrieve, compare, draft, run approved tools, and monitor routine conditions. The human defines the objective, reviews exceptions, challenges the evidence, improves the workflow, and remains accountable for the decision.\nThis makes three human capabilities especially valuable: systems thinking, end-to-end knowledge, and exception handling.\n\n\n\n\n\n\nWarningAI output is not regulatory clearance\n\n\n\nAn April 2026 FDA warning letter to Purolea Cosmetics Lab described a drug manufacturer that used AI agents to create specifications, procedures, and production records. FDA found that the firm had not adequately reviewed the generated documents for accuracy and CGMP compliance. The firm also reportedly relied on the agent’s failure to mention a requirement as a reason for not knowing that the requirement applied.\nThe letter concerns pharmaceutical manufacturing and CGMP, not clinical study reporting. Its workflow lesson still transfers: AI-generated content remains a draft until an authorized person verifies and approves it. The workflow must check authoritative requirements, disclose what it did not cover, and preserve the evidence behind the decision. An agent cannot be the source of regulatory truth or its own approver.",
-    "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflow</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
     ]
   },
   {
     "objectID": "02-ai-first.html#how-an-ai-first-workflow-works",
     "href": "02-ai-first.html#how-an-ai-first-workflow-works",
-    "title": "2  AI-first workflow",
-    "section": "2.3 How an AI-first workflow works",
-    "text": "2.3 How an AI-first workflow works\nAn AI-first workflow does not begin and end with a prompt. It connects AI to a repeatable process:\n\nEvent -&gt; Task -&gt; Tools and agent -&gt; Evidence -&gt; Human decision -&gt; Recorded state\n\nAn event starts the workflow, such as a change to an SAP, dataset, program, or output. The task definition states the goal, source artifacts, allowed tools, expected result, conditions for stopping, and responsible reviewer.\nThe workflow gives the agent current, versioned artifacts instead of relying on whatever happens to be available in a chat. The agent returns a structured finding that states what it checked, the supporting evidence, any uncertainty, and what it could not cover. A human reviews the finding, makes the decision, and records that decision for the next run.\nThe design separates three kinds of work:\n\n\n\n\n\n\n\nWork\nBest component\n\n\n\n\nApply an exact rule, calculation, or comparison\nDeterministic software\n\n\nInterpret written requirements, trace context, or plan variable steps\nAI agent\n\n\nExercise domain knowledge judgement, approve policy, or accept accountability\nHuman role\n\n\n\nThe simplest capable component should do each job. An AI agent should not replace a deterministic test and the tool access should never be confused with approval authority.",
+    "title": "2  AI-first workflows in Biometrics",
+    "section": "2.2 How an AI-first workflow works",
+    "text": "2.2 How an AI-first workflow works\nAn AI-first workflow does not begin and end with a prompt. It connects AI to a repeatable process:\n\nEvent -&gt; Task -&gt; Tools and agent -&gt; Evidence -&gt; Human decision -&gt; Recorded state\n\nAn event starts the workflow, such as a change to an SAP, dataset, program, or output. The task definition states the objective, source artifacts, allowed tools, expected result, conditions for stopping, and responsible reviewer.\nThe workflow gives the agent current, versioned artifacts instead of relying on whatever happens to be available in a chat. The agent returns a structured finding that states what was checked, the supporting evidence, any uncertainty, and what it could not cover. A human reviews the finding, makes the decision, and records that decision for the next run.\nThe design separates three kinds of work:\n\n\n\n\n\n\n\nWork\nBest-suited component\n\n\n\n\nApply an exact rule, calculation, or comparison\nDeterministic software\n\n\nInterpret written requirements, trace context, or plan variable steps\nAI agent\n\n\nExercise domain judgment, approve policy, or accept accountability\nHuman role\n\n\n\nThe simplest capable component should perform each step. An AI agent should not replace a deterministic test, and access to a tool should never be confused with approval authority. Chapter 3 develops the design principles that make this division of work inspectable and trustworthy.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflow</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
     ]
   },
   {
-    "objectID": "02-ai-first.html#where-it-applies-in-biometrics",
-    "href": "02-ai-first.html#where-it-applies-in-biometrics",
-    "title": "2  AI-first workflow",
-    "section": "2.4 Where it applies in biometrics",
-    "text": "2.4 Where it applies in biometrics\nAI-first workflows can support each biometrics pillar without changing who is accountable for the work.\n\n\n\n\n\n\n\n\nPillar\nUseful first pass\nHuman decision\n\n\n\n\nData management\nCompare edit checks, draft queries, trace unresolved issues\nApprove queries and database readiness\n\n\nStatistical science\nFind inconsistencies across the protocol and SAP, assemble evidence, draft questions\nApprove design, methods, and interpretation\n\n\nAnalysis and reporting\nCheck traceability, execute code, compare TLFs, draft findings\nValidate results and approve deliverables\n\n\n\nMany valuable workflows cross these boundaries. Reviewing a TLF may require the SAP, ADaM metadata, executed code, rendered output, and prior decisions. Domain expertise and end-to-end knowledge therefore become more important, not less.",
+    "objectID": "02-ai-first.html#human-accountability-is-not-optional",
+    "href": "02-ai-first.html#human-accountability-is-not-optional",
+    "title": "2  AI-first workflows in Biometrics",
+    "section": "2.3 Human accountability is not optional",
+    "text": "2.3 Human accountability is not optional\nIn an AI-first workflow, the human role shifts from manually executing every step toward defining the work, supervising agents and tools, reviewing exceptions, challenging evidence, and improving the workflow. The agent can retrieve, compare, draft, run approved tools, and monitor routine conditions. The accountable human retains responsibility for the decision and its consequences.\nThis makes three human capabilities especially valuable: systems thinking, end-to-end knowledge, and exception handling.\n\n\n\n\n\n\nWarningAI output is not regulatory clearance\n\n\n\nAn April 2026 FDA warning letter to Purolea Cosmetics Lab described a drug manufacturer that used AI agents to create specifications, procedures, and production records. FDA found that the firm had not adequately reviewed the generated documents for accuracy and CGMP compliance. The firm also reportedly relied on the agent’s failure to mention a requirement as a reason for not knowing that the requirement applied.\nThe letter concerns pharmaceutical manufacturing and CGMP, not clinical study reporting. Its workflow lesson still transfers: AI-generated content remains a draft until an authorized person verifies and approves it. The workflow must check authoritative requirements, disclose what it did not cover, and preserve the evidence behind the decision. An agent cannot be the source of regulatory truth or its own approver.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflow</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
+    ]
+  },
+  {
+    "objectID": "02-ai-first.html#where-ai-first-workflows-apply-in-biometrics",
+    "href": "02-ai-first.html#where-ai-first-workflows-apply-in-biometrics",
+    "title": "2  AI-first workflows in Biometrics",
+    "section": "2.4 Where AI-first workflows apply in Biometrics",
+    "text": "2.4 Where AI-first workflows apply in Biometrics\nAI-first workflows can support each Biometrics pillar without changing who is accountable for the work.\n\n\n\n\n\n\n\n\nPillar\nUseful first pass\nHuman decision\n\n\n\n\nData management\nCompare edit checks, draft queries, trace unresolved issues\nApprove queries and database readiness\n\n\nStatistical science\nFind inconsistencies across the protocol and SAP, assemble evidence, draft questions\nApprove design, methods, and interpretation\n\n\nAnalysis and reporting\nCheck traceability, execute code, compare TLFs, draft findings\nValidate results and approve deliverables\n\n\n\nMany valuable workflows cross these boundaries. Reviewing a TLF may require the SAP, ADaM metadata, executed code, rendered output, and prior decisions. Domain expertise and end-to-end knowledge therefore become more important, not less.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
     ]
   },
   {
     "objectID": "02-ai-first.html#start-with-one-bounded-workflow",
     "href": "02-ai-first.html#start-with-one-bounded-workflow",
-    "title": "2  AI-first workflow",
+    "title": "2  AI-first workflows in Biometrics",
     "section": "2.5 Start with one bounded workflow",
-    "text": "2.5 Start with one bounded workflow\nAn organization does not need to begin with autonomous, end-to-end execution. A useful first workflow is small enough to observe closely but valuable enough to improve real work. It should have a clear beginning and end, accessible source artifacts, a reviewable output, and a named person responsible for the decision.\nA workflow is bounded when the team can state:\n\nwhat event starts it;\nwhich artifacts and tools it may use;\nwhich actions the agent may take;\nwhat output it must return;\nwhen it must stop or escalate; and\nwho reviews the result and makes the decision.\n\nUse the following sequence to design the first implementation.\n\nChoose the minimum valuable workflow.\nWrite the task contract.\nBuild the deterministic foundation.\nRequire a reviewable result.\nPilot in advisory mode.\nExpand one boundary at a time.\n\nFor example, a first workflow for reviewing a changed table could be defined as follows:\n\n\n\n\n\n\n\nElement\nDefinition\n\n\n\n\nTrigger\nA pull request changes a table program or rendered output\n\n\nInputs\nCurrent SAP, output specification, analysis metadata, source code, and rendered table\n\n\nAgent task\nCompare the change with the requirements and identify inconsistencies or missing evidence\n\n\nRequired output\nStructured findings with source references, coverage, uncertainty, and recommended follow-up\n\n\nStop conditions\nA required artifact is missing, versions conflict, or the finding requires statistical judgment\n\n\nHuman decision\nThe accountable reviewer accepts, rejects, or investigates each finding\n\n\n\nThis workflow is deliberately narrow, but it establishes reusable capabilities: artifact retrieval, traceable review, structured findings, escalation, and a recorded human decision. Those capabilities become the foundation for broader AI-first workflows.",
+    "text": "2.5 Start with one bounded workflow\nAn organization does not need to begin with autonomous, end-to-end execution. A useful first workflow is small enough to observe closely but valuable enough to improve real work. It has a clear beginning and end, accessible source artifacts, a reviewable output, and a named person responsible for the decision.\nA workflow is bounded when the team can state:\n\nwhat event starts it;\nwhich artifacts and tools it may use;\nwhich actions the agent may take;\nwhat output it must return;\nwhen it must stop or escalate; and\nwho reviews the result and makes the decision.\n\nThe initial implementation should include a task contract, a deterministic foundation wherever exact rules can be encoded, and a reviewable result. It can begin in advisory mode and expand one boundary at a time. The applied examples develop these implementations through the shared AI-first SDLC rather than introducing a separate development sequence for each workflow.\nFor example, a first workflow for reviewing a changed table could be defined as follows:\n\n\n\n\n\n\n\nElement\nDefinition\n\n\n\n\nTrigger\nA pull request changes a table program or rendered output\n\n\nInputs\nCurrent SAP, output specification, analysis metadata, source code, and rendered table\n\n\nAgent task\nCompare the change with the requirements and identify inconsistencies or missing evidence\n\n\nRequired output\nStructured findings with source references, coverage, uncertainty, and recommended follow-up\n\n\nStop conditions\nA required artifact is missing, versions conflict, or the finding requires statistical judgment\n\n\nHuman decision\nThe accountable reviewer accepts, rejects, or investigates each finding\n\n\n\nThis workflow is deliberately narrow, but it establishes reusable capabilities: artifact retrieval, traceable review, structured findings, escalation, and a recorded human decision. Those capabilities become the foundation for broader AI-first workflows and for the AI-first software development lifecycle used by the applied examples in this book.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflow</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
     ]
   },
   {
     "objectID": "03-principle.html",
     "href": "03-principle.html",
-    "title": "3  Principles overview",
+    "title": "3  Principles of trustworthy assistance",
     "section": "",
-    "text": "3.1 What is an AI-first workflow?\nThis chapter defines the principles for designing an AI-first clinical study workflow.\nThe goal is not to replace clinical statisticians or programmers. The goal is to design work so an AI agent can perform a structured first pass, inspect real artifacts with tools, prepare evidence-backed findings, and ask humans to make accountable decisions.\nAn AI-first workflow represents work as inspectable artifacts, tracks explicit state, triggers agent action through events and rules, grounds reasoning in tools and evidence, and keeps humans accountable for judgment.\nIn this book, the agent is an independent reviewer assistant.\nIt can inspect, compare, prepare findings, rerun checks, and escalate judgment calls. It does not make final statistical decisions, sign off deliverables, or replace the responsible statistician or programmer.",
+    "text": "3.1 Root principle: Trustworthy assistance\nChapter 2 defines an AI-first workflow as a bounded process in which artifacts, rules, events, benchmarks, and human decision rights govern an agent’s work. This chapter develops the principles that make such a workflow inspectable, repeatable, and reviewable.\nAgents are bounded human assistants. Their exact role depends on the example: an agent may draft, calculate, compare, review, or monitor within its assigned boundary. In a code-review workflow, for example, an agent may act as an independent reviewer assistant. It does not make final statistical decisions, approve deliverables, or replace the responsible human role.\nThe root principle of an AI-first workflow is trustworthy assistance.\nTrustworthy assistance means the agent’s work can be inspected, repeated, challenged, and reviewed. The agent should not rely on hidden memory, unsupported claims, or vague reasoning. It should work from visible artifacts, preserve explicit state, act through defined events and rules, use tools to gather evidence, and escalate judgment to accountable humans.\nThe five principles below translate trustworthy assistance into a practical design pattern.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
     "objectID": "03-principle.html#root-principle-trustworthy-assistance",
     "href": "03-principle.html#root-principle-trustworthy-assistance",
-    "title": "3  Principles overview",
-    "section": "3.2 Root principle: Trustworthy assistance",
-    "text": "3.2 Root principle: Trustworthy assistance\nThe first principle of an AI-first clinical workflow is trustworthy assistance.\nTrustworthy assistance means the agent’s work can be inspected, repeated, challenged, and reviewed. The agent should not rely on hidden memory, unsupported claims, or vague reasoning. It should work from visible artifacts, preserve explicit state, act through defined events and rules, use tools to gather evidence, and escalate judgment to accountable humans.\nThese principles do not replace organizational validation, quality systems, access control, audit trail requirements, or regulatory accountability. They describe how to design the working pattern so AI assistance remains inspectable and reviewable.\nThe remaining principles describe what trustworthy assistance requires in practice.\n\nA workflow is trustworthy when its inputs are visible, its actions are traceable, its findings are evidence-backed, and its limits are clear.",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "",
+    "text": "A workflow is trustworthy when its inputs are visible, its actions are traceable, its findings are evidence-backed, and its limits are clear.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
     "objectID": "03-principle.html#principle-1-inspectable-artifacts",
     "href": "03-principle.html#principle-1-inspectable-artifacts",
-    "title": "3  Principles overview",
-    "section": "3.3 Principle 1: Inspectable artifacts",
-    "text": "3.3 Principle 1: Inspectable artifacts\nTrust requires the agent and humans to inspect the same source materials.\nThe workflow should use artifacts that humans and AI agents can inspect. Artifacts should be readable, structured where possible, versioned, citable, and diffable.\nExamples:\n\nSAP sections should be searchable and citable.\nADaM metadata should expose dataset names, variable names, labels, types, codelists, and analysis flags.\nTLF outputs should have stable table IDs, titles, footnotes, and source references.\nFindings should be structured records, not only narrative comments.\n\n\nIf the agent cannot inspect the work, it cannot reliably help with the work.",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.2 Principle 1: Inspectable artifacts",
+    "text": "3.2 Principle 1: Inspectable artifacts\nTrust requires the agent and humans to inspect the same source materials.\nArtifacts should be readable, structured where possible, versioned, citable, and diffable. Examples include:\n\nSAP sections that are searchable and citable;\nADaM metadata that expose dataset names, variable names, labels, types, codelists, and analysis flags;\nTLF outputs with stable table identifiers, titles, footnotes, and source references; and\nfindings stored as structured records rather than only narrative comments.\n\n\nIf the agent cannot inspect the work, it cannot reliably assist with the work.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
     "objectID": "03-principle.html#principle-2-explicit-state",
     "href": "03-principle.html#principle-2-explicit-state",
-    "title": "3  Principles overview",
-    "section": "3.4 Principle 2: Explicit state",
-    "text": "3.4 Principle 2: Explicit state\nTrust requires knowing what changed, what was checked, what was decided, and what remains unresolved.\nThe workflow should remember through artifacts, not through chat.\nState should show:\n\nwhich artifact versions are current;\nwhat changed;\nwhat was checked;\nwhat findings were produced;\nwhat humans decided and why;\nwhat remains unresolved.\n\nThis matters because clinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected one-time review. With explicit state, the workflow can report which findings are new, repeated, fixed, acknowledged, or still open.\n\nThe workflow state should be visible, reusable, and reviewable.",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.3 Principle 2: Explicit state",
+    "text": "3.3 Principle 2: Explicit state\nTrust requires knowing what changed, what was checked, what was decided, and what remains unresolved. The workflow should remember through artifacts, not through chat alone.\nState should show:\n\nwhich artifact versions are current;\nwhat changed;\nwhat was checked;\nwhich findings were produced;\nwhat humans decided and why; and\nwhat remains unresolved.\n\nClinical study work changes repeatedly. Without explicit state, every agent run becomes a disconnected review. With explicit state, the workflow can distinguish new, repeated, fixed, acknowledged, and unresolved findings.\n\nWorkflow state should be visible, reusable, and reviewable.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
     "objectID": "03-principle.html#principle-3-events-and-rules",
     "href": "03-principle.html#principle-3-events-and-rules",
-    "title": "3  Principles overview",
-    "section": "3.5 Principle 3: Events and rules",
-    "text": "3.5 Principle 3: Events and rules\nTrust requires predictable triggers, not random or purely chat-driven action.\nThe workflow should not depend only on manual prompting.\nAn event says something changed. A rule decides what the agent should do next.\n\n\n\nEvent\nRule\n\n\n\n\nSAP section updated\nrerun affected SAP-to-TLF checks\n\n\nADaM metadata changed\nrerun checks using changed variables\n\n\nADaM dataset refreshed\nrerun affected population and value checks\n\n\nTLF output regenerated\nrerun affected TLF checks\n\n\nHuman asks for recheck\nrun the requested review\n\n\nAnother AI agent changes a deliverable\nverify downstream impact\n\n\n\nWithout explicit triggers, review coverage depends on who remembered to ask. Events and rules make the workflow easier to repeat, explain, and audit.\n\nEvents trigger attention; rules trigger action.",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.4 Principle 3: Events and rules",
+    "text": "3.4 Principle 3: Events and rules\nTrust requires predictable triggers rather than random or purely chat-driven action. An event indicates that something changed. A rule determines what the workflow should do next.\n\n\n\nEvent\nRule\n\n\n\n\nSAP section updated\nRerun affected SAP-to-TLF checks\n\n\nADaM metadata changed\nRerun checks that use the changed variables\n\n\nADaM dataset refreshed\nRerun affected population and value checks\n\n\nTLF output regenerated\nRerun affected TLF checks\n\n\nHuman requests a recheck\nRun the requested review\n\n\nAnother agent changes a deliverable\nVerify downstream impact\n\n\n\nWithout explicit triggers, review coverage depends on someone remembering to ask. Events and rules make the workflow easier to repeat and explain.\n\nEvents trigger attention; rules trigger action.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
     "objectID": "03-principle.html#principle-4-tools-and-evidence",
     "href": "03-principle.html#principle-4-tools-and-evidence",
-    "title": "3  Principles overview",
-    "section": "3.6 Principle 4: Tools and evidence",
-    "text": "3.6 Principle 4: Tools and evidence\nTrust requires findings grounded in real SAP, ADaM, and TLF artifacts, not model memory or guesses.\nThe LLM should not guess what is in the study artifacts. Tools should expose the real content.\nThe LLM reasons. Tools observe. Evidence justifies.\nExample tools:\n\nparse_sap_requirements()\ninspect_adam_metadata()\nquery_adam_population()\nextract_tlf_metadata()\ncompare_expected_actual()\n\nA good finding should state what was checked, what was expected, what was observed, where the evidence came from, and who should review it. A finding without traceable evidence is not a finding; it is an unsupported opinion.\n\nNo finding without evidence.",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.5 Principle 4: Tools and evidence",
+    "text": "3.5 Principle 4: Tools and evidence\nTrust requires findings grounded in the actual study artifacts rather than model memory or guesses. Tools expose real content and perform deterministic operations; the model uses the resulting evidence to interpret the task and prepare findings.\nExample tools include:\n\nparse_sap_requirements();\ninspect_adam_metadata();\nquery_adam_population();\nextract_tlf_metadata(); and\ncompare_expected_actual().\n\nA finding should state what was checked, what was expected, what was observed, where the evidence came from, and which human role should review it. A statement without traceable evidence is an unsupported opinion, not a finding.\n\nNo finding without evidence.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
     "objectID": "03-principle.html#principle-5-human-judgment",
     "href": "03-principle.html#principle-5-human-judgment",
-    "title": "3  Principles overview",
-    "section": "3.7 Principle 5: Human judgment",
-    "text": "3.7 Principle 5: Human judgment\nTrust requires clear accountability.\nAI-first does not mean AI-only.\nThe agent may identify discrepancies, assemble evidence, classify likely severity, and recommend who should review the issue. The accountable human role decides whether the finding is valid, whether the artifact should change, and how the decision should be documented.\nThe agent should escalate when SAP language is ambiguous, an artifact is missing, evidence conflicts, a decision requires statistical judgment, or the workflow rule does not cover the case.\n\nAgents prepare evidence; humans make accountable decisions.",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.6 Principle 5: Human judgment",
+    "text": "3.6 Principle 5: Human judgment\nTrust requires clear accountability. AI-first does not mean AI-only.\nAn agent may identify discrepancies, assemble evidence, classify likely severity, and recommend follow-up. The accountable human decides whether a finding is valid, whether an artifact should change, and how the decision should be recorded.\nThe agent should stop or escalate when language is ambiguous, a required artifact is missing, evidence conflicts, a decision requires domain judgment, or the workflow rule does not cover the case.\n\nAgents prepare evidence; humans make accountable decisions.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
-    "objectID": "03-principle.html#applying-the-principles-to-sap-adam-tlf-review",
-    "href": "03-principle.html#applying-the-principles-to-sap-adam-tlf-review",
-    "title": "3  Principles overview",
-    "section": "3.8 Applying the principles to SAP → ADaM → TLF review",
-    "text": "3.8 Applying the principles to SAP → ADaM → TLF review\nThe running example is an AI agent that reviews whether selected CSR TLF outputs derived from ADaM datasets follow the SAP.\n\n3.8.1 Workflow objective\nVerify consistency across SAP requirements, ADaM metadata and data, and TLF outputs before database lock.\n\n\n3.8.2 Agent role\nThe agent is an independent reviewer assistant for clinical statisticians, statistical programmers, programming leads, and study reviewers.\n\n\n3.8.3 Inputs\n\nSAP version;\nADaM metadata snapshot;\nADaM dataset snapshot;\nTLF package;\nworkflow rules;\nprior findings and decisions, if available.\n\n\n\n3.8.4 Example checks\n\n\n\n\n\n\n\nCheck\nEvidence\n\n\n\n\nSAP population exists in ADaM\npopulation flag in ADSL or relevant dataset\n\n\nSAP population definition is applied consistently\nSAP population definition, ADaM flags, and TLF population counts\n\n\nSAP endpoint variable exists\nvariable name, label, type, and codelist in ADaM metadata\n\n\nTreatment group labels are consistent\nSAP or TLF display labels and ADaM treatment variables\n\n\nTLF title matches intended display\ntitle and subtitle from TLF output and SAP reference\n\n\nTLF N values are explainable\ncounts from ADaM population rules\n\n\nFootnotes match analysis method\nfootnote text and SAP method section\n\n\nMissing or imputed values are handled as specified\nSAP method section, ADaM derivation metadata, and TLF footnotes\n\n\nRerun scope is justified\nevent and rule that triggered the run\n\n\n\n\n\n3.8.5 Outputs\n\nevidence matrix;\nfindings grouped by severity;\nescalation list by reviewer role;\ndelta report showing fixed, new, repeated, and acknowledged findings.\n\n\n\n3.8.6 When the workflow should stop\nThe agent should not continue as if the review is complete when a required artifact is missing, SAP language is ambiguous, metadata cannot be inspected, or evidence conflicts across sources.\nIn those cases, the correct output is an escalation or limited finding, not a confident conclusion.",
+    "objectID": "03-principle.html#preview-change-review-across-sap-code-and-results",
+    "href": "03-principle.html#preview-change-review-across-sap-code-and-results",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.7 Preview: Change review across SAP, code, and results",
+    "text": "3.7 Preview: Change review across SAP, code, and results\nA future applied example will use change management across the SAP, analysis code, and results to show how the principles work together. This is a useful preview because a change in one artifact can affect several downstream decisions.\n\n\n\n\n\n\n\nPrinciple\nRequirement for the future example\n\n\n\n\nInspectable artifacts\nProvide versioned SAP requirements, code, metadata, and rendered results\n\n\nExplicit state\nRecord changed artifacts and classify findings as new, fixed, acknowledged, or unresolved\n\n\nEvents and rules\nTrigger only the checks affected by an accepted change\n\n\nTools and evidence\nCompare expected and observed behavior and cite the supporting artifacts\n\n\nHuman judgment\nEscalate ambiguity and preserve the accountable reviewer’s decision\n\n\n\nThe full example will define the workflow boundary, inputs, expected outputs, benchmarks, stopping conditions, and lifecycle artifacts. Keeping those details with the example avoids turning this principles chapter into a second workflow specification.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
-    "objectID": "03-principle.html#summary",
-    "href": "03-principle.html#summary",
-    "title": "3  Principles overview",
-    "section": "3.9 Summary",
-    "text": "3.9 Summary\nThe root principle is trustworthy assistance: the agent’s work must be inspectable, repeatable, evidence-backed, and accountable.\nThe five derived principles are:\n\nInspectable artifacts: make work readable, structured, versioned, citable, and diffable.\nExplicit state: remember what changed, what was checked, what was decided, and what remains unresolved.\nEvents and rules: trigger the agent when work changes and define what action is needed.\nTools and evidence: inspect reality with tools and require evidence for findings.\nHuman judgment: agents prepare the review; humans make accountable decisions.\n\nTogether, these principles keep AI-first clinical study workflows simple, reviewable, and trustworthy.",
+    "objectID": "03-principle.html#putting-the-principles-together",
+    "href": "03-principle.html#putting-the-principles-together",
+    "title": "3  Principles of trustworthy assistance",
+    "section": "3.8 Putting the principles together",
+    "text": "3.8 Putting the principles together\nThe five principles form a connected system. Inspectable artifacts establish a shared basis for the work. Explicit state provides continuity. Events and rules make action predictable. Tools connect findings to evidence. Human judgment sets the boundary of authority and accountability.\nIf any one element is missing, the workflow becomes harder to evaluate and trust. Together, the principles provide the foundation for the example-first, AI-first SDLC used in the remainder of the book.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles overview</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
     ]
   },
   {
