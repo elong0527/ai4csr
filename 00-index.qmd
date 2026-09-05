@@ -1,26 +1,29 @@
 # Welcome {.unnumbered}
 
-Welcome to AI workflow for clinical study reports.
+Welcome to a practical guide to AI-first workflows for clinical study reports.
 
-The goal of this book is to demonstrate the SDLC of building and maintain AI-first workflow 
-for clinical trial development.
+This book explores how organizations can move from isolated AI adoption toward
+an AI-native way of working by building **AI-first workflows** across clinical
+study reports. In these workflows, an AI agent performs a bounded, repeatable
+first pass; people define and monitor the process, review the evidence, and
+remain responsible for decisions.
 
-The book focus on showing general principals instead of detail implementations as that highly depends on 
-the organization's AI strategy. 
+The focus is not a particular model or software stack. Instead, it is on
+durable principles that teams can adapt to their own technology, governance,
+and operating environment.
 
-Whether you are new to AI-native workflows or already working in clinical reporting,
-you will find small, reusable examples you can adopt right away,
-along with patterns and checklists for organizing work for
-regulatory submission and effective team collaboration.
-
-**This is a work-in-progress draft.**
+The book is written for people who design, perform, review, or govern clinical
+study reports and want to integrate AI systematically into their work.
+No prior experience building AI agents is required. Familiarity with clinical
+study artifacts and review processes will help readers connect the examples to
+their own work.
 
 ::: {.content-visible when-format="html"}
 
 ## Events {.unnumbered}
 
-| Venue | Type | Date | Materials |
-|-------|------|------|-----------|
-| Deming Conference   | Workshop | TBD 2026-12-07 | TBD       |
+| Venue | Format | Date | Materials |
+|---|---|---|---|
+| Deming Conference | Workshop | December 7, 2026 | To be announced |
 
 :::
