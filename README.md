@@ -9,7 +9,7 @@ We value your participation and contribution.
 
 - Authors: contributed the majority of content to at least one chapter.
 - Contributors: contributed at least one commit to the source code.
-- [List of authors and contributors](https://ai4csr.org/preface.html#authors-and-contributors)
+- [List of authors and contributors](https://ai4csr.org/01-preface.html#authors-and-contributors)
 
 ## Quick start
 

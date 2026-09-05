@@ -1,17 +1,15 @@
 # Welcome {.unnumbered}
 
-Welcome to AI for Clinical Study Workflows.
+Welcome to AI workflow for clinical study development.
+The goal of this book is to explore strategies to bring an organization from AI adoption to AI-native 
+by building AI-first workflow for clinical study developments. 
 
-The goal of this book is to demonstrate the SDLC of building and maintain AI-first workflow 
-for clinical trial development.
+An AI-first workflow leverage AI to develop and maintain pre-specified Agentic workflow that's 
+defined and monitored by human to streamline clinical trial development. 
 
-The book focus on showing general principals instead of detail implementations as that highly depends on 
-the organization's AI strategy. 
-
-Whether you are new to AI-native workflows or already working in clinical reporting,
+Whether you are new to AI  workflows or already working in clinical reporting,
 you will find small, reusable examples you can adopt right away,
-along with patterns and checklists for organizing work for
-regulatory submission and effective team collaboration.
+along with patterns 
 
 **This is a work-in-progress draft.**
 
@@ -21,6 +19,6 @@ regulatory submission and effective team collaboration.
 
 | Venue | Type | Date | Materials |
 |-------|------|------|-----------|
-| TBD   | TBD  | TBD  | TBD       |
+| Deming Conference   | Workshop | 2026-12-07 | TBD       |
 
 :::
