@@ -40,7 +40,7 @@ book:
     - part: "Introduction"
       chapters:
         - 02-ai-first-workflow.qmd
-        - 03-principle-overview.md
+        - 03-principle.qmd
         - 04-intro-ai-agent.qmd
         - 05-workflow-rounding.qmd
     - part: "Documentation as code"
