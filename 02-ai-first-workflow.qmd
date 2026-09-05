@@ -28,7 +28,7 @@ existing workflow. A person decides when to invoke AI, assembles the context,
 reviews the response, and moves the work forward. This may improve personal
 productivity, but the workflow itself remains unchanged.
 
-AI-first is the practical focus of this book. It does not mean AI performs every
+AI-first workflow is the practical focus of this book. It does not mean AI performs every
 task or makes final decisions. It means the team considers AI when designing the
 workflow, then assigns each step to the component best suited to it.
 
@@ -44,6 +44,34 @@ governance, infrastructure, skills, and culture.
 | **AI adoption** | AI is added to an existing task | Ask a chatbot to summarize meeting notes |
 | **AI-first** | The workflow is designed for AI to make a structured first pass | Trigger an agent to compare a changed TLF with its SAP requirements |
 | **AI-native** | Human-agent collaboration shapes the operating model | Reusable agents and skills work across data, analysis, reporting, documentation, and QC |
+
+## Human accountability is not optional
+
+In an AI-native team, the human role shifts from manually executing each task to
+orchestrating agents, tools, and human review. The agent can retrieve, compare,
+draft, run approved tools, and monitor routine conditions. The human
+defines the objective, reviews exceptions, challenges the evidence, improves
+the workflow, and remains accountable for the decision.
+
+This makes three human capabilities especially valuable: systems thinking,
+end-to-end knowledge, and exception handling.
+
+::: {.callout-warning title="AI output is not regulatory clearance"}
+An April 2026
+[FDA warning letter to Purolea Cosmetics Lab](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/purolea-cosmetics-lab-722591-04022026)
+described a drug manufacturer that used AI agents to create specifications,
+procedures, and production records. FDA found that the firm had not adequately
+reviewed the generated documents for accuracy and CGMP compliance. The firm
+also reportedly relied on the agent's failure to mention a requirement as a
+reason for not knowing that the requirement applied.
+
+The letter concerns pharmaceutical manufacturing and CGMP, not clinical study
+reporting. Its workflow lesson still transfers: AI-generated content remains a
+draft until an authorized person verifies and approves it. The workflow must
+check authoritative requirements, disclose what it did not cover, and preserve
+the evidence behind the decision. An agent cannot be the source of regulatory
+truth or its own approver.
+:::
 
 ## How an AI-first workflow works
 
@@ -69,11 +97,11 @@ The design separates three kinds of work:
 |---|---|
 | Apply an exact rule, calculation, or comparison | Deterministic software |
 | Interpret written requirements, trace context, or plan variable steps | AI agent |
-| Exercise statistical judgment, approve policy, or accept accountability | Human role |
+| Exercise domain knowledge judgement, approve policy, or accept accountability | Human role |
 
-The simplest capable component should do each job. An AI model should not
-replace a test whose result must be identical every time, and tool access should
-never be confused with approval authority.
+The simplest capable component should do each job. An AI agent should not
+replace a deterministic test and the tool access should never be confused with
+approval authority.
 
 ## Where it applies in biometrics
 
@@ -90,41 +118,45 @@ Many valuable workflows cross these boundaries. Reviewing a TLF may require the
 SAP, ADaM metadata, executed code, rendered output, and prior decisions. Domain
 expertise and end-to-end knowledge therefore become more important, not less.
 
-## Human accountability is not optional
-
-In an AI-first team, the human role shifts from manually executing each task to
-orchestrating agents, tools, and human review. The agent can retrieve, compare,
-draft, run approved tools, and monitor routine conditions. The professional
-defines the objective, reviews exceptions, challenges the evidence, improves
-the workflow, and remains accountable for the decision.
-
-This makes three human capabilities especially valuable: systems thinking,
-end-to-end knowledge, and exception handling.
-
-::: {.callout-warning title="AI output is not regulatory clearance"}
-An April 2026
-[FDA warning letter to Purolea Cosmetics Lab](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/purolea-cosmetics-lab-722591-04022026)
-described a drug manufacturer that used AI agents to create specifications,
-procedures, and production records. FDA found that the firm had not adequately
-reviewed the generated documents for accuracy and CGMP compliance. The firm
-also reportedly relied on the agent's failure to mention a requirement as a
-reason for not knowing that the requirement applied.
-
-The letter concerns pharmaceutical manufacturing and CGMP, not clinical study
-reporting. Its workflow lesson still transfers: AI-generated content remains a
-draft until an authorized person verifies and approves it. The workflow must
-check authoritative requirements, disclose what it did not cover, and preserve
-the evidence behind the decision. An agent cannot be the source of regulatory
-truth or its own approver.
-:::
-
 ## Start with one bounded workflow
 
 An organization does not need to begin with autonomous, end-to-end execution.
-A useful AI-first workflow can be small:
+A useful first workflow is small enough to observe closely but valuable enough
+to improve real work. It should have a clear beginning and end, accessible
+source artifacts, a reviewable output, and a named person responsible for the
+decision.
 
-1. Choose one recurring, review-heavy task with visible source artifacts.
-2. Define one trigger, one expected output, and one accountable owner.
-3. Automate deterministic checks before adding model judgment.
-4. Require evidence, uncertainty, coverage, and explicit escalation.
-5. Run in advisory mode until real use demonstrates acceptable performance.
+A workflow is **bounded** when the team can state:
+
+- what event starts it;
+- which artifacts and tools it may use;
+- which actions the agent may take;
+- what output it must return;
+- when it must stop or escalate; and
+- who reviews the result and makes the decision.
+
+Use the following sequence to design the first implementation.
+
+1. **Choose the minimum valuable workflow.**
+2. **Write the task contract.**
+3. **Build the deterministic foundation.**
+4. **Require a reviewable result.**
+5. **Pilot in advisory mode.**
+6. **Expand one boundary at a time.**
+
+For example, a first workflow for reviewing a changed table could be defined as
+follows:
+
+| Element | Definition |
+|---|---|
+| **Trigger** | A pull request changes a table program or rendered output |
+| **Inputs** | Current SAP, output specification, analysis metadata, source code, and rendered table |
+| **Agent task** | Compare the change with the requirements and identify inconsistencies or missing evidence |
+| **Required output** | Structured findings with source references, coverage, uncertainty, and recommended follow-up |
+| **Stop conditions** | A required artifact is missing, versions conflict, or the finding requires statistical judgment |
+| **Human decision** | The accountable reviewer accepts, rejects, or investigates each finding |
+
+This workflow is deliberately narrow, but it establishes reusable capabilities:
+artifact retrieval, traceable review, structured findings, escalation, and a
+recorded human decision. Those capabilities become the foundation for broader
+AI-first workflows.
