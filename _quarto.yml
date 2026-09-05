@@ -39,17 +39,10 @@ book:
     - 01-preface.qmd
     - part: "Introduction"
       chapters:
-        - 02-ai-first-workflow.qmd
+        - 02-ai-first.qmd
         - 03-principle.qmd
-        - 04-intro-ai-agent.qmd
+        - 04-ai-agent.qmd
         - 05-workflow-rounding.qmd
-    - part: "Documentation as code"
-      chapters:
-        - 06-docs-overview.qmd
-    - part: "Analysis and reporting"
-      chapters:
-        - 07-reporting-overview.qmd
-    - 08-references.qmd
 
 bibliography: references.bib
 
