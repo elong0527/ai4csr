@@ -27,41 +27,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -244,30 +209,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#day-1-onboarding-scenario" id="toc-day-1-onboarding-scenario" class="nav-link active" data-scroll-target="#day-1-onboarding-scenario"><span class="header-section-number">4.1</span> Day 1 onboarding scenario</a></li>
-  <li><a href="#what-an-ai-agent-actually-is" id="toc-what-an-ai-agent-actually-is" class="nav-link" data-scroll-target="#what-an-ai-agent-actually-is"><span class="header-section-number">4.2</span> What an AI agent actually is</a>
-  <ul class="collapse">
-  <li><a href="#what-an-agent-can-still-get-wrong" id="toc-what-an-agent-can-still-get-wrong" class="nav-link" data-scroll-target="#what-an-agent-can-still-get-wrong"><span class="header-section-number">4.2.1</span> What an agent can still get wrong</a></li>
-  </ul></li>
+  <li><a href="#the-onboarding-analogy" id="toc-the-onboarding-analogy" class="nav-link active" data-scroll-target="#the-onboarding-analogy"><span class="header-section-number">4.1</span> The onboarding analogy</a></li>
+  <li><a href="#what-an-ai-agent-is" id="toc-what-an-ai-agent-is" class="nav-link" data-scroll-target="#what-an-ai-agent-is"><span class="header-section-number">4.2</span> What an AI agent is</a></li>
   <li><a href="#make-the-task-contract-explicit" id="toc-make-the-task-contract-explicit" class="nav-link" data-scroll-target="#make-the-task-contract-explicit"><span class="header-section-number">4.3</span> Make the task contract explicit</a></li>
-  <li><a href="#sec-try-it-yourself" id="toc-sec-try-it-yourself" class="nav-link" data-scroll-target="#sec-try-it-yourself"><span class="header-section-number">4.4</span> Try it yourself</a>
+  <li><a href="#a-minimal-ai-adoption-example" id="toc-a-minimal-ai-adoption-example" class="nav-link" data-scroll-target="#a-minimal-ai-adoption-example"><span class="header-section-number">4.4</span> A minimal AI-adoption example</a>
   <ul class="collapse">
-  <li><a href="#step-1-get-the-materials" id="toc-step-1-get-the-materials" class="nav-link" data-scroll-target="#step-1-get-the-materials"><span class="header-section-number">4.4.1</span> Step 1: Get the materials</a></li>
-  <li><a href="#step-2-choose-an-appropriate-agent" id="toc-step-2-choose-an-appropriate-agent" class="nav-link" data-scroll-target="#step-2-choose-an-appropriate-agent"><span class="header-section-number">4.4.2</span> Step 2: Choose an appropriate agent</a></li>
-  <li><a href="#step-3-send-the-request" id="toc-step-3-send-the-request" class="nav-link" data-scroll-target="#step-3-send-the-request"><span class="header-section-number">4.4.3</span> Step 3: Send the request</a></li>
-  <li><a href="#step-4-watch-the-process-not-only-the-answer" id="toc-step-4-watch-the-process-not-only-the-answer" class="nav-link" data-scroll-target="#step-4-watch-the-process-not-only-the-answer"><span class="header-section-number">4.4.4</span> Step 4: Watch the process, not only the answer</a></li>
+  <li><a href="#two-teaching-artifacts" id="toc-two-teaching-artifacts" class="nav-link" data-scroll-target="#two-teaching-artifacts"><span class="header-section-number">4.4.1</span> Two teaching artifacts</a></li>
+  <li><a href="#one-prompt-in-arena-agent" id="toc-one-prompt-in-arena-agent" class="nav-link" data-scroll-target="#one-prompt-in-arena-agent"><span class="header-section-number">4.4.2</span> One prompt in Arena Agent</a></li>
+  <li><a href="#one-result" id="toc-one-result" class="nav-link" data-scroll-target="#one-result"><span class="header-section-number">4.4.3</span> One result</a></li>
   </ul></li>
-  <li><a href="#review-the-result" id="toc-review-the-result" class="nav-link" data-scroll-target="#review-the-result"><span class="header-section-number">4.5</span> Review the result</a>
-  <ul class="collapse">
-  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources"><span class="header-section-number">4.5.1</span> 1. Sources</a></li>
-  <li><a href="#scope-and-assumptions" id="toc-scope-and-assumptions" class="nav-link" data-scroll-target="#scope-and-assumptions"><span class="header-section-number">4.5.2</span> 2. Scope and assumptions</a></li>
-  <li><a href="#reproducible-calculations" id="toc-reproducible-calculations" class="nav-link" data-scroll-target="#reproducible-calculations"><span class="header-section-number">4.5.3</span> 3. Reproducible calculations</a></li>
-  <li><a href="#exceptions-and-open-questions" id="toc-exceptions-and-open-questions" class="nav-link" data-scroll-target="#exceptions-and-open-questions"><span class="header-section-number">4.5.4</span> 4. Exceptions and open questions</a></li>
-  <li><a href="#trail-and-data-boundary" id="toc-trail-and-data-boundary" class="nav-link" data-scroll-target="#trail-and-data-boundary"><span class="header-section-number">4.5.5</span> 5. Trail and data boundary</a></li>
-  <li><a href="#when-a-check-fails" id="toc-when-a-check-fails" class="nav-link" data-scroll-target="#when-a-check-fails"><span class="header-section-number">4.5.6</span> When a check fails</a></li>
-  </ul></li>
-  <li><a href="#keep-raw-data-separate-when-possible" id="toc-keep-raw-data-separate-when-possible" class="nav-link" data-scroll-target="#keep-raw-data-separate-when-possible"><span class="header-section-number">4.6</span> Keep raw data separate when possible</a></li>
-  <li><a href="#keep-human-accountability-explicit" id="toc-keep-human-accountability-explicit" class="nav-link" data-scroll-target="#keep-human-accountability-explicit"><span class="header-section-number">4.7</span> Keep human accountability explicit</a></li>
+  <li><a href="#why-the-demonstration-is-adoption-not-a-workflow" id="toc-why-the-demonstration-is-adoption-not-a-workflow" class="nav-link" data-scroll-target="#why-the-demonstration-is-adoption-not-a-workflow"><span class="header-section-number">4.5</span> Why the demonstration is adoption, not a workflow</a></li>
+  <li><a href="#from-one-result-to-an-ai-first-workflow" id="toc-from-one-result-to-an-ai-first-workflow" class="nav-link" data-scroll-target="#from-one-result-to-an-ai-first-workflow"><span class="header-section-number">4.6</span> From one result to an AI-first workflow</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/04-ai-agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/04-ai-agent.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -306,8 +258,8 @@ Tip
 <p>Adding an AI agent to a clinical trial workflow is an onboarding problem before it is a technology problem.</p>
 </div>
 </div>
-<section id="day-1-onboarding-scenario" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="day-1-onboarding-scenario"><span class="header-section-number">4.1</span> Day 1 onboarding scenario</h2>
+<section id="the-onboarding-analogy" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-onboarding-analogy"><span class="header-section-number">4.1</span> The onboarding analogy</h2>
 <p>Imagine that a new team member has joined. They recently finished school and understand the basics of clinical trials. They know what a protocol and statistical analysis plan (SAP) are, but they do not yet know standard operating procedures (SOPs), computing environment, folder structure, naming conventions, or review habits of your organization.</p>
 <p>For their first assignment, you choose a simple task:</p>
 <blockquote class="blockquote">
@@ -328,43 +280,40 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td>Orientation and SOP training</td>
-<td>Written instructions the agent reads on every run</td>
+<td>Orientation and procedural training</td>
+<td>Written instructions supplied when needed</td>
 </tr>
 <tr class="even">
-<td>“Ask me if you are not sure”</td>
-<td>Explicit rules for when to stop and escalate</td>
+<td>An invitation to ask when uncertain</td>
+<td>Explicit conditions for stopping and escalation</td>
 </tr>
 <tr class="odd">
 <td>Shadowing and code review</td>
-<td>A record of what it read, ran, and produced</td>
+<td>A record of sources, tool actions, and outputs</td>
 </tr>
 <tr class="even">
-<td>An access request for the study drive</td>
+<td>Access to the study environment</td>
 <td>A bounded set of files, tools, and destinations</td>
 </tr>
 <tr class="odd">
-<td>Their manager signs off</td>
-<td>A named person accountable for the result</td>
+<td>Managerial sign-off</td>
+<td>A named human accountable for the result</td>
 </tr>
 </tbody>
 </table>
-<p>Every row on the left is something a team handles informally for a person. On the right, it has to exist as an artifact that can be inspected.</p>
-<p>Technical questions like which model to use, how much context it can take, how to keep responses consistent across sessions, or how to design prompts that reduce hallucinations matter a lot. But those are implementation choices. A better model can improve the answer, but only the workflow tells you whether the answer is acceptable.</p>
+<p>The model matters, but a more capable model does not define an acceptable result. The surrounding task and workflow establish the evidence, boundaries, and human decision rights.</p>
 </section>
-<section id="what-an-ai-agent-actually-is" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="what-an-ai-agent-actually-is"><span class="header-section-number">4.2</span> What an AI agent actually is</h2>
-<p>A <strong>large language model (LLM)</strong> generates a response from the text it is given. Think of a very well-read colleague who answers only from what is placed in front of them, cannot get up to fetch a file, and cannot run code. Everything the model knows about your task has to arrive as text.</p>
-<p>That text is called the <strong>context</strong>: your request, plus any documents, instructions, and previous results the system chose to include. A chatbot stops here. It talks; it does not act.</p>
-<p>An <strong>AI agent</strong> adds a controlled loop around the model so it can act:</p>
+<section id="what-an-ai-agent-is" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="what-an-ai-agent-is"><span class="header-section-number">4.2</span> What an AI agent is</h2>
+<p>A <strong>large language model (LLM)</strong> interprets supplied context and generates a response. The <strong>context</strong> includes the request, instructions, documents, prior messages, and tool results made available for the current interaction.</p>
+<p>An <strong>AI agent</strong> adds a controlled execution loop around the model:</p>
 <ol type="1">
-<li>interpret the task and choose a next step;</li>
+<li>interpret the task and select a next step;</li>
 <li>use an allowed tool, such as a document reader or R;</li>
-<li>observe the tool result and update the plan;</li>
-<li>repeat until the task is complete, blocked, or requires approval.</li>
+<li>observe the tool result and update the plan; and</li>
+<li>continue until the task is complete, blocked, or requires approval.</li>
 </ol>
-<p>For the age-summary task, that loop looks like: download the protocol, read the population definition, load the CSV, write R code, run it, read the output, notice a 17-year-old subject, and write up the result with a question attached.</p>
-<p>The pieces that make this possible are easier to understand by what they do:</p>
+<p>The main components are distinguished by their responsibilities:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -373,33 +322,33 @@ Tip
 <thead>
 <tr class="header">
 <th>Component</th>
-<th>What it does</th>
+<th>Responsibility</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>LLM</strong></td>
-<td>Interprets evidence, plans steps, drafts an explanation</td>
+<td>Interpret context, plan steps, and draft an explanation</td>
 </tr>
 <tr class="even">
 <td><strong>Harness</strong></td>
-<td>Assembles context, calls the model, invokes tools, records events, and controls the loop</td>
+<td>Assemble context, call the model, invoke tools, record events, and control the loop</td>
 </tr>
 <tr class="odd">
 <td><strong>Model gateway</strong></td>
-<td>Routes model requests and may apply authentication, logging, or policy controls</td>
+<td>Route model requests and apply authentication, logging, or policy controls</td>
 </tr>
 <tr class="even">
 <td><strong>Tool interfaces</strong></td>
-<td>Perform observable actions, such as reading a PDF, querying data, or running R</td>
+<td>Perform observable actions such as reading a PDF, querying data, or running R</td>
 </tr>
 <tr class="odd">
 <td><strong>Working state</strong></td>
-<td>Holds the current messages, plan, tool results, and unresolved questions for this session</td>
+<td>Hold messages, plans, tool results, and unresolved questions during the interaction</td>
 </tr>
 <tr class="even">
 <td><strong>Accessible environment</strong></td>
-<td>Defines the files, commands, APIs, network destinations, and credentials the agent can reach</td>
+<td>Limit the files, commands, APIs, network destinations, and credentials the agent can reach</td>
 </tr>
 </tbody>
 </table>
@@ -413,30 +362,16 @@ Figure&nbsp;4.1: A general AI-agent architecture. The harness coordinates the mo
 </figcaption>
 </figure>
 </div>
-<p>Two distinctions matter in practice:</p>
+<p>Two distinctions are important:</p>
 <ul>
-<li><strong>Working state is not project memory.</strong> Some systems retain a session; others do not. What the agent “remembers” from last Tuesday is not a governed record. Durable rules and decisions should live in artifacts that both people and agents can inspect.</li>
-<li><strong>Tool access is not authority.</strong> The ability to edit a file or call an API does not mean the agent should do so without a workflow rule or human approval.</li>
+<li><strong>Working state is not durable project memory.</strong> Rules and decisions that must survive an interaction belong in versioned artifacts rather than only in chat history.</li>
+<li><strong>Tool access is not authority.</strong> The technical ability to edit a file or call an API does not grant approval or decision rights.</li>
 </ul>
-<section id="what-an-agent-can-still-get-wrong" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="what-an-agent-can-still-get-wrong"><span class="header-section-number">4.2.1</span> What an agent can still get wrong</h3>
-<p>Adding tools does not make a model reliable by default. The model produces the most plausible continuation of the text it was given, and plausible is not the same as correct. An agent can still:</p>
-<ul>
-<li>skip a governing document or cite a section that does not support its claim;</li>
-<li>resolve an ambiguity silently and present the assumption as a fact;</li>
-<li>draft code without executing it, or misread the output of a tool;</li>
-<li>treat an instruction embedded in an untrusted document as if it came from the user or workflow;</li>
-<li>expose data through a model request, log, temporary file, or network-enabled tool;</li>
-<li>take a different path, and report different numbers, when the same request is run twice; and</li>
-<li>change behavior again after a model, prompt, tool, or artifact is updated.</li>
-</ul>
-<p>These are expected failure modes to design for, not unusual exceptions. Bounded access limits their impact; recorded evidence and human review make them easier to detect.</p>
-</section>
+<p>Tools also do not make a model reliable by default. An agent can omit a source, resolve ambiguity silently, write code without executing it, misread a tool result, or follow an instruction from an untrusted artifact. Bounded access, observable tool use, and human review limit the consequences and make failures easier to detect.</p>
 </section>
 <section id="make-the-task-contract-explicit" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="make-the-task-contract-explicit"><span class="header-section-number">4.3</span> Make the task contract explicit</h2>
-<p>People learn local conventions by observation and correction. An agent does not reliably absorb those conventions unless the workflow records them and supplies them again when needed. Important expectations therefore belong in inspectable instructions, not in a team member’s memory or an old chat session.</p>
-<p>A useful way to think about it: the task contract is a small SAP for the delegation itself. It has six parts:</p>
+<p>The <strong>task contract</strong> records the expectations for a delegated task. It is a small specification for the assignment rather than a prompt-writing trick.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -446,138 +381,153 @@ Figure&nbsp;4.1: A general AI-agent architecture. The harness coordinates the mo
 <thead>
 <tr class="header">
 <th>Part</th>
-<th>Question to answer</th>
-<th>Example for this task</th>
+<th>Question</th>
+<th>Age-summary example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Objective</td>
+<td><strong>Objective</strong></td>
 <td>What should be produced?</td>
 <td>An age summary and a short review note</td>
 </tr>
 <tr class="even">
-<td>Inputs</td>
+<td><strong>Inputs</strong></td>
 <td>Which artifact versions govern the work?</td>
-<td>Protocol version and ADSL snapshot</td>
+<td>A public protocol and a named synthetic CSV snapshot</td>
 </tr>
 <tr class="odd">
-<td>Scope</td>
+<td><strong>Scope</strong></td>
 <td>Which population and variables are relevant?</td>
-<td>To be confirmed from the protocol</td>
+<td>The protocol-defined population and <code>AGE</code></td>
 </tr>
 <tr class="even">
-<td>Output</td>
-<td>What must the response contain?</td>
-<td>Results, executable code, sources, assumptions, and open questions</td>
+<td><strong>Output</strong></td>
+<td>What must the result contain?</td>
+<td>Statistics, executed R code, sources, assumptions, and questions</td>
 </tr>
 <tr class="odd">
-<td>Boundaries</td>
+<td><strong>Boundaries</strong></td>
 <td>Which data, tools, and destinations are allowed?</td>
-<td>Read-only access in an approved environment</td>
+<td>Read-only access to the two linked public artifacts</td>
 </tr>
 <tr class="even">
-<td>Escalation</td>
+<td><strong>Escalation</strong></td>
 <td>When should the agent stop or ask?</td>
-<td>Missing artifact, ambiguous population, conflicting evidence, or suspected data issue</td>
+<td>Missing artifacts, ambiguous scope, conflicting evidence, or suspected data issues</td>
 </tr>
 </tbody>
 </table>
-<p>In a production workflow, make these items as explicit as the task permits, so a human can review them. Ambiguity is not a test of intelligence when the cost of a wrong assumption is high.</p>
-<p>The exercise later in this chapter deliberately breaks that rule: it leaves the population and summary statistics unspecified. That makes the agent’s assumptions visible in a low-risk setting. It is a teaching device, not a recommended pattern for a production request.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>A task contract does not require every uncertainty to be resolved in advance. It requires uncertainties to be visible so the agent does not silently turn an assumption into a decision.</p>
+</section>
+<section id="a-minimal-ai-adoption-example" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="a-minimal-ai-adoption-example"><span class="header-section-number">4.4</span> A minimal AI-adoption example</h2>
+<p>This example demonstrates the smallest useful form of AI adoption: one person sends one prompt to an agent and receives one result. It is not presented as an AI-first workflow.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Synthetic teaching data—not KEYNOTE-189 trial data">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Warning</span>Synthetic teaching data—not KEYNOTE-189 trial data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An instruction to “follow the SOP” is useful only if the agent can access the applicable SOP and identify its version. If a required document is unavailable, the correct behavior is to report the gap and stop the affected work.</p>
+<p>The CSV in this example is wholly synthetic and contains no participant data from KEYNOTE-189. It was constructed as a teaching example to be interpreted with the public KEYNOTE-189 protocol and cannot support any conclusion about that study.</p>
 </div>
 </div>
-</section>
-<section id="sec-try-it-yourself" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-try-it-yourself"><span class="header-section-number">4.4</span> Try it yourself</h2>
-<p>The exercise below runs the age-summary task end to end. Running it takes only a few minutes; the value is in the review that follows. It is deliberately a read-and-compute assignment: the agent may read the public artifacts and run code, but it should not change data or make a study decision.</p>
-<section id="step-1-get-the-materials" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="step-1-get-the-materials"><span class="header-section-number">4.4.1</span> Step 1: Get the materials</h3>
-<p>The exercise uses two public artifacts:</p>
+<section id="two-teaching-artifacts" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="two-teaching-artifacts"><span class="header-section-number">4.4.1</span> Two teaching artifacts</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Artifact</th>
-<th>Purpose</th>
+<th>Role in the demonstration</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf">KEYNOTE-189 protocol</a></td>
-<td>Provides the entry criteria, analysis-population definitions, and demographic-summary guidance</td>
+<td><a href="https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf">Public KEYNOTE-189 protocol</a></td>
+<td>Supplies example population and age requirements</td>
 </tr>
 <tr class="even">
 <td><a href="https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv"><code>kn189-synthetic-adsl.csv</code></a></td>
-<td>Provides a small, synthetic ADSL-style teaching extract</td>
+<td>Supplies fabricated ADSL-style records for calculation</td>
 </tr>
 </tbody>
 </table>
-<p>The extract mimics an in-progress data snapshot of 28 subjects. It contains three planted problems:</p>
-<ul>
-<li>three enrolled subjects who have not been randomized;</li>
-<li>missing <code>AGE</code> values;</li>
-<li>one randomized subject whose recorded age is below the protocol threshold.</li>
-</ul>
-<p>It is a teaching extract, not a submission-ready ADaM dataset. Its simplified structure is another reason to state what can and cannot be concluded from it.</p>
+<p>The synthetic data include three enrolled but nonrandomized records, two missing <code>AGE</code> values, and one randomized record with an age below the protocol threshold. These conditions exist only to make assumptions and exceptions visible in the returned result.</p>
 </section>
-<section id="step-2-choose-an-appropriate-agent" class="level3" data-number="4.4.2">
-<h3 data-number="4.4.2" class="anchored" data-anchor-id="step-2-choose-an-appropriate-agent"><span class="header-section-number">4.4.2</span> Step 2: Choose an appropriate agent</h3>
-<p>Use an approved agent that can read a PDF and CSV file and execute R. One public option is <a href="https://arena.ai/agent">Arena Agent</a>, which displays tool activity in the browser so you can watch each step. Availability and features of hosted tools can change; the exercise does not depend on this particular product.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The linked dataset is safe for this exercise because it is synthetic and already public. Do not upload confidential or proprietary data to a hosted agent unless that specific environment and data flow have been approved by your organization.</p>
-</div>
-</div>
-</section>
-<section id="step-3-send-the-request" class="level3" data-number="4.4.3">
-<h3 data-number="4.4.3" class="anchored" data-anchor-id="step-3-send-the-request"><span class="header-section-number">4.4.3</span> Step 3: Send the request</h3>
-<p>Give the agent the following request, without supplying the answer:</p>
-<pre class="text"><code>Based on the KEYNOTE-189 study protocol, summarize the age distribution in the data.
+<section id="one-prompt-in-arena-agent" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="one-prompt-in-arena-agent"><span class="header-section-number">4.4.2</span> One prompt in Arena Agent</h3>
+<p>For this demonstration, the entire assignment is sent to <a href="https://arena.ai/agent">arena.ai</a> in one request. The platform provides a concrete setting for showing what one agent interaction can accomplish; this chapter does not evaluate or benchmark the product.</p>
+<pre class="text"><code>This is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data.
+
+Using only the public KEYNOTE-189 protocol and the synthetic CSV linked below,
+identify the protocol-defined analysis population and summarize its age
+distribution. Use R for the calculation. Return the statistics, executed R
+code, protocol sources, assumptions, and questions for human review.
 
 Protocol:
 https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
 
-Data:
+Synthetic data:
 https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
 
-Show the results, the R code, and questions.
-
-Use only these two documents. Do not search the web for published results of this trial.</code></pre>
-<p>The last instruction matters. KEYNOTE-189 is a published trial, so an agent that searches instead of reading can return demographics from online information and never open your dataset at all.</p>
+Do not search for or use published KEYNOTE-189 results. Do not modify the data.</code></pre>
 </section>
-<section id="step-4-watch-the-process-not-only-the-answer" class="level3" data-number="4.4.4">
-<h3 data-number="4.4.4" class="anchored" data-anchor-id="step-4-watch-the-process-not-only-the-answer"><span class="header-section-number">4.4.4</span> Step 4: Watch the process, not only the answer</h3>
-<p>Some things are visible only while the agent works, so watch the tool activity instead of waiting for the final text:</p>
-<ul>
-<li>Did it open the protocol and the CSV, or answer from published knowledge of the trial?</li>
-<li>Did it execute code, or only display code that looks plausible?</li>
-<li>Where did it pause, backtrack, or retry?</li>
-</ul>
-<p>Then send the same request a second time. The agent may take a different route and may report different numbers. Seeing that once is the fastest way to understand why the review below examines evidence rather than prose.</p>
+<section id="one-result" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="one-result"><span class="header-section-number">4.4.3</span> One result</h3>
+<p>A sufficient response identifies the intention-to-treat population as the 25 synthetic records marked as randomized, runs the calculation in R, and reports one summary:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Result from the synthetic ITT records</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Randomized records</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td>Nonmissing <code>AGE</code></td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td>Missing <code>AGE</code></td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td>Mean</td>
+<td style="text-align: right;">50.58</td>
+</tr>
+<tr class="odd">
+<td>Standard deviation</td>
+<td style="text-align: right;">14.97</td>
+</tr>
+<tr class="even">
+<td>Median</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr class="odd">
+<td>Minimum</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td>Maximum</td>
+<td style="text-align: right;">76</td>
+</tr>
+</tbody>
+</table>
+<p>The same response should flag the invented 17-year-old record for human review without removing it from the requested population. It should also include the executed code, cited protocol sections, assumptions, and unresolved questions requested by the prompt.</p>
+<p>Here, one prompt enabled an agent to inspect a document, read data, execute R, and combine the observations into one answer. However, it remains one result from one interaction, not evidence that the task will be performed consistently.</p>
 </section>
 </section>
-<section id="review-the-result" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="review-the-result"><span class="header-section-number">4.5</span> Review the result</h2>
-<p>Reviewing an agent means checking its evidence and actions, not asking whether its prose sounds confident. It is closer to reviewing an independent QC program than to reading a memo. Use these five checks in order:</p>
+<section id="why-the-demonstration-is-adoption-not-a-workflow" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="why-the-demonstration-is-adoption-not-a-workflow"><span class="header-section-number">4.5</span> Why the demonstration is adoption, not a workflow</h2>
+<p>The demonstration leaves the underlying process unchanged. A person manually starts the work, supplies the context, interprets the response, and decides what happens next.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -585,226 +535,43 @@ Use only these two documents. Do not search the web for published results of thi
 </colgroup>
 <thead>
 <tr class="header">
-<th>Check</th>
-<th>The question it answers</th>
+<th>Missing workflow capability</th>
+<th>What the demonstration does instead</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1. Sources</td>
-<td>Did it read the right documents?</td>
+<td>Defined trigger</td>
+<td>A person chooses when to send the prompt</td>
 </tr>
 <tr class="even">
-<td>2. Scope and assumptions</td>
-<td>Does it say what it decided on your behalf?</td>
+<td>Controlled artifact retrieval</td>
+<td>Links are assembled inside one interaction</td>
 </tr>
 <tr class="odd">
-<td>3. Reproducible calculations</td>
-<td>Did the reported numbers come from code that ran?</td>
+<td>Repeatable execution contract</td>
+<td>The agent may choose a different path on another run</td>
 </tr>
 <tr class="even">
-<td>4. Exceptions and open questions</td>
-<td>Did it surface what it could not resolve?</td>
+<td>Predetermined benchmark</td>
+<td>The returned result is inspected after it is produced</td>
 </tr>
 <tr class="odd">
-<td>5. Trail and data boundary</td>
-<td>Can the work be reconstructed, and did data stay put?</td>
+<td>Durable state</td>
+<td>Findings and decisions remain in the interaction unless recorded elsewhere</td>
+</tr>
+<tr class="even">
+<td>Explicit decision record</td>
+<td>Human follow-up is expected but not captured by the task</td>
 </tr>
 </tbody>
 </table>
-<section id="sources" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="sources"><span class="header-section-number">4.5.1</span> 1. Sources</h3>
-<p>Ask:</p>
-<blockquote class="blockquote">
-<p>Which artifact versions and sections did you use? Show the evidence for each analysis rule.</p>
-</blockquote>
-<p>For this task, a sound response should find at least three pieces of protocol evidence:</p>
-<ul>
-<li>Section 5.1.2, criterion 6 sets the minimum age at 18 years;</li>
-<li>Section 8.5.1 defines the intention-to-treat (ITT) population as all randomized subjects;</li>
-<li>Section 8.6.3 says demographic variables such as age are summarized by treatment using descriptive statistics or categorical tables.</li>
-</ul>
-<p>A citation shows where a claim came from. It does not prove that the agent interpreted the claim correctly, so the next checks still matter.</p>
+<p>The distinction is not a criticism of prompt-based use. AI adoption is a fast way to discover whether a task is valuable and what an agent can accomplish. The single result reveals the artifacts, tools, assumptions, exceptions, and human decisions that a future workflow must govern.</p>
 </section>
-<section id="scope-and-assumptions" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="scope-and-assumptions"><span class="header-section-number">4.5.2</span> 2. Scope and assumptions</h3>
-<p>Ask:</p>
-<blockquote class="blockquote">
-<p>Which subjects and treatment variable did you use, and which choices remain assumptions?</p>
-</blockquote>
-<p>The original request does not identify an analysis population or say whether the summary should be overall or by treatment. The protocol makes ITT a reasonable choice for a randomized-subject summary, but it does not remove every ambiguity from the request. A good response states its choice and asks for confirmation.</p>
-</section>
-<section id="reproducible-calculations" class="level3" data-number="4.5.3">
-<h3 data-number="4.5.3" class="anchored" data-anchor-id="reproducible-calculations"><span class="header-section-number">4.5.3</span> 3. Reproducible calculations</h3>
-<p>Ask:</p>
-<blockquote class="blockquote">
-<p>Show the exact code that produced the reported numbers. How did you handle missing values and calculate quartiles?</p>
-</blockquote>
-<p>Run the code in the approved environment. Confirm that the executed filter, missing-value handling, and statistical functions match the written method. Generated code that was never run is not reproducible evidence.</p>
-<p>For reference, these are the results for two possible populations:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Statistic</th>
-<th style="text-align: right;">ITT (<code>ITTFL == "Y"</code>)</th>
-<th style="text-align: right;">All enrolled (<code>ENRLFL == "Y"</code>)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Total subjects</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="even">
-<td>Nonmissing <code>AGE</code></td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">26</td>
-</tr>
-<tr class="odd">
-<td>Missing <code>AGE</code></td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td>Mean</td>
-<td style="text-align: right;">50.58</td>
-<td style="text-align: right;">51.46</td>
-</tr>
-<tr class="odd">
-<td>Standard deviation</td>
-<td style="text-align: right;">14.97</td>
-<td style="text-align: right;">14.73</td>
-</tr>
-<tr class="even">
-<td>Q1</td>
-<td style="text-align: right;">41.25</td>
-<td style="text-align: right;">42.50</td>
-</tr>
-<tr class="odd">
-<td>Median</td>
-<td style="text-align: right;">51.00</td>
-<td style="text-align: right;">52.50</td>
-</tr>
-<tr class="even">
-<td>Q3</td>
-<td style="text-align: right;">61.25</td>
-<td style="text-align: right;">61.75</td>
-</tr>
-<tr class="odd">
-<td>Minimum</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td>Maximum</td>
-<td style="text-align: right;">76</td>
-<td style="text-align: right;">76</td>
-</tr>
-</tbody>
-</table>
-<p>The table uses R’s default sample-quantile method (<code>type = 7</code>). Quartiles are method-dependent: the default SAS definition gives Q1 = 40.50 and Q3 = 61.50 for the same ITT records. Neither method should be substituted silently for the other. State the software and method, then compare results calculated with the same definition.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Reference R code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Reference R code
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://raw.githubusercontent.com/elong0527/ai4csr/"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>adsl <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  data_url,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>summarize_age <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  age <span class="ot">&lt;-</span> data<span class="sc">$</span>AGE</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">length</span>(age),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">nonmissing =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)),</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(age)),</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">unname</span>(<span class="fu">quantile</span>(age, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="dv">7</span>)),</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">unname</span>(<span class="fu">quantile</span>(age, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="dv">7</span>)),</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">minimum =</span> <span class="fu">min</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">maximum =</span> <span class="fu">max</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize_age</span>(<span class="fu">subset</span>(adsl, ITTFL <span class="sc">==</span> <span class="st">"Y"</span>))</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize_age</span>(<span class="fu">subset</span>(adsl, ENRLFL <span class="sc">==</span> <span class="st">"Y"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exceptions-and-open-questions" class="level3" data-number="4.5.4">
-<h3 data-number="4.5.4" class="anchored" data-anchor-id="exceptions-and-open-questions"><span class="header-section-number">4.5.4</span> 4. Exceptions and open questions</h3>
-<p>Ask:</p>
-<blockquote class="blockquote">
-<p>What looked incomplete, inconsistent, or out of scope? What did you do about it?</p>
-</blockquote>
-<p>The agent should report at least these observations:</p>
-<ul>
-<li>three enrolled subjects have <code>ITTFL == "N"</code> and no treatment value;</li>
-<li>two subjects have missing <code>AGE</code>, one of them inside the ITT population; and</li>
-<li>subject <code>KN189-103-025</code> is randomized with <code>AGE == 17</code>, below the protocol’s minimum age.</li>
-</ul>
-<p>The 17-year-old subject illustrates the difference between <strong>analysis</strong> and <strong>escalation</strong>. If ITT is used, the subject remains in the summary because ITT includes all randomized subjects. The apparent protocol deviation is reported for human review; it is not quietly “fixed” by deleting the record. An agent that drops the record and reports a clean mean of 52.04 has produced the most dangerous kind of answer: correct-looking and wrong.</p>
-<p>Useful open questions include:</p>
-<ul>
-<li>Should the requested summary use ITT, all enrolled subjects, or another population defined in a study specification?</li>
-<li>Is an overall summary sufficient, or is a by-treatment display required?</li>
-<li>Is the missing or underage value a source-data issue, a derivation issue, or a confirmed protocol deviation?</li>
-</ul>
-<p>An unresolved question is not a failure. Hiding an unresolved choice behind a confident answer is.</p>
-</section>
-<section id="trail-and-data-boundary" class="level3" data-number="4.5.5">
-<h3 data-number="4.5.5" class="anchored" data-anchor-id="trail-and-data-boundary"><span class="header-section-number">4.5.5</span> 5. Trail and data boundary</h3>
-<p>Ask:</p>
-<blockquote class="blockquote">
-<p>Which files did you open, which commands did you run, and what data left the approved environment?</p>
-</blockquote>
-<p>Treat the agent’s narrative as a claim. The stronger evidence is the harness or platform record showing tool calls, command output, approvals, errors, and data transfers. If the platform cannot provide enough evidence to reconstruct the work, record that as a workflow gap.</p>
-<p>A correct mean does not demonstrate that the process is acceptable. Compare the observed trail with your requirements for access control, audit trails, software qualification or validation, reproducibility, and review.</p>
-</section>
-<section id="when-a-check-fails" class="level3" data-number="4.5.6">
-<h3 data-number="4.5.6" class="anchored" data-anchor-id="when-a-check-fails"><span class="header-section-number">4.5.6</span> When a check fails</h3>
-<p>A failed check is usually information about the request, not a verdict on the agent. If the summary quietly excluded the underage subject, the request never said what to do with an apparent protocol deviation. If the population is wrong, the request never named one. The productive response is to supply the missing part of the task contract and run the task again, not to argue with the model or to accept a second answer that merely sounds more careful.</p>
-<p>Some gaps cannot be closed by a better request. If the platform cannot show which files were opened and which commands ran, no wording will produce that evidence. Record it as a workflow gap and decide whether the task belongs on that platform at all.</p>
-</section>
-</section>
-<section id="keep-raw-data-separate-when-possible" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="keep-raw-data-separate-when-possible"><span class="header-section-number">4.6</span> Keep raw data separate when possible</h2>
-<p>The model often does not need subject-level records. Statistical software can process raw data inside a controlled environment and return only the information needed for reasoning or reporting:</p>
-<pre class="text"><code>Raw ADSL -&gt; controlled R/SAS/Python calculation -&gt; aggregate result -&gt; LLM</code></pre>
-<p>The exercise above does not follow this pattern, which is worth noticing. The request hands the agent a link to the CSV, so the agent will most likely read all 28 records into its context before computing anything. That is acceptable here because the extract is small, synthetic, and already public. With a real ADSL snapshot it would not be: the data should stay in the controlled environment, and only the summary should reach the model.</p>
-<p>This pattern applies two useful controls:</p>
-<ul>
-<li><strong>Least privilege:</strong> the agent can reach only the files, commands, network destinations, and credentials needed for the task.</li>
-<li><strong>Data minimization:</strong> the model receives only the fields or aggregates needed for its role.</li>
-</ul>
-<p>These controls reduce exposure; they do not guarantee confidentiality. Model requests, tool output, logs, session history, temporary files, caches, and telemetry all require deliberate treatment. A process often inherits the permissions of the account that launched it, so isolation must be configured and tested.</p>
-<blockquote class="blockquote">
-<p>Give the agent access to what the task requires, not everything the running environment happens to expose.</p>
-</blockquote>
-</section>
-<section id="keep-human-accountability-explicit" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="keep-human-accountability-explicit"><span class="header-section-number">4.7</span> Keep human accountability explicit</h2>
-<p>The agent can gather evidence, execute a deterministic calculation, identify exceptions, and draft an explanation. It cannot own the scientific or regulatory decision.</p>
-<p>Even for a task this small, a named reviewer still has to accept that the variables mean what the analysis assumes, that the population and handling of exceptions match the objective, and that the result is fit for its intended use.</p>
-<p>The same division of responsibility becomes more important when the work involves treatment groups, derived variables, imputation, endpoints, inferential methods, or submission deliverables.</p>
+<section id="from-one-result-to-an-ai-first-workflow" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="from-one-result-to-an-ai-first-workflow"><span class="header-section-number">4.6</span> From one result to an AI-first workflow</h2>
+<p>The next design step is not a longer prompt. It is to turn the useful parts of the interaction into a bounded, repeatable process: define an event, version the task contract, retrieve the governing artifacts, execute deterministic checks, measure the result against a benchmark, record the human decision, and use that state in the next run.</p>
+<p>The applied examples in this book make that transition through the shared AI-first SDLC. Each example begins with a bounded business problem and develops the artifacts, evidence, and decision points needed to move beyond a single prompt.</p>
 
 
 </section>
