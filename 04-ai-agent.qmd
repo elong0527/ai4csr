@@ -107,8 +107,10 @@ sends one prompt to an agent and receives one result. It is not presented as an
 AI-first workflow.
 
 ::: {.callout-warning title="Synthetic teaching data—not KEYNOTE-189 trial data"}
-The CSV in this example is wholly synthetic. It contains no participant
-data from KEYNOTE-189 and cannot support any conclusion about that study.
+The CSV in this example is wholly synthetic and contains no participant data
+from KEYNOTE-189. It was constructed as a teaching example to be interpreted
+with the public KEYNOTE-189 protocol and cannot support any conclusion about
+that study.
 :::
 
 ### Two teaching artifacts
@@ -126,9 +128,9 @@ visible in the returned result.
 ### One prompt in Arena Agent
 
 For this demonstration, the entire assignment is sent to
-[arena.ai](https://arena.ai/agent) in one request. The arena.ai is the vehicle
-for showing what one agent interaction can accomplish; this chapter does not
-evaluate or benchmark the product.
+[arena.ai](https://arena.ai/agent) in one request. The platform provides a
+concrete setting for showing what one agent interaction can accomplish; this
+chapter does not evaluate or benchmark the product.
 
 ``` text
 This is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data.
@@ -169,10 +171,10 @@ without removing it from the requested population. It should also include the
 executed code, cited protocol sections, assumptions, and unresolved questions
 requested by the prompt.
 
-Here, one prompt enabled an agent to inspect a
-document, read data, execute R, and combine the observations into one answer.
-However, it remains one result from one interaction, not evidence that the task will be
-performed consistently.
+Here, one prompt enabled an agent to inspect a document, read data, execute R,
+and combine the observations into one answer. However, it remains one result
+from one interaction, not evidence that the task will be performed
+consistently.
 
 ## Why the demonstration is adoption, not a workflow
 
