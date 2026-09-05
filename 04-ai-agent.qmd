@@ -1,22 +1,30 @@
 # Onboarding an AI agent {#sec-intro-ai-agent}
 
 ::: callout-tip
-Adding an AI agent to a Biometrics task is an onboarding problem before it is a
-technology problem.
+Adding an AI agent to a clinical trial workflow is an onboarding problem before
+it is a technology problem.
 :::
 
 ## The onboarding analogy
 
-Consider a new team member who understands the basics of clinical trials but
-does not yet know an organization's standard operating procedures, computing
-environment, folder structure, naming conventions, or review practices. A
-small first assignment might be to summarize age in an ADSL dataset.
+Imagine that a new team member has joined. They recently finished school and
+understand the basics of clinical trials. They know what a protocol and
+statistical analysis plan (SAP) are, but they do not yet know standard
+operating procedures (SOPs), computing environment, folder structure, naming
+conventions, or review habits of your organization.
 
-The assignment tests more than calculation. The new colleague must find the
-right documents, identify the analysis population, handle missing values,
-notice exceptions, and explain assumptions. Informal coaching supplies much of
-that context for a person. An agent needs the same expectations in an explicit,
-inspectable form.
+For their first assignment, you choose a simple task:
+
+> Summarize the age distribution in a clinical trial's ADSL dataset.
+
+The task is deliberately small. You are onboarding them more on the workflow
+than the tool. Can the new colleague find and use the relevant documents? Can
+they identify the correct analysis population, handle missing values, notice
+protocol deviations, and report findings and assumptions?
+
+Now replace "new colleague" with "AI agent." Almost everything you would set up
+for a person still applies, but each item has to become something written down
+rather than something learned by sitting nearby.
 
 | For a new colleague | For an agent |
 |---|---|
@@ -99,14 +107,8 @@ sends one prompt to an agent and receives one result. It is not presented as an
 AI-first workflow.
 
 ::: {.callout-warning title="Synthetic teaching data—not KEYNOTE-189 trial data"}
-The CSV in this example is wholly synthetic. It contains 28 invented records
-and several conditions planted for teaching purposes. It contains no participant
+The CSV in this example is wholly synthetic. It contains no participant
 data from KEYNOTE-189 and cannot support any conclusion about that study.
-
-The public KEYNOTE-189 protocol is used only as a source of example rules. Every
-number reported below describes the synthetic CSV, not the trial, its
-participants, or its published results. This exercise is not an exploration of
-the actual study or its data.
 :::
 
 ### Two teaching artifacts
@@ -124,7 +126,7 @@ visible in the returned result.
 ### One prompt in Arena Agent
 
 For this demonstration, the entire assignment is sent to
-[Arena Agent](https://arena.ai/agent) in one request. Arena Agent is the vehicle
+[arena.ai](https://arena.ai/agent) in one request. The arena.ai is the vehicle
 for showing what one agent interaction can accomplish; this chapter does not
 evaluate or benchmark the product.
 
@@ -167,9 +169,9 @@ without removing it from the requested population. It should also include the
 executed code, cited protocol sections, assumptions, and unresolved questions
 requested by the prompt.
 
-This is a meaningful demonstration: one prompt enabled an agent to inspect a
+Here, one prompt enabled an agent to inspect a
 document, read data, execute R, and combine the observations into one answer.
-It remains one result from one interaction, not evidence that the task will be
+However, it remains one result from one interaction, not evidence that the task will be
 performed consistently.
 
 ## Why the demonstration is adoption, not a workflow
