@@ -2,7 +2,7 @@
 
 ## In this book {.unnumbered}
 
-This book is designed for people who are interested in using AI for clinical development.
+This book is designed for people who are interested in using AI for clinical trial development.
 Each part of the book makes certain assumptions about the readers' background:
 
 - Part 1, TBD
