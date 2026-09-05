@@ -250,9 +250,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#from-ai-adoption-to-ai-native" id="toc-from-ai-adoption-to-ai-native" class="nav-link active" data-scroll-target="#from-ai-adoption-to-ai-native"><span class="header-section-number">2.1</span> From AI adoption to AI-native</a></li>
-  <li><a href="#how-an-ai-first-workflow-works" id="toc-how-an-ai-first-workflow-works" class="nav-link" data-scroll-target="#how-an-ai-first-workflow-works"><span class="header-section-number">2.2</span> How an AI-first workflow works</a></li>
-  <li><a href="#where-it-applies-in-biometrics" id="toc-where-it-applies-in-biometrics" class="nav-link" data-scroll-target="#where-it-applies-in-biometrics"><span class="header-section-number">2.3</span> Where it applies in biometrics</a></li>
-  <li><a href="#human-accountability-is-not-optional" id="toc-human-accountability-is-not-optional" class="nav-link" data-scroll-target="#human-accountability-is-not-optional"><span class="header-section-number">2.4</span> Human accountability is not optional</a></li>
+  <li><a href="#human-accountability-is-not-optional" id="toc-human-accountability-is-not-optional" class="nav-link" data-scroll-target="#human-accountability-is-not-optional"><span class="header-section-number">2.2</span> Human accountability is not optional</a></li>
+  <li><a href="#how-an-ai-first-workflow-works" id="toc-how-an-ai-first-workflow-works" class="nav-link" data-scroll-target="#how-an-ai-first-workflow-works"><span class="header-section-number">2.3</span> How an AI-first workflow works</a></li>
+  <li><a href="#where-it-applies-in-biometrics" id="toc-where-it-applies-in-biometrics" class="nav-link" data-scroll-target="#where-it-applies-in-biometrics"><span class="header-section-number">2.4</span> Where it applies in biometrics</a></li>
   <li><a href="#start-with-one-bounded-workflow" id="toc-start-with-one-bounded-workflow" class="nav-link" data-scroll-target="#start-with-one-bounded-workflow"><span class="header-section-number">2.5</span> Start with one bounded workflow</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/02-ai-first-workflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/02-ai-first-workflow.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
@@ -298,7 +298,7 @@ Tip
 <section id="from-ai-adoption-to-ai-native" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="from-ai-adoption-to-ai-native"><span class="header-section-number">2.1</span> From AI adoption to AI-native</h2>
 <p><strong>AI adoption</strong> begins when individuals use AI for isolated tasks inside an existing workflow. A person decides when to invoke AI, assembles the context, reviews the response, and moves the work forward. This may improve personal productivity, but the workflow itself remains unchanged.</p>
-<p>AI-first is the practical focus of this book. It does not mean AI performs every task or makes final decisions. It means the team considers AI when designing the workflow, then assigns each step to the component best suited to it.</p>
+<p>AI-first workflow is the practical focus of this book. It does not mean AI performs every task or makes final decisions. It means the team considers AI when designing the workflow, then assigns each step to the component best suited to it.</p>
 <p>AI-native is the broader operating model: AI is a normal collaborator, documentation is designed for people and agents, and team members increasingly orchestrate work rather than execute every step manually. AI-first workflows help an organization move in that direction, alongside the necessary governance, infrastructure, skills, and culture.</p>
 <table class="caption-top table">
 <colgroup>
@@ -332,8 +332,27 @@ Tip
 </tbody>
 </table>
 </section>
-<section id="how-an-ai-first-workflow-works" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="how-an-ai-first-workflow-works"><span class="header-section-number">2.2</span> How an AI-first workflow works</h2>
+<section id="human-accountability-is-not-optional" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="human-accountability-is-not-optional"><span class="header-section-number">2.2</span> Human accountability is not optional</h2>
+<p>In an AI-native team, the human role shifts from manually executing each task to orchestrating agents, tools, and human review. The agent can retrieve, compare, draft, run approved tools, and monitor routine conditions. The human defines the objective, reviews exceptions, challenges the evidence, improves the workflow, and remains accountable for the decision.</p>
+<p>This makes three human capabilities especially valuable: systems thinking, end-to-end knowledge, and exception handling.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="AI output is not regulatory clearance">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>AI output is not regulatory clearance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An April 2026 <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/purolea-cosmetics-lab-722591-04022026">FDA warning letter to Purolea Cosmetics Lab</a> described a drug manufacturer that used AI agents to create specifications, procedures, and production records. FDA found that the firm had not adequately reviewed the generated documents for accuracy and CGMP compliance. The firm also reportedly relied on the agent’s failure to mention a requirement as a reason for not knowing that the requirement applied.</p>
+<p>The letter concerns pharmaceutical manufacturing and CGMP, not clinical study reporting. Its workflow lesson still transfers: AI-generated content remains a draft until an authorized person verifies and approves it. The workflow must check authoritative requirements, disclose what it did not cover, and preserve the evidence behind the decision. An agent cannot be the source of regulatory truth or its own approver.</p>
+</div>
+</div>
+</section>
+<section id="how-an-ai-first-workflow-works" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="how-an-ai-first-workflow-works"><span class="header-section-number">2.3</span> How an AI-first workflow works</h2>
 <p>An AI-first workflow does not begin and end with a prompt. It connects AI to a repeatable process:</p>
 <blockquote class="blockquote">
 <p>Event -&gt; Task -&gt; Tools and agent -&gt; Evidence -&gt; Human decision -&gt; Recorded state</p>
@@ -362,15 +381,15 @@ Tip
 <td>AI agent</td>
 </tr>
 <tr class="odd">
-<td>Exercise statistical judgment, approve policy, or accept accountability</td>
+<td>Exercise domain knowledge judgement, approve policy, or accept accountability</td>
 <td>Human role</td>
 </tr>
 </tbody>
 </table>
-<p>The simplest capable component should do each job. An AI model should not replace a test whose result must be identical every time, and tool access should never be confused with approval authority.</p>
+<p>The simplest capable component should do each job. An AI agent should not replace a deterministic test and the tool access should never be confused with approval authority.</p>
 </section>
-<section id="where-it-applies-in-biometrics" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="where-it-applies-in-biometrics"><span class="header-section-number">2.3</span> Where it applies in biometrics</h2>
+<section id="where-it-applies-in-biometrics" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="where-it-applies-in-biometrics"><span class="header-section-number">2.4</span> Where it applies in biometrics</h2>
 <p>AI-first workflows can support each biometrics pillar without changing who is accountable for the work.</p>
 <table class="caption-top table">
 <colgroup>
@@ -405,35 +424,67 @@ Tip
 </table>
 <p>Many valuable workflows cross these boundaries. Reviewing a TLF may require the SAP, ADaM metadata, executed code, rendered output, and prior decisions. Domain expertise and end-to-end knowledge therefore become more important, not less.</p>
 </section>
-<section id="human-accountability-is-not-optional" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="human-accountability-is-not-optional"><span class="header-section-number">2.4</span> Human accountability is not optional</h2>
-<p>In an AI-first team, the human role shifts from manually executing each task to orchestrating agents, tools, and human review. The agent can retrieve, compare, draft, run approved tools, and monitor routine conditions. The professional defines the objective, reviews exceptions, challenges the evidence, improves the workflow, and remains accountable for the decision.</p>
-<p>This makes three human capabilities especially valuable: systems thinking, end-to-end knowledge, and exception handling.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="AI output is not regulatory clearance">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>AI output is not regulatory clearance
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>An April 2026 <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/purolea-cosmetics-lab-722591-04022026">FDA warning letter to Purolea Cosmetics Lab</a> described a drug manufacturer that used AI agents to create specifications, procedures, and production records. FDA found that the firm had not adequately reviewed the generated documents for accuracy and CGMP compliance. The firm also reportedly relied on the agent’s failure to mention a requirement as a reason for not knowing that the requirement applied.</p>
-<p>The letter concerns pharmaceutical manufacturing and CGMP, not clinical study reporting. Its workflow lesson still transfers: AI-generated content remains a draft until an authorized person verifies and approves it. The workflow must check authoritative requirements, disclose what it did not cover, and preserve the evidence behind the decision. An agent cannot be the source of regulatory truth or its own approver.</p>
-</div>
-</div>
-</section>
 <section id="start-with-one-bounded-workflow" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="start-with-one-bounded-workflow"><span class="header-section-number">2.5</span> Start with one bounded workflow</h2>
-<p>An organization does not need to begin with autonomous, end-to-end execution. A useful AI-first workflow can be small:</p>
+<p>An organization does not need to begin with autonomous, end-to-end execution. A useful first workflow is small enough to observe closely but valuable enough to improve real work. It should have a clear beginning and end, accessible source artifacts, a reviewable output, and a named person responsible for the decision.</p>
+<p>A workflow is <strong>bounded</strong> when the team can state:</p>
+<ul>
+<li>what event starts it;</li>
+<li>which artifacts and tools it may use;</li>
+<li>which actions the agent may take;</li>
+<li>what output it must return;</li>
+<li>when it must stop or escalate; and</li>
+<li>who reviews the result and makes the decision.</li>
+</ul>
+<p>Use the following sequence to design the first implementation.</p>
 <ol type="1">
-<li>Choose one recurring, review-heavy task with visible source artifacts.</li>
-<li>Define one trigger, one expected output, and one accountable owner.</li>
-<li>Automate deterministic checks before adding model judgment.</li>
-<li>Require evidence, uncertainty, coverage, and explicit escalation.</li>
-<li>Run in advisory mode until real use demonstrates acceptable performance.</li>
+<li><strong>Choose the minimum valuable workflow.</strong></li>
+<li><strong>Write the task contract.</strong></li>
+<li><strong>Build the deterministic foundation.</strong></li>
+<li><strong>Require a reviewable result.</strong></li>
+<li><strong>Pilot in advisory mode.</strong></li>
+<li><strong>Expand one boundary at a time.</strong></li>
 </ol>
+<p>For example, a first workflow for reviewing a changed table could be defined as follows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Trigger</strong></td>
+<td>A pull request changes a table program or rendered output</td>
+</tr>
+<tr class="even">
+<td><strong>Inputs</strong></td>
+<td>Current SAP, output specification, analysis metadata, source code, and rendered table</td>
+</tr>
+<tr class="odd">
+<td><strong>Agent task</strong></td>
+<td>Compare the change with the requirements and identify inconsistencies or missing evidence</td>
+</tr>
+<tr class="even">
+<td><strong>Required output</strong></td>
+<td>Structured findings with source references, coverage, uncertainty, and recommended follow-up</td>
+</tr>
+<tr class="odd">
+<td><strong>Stop conditions</strong></td>
+<td>A required artifact is missing, versions conflict, or the finding requires statistical judgment</td>
+</tr>
+<tr class="even">
+<td><strong>Human decision</strong></td>
+<td>The accountable reviewer accepts, rejects, or investigates each finding</td>
+</tr>
+</tbody>
+</table>
+<p>This workflow is deliberately narrow, but it establishes reusable capabilities: artifact retrieval, traceable review, structured findings, escalation, and a recorded human decision. Those capabilities become the foundation for broader AI-first workflows.</p>
 
 
 </section>
