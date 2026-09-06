@@ -20,10 +20,10 @@ that format a number for display can also round it. In this example,
 the value in binary just below the intended halfway point. A review limited to
 calls named `round()` would miss the problem.
 
-This chapter follows one turn of the AI-first SDLC introduced in
-@sec-ai-first-sdlc. It begins with a short review prompt and ends with a
-specified, bounded workflow. @sec-workflow-rounding-skill begins a second turn
-of the loop by designing a reusable agent skill.
+This chapter applies one turn of the AI-first SDLC from @sec-ai-first-sdlc. It
+turns a short review prompt into a bounded workflow.
+@sec-workflow-rounding-skill then begins a second turn by designing a reusable
+agent skill.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The workflow is specified, not distributed. The book includes the rule,
@@ -64,9 +64,8 @@ A reviewer might begin with this under-specified request:
 > the R source properly uses round half away from zero. If not, identify the
 > source and draft a GitHub issue to report the finding.
 
-The request sounds clear, but it leaves several decisions unstated: what counts
-as a rounding site, which source is in scope, how behavior will be tested, and
-who decides whether a difference is a defect.
+The request sounds clear, but it does not define a rounding site, the source in
+scope, the test, or who classifies a difference.
 
 The review target is
 [`Merck/metalite` at a fixed commit](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef),
@@ -154,10 +153,9 @@ standard. Version 1.0 contains three rules:
 > **BR-NUM-001.3:** Display precision is specified for each reported statistic
 > and preserved, including trailing zeros.
 
-This cycle evaluates only BR-NUM-001.1. Rules 2 and 3 remain explicit gaps.
-For this exercise, `cards::round5()` supplies the approved comparison
-behavior. "Approved" means accepted by the illustrative rule owner for this
-bounded review; it is not an industry endorsement.
+This cycle checks only BR-NUM-001.1; rules 2 and 3 remain explicit gaps. For
+this exercise, the illustrative rule owner accepts `cards::round5()` as the
+comparison behavior. This is not an industry endorsement.
 
 The contract also defines the scope that the original prompt omitted:
 
@@ -210,10 +208,10 @@ format labels rather than reported numbers.
 
 ### Step 2: Probe observed behavior
 
-For a candidate that affects a reported value, the proposed probe tests
-decimal ties of both signs against the reference below. Given a value and the
-number of displayed decimal places, this helper applies the half-away-from-zero
-rule.
+The probe compares each candidate at decimal ties of both signs with one
+reference behavior. Readers can skip the R details below; the important point
+is that every candidate receives the same test. Given a value and the number
+of displayed decimal places, the helper applies the half-away-from-zero rule.
 
 ```r
 round_half_away <- function(x, digits = 0) {
@@ -222,9 +220,8 @@ round_half_away <- function(x, digits = 0) {
 }
 ```
 
-Readers do not need to interpret each R operator. The important point is that
-every candidate is compared with the same reference behavior. The probe reports
-`PASS` or `FAIL` plus a comparison table; a function name alone is not evidence.
+The probe reports `PASS` or `FAIL` with a comparison table; a function name
+alone is not evidence.
 
 ### Step 3: Triage in context
 
@@ -258,15 +255,10 @@ All metalite locations and results below refer to commit
 (2025-09-17). They must be reverified before use with another commit.
 
 A search for `round(` found zero matches. The broader scan found six
-candidates. Context review discarded three calls that format variable names,
-an index label, or factor levels.
-
-The discarded candidates were `R/adam_mapping.R:151`, which formats variable
-names; `R/bind_rows2.R:74`, which formats an index label; and
-`R/collect_n_subject.R:51`, which formats factor levels.
-
-The chapter's key evidence table contains the three confirmed rounding sites,
-all of which use `formatC()`:
+candidates. Context review discarded three: `R/adam_mapping.R:151` formats
+variable names, `R/bind_rows2.R:74` formats an index label, and
+`R/collect_n_subject.R:51` formats factor levels. The other three are confirmed
+rounding sites, all using `formatC()`:
 
 | Confirmed site | Reported value |
 |---|---|

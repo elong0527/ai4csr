@@ -14,14 +14,12 @@ in a review note, but the useful details do not: which functions to search,
 which ties to test, how to explain a mismatch, and when to stop before posting
 an issue. Repeating the original one-sentence prompt may not repeat the result.
 
-@sec-workflow-rounding showed why. At metalite commit
-`85757ba1bf5d863971e142b7872b6f92c265d6ef`, the broader review found three
-`formatC()` sites and 6 divergences among 10 tie probes. The result depended on
-instructions that were more durable than the prompt.
+At metalite commit `85757ba1bf5d863971e142b7872b6f92c265d6ef`,
+@sec-workflow-rounding found three `formatC()` sites and 6 divergences among 10
+tie probes. Repeating that result requires preserving more than the prompt.
 
-This chapter begins a second turn of the same AI-first SDLC loop. It designs an
-agent skill: a small, reviewable folder of instructions and supporting files
-that tells a compatible agent how to perform the check.
+This second lifecycle turn designs an agent skill: a reviewable folder that
+preserves the instructions and supporting material for the check.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
@@ -51,13 +49,13 @@ and limits, not only its detection logic.**
 
 ### Turn observed weaknesses into requirements
 
-Cycle 1 exposed four workflow weaknesses, not additional defects in metalite.
-Search and triage depended on one reviewer, so cycle 2 needs a written procedure.
-Runs lacked a standard coverage record, so each future run must report coverage.
-The review began only when someone remembered, so the team must define a trigger
-without pretending it is automated. The approved helper also needed repeated
-manual triage, so the workflow must measure that cost and define how a rule owner
-could approve an allowlist.
+Cycle 1 exposed four workflow weaknesses, not additional metalite defects.
+Cycle 2 therefore needs to:
+
+- replace reviewer memory with a written procedure;
+- report coverage for every run;
+- define a trigger without implying that automation exists; and
+- measure repeated triage and let the rule owner approve an allowlist.
 
 ### Canonical artifact: Workflow brief
 
@@ -162,10 +160,8 @@ rounding-rule-review/
     issue-template.md
 ```
 
-The directory name matches the `name` in the frontmatter. `SKILL.md` and its
-frontmatter are required; the other directories are optional under the Agent
-Skills specification but useful for this design. None of these files is
-distributed by the book.
+This proposed layout applies the structure described above. None of these files
+is distributed by the book.
 
 ### Preserve the decisions that changed the result
 
@@ -240,18 +236,10 @@ Test; this chapter does not claim that event has occurred.
 
 ### Separate baseline evidence from future results
 
-The evidence already available comes from cycle 1 at metalite commit
-`85757ba1bf5d863971e142b7872b6f92c265d6ef`:
-
-- the broader scan produced six candidates and three confirmed `formatC()`
-  sites;
-- the one-decimal probe diverged on 6 of 10 tested ties;
-- the approved-helper fixture produced two candidates that required discard;
-  and
-- coverage was 24 R files for BR-NUM-001.1, with rules 2 and 3 unchecked.
-
-Those numbers are an answer key for a future skill test, not results from the
-skill design.
+Cycle 1 at metalite commit
+`85757ba1bf5d863971e142b7872b6f92c265d6ef` provides the answer key for the
+future benchmark below. Those results are not evidence that the proposed skill
+has been built or run.
 
 ### Key benchmark for a future implementation
 
