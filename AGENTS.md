@@ -185,23 +185,23 @@ future work rather than adding it incidentally to unrelated chapters.
 
 ## Special requirements for the rounding example
 
-The rounding chapters ship runnable material under `examples/rounding/`. Keep
-the chapters and that directory consistent.
+The rounding chapters specify a workflow that the book does not distribute.
+Both chapters are at design-pattern maturity.
 
-- The skill in `examples/rounding/rounding-rule-review/` follows the Agent
-  Skills specification (<https://agentskills.io/specification>): a required
-  `SKILL.md` with `name` and `description` frontmatter, optional `scripts/`,
-  `references/`, and `assets/` directories, and a `name` that matches the
-  directory name.
-- `examples/rounding/evidence/` holds output from real runs against
-  `Merck/metalite`. Re-run the scripts and update the recorded commit before
-  changing any number quoted in the chapters.
+- The repository ships **no** `examples/rounding/` directory, no skill package,
+  no scripts, and no evidence files. Do not add links or paths to such files,
+  and do not describe the skill as installable or runnable from this book. If
+  that material is added later, raise the maturity label in the same change.
+- The skill layout described in `07-workflow-rounding-skill.qmd` follows the
+  Agent Skills specification (<https://agentskills.io/specification>): a
+  required `SKILL.md` with `name` and `description` frontmatter, optional
+  `scripts/`, `references/`, and `assets/` directories, and a `name` that
+  matches the directory name.
 - Every reader-facing prompt and every quoted file, line number, or result must
   be pinned to a commit SHA, never to a branch. metalite is maintained, so an
   unpinned reference can silently stop reproducing. The chapters currently pin
-  `85757ba1bf5d863971e142b7872b6f92c265d6ef` (2025-09-17); changing it means
-  re-running the scripts and updating the evidence directory in the same
-  change.
+  `85757ba1bf5d863971e142b7872b6f92c265d6ef` (2025-09-17). Changing it means
+  re-verifying every quoted line number and probe result in the same change.
 - The "Try it yourself" sections send a prompt to <https://arena.ai/agent>,
   matching the demonstration in `04-ai-agent.qmd`. State that no GitHub issue
   can be created there, and never assert a specific agent response. Prompt

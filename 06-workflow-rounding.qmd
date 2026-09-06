@@ -17,11 +17,13 @@ around the smallest possible unit of work: one prompt, run by hand, against one
 real R package. The next chapter runs the loop a second time and turns the
 result into something reusable.
 
-::: {.callout-note title="Maturity: Reproducible prototype (first cycle)"}
-The scan, the boundary test, the fixtures, and the run against `Merck/metalite`
-are reproducible from this repository. The reported issue is a rendered draft
-that was deliberately not submitted. Deployment is a manual, advisory practice
-rather than an automated trigger.
+::: {.callout-note title="Maturity: Design pattern"}
+The workflow is specified rather than distributed. The rule contract, the two
+checks, and the reported findings are stated in full below, and the metalite
+result was verified at the pinned commit, but this book does not ship the
+scripts as a package. The reported issue is a draft that was deliberately not
+submitted, and deployment is a manual practice rather than an automated
+trigger.
 :::
 
 | Example contract | Definition |
@@ -156,9 +158,9 @@ So the first Design output is not a prompt. It is a versioned rule contract.
 
 ### Canonical artifact: Rule contract BR-NUM-001
 
-The full contract is in
-[`examples/rounding/rounding-rule-review/references/rounding-rules.md`](https://github.com/elong0527/ai4csr/blob/main/examples/rounding/rounding-rule-review/references/rounding-rules.md).
-Its first rule is the only one this cycle checks:
+The contract is versioned, has a named owner, and carries a change history.
+BR-NUM-001 v1.0 states three rules. The first is the only one this cycle
+checks:
 
 > **BR-NUM-001.1:** Exact decimal ties are rounded half away from zero. A
 > displayed value is never a negative zero.
@@ -255,9 +257,10 @@ Build ends with a runnable path from an R source tree to a drafted finding.
 
 ### Control the false positives first
 
-Three fixtures in
-[`examples/rounding/fixtures`](https://github.com/elong0527/ai4csr/tree/main/examples/rounding/fixtures)
-establish the baseline before the real repository is touched:
+Three small fixtures establish the baseline before the real repository is
+touched: a compliant summary that aggregates unrounded values and formats once
+through the approved helper, a noncompliant summary that calls `formatC()`
+directly, and the approved helper itself.
 
 | Fixture | Sites reported | Confirmed findings |
 |---|---|---:|
@@ -356,8 +359,8 @@ assert a mechanism.
 | Coverage reported | Yes: 24 files, rule 1 only |
 | Rules left unchecked | BR-NUM-001.2 and BR-NUM-001.3 |
 
-The run is reproducible from
-[`examples/rounding/evidence`](https://github.com/elong0527/ai4csr/tree/main/examples/rounding/evidence).
+Every number above can be re-derived at the pinned commit from the catalog and
+the probe shown earlier in this chapter.
 
 ## Deploy --- Operationalize the workflow
 
@@ -388,9 +391,9 @@ example.
 | Accountable reviewer | The rule owner named in the contract |
 | Reversal | Stop running it |
 
-The drafted issue for metalite is in
-[`examples/rounding/evidence/metalite-2026-09-06/issue-draft.md`](https://github.com/elong0527/ai4csr/blob/main/examples/rounding/evidence/metalite-2026-09-06/issue-draft.md),
-marked as a dry run.
+The drafted issue for metalite records the rule and its version, the three
+locations, the probe output, both causes of the divergence, and the coverage
+statement. It is marked as a dry run and was not submitted.
 
 ## Maintain --- Monitor and improve
 

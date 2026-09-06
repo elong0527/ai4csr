@@ -12,12 +12,12 @@ finding in `Merck/metalite`. All of them lived in the head of the reviewer who
 ran the prompt. This chapter is the second turn of the same lifecycle loop,
 with a different unit of work: not a prompt, but a package.
 
-::: {.callout-note title="Maturity: Reproducible prototype (second cycle)"}
-The skill in
-[`examples/rounding/rounding-rule-review`](https://github.com/elong0527/ai4csr/tree/main/examples/rounding/rounding-rule-review)
-is complete and runnable, and its results on the fixtures and on metalite are
-reproducible. The automation triggers in the Deploy section are a design; no
-scheduled job or CI workflow has been committed or run.
+::: {.callout-note title="Maturity: Design pattern"}
+The skill layout, frontmatter, and procedure are specified in full, and the
+results quoted here were verified before the chapter was written. The book does
+not distribute the skill as an installable package. The automation triggers in
+the Deploy section are a design; no scheduled job or CI workflow has been
+built or run.
 :::
 
 | Example contract | Definition |
@@ -233,9 +233,6 @@ who was not present for cycle 1 must reach the same result.
 The last row is a deliberate non-improvement. The allowlist was left out of
 version 1.0 so that the hardening step has a measured cost to remove rather
 than a hypothetical one.
-
-Expected fixture results are recorded in
-[`examples/rounding/expected/fixture-findings.md`](https://github.com/elong0527/ai4csr/blob/main/examples/rounding/expected/fixture-findings.md).
 
 ## Deploy --- Trigger the skill
 
