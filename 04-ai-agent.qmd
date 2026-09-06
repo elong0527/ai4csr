@@ -106,7 +106,7 @@ This example demonstrates the smallest useful form of AI adoption: one person
 sends one prompt to an agent and receives one result. It is not presented as an
 AI-first workflow.
 
-::: {.callout-warning title="Synthetic teaching data—not KEYNOTE-189 trial data"}
+::: {.callout-warning title="Synthetic teaching data: not KEYNOTE-189 trial data"}
 The CSV in this example is wholly synthetic and contains no participant data
 from KEYNOTE-189. It was constructed as a teaching example to be interpreted
 with the public KEYNOTE-189 protocol and cannot support any conclusion about

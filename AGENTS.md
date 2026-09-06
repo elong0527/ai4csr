@@ -51,7 +51,7 @@ exist to justify them.
 
 Order the current and planned examples by increasing workflow maturity:
 
-1. **Study-design anti-example:** explain why “study design” as a whole is not a
+1. **Study-design anti-example:** explain why "study design" as a whole is not a
    well-defined AI-first workflow, then reframe it as design parameter ->
    analytical approximation -> simulation confirmation -> design report.
 2. **Rounding:** encode and enforce explicit business rules in a small R
@@ -72,12 +72,12 @@ example with different terminology.
 Every applied example follows the same six-stage, non-linear lifecycle. Use
 these headings or close equivalents:
 
-1. **Plan — Frame the workflow**
-2. **Design — Specify the workflow**
-3. **Build — Prototype the workflow**
-4. **Test — Benchmark and evaluate**
-5. **Deploy — Operationalize the workflow**
-6. **Maintain — Monitor and improve**
+1. **Plan --- Frame the workflow**
+2. **Design --- Specify the workflow**
+3. **Build --- Prototype the workflow**
+4. **Test --- Benchmark and evaluate**
+5. **Deploy --- Operationalize the workflow**
+6. **Maintain --- Monitor and improve**
 
 The lifecycle is a loop. Monitoring, incidents, approved feedback, and changed
 requirements can initiate a new planning cycle.
@@ -221,7 +221,7 @@ example, not a vendor tutorial or ranking based on marketing claims.
 ## Writing style
 
 - Use a professional voice for definitions, requirements, and conclusions.
-  Brief scenarios and guided exercises may use “you” or direct questions when
+  Brief scenarios and guided exercises may use "you" or direct questions when
   placing the reader in a concrete role makes the lesson easier to understand.
   Return to objective prose after the scenario.
 - Write for Biometrics professionals rather than AI engineers.
@@ -238,12 +238,52 @@ example, not a vendor tutorial or ranking based on marketing claims.
 - Keep the main narrative focused on requirements, prototypes, evidence, and
   evaluation.
 - Put production engineering details in optional technical callouts or
-  “Further technical detail” sections.
+  "Further technical detail" sections.
 - Use examples and concrete artifacts to explain abstract concepts.
 - State an important limitation clearly and prominently once. Do not dilute it
   through defensive repetition in adjacent paragraphs.
 - Keep headings descriptive and ensure each section advances the chapter's
   declared purpose.
+
+### Character policy
+
+Every file in this repository must be plain ASCII. The `asciilint` workflow in
+`.github/workflows/asciilint.yml` fails a pull request that introduces a
+character outside `U+0000-U+007F`, so a non-ASCII character blocks the merge
+rather than reaching the manuscript.
+
+Write the ASCII source and let Pandoc produce the typographic characters when
+Quarto renders the book:
+
+| Intended output | Write this in the source |
+|---|---|
+| Em dash | `---` |
+| En dash | `--` |
+| Curly double quotes | `"straight quotes"` |
+| Curly single quotes or apostrophe | `'straight quotes'` |
+| Ellipsis | `...` |
+
+Additional rules:
+
+- Do not paste text from a word processor, a browser, a PDF, or a chat window
+  without converting the smart quotes, dashes, non-breaking spaces, and bullet
+  characters it carries.
+- Use ASCII in code, output, tables, and figure labels as well as in prose. In
+  running text, spell out a symbol (`>=`, `+/-`, `micro`) or use LaTeX math such
+  as `$\ge$` and `$\pm$` rather than the Unicode glyph.
+- Keep diagram sources ASCII. Excalidraw stores label text as JSON, so a
+  `\u2022` escape in `diagrams/*.excalidraw` is ASCII in the source file but
+  becomes a literal bullet in the generated SVG under `assets/diagrams/`. Use an
+  ASCII separator such as `|` or `-` in diagram labels instead.
+- Do not use emoji.
+- Pandoc applies this substitution to prose only. An attribute value, such as a
+  Quarto callout `title="..."`, is copied verbatim into the HTML, so a `---`
+  there reaches the reader as three hyphens. Rephrase with a colon or a comma
+  instead.
+- Character names and examples from non-Latin scripts belong in the text only
+  when the book actually needs them. If a chapter ever does, propose the
+  allowlist change in `asciilint.toml` for approval rather than adding the
+  character silently.
 
 ## Sources during early development
 
@@ -291,7 +331,9 @@ For manuscript changes:
 - run a full `quarto render --to html` after structural, navigation,
   cross-reference, bibliography, shared-style, or diagram changes;
 - inspect warnings and the rendered result, not only the command exit code;
-- run `git diff --check`; and
+- run `git diff --check`;
+- run `uvx asciilint@0.4.0 .` and resolve every reported character before
+  opening a pull request, because the same check runs in CI; and
 - confirm that generated artifacts have not introduced unintended tracked
   changes.
 
@@ -301,12 +343,14 @@ repository currently has known Ruff style findings in
 manuscript-only change.
 
 Edit diagram sources under `diagrams/`; the pre-render script generates the SVG
-assets under `assets/diagrams/`.
+assets under `assets/diagrams/`. The generated SVG files are committed, so
+regenerate them with `python3 scripts/build-diagrams.py` after a diagram change
+and re-run `asciilint` on the result.
 
 ## Background references
 
 Use these as design inputs, not as prescriptions that override the needs of a
-Biometrics workflow. The source titles use “AI-native”; the book's canonical
+Biometrics workflow. The source titles use "AI-native"; the book's canonical
 term for its lifecycle is **AI-first SDLC**.
 
 - Anthropic, *The AI-Native SDLC Playbook*: six-stage lifecycle, committed
