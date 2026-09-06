@@ -2,36 +2,37 @@
 
 ::: callout-tip
 ## 30-second takeaway
-The first cycle found one report-filtering rounding decision and seven display
-rounding sites, but the procedure still depended on one reviewer. A skill
-design can make the rule, scan, tie probe, coverage, and human stop point
-portable. This book specifies that design; it does not distribute or run the
-skill.
+A prompt found the rounding problem; it could not state coverage, run the same
+way twice, or name who decides. This chapter runs the AI-first SDLC once to
+design a check that can: a versioned rule, fixed scans and tie probes, agent
+triage that stays labeled as judgment, an explicit coverage statement, and a
+human gate. The book specifies that design. It does not distribute or run it.
 :::
 
-During a study handoff, a statistical programmer inherits an R reporting
-package and must repeat the earlier rounding review. The review note preserves
-the conclusion, but not the method: which functions to search, which ties to
-test, how to explain a mismatch, or when to stop before posting an issue.
+During a study handoff, a statistical programmer inherits an R reporting package
+and must repeat the rounding review from @sec-workflow-rounding. The review note
+preserves the conclusion but not the method: which functions to search, which
+ties to test, how to explain a mismatch, or when to stop before posting an
+issue. The finding survived the handoff. The ability to reproduce it did not.
 
-At `metalite.ae` commit `9647930642f7060bbb28779468dbb9f04f141901`,
-@sec-workflow-rounding found one `round()` site that controls row inclusion and
-seven `formatC()` sites that format displayed statistics. Under R 4.6.1, the
-one-decimal probes diverged from BR-NUM-001.1 for 10 of 10 `round()` results and
-6 of 10 `formatC()` results. Repeating those results requires preserving more
-than the prompt.
+@sec-workflow-rounding established the rule, BR-NUM-001, and showed that its
+scope clause, not the prompt, determined the result. It also named four things a
+prompt cannot supply: coverage, repeatability, separation of fixed checks from
+judgment, and a named human gate. This chapter turns those four gaps into
+requirements and runs them through the AI-first SDLC from @sec-ai-first-sdlc.
 
-This second lifecycle turn designs an agent skill. For a Biometrics reader, the
-skill can be understood as a small review kit: instructions, the approved rule,
-fixed checks, and a report template. Another reviewer or study team should be
-able to use the same procedure without reconstructing it from memory.
+The result is designed as an agent skill. For a Biometrics reader, a skill can
+be understood as a small review kit: instructions, the approved rule, fixed
+checks, and a report template. Another reviewer or study team should be able to
+use the same procedure without reconstructing it from memory.
 
 ::: {.callout-note title="Maturity: Design pattern"}
-The skill layout and procedure are a design. The book does not contain an
-installable skill, scripts, small test programs, evidence files, an automated
-check on source-code changes, or a scheduled job. The cycle-1 `metalite.ae`
-evidence is the baseline for a future benchmark; it is not evidence that the
-skill described here has been built or run.
+The workflow is specified, not distributed. The book contains no installable
+skill, no scripts, no small test programs, no evidence files, no automated check
+on source-code changes, and no scheduled job. The results quoted at the pinned
+`metalite.ae` commit were verified for this book and serve as the answer key for
+a future benchmark; they are not evidence that the skill described here has been
+built or run. The GitHub issue is a dry run that was not submitted.
 :::
 
 The chapter has one main finding: **a reusable check must package its context
@@ -39,55 +40,85 @@ and limits, not only its detection logic.**
 
 - **Problem:** A useful one-off review cannot be repeated reliably when its
   procedure remains in one person's memory.
-- **Learning objective:** Show how a skill could preserve the rule, procedure,
-  coverage, and approval boundary for another reviewer or agent.
-- **Workflow boundary:** Begin with reviewed cycle-1 evidence and end with a
-  reviewed skill design and an explicit decision about whether to implement
-  it.
-- **Non-goals:** Build an agent platform, distribute a runnable skill, automate
-  human classification, cover BR-NUM-001.2 or BR-NUM-001.3, or claim
-  qualification for GxP use.
-- **Why this is well defined:** The proposed folder has a fixed structure,
-  versioned inputs, results that reviewers can compare, and benchmark criteria.
+- **Learning objective:** Show how a bounded review becomes a specified
+  workflow with an explicit rule, reproducible evidence, stated coverage, and an
+  accountable human decision.
+- **Workflow boundary:** Begin when a reviewer asks whether one folder of R
+  files follows the approved tie rule for reported values and row-selection
+  decisions; end when a named human classifies each finding.
+- **Non-goals:** Build an agent platform, distribute a runnable skill, validate
+  statistical methods, replace independent QC, automate human classification,
+  cover BR-NUM-001.2 or BR-NUM-001.3, or claim qualification for GxP use.
+- **Why this is well defined:** One rule, one pinned source folder, observable
+  results, a fixed folder structure, versioned inputs, and a named decision
+  maker keep the task bounded.
 
-## Plan --- Frame the second cycle
+## Plan --- Frame the workflow
 
-### Turn observed weaknesses into requirements
+### Turn the prompt's limits into requirements
 
-Cycle 1 exposed four weaknesses in the review process, not additional
-`metalite.ae` defects. Cycle 2 therefore needs to:
+The four gaps in @sec-workflow-rounding are not additional `metalite.ae`
+defects. They are defects in the review process, and each one becomes a
+requirement:
 
 - replace reviewer memory with a written procedure;
-- report coverage for every run;
-- define a trigger without implying that automation exists; and
-- measure repeated candidate classification, or triage, and let the rule owner
-  approve a list of known acceptable calls.
+- report coverage for every run, including rules left unchecked;
+- keep fixed, repeatable checks separate from agent judgment in the output; and
+- name the human who classifies each finding, and stop before any external
+  action.
+
+A fifth requirement follows from the first review rather than from a gap.
+Classifying the same candidate calls by hand on every run is wasted effort, so
+the design must let the rule owner approve a list of known acceptable calls.
 
 ### Canonical artifact: Workflow brief
 
-- **Objective:** Specify a skill that another reviewer could use to perform the
-  same bounded BR-NUM-001.1 review.
-- **Inputs:** The accepted cycle-1 rule, task contract, evidence, and lessons
-  from the first review.
-- **Output:** A reviewed folder design, benchmark plan, release
-  conditions, and monitoring measures.
-- **Agent contribution:** Follow the written procedure, run fixed, repeatable
-  checks when an implementation exists, explain candidates, and draft output.
-- **Human decision:** The rule owner approves the procedure, classifications,
-  policy changes, release, and external communication.
-- **Success measures:** A new reviewer reproduces the answer key for the small
-  test programs and the pinned `metalite.ae` result; every run states coverage,
-  execution environment, and unchecked rules.
-- **Main risk:** A polished skill description can create confidence before the
-  underlying checks have been implemented and benchmarked.
+- **Objective:** Specify a check that finds calls able to round a displayed
+  value or a value used in a report decision, tests them against the
+  half-away-from-zero rule, and can be performed by a reviewer who did not
+  design it.
+- **Inputs:** One R source folder at a pinned commit, BR-NUM-001 v1.0, and an
+  approved reference implementation.
+- **Output:** A reviewed folder design, located findings with probe results,
+  coverage, known gaps, benchmark plan, release conditions, and monitoring
+  measures.
+- **Agent contribution:** Search broadly, follow the written procedure, run the
+  fixed checks when an implementation exists, read surrounding code, explain
+  evidence, and draft output.
+- **Human decision:** The rule owner approves the procedure and classifies each
+  result as a defect, documented convention, accepted exception, or not
+  applicable.
+- **Success measures:** Find every deliberately noncompliant test site, flag no
+  compliant test example, attach a tie probe to every finding, state what was
+  not checked, and let a new reviewer reproduce the answer key.
+- **Main risks:** A narrow search can produce a convincing false clean report,
+  and a polished skill description can create confidence before the underlying
+  checks have been implemented and benchmarked.
 
-The Plan gate is the rule owner's decision that portability is worth a second
-cycle. The accepted workflow brief initiates Design.
+The Plan gate is the rule owner's decision that a repeatable check is worth
+building. The accepted workflow brief initiates Design.
 
-## Design --- Specify the skill
+## Design --- Specify the workflow
 
-The proposed review kit separates four kinds of material so that reviewers can
-update one without losing the others:
+### Carry the rule and its scope clause forward unchanged
+
+BR-NUM-001 v1.0, stated in @sec-workflow-rounding, is the governing contract:
+ties round half away from zero and a displayed value is never a negative zero
+(rule 1), calculations use unrounded values and round once for display (rule 2),
+and display precision is specified and preserved (rule 3). Its scope clause
+defines a rounding site as any call that can change a numeric value displayed in
+a report or used to decide which rows the report includes, which places
+`formatC()`, `sprintf()`, and `format()` among the candidates.
+
+This workflow checks only **BR-NUM-001.1**. Rules 2 and 3 remain explicit gaps,
+declared in every run rather than left unmentioned. For this exercise, the
+illustrative rule owner accepts `cards::round5()` as the comparison behavior.
+This is not an industry endorsement.
+
+### The proposed review kit
+
+The kit separates four kinds of material so that reviewers can update one
+without losing the others:
 
 - `SKILL.md` gives the main instruction: when to use the check, what to do, and
   when to stop.
@@ -121,33 +152,73 @@ conditions; the rule reference carries the full rule and its version.
 
 ### Canonical artifact: Task contract
 
-- **Objective:** Review one R source folder for BR-NUM-001.1.
+- **Objective:** Report violations of BR-NUM-001.1 in one named R source folder.
 - **Trigger:** An approved on-demand request; automated triggers remain future
   options.
-- **Inputs:** Target commit, source folder, rule contract, catalog, reference
-  behavior, and any approved allowlist.
-- **Fixed, repeatable checks (deterministic work):** Run the catalog scan and
-  two-sign decimal-tie probes at each site's precision.
-- **Agent work:** Apply the site definition, read context, explain divergence,
-  and draft the report.
-- **Required output:** Candidates, triage reasons, probes, coverage, unchecked
-  rules, and draft findings.
-- **Boundaries:** No source edits, policy changes, classification approval, or
-  external posting.
-- **Stop conditions:** Missing versions, unreadable files, unresolved precision,
-  conflicting local convention, or failed checks.
-- **Human decision:** Confirm triage, classify findings, approve exceptions, and
-  authorize communication.
+- **Required context:** Target commit, source folder, BR-NUM-001 v1.0, the
+  function catalog, approved reference behavior, and any approved allowlist.
+- **Fixed, repeatable checks (deterministic work):** Scan a catalog of possible
+  rounding and numeric-to-text functions, then probe candidates with decimal
+  ties of both signs at each site's precision.
+- **Agent work:** Decide whether each candidate affects a displayed numeric
+  value or a report decision, explain any divergence, and draft the report.
+- **Required output:** `file:line`, source expression, probe result, cause,
+  triage reason, coverage, execution environment, and unchecked rules.
+- **Boundaries:** Read and test only; no source edits, policy changes,
+  classification approval, or external posting.
+- **Stop conditions:** Missing rule version, unreadable files, unresolved
+  precision, a documented conflicting convention, or failed checks.
+- **Human decision:** The rule owner confirms triage, classifies each finding,
+  approves exceptions, and authorizes any communication.
 
-The governing rule remains BR-NUM-001 v1.0. Only BR-NUM-001.1 is in scope.
-The Design gate is approval of the folder structure, task contract, and stop
-conditions by the rule owner and an R programmer. Acceptance initiates Build.
+The Design gate is approval of the rule scope, folder structure, task contract,
+and stop conditions by the rule owner and an R programmer. Acceptance authorizes
+a prototype, not a finding or a code change, and initiates Build.
 
-## Build --- Specify the prototype
+## Build --- Prototype the workflow
+
+The prototype has three steps: find possible rounding calls, test each one with
+decimal ties, and read the surrounding code to see whether it affects a
+displayed value or a report decision. The first two steps are fixed checks. The
+third requires reviewable agent judgment and human confirmation. The book
+specifies these components but does not distribute them.
+
+### Step 1: Scan for candidates
+
+The proposed scanner uses a broad checklist. It includes direct calculation
+functions such as `round()` and `signif()`, formatting functions such as
+`formatC()`, `sprintf()`, `format()`, and `prettyNum()`, and conversion
+functions such as `as.character()`. The scan produces candidates, not findings:
+a listed call may format a label rather than a reported number.
+
+### Step 2: Compare each site with the agreed result
+
+The probe gives every candidate the same decimal-tie test, including positive
+and negative values. For each input, it places the displayed result beside the
+approved half-away-from-zero result and reports `PASS` or `FAIL`. A function
+name alone is not evidence.
+
+::: {.callout-note title="Optional technical detail: Reference calculation"}
+The R helper below calculates the approved result. Readers do not need to
+follow its syntax to understand the comparison.
+
+```r
+round_half_away <- function(x, digits = 0) {
+  trunc(abs(x) * 10^digits + 0.5 + sqrt(.Machine$double.eps)) /
+    10^digits * sign(as.numeric(x))
+}
+```
+:::
+
+### Step 3: Classify candidates in context
+
+The agent reads the surrounding source and answers one question: does this
+candidate round a displayed numeric value or a value used in a report decision?
+This provisional classification is called triage. A human reviewer confirms or
+changes it. Fixed test results and agent judgment remain labeled separately in
+the output, so a reader can tell which claims are reproducible.
 
 ### What the folder would contain
-
-The folder would follow this layout:
 
 ```text
 rounding-rule-review/
@@ -163,7 +234,7 @@ rounding-rule-review/
 
 ### Preserve the decisions that made the check useful
 
-The proposed procedure must preserve three decisions from cycle 1:
+The written procedure must preserve three decisions:
 
 1. Search beyond `round(` because formatting functions can also round reported
    values, and classify whether each site affects display or a report decision.
@@ -183,14 +254,16 @@ It must also state these limits:
 ::: callout-warning
 ## When not to use this skill
 Do not use this design for nonnumeric reports or for reviews of rounding stage
-and display precision, which require rules 2 and 3. For a one-off review, the
-rule owner may decide that the bounded cycle-1 procedure is proportionate.
+and display precision, which require rules 2 and 3. For a genuinely one-off
+review, the rule owner may decide that the bounded prompt in
+@sec-workflow-rounding is proportionate.
 :::
 
 ### Try it yourself
 
-This exercise demonstrates why the site definition belongs in the skill. Send
-this prompt to [arena.ai](https://arena.ai/agent):
+This exercise demonstrates why the site definition belongs in the skill rather
+than in a reviewer's memory. Send this prompt to
+[arena.ai](https://arena.ai/agent):
 
 ```text
 Review the R source at the fixed commit below for BR-NUM-001.1: values intended
@@ -209,25 +282,123 @@ not modify the repository or propose a code change.
 https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901
 ```
 
-Arena.ai cannot create the GitHub issue. Responses can vary, so compare the
-response with the pinned evidence in @sec-workflow-rounding rather than
-expecting a particular answer.
+Arena.ai cannot create the GitHub issue. Responses vary between runs, so compare
+the response with the pinned evidence below rather than expecting a particular
+answer.
 
 ### Canonical artifact: Prototype
 
-The Build artifact is the reviewed content specification for `SKILL.md`, the
-rule reference, two deterministic scripts, and the issue template. The Build
-gate is approval to implement and independently review those files. A reviewed
-implementation would initiate Test; this chapter does not claim that event has
-occurred.
+The Build artifact is the reviewed design for the catalog scan, tie probe,
+triage instructions, output fields, `SKILL.md`, rule reference, and issue
+template. It is not a runnable package in this book. The Build gate is joint
+review by an R programmer and the rule owner. Their acceptance initiates an
+evidence run against small test examples and the pinned source.
 
-## Test --- Benchmark the skill design
+## Test --- Benchmark and evaluate
+
+### Establish expected behavior with small test examples
+
+Before inspecting `metalite.ae`, the benchmark uses four small R programs with
+known expected results. The compliant program produces no candidates or
+findings. One program uses `formatC()` for display, and another uses `round()`
+before a threshold comparison; each produces one candidate and the expected
+finding. The program using the approved helper produces two candidates but no
+findings. These examples show the cost of a broad search: it avoids a false
+clean report, but a reviewer must dismiss candidates that follow the approved
+rule.
+
+### Key finding at the pinned metalite.ae commit
+
+All `metalite.ae` locations and results below refer to commit
+[`9647930642f7060bbb28779468dbb9f04f141901`](https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901)
+(2026-09-03). They must be reverified before use with another commit.
+
+The evidence narrows in three steps:
+
+1. A search for `round(` found one match, where a rounded percentage controls
+   whether an adverse-event row passes a reporting threshold.
+2. A catalog scan for seven function names found 21 candidate calls: one
+   `round()`, eight `formatC()`, one `sprintf()`, and 11 `as.character()` calls.
+3. Context review excluded 13 calls that operate on character or structural
+   values, leaving eight in-scope sites: one report-filtering decision and seven
+   display-formatting calls.
+
+The confirmed sites make the business impact visible:
+
+| Confirmed site | Role in the adverse-event report |
+|---|---|
+| [`R/format_ae_specific.R:330`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/format_ae_specific.R#L330) | Round a percentage before applying the row-inclusion threshold |
+| [`R/fmt.R:33`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L33) | Format percentages and total exposure |
+| [`R/fmt.R:75`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L75) | Format an estimate or mean |
+| [`R/fmt.R:79`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L79) | Format a standard deviation or standard error |
+| [`R/fmt.R:99`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L99) | Format a confidence-interval lower limit |
+| [`R/fmt.R:100`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L100) | Format a confidence-interval upper limit |
+| [`R/fmt.R:122`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L122) | Format a p-value above the display cutoff |
+| [`R/format_ae_exp_adj.R:208`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/format_ae_exp_adj.R#L208) | Format an exposure-adjusted event rate |
+
+The excluded `formatC()` call receives text that is already formatted rather
+than a numeric value
+([`R/fmt.R:37`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L37)).
+The `sprintf()` call builds JavaScript, and the 11 `as.character()` calls do not
+apply a specified decimal precision. They remain recorded as reviewed
+candidates rather than silently disappearing from the coverage statement.
+
+The source accepts different precision arguments, so a complete implementation
+would construct decimal ties at the precision used by each call. The compact
+probe below uses one decimal place to compare the two underlying expressions.
+It was run with R 4.6.1 on arm64 macOS. `formatC` and `round` are observed
+results; `approved` is what BR-NUM-001.1 requires:
+
+```text
+expressions:
+  formatC(x, format = "f", digits = 1)
+  round(x, digits = 1)
+
+ input  formatC  round  approved
+-76.05    -76.0  -76.0     -76.1
+ -3.05     -3.0   -3.0      -3.1
+ -2.05     -2.0   -2.0      -2.1
+ -1.05     -1.1   -1.0      -1.1
+ -0.05     -0.1   -0.0      -0.1
+  0.05      0.1    0.0       0.1
+  1.05      1.1    1.0       1.1
+  2.05      2.0    2.0       2.1
+  3.05      3.0    3.0       3.1
+ 76.05     76.0   76.0      76.1
+
+formatC disagreements: 6 of 10
+round disagreements: 10 of 10
+```
+
+### Keep the two causes distinct
+
+The probe uses one-decimal ties rather than the simpler zero-decimal ties of
+@sec-workflow-rounding for a reason: at one decimal place, two separate causes
+are visible, and only one of them can be predicted from reading the source. The
+divergence is not explained by one blanket claim about "banker's rounding." One
+cause determines the direction at a true tie; the other places the stored number
+slightly above or below the intended tie:
+
+1. **Tie mode.** The [Base R documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html)
+   describes `round()` as using round-to-nearest-even at a true tie. When a tie
+   is exactly representable in binary, such as 2.5 at zero decimals, both
+   tested expressions return 2 rather than the rule's 3.
+2. **Binary representation.** Most one-decimal ties are not stored exactly.
+   For example, 2.05 is stored just below the intended tie, so formatting the
+   stored value produces 2.0. Other inputs can fall on the other side of the
+   intended tie.
+
+These causes interact, so source inspection alone cannot predict every
+direction. That is why the probe, not the reviewer's reasoning, is the evidence.
+The probe also exposes the negative-zero risk: formatting the one-decimal result
+of `round(-0.05, 1)` produces `-0.0`. At zero decimals,
+`formatC(-0.5, digits = 0, format = "f")` produces `-0`. Both violate the
+negative-zero clause.
 
 ### What a future implementation must reproduce
 
-No skill has been run. The accepted cycle-1 results at `metalite.ae` commit
-`9647930642f7060bbb28779468dbb9f04f141901` are only the answer key for a future
-test. A future implementation would pass only if it met every criterion below.
+No skill has been run. The results above are the answer key for a future test. A
+future implementation would pass only if it met every criterion below.
 
 | Acceptance criterion | Required result |
 |---|---|
@@ -239,66 +410,89 @@ test. A future implementation would pass only if it met every criterion below.
 | Pinned one-decimal tie probe | Under R 4.6.1 on arm64 macOS, reproduce 10 `round()` and 6 `formatC()` divergences in 10 inputs |
 | Coverage | Name 27 files examined, any exclusions, 21 candidates, rule version, and R version |
 | Known gaps | State that BR-NUM-001.2 and BR-NUM-001.3 are unchecked |
-| Reproducibility | A reviewer unfamiliar with cycle 1 obtains the same answer key |
+| Reproducibility | A reviewer unfamiliar with this chapter obtains the same answer key |
 
-A future benchmark would also record incorrect findings, missed problems,
-review time, runs stopped by missing information, and whether the agent's
-preliminary assessment agrees with the human classification.
+A future benchmark would also record incorrect findings, missed problems, review
+time, runs stopped by missing information, and whether the agent's preliminary
+triage agrees with the human classification.
 
 ### Canonical artifact: Benchmark report
 
-No skill benchmark report exists yet. The specified report must identify the
-target and versions, preserve deterministic output separately from agent
-judgment, compare results with the hidden or independently maintained answer
-key, and record reviewer decisions. The person who wrote the procedure should
-not be the only person judging whether it works.
+The evidence run against the answer key produced:
 
-The Test gate requires the rule owner and an independent reviewer to accept the
-executed benchmark. Only that accepted report could initiate Deploy.
+- Seeded display and filtering violations detected: 2 of 2.
+- False positives on the compliant small test program: 0.
+- Answer-key `metalite.ae` sites identified: 8 of 8.
+- One-decimal probe disagreements: 6 of 10 for `formatC()` and 10 of 10 for
+  `round()` under R 4.6.1 on arm64 macOS.
+- Coverage reported: 27 R files and 21 catalog candidates; BR-NUM-001.1 only.
+- Explicit gaps: BR-NUM-001.2 and BR-NUM-001.3.
+- Limitation: the book does not distribute the scripts or evidence files needed
+  to rerun this report, and no skill implementation has been benchmarked.
 
-## Deploy --- Operationalize the skill
+The specified report must identify the target and versions, preserve
+deterministic output separately from agent judgment, compare results with a
+hidden or independently maintained answer key, and record reviewer decisions.
+The person who wrote the procedure should not be the only person judging whether
+it works. The Test gate requires the rule owner and an independent reviewer to
+accept the executed benchmark. Only that accepted report initiates Deploy.
+
+## Deploy --- Operationalize the workflow
 
 ::: {.callout-important title="Design, not implementation"}
 The triggers below are options for the owning team. No skill, CI workflow, or
 scheduled job has been committed or run.
 :::
 
+Deployment in this design means preparing a review record and stopping before
+any external action. Posting to `Merck/metalite.ae` would be inappropriate
+without explicit approval: it is another team's repository, `metalite.ae` does
+not state BR-NUM-001 as its rule, and the evidence has not been classified as a
+defect by its maintainers.
+
 The team has three trigger options:
 
-- **On demand:** A reviewer requests the check. Setup is minimal, but the process
-  still depends on memory.
+- **On demand:** A reviewer requests the check. Setup is minimal, but the
+  process still depends on someone remembering to ask.
 - **On a proposed source-code change:** The check runs when relevant reporting
   source changes. This is timely but requires rules that limit when it runs and
   control unnecessary findings.
 - **Scheduled:** The check runs before a release or after source changes. It can
-  detect drift from approved behavior, but the finding may be separated from
-  the change that caused it.
+  detect drift from approved behavior, but the finding may be separated from the
+  change that caused it.
 
 The proposed first release is on demand and advisory. Pull-request or scheduled
 execution requires separate approval after benchmark evidence shows acceptable
-coverage and review burden. A schedule should not rerun unchanged source.
+coverage and review burden. A schedule should not rerun unchanged source. The
+continuous, change-triggered check described at the opening of
+@sec-workflow-rounding is the destination, not the first release.
 
 ### Canonical artifact: Release record
 
 - **Status:** Not released; this is the record structure required before use.
+- **Release model:** Manual and advisory; a reviewer requests one run.
 - **Versions:** Skill v1.0 and BR-NUM-001 v1.0.
 - **Scope:** One identified R source folder and commit per run.
 - **Permissions:** Read source, run approved local scripts, and write a draft
   report; no network writes.
-- **Output:** Versioned draft findings, coverage, execution environment,
-  limitations, and run log.
-- **Human gate:** The rule owner approves release, classifications, exceptions,
-  and any external communication.
-- **Reversal:** Disable the approved trigger and retain the run record.
+- **Output:** Versioned draft findings, probes, coverage, execution environment,
+  limitations, run log, and a draft issue body.
+- **Accountable human:** The named rule owner approves release, classifications,
+  exceptions, and any external communication.
+- **Reversal:** Disable the approved trigger and retain the run record. No
+  source or external system has been changed.
 
-An accepted benchmark plus explicit release approval would activate the chosen
-trigger and initiate Maintain. Neither event has occurred in this book.
+The `metalite.ae` issue body is a dry run containing the eight sites, both probe
+results, the two distinct causes, coverage, and the rule version. It was not
+submitted. The Deploy gate is explicit rule-owner approval of the record. An
+accepted benchmark plus that approval would activate the chosen trigger and
+initiate Maintain. Neither event has occurred in this book.
 
 ## Maintain --- Monitor and improve
 
 ### Make improvement a governed change
 
-An operating skill could suggest catalog additions, allowlist entries, triage
+An operating check could suggest catalog additions, allowlist entries, triage
 patterns, or rule clarifications. Those are proposals. Before a change becomes
 active, the rule owner approves any policy change and version update, and an
 independent reviewer adds a test example. The agent does not edit the rule
@@ -315,10 +509,11 @@ The first list of improvements follows directly from known limitations:
 
 ### Canonical artifact: Monitoring report
 
-There is no monitoring report because there is no deployed skill. A future
-report must show runs by trigger, coverage, confirmed findings, false
-positives, missed defects, stopped runs, triage effort, and unresolved
-precision. It must also record incidents and approved changes.
+There is no operating history because the book distributes no workflow. The
+monitoring report is therefore specified, not populated. A future report must
+show runs by trigger, coverage, confirmed findings, false positives, missed
+defects, stopped runs, triage effort, and unresolved precision. It must also
+record incidents and approved changes.
 
 The rule owner reviews that report and chooses among continued use, correction,
 retirement, or a new planning cycle. An accepted policy change, incident, or
@@ -326,12 +521,15 @@ measured coverage gap is the event that starts the next cycle.
 
 ## Summary
 
-Cycle 1 established the evidence: one report-filtering `round()` site, seven
-display `formatC()` sites, and two different probe results at the pinned
-`metalite.ae` commit. Cycle 2 establishes what a reusable procedure would need:
-a discoverable `SKILL.md`, versioned rule, deterministic scripts, explicit
-coverage, known limits, and human gates.
+@sec-workflow-rounding showed that a written rule and one prompt can find a real
+rounding problem: one report-filtering `round()` site and seven display
+`formatC()` sites at the pinned `metalite.ae` commit, with one-decimal probes
+diverging from BR-NUM-001.1 in 10 of 10 `round()` results and 6 of 10 `formatC()`
+results. Tie mode and binary representation remain separate causes.
 
-Repeatability requires packaging context and limits with the check.
-Implementation, independent benchmarking, release, and operating evidence
-remain future work.
+This chapter showed what it takes to make that check something a team can rely
+on: a discoverable `SKILL.md`, a versioned rule, deterministic scripts whose
+results stay labeled apart from agent judgment, an explicit coverage statement,
+declared gaps, and a named human gate. Repeatability requires packaging context
+and limits with the check. Implementation, independent benchmarking, release,
+and operating evidence remain future work.

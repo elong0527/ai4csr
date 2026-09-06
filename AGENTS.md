@@ -55,12 +55,14 @@ Order the current and planned examples by increasing workflow maturity:
    well-defined AI-first workflow, then reframe it as design parameter ->
    analytical approximation -> simulation confirmation -> design report.
 2. **Rounding:** encode and enforce explicit business rules in a small R
-   workflow. This example spans two chapters because it runs the lifecycle
-   loop twice. `06-workflow-rounding.qmd` is the first cycle, in which a single
-   prompt and two deterministic scripts produce a real finding in
-   `Merck/metalite.ae`. `07-workflow-rounding-skill.qmd` is the second cycle, in
-   which the same check is packaged as an agent skill. Keep the two chapters as
-   consecutive turns of one loop rather than two independent examples.
+   workflow. This example spans two chapters that divide problem from design.
+   `06-workflow-rounding.qmd` is the motivating chapter: it states the rounding
+   problem, writes the business rule down, sends one prompt to an agent, and
+   ends by naming what a prompt cannot supply. It does not run the lifecycle.
+   `07-workflow-rounding-skill.qmd` runs the lifecycle once, turning those
+   named gaps into requirements and designing the check as an agent skill.
+   Keep the two chapters as one example: problem then design, not two
+   independent examples and not two turns of a loop.
 3. **Agentic R code review:** survey and benchmark mature code-review workflows
    in Codex, Claude Code, and GitHub Copilot.
 4. **SAP -> code -> results:** manage changes and traceability across connected
@@ -74,7 +76,7 @@ example with different terminology.
 
 ## Shared lifecycle for example chapters
 
-Every applied example follows the same six-stage, non-linear lifecycle. Use
+Every applied example runs the same six-stage, non-linear lifecycle. Use
 these headings or close equivalents:
 
 1. **Plan --- Frame the workflow**
@@ -102,7 +104,15 @@ The accepted artifact provides the handoff or event for the next stage. Keep
 the Biometrics decision, engineering contribution, supporting evidence, and
 human gate visible in every artifact.
 
-At the beginning of each example chapter, state:
+An example may be preceded by a motivating chapter that states the problem,
+records the business rule, and shows what an ad hoc prompt does and does not
+accomplish. Such a chapter does not run the lifecycle stages and declares no
+maturity level, because it proposes no workflow. It must end by naming the
+specific gaps that the lifecycle chapter takes as requirements, and the
+lifecycle chapter must open from those gaps. Do not use this exemption to
+split a workflow design across chapters.
+
+At the beginning of each lifecycle chapter, state:
 
 - the problem and learning objective;
 - the workflow boundary and explicit non-goals;
@@ -120,12 +130,13 @@ Within each lifecycle stage, cover:
 - risks, limitations, and unresolved questions; and
 - the event or accepted artifact that initiates the next stage.
 
-An element may be marked not applicable when the chapter explains why. Do not
-omit lifecycle stages silently.
+An element may be marked not applicable when the chapter explains why. Within
+a lifecycle chapter, do not omit stages silently.
 
 ## Maturity labels
 
-Every example chapter declares one of these maturity levels near its beginning:
+Every lifecycle chapter declares one of these maturity levels near its
+beginning. A motivating chapter declares none:
 
 - **Design pattern:** a conceptual workflow with explicit assumptions and gaps.
 - **Reproducible prototype:** runnable code, synthetic data, expected results,
@@ -186,7 +197,20 @@ future work rather than adding it incidentally to unrelated chapters.
 ## Special requirements for the rounding example
 
 The rounding chapters specify a workflow that the book does not distribute.
-Both chapters are at design-pattern maturity.
+`06-workflow-rounding.qmd` is the motivating chapter and declares no maturity
+level; `07-workflow-rounding-skill.qmd` runs the lifecycle and is at
+design-pattern maturity.
+
+- Keep the division of material between the two chapters. Chapter 06 owns the
+  problem, the cross-language tie table, BR-NUM-001 and its rounding-site scope
+  clause, the under-specified request, the first `arena.ai` prompt, the
+  one-versus-eight site contrast, and the four gaps. Chapter 07 owns the task
+  contract, the prototype, every pinned `file:line` result, the tie probe and
+  its two causes, the benchmark, the release record, and monitoring. Do not
+  move a task contract, benchmark, or release record into chapter 06.
+- Chapter 06 uses zero-decimal ties such as 2.5 in its prose so the teaching
+  example stays simple. The one-decimal probe belongs in chapter 07, where both
+  causes are visible; chapter 07 states why it changes precision.
 
 - The repository ships **no** `examples/rounding/` directory, no skill package,
   no scripts, and no evidence files. Do not add links or paths to such files,
