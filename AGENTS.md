@@ -55,7 +55,12 @@ Order the current and planned examples by increasing workflow maturity:
    well-defined AI-first workflow, then reframe it as design parameter ->
    analytical approximation -> simulation confirmation -> design report.
 2. **Rounding:** encode and enforce explicit business rules in a small R
-   workflow.
+   workflow. This example spans two chapters because it runs the lifecycle
+   loop twice. `06-workflow-rounding.qmd` is the first cycle, in which a single
+   prompt and two deterministic scripts produce a real finding in
+   `Merck/metalite`. `07-workflow-rounding-skill.qmd` is the second cycle, in
+   which the same check is packaged as an agent skill. Keep the two chapters as
+   consecutive turns of one loop rather than two independent examples.
 3. **Agentic R code review:** survey and benchmark mature code-review workflows
    in Codex, Claude Code, and GitHub Copilot.
 4. **SAP -> code -> results:** manage changes and traceability across connected
@@ -177,6 +182,39 @@ Until the deferred topic is developed, do not claim that the book, an example,
 a model, a vendor, a cloud provider, or a workflow is compliant, validated, or
 approved for GxP use. Treat any regulatory expansion as separately scoped
 future work rather than adding it incidentally to unrelated chapters.
+
+## Special requirements for the rounding example
+
+The rounding chapters ship runnable material under `examples/rounding/`. Keep
+the chapters and that directory consistent.
+
+- The skill in `examples/rounding/rounding-rule-review/` follows the Agent
+  Skills specification (<https://agentskills.io/specification>): a required
+  `SKILL.md` with `name` and `description` frontmatter, optional `scripts/`,
+  `references/`, and `assets/` directories, and a `name` that matches the
+  directory name.
+- `examples/rounding/evidence/` holds output from real runs against
+  `Merck/metalite`. Re-run the scripts and update the recorded commit before
+  changing any number quoted in the chapters.
+- Every reader-facing prompt and every quoted file, line number, or result must
+  be pinned to a commit SHA, never to a branch. metalite is maintained, so an
+  unpinned reference can silently stop reproducing. The chapters currently pin
+  `85757ba1bf5d863971e142b7872b6f92c265d6ef` (2025-09-17); changing it means
+  re-running the scripts and updating the evidence directory in the same
+  change.
+- The "Try it yourself" sections send a prompt to <https://arena.ai/agent>,
+  matching the demonstration in `04-ai-agent.qmd`. State that no GitHub issue
+  can be created there, and never assert a specific agent response. Prompt
+  results vary between runs, and that variability is the point being taught.
+- The drafted GitHub issue is a **dry run**. It has not been submitted to
+  `Merck/metalite`, and BR-NUM-001 is an illustrative contract rather than an
+  approved standard. Do not post it, and do not describe it as filed.
+- Automation triggers in the Deploy section of `07-workflow-rounding-skill.qmd`
+  are a design. No CI workflow or scheduled job is committed. Do not add one
+  without agreement, and do not write about it as if it were operating.
+- Report a `formatC()` or `sprintf()` divergence as two distinct causes, tie
+  mode and binary representation. Do not compress it into a claim that the
+  function uses banker's rounding.
 
 ## Special requirements for the code-review survey
 
