@@ -1,0 +1,4 @@
+fixture,route,approved,prohibited,known_non_rounding,unresolved
+approved.R,pass,1,0,1,0
+prohibited.R,fail,0,1,1,0
+unresolved.R,agent,0,0,1,1

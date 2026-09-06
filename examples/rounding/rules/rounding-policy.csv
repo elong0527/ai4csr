@@ -1,0 +1,5 @@
+function,classification,owner,version_scope,rationale,source
+janitor::round_half_up,approved,statistical-programming-standards,review-installed-version,Selected by this teaching policy as the approved half-up rounding interface,https://sfirke.github.io/janitor/reference/round_half_up.html
+base::round,prohibited,statistical-programming-standards,review-installed-R-version,Uses round-to-even for exact ties rather than this teaching policy's selected method,https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html
+base::mean,known_non_rounding,statistical-programming-standards,review-installed-R-version,Computes an arithmetic mean and is not the rounding operation under review,https://stat.ethz.ch/R-manual/R-devel/library/base/html/mean.html
+stats::median,known_non_rounding,statistical-programming-standards,review-installed-R-version,Computes a median and is not the rounding operation under review,https://stat.ethz.ch/R-manual/R-devel/library/stats/html/median.html

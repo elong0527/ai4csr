@@ -9,6 +9,7 @@
 # Output directories
 .DS_Store
 pdf/
+/examples/rounding/results/
 
 # Fetched locally by the reader, not redistributed
 exercise/day1/*.pdf

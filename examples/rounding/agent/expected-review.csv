@@ -1,0 +1,2 @@
+file,line,function,assessment,evidence,evidence_source,next_action
+examples/rounding/fixtures/unresolved.R,1,scales::number,rounding,The accuracy argument controls rounding before formatting.,https://scales.r-lib.org/reference/number.html,standards_owner_review
