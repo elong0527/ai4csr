@@ -205,6 +205,6 @@ measure the result against a benchmark, record the human decision, and use that
 state in the next run.
 
 The applied examples in this book make that transition through the shared
-AI-first SDLC. Each example begins with a bounded business problem and develops
-the artifacts, evidence, and decision points needed to move beyond a single
-prompt.
+AI-first SDLC defined in @sec-ai-first-sdlc. Each example begins with a bounded
+business problem and develops the artifacts, evidence, and decision points
+needed to move beyond a single prompt.

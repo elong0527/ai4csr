@@ -42,7 +42,10 @@ book:
         - 02-ai-first.qmd
         - 03-principle.qmd
         - 04-ai-agent.qmd
-        - 05-workflow-rounding.qmd
+        - 05-ai-first-sdlc.qmd
+    - part: "Applied examples"
+      chapters:
+        - 06-workflow-rounding.qmd
 
 bibliography: references.bib
 

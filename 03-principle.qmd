@@ -150,4 +150,4 @@ sets the boundary of authority and accountability.
 
 If any one element is missing, the workflow becomes harder to evaluate and
 trust. Together, the principles provide the foundation for the example-first,
-AI-first SDLC used in the remainder of the book.
+AI-first SDLC defined in @sec-ai-first-sdlc.

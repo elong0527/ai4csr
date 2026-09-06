@@ -160,5 +160,4 @@ follows:
 This workflow is deliberately narrow, but it establishes reusable capabilities:
 artifact retrieval, traceable review, structured findings, escalation, and a
 recorded human decision. Those capabilities become the foundation for broader
-AI-first workflows and for the AI-first software development lifecycle used by
-the applied examples in this book.
+AI-first workflows and for the lifecycle described in @sec-ai-first-sdlc.

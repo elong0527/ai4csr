@@ -1,0 +1,315 @@
+# The AI-first software development lifecycle {#sec-ai-first-sdlc}
+
+::: callout-tip
+The AI-first SDLC turns a promising agent interaction into a workflow that can
+be specified, tested, released, observed, and improved. Each stage produces a
+versioned artifact that people and agents can inspect.
+:::
+
+## Why an AI-first workflow needs a lifecycle
+
+Imagine that a statistical programmer asks an agent to review a table program.
+The agent finds a rounding problem and explains it clearly. The result is useful,
+but it leaves several questions unanswered. Will the same check run after the
+next code change? Which rules govern the review? What counts as a successful
+finding? Who decides whether the code must change? What happens when the agent
+misses a known problem?
+
+These questions cannot be answered by improving the prompt alone. They concern
+the process used to develop and operate the workflow. That process is the
+**AI-first software development lifecycle**, abbreviated **AI-first SDLC**.
+
+The word *software* includes more than application code. An AI-first workflow
+may contain R functions, model instructions, business rules, retrieval logic,
+tool interfaces, test cases, evaluation data, release configuration, and
+monitoring rules. It also depends on human roles and decisions. The lifecycle
+develops this complete working system.
+
+The six stages in this chapter are adapted from the conventional SDLC and from
+[Anthropic's AI-Native SDLC Playbook](https://academy.claude.com/courses/ai-native-sdlc-playbook/introduction),
+which connects stages through committed artifacts and human gates. Anthropic's
+[security perspective on its lifecycle](https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle)
+also emphasizes bounded access, deterministic and agentic review, monitoring,
+and human accountability. The sources use the term *AI-native*; this book uses
+**AI-first SDLC** to keep the focus on developing a bounded AI-first workflow.
+
+## Distinguish the development loop from the agent loop
+
+@sec-intro-ai-agent describes the execution loop inside an agent interaction:
+the model selects a step, uses a tool, observes the result, and continues. The
+AI-first SDLC is a different loop. It governs how the workflow itself changes
+over days, releases, and repeated use.
+
+| | Agent execution loop | AI-first SDLC |
+|---|---|---|
+| **Unit of work** | One assigned task | The workflow as a maintained system |
+| **Time scale** | One interaction or run | Multiple development and operating cycles |
+| **State** | Messages, plans, and tool results | Versioned requirements, code, evaluations, releases, and monitoring decisions |
+| **Success** | Completion of the assigned task | Sustained performance against the workflow's intended outcome |
+| **Human role** | Review exceptions and make the task decision | Approve intent, design, benchmark, release, and improvement |
+
+An agent may assist in every SDLC stage, but it should not approve its own
+requirements, evaluation, release, or proposed policy change.
+
+## Artifacts connect the six stages
+
+The lifecycle uses six stages:
+
+1. **Plan — Frame the workflow**
+2. **Design — Specify the workflow**
+3. **Build — Prototype the workflow**
+4. **Test — Benchmark and evaluate**
+5. **Deploy — Operationalize the workflow**
+6. **Maintain — Monitor and improve**
+
+```{mermaid}
+%%| label: fig-ai-first-sdlc
+%%| fig-cap: "The AI-first SDLC is a loop connected by six accepted artifacts."
+flowchart LR
+  P["Plan<br/>Workflow brief"] --> D["Design<br/>Task contract"]
+  D --> B["Build<br/>Prototype"]
+  B --> T["Test<br/>Benchmark report"]
+  T --> O["Deploy<br/>Release record"]
+  O --> M["Maintain<br/>Monitoring report"]
+  M -->|new need or accepted improvement| P
+```
+
+Each stage ends with a canonical artifact:
+
+| Stage | Primary question | Canonical artifact | Human gate |
+|---|---|---|---|
+| **Plan** | Is there a valuable, bounded workflow to develop? | Workflow brief | Accept the problem, boundary, and success measures |
+| **Design** | What exactly should the workflow do? | Task contract | Accept the specification and decision rights |
+| **Build** | Can the specified path work end to end? | Prototype | Accept the implementation for formal evaluation |
+| **Test** | Does it meet the benchmark, and how does it fail? | Benchmark report | Accept, revise, or reject the candidate |
+| **Deploy** | How will the accepted candidate enter real work? | Release record | Authorize the release or advisory pilot |
+| **Maintain** | Is the released workflow still useful and reliable? | Monitoring report | Continue, change, restrict, or retire the workflow |
+
+A **committed artifact** is durable, versioned, reviewable, and accepted into
+the team's system of record. It does not have to be a long document or a Git
+commit. Depending on the environment, it may be a Markdown file, YAML
+specification, R package, test report, approved ticket, release entry, or
+dashboard snapshot.
+
+The artifact becomes the shared interface between Biometrics and engineering.
+It records the decision in terms both groups can inspect, and its acceptance
+provides the event that begins the next stage.
+
+## Plan — Frame the workflow
+
+The Plan stage asks whether a problem is worth solving and whether it can be
+bounded as an AI-first workflow. A broad ambition such as “use AI for study
+design” is not yet a workable unit. A bounded candidate identifies a repeatable
+beginning, a reviewable end, and a decision that remains with a named human
+role.
+
+The Biometrics workflow owner contributes the clinical problem, current
+process, expected value, known failure costs, source artifacts, non-goals, and
+success measures. The AI engineer contributes an early feasibility assessment:
+which artifacts can be accessed, which steps can be deterministic, where model
+reasoning may help, and which constraints could make the proposed boundary
+unworkable.
+
+### Canonical artifact: Workflow brief
+
+The workflow brief records:
+
+- the problem and the people affected;
+- the current process and the event that starts the work;
+- the minimum valuable workflow and explicit non-goals;
+- expected inputs, output, and accountable decision owner;
+- candidate success measures and baseline performance;
+- material assumptions, risks, and dependencies; and
+- the reason AI is useful within the proposed boundary.
+
+Planning ends when the workflow owner accepts the brief as a valuable and
+testable development target. That accepted brief initiates Design. If the
+problem cannot be bounded or measured, the correct decision is to revise or
+stop rather than proceed to implementation.
+
+## Design — Specify the workflow
+
+The Design stage converts intent into an executable specification. It defines
+what happens from the triggering event through the recorded human decision,
+including the parts performed by deterministic software, the agent, and people.
+
+The Biometrics workflow owner defines the business rules, required evidence,
+acceptable outputs, examples, exceptions, escalation paths, and decision
+rights. The AI engineer defines artifact retrieval, tool interfaces, state,
+permissions, model context, failure handling, and observability. Both roles
+agree on the cases that will later demonstrate success or failure.
+
+### Canonical artifact: Task contract
+
+The task contract introduced in @sec-intro-ai-agent becomes the central Design
+artifact. It records:
+
+- objective, inputs, scope, output, boundaries, and escalation conditions;
+- trigger events and stopping conditions;
+- deterministic rules and model-assisted tasks;
+- tool access and prohibited actions;
+- evidence, coverage, and uncertainty requirements;
+- human review and approval points;
+- durable state and decision records; and
+- benchmark cases and acceptance thresholds.
+
+Design ends when the responsible roles can read the contract and agree on what
+will be built, how it will be evaluated, and which decisions the agent cannot
+make. The accepted task contract initiates Build.
+
+## Build — Prototype the workflow
+
+The Build stage creates the smallest end-to-end implementation that can test
+the design. The objective is not to reproduce the full operating environment.
+It is to make the important assumptions executable and observable.
+
+The Biometrics workflow owner supplies representative examples, expected
+behavior, business-rule interpretations, and rapid feedback. The AI engineer
+implements the instructions, R code or other deterministic functions, tool
+connections, structured outputs, logging, and test fixtures. Where practical,
+the first prototype uses synthetic or public data.
+
+### Canonical artifact: Prototype
+
+The prototype is a versioned package of working materials, which may include:
+
+- executable R code and deterministic checks;
+- model instructions and task-specific context;
+- tool definitions and access boundaries;
+- synthetic inputs, seeded violations, and expected outputs;
+- structured finding and decision formats;
+- automated tests and a reproducible run command; and
+- known gaps between the prototype and the intended workflow.
+
+Build ends when the prototype completes the specified path, exposes its tool
+activity and evidence, and is reproducible enough for independent evaluation.
+The accepted prototype initiates Test. A successful demonstration is not yet a
+release decision.
+
+## Test — Benchmark and evaluate
+
+The Test stage asks whether the prototype meets the success criteria defined
+before results were observed. It also asks how the workflow fails, not only
+whether it succeeds on an ordinary case.
+
+The Biometrics workflow owner confirms that the evaluation cases represent the
+intended work and judges the usefulness of findings, false positives, missed
+issues, and escalations. The AI engineer runs controlled evaluations, preserves
+the component versions and settings, measures repeatability and coverage, and
+investigates technical failure modes.
+
+### Canonical artifact: Benchmark report
+
+The benchmark report records:
+
+- the benchmark dataset, cases, and independently stated expected results;
+- the workflow, model, instruction, tool, and dependency versions;
+- predefined metrics and acceptance thresholds;
+- results for ordinary, boundary, negative, and missing-context cases;
+- false positives, missed findings, unsupported claims, and escalation quality;
+- coverage, reproducibility, latency, and cost when relevant; and
+- limitations, residual uncertainty, and recommended disposition.
+
+Testing ends with a human decision: return to Plan, Design, or Build; reject the
+candidate; or accept it for a controlled release. An agent may prepare the
+evidence and diagnose failures, but it does not approve its own benchmark.
+
+## Deploy — Operationalize the workflow
+
+The Deploy stage connects an accepted candidate to real work. Deployment does
+not require immediate autonomous execution. An advisory pilot, in which the
+agent produces findings and a person decides every action, is often the first
+operating mode.
+
+The Biometrics workflow owner confirms the operating roles, handoffs,
+communication, exception handling, and intended scope. The AI engineer packages
+the accepted components, configures the trigger and environment, applies the
+approved access boundary, connects logging and monitoring, and prepares a way
+to suspend or reverse the release.
+
+### Canonical artifact: Release record
+
+The release record identifies:
+
+- the approved workflow and component versions;
+- the target environment, users, inputs, and operating scope;
+- the trigger, schedule, and expected outputs;
+- access permissions and human approval gates;
+- installation, configuration, and verification results;
+- monitoring measures and control bands;
+- support ownership, escalation contacts, and recovery procedure; and
+- the person authorizing the release and the release decision.
+
+Deploy ends when the authorized release is available to its intended users and
+monitoring is active. That release event initiates Maintain.
+
+## Maintain — Monitor and improve
+
+The Maintain stage determines whether the released workflow continues to
+perform as intended. Changes in artifacts, business rules, data, tools, models,
+or user behavior can invalidate earlier evidence even when the software still
+runs.
+
+The Biometrics workflow owner reviews usefulness, overrides, missed issues,
+unresolved exceptions, and changes in the underlying work. The AI engineer
+monitors availability, errors, latency, cost, version drift, and technical
+signals. Both roles investigate material changes and decide whether the
+workflow should continue, be restricted, or enter a new development cycle.
+
+### Canonical artifact: Monitoring report
+
+The monitoring report records:
+
+- run volume, completion, and failure trends;
+- quality measures compared with benchmark expectations;
+- false positives, missed findings, overrides, and escalations;
+- coverage gaps and changes in inputs or dependencies;
+- incidents, root causes, corrective actions, and unresolved risks;
+- user feedback and proposed rule, instruction, test, or workflow changes; and
+- the accountable decision to continue, change, restrict, or retire the
+  workflow.
+
+An agent may collect signals, identify patterns, and propose improvements. A
+human accepts any change to business rules, decision rights, benchmarks, or
+operating scope. An accepted improvement or a breached control band creates a
+new workflow brief and returns the lifecycle to Plan.
+
+## How the applied examples use the lifecycle
+
+Each applied example begins with a clinical problem and then follows the same
+six stages. The canonical artifacts make examples comparable even when their
+technical implementations differ.
+
+The artifact's level of completion depends on the example's declared maturity:
+
+| Maturity | Expected artifact evidence |
+|---|---|
+| **Design pattern** | Workflow brief and task contract are concrete; later artifacts describe the proposed implementation and known gaps |
+| **Reproducible prototype** | Code, data, tests, expected results, and benchmark report can be rerun |
+| **Comparative survey** | A shared task contract and benchmark compare time-stamped product behavior |
+| **Reference implementation** | Release and monitoring evidence come from a maintained implementation |
+
+An example may revisit an earlier stage when evidence changes the design. A
+failed benchmark can return to Build, an inaccessible artifact can return to
+Design, and a monitoring signal can return to Plan. The headings provide a
+shared reasoning structure, not a claim that development proceeds in a straight
+line.
+
+## Summary
+
+The AI-first SDLC organizes development around six questions and six committed
+artifacts:
+
+| Stage | Artifact |
+|---|---|
+| Plan | Workflow brief |
+| Design | Task contract |
+| Build | Prototype |
+| Test | Benchmark report |
+| Deploy | Release record |
+| Maintain | Monitoring report |
+
+The artifacts allow Biometrics workflow owners and AI engineers to define the
+same work, inspect the same evidence, and concentrate human judgment at explicit
+gates. Their sequence creates continuity; the monitoring report closes the loop
+by providing evidence for the next workflow brief.

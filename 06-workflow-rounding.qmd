@@ -5,13 +5,18 @@ An AI-first workflow turns business rules into continuous, evidence-backed
 checks while keeping accountable decisions with people.
 :::
 
+::: {.callout-note title="Maturity: Design pattern"}
+This chapter defines the intended workflow, business rules, roles, and evidence.
+It does not yet provide a reproducible R prototype or benchmark report.
+:::
+
 Clinical teams rely on business rules to produce consistent work across
 studies, tools, and programmers. The rules may govern derivations, naming,
 rounding, display conventions, or escalation. A rule is useful only when the
 team can tell where it applies, whether it was followed, and who decides an
 exception.
 
-This chapter builds one small workflow for clinical analysis and reporting. 
+This chapter builds one small workflow for clinical analysis and reporting.
 When project code changes, the workflow checks
 three rules for numeric rounding and display precision. The example is intentionally narrow,
 but the design can be reused for other organizational rules.
