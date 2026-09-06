@@ -17,9 +17,9 @@ At metalite commit `85757ba1bf5d863971e142b7872b6f92c265d6ef`,
 @sec-workflow-rounding found three `formatC()` sites and 6 divergences among 10
 tie probes. Repeating that result requires preserving more than the prompt.
 
-This second lifecycle turn designs an agent skill: a reviewable folder that
-acts like a controlled work instruction. It carries the procedure and
-supporting material from one reviewer or study to the next.
+This second lifecycle turn designs an agent skill: a reviewable folder of
+instructions and supporting files. It preserves the procedure so that another
+reviewer or study team can repeat the same bounded review.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
@@ -240,8 +240,9 @@ has been built or run.
 | Known gaps | State that BR-NUM-001.2 and BR-NUM-001.3 are unchecked |
 | Reproducibility | A reviewer unfamiliar with cycle 1 obtains the same answer key |
 
-Additional measures are false positives, missed defects, triage time, stopped
-runs, and agreement between agent triage and human classification.
+A future benchmark would also record incorrect findings, missed problems, time
+spent reviewing candidates, runs stopped by missing information, and whether
+the agent's preliminary assessment agrees with the human classification.
 
 ### Canonical artifact: Benchmark report
 

@@ -20,10 +20,10 @@ that format a number for display can also round it. In this example,
 to calls named `round()` would miss the problem. The Test section explains why
 the result can differ.
 
-This chapter follows one pass through the AI-first SDLC from
-@sec-ai-first-sdlc. It turns a short review prompt into a bounded workflow.
-@sec-workflow-rounding-skill follows with a second pass that designs a reusable
-agent skill.
+The discrepancy begins the first of two passes through the AI-first SDLC from
+@sec-ai-first-sdlc. This chapter turns the review request into a bounded
+workflow and tests it at a fixed commit. @sec-workflow-rounding-skill then uses
+the lessons from this review to design a reusable agent skill.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The workflow is specified, not distributed. The book includes the rule,
@@ -134,11 +134,11 @@ performing. The accepted workflow brief initiates Design.
 
 ### Define the business rule before refining the prompt
 
-The phrase "properly uses round half away from zero" does not define where
-rounding can occur. In the folder of R program files at the pinned metalite
-commit, a search for `round(` returns no matches. That clean result is
-misleading because formatting functions still round reported numbers. Better
-wording alone cannot repair a missing business definition.
+The phrase "properly uses round half away from zero" does not say which calls
+count as rounding sites. In the R source at the pinned metalite commit, a search
+for `round(` returns no matches, even though formatting functions round
+reported numbers. The team must define a rounding site before it can interpret
+the search result.
 
 ### Business rule: BR-NUM-001
 
@@ -190,10 +190,11 @@ Build.
 
 ## Build --- Prototype the workflow
 
-The prototype uses two fixed checks. First, a broad scan lists possible
-rounding calls. Second, a decimal-tie probe tests what those calls do. The agent
-then makes one limited judgment: whether each candidate affects a reported
-value. The book specifies these components but does not distribute them.
+The prototype has three steps. A broad scan lists calls that might round, a
+decimal-tie probe records their behavior, and the agent reads the surrounding
+code to decide whether each call affects a reported value. The first two steps
+are fixed checks; the third requires reviewable judgment. The book specifies
+these components but does not distribute them.
 
 ### Step 1: Scan for candidates
 
