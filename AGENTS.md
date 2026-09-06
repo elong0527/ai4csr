@@ -82,6 +82,21 @@ these headings or close equivalents:
 The lifecycle is a loop. Monitoring, incidents, approved feedback, and changed
 requirements can initiate a new planning cycle.
 
+Use one canonical artifact as the organizing spine for each stage:
+
+1. **Plan:** workflow brief.
+2. **Design:** task contract.
+3. **Build:** prototype.
+4. **Test:** benchmark report.
+5. **Deploy:** release record.
+6. **Maintain:** monitoring report.
+
+Treat an artifact as committed when it is durable, versioned, reviewable, and
+accepted into the applicable system of record; a Git commit is not required.
+The accepted artifact provides the handoff or event for the next stage. Keep
+the Biometrics decision, engineering contribution, supporting evidence, and
+human gate visible in every artifact.
+
 At the beginning of each example chapter, state:
 
 - the problem and learning objective;
