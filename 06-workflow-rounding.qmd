@@ -198,17 +198,11 @@ components but does not distribute them.
 
 ### Step 1: Scan for candidates
 
-The proposed scanner uses an intentionally broad catalog:
-
-```r
-catalog <- c(
-  "round", "signif", "trunc", "ceiling", "floor",
-  "formatC", "sprintf", "format", "prettyNum", "as.character"
-)
-```
-
-The scan produces candidates, not findings. Calls such as `as.character()` may
-format labels rather than reported numbers.
+The proposed scanner uses a broad checklist. It includes direct calculation
+functions such as `round()` and `signif()`, formatting functions such as
+`formatC()` and `sprintf()`, and conversion functions such as
+`as.character()`. The scan produces candidates, not findings: a listed call may
+format a label rather than a reported number.
 
 ### Step 2: Probe observed behavior
 

@@ -97,28 +97,21 @@ name. The other directories are optional.
 
 ### State when the skill applies
 
-In this example, the header also records required software, the skill version,
-and the rule version. Readers do not need to write YAML to understand these
-fields:
+Readers do not need to write YAML to understand this header. It is a label that
+names the review kit and states when an agent should select it:
 
 ```yaml
 ---
 name: rounding-rule-review
-description: Reviews R source for BR-NUM-001.1, which requires values intended
-  as exact decimal ties to round half away from zero. Finds rounding sites,
-  including formatting functions; tests ties of both signs; reports coverage;
-  and drafts findings for human review. Use for a bounded rounding-rule review
-  of an R source tree.
-compatibility: Requires the Rscript command and read access to the target source.
-metadata:
-  version: "1.0"
-  rule-contract: "BR-NUM-001 v1.0"
+description: Reviews a bounded R source tree for BR-NUM-001.1. Use when a
+  reviewer needs rounding-site locations, tie probes, coverage, and draft
+  findings for human review.
 ---
 ```
 
 The `name` identifies the kit, and the `description` tells an agent when to use
-it. The remaining fields record the software, procedure version, and rule
-version that govern the run.
+it. The task contract below carries the detailed inputs, boundaries, and stop
+conditions; the rule reference carries the full rule and its version.
 
 ### Canonical artifact: Task contract
 
