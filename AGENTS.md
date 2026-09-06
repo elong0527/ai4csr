@@ -55,7 +55,14 @@ Order the current and planned examples by increasing workflow maturity:
    well-defined AI-first workflow, then reframe it as design parameter ->
    analytical approximation -> simulation confirmation -> design report.
 2. **Rounding:** encode and enforce explicit business rules in a small R
-   workflow.
+   workflow. This example spans two chapters that divide problem from design.
+   `06-workflow-rounding.qmd` is the motivating chapter: it states the rounding
+   problem, writes the business rule down, sends one prompt to an agent, and
+   ends by naming what a prompt cannot supply. It does not run the lifecycle.
+   `07-workflow-rounding-skill.qmd` runs the lifecycle once, turning those
+   named gaps into requirements and designing the check as an agent skill.
+   Keep the two chapters as one example: problem then design, not two
+   independent examples and not two turns of a loop.
 3. **Agentic R code review:** survey and benchmark mature code-review workflows
    in Codex, Claude Code, and GitHub Copilot.
 4. **SAP -> code -> results:** manage changes and traceability across connected
@@ -69,7 +76,7 @@ example with different terminology.
 
 ## Shared lifecycle for example chapters
 
-Every applied example follows the same six-stage, non-linear lifecycle. Use
+Every applied example runs the same six-stage, non-linear lifecycle. Use
 these headings or close equivalents:
 
 1. **Plan --- Frame the workflow**
@@ -97,7 +104,15 @@ The accepted artifact provides the handoff or event for the next stage. Keep
 the Biometrics decision, engineering contribution, supporting evidence, and
 human gate visible in every artifact.
 
-At the beginning of each example chapter, state:
+An example may be preceded by a motivating chapter that states the problem,
+records the business rule, and shows what an ad hoc prompt does and does not
+accomplish. Such a chapter does not run the lifecycle stages and declares no
+maturity level, because it proposes no workflow. It must end by naming the
+specific gaps that the lifecycle chapter takes as requirements, and the
+lifecycle chapter must open from those gaps. Do not use this exemption to
+split a workflow design across chapters.
+
+At the beginning of each lifecycle chapter, state:
 
 - the problem and learning objective;
 - the workflow boundary and explicit non-goals;
@@ -115,12 +130,13 @@ Within each lifecycle stage, cover:
 - risks, limitations, and unresolved questions; and
 - the event or accepted artifact that initiates the next stage.
 
-An element may be marked not applicable when the chapter explains why. Do not
-omit lifecycle stages silently.
+An element may be marked not applicable when the chapter explains why. Within
+a lifecycle chapter, do not omit stages silently.
 
 ## Maturity labels
 
-Every example chapter declares one of these maturity levels near its beginning:
+Every lifecycle chapter declares one of these maturity levels near its
+beginning. A motivating chapter declares none:
 
 - **Design pattern:** a conceptual workflow with explicit assumptions and gaps.
 - **Reproducible prototype:** runnable code, synthetic data, expected results,
@@ -177,6 +193,66 @@ Until the deferred topic is developed, do not claim that the book, an example,
 a model, a vendor, a cloud provider, or a workflow is compliant, validated, or
 approved for GxP use. Treat any regulatory expansion as separately scoped
 future work rather than adding it incidentally to unrelated chapters.
+
+## Special requirements for the rounding example
+
+The rounding chapters specify a workflow that the book does not distribute.
+`06-workflow-rounding.qmd` is the motivating chapter and declares no maturity
+level; `07-workflow-rounding-skill.qmd` runs the lifecycle and is at
+design-pattern maturity.
+
+- Keep the division of material between the two chapters. Chapter 06 owns the
+  problem, the cross-language tie table, BR-001, BR-002, and BR-003, and the
+  scope clause defining which calls are in scope. It also owns the exploratory
+  request, the first `arena.ai` prompt, the one-versus-eight call contrast, and
+  the four gaps. Chapter 07 owns the task contract, the prototype, every pinned
+  `file:line` result, the tie probe and its two causes, the benchmark, the
+  release record, and monitoring. Do not move a task contract, benchmark, or
+  release record into chapter 06.
+- Present the open request in Chapter 06 as useful for discovery, not simply as
+  a defective prompt. Chapter 07 combines a required minimum scan with a
+  separately labeled exploratory pass. Repeatability does not require the
+  agent to follow the same reasoning path on every run.
+- Chapter 06 uses zero-decimal ties such as 2.5 in its prose so the teaching
+  example stays simple. The one-decimal probe belongs in chapter 07, where both
+  causes are visible; chapter 07 states why it changes precision.
+
+- The repository ships **no** `examples/rounding/` directory, no skill package,
+  no scripts, and no evidence files. Do not add links or paths to such files,
+  and do not describe the skill as installable or runnable from this book. If
+  that material is added later, raise the maturity label in the same change.
+- The skill layout described in `07-workflow-rounding-skill.qmd` follows the
+  Agent Skills specification (<https://agentskills.io/specification>): a
+  required `SKILL.md` with `name` and `description` frontmatter, optional
+  `scripts/`, `references/`, and `assets/` directories, and a `name` that
+  matches the directory name.
+- Every reader-facing prompt and every quoted file, line number, or result must
+  be pinned to a commit SHA, never to a branch. metalite.ae is maintained, so an
+  unpinned reference can silently stop reproducing. The chapters currently pin
+  v0.1.4 at `bdb23d472b16bc9dadbc774e64c5ca40321e9c6b` (2026-09-01). Changing it
+  means re-verifying every quoted line number and probe result in the same
+  change.
+- The "Try it yourself" sections send a prompt to <https://arena.ai/agent>,
+  matching the demonstration in `04-ai-agent.qmd`. State that no GitHub issue
+  can be created there, and never present a specific agent response as the
+  expected result. Prompt results vary between runs, and that variability is
+  the point being taught.
+- One Arena.ai response was manually copied into
+  <https://github.com/Merck/metalite.ae/issues/249>. Link to it as an optional
+  example for readers who do not want to wait for a new run. State that a person,
+  not Arena.ai or the designed skill, posted it. Do not present it as the answer
+  key, as evidence that the workflow was released, or as a finding approved by
+  the package maintainers. BR-001 is an illustrative rule rather than a stated
+  `metalite.ae` requirement. Use it to teach critical review: Chapter 07 explains
+  why `R/fmt.R:37` and `R/format_ae_exp_adj.R:203` are not direct numeric
+  formatting calls in the answer key. Do not carry the issue's proposed code
+  into the book as a recommended solution without separate benchmarking.
+- Automation triggers in the Deploy section of `07-workflow-rounding-skill.qmd`
+  are a design. No CI workflow or scheduled job is committed. Do not add one
+  without agreement, and do not write about it as if it were operating.
+- Report a `formatC()` or `sprintf()` divergence as two distinct causes, tie
+  mode and binary representation. Do not compress it into a claim that the
+  function uses banker's rounding.
 
 ## Special requirements for the code-review survey
 

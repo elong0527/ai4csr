@@ -46,6 +46,7 @@ book:
     - part: "Applied examples"
       chapters:
         - 06-workflow-rounding.qmd
+        - 07-workflow-rounding-skill.qmd
 
 bibliography: references.bib
 
