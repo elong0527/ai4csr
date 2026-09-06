@@ -17,9 +17,10 @@ At metalite commit `85757ba1bf5d863971e142b7872b6f92c265d6ef`,
 @sec-workflow-rounding found three `formatC()` sites and 6 divergences among 10
 tie probes. Repeating that result requires preserving more than the prompt.
 
-This second lifecycle turn designs an agent skill: a reviewable folder of
-instructions and supporting files. It preserves the procedure so that another
-reviewer or study team can repeat the same bounded review.
+This second lifecycle turn designs an agent skill. For a Biometrics reader, the
+skill can be understood as a small review kit: instructions, the approved rule,
+fixed checks, and a report template. Another reviewer or study team should be
+able to use the same procedure without reconstructing it from memory.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
@@ -49,8 +50,8 @@ and limits, not only its detection logic.**
 
 ### Turn observed weaknesses into requirements
 
-Cycle 1 exposed four workflow weaknesses, not additional metalite defects.
-Cycle 2 therefore needs to:
+Cycle 1 exposed four weaknesses in the review process, not four more metalite
+defects. Cycle 2 therefore needs to:
 
 - replace reviewer memory with a written procedure;
 - report coverage for every run;
@@ -64,7 +65,7 @@ Cycle 2 therefore needs to:
   same bounded BR-NUM-001.1 review.
 - **Inputs:** The accepted cycle-1 rule, task contract, evidence, and lessons
   from the first review.
-- **Minimum useful output:** A reviewed folder design, benchmark plan, release
+- **Output:** A reviewed folder design, benchmark plan, release
   conditions, and monitoring measures.
 - **Agent contribution:** Follow the written procedure, run fixed, repeatable
   checks when an implementation exists, explain candidates, and draft output.
@@ -81,7 +82,7 @@ cycle. The accepted workflow brief initiates Design.
 
 ## Design --- Specify the skill
 
-The proposed folder has four parts:
+The proposed review kit has four parts:
 
 - `SKILL.md` is the instruction: when to use the check, what to do, and when to
   stop.
@@ -115,8 +116,9 @@ metadata:
 ---
 ```
 
-These fields help a compatible agent select the skill for the intended task and
-record which procedure and rule versions govern the run.
+The `name` identifies the kit, and the `description` tells an agent when to use
+it. The remaining fields record the software, procedure version, and rule
+version that govern the run.
 
 ### Canonical artifact: Task contract
 
@@ -160,9 +162,9 @@ rounding-rule-review/
     issue-template.md
 ```
 
-### Preserve the decisions that changed the result
+### Preserve the decisions that made the check useful
 
-The proposed procedure must always:
+The proposed procedure must preserve three decisions from cycle 1:
 
 1. Search beyond `round(` because formatting functions can also round reported
    values.
@@ -240,9 +242,9 @@ has been built or run.
 | Known gaps | State that BR-NUM-001.2 and BR-NUM-001.3 are unchecked |
 | Reproducibility | A reviewer unfamiliar with cycle 1 obtains the same answer key |
 
-A future benchmark would also record incorrect findings, missed problems, time
-spent reviewing candidates, runs stopped by missing information, and whether
-the agent's preliminary assessment agrees with the human classification.
+A future benchmark would also record incorrect findings, missed problems,
+review time, runs stopped by missing information, and whether the agent's
+preliminary assessment agrees with the human classification.
 
 ### Canonical artifact: Benchmark report
 

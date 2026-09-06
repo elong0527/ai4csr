@@ -20,10 +20,10 @@ that format a number for display can also round it. In this example,
 to calls named `round()` would miss the problem. The Test section explains why
 the result can differ.
 
-The discrepancy begins the first of two passes through the AI-first SDLC from
-@sec-ai-first-sdlc. This chapter turns the review request into a bounded
-workflow and tests it at a fixed commit. @sec-workflow-rounding-skill then uses
-the lessons from this review to design a reusable agent skill.
+This chapter is the first of two passes through the AI-first SDLC from
+@sec-ai-first-sdlc. It turns the review question into a bounded check and tests
+that check at a fixed commit. @sec-workflow-rounding-skill uses what this review
+learned to design a reusable agent skill.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The workflow is specified, not distributed. The book includes the rule,
@@ -50,12 +50,12 @@ functions, not just functions named `round()`.**
 
 ## Plan --- Frame the workflow
 
-### Begin with the reporting problem
+### Why language defaults are not enough
 
-Common tools do not all use the same tie rule. At zero decimal places, SAS
-`ROUND()` sends -2.5 to -3 and 2.5 to 3 (half away from zero). R and Python
-`round()` send the same values to -2 and 2 (half to even). None of these
-defaults is inherently wrong. The problem is relying on a language default
+Common programming tools do not all use the same tie rule. At zero decimal
+places, SAS `ROUND()` sends -2.5 to -3 and 2.5 to 3 (half away from zero).
+R and Python `round()` send the same values to -2 and 2 (half to even). None of
+these defaults is inherently wrong. The risk comes from relying on a default
 when a Biometrics team needs one agreed reporting rule.
 
 A reviewer might begin with this under-specified request:
@@ -64,8 +64,8 @@ A reviewer might begin with this under-specified request:
 > the R source properly uses round half away from zero. If not, identify the
 > source and draft a GitHub issue to report the finding.
 
-The request sounds clear, but it does not define a rounding site, the source in
-scope, the test, or who classifies a difference.
+The request does not yet say what counts as a rounding site, which source files
+are in scope, what test to run, or who decides whether a difference is a defect.
 
 The review target is
 [`Merck/metalite` at a fixed commit](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef),
@@ -135,10 +135,10 @@ performing. The accepted workflow brief initiates Design.
 ### Define the business rule before refining the prompt
 
 The phrase "properly uses round half away from zero" does not say which calls
-count as rounding sites. In the R source at the pinned metalite commit, a search
-for `round(` returns no matches, even though formatting functions round
-reported numbers. The team must define a rounding site before it can interpret
-the search result.
+count as rounding sites. At the pinned metalite commit, a search of the R source
+for `round(` returns no matches. That is not a clean result: formatting
+functions still round reported numbers. The team must first define a rounding
+site, then interpret the search.
 
 ### Business rule: BR-NUM-001
 
@@ -190,11 +190,11 @@ Build.
 
 ## Build --- Prototype the workflow
 
-The prototype has three steps. A broad scan lists calls that might round, a
-decimal-tie probe records their behavior, and the agent reads the surrounding
-code to decide whether each call affects a reported value. The first two steps
-are fixed checks; the third requires reviewable judgment. The book specifies
-these components but does not distribute them.
+The prototype has three steps: find possible rounding calls, test each one with
+decimal ties, and read the surrounding code to see whether it affects a
+reported value. The first two steps are fixed checks. The third requires
+reviewable agent judgment and human confirmation. The book specifies these
+components but does not distribute them.
 
 ### Step 1: Scan for candidates
 
@@ -245,12 +245,13 @@ source.
 
 ### Establish expected behavior with small test examples
 
-The benchmark uses three small R programs with known expected results. The
-compliant program produced no candidates or findings. The program that called
-`formatC()` directly produced one candidate and the expected finding. The
-program using the approved helper produced two candidates but no findings. This
-last result shows the cost of a broad search: it avoids a false clean report,
-but a reviewer must dismiss candidates that follow the approved rule.
+Before inspecting metalite, the benchmark uses three small R programs with
+known expected results. The compliant program produced no candidates or
+findings. The program with a direct `formatC()` call produced one candidate and
+the expected finding. The program using the approved helper produced two
+candidates but no findings. That result shows the cost of a broad search: it
+avoids a false clean report, but a reviewer must dismiss candidates that
+follow the approved rule.
 
 ### Key finding at the pinned metalite commit
 
