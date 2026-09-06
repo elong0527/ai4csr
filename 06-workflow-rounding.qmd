@@ -1,17 +1,20 @@
 # Rounding in analysis and reporting {#sec-workflow-rounding}
 
 ::: callout-tip
-An AI-first workflow can turn written business rules into continuous,
-evidence-backed checks while keeping exceptions and policy decisions with
-people.
+Treat a rounding review as a scope question before treating it as a coding
+question. Write the business rule and define where it applies before evaluating
+solutions.
 :::
 
+
 Imagine a Biometrics team preparing an adverse-event table. The display
-specification calls for one decimal place and includes terms whose percentage
-meets a reporting threshold. A reviewer notices that 2.5 percent becomes 3
-following team convention but 2 in R's default `round()` function. This halfway
-case is called a decimal tie. The difference can change both a displayed
-statistic and whether a row passes the reporting threshold.
+specification requires integer percentages and includes only terms whose
+percentages meet a reporting threshold. Only after the table is produced does a
+reviewer notice that team convention turns 2.5 percent into 3, while R's
+default `round()` function turns it into 2. This halfway case is called a
+decimal tie. The correction is small. The deeper problem is that the
+organization's rounding rules were not explicit enough to check when the code
+changed.
 
 Common programming languages differ in their default handling of decimal ties:
 
@@ -22,174 +25,180 @@ Common programming languages differ in their default handling of decimal ties:
 | Python `round()` | half to even | -2 | 2 |
 
 The lesson is not that one language is correct. A language default is an
-implementation choice, not organizational policy. The convention is the policy,
-and no line of source code states it.
+implementation choice, not organizational policy.
 
-This chapter stays at that level. It describes the problem, writes the rule
-down, and sends one prompt to an agent to check a real R package against it.
-The prompt produces a real finding. It does not produce a workflow.
-@sec-workflow-rounding-skill takes the limits identified here and designs one.
+This chapter explores the problem, writes three related rules down, and sends
+one prompt to an agent to check a real R package against the first rule. The
+exercise can reveal a real finding, but a one-off prompt does not produce a
+workflow. In the AI-first SDLC from @sec-ai-first-sdlc, the problem, rules,
+scope, and evidence gathered here are discovery inputs rather than completed
+Plan or Design artifacts. @sec-workflow-rounding-skill starts from those inputs
+and the limits identified here.
 
-The chapter has one main finding: **a prompt can find the problem but cannot
-own it.**
+## Define the rules before checking the work
 
-- **Problem:** Rounding rules are applied inconsistently across programs,
-  languages, and studies, and the rule is often unwritten.
-- **Learning objective:** Show what a written business rule and a single
-  well-specified prompt can accomplish, and what they leave undone.
-- **Not in this chapter:** A task contract, a prototype, a benchmark, a release
-  record, or any claim that the check is repeatable. Those belong to
-  @sec-workflow-rounding-skill.
+A reviewer cannot ask an agent or a team member to verify conventions that
+exist only in habit. The first task is not writing a prompt. It is producing a
+short, versioned set of statements describing what the organization requires.
 
-## Write the rule down before asking anyone to check it
+### Three business rules
 
-A reviewer cannot ask an agent, a contractor, or a new team member to verify a
-convention that exists only in habit. The first work is not a prompt. It is a
-short, versioned statement of what the organization requires.
+This example uses three separate, illustrative business rules: BR-001, BR-002,
+and BR-003. 
+They are not approved industry standards, and they are not the stated rules of any package reviewed
+here.
 
-### Business rule: BR-NUM-001
+The rules answer three different questions: how ties are rounded, when rounding
+occurs, and how display precision is preserved. The exercise below checks only
+tie behavior; rounding stage and display precision remain explicit gaps.
 
-BR-NUM-001 is an illustrative contract written for this book. It is not an
-approved industry standard, and it is not the stated rule of any package
-reviewed here. Version 1.0 contains three rules:
-
-> **BR-NUM-001.1:** Values intended as exact decimal ties are rounded half away
+> **BR-001:** Values intended as exact decimal ties are rounded half away
 > from zero. A displayed value is never a negative zero.
 
-> **BR-NUM-001.2:** Calculations use unrounded values; rounding occurs once,
+> **BR-002:** Calculations use unrounded values; rounding occurs once,
 > when the final result is prepared for display.
 
-> **BR-NUM-001.3:** Display precision is specified for each reported statistic
+> **BR-003:** Display precision is specified for each reported statistic
 > and preserved, including trailing zeros.
 
-Rule 3 covers a problem that is easy to overlook because it is not arithmetic.
+BR-003 covers a problem that is easy to overlook because it is not arithmetic.
 The values `76`, `76.0`, and `76.00` are numerically equal, but they communicate
 different precision in a table. A program can calculate the intended number and
 still produce an output that violates a reporting convention.
 
-### Define what counts as a rounding site
+### Define which calls are in scope
 
-Writing the rule is not enough. The rule must also say where it applies. A
-request to check that source code "properly rounds half away from zero" does not
-say which calls count, and the answer changes completely depending on the
-definition. BR-NUM-001 therefore carries a scope clause:
+Naming BR-001 is not enough. The rule must also say where it applies. A request
+to check that source code "properly rounds half away from zero" does not say
+which calls are in scope, and the answer changes completely depending on that
+definition. BR-001 therefore carries this scope:
 
-> A rounding site is any call that can change a numeric value displayed in a
-> report or used to decide which rows the report includes. Formatting functions
-> round as a side effect of display, so `formatC()`, `sprintf()`, and `format()`
-> are candidate rounding sites. Finding one `round()` call does not establish
-> complete coverage.
+> For this review, include any function call that can change a numeric value
+> displayed in a report or used to decide which rows the report includes.
+> Formatting functions round as a side effect of display, so `formatC()`,
+> `sprintf()`, and `format()` are candidates. Finding one `round()` call does
+> not establish complete coverage.
 
 That clause is the difference between a review that inspects one function name
 and a review that inspects the calls that actually reach the table. The rest of
 this chapter shows how much difference it makes.
 
-## The request a reviewer actually writes
-
-A reviewer asked to check a package against BR-NUM-001 might begin with this:
-
-> At `metalite.ae` version 0.1.4,
-> verify whether the R source uses round half away from zero for reported
-> values and report-filtering decisions. If not, identify the source and draft
-> a GitHub issue to report the finding.
-
-The request names a target and a rule, which is more than many review requests
-do. It still does not say what counts as a rounding site, which files are in
-scope, what test would demonstrate a violation, or who decides whether a
-difference is a defect rather than an accepted local convention.
+## An exploratory request
 
 The review target is
-[`Merck/metalite.ae` at a released version](https://github.com/Merck/metalite.ae/releases/tag/v0.1.4),
-a public R package that analyzes adverse events from ADaM data and produces
-tables, listings, and figures using the `metalite` data structure. The commit is
-pinned because the package is maintained: an unpinned reference can silently
-stop reproducing.
+[`Merck/metalite.ae` v0.1.4](https://github.com/Merck/metalite.ae/releases/tag/v0.1.4),
+an open source R package that analyzes adverse events from ADaM data and produces
+tables, listings, and figures using the `metalite` data structure. The release
+is pinned to commit
+[`bdb23d472b16bc9dadbc774e64c5ca40321e9c6b`](https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b).
+
+A reviewer beginning a check against BR-001 might write this:
+
+> In `metalite.ae` v0.1.4 (commit
+> `https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b`),
+> verify whether the R source uses round half away from zero for analysis and reporting.
+> If not, identify the source and draft a GitHub issue to report the finding.
+
+The request names a target and a rule while leaving the search method open.
+That gives the agent room to inspect the package, follow unexpected paths, and
+surface assumptions, which is useful during an exploratory review. The same
+freedom makes the result difficult to evaluate or repeat: the request does not
+define the minimum files that must be covered, the evidence needed to
+demonstrate a violation, or who classifies the finding. A reusable workflow
+must clarify those evaluation and decision boundaries without prescribing
+every step in the agent's reasoning.
 
 ### Try it yourself
 
 Send the following prompt to [arena.ai](https://arena.ai/agent) before reading
-the rest of this chapter. It is the same request, rewritten to carry the scope
-clause, the required evidence, and an explicit stop point.
+the rest of this chapter. The prompt deliberately leaves the investigation
+open. It fixes the target and rule, then lets the agent choose how to search,
+which clues to follow, and what supporting evidence to gather.
 
 ```text
-Review the R source of the metalite.ae package at the commit linked below.
-Verify whether it follows this business rule: values intended as exact decimal
-ties must round half away from zero.
+Review the R source of the metalite.ae package at release v0.1.4 and the exact
+commit linked below.
 
-Repository at fixed commit:
+Verify whether it follows BR-001: values intended as exact decimal ties must
+round half away from zero, and a displayed value must never be a negative zero.
+
+Release: v0.1.4
+Pinned commit:
 https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b
 
-Do not propose a code change. Do not modify any repository. State what was and
-was not checked.
+If evidence diverges from the rule, draft a GitHub issue.
 ```
 
-Arena.ai cannot create the GitHub issue, so a draft is the expected endpoint.
+::: {.callout-note title="Example output"}
+If you do not want to wait for a new run, [issue
+#249](https://github.com/Merck/metalite.ae/issues/249) preserves one response to
+this prompt. Treat it as an example to review, not as the answer key or a finding
+approved by the package maintainers.
+:::
+
 Agent responses vary between runs, and that variability is part of the lesson.
 Do not treat any particular response as the answer key. Judge the response you
 receive by asking:
 
 - Did it inspect formatting functions as well as `round()`?
+- Did it follow wrappers or other unexpected paths through the code?
 - Did it give locations at the pinned commit rather than general advice?
 - Did it demonstrate behavior at ties of both signs?
 - Did it state what it checked and what it did not?
+- Did it distinguish observed behavior from the assumption that BR-001 applies?
+- Did it keep source evidence, causal explanations, defect classification, and
+  proposed solutions separate?
 
-## What the scope clause changes
+The prompt did not ask the agent to search only for `round()`. It also did not
+prescribe a function catalog or a minimum search procedure. The response saved
+in issue #249 interpreted the request broadly: it examined an explicit
+`round()` call, formatting helpers, decimal-tie examples, negative-zero output,
+and a possible effect on report filtering. That breadth illustrates the value
+of leaving an exploratory investigation open.
 
-At the pinned commit, a search of the R source for `round(` returns one match.
-Read without the scope clause, that looks close to a clean result.
+## What one exploratory prompt cannot provide
 
-It is not. The single `round()` call is a report decision: a rounded percentage
-controls whether an adverse-event row passes the reporting threshold. A review
-that applies the scope clause finds seven more sites, all in display helpers,
-that round percentages, estimates, standard deviations, confidence-interval
-limits, p-values, and exposure-adjusted event rates before they reach the table.
+Reviewing the saved response makes that response easier to judge.
+It does not turn the interaction into a workflow. No workflow brief has been
+accepted, and no task contract specifies a repeatable check.
 
-| What the reviewer searches for | Sites found at the pinned commit |
-|---|---|
-| Calls named `round(` | 1 report-filtering decision |
-| Every call meeting the scope clause | 1 report-filtering decision and 7 display sites |
+Leaving the search open can reveal functions, wrappers, and code paths that the
+reviewer did not anticipate. The tradeoff is that the prompt sets no minimum
+check against which another run can be compared. Three workflow capabilities
+are still missing:
 
-The eight sites, their file and line numbers, the decimal-tie evidence for each,
-and the reason the display helpers diverge are recorded in
-@sec-workflow-rounding-skill, where they serve as the benchmark answer key. The
-point here is narrower: the prompt did not determine the result. The definition
-of a rounding site did.
+- **Coverage assurance.** A response can state which files and rules it checked,
+  but the interaction provides no required file list or minimum set of checks
+  against which to test that claim. Silence is not evidence that every file or
+  rule was reviewed.
+- **Repeatability.** Repeatability does not require the agent to reason the same
+  way on every run. It does require a stable minimum procedure and expected results. 
+  The exploratory prompt supplies none
+  of those controls, so another run can follow a different path and return
+  different coverage.
+- **A named human gate.** The prompt requests a draft but does not name who
+  classifies each finding as a defect, a documented convention, an accepted
+  exception, or not applicable, or who decides whether to post it.
 
-## What one prompt cannot give you
-
-The prompt produced a genuine finding, and a Biometrics team could act on it.
-Four things are still missing, and none of them can be fixed by rewording the
-prompt.
-
-- **Coverage.** The response describes what it found. It does not establish
-  which files were examined, which were skipped, or which of the three rules
-  went unchecked. Silence is not evidence that everything was reviewed.
-- **Repeatability.** The result depends on one carefully written prompt held by
-  one reviewer. A colleague repeating the review next quarter reconstructs the
-  scope clause, the tie values, and the stop point from memory, or does not
-  reconstruct them at all.
-- **Separation of fixed checks from judgment.** Locating candidate calls and
-  probing them at decimal ties are mechanical steps that should give the same
-  answer every time. Deciding whether a candidate reaches the report is
-  judgment. A single response blends them, so a reader cannot tell which claims
-  are reproducible.
-- **A named human gate.** Nothing in the exchange records who classifies each
-  finding as a defect, a documented convention, an accepted exception, or not
-  applicable, or who authorizes telling anyone outside the team.
-
-These four gaps are the requirements for the next chapter. They are also the
-reason the drafted GitHub issue stays a draft: `metalite.ae` is another team's
-repository, it does not state BR-NUM-001 as its rule, and no accountable person
-has classified the evidence as a defect.
+These are workflow requirements, not criticisms of the response's breadth. The
+gaps, together with the problem, rules, and reviewed
+evidence, are inputs to Plan in @sec-workflow-rounding-skill. The next chapter
+organizes them into a workflow brief, then carries them into a task contract in
+Design. That design establishes required checks as a minimum while preserving
+a separate exploratory pass.
 
 ## Summary
 
 Rounding looks like a settled question until two tools disagree at a tie. The
 disagreement is not a bug in a language; it is an unwritten policy. Writing
-BR-NUM-001 down, and defining where it applies, is what made a check possible at
-all, and the scope clause changed a one-site search into an eight-site finding.
+the three rules down makes the policy explicit. Defining where BR-001 applies
+is what makes the response reviewable. The later source review distinguishes
+one direct `round()` call from eight calls.
 
-A single prompt was enough to surface that finding. It was not enough to state
-coverage, to run the same way twice, to keep deterministic results apart from
-judgment, or to name who decides. @sec-workflow-rounding-skill designs a
-workflow that does.
+An exploratory prompt can surface useful candidates and testable claims, and it
+may reveal paths the reviewer did not anticipate. Reading its output requires
+separating candidate evidence, reproduced observations, causal explanations,
+and proposed decisions. Turning that review into a workflow additionally
+requires assured coverage, repeatable minimum checks and a recorded human decision.
+@sec-workflow-rounding-skill begins the lifecycle by turning those gaps into
+workflow requirements.

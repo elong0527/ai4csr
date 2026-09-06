@@ -202,12 +202,17 @@ level; `07-workflow-rounding-skill.qmd` runs the lifecycle and is at
 design-pattern maturity.
 
 - Keep the division of material between the two chapters. Chapter 06 owns the
-  problem, the cross-language tie table, BR-NUM-001 and its rounding-site scope
-  clause, the under-specified request, the first `arena.ai` prompt, the
-  one-versus-eight site contrast, and the four gaps. Chapter 07 owns the task
-  contract, the prototype, every pinned `file:line` result, the tie probe and
-  its two causes, the benchmark, the release record, and monitoring. Do not
-  move a task contract, benchmark, or release record into chapter 06.
+  problem, the cross-language tie table, BR-001, BR-002, and BR-003, and the
+  scope clause defining which calls are in scope. It also owns the exploratory
+  request, the first `arena.ai` prompt, the one-versus-eight call contrast, and
+  the four gaps. Chapter 07 owns the task contract, the prototype, every pinned
+  `file:line` result, the tie probe and its two causes, the benchmark, the
+  release record, and monitoring. Do not move a task contract, benchmark, or
+  release record into chapter 06.
+- Present the open request in Chapter 06 as useful for discovery, not simply as
+  a defective prompt. Chapter 07 combines a required minimum scan with a
+  separately labeled exploratory pass. Repeatability does not require the
+  agent to follow the same reasoning path on every run.
 - Chapter 06 uses zero-decimal ties such as 2.5 in its prose so the teaching
   example stays simple. The one-decimal probe belongs in chapter 07, where both
   causes are visible; chapter 07 states why it changes precision.
@@ -224,15 +229,24 @@ design-pattern maturity.
 - Every reader-facing prompt and every quoted file, line number, or result must
   be pinned to a commit SHA, never to a branch. metalite.ae is maintained, so an
   unpinned reference can silently stop reproducing. The chapters currently pin
-  `9647930642f7060bbb28779468dbb9f04f141901` (2026-09-03). Changing it means
-  re-verifying every quoted line number and probe result in the same change.
+  v0.1.4 at `bdb23d472b16bc9dadbc774e64c5ca40321e9c6b` (2026-09-01). Changing it
+  means re-verifying every quoted line number and probe result in the same
+  change.
 - The "Try it yourself" sections send a prompt to <https://arena.ai/agent>,
   matching the demonstration in `04-ai-agent.qmd`. State that no GitHub issue
-  can be created there, and never assert a specific agent response. Prompt
-  results vary between runs, and that variability is the point being taught.
-- The drafted GitHub issue is a **dry run**. It has not been submitted to
-  `Merck/metalite.ae`, and BR-NUM-001 is an illustrative contract rather than an
-  approved standard. Do not post it, and do not describe it as filed.
+  can be created there, and never present a specific agent response as the
+  expected result. Prompt results vary between runs, and that variability is
+  the point being taught.
+- One Arena.ai response was manually copied into
+  <https://github.com/Merck/metalite.ae/issues/249>. Link to it as an optional
+  example for readers who do not want to wait for a new run. State that a person,
+  not Arena.ai or the designed skill, posted it. Do not present it as the answer
+  key, as evidence that the workflow was released, or as a finding approved by
+  the package maintainers. BR-001 is an illustrative rule rather than a stated
+  `metalite.ae` requirement. Use it to teach critical review: Chapter 07 explains
+  why `R/fmt.R:37` and `R/format_ae_exp_adj.R:203` are not direct numeric
+  formatting calls in the answer key. Do not carry the issue's proposed code
+  into the book as a recommended solution without separate benchmarking.
 - Automation triggers in the Deploy section of `07-workflow-rounding-skill.qmd`
   are a design. No CI workflow or scheduled job is committed. Do not add one
   without agreement, and do not write about it as if it were operating.
