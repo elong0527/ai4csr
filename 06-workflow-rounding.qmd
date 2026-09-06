@@ -1,44 +1,49 @@
-# AI-first workflow for business rules {#sec-workflow-business-rules}
+# Rounding as an AI-first workflow {#sec-workflow-business-rules}
 
 ::: callout-tip
-An AI-first workflow turns business rules into continuous, evidence-backed
-checks while keeping accountable decisions with people.
+An AI-first workflow can turn written business rules into continuous,
+evidence-backed checks while keeping exceptions and policy decisions with
+people.
 :::
+
+Imagine that two programmers prepare the same summary in different languages.
+One implementation uses the default SAS rounding function; the other uses the
+default R function. Most values agree, but exact ties do not. A reviewer finds
+the difference only after a table has been produced. The calculation is small;
+the real problem is that an organizational rule was never made executable at
+the moment the code changed.
+
+This chapter applies the AI-first SDLC from @sec-ai-first-sdlc to that problem.
 
 ::: {.callout-note title="Maturity: Design pattern"}
-This chapter defines the intended workflow, business rules, roles, and evidence.
-It does not yet provide a reproducible R prototype or benchmark report.
+This chapter defines the intended workflow, task contract, business rules,
+roles, evidence, and planned lifecycle artifacts. It does not yet provide a
+reproducible R prototype, benchmark results, release, or operating history.
 :::
 
-Clinical teams rely on business rules to produce consistent work across
-studies, tools, and programmers. The rules may govern derivations, naming,
-rounding, display conventions, or escalation. A rule is useful only when the
-team can tell where it applies, whether it was followed, and who decides an
-exception.
+| Example contract | Definition |
+|---|---|
+| **Problem** | Rounding and display rules can be applied inconsistently across programs, languages, and studies |
+| **Learning objective** | Show how deterministic checks, a focused agent review, and a human decision can enforce a small set of explicit business rules |
+| **Workflow boundary** | Begins when project code changes; checks rounding method, rounding stage, and display precision; ends when a named reviewer records a decision |
+| **Non-goals** | Validate the statistical method, replace independent QC, review every programming standard, change source data, or approve policy exceptions automatically |
+| **Why this is well defined** | The trigger, three rules, permitted evidence, structured output, stopping conditions, and accountable human role can all be stated explicitly |
 
-This chapter builds one small workflow for clinical analysis and reporting.
-When project code changes, the workflow checks
-three rules for numeric rounding and display precision. The example is intentionally narrow,
-but the design can be reused for other organizational rules.
+## Plan — Frame the workflow
 
-## Why business rules need active enforcement
+Clinical teams use business rules to produce consistent work across studies,
+tools, and programmers. The rules may govern derivations, naming, rounding,
+display conventions, or escalation. A rule is useful only when the team can
+tell where it applies, whether it was followed, and who decides an exception.
 
-Business rules translate an organization's policies, standards, and experience
-into repeatable constraints on how work is done. Many never appear in a
-protocol or SAP. They live in standards documents,
-review comments, and the memory of experienced colleagues.
-
-Manual review is therefore fragile. It depends on the right reviewer noticing
-the right detail at the right time. As code moves between projects and
-languages, an unstated convention can quietly become several different
-implementations. An AI-first workflow makes the rule available at the moment of
-change, checks what can be checked mechanically, and brings unresolved edge cases to
-the subject matter expert for a decision.
+Many rules never appear in a protocol or statistical analysis plan (SAP). They
+live in standards documents, review comments, and the memory of experienced
+colleagues. Manual review is therefore fragile. It depends on the right
+reviewer noticing the right detail at the right time.
 
 ### Rounding exposes the problem
 
-Numeric rounding looks universal, but common programming tools disagree at
-exact ties:
+Common programming tools differ at exact ties:
 
 | Language or tool | Default tie behavior | `-2.5` | `2.5` |
 |---|---|---:|---:|
@@ -47,19 +52,37 @@ exact ties:
 | Python `round()` | half to even | -2 | 2 |
 
 Display adds a separate choice. The values `76`, `76.0`, and `76.00` are
-numerically equal, but they communicate different precision in a table. 
-A program can therefore calculate the expected number and still produce
-an output that violates the organization's reporting convention.
+numerically equal, but they communicate different precision in a table. A
+program can calculate the intended number and still produce an output that
+violates an organization's reporting convention.
 
 The lesson is not that one language is correct. A language default is an
-implementation choice, not organizational policy. The workflow needs an
-explicit rule that applies independently of the tool used to implement it.
+implementation choice, not organizational policy. The minimum valuable
+workflow is a review of three rounding rules whenever relevant project code
+changes.
 
-## Define rules that can be enforced
+### Canonical artifact: Workflow brief
 
-An organization must define the method, the point in the calculation when it
-applies, and the required display. For this example, suppose it adopts three
-rules:
+The workflow brief is defined in the opening contract and adds three candidate
+success measures:
+
+- known violations are found with a rule identifier, code location, and
+  supporting evidence;
+- compliant examples are not flagged, and every run reports its coverage; and
+- exceptions reach the named reviewer and the resulting decision is recorded.
+
+**Artifact status:** defined as a design pattern. The rule owner still needs to
+accept the intended scope, baseline, and quantitative thresholds before a
+prototype is built. An accepted workflow brief would initiate Design.
+
+## Design — Specify the workflow
+
+The Design stage turns the business intent into rules and a task contract that
+both deterministic tools and an agent can follow.
+
+### Make the three rules explicit
+
+This design assumes that the organization adopts the following contract:
 
 > **Business rule 1:** Exact decimal ties are rounded half away from zero.
 
@@ -69,25 +92,32 @@ rules:
 > **Business rule 3:** Display precision is specified for each reported
 > statistic and preserved, including trailing zeros.
 
-Together, the rules form one reporting contract:
+Together, the rules identify both the expectation and the evidence needed to
+review it:
 
 | Rule | What it prevents | Evidence needed |
 |---|---|---|
 | Tie method | Tool defaults changing a result | Boundary-test results and the formatter used |
-| Rounding stage | Double or intermediate rounding | The calculation path from source value to display |
-| Display precision | Suppressed or inconsistent decimals | The precision specification and rendered output |
+| Rounding stage | Double or intermediate rounding | Calculation path from source value to display |
+| Display precision | Suppressed or inconsistent decimals | Precision specification and rendered output |
 
-Store the contract as a versioned artifact that both people and tools can read.
-The format is less important than the content. The business rules need an owner,
-scope, version history, and examples that determine the expected result. If a
-rule cannot determine an answer, the first workflow finding should be a request
-to clarify the rule.
+The rule contract should be versioned and include an owner, scope, examples,
+and change history. If a rule cannot determine an answer, the workflow should
+ask for clarification rather than invent a convention.
 
-## Design the workflow around one change
+### Canonical artifact: Task contract
 
-The workflow starts when project source code changes. Keeping one trigger makes
-each finding easy to explain: *this change, at this location, conflicts with
-this rule*.
+| Contract element | Specification |
+|---|---|
+| **Objective** | Review changed code for violations of the three approved rounding rules |
+| **Trigger** | A pull request or equivalent event changes relevant project code or output |
+| **Inputs** | Changed files, current rule contract, precision specification, affected output, and prior approved decisions |
+| **Deterministic work** | Scan call sites, run boundary tests, and compare rendered output with expected display |
+| **Agent work** | Trace data flow, connect evidence across files, and explain cases that deterministic checks cannot settle |
+| **Required output** | Structured findings plus a coverage report |
+| **Boundaries** | Read the scoped artifacts and run approved checks; do not modify source data or approve an exception |
+| **Stop conditions** | Missing rule version, missing precision specification, conflicting evidence, or a question requiring policy judgment |
+| **Human decision** | Accept, reject, or request a change, then record the reason |
 
 ::: {.content-visible when-format="html"}
 ![A project code change triggers deterministic checks followed by a focused AI
@@ -95,20 +125,19 @@ review. Findings go to a human reviewer, whose decisions are recorded and may
 lead to an approved rule update.](assets/diagrams/workflow-code-review.svg){#fig-code-review fig-alt="A project code change feeds deterministic checks and then an AI agent. The workflow produces a CI signal, task, code review comment, and a coverage report. A human reviews findings, records decisions, and approves any update to the business rules."}
 :::
 
-The workflow has five steps:
+The task contract produces a five-step runtime path:
 
 | Step | Action | Owner |
 |---|---|---|
-| 1. Trigger | Identify the changed files and affected outputs | Version-control system |
-| 2. Load context | Read the current rule contract and prior approved decisions | Workflow |
-| 3. Check | Scan call sites, run boundary tests, and compare rendered output | Deterministic tools |
-| 4. Interpret | Trace data flow and explain cases the checks cannot settle | AI agent |
+| 1. Trigger | Identify changed files and affected outputs | Version-control system |
+| 2. Load context | Read the rule contract and prior approved decisions | Workflow |
+| 3. Check | Run source scans, boundary tests, and output comparisons | Deterministic tools |
+| 4. Interpret | Trace data flow and explain unresolved cases | AI agent |
 | 5. Decide | Accept, reject, or request a change; record the reason | Accountable reviewer |
 
-Two design choices matter. Deterministic checks run before the model, because
-repeatable facts should not depend on model judgment. The human reviewer acts
-last, because an agent can prepare evidence but cannot approve an exception or
-change organizational policy.
+Deterministic checks run before model interpretation because repeatable facts
+should not depend on model judgment. The human reviewer acts last because an
+agent can prepare evidence but cannot approve an exception or change policy.
 
 ### Walk through one code change
 
@@ -121,32 +150,29 @@ mean_change <- mean(subject_change, na.rm = TRUE)
 display_mean <- as.character(mean_change)
 ```
 
-The workflow evaluates the change against all three rules:
+The design expects three findings:
 
-| Rule | Finding |
+| Rule | Expected finding |
 |---|---|
-| 1 | `round()` uses R's default tie method rather than the approved method. |
-| 2 | Subject-level values are rounded before the mean is calculated. |
-| 3 | `as.character()` does not apply the specified precision or preserve trailing zeros. |
+| 1 | `round()` uses R's default tie method rather than the approved method |
+| 2 | Subject-level values are rounded before the mean is calculated |
+| 3 | `as.character()` does not apply the specified precision or preserve trailing zeros |
 
 A source scanner can locate `round()` and `as.character()`. Boundary tests can
-show the tie behavior, and an output comparison can detect lost zeros. The AI
+demonstrate tie behavior, and an output comparison can detect lost zeros. The
 agent adds value by tracing `subject_change` into `mean_change` and explaining
-that the first rounding occurs before aggregation.
+that rounding occurs before aggregation.
 
-A compliant implementation should keep the values unrounded and route the
-final statistic through an organization-approved formatter:
+An implementation consistent with the contract would retain the unrounded
+values and route the final statistic through an organization-approved helper:
 
 ```r
 mean_change <- mean(adam$CHG, na.rm = TRUE)
 display_mean <- format_org_number(mean_change)
 ```
 
-Here, `format_org_number()` represents a validated helper that implements the
-rule contract. Centralizing the convention reduces the number of places the
-workflow must monitor.
-
-### Return a finding, not an essay
+Here, `format_org_number()` is a proposed interface, not an implementation
+provided by this chapter.
 
 Each finding should be a small record that a reviewer can verify and close:
 
@@ -161,58 +187,137 @@ owner: statistical-programming-lead
 question: Should the intermediate rounding be removed?
 ```
 
-Use a CI failure only when a deterministic check proves a violation. Use a code
-review comment or task when interpretation is required. Every run should also
-report its coverage: files checked, outputs compared, and anything it could not
-resolve. Silence must not be interpreted as proof that every rule was checked.
+**Artifact status:** the task contract is specified at design-pattern maturity.
+The example has not yet demonstrated that all required inputs and evidence can
+be retrieved from a working environment. Acceptance of this contract would
+initiate Build.
 
-## Build the minimum viable workflow
+## Build — Prototype the workflow
 
-A team can pilot this pattern without building a large agent platform:
+The minimum prototype should implement one complete path from a changed R file
+to a structured finding and recorded human decision. It does not require a
+large agent platform.
 
-1. **Choose one rule and one trigger.** Name the rule owner and limit the first
-   workflow to project code changes.
-2. **Write executable examples.** Include positive and negative ties,
-   intermediate rounding, and trailing-zero expectations.
-3. **Automate repeatable checks.** Run source scans, boundary tests, and output
-   comparisons in CI.
-4. **Use AI only for the remainder.** Give the agent the changed code, rule
-   contract, test results, and prior approved decisions. Require locations,
-   evidence, uncertainty, and a question for the reviewer.
-5. **Record the human decision.** Preserve the resolution with the code commit,
-   rule version, check version, and reviewer. Repeated questions may justify a
-   human-approved rule update.
+### Canonical artifact: Prototype
 
-Start by running the workflow in advisory mode. Review false positives, missed
-cases, and coverage reports before allowing any deterministic check to block a
-change. Model-generated findings should remain advisory unless a human converts
-the underlying condition into an approved deterministic rule.
+The intended build sequence is:
 
-## Know the boundary
+1. encode the three rules and their owners in a versioned, machine-readable
+   contract;
+2. implement an organization-approved rounding and formatting helper;
+3. create compliant and noncompliant R fixtures, including positive and
+   negative ties, intermediate rounding, and trailing-zero cases;
+4. automate deterministic scans, boundary tests, and output comparisons;
+5. give the agent only the changed code, rule contract, test results, affected
+   output, and prior approved decisions; and
+6. store structured findings, coverage, and reviewer decisions together.
 
-This workflow is intentionally limited:
+The prototype should use AI only for the remainder after deterministic checks:
+tracing context across artifacts, explaining uncertain cases, and preparing a
+focused question for the reviewer.
 
-- It reacts to project code changes. Dependency updates, specification changes,
-  and data refreshes need their own triggers and checks.
-- It enforces an organizational convention; it does not validate the
-  statistical method or replace independent QC.
-- It can identify missing or ambiguous policy, but only the rule owner can
-  resolve it.
-- It must run inside an approved environment when code or data are
-  confidential.
+::: {.callout-note title="Prototype artifact not yet available"}
+This design pattern does not include runnable R functions, fixtures, automated
+tests, agent instructions, or expected output files. Those materials are
+required before the chapter can claim reproducible-prototype maturity. Their
+implementation is tracked in
+[GitHub issue #5](https://github.com/elong0527/ai4csr/issues/5).
+:::
 
-These limits are part of the result. A trustworthy workflow says what it
-checked, what it did not check, and who must decide what remains.
+Because the canonical Prototype artifact is unavailable, Build has no
+acceptance event and the lifecycle cannot yet advance to a real Test stage.
+
+## Test — Benchmark and evaluate
+
+The future benchmark should be specified before prototype results are examined.
+At minimum, it should include the following controlled cases:
+
+### Canonical artifact: Benchmark report
+
+| Case | Expected behavior |
+|---|---|
+| Positive and negative exact ties | Apply half away from zero consistently |
+| Compliant unrounded aggregation | Produce no rounding-stage finding |
+| Intermediate rounding before a mean | Cite the data flow and flag rule 2 |
+| A two-decimal display of the value 76 | Preserve the result as `76.00` |
+| Missing precision specification | Stop the affected check and request clarification |
+| Files outside the declared scope | Exclude them and report that coverage boundary |
+
+Candidate acceptance thresholds are complete detection of the seeded
+deterministic violations, no false positives in the compliant fixtures, and a
+coverage report on every run. Agent-assisted findings should be evaluated
+separately for correct evidence, unsupported claims, missed findings,
+repeatability, and useful escalation.
+
+::: {.callout-note title="Benchmark report not yet available"}
+No controlled benchmark has been run. The expected cases and candidate
+thresholds above are a Test plan, not measured performance.
+:::
+
+Without a versioned Prototype artifact and Benchmark report, no evidence
+supports a deployment decision.
+
+## Deploy — Operationalize the workflow
+
+The first intended release is an advisory pilot on relevant code changes.
+Deterministic checks may block a change only when an approved test proves a
+violation. Agent interpretations should appear as nonblocking findings for a
+named human reviewer.
+
+### Canonical artifact: Release record
+
+A future Release record should identify:
+
+- the accepted rule, code, test, instruction, and tool versions;
+- the repositories, file patterns, and output types in scope;
+- the pull-request trigger and required inputs;
+- the permissions granted to deterministic tools and the agent;
+- the format and destination of findings and coverage reports;
+- the accountable reviewer and escalation path;
+- the monitoring measures; and
+- the procedure for suspending or reversing the release.
+
+::: {.callout-note title="Release record not yet available"}
+The workflow has not passed its benchmark and has not been released or piloted.
+The advisory operating model above is a deployment design, not operating
+evidence.
+:::
+
+Deploy remains unavailable until a human accepts the Benchmark report and
+authorizes the pilot.
+
+## Maintain — Monitor and improve
+
+Once released, the workflow should be monitored as both a rule-enforcement
+process and a human-agent collaboration. Useful measures include:
+
+### Canonical artifact: Monitoring report
+
+- findings, false positives, missed cases, and coverage by rule;
+- human acceptance, rejection, override, and escalation patterns;
+- changes in R, dependencies, formatting helpers, or source conventions;
+- cases that repeatedly require policy clarification;
+- latency and cost when they affect use; and
+- incidents or suspended runs caused by missing or conflicting evidence.
+
+The feedback loop is governed. An agent may propose a rule, instruction, test,
+or workflow update, but the rule owner approves the change. An accepted change
+updates the Workflow brief or Task contract, adds the corresponding fixtures,
+and begins a new lifecycle cycle.
+
+::: {.callout-note title="Monitoring report not yet available"}
+There is no operating workflow and therefore no monitoring history. This
+section defines the signals and decisions that the future Monitoring report
+must contain.
+:::
 
 ## Summary
 
-Business rules become practical when they are explicit, versioned, testable,
-and connected to a trigger. For each rule:
+Rounding becomes a well-defined AI-first workflow when three explicit business
+rules are connected to a code-change event, deterministic evidence, focused
+agent interpretation, and a recorded human decision.
 
-1. use deterministic tools for facts that can be reproduced;
-2. use an AI agent for narrow interpretation and evidence assembly;
-3. send judgment and policy changes to an accountable human; and
-4. record the decision and the workflow's coverage.
-
-That is the reusable AI-first pattern: **rules define expectations, tools check
-facts, agents explain context, and people decide.**
+At design-pattern maturity, the Workflow brief and Task contract can be
+inspected. The Prototype, Benchmark report, Release record, and Monitoring
+report remain future artifacts. Making those gaps explicit prevents a proposed
+workflow from being mistaken for a tested or operating system.
