@@ -141,10 +141,12 @@ If evidence diverges from the rule, draft a GitHub issue.
 ```
 
 ::: {.callout-note title="Example output"}
-If you do not want to wait for a new run, [issue
-#249](https://github.com/Merck/metalite.ae/issues/249) preserves one response to
-this prompt. Treat it as an example to review, not as the answer key or a finding
-approved by the package maintainers.
+Arena.ai cannot create a GitHub issue. A person manually copied one response to
+this prompt into [issue
+#249](https://github.com/Merck/metalite.ae/issues/249); neither Arena.ai nor the
+skill designed in the next chapter posted it. Treat the saved response as an
+example to review, not as the answer key or a finding approved by the package
+maintainers.
 :::
 
 Agent responses vary between runs, and that variability is part of the lesson.
@@ -207,8 +209,8 @@ a separate exploratory pass.
 Rounding looks like a settled question until two tools disagree at a tie. The
 disagreement is not a bug in a language; it is an unwritten policy. Writing
 the three rules down makes the policy explicit. Defining where BR-001 applies
-is what makes the response reviewable. The later source review distinguishes
-one direct `round()` call from eight calls.
+is what makes the response reviewable. The later source review contrasts one
+direct `round()` match with eight `formatC()` candidates.
 
 An exploratory prompt can surface useful candidates and testable claims, and it
 may reveal paths the reviewer did not anticipate. Reading its output requires

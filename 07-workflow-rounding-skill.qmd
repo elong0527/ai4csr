@@ -465,11 +465,17 @@ Review the R source from metalite.ae v0.1.4 at the exact commit below for
 BR-001: values intended as exact decimal ties must round half away from zero.
 A displayed value must never be a negative zero.
 
-Inspect every file under R/. Include any function call that can change a numeric
-value displayed in a report or used to decide which rows the report includes.
-Formatting functions can round as a side effect of display, so do not limit the
-search to round(). Choose how to investigate beyond the obvious calls, including
-wrappers or other unexpected paths, and label those exploratory candidates.
+Inspect every file under R/. First, run a required catalog scan for calls to
+round(), signif(), sprintf(), formatC(), format(), prettyNum(), and
+as.character(). Report every catalog match, including matches later excluded
+from scope, and label these required-scan results separately from exploratory
+candidates.
+
+Include any function call that can change a numeric value displayed in a report
+or used to decide which rows the report includes. Formatting functions can
+round as a side effect of display. After the catalog scan, choose how to
+investigate beyond those named functions, including wrappers or other
+unexpected paths, and label those exploratory candidates.
 
 Test decimal ties of both signs at the precision used by each in-scope call. For
 display calls, also test negative values that should display as zero. For each
