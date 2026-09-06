@@ -43,7 +43,7 @@ and limits, not only its detection logic.**
   human classification, cover BR-NUM-001.2 or BR-NUM-001.3, or claim
   qualification for GxP use.
 - **Why this is well defined:** The proposed folder has a fixed structure,
-  versioned inputs, observable outputs, and benchmark criteria.
+  versioned inputs, results that reviewers can compare, and benchmark criteria.
 
 ## Plan --- Frame the second cycle
 
@@ -62,7 +62,8 @@ Cycle 2 therefore needs to:
 
 - **Objective:** Specify a skill that another reviewer could use to perform the
   same bounded BR-NUM-001.1 review.
-- **Inputs:** The accepted cycle-1 rule, task contract, evidence, and lessons.
+- **Inputs:** The accepted cycle-1 rule, task contract, evidence, and lessons
+  from the first review.
 - **Minimum useful output:** A reviewed folder design, benchmark plan, release
   conditions, and monitoring measures.
 - **Agent contribution:** Follow the written procedure, execute deterministic
@@ -91,9 +92,9 @@ instruction with supporting attachments:
 - `assets/` holds the report template.
 
 Under the [Agent Skills specification](https://agentskills.io/specification),
-`SKILL.md` must begin with a short machine-readable header containing `name`
-and `description`; the name must match the folder name. The other directories
-are optional.
+`SKILL.md` must begin with a short header that an agent can read automatically.
+The header contains `name` and `description`, and the name must match the folder
+name. The other directories are optional.
 
 ### State when the skill applies
 
@@ -144,7 +145,7 @@ conditions by the rule owner and an R programmer. Acceptance initiates Build.
 
 ## Build --- Specify the prototype
 
-### Proposed package layout
+### What the folder would contain
 
 The folder would follow this layout:
 
@@ -221,7 +222,7 @@ Test; this chapter does not claim that event has occurred.
 
 ## Test --- Benchmark the skill design
 
-### Separate baseline evidence from future results
+### Do not confuse the baseline with future results
 
 Cycle 1 at metalite commit
 `85757ba1bf5d863971e142b7872b6f92c265d6ef` provides the answer key for the
@@ -249,8 +250,8 @@ runs, and agreement between agent triage and human classification.
 No skill benchmark report exists yet. The specified report must identify the
 target and versions, preserve deterministic output separately from agent
 judgment, compare results with the hidden or independently maintained answer
-key, and record reviewer decisions. The main risk is circular evaluation: the
-person who wrote the procedure should not be the only person judging it.
+key, and record reviewer decisions. The person who wrote the procedure should
+not be the only person judging whether it works.
 
 The Test gate requires the rule owner and an independent reviewer to accept the
 executed benchmark. Only that accepted report could initiate Deploy.
@@ -297,12 +298,12 @@ trigger and initiate Maintain. Neither event has occurred in this book.
 ### Make improvement a governed change
 
 An operating skill could suggest catalog additions, allowlist entries, triage
-patterns, or rule clarifications. Those are proposals. The rule owner decides
-whether policy changes, the skill version increments, and an independent
-fixture is added before the change becomes active. The agent does not edit the
-rule against which it is evaluated.
+patterns, or rule clarifications. Those are proposals. Before a change becomes
+active, the rule owner approves any policy change and version update, and an
+independent reviewer adds a test example. The agent does not edit the rule
+against which it is evaluated.
 
-The first improvement backlog follows directly from known limitations:
+The first list of improvements follows directly from known limitations:
 
 1. Add a rule-owner-approved allowlist for compliant wrappers.
 2. Record target commit, versions, files scanned, exclusions, probe output,
