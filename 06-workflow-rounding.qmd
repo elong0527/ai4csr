@@ -50,13 +50,14 @@ functions, not just functions named `round()`.**
 
 ## Plan --- Frame the workflow
 
-### Why language defaults are not enough
+### Why the team must state one tie rule
 
-Common programming tools do not all use the same tie rule. At zero decimal
-places, SAS `ROUND()` sends -2.5 to -3 and 2.5 to 3 (half away from zero).
-R and Python `round()` send the same values to -2 and 2 (half to even). None of
-these defaults is inherently wrong. The risk comes from relying on a default
-when a Biometrics team needs one agreed reporting rule.
+Programming languages can give different answers for the same halfway value.
+With SAS `ROUND()`, -2.5 becomes -3 and 2.5 becomes 3: ties move away from
+zero. With R and Python `round()`, the same values become -2 and 2: ties move
+to the nearest even number. Neither rule is universally wrong. The review
+problem begins when a team expects consistent tables but leaves the required
+rule unstated.
 
 A reviewer might begin with this under-specified request:
 
@@ -204,11 +205,16 @@ functions such as `round()` and `signif()`, formatting functions such as
 `as.character()`. The scan produces candidates, not findings: a listed call may
 format a label rather than a reported number.
 
-### Step 2: Probe observed behavior
+### Step 2: Compare each site with the agreed result
 
-The probe gives every candidate the same decimal-tie test using values of both
-signs. The R helper below calculates the approved half-away-from-zero result.
-Readers do not need to follow its syntax to understand the comparison.
+The probe gives every candidate the same decimal-tie test, including positive
+and negative values. For each input, it places the displayed result beside the
+approved half-away-from-zero result and reports `PASS` or `FAIL`. A function
+name alone is not evidence.
+
+::: {.callout-note title="Optional technical detail: Reference calculation"}
+The R helper below calculates the approved result. Readers do not need to
+follow its syntax to understand the comparison.
 
 ```r
 round_half_away <- function(x, digits = 0) {
@@ -216,9 +222,7 @@ round_half_away <- function(x, digits = 0) {
     10^digits * sign(as.numeric(x))
 }
 ```
-
-The probe reports `PASS` or `FAIL` with a comparison table; a function name
-alone is not evidence.
+:::
 
 ### Step 3: Classify candidates in context
 

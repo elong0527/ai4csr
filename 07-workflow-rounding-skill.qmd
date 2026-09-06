@@ -82,18 +82,20 @@ cycle. The accepted workflow brief initiates Design.
 
 ## Design --- Specify the skill
 
-The proposed review kit has four parts:
+The proposed review kit separates four kinds of material so that reviewers can
+update one without losing the others:
 
-- `SKILL.md` is the instruction: when to use the check, what to do, and when to
-  stop.
+- `SKILL.md` gives the main instruction: when to use the check, what to do, and
+  when to stop.
 - `references/` holds the approved business rule and definitions.
 - `scripts/` holds fixed checks that can be tested separately.
 - `assets/` holds the report template.
 
-Under the [Agent Skills specification](https://agentskills.io/specification),
-`SKILL.md` must begin with a short header that an agent can read automatically.
-The header contains `name` and `description`, and the name must match the folder
-name. The other directories are optional.
+The file names are technical labels, but the design is simple: one instruction,
+one controlled rule, fixed checks, and one report form. Under the
+[Agent Skills specification](https://agentskills.io/specification), `SKILL.md`
+is required. Its short header contains `name` and `description`, and the name
+must match the folder name. The other directories are optional.
 
 ### State when the skill applies
 
@@ -215,14 +217,12 @@ occurred.
 
 ## Test --- Benchmark the skill design
 
-### Do not confuse the baseline with future results
+### What a future implementation must reproduce
 
-Cycle 1 at metalite commit
-`85757ba1bf5d863971e142b7872b6f92c265d6ef` provides the answer key for the
-future benchmark below. Those results are not evidence that the proposed skill
-has been built or run.
-
-### Key benchmark for a future implementation
+No skill has been run. The accepted cycle-1 results at metalite commit
+`85757ba1bf5d863971e142b7872b6f92c265d6ef` are only the answer key for a
+future test. A future implementation would pass only if it met every criterion
+below.
 
 | Acceptance criterion | Required result |
 |---|---|
