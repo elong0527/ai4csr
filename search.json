@@ -263,7 +263,7 @@
     "href": "04-ai-agent.html#a-minimal-ai-adoption-example",
     "title": "4  Onboarding an AI agent",
     "section": "4.4 A minimal AI-adoption example",
-    "text": "4.4 A minimal AI-adoption example\nThis example demonstrates the smallest useful form of AI adoption: one person sends one prompt to an agent and receives one result. It is not presented as an AI-first workflow.\n\n\n\n\n\n\nWarningSynthetic teaching data—not KEYNOTE-189 trial data\n\n\n\nThe CSV in this example is wholly synthetic and contains no participant data from KEYNOTE-189. It was constructed as a teaching example to be interpreted with the public KEYNOTE-189 protocol and cannot support any conclusion about that study.\n\n\n\n4.4.1 Two teaching artifacts\n\n\n\nArtifact\nRole in the demonstration\n\n\n\n\nPublic KEYNOTE-189 protocol\nSupplies example population and age requirements\n\n\nkn189-synthetic-adsl.csv\nSupplies fabricated ADSL-style records for calculation\n\n\n\nThe synthetic data include three enrolled but nonrandomized records, two missing AGE values, and one randomized record with an age below the protocol threshold. These conditions exist only to make assumptions and exceptions visible in the returned result.\n\n\n4.4.2 One prompt in Arena Agent\nFor this demonstration, the entire assignment is sent to arena.ai in one request. The platform provides a concrete setting for showing what one agent interaction can accomplish; this chapter does not evaluate or benchmark the product.\nThis is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data.\n\nUsing only the public KEYNOTE-189 protocol and the synthetic CSV linked below,\nidentify the protocol-defined analysis population and summarize its age\ndistribution. Use R for the calculation. Return the statistics, executed R\ncode, protocol sources, assumptions, and questions for human review.\n\nProtocol:\nhttps://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf\n\nSynthetic data:\nhttps://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv\n\nDo not search for or use published KEYNOTE-189 results. Do not modify the data.\n\n\n4.4.3 One result\nA sufficient response identifies the intention-to-treat population as the 25 synthetic records marked as randomized, runs the calculation in R, and reports one summary:\n\n\n\nResult from the synthetic ITT records\nValue\n\n\n\n\nRandomized records\n25\n\n\nNonmissing AGE\n24\n\n\nMissing AGE\n1\n\n\nMean\n50.58\n\n\nStandard deviation\n14.97\n\n\nMedian\n51\n\n\nMinimum\n17\n\n\nMaximum\n76\n\n\n\nThe same response should flag the invented 17-year-old record for human review without removing it from the requested population. It should also include the executed code, cited protocol sections, assumptions, and unresolved questions requested by the prompt.\nHere, one prompt enabled an agent to inspect a document, read data, execute R, and combine the observations into one answer. However, it remains one result from one interaction, not evidence that the task will be performed consistently.",
+    "text": "4.4 A minimal AI-adoption example\nThis example demonstrates the smallest useful form of AI adoption: one person sends one prompt to an agent and receives one result. It is not presented as an AI-first workflow.\n\n\n\n\n\n\nWarningSynthetic teaching data: not KEYNOTE-189 trial data\n\n\n\nThe CSV in this example is wholly synthetic and contains no participant data from KEYNOTE-189. It was constructed as a teaching example to be interpreted with the public KEYNOTE-189 protocol and cannot support any conclusion about that study.\n\n\n\n4.4.1 Two teaching artifacts\n\n\n\nArtifact\nRole in the demonstration\n\n\n\n\nPublic KEYNOTE-189 protocol\nSupplies example population and age requirements\n\n\nkn189-synthetic-adsl.csv\nSupplies fabricated ADSL-style records for calculation\n\n\n\nThe synthetic data include three enrolled but nonrandomized records, two missing AGE values, and one randomized record with an age below the protocol threshold. These conditions exist only to make assumptions and exceptions visible in the returned result.\n\n\n4.4.2 One prompt in Arena Agent\nFor this demonstration, the entire assignment is sent to arena.ai in one request. The platform provides a concrete setting for showing what one agent interaction can accomplish; this chapter does not evaluate or benchmark the product.\nThis is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data.\n\nUsing only the public KEYNOTE-189 protocol and the synthetic CSV linked below,\nidentify the protocol-defined analysis population and summarize its age\ndistribution. Use R for the calculation. Return the statistics, executed R\ncode, protocol sources, assumptions, and questions for human review.\n\nProtocol:\nhttps://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf\n\nSynthetic data:\nhttps://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv\n\nDo not search for or use published KEYNOTE-189 results. Do not modify the data.\n\n\n4.4.3 One result\nA sufficient response identifies the intention-to-treat population as the 25 synthetic records marked as randomized, runs the calculation in R, and reports one summary:\n\n\n\nResult from the synthetic ITT records\nValue\n\n\n\n\nRandomized records\n25\n\n\nNonmissing AGE\n24\n\n\nMissing AGE\n1\n\n\nMean\n50.58\n\n\nStandard deviation\n14.97\n\n\nMedian\n51\n\n\nMinimum\n17\n\n\nMaximum\n76\n\n\n\nThe same response should flag the invented 17-year-old record for human review without removing it from the requested population. It should also include the executed code, cited protocol sections, assumptions, and unresolved questions requested by the prompt.\nHere, one prompt enabled an agent to inspect a document, read data, execute R, and combine the observations into one answer. However, it remains one result from one interaction, not evidence that the task will be performed consistently.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Onboarding an AI agent</span>"
@@ -294,122 +294,133 @@
   {
     "objectID": "05-ai-first-sdlc.html",
     "href": "05-ai-first-sdlc.html",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "",
-    "text": "5.1 Why an AI-first workflow needs a lifecycle\nImagine that a statistical programmer asks an agent to review a table program. The agent finds a rounding problem and explains it clearly. The result is useful, but it leaves several questions unanswered. Will the same check run after the next code change? Which rules govern the review? What counts as a successful finding? Who decides whether the code must change? What happens when the agent misses a known problem?\nThese questions cannot be answered by improving the prompt alone. They concern the process used to develop and operate the workflow. That process is the AI-first software development lifecycle, abbreviated AI-first SDLC.\nThe word software includes more than application code. An AI-first workflow may contain R functions, model instructions, business rules, retrieval logic, tool interfaces, test cases, evaluation data, release configuration, and monitoring rules. It also depends on human roles and decisions. The lifecycle develops this complete working system.\nThe six stages in this chapter are adapted from the conventional SDLC and from Anthropic’s AI-Native SDLC Playbook, which connects stages through committed artifacts and human gates. Anthropic’s security perspective on its lifecycle also emphasizes bounded access, deterministic and agentic review, monitoring, and human accountability. The sources use the term AI-native; this book uses AI-first SDLC to keep the focus on developing a bounded AI-first workflow.",
+    "text": "5.1 Why an AI-first workflow needs a lifecycle\nImagine that a statistical programmer asks an agent to review a table program. The agent finds a rounding problem and explains it clearly. The result is useful, but it leaves several questions unanswered.\nThese questions cannot be answered by improving the prompt alone. They concern the process used to develop and operate the workflow. That process is the AI-first software development lifecycle, abbreviated AI-first SDLC.\nThe word software includes more than application code. An AI-first workflow may contain R functions, agent instructions, business rules, retrieval logic, tool interfaces, test cases, evaluation data, release configuration, and monitoring rules. It also depends on human roles and decisions. The lifecycle develops this complete working system.\nThe six stages in this chapter are adapted from the conventional SDLC and from Anthropic’s AI-Native SDLC Playbook, which connects stages through committed artifacts and human gates. Anthropic’s security perspective on its lifecycle also emphasizes bounded access, deterministic and agentic review, monitoring, and human accountability. The sources use the term AI-native; this book uses AI-first SDLC to keep the focus on developing a bounded AI-first workflow.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#why-an-ai-first-workflow-needs-a-lifecycle",
+    "href": "05-ai-first-sdlc.html#why-an-ai-first-workflow-needs-a-lifecycle",
+    "title": "5  The AI-first SDLC",
+    "section": "",
+    "text": "Will the same check run after the next code change?\nWhich rules govern the review? What counts as a successful finding?\nWho decides whether the code must change?\nWhat happens when the agent misses a known problem?",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#distinguish-the-development-loop-from-the-agent-loop",
     "href": "05-ai-first-sdlc.html#distinguish-the-development-loop-from-the-agent-loop",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.2 Distinguish the development loop from the agent loop",
     "text": "5.2 Distinguish the development loop from the agent loop\nChapter 4 describes the execution loop inside an agent interaction: the model selects a step, uses a tool, observes the result, and continues. The AI-first SDLC is a different loop. It governs how the workflow itself changes over days, releases, and repeated use.\n\n\n\n\n\n\n\n\n\nAgent execution loop\nAI-first SDLC\n\n\n\n\nUnit of work\nOne assigned task\nThe workflow as a maintained system\n\n\nTime scale\nOne interaction or run\nMultiple development and operating cycles\n\n\nState\nMessages, plans, and tool results\nVersioned requirements, code, evaluations, releases, and monitoring decisions\n\n\nSuccess\nCompletion of the assigned task\nSustained performance against the workflow’s intended outcome\n\n\nHuman role\nReview exceptions and make the task decision\nApprove intent, design, benchmark, release, and improvement\n\n\n\nAn agent may assist in every SDLC stage, but it should not approve its own requirements, evaluation, release, or proposed policy change.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#artifacts-connect-the-six-stages",
     "href": "05-ai-first-sdlc.html#artifacts-connect-the-six-stages",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.3 Artifacts connect the six stages",
     "text": "5.3 Artifacts connect the six stages\nThe lifecycle uses six stages:\n\nPlan — Frame the workflow\nDesign — Specify the workflow\nBuild — Prototype the workflow\nTest — Benchmark and evaluate\nDeploy — Operationalize the workflow\nMaintain — Monitor and improve\n\n\n\n\n\n\n\nflowchart LR\n  P[\"Plan&lt;br/&gt;Workflow brief\"] --&gt; D[\"Design&lt;br/&gt;Task contract\"]\n  D --&gt; B[\"Build&lt;br/&gt;Prototype\"]\n  B --&gt; T[\"Test&lt;br/&gt;Benchmark report\"]\n  T --&gt; O[\"Deploy&lt;br/&gt;Release record\"]\n  O --&gt; M[\"Maintain&lt;br/&gt;Monitoring report\"]\n  M --&gt;|new need or accepted improvement| P\n\n\n\n\nFigure 5.1: The AI-first SDLC is a loop connected by six accepted artifacts.\n\n\n\n\n\nEach stage ends with a canonical artifact:\n\n\n\n\n\n\n\n\n\nStage\nPrimary question\nCanonical artifact\nHuman gate\n\n\n\n\nPlan\nIs there a valuable, bounded workflow to develop?\nWorkflow brief\nAccept the problem, boundary, and success measures\n\n\nDesign\nWhat exactly should the workflow do?\nTask contract\nAccept the specification and decision rights\n\n\nBuild\nCan the specified path work end to end?\nPrototype\nAccept the implementation for formal evaluation\n\n\nTest\nDoes it meet the benchmark, and how does it fail?\nBenchmark report\nAccept, revise, or reject the candidate\n\n\nDeploy\nHow will the accepted candidate enter real work?\nRelease record\nAuthorize the release or advisory pilot\n\n\nMaintain\nIs the released workflow still useful and reliable?\nMonitoring report\nContinue, change, restrict, or retire the workflow\n\n\n\nA committed artifact is durable, versioned, reviewable, and accepted into the team’s system of record. It does not have to be a long document or a Git commit. Depending on the environment, it may be a Markdown file, YAML specification, R package, test report, approved ticket, release entry, or dashboard snapshot.\nThe artifact becomes the shared interface between Biometrics and engineering. It records the decision in terms both groups can inspect, and its acceptance provides the event that begins the next stage.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#plan-frame-the-workflow",
     "href": "05-ai-first-sdlc.html#plan-frame-the-workflow",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.4 Plan — Frame the workflow",
     "text": "5.4 Plan — Frame the workflow\nThe Plan stage asks whether a problem is worth solving and whether it can be bounded as an AI-first workflow. A broad ambition such as “use AI for study design” is not yet a workable unit. A bounded candidate identifies a repeatable beginning, a reviewable end, and a decision that remains with a named human role.\nThe Biometrics workflow owner contributes the clinical problem, current process, expected value, known failure costs, source artifacts, non-goals, and success measures. The AI engineer contributes an early feasibility assessment: which artifacts can be accessed, which steps can be deterministic, where model reasoning may help, and which constraints could make the proposed boundary unworkable.\n\n5.4.1 Canonical artifact: Workflow brief\nThe workflow brief records:\n\nthe problem and the people affected;\nthe current process and the event that starts the work;\nthe minimum valuable workflow and explicit non-goals;\nexpected inputs, output, and accountable decision owner;\ncandidate success measures and baseline performance;\nmaterial assumptions, risks, and dependencies; and\nthe reason AI is useful within the proposed boundary.\n\nPlanning ends when the workflow owner accepts the brief as a valuable and testable development target. That accepted brief initiates Design. If the problem cannot be bounded or measured, the correct decision is to revise or stop rather than proceed to implementation.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#design-specify-the-workflow",
     "href": "05-ai-first-sdlc.html#design-specify-the-workflow",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.5 Design — Specify the workflow",
     "text": "5.5 Design — Specify the workflow\nThe Design stage converts intent into an executable specification. It defines what happens from the triggering event through the recorded human decision, including the parts performed by deterministic software, the agent, and people.\nThe Biometrics workflow owner defines the business rules, required evidence, acceptable outputs, examples, exceptions, escalation paths, and decision rights. The AI engineer defines artifact retrieval, tool interfaces, state, permissions, model context, failure handling, and observability. Both roles agree on the cases that will later demonstrate success or failure.\n\n5.5.1 Canonical artifact: Task contract\nThe task contract introduced in Chapter 4 becomes the central Design artifact. It records:\n\nobjective, inputs, scope, output, boundaries, and escalation conditions;\ntrigger events and stopping conditions;\ndeterministic rules and model-assisted tasks;\ntool access and prohibited actions;\nevidence, coverage, and uncertainty requirements;\nhuman review and approval points;\ndurable state and decision records; and\nbenchmark cases and acceptance thresholds.\n\nDesign ends when the responsible roles can read the contract and agree on what will be built, how it will be evaluated, and which decisions the agent cannot make. The accepted task contract initiates Build.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#build-prototype-the-workflow",
     "href": "05-ai-first-sdlc.html#build-prototype-the-workflow",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.6 Build — Prototype the workflow",
     "text": "5.6 Build — Prototype the workflow\nThe Build stage creates the smallest end-to-end implementation that can test the design. The objective is not to reproduce the full operating environment. It is to make the important assumptions executable and observable.\nThe Biometrics workflow owner supplies representative examples, expected behavior, business-rule interpretations, and rapid feedback. The AI engineer implements the instructions, R code or other deterministic functions, tool connections, structured outputs, logging, and test fixtures. Where practical, the first prototype uses synthetic or public data.\n\n5.6.1 Canonical artifact: Prototype\nThe prototype is a versioned package of working materials, which may include:\n\nexecutable R code and deterministic checks;\nmodel instructions and task-specific context;\ntool definitions and access boundaries;\nsynthetic inputs, seeded violations, and expected outputs;\nstructured finding and decision formats;\nautomated tests and a reproducible run command; and\nknown gaps between the prototype and the intended workflow.\n\nBuild ends when the prototype completes the specified path, exposes its tool activity and evidence, and is reproducible enough for independent evaluation. The accepted prototype initiates Test. A successful demonstration is not yet a release decision.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#test-benchmark-and-evaluate",
     "href": "05-ai-first-sdlc.html#test-benchmark-and-evaluate",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.7 Test — Benchmark and evaluate",
     "text": "5.7 Test — Benchmark and evaluate\nThe Test stage asks whether the prototype meets the success criteria defined before results were observed. It also asks how the workflow fails, not only whether it succeeds on an ordinary case.\nThe Biometrics workflow owner confirms that the evaluation cases represent the intended work and judges the usefulness of findings, false positives, missed issues, and escalations. The AI engineer runs controlled evaluations, preserves the component versions and settings, measures repeatability and coverage, and investigates technical failure modes.\n\n5.7.1 Canonical artifact: Benchmark report\nThe benchmark report records:\n\nthe benchmark dataset, cases, and independently stated expected results;\nthe workflow, model, instruction, tool, and dependency versions;\npredefined metrics and acceptance thresholds;\nresults for ordinary, boundary, negative, and missing-context cases;\nfalse positives, missed findings, unsupported claims, and escalation quality;\ncoverage, reproducibility, latency, and cost when relevant; and\nlimitations, residual uncertainty, and recommended disposition.\n\nTesting ends with a human decision: return to Plan, Design, or Build; reject the candidate; or accept it for a controlled release. An agent may prepare the evidence and diagnose failures, but it does not approve its own benchmark.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#deploy-operationalize-the-workflow",
     "href": "05-ai-first-sdlc.html#deploy-operationalize-the-workflow",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.8 Deploy — Operationalize the workflow",
     "text": "5.8 Deploy — Operationalize the workflow\nThe Deploy stage connects an accepted candidate to real work. Deployment does not require immediate autonomous execution. An advisory pilot, in which the agent produces findings and a person decides every action, is often the first operating mode.\nThe Biometrics workflow owner confirms the operating roles, handoffs, communication, exception handling, and intended scope. The AI engineer packages the accepted components, configures the trigger and environment, applies the approved access boundary, connects logging and monitoring, and prepares a way to suspend or reverse the release.\n\n5.8.1 Canonical artifact: Release record\nThe release record identifies:\n\nthe approved workflow and component versions;\nthe target environment, users, inputs, and operating scope;\nthe trigger, schedule, and expected outputs;\naccess permissions and human approval gates;\ninstallation, configuration, and verification results;\nmonitoring measures and control bands;\nsupport ownership, escalation contacts, and recovery procedure; and\nthe person authorizing the release and the release decision.\n\nDeploy ends when the authorized release is available to its intended users and monitoring is active. That release event initiates Maintain.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#maintain-monitor-and-improve",
     "href": "05-ai-first-sdlc.html#maintain-monitor-and-improve",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.9 Maintain — Monitor and improve",
     "text": "5.9 Maintain — Monitor and improve\nThe Maintain stage determines whether the released workflow continues to perform as intended. Changes in artifacts, business rules, data, tools, models, or user behavior can invalidate earlier evidence even when the software still runs.\nThe Biometrics workflow owner reviews usefulness, overrides, missed issues, unresolved exceptions, and changes in the underlying work. The AI engineer monitors availability, errors, latency, cost, version drift, and technical signals. Both roles investigate material changes and decide whether the workflow should continue, be restricted, or enter a new development cycle.\n\n5.9.1 Canonical artifact: Monitoring report\nThe monitoring report records:\n\nrun volume, completion, and failure trends;\nquality measures compared with benchmark expectations;\nfalse positives, missed findings, overrides, and escalations;\ncoverage gaps and changes in inputs or dependencies;\nincidents, root causes, corrective actions, and unresolved risks;\nuser feedback and proposed rule, instruction, test, or workflow changes; and\nthe accountable decision to continue, change, restrict, or retire the workflow.\n\nAn agent may collect signals, identify patterns, and propose improvements. A human accepts any change to business rules, decision rights, benchmarks, or operating scope. An accepted improvement or a breached control band creates a new workflow brief and returns the lifecycle to Plan.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#how-the-applied-examples-use-the-lifecycle",
     "href": "05-ai-first-sdlc.html#how-the-applied-examples-use-the-lifecycle",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.10 How the applied examples use the lifecycle",
     "text": "5.10 How the applied examples use the lifecycle\nEach applied example begins with a clinical problem and then follows the same six stages. The canonical artifacts make examples comparable even when their technical implementations differ.\nThe artifact’s level of completion depends on the example’s declared maturity:\n\n\n\n\n\n\n\nMaturity\nExpected artifact evidence\n\n\n\n\nDesign pattern\nWorkflow brief and task contract are concrete; later artifacts describe the proposed implementation and known gaps\n\n\nReproducible prototype\nCode, data, tests, expected results, and benchmark report can be rerun\n\n\nComparative survey\nA shared task contract and benchmark compare time-stamped product behavior\n\n\nReference implementation\nRelease and monitoring evidence come from a maintained implementation\n\n\n\nAn example may revisit an earlier stage when evidence changes the design. A failed benchmark can return to Build, an inaccessible artifact can return to Design, and a monitoring signal can return to Plan. The headings provide a shared reasoning structure, not a claim that development proceeds in a straight line.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {
     "objectID": "05-ai-first-sdlc.html#summary",
     "href": "05-ai-first-sdlc.html#summary",
-    "title": "5  The AI-first software development lifecycle",
+    "title": "5  The AI-first SDLC",
     "section": "5.11 Summary",
     "text": "5.11 Summary\nThe AI-first SDLC organizes development around six questions and six committed artifacts:\n\n\n\nStage\nArtifact\n\n\n\n\nPlan\nWorkflow brief\n\n\nDesign\nTask contract\n\n\nBuild\nPrototype\n\n\nTest\nBenchmark report\n\n\nDeploy\nRelease record\n\n\nMaintain\nMonitoring report\n\n\n\nThe artifacts allow Biometrics workflow owners and AI engineers to define the same work, inspect the same evidence, and concentrate human judgment at explicit gates. Their sequence creates continuity; the monitoring report closes the loop by providing evidence for the next workflow brief.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first SDLC</span>"
     ]
   },
   {

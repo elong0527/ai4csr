@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>5&nbsp; The AI-first software development lifecycle – AI-First Workflows for Clinical Study Reporting</title>
+<title>5&nbsp; The AI-first SDLC – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -82,13 +82,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
-<meta property="og:title" content="5&nbsp; The AI-first software development lifecycle – AI-First Workflows for Clinical Study Reporting">
+<meta property="og:title" content="5&nbsp; The AI-first SDLC – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="5&nbsp; The AI-first software development lifecycle – AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="5&nbsp; The AI-first SDLC – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./05-ai-first-sdlc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first software development lifecycle</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./05-ai-first-sdlc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -197,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-ai-first-sdlc.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first software development lifecycle</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></span></a>
   </div>
 </li>
       </ul>
@@ -264,9 +264,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./05-ai-first-sdlc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first software development lifecycle</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./05-ai-first-sdlc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ai-first-sdlc" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first software development lifecycle</span></span></h1>
+<h1 class="title"><span id="sec-ai-first-sdlc" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></span></h1>
 </div>
 
 
@@ -298,9 +298,15 @@ Tip
 </div>
 <section id="why-an-ai-first-workflow-needs-a-lifecycle" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="why-an-ai-first-workflow-needs-a-lifecycle"><span class="header-section-number">5.1</span> Why an AI-first workflow needs a lifecycle</h2>
-<p>Imagine that a statistical programmer asks an agent to review a table program. The agent finds a rounding problem and explains it clearly. The result is useful, but it leaves several questions unanswered. Will the same check run after the next code change? Which rules govern the review? What counts as a successful finding? Who decides whether the code must change? What happens when the agent misses a known problem?</p>
+<p>Imagine that a statistical programmer asks an agent to review a table program. The agent finds a rounding problem and explains it clearly. The result is useful, but it leaves several questions unanswered.</p>
+<ul>
+<li>Will the same check run after the next code change?</li>
+<li>Which rules govern the review? What counts as a successful finding?</li>
+<li>Who decides whether the code must change?</li>
+<li>What happens when the agent misses a known problem?</li>
+</ul>
 <p>These questions cannot be answered by improving the prompt alone. They concern the process used to develop and operate the workflow. That process is the <strong>AI-first software development lifecycle</strong>, abbreviated <strong>AI-first SDLC</strong>.</p>
-<p>The word <em>software</em> includes more than application code. An AI-first workflow may contain R functions, model instructions, business rules, retrieval logic, tool interfaces, test cases, evaluation data, release configuration, and monitoring rules. It also depends on human roles and decisions. The lifecycle develops this complete working system.</p>
+<p>The word <em>software</em> includes more than application code. An AI-first workflow may contain R functions, agent instructions, business rules, retrieval logic, tool interfaces, test cases, evaluation data, release configuration, and monitoring rules. It also depends on human roles and decisions. The lifecycle develops this complete working system.</p>
 <p>The six stages in this chapter are adapted from the conventional SDLC and from <a href="https://academy.claude.com/courses/ai-native-sdlc-playbook/introduction">Anthropic’s AI-Native SDLC Playbook</a>, which connects stages through committed artifacts and human gates. Anthropic’s <a href="https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle">security perspective on its lifecycle</a> also emphasizes bounded access, deterministic and agentic review, monitoring, and human accountability. The sources use the term <em>AI-native</em>; this book uses <strong>AI-first SDLC</strong> to keep the focus on developing a bounded AI-first workflow.</p>
 </section>
 <section id="distinguish-the-development-loop-from-the-agent-loop" class="level2" data-number="5.2">
