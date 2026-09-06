@@ -309,11 +309,11 @@
       "locked": false,
       "fontSize": 18,
       "fontFamily": 1,
-      "text": "Context Assembly \u2022 Agent Loop \u2022 State & Queues\nTool Orchestration \u2022 Recovery \u2022 Hooks / Policies",
+      "text": "Context Assembly | Agent Loop | State & Queues\nTool Orchestration | Recovery | Hooks / Policies",
       "textAlign": "center",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Context Assembly \u2022 Agent Loop \u2022 State & Queues\nTool Orchestration \u2022 Recovery \u2022 Hooks / Policies",
+      "originalText": "Context Assembly | Agent Loop | State & Queues\nTool Orchestration | Recovery | Hooks / Policies",
       "lineHeight": 1.2,
       "autoResize": true,
       "index": "a9"

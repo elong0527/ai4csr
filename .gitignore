@@ -12,3 +12,6 @@ pdf/
 
 # Fetched locally by the reader, not redistributed
 exercise/day1/*.pdf
+
+# Local virtual environment (kept out of asciilint and git)
+/.venv/

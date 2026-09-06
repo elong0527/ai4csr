@@ -29,7 +29,7 @@ reproducible R prototype, benchmark results, release, or operating history.
 | **Non-goals** | Validate the statistical method, replace independent QC, review every programming standard, change source data, or approve policy exceptions automatically |
 | **Why this is well defined** | The trigger, three rules, permitted evidence, structured output, stopping conditions, and accountable human role can all be stated explicitly |
 
-## Plan — Frame the workflow
+## Plan --- Frame the workflow
 
 Clinical teams use business rules to produce consistent work across studies,
 tools, and programmers. The rules may govern derivations, naming, rounding,
@@ -75,7 +75,7 @@ success measures:
 accept the intended scope, baseline, and quantitative thresholds before a
 prototype is built. An accepted workflow brief would initiate Design.
 
-## Design — Specify the workflow
+## Design --- Specify the workflow
 
 The Design stage turns the business intent into rules and a task contract that
 both deterministic tools and an agent can follow.
@@ -192,7 +192,7 @@ The example has not yet demonstrated that all required inputs and evidence can
 be retrieved from a working environment. Acceptance of this contract would
 initiate Build.
 
-## Build — Prototype the workflow
+## Build --- Prototype the workflow
 
 The minimum prototype should implement one complete path from a changed R file
 to a structured finding and recorded human decision. It does not require a
@@ -227,7 +227,7 @@ implementation is tracked in
 Because the canonical Prototype artifact is unavailable, Build has no
 acceptance event and the lifecycle cannot yet advance to a real Test stage.
 
-## Test — Benchmark and evaluate
+## Test --- Benchmark and evaluate
 
 The future benchmark should be specified before prototype results are examined.
 At minimum, it should include the following controlled cases:
@@ -257,7 +257,7 @@ thresholds above are a Test plan, not measured performance.
 Without a versioned Prototype artifact and Benchmark report, no evidence
 supports a deployment decision.
 
-## Deploy — Operationalize the workflow
+## Deploy --- Operationalize the workflow
 
 The first intended release is an advisory pilot on relevant code changes.
 Deterministic checks may block a change only when an approved test proves a
@@ -286,7 +286,7 @@ evidence.
 Deploy remains unavailable until a human accepts the Benchmark report and
 authorizes the pilot.
 
-## Maintain — Monitor and improve
+## Maintain --- Monitor and improve
 
 Once released, the workflow should be monitored as both a rule-enforcement
 process and a human-agent collaboration. Useful measures include:

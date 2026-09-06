@@ -1,4 +1,4 @@
-# The AI-first software development lifecycle {#sec-ai-first-sdlc}
+# The AI-first SDLC {#sec-ai-first-sdlc}
 
 ::: callout-tip
 The AI-first SDLC turns a promising agent interaction into a workflow that can
@@ -10,17 +10,19 @@ versioned artifact that people and agents can inspect.
 
 Imagine that a statistical programmer asks an agent to review a table program.
 The agent finds a rounding problem and explains it clearly. The result is useful,
-but it leaves several questions unanswered. Will the same check run after the
-next code change? Which rules govern the review? What counts as a successful
-finding? Who decides whether the code must change? What happens when the agent
-misses a known problem?
+but it leaves several questions unanswered.
+
+- Will the same check run after the next code change?
+- Which rules govern the review? What counts as a successful finding?
+- Who decides whether the code must change?
+- What happens when the agent misses a known problem?
 
 These questions cannot be answered by improving the prompt alone. They concern
 the process used to develop and operate the workflow. That process is the
 **AI-first software development lifecycle**, abbreviated **AI-first SDLC**.
 
 The word *software* includes more than application code. An AI-first workflow
-may contain R functions, model instructions, business rules, retrieval logic,
+may contain R functions, agent instructions, business rules, retrieval logic,
 tool interfaces, test cases, evaluation data, release configuration, and
 monitoring rules. It also depends on human roles and decisions. The lifecycle
 develops this complete working system.
@@ -55,12 +57,12 @@ requirements, evaluation, release, or proposed policy change.
 
 The lifecycle uses six stages:
 
-1. **Plan — Frame the workflow**
-2. **Design — Specify the workflow**
-3. **Build — Prototype the workflow**
-4. **Test — Benchmark and evaluate**
-5. **Deploy — Operationalize the workflow**
-6. **Maintain — Monitor and improve**
+1. **Plan --- Frame the workflow**
+2. **Design --- Specify the workflow**
+3. **Build --- Prototype the workflow**
+4. **Test --- Benchmark and evaluate**
+5. **Deploy --- Operationalize the workflow**
+6. **Maintain --- Monitor and improve**
 
 ```{mermaid}
 %%| label: fig-ai-first-sdlc
@@ -95,11 +97,11 @@ The artifact becomes the shared interface between Biometrics and engineering.
 It records the decision in terms both groups can inspect, and its acceptance
 provides the event that begins the next stage.
 
-## Plan — Frame the workflow
+## Plan --- Frame the workflow
 
 The Plan stage asks whether a problem is worth solving and whether it can be
-bounded as an AI-first workflow. A broad ambition such as “use AI for study
-design” is not yet a workable unit. A bounded candidate identifies a repeatable
+bounded as an AI-first workflow. A broad ambition such as "use AI for study
+design" is not yet a workable unit. A bounded candidate identifies a repeatable
 beginning, a reviewable end, and a decision that remains with a named human
 role.
 
@@ -127,7 +129,7 @@ testable development target. That accepted brief initiates Design. If the
 problem cannot be bounded or measured, the correct decision is to revise or
 stop rather than proceed to implementation.
 
-## Design — Specify the workflow
+## Design --- Specify the workflow
 
 The Design stage converts intent into an executable specification. It defines
 what happens from the triggering event through the recorded human decision,
@@ -157,7 +159,7 @@ Design ends when the responsible roles can read the contract and agree on what
 will be built, how it will be evaluated, and which decisions the agent cannot
 make. The accepted task contract initiates Build.
 
-## Build — Prototype the workflow
+## Build --- Prototype the workflow
 
 The Build stage creates the smallest end-to-end implementation that can test
 the design. The objective is not to reproduce the full operating environment.
@@ -186,7 +188,7 @@ activity and evidence, and is reproducible enough for independent evaluation.
 The accepted prototype initiates Test. A successful demonstration is not yet a
 release decision.
 
-## Test — Benchmark and evaluate
+## Test --- Benchmark and evaluate
 
 The Test stage asks whether the prototype meets the success criteria defined
 before results were observed. It also asks how the workflow fails, not only
@@ -214,7 +216,7 @@ Testing ends with a human decision: return to Plan, Design, or Build; reject the
 candidate; or accept it for a controlled release. An agent may prepare the
 evidence and diagnose failures, but it does not approve its own benchmark.
 
-## Deploy — Operationalize the workflow
+## Deploy --- Operationalize the workflow
 
 The Deploy stage connects an accepted candidate to real work. Deployment does
 not require immediate autonomous execution. An advisory pilot, in which the
@@ -243,7 +245,7 @@ The release record identifies:
 Deploy ends when the authorized release is available to its intended users and
 monitoring is active. That release event initiates Maintain.
 
-## Maintain — Monitor and improve
+## Maintain --- Monitor and improve
 
 The Maintain stage determines whether the released workflow continues to
 perform as intended. Changes in artifacts, business rules, data, tools, models,
