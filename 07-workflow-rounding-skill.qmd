@@ -18,15 +18,15 @@ At metalite commit `85757ba1bf5d863971e142b7872b6f92c265d6ef`,
 tie probes. Repeating that result requires preserving more than the prompt.
 
 This second lifecycle turn designs an agent skill: a reviewable folder that
-carries the instructions and supporting material from one reviewer or study to
-the next.
+acts like a controlled work instruction. It carries the procedure and
+supporting material from one reviewer or study to the next.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
-installable skill, scripts, fixtures, evidence files, a CI workflow, or a
-scheduled job. The cycle-1 metalite evidence is the baseline for a future
-benchmark; it is not evidence that the skill described here has been built or
-run.
+installable skill, scripts, small test programs, evidence files, an automated
+check on source-code changes, or a scheduled job. The cycle-1 metalite evidence
+is the baseline for a future benchmark; it is not evidence that the skill
+described here has been built or run.
 :::
 
 The chapter has one main finding: **a reusable check must package its context
@@ -36,7 +36,7 @@ and limits, not only its detection logic.**
   procedure remains in one person's memory.
 - **Learning objective:** Show how a skill could preserve the rule, procedure,
   coverage, and approval boundary for another reviewer or agent.
-- **Workflow boundary:** Begin with reviewed cycle-1 evidence; end with a
+- **Workflow boundary:** Begin with reviewed cycle-1 evidence and end with a
   reviewed skill design and an explicit decision about whether to implement
   it.
 - **Non-goals:** Build an agent platform, distribute a runnable skill, automate
@@ -66,12 +66,13 @@ Cycle 2 therefore needs to:
   from the first review.
 - **Minimum useful output:** A reviewed folder design, benchmark plan, release
   conditions, and monitoring measures.
-- **Agent contribution:** Follow the written procedure, execute deterministic
+- **Agent contribution:** Follow the written procedure, run fixed, repeatable
   checks when an implementation exists, explain candidates, and draft output.
 - **Human decision:** The rule owner approves the procedure, classifications,
   policy changes, release, and external communication.
-- **Success measures:** A new reviewer reproduces the fixture answer key and
-  pinned metalite result; every run states coverage and unchecked rules.
+- **Success measures:** A new reviewer reproduces the answer key for the small
+  test programs and the pinned metalite result; every run states coverage and
+  unchecked rules.
 - **Main risk:** A polished skill description can create confidence before the
   underlying checks have been implemented and benchmarked.
 
@@ -80,10 +81,7 @@ cycle. The accepted workflow brief initiates Design.
 
 ## Design --- Specify the skill
 
-### Treat the skill as a controlled procedure
-
-For a Biometrics owner, the proposed folder is like a controlled work
-instruction with supporting attachments:
+The proposed folder has four parts:
 
 - `SKILL.md` is the instruction: when to use the check, what to do, and when to
   stop.
@@ -122,12 +120,13 @@ record which procedure and rule versions govern the run.
 
 ### Canonical artifact: Task contract
 
-- **Objective:** Review one R source tree for BR-NUM-001.1.
+- **Objective:** Review one R source folder for BR-NUM-001.1.
 - **Trigger:** An approved on-demand request; automated triggers remain future
   options.
-- **Inputs:** Target commit, source tree, rule contract, catalog, reference
+- **Inputs:** Target commit, source folder, rule contract, catalog, reference
   behavior, and any approved allowlist.
-- **Deterministic work:** Run the catalog scan and two-sign decimal-tie probe.
+- **Fixed, repeatable checks (deterministic work):** Run the catalog scan and
+  two-sign decimal-tie probe.
 - **Agent work:** Apply the site definition, read context, explain divergence,
   and draft the report.
 - **Required output:** Candidates, triage reasons, probes, coverage, unchecked
@@ -188,9 +187,8 @@ rule owner may decide that the bounded cycle-1 procedure is proportionate.
 
 ### Try it yourself
 
-This exercise demonstrates why the site definition belongs in the skill. It
-does not run the unbuilt skill. Send this prompt to
-[arena.ai](https://arena.ai/agent):
+This exercise demonstrates why the site definition belongs in the skill. Send
+this prompt to [arena.ai](https://arena.ai/agent):
 
 ```text
 Review the R source at the fixed commit below for BR-NUM-001.1: values intended
@@ -215,10 +213,10 @@ expecting a particular answer.
 ### Canonical artifact: Prototype
 
 The Build artifact is the reviewed content specification for `SKILL.md`, the
-rule reference, two deterministic scripts, and the issue template. It is not a
-folder present in this repository. The Build gate is approval to implement and
-independently review those files. A reviewed implementation would initiate
-Test; this chapter does not claim that event has occurred.
+rule reference, two deterministic scripts, and the issue template. The Build
+gate is approval to implement and independently review those files. A reviewed
+implementation would initiate Test; this chapter does not claim that event has
+occurred.
 
 ## Test --- Benchmark the skill design
 
@@ -282,7 +280,7 @@ coverage and review burden. A schedule should not rerun unchanged source.
 
 - **Status:** Not released; this is the record structure required before use.
 - **Versions:** Skill v1.0 and BR-NUM-001 v1.0.
-- **Scope:** One identified R source tree and commit per run.
+- **Scope:** One identified R source folder and commit per run.
 - **Permissions:** Read source, run approved local scripts, and write a draft
   report; no network writes.
 - **Output:** Versioned draft findings, coverage, limitations, and run log.
@@ -330,6 +328,6 @@ Cycle 1 established the evidence: three `formatC()` sites and 6 divergences in
 reusable procedure would need: a discoverable `SKILL.md`, versioned rule,
 deterministic scripts, explicit coverage, known limits, and human gates.
 
-The main finding is not that a skill now runs. It is that repeatability requires
-packaging context and limits with the check. Implementation, independent
-benchmarking, release, and operating evidence remain future work.
+Repeatability requires packaging context and limits with the check.
+Implementation, independent benchmarking, release, and operating evidence
+remain future work.

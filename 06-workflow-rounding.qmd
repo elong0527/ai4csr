@@ -40,12 +40,12 @@ functions, not just functions named `round()`.**
   languages, and studies.
 - **Learning objective:** Show how a short review request becomes a bounded
   workflow with an explicit rule and reproducible evidence.
-- **Workflow boundary:** Begin when a reviewer asks whether one R source tree
+- **Workflow boundary:** Begin when a reviewer asks whether one folder of R files
   follows the approved tie rule; end when a named human classifies each
   finding.
 - **Non-goals:** Validate statistical methods, replace independent QC, review
   every programming standard, change source data, or approve exceptions.
-- **Why this is well defined:** One rule, one pinned source tree, observable
+- **Why this is well defined:** One rule, one pinned source folder, observable
   results, and a named decision maker keep the task bounded.
 
 ## Plan --- Frame the workflow
@@ -115,7 +115,7 @@ The rule owner records the following brief:
 
 - **Objective:** Find calls that can round a reported numeric value and test
   them against the half-away-from-zero rule.
-- **Inputs:** One R source tree, a versioned rule, and an approved reference
+- **Inputs:** One R source folder, a versioned rule, and an approved reference
   implementation.
 - **Output:** Located findings, probe results, coverage, and known gaps.
 - **Agent contribution:** Search broadly, read the surrounding code, and
@@ -167,12 +167,12 @@ The contract also defines the scope that the original prompt omitted:
 
 ### Canonical artifact: Task contract
 
-- **Objective:** Report violations of BR-NUM-001.1 in one named R source tree.
+- **Objective:** Report violations of BR-NUM-001.1 in one named R source folder.
 - **Trigger:** A reviewer starts an on-demand review.
 - **Required context:** Target commit, R source, BR-NUM-001 v1.0, and approved
   reference behavior.
-- **Deterministic work:** Scan a catalog of possible rounding functions and
-  probe candidates at decimal ties.
+- **Fixed, repeatable checks (deterministic work):** Scan a catalog of possible
+  rounding functions and probe candidates at decimal ties.
 - **Agent work:** Decide whether each candidate affects a reported numeric value
   and explain any divergence.
 - **Required output:** `file:line`, source expression, probe result, cause,
@@ -273,7 +273,8 @@ The excluded calls were `R/adam_mapping.R:151`, `R/bind_rows2.R:74`, and
 | `R/collect_n_subject.R:263` | Percentage formatted with `decimal_places_percent` |
 | `R/collect_n_subject.R:304` | Percentage formatted with `decimal_places_percent` |
 
-Both precision arguments default to one decimal. The boundary probe reported:
+Both precision arguments default to one decimal. In the probe, `observed` is
+what R displayed and `approved` is what the rule requires:
 
 ```text
 expression: formatC(x, format = "f", digits = 1)
@@ -297,7 +298,8 @@ disagreements: 6 of 10
 ### Keep the two causes distinct
 
 The divergence is not explained by one blanket claim about "banker's
-rounding." It has two causes:
+rounding." One cause determines the direction at a true tie; the other places
+the stored number slightly above or below the intended tie:
 
 1. **Tie mode.** When a tie is exactly representable in binary, such as 2.5 at
    zero decimals, `formatC()` uses half-to-even behavior and returns 2.
@@ -313,7 +315,7 @@ which violates the negative-zero clause.
 ### Canonical artifact: Benchmark report
 
 - Seeded violation detected: 1 of 1.
-- False positives on the compliant fixture: 0.
+- False positives on the compliant small test program: 0.
 - Confirmed metalite sites with probes: 3 of 3.
 - Decimal-tie disagreements for the tested expression: 6 of 10.
 - Coverage reported: 24 R files; BR-NUM-001.1 only.
