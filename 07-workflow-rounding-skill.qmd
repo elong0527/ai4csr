@@ -1,271 +1,354 @@
-# Packaging the rounding check as a skill {#sec-workflow-rounding-skill}
+# Designing the rounding check as an agent skill {#sec-workflow-rounding-skill}
 
 ::: callout-tip
 ## 30-second takeaway
-Cycle 1 worked once because one reviewer knew the tricks. This cycle writes those tricks into a versioned skill folder any colleague or agent can run, with coverage stated every time.
+The first cycle found three hidden rounding sites, but the procedure still
+depended on one reviewer. A skill design can make the rule, scan, tie probe,
+coverage, and human stop point portable. This book specifies that design; it
+does not distribute or run the skill.
 :::
 
-Cycle 1 ended with a working check and a delivery problem: the scan, tie test,
-finding in `Merck/metalite`. All of them lived in the head of the reviewer who
-ran the prompt. This chapter is the second turn of the same lifecycle loop,
-with a different unit of work: not a prompt, but a package.
+A programmer inherits an R reporting package after the reviewer who performed
+the original rounding check has moved to another study. The conclusion remains
+in a review note, but the useful details do not: which functions to search,
+which ties to test, how to explain a mismatch, and when to stop before posting
+an issue. Repeating the original one-sentence prompt may not repeat the result.
+
+@sec-workflow-rounding showed why. At metalite commit
+`85757ba1bf5d863971e142b7872b6f92c265d6ef`, the broader review found three
+`formatC()` sites and 6 divergences among 10 tie probes. The result depended on
+instructions that were more durable than the prompt.
+
+This chapter begins a second turn of the same AI-first SDLC loop. Its unit of
+work is a specified agent skill: a small, reviewable folder that would carry
+the procedure with the check.
 
 ::: {.callout-note title="Maturity: Design pattern"}
-The skill layout, frontmatter, and procedure are specified in full, and the
-results quoted here were verified before the chapter was written. The book does
-not distribute the skill as an installable package. The automation triggers in
-the Deploy section are a design; no scheduled job or CI workflow has been
-built or run.
+The skill layout and procedure are a design. The book does not contain an
+installable skill, scripts, fixtures, evidence files, a CI workflow, or a
+scheduled job. The cycle-1 metalite evidence is the baseline for a future
+benchmark; it is not evidence that the skill described here has been built or
+run.
 :::
 
-| Example contract | Definition |
-|---|---|
-| **Problem** | A check that works once is not a workflow if its knowledge is not written down |
-| **Learning objective** | Show how a written procedure plus coverage makes a check portable |
-| **Workflow boundary** | From accepted cycle-1 findings to a skill a colleague can run |
-| **Non-goals** | Build an agent platform, automate the human decision, or claim the skill is qualified for GxP use |
-| **Why this is well defined** | The unit of work is a folder with a specification, and its correctness is measured on fixtures with known answers |
+The chapter has one main finding: **a reusable check must package its context
+and limits, not only its detection logic.**
+
+- **Problem:** A useful one-off review cannot be repeated reliably when its
+  procedure remains in one person's memory.
+- **Learning objective:** Show how a skill could preserve the rule, procedure,
+  coverage, and approval boundary for another reviewer or agent.
+- **Workflow boundary:** Begin with reviewed cycle-1 evidence; end with a
+  reviewed skill design and an explicit decision about whether to implement
+  it.
+- **Non-goals:** Build an agent platform, distribute a runnable skill, automate
+  human classification, cover BR-NUM-001.2 or BR-NUM-001.3, or claim
+  qualification for GxP use.
+- **Why this is well defined:** The proposed folder has a fixed structure,
+  versioned inputs, observable outputs, and benchmark criteria.
 
 ## Plan --- Frame the second cycle
 
-The first cycle's monitoring output named four defects in the workflow, not in
-metalite:
+### Turn observed weaknesses into requirements
 
-| Observed in cycle 1 | What the second cycle must provide |
-|---|---|
-| The catalog and triage rules lived in one person's memory | Written procedure that travels with the check |
-| Nothing recorded what was scanned or under which rule version | A coverage statement on every run |
-| The check ran when someone remembered | A defined trigger |
-| The approved helper was discarded by hand on every run | A path to an allowlist |
+Cycle 1 exposed four workflow weaknesses, not additional defects in metalite.
+Search and triage depended on one reviewer, so cycle 2 needs a written procedure.
+Runs lacked a standard coverage record, so each future run must report coverage.
+The review began only when someone remembered, so the team must define a trigger
+without pretending it is automated. The approved helper also needed repeated
+manual triage, so the workflow must measure that cost and define how a rule owner
+could approve an allowlist.
 
 ### Canonical artifact: Workflow brief
 
-- **Problem.** The detection logic is correct and unrepeatable.
-- **Minimum valuable workflow.** A folder that any agent client can load, that
-  states the procedure, ships the two scripts, and reports its own coverage.
-- **Non-goals.** Automating the human decision, or expanding to rules 2 and 3
-  in this cycle.
-- **Success measures.** A colleague who has never seen the first cycle
-  reproduces its metalite finding; the compliant fixture still produces no
-  finding; every run states which rules it did not check.
-- **Why not just a longer prompt.** A prompt is retyped, drifts, and cannot be
-  versioned or reviewed. The same text in a file has an owner and a history.
+- **Objective:** Specify a skill that another reviewer could use to perform the
+  same bounded BR-NUM-001.1 review.
+- **Inputs:** The accepted cycle-1 rule, task contract, evidence, and lessons.
+- **Minimum useful output:** A reviewed folder design, benchmark plan, release
+  conditions, and monitoring measures.
+- **Agent contribution:** Follow the written procedure, execute deterministic
+  checks when an implementation exists, explain candidates, and draft output.
+- **Human decision:** The rule owner approves the procedure, classifications,
+  policy changes, release, and external communication.
+- **Success measures:** A new reviewer reproduces the fixture answer key and
+  pinned metalite result; every run states coverage and unchecked rules.
+- **Main risk:** A polished skill description can create confidence before the
+  underlying checks have been implemented and benchmarked.
+
+The Plan gate is the rule owner's decision that portability is worth a second
+cycle. The accepted workflow brief initiates Design.
 
 ## Design --- Specify the skill
 
-### What a skill is
+### Treat the skill as a controlled procedure
 
-An **agent skill** is a folder with `SKILL.md` plus scripts, references, and
-assets, per the [Agent Skills specification](https://agentskills.io/specification).
-Agents load it in three stages: discovery (`name` + `description`, ~100 tokens),
-activation (full `SKILL.md`, under 5000 tokens), execution (other files on
-demand). The rule contract lives in `references/`, read only when needed.
+An **agent skill** is a folder that tells a compatible agent when and how to
+perform a task. Under the [Agent Skills specification](https://agentskills.io/specification),
+the folder requires a `SKILL.md` file with `name` and `description` in YAML
+frontmatter. The `name` must match the directory name. The folder may also have
+`scripts/`, `references/`, and `assets/` directories.
 
-### Frontmatter is the contract with the agent
+For a Biometrics owner, the important distinction is simple:
 
-`SKILL.md` begins with YAML frontmatter:
+- `SKILL.md` contains the operating instructions and stop points.
+- `references/` contains the approved business rule and definitions.
+- `scripts/` contains deterministic checks that can be tested separately.
+- `assets/` contains a consistent output template.
 
-| Field | Required | Purpose |
-|---|---|---|
-| `name` | Yes | Up to 64 characters, lowercase letters, digits, and hyphens, matching the directory name |
-| `description` | Yes | Up to 1024 characters, stating what the skill does **and when to use it** |
-| `license` | No | License name or bundled file |
-| `compatibility` | No | Environment requirements, such as required executables |
-| `metadata` | No | Arbitrary string keys, used here for the version and rule-contract identifier |
-| `allowed-tools` | No | Pre-approved tools. Experimental, and support varies |
+This structure is a proposed system of record for the procedure. Merely
+describing the folders does not create them.
 
-The `description` is all the agent sees before activating, so it carries the
-trigger words a reviewer would use:
+### Make discovery specific enough to be safe
+
+The proposed `SKILL.md` begins:
 
 ```yaml
+---
 name: rounding-rule-review
-description: Reviews R source code for violations of business rule
-  BR-NUM-001.1, which requires exact decimal ties to round half away from zero.
-  Scans for rounding sites including formatting functions such as formatC,
-  sprintf, and format, proves tie behavior with a boundary test, and drafts a
-  GitHub issue reporting confirmed findings. Use when asked to verify rounding
-  conventions, check half away from zero, audit display precision, or review an
-  R package for rounding compliance.
-compatibility: Requires Rscript on PATH and read access to the R source being
-  reviewed. Issue creation requires the gh CLI.
+description: Reviews R source for BR-NUM-001.1, which requires values intended
+  as exact decimal ties to round half away from zero. Finds rounding sites,
+  including formatting functions; tests ties of both signs; reports coverage;
+  and drafts findings for human review. Use for a bounded rounding-rule review
+  of an R source tree.
+compatibility: Requires Rscript on PATH and read access to the target source.
 metadata:
   version: "1.0"
-  rule-contract: BR-NUM-001 v1.0
+  rule-contract: "BR-NUM-001 v1.0"
+---
 ```
 
-Versioning the rule contract in `metadata` lets runs months apart be compared.
+The description says both what the skill would do and when it should be used.
+The metadata ties an execution to one skill version and one rule version.
 
-### Canonical artifact: Task contract, revised
+### Canonical artifact: Task contract
 
-Objective and boundaries carry over from @sec-workflow-rounding. Three changes:
+- **Objective:** Review one R source tree for BR-NUM-001.1.
+- **Trigger:** An approved on-demand request; automated triggers remain future
+  options.
+- **Inputs:** Target commit, source tree, rule contract, catalog, reference
+  behavior, and any approved allowlist.
+- **Deterministic work:** Run the catalog scan and two-sign decimal-tie probe.
+- **Agent work:** Apply the site definition, read context, explain divergence,
+  and draft the report.
+- **Required output:** Candidates, triage reasons, probes, coverage, unchecked
+  rules, and draft findings.
+- **Boundaries:** No source edits, policy changes, classification approval, or
+  external posting.
+- **Stop conditions:** Missing versions, unreadable files, unresolved precision,
+  conflicting local convention, or failed checks.
+- **Human decision:** Confirm triage, classify findings, approve exceptions, and
+  authorize communication.
 
-| Element | Cycle 1 | Cycle 2 |
-|---|---|---|
-| **Procedure** | In the reviewer's head | `SKILL.md`, versioned |
-| **Trigger** | A person remembers | On demand, and a designed schedule |
-| **Required output** | Findings and probe output | Also an explicit statement of rules **not** checked |
+The governing rule remains BR-NUM-001 v1.0. Only BR-NUM-001.1 is in scope.
+The Design gate is approval of the folder structure, task contract, and stop
+conditions by the rule owner and an R programmer. Acceptance initiates Build.
 
-## Build --- The skill package
+## Build --- Specify the prototype
 
-```
+### Proposed package layout
+
+The folder would follow this layout:
+
+```text
 rounding-rule-review/
-  SKILL.md                      Metadata and the four-step procedure
+  SKILL.md
   references/
-    rounding-rules.md           BR-NUM-001 v1.0, the rule contract
+    rounding-rules.md
   scripts/
-    scan-rounding-sites.R       Catalog scan for candidate rounding sites
-    probe-tie-behavior.R        Boundary test, returns PASS or FAIL
+    scan-rounding-sites.R
+    probe-tie-behavior.R
   assets/
-    issue-template.md           Structure of a reported finding
+    issue-template.md
 ```
 
-The procedure is cycle 1 tacit knowledge written down. Three key passages:
+The directory name matches the `name` in the frontmatter. `SKILL.md` and its
+frontmatter are required; the other directories are optional under the Agent
+Skills specification but useful for this design. None of these files is
+distributed by the book.
 
-**The instruction that prevents the false clean report.**
+### Preserve the decisions that changed the result
+
+The proposed procedure must include three instructions.
+
+First, prevent a false clean report:
 
 > Do not substitute a plain search for `round(`. A rounding site is any call
-> that can change a reported value at an exact decimal tie, and formatting
-> functions round as a side effect of display.
+> that can change a reported numeric value at an exact decimal tie. Formatting
+> functions can round as a side effect of display.
 
-**The instruction against a confident wrong cause.** Report observed divergence
-and frequency; never blanket-claim "banker's rounding":
+Second, keep the explanation precise:
 
-> Report the observed divergence and its frequency at the boundary values. Do
-> not claim the function "uses banker's rounding" as a blanket explanation.
+> Report observed divergence and its frequency. Explain tie mode and binary
+> representation as distinct causes; do not reduce the result to a blanket
+> claim that a function uses "banker's rounding."
 
-**The instruction that keeps the human in the decision.**
+Third, preserve the human gate:
 
-> By default, render the issue body to a file and stop. Create a real GitHub
-> issue only when the user explicitly asks for one, and show the body first.
+> Render findings to a draft file and stop. Do not create a GitHub issue or
+> change source unless an accountable human explicitly authorizes that action.
 
-Omit that default and something will eventually be posted. The default belongs
-in the artifact, not in reviewer discipline.
-
-### Try it yourself
-
-Re-run the Ch6 prompt with one addition: the site-definition paragraph from the
-rule contract ("A rounding site is any call that can change a reported value
-at an exact decimal tie..."). Full text is in @sec-workflow-rounding; the only
-change is that paragraph. Send both versions to [arena.ai](https://arena.ai/agent)
-and compare: the difference is a quotation from a versioned, owned document,
-not better wording.
-
-One qualification: a paired run is a demonstration, not a benchmark. The
-measure is the fixture table below. As before, the agent cannot file an issue
-here.
-
-### Write down what the skill cannot do
+The procedure must also state its limitations: a line-based scanner can miss a
+dynamically constructed call; an unresolved `digits` argument requires a stop;
+the approved helper remains a candidate until the rule owner approves an
+allowlist; and rules BR-NUM-001.2 and BR-NUM-001.3 are not checked.
 
 ::: callout-warning
 ## When not to use this skill
-Skip it for one-off single-study checks (a prompt suffices), non-numeric
-reports with nothing to round, and anything needing rules 2 and 3 (rounding
-stage, display precision): those need data-flow tracing this skill does not do.
-When in doubt, ask the rule owner whether BR-NUM-001.1 applies.
+Do not use this design for nonnumeric reports or for reviews of rounding stage
+and display precision, which require rules 2 and 3. For a one-off review, the
+rule owner may decide that the bounded cycle-1 procedure is proportionate.
 :::
 
-`SKILL.md` ends with its own limitations: the scanner is line based, so a call
-split across lines is reported at its first line and a dynamically constructed
-call is not detected; there is no allowlist, so the organization's own approved
-helper is reported as a candidate every run; and only rule BR-NUM-001.1 is
-covered.
+### Try it yourself
 
-Limitations live in the artifact because the next reader is an agent reading
-`SKILL.md`.
+This exercise demonstrates why the site definition belongs in the skill. It
+does not run the unbuilt skill. Send this prompt to
+[arena.ai](https://arena.ai/agent):
 
-## Test --- Benchmark the skill
+```text
+Review the R source at the fixed commit below for BR-NUM-001.1: values intended
+as exact decimal ties must round half away from zero.
 
-Cycle 1 benchmark plus one requirement: a newcomer must reproduce the result.
+A rounding site is any call that can change a reported numeric value at an
+exact decimal tie. Formatting functions can round as a side effect of display,
+so do not limit the search to round(). Test decimal ties of both signs. Report
+file and line, observed results, coverage, and unchecked rules. Explain tie
+mode and binary representation separately.
 
-| Criterion | Result |
+Draft a GitHub issue if evidence diverges from the rule, but do not post it. Do
+not modify the repository or propose a code change.
+
+https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef
+```
+
+Arena.ai cannot create the GitHub issue. Responses can vary, so compare the
+response with the pinned evidence in @sec-workflow-rounding rather than
+expecting a particular answer.
+
+### Canonical artifact: Prototype
+
+The Build artifact is the reviewed content specification for `SKILL.md`, the
+rule reference, two deterministic scripts, and the issue template. It is not a
+folder present in this repository. The Build gate is approval to implement and
+independently review those files. A reviewed implementation would initiate
+Test; this chapter does not claim that event has occurred.
+
+## Test --- Benchmark the skill design
+
+### Separate baseline evidence from future results
+
+The evidence already available comes from cycle 1 at metalite commit
+`85757ba1bf5d863971e142b7872b6f92c265d6ef`:
+
+- the broader scan produced six candidates and three confirmed `formatC()`
+  sites;
+- the one-decimal probe diverged on 6 of 10 tested ties;
+- the approved-helper fixture produced two candidates that required discard;
+  and
+- coverage was 24 R files for BR-NUM-001.1, with rules 2 and 3 unchecked.
+
+Those numbers are an answer key for a future skill test, not results from the
+skill design.
+
+### Key benchmark for a future implementation
+
+| Acceptance criterion | Required result |
 |---|---|
-| Seeded fixture violation detected | 1 of 1 |
-| False positives on the compliant fixture | 0 |
-| Cycle 1 metalite finding reproduced | Yes, 3 confirmed sites |
-| Coverage statement present | Yes |
-| Rules explicitly reported as unchecked | BR-NUM-001.2, BR-NUM-001.3 |
-| Approved helper still discarded by hand | Yes, 2 sites per run |
+| Seeded noncompliant fixture | Detect 1 of 1 violation |
+| Compliant fixture | Report 0 false findings |
+| Approved-helper fixture | Record 2 candidates and 0 findings |
+| Pinned metalite source | Reproduce 3 confirmed `formatC()` sites |
+| Pinned tie probe | Reproduce 6 divergences in 10 inputs |
+| Coverage | Name files examined, files not examined, and rule version |
+| Known gaps | State that BR-NUM-001.2 and BR-NUM-001.3 are unchecked |
+| Reproducibility | A reviewer unfamiliar with cycle 1 obtains the same answer key |
 
-The last row is intentional: no allowlist in v1.0, so hardening removes a
-measured cost, not a hypothetical one.
+Additional measures are false positives, missed defects, triage time, stopped
+runs, and agreement between agent triage and human classification.
 
-## Deploy --- Trigger the skill
+### Canonical artifact: Benchmark report
+
+No skill benchmark report exists yet. The specified report must identify the
+target and versions, preserve deterministic output separately from agent
+judgment, compare results with the hidden or independently maintained answer
+key, and record reviewer decisions. The main risk is circular evaluation: the
+person who wrote the procedure should not be the only person judging it.
+
+The Test gate requires the rule owner and an independent reviewer to accept the
+executed benchmark. Only that accepted report could initiate Deploy.
+
+## Deploy --- Operationalize the skill
 
 ::: {.callout-important title="Design, not implementation"}
-Triggers below are decisions for the owning team, not something operating. No
-job or workflow has been built or run.
+The triggers below are options for the owning team. No skill, CI workflow, or
+scheduled job has been committed or run.
 :::
 
-Three trigger options; the choice is governance, not technology.
+The team has three trigger options:
 
-| Trigger | Runs when | Strength | Cost |
-|---|---|---|---|
-| **On demand** | A reviewer asks | Zero setup; matches cycle 1 | Depends on someone remembering |
-| **On pull request** | Relevant source changes | Catches the violation at the moment it is written | Noise on pull requests that touch no rounding site |
-| **Scheduled** | Before release, or every 30 days if any pull request merged since the last run | Catches drift from dependency and helper changes | Findings arrive detached from the change that caused them |
+- **On demand:** A reviewer requests the check. Setup is minimal, but the process
+  still depends on memory.
+- **On pull request:** The check runs when relevant reporting source changes.
+  This is timely but needs path filters and noise control.
+- **Scheduled:** The check runs before a release or after source changes. It can
+  detect drift, but the finding may be separated from the change that caused it.
 
-Gate the schedule on "a pull request merged since last run". A run on unchanged
-code repeats the last output and trains reviewers to ignore it.
-
-For Biometrics repos: pull-request trigger on paths producing reported numbers,
-plus a whole-tree release-gate run.
+The proposed first release is on demand and advisory. Pull-request or scheduled
+execution requires separate approval after benchmark evidence shows acceptable
+coverage and review burden. A schedule should not rerun unchanged source.
 
 ### Canonical artifact: Release record
 
-| Field | Value |
-|---|---|
-| Release model | Advisory. Findings are comments and drafts, never a merge block |
-| Versions | Skill v1.0; rule contract BR-NUM-001 v1.0 |
-| Permissions | Read the source, run two R scripts, write a draft file |
-| Prohibited | Editing source, posting to a repository without explicit approval |
-| Accountable reviewer | The rule owner named in the contract |
-| Reversal | Remove the skill folder or disable the trigger |
+- **Status:** Not released; this is the record structure required before use.
+- **Versions:** Skill v1.0 and BR-NUM-001 v1.0.
+- **Scope:** One identified R source tree and commit per run.
+- **Permissions:** Read source, run approved local scripts, and write a draft
+  report; no network writes.
+- **Output:** Versioned draft findings, coverage, limitations, and run log.
+- **Human gate:** The rule owner approves release, classifications, exceptions,
+  and any external communication.
+- **Reversal:** Disable the approved trigger and retain the run record.
 
-Advisory first: a check that blocks merges on day one teaches people to route
-around it.
+An accepted benchmark plus explicit release approval would activate the chosen
+trigger and initiate Maintain. Neither event has occurred in this book.
 
-## Maintain --- Harden the skill
+## Maintain --- Monitor and improve
 
-Backlog ordered by measured cost:
+### Make improvement a governed change
 
-**Allowlist.** Listing approved wrappers in the contract removes the recurring
-triage. Adding one is a policy change owned by the rule owner.
+An operating skill could suggest catalog additions, allowlist entries, triage
+patterns, or rule clarifications. Those are proposals. The rule owner decides
+whether policy changes, the skill version increments, and an independent
+fixture is added before the change becomes active. The agent does not edit the
+rule against which it is evaluated.
 
-**Run log.** Record target commit, rule and skill versions, files scanned, each
-triage decision with reason, probe verdicts, and final classification. Without
-discards and reasons, later reviewers cannot separate deliberate triage from a
-miss.
+The first improvement backlog follows directly from known limitations:
 
-**Coverage as a first-class output.** Version 1.0 states which rules it did not
-check. It does not yet state which files it could not parse or which `digits`
-arguments it could not resolve. Silence is not evidence.
-
-**Rules 2 and 3.** Rounding stage and display precision need data-flow tracing,
-not a line scan. Natural third-cycle content; benchmark separately since the
-agent/deterministic balance shifts.
-
-### The feedback loop is governed
-
-An agent running the skill will propose catalog additions, triage patterns, and
-rule clarifications. It may propose; the rule owner approves, the version
-increments, fixtures gain a case. An agent never edits the rule it is checked
-against.
+1. Add a rule-owner-approved allowlist for compliant wrappers.
+2. Record target commit, versions, files scanned, exclusions, probe output,
+   triage reasons, and classifications in a run log.
+3. Report files or expressions the check could not evaluate.
+4. Design separate workflows for rounding stage and display precision rather
+   than silently expanding BR-NUM-001.1.
 
 ### Canonical artifact: Monitoring report
 
-There is no operating history. Future measures: findings and false positives by
-rule, classification mix, triage cost per run, runs stopped by unresolved
-`digits`.
+There is no monitoring report because there is no deployed skill. A future
+report must show runs by trigger, coverage, confirmed findings, false
+positives, missed defects, stopped runs, triage effort, and unresolved
+precision. It must also record incidents and approved changes.
+
+The rule owner reviews that report and chooses among continued use, correction,
+retirement, or a new planning cycle. An accepted policy change, incident, or
+measured coverage gap is the event that starts the next cycle.
 
 ## Summary
 
-Cycle 1 proved the rule can be checked. Cycle 2 made it portable: a discoverable
-folder, versioned contract, two scripts, issue template, honest limits.
+Cycle 1 established the evidence: three `formatC()` sites and 6 divergences in
+10 decimal-tie probes at the pinned metalite commit. Cycle 2 establishes what a
+reusable procedure would need: a discoverable `SKILL.md`, versioned rule,
+deterministic scripts, explicit coverage, known limits, and human gates.
 
-Real here: the skill and its fixture and metalite results. Designed but unbuilt:
-automatic triggering. A check that never runs unasked has not met its key
-failure mode: quietly stopping.
-
-A third cycle would cover rules 2 and 3 (rounding stage, display precision),
-add the allowlist, and measure triage cost per run. That is the roadmap; this
-chapter stops at a skill a colleague can run by hand.
+The main finding is not that a skill now runs. It is that repeatability requires
+packaging context and limits with the check. Implementation, independent
+benchmarking, release, and operating evidence remain future work.

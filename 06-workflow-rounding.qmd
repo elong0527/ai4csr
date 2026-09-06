@@ -1,151 +1,151 @@
-# Enforcing a rounding rule with a prompt {#sec-workflow-rounding}
+# Finding hidden rounding sites with one prompt {#sec-workflow-rounding}
 
 ::: callout-tip
 ## 30-second takeaway
-SAS and R break ties differently. A short prompt found real rounding sites in the metalite R package that a search for `round()` missed. The durable value is a versioned rule plus a small tie test, with a person deciding each finding.
+A search for `round()` can miss real rounding. At a fixed metalite commit,
+`formatC()` rounded reported values at three sites, and 6 of 10 decimal-tie
+probes diverged from the specified rule. The durable result is the rule,
+boundary test, coverage statement, and human decision---not the prompt alone.
 :::
 
 A Biometrics team prepares the same efficacy table in SAS and R. Most values
-agree, but exact ties do not: SAS `ROUND()` goes half away from zero while R
-`round()` goes half to even. The reviewer spots it after the table is out. The
-fix is an executable rule that runs when code changes, not a post hoc comment.
+agree, but a reviewer notices that 2.05 appears as 2.1 in one output and 2.0 in
+the other. The programs used different ways to handle a value intended as an
+exact decimal tie, and nobody discovered the difference until table review.
 
-One number shows the stakes. A mean change of 2.05 displayed at one decimal:
-SAS `ROUND()` gives 2.1 (half away from zero); R `formatC(x, format = "f",
-digits = 1)` gives 2.0 (the stored binary value sits just below the tie). Same
-data, different table cell, no warning.
+This is not only a choice between SAS `ROUND()` and R `round()`. R functions
+that format a number for display can also round it. In this example,
+`formatC(x, format = "f", digits = 1)` displays 2.05 as 2.0 because the stored
+binary value is just below the intended decimal tie. A review limited to calls
+named `round()` would miss the problem.
 
-This chapter runs the AI-first SDLC from @sec-ai-first-sdlc once, end to end,
-around the smallest possible unit of work: one prompt, run by hand, against one
-real R package. The next chapter runs the loop a second time and turns the
-result into something reusable.
+This chapter follows one turn of the AI-first SDLC introduced in
+@sec-ai-first-sdlc. It begins with a short review prompt and ends with a
+specified, bounded workflow. @sec-workflow-rounding-skill begins a second turn
+of the loop by designing a reusable agent skill.
 
 ::: {.callout-note title="Maturity: Design pattern"}
-The workflow is specified rather than distributed. The rule contract, the two
-checks, and the reported findings are stated in full below, and the metalite
-result was verified at the pinned commit, but this book does not ship the
-scripts as a package. The reported issue is a draft that was deliberately not
-submitted, and deployment is a manual practice rather than an automated
-trigger.
+The workflow is specified, not distributed. The book includes the rule,
+prototype design, and results verified at the pinned metalite commit, but it
+does not include runnable scripts or evidence files. The GitHub issue is a dry
+run that was not submitted. Deployment is a proposed manual practice, not an
+operating service.
 :::
 
-| Example contract | Definition |
-|---|---|
-| **Problem** | Rounding rules are applied inconsistently across programs, languages, and studies |
-| **Learning objective** | Show that the useful part of an AI-first workflow is the rule contract and the evidence, not the wording of the prompt |
-| **Workflow boundary** | Begins when a reviewer asks whether a repository follows the approved tie rule; ends when a named human decides what to do with the findings |
-| **Non-goals** | Validate the statistical method, replace independent QC, review every programming standard, change source data, or approve policy exceptions automatically |
-| **Why this is well defined** | One rule, one repository, a checkable verdict, and a decision that stays with a person |
+The chapter has one main finding: **a rounding rule must cover formatting
+functions, not just functions named `round()`.**
+
+- **Problem:** Rounding rules can be applied inconsistently across programs,
+  languages, and studies.
+- **Learning objective:** Show how a short review request becomes a bounded
+  workflow with an explicit rule and reproducible evidence.
+- **Workflow boundary:** Begin when a reviewer asks whether one R source tree
+  follows the approved tie rule; end when a named human classifies each
+  finding.
+- **Non-goals:** Validate statistical methods, replace independent QC, review
+  every programming standard, change source data, or approve exceptions.
+- **Why this is well defined:** One rule, one pinned source tree, observable
+  results, and a named decision maker keep the task bounded.
 
 ## Plan --- Frame the workflow
 
-### Rounding exposes the problem
+### Begin with the reporting problem
 
-Common tools differ at exact ties:
+Common tools do not all use the same tie rule. At zero decimal places, SAS
+`ROUND()` sends -2.5 to -3 and 2.5 to 3 (half away from zero). R and Python
+`round()` send the same values to -2 and 2 (half to even). None of these
+defaults is inherently wrong. The problem is relying on a language default
+when a Biometrics team needs one agreed reporting rule.
 
-| Language or tool | Default tie behavior | `-2.5` | `2.5` |
-|---|---|---:|---:|
-| SAS `ROUND()` | half away from zero | -3 | 3 |
-| R `round()` | half to even | -2 | 2 |
-| Python `round()` | half to even | -2 | 2 |
+A reviewer might begin with this under-specified request:
 
-No default is wrong as a language design choice. A language default is simply
-not an organizational policy, and the difference surfaces in a table long after
-the code was written.
+> At metalite commit 85757ba1bf5d863971e142b7872b6f92c265d6ef, verify whether
+> the R source properly uses round half away from zero. If not, identify the
+> source and draft a GitHub issue to report the finding.
 
-### Start from the smallest prompt that could work
+The request sounds clear, but it leaves several decisions unstated: what counts
+as a rounding site, which source is in scope, how behavior will be tested, and
+who decides whether a difference is a defect.
 
-The starting point is not a system. It is one sentence a reviewer might type:
-
-> Verify if the repo properly uses round half away from zero. If not, identify
-> the source and create a GitHub issue to report the finding.
-
-The target is [`Merck/metalite`](https://github.com/Merck/metalite), a public R
-package that builds ADaM-based analysis and reporting tables. A recommended
-implementation is available as
-[`cards::round5()`](https://github.com/pharmaverse/cards/blob/main/R/round5.R).
-
-The prompt is worth taking seriously precisely because it is short. It is what
-a competent reviewer would actually ask. Following it exposes where the work
-really is.
+The review target is
+[`Merck/metalite` at a fixed commit](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef),
+a public R package that builds ADaM-based analysis and reporting tables.
 
 ### Try it yourself
 
-Send the prompt to [arena.ai](https://arena.ai/agent) before reading further.
-The version below is the same request, pinned to one commit and made
-self-contained:
+Send the following prompt to [arena.ai](https://arena.ai/agent) before reading
+the result in this chapter:
 
-``` text
-Review the R source of the metalite package at the commit linked below and
-verify whether it follows the business rule that exact decimal ties are rounded
-half away from zero, as SAS ROUND() does and as cards::round5() implements.
+```text
+Review the R source of the metalite package at the commit linked below. Verify
+whether it follows this business rule: values intended as exact decimal ties
+must round half away from zero, as SAS ROUND() does.
 
-Report every location that can round a reported value, with file and line
-numbers, and show the evidence for how each one behaves at an exact tie. If the
-rule is violated, draft a GitHub issue reporting the finding.
+A rounding site is any call that can change a reported numeric value at an
+exact decimal tie. Formatting functions can round as a side effect of display,
+so do not limit the search to round().
 
-Repository at a fixed commit:
+Report every candidate location with file and line number. For each location
+that rounds a reported numeric value, show evidence at decimal ties of both
+signs. Distinguish tie-mode differences from effects of binary representation.
+If the rule is violated, draft a GitHub issue, but do not post it.
+
+Repository at fixed commit:
 https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef
 
-R source directory at that commit:
+R source directory at the same commit:
 https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef/R
 
-Reference implementation:
-https://github.com/pharmaverse/cards/blob/main/R/round5.R
-
-Do not propose a code change. Do not modify any repository.
+Do not propose a code change. Do not modify any repository. State what was and
+was not checked.
 ```
 
-Three run notes: the agent cannot file the issue (no write access), so a drafted body is the correct output. The commit pin is part of the task, since metalite changes over time. Expect runs to disagree; that variability is the point. Judge any answer with four checks:
+Arena.ai cannot create the GitHub issue, so a draft is the expected endpoint.
+Agent responses vary between runs; do not treat any particular response as the
+answer key. Instead, ask:
 
-- Did it search only for `round()`, or for functions that round while
-  formatting?
-- Did it name specific files and line numbers, or describe the problem in
-  general terms?
-- Did it run anything to demonstrate the tie behavior, or assert it from the
-  function name?
-- Did it state what it did not check?
+- Did the response inspect formatting functions as well as `round()`?
+- Did it give locations at the pinned commit rather than general advice?
+- Did it demonstrate behavior at ties of both signs?
+- Did it report coverage and unchecked rules?
 
 ### Canonical artifact: Workflow brief
 
-- **Problem.** A tie-rounding convention exists in people's heads and in review
-  comments, but nothing checks it when code changes.
-- **Event.** A reviewer, or a release checklist, asks whether a repository
-  complies.
-- **Minimum valuable workflow.** Locate every place a reported value can be
-  rounded, prove how each one behaves at a tie, and hand a named reviewer
-  enough evidence to decide.
-- **Non-goals.** Fixing the code, granting exceptions, or judging the
-  statistical method.
-- **Success measures.** Every genuine site found, no compliant code flagged, every violation backed by a tie test, and each run states what it did not check.
-- **Why AI helps.** Scanning is mechanical; judging whether a call rounds a reported number needs reading context.
+The rule owner records the following brief:
 
-Planning ends when the rule owner accepts that one rule, checked on one
-repository, is worthwhile. Decision: rule owner signs the brief; question
-answered: "is this one rule worth checking?" That acceptance initiates Design.
+- **Objective:** Find calls that can round a reported numeric value and test
+  them against the half-away-from-zero rule.
+- **Inputs:** One R source tree, a versioned rule, and an approved reference
+  implementation.
+- **Output:** Located findings, probe results, coverage, and known gaps.
+- **Agent contribution:** Search broadly, read the surrounding code, and
+  explain evidence.
+- **Human decision:** The rule owner classifies each result as a defect,
+  documented convention, accepted exception, or not applicable.
+- **Success measures:** Find every genuine seeded site, flag no compliant
+  fixture, attach a tie probe to every finding, and state what was not checked.
+- **Main risk:** A narrow search can produce a convincing false clean report.
+
+The Plan gate is the rule owner's acceptance that this one-rule review is worth
+performing. The accepted workflow brief initiates Design.
 
 ## Design --- Specify the workflow
 
-### The prompt is under-specified, and that is the finding
+### Define the business rule before refining the prompt
 
-Read the prompt as an implementer: "properly uses round half away from zero"
-never defines a rounding site. A search for `round(` finds nothing in metalite
-and reports it clean. That answer is wrong, and rewording cannot fix it,
-because the gap is organizational, not linguistic.
+The phrase "properly uses round half away from zero" does not define a
+rounding site. In the pinned metalite source, a search for `round(` returns no
+matches. That clean result is misleading because formatting functions still
+round reported numbers. Better wording alone cannot repair a missing business
+definition.
 
-So the first Design output is not a prompt. It is a versioned rule contract.
+### Business rule: BR-NUM-001
 
-### Canonical artifact: Rule contract BR-NUM-001
+BR-NUM-001 is an illustrative contract, not an approved industry or metalite
+standard. Version 1.0 contains three rules:
 
-The contract is versioned, has a named owner, and carries a change history.
-BR-NUM-001 v1.0 states three rules. The first is the only one this cycle
-checks:
-
-> **BR-NUM-001.1:** Exact decimal ties are rounded half away from zero. A
-> displayed value is never a negative zero.
-
-Two rules are stated but deliberately left unchecked, so that a later cycle has
-somewhere to go:
+> **BR-NUM-001.1:** Values intended as exact decimal ties are rounded half away
+> from zero. A displayed value is never a negative zero.
 
 > **BR-NUM-001.2:** Calculations use unrounded values; rounding occurs once,
 > when the final result is prepared for display.
@@ -153,50 +153,49 @@ somewhere to go:
 > **BR-NUM-001.3:** Display precision is specified for each reported statistic
 > and preserved, including trailing zeros.
 
-The contract carries the piece of knowledge the prompt was missing:
+This cycle evaluates only BR-NUM-001.1. Rules 2 and 3 remain explicit gaps.
+For this exercise, `cards::round5()` supplies the approved comparison
+behavior. "Approved" means accepted by the illustrative rule owner for this
+bounded review; it is not an industry endorsement.
 
-> A rounding site is any call that can change a reported value at an exact
-> decimal tie. Formatting functions round as a side effect of display, so
-> `formatC()`, `sprintf()`, and `format()` are rounding sites. A package that
-> never calls `round()` can still violate this rule.
+The contract also defines the scope that the original prompt omitted:
 
-This sentence is the difference between a false clean report and a real
-finding. It belongs in a versioned document with an owner, not in a prompt.
+> A rounding site is any call that can change a reported numeric value at an
+> exact decimal tie. Formatting functions round as a side effect of display,
+> so `formatC()`, `sprintf()`, and `format()` are candidate rounding sites. A
+> package that never calls `round()` can still violate the rule.
 
 ### Canonical artifact: Task contract
 
-| Contract element | Specification |
-|---|---|
-| **Objective** | Report every violation of BR-NUM-001.1 in a named R source tree |
-| **Trigger** | A reviewer runs the check on demand |
-| **Inputs** | The R source, the rule contract, and the approved implementation |
-| **Deterministic work** | Scan for rounding sites; evaluate candidate expressions at exact ties |
-| **Agent work** | Decide whether each candidate site rounds a numeric reported value; explain the cause of a divergence |
-| **Required output** | Findings with `file:line` and probe output, plus a coverage statement |
-| **Boundaries** | Read the source and run the two scripts; do not edit code, and do not post anything without explicit approval |
-| **Stop conditions** | Missing rule version, an unresolvable `digits` argument, or a documented conflicting convention in the target repository |
-| **Human decision** | Defect, documented convention, or accepted exception, with the reason recorded |
+- **Objective:** Report violations of BR-NUM-001.1 in one named R source tree.
+- **Trigger:** A reviewer starts an on-demand review.
+- **Required context:** Target commit, R source, BR-NUM-001 v1.0, and approved
+  reference behavior.
+- **Deterministic work:** Scan a catalog of possible rounding functions and
+  probe candidates at decimal ties.
+- **Agent work:** Decide whether each candidate affects a reported numeric value
+  and explain any divergence.
+- **Required output:** `file:line`, source expression, probe result, cause,
+  coverage, and unchecked rules.
+- **Boundaries:** Read and test; do not edit source, post an issue, or approve an
+  exception.
+- **Stop conditions:** Missing rule version, unresolved precision, or a
+  documented conflicting convention.
+- **Human decision:** The rule owner classifies each finding and records the
+  reason.
 
-Decision: rule owner signs the task contract; question: "what exactly counts,
-and who decides the outcome?"
-
-::: {.content-visible when-format="html"}
-![A project code change triggers deterministic checks followed by a focused AI
-review. Findings go to a human reviewer, whose decisions are recorded and may
-lead to an approved rule update.](assets/diagrams/workflow-code-review.svg){#fig-code-review fig-alt="A project code change feeds deterministic checks and then an AI agent. The workflow produces a CI signal, task, code review comment, and a coverage report. A human reviews findings, records decisions, and approves any update to the business rules."}
-:::
-
-Deterministic checks run before model judgment; the human decides last, since an
-agent prepares evidence but cannot grant exceptions.
+The Design gate is rule-owner approval of the rule and task contracts.
+Acceptance authorizes a prototype, not a finding or code change, and initiates
+Build.
 
 ## Build --- Prototype the workflow
 
-Two small R scripts plus one agent triage step.
+The prototype design separates two deterministic checks from one small agent
+judgment. The book specifies these components but does not distribute them.
 
-### Scan: find candidate rounding sites
+### Step 1: Scan for candidates
 
-`scan-rounding-sites.R` searches for a catalog of functions rather than for one
-name, and is deliberately over-inclusive:
+The proposed scanner uses an intentionally broad catalog:
 
 ```r
 catalog <- c(
@@ -205,13 +204,13 @@ catalog <- c(
 )
 ```
 
-Over-inclusion is deliberate: a missed site is a silent wrong number, while an
-extra candidate costs seconds of triage.
+The scan produces candidates, not findings. Calls such as `as.character()` may
+format labels rather than reported numbers.
 
-### Probe: prove the tie behavior
+### Step 2: Probe observed behavior
 
-`probe-tie-behavior.R` evaluates a candidate expression at exact ties of both
-signs and compares it with the approved implementation:
+For a candidate that affects a reported value, the proposed probe compares
+decimal ties of both signs with this reference behavior:
 
 ```r
 round_half_away <- function(x, digits = 0) {
@@ -220,62 +219,60 @@ round_half_away <- function(x, digits = 0) {
 }
 ```
 
-The probe returns `PASS` or `FAIL` with its table, so no finding rests on a
-function name.
+The intended output is `PASS` or `FAIL` plus the comparison table. A function
+name alone is not evidence.
 
-### The agent's share of the work
+### Step 3: Triage in context
 
-One judgment scripts cannot make: does the candidate round a reported number
-or a label? That needs reading context, and it is deliberately small.
+The agent reads the surrounding source and answers one question: does this
+candidate round a reported numeric value? A human reviewer then confirms or
+changes that triage. Deterministic results and model judgment remain labeled
+separately.
 
-Build ends with a runnable path from an R source tree to a drafted finding.
+### Canonical artifact: Prototype
+
+The artifact is the reviewed design for the catalog scan, tie probe, triage
+instructions, and output fields. It is not a runnable package in this book.
+The Build gate is joint review by an R programmer and the rule owner. Their
+acceptance initiates an evidence run against fixtures and the pinned source.
 
 ## Test --- Benchmark and evaluate
 
-### Control the false positives first
+### Establish expected behavior with fixtures
 
-Three fixtures set the baseline: a compliant summary via the approved helper,
-a noncompliant one calling `formatC()` directly, and the helper itself.
+The reported evidence includes three controlled fixtures. The compliant summary
+produced no candidates or findings. A noncompliant summary using `formatC()`
+directly produced one candidate and one finding. The approved helper itself
+produced two candidates and no findings. That last fixture exposes a known cost:
+the broad scan finds the approved helper, and a reviewer must discard those
+candidates.
 
-| Fixture | Sites reported | Confirmed findings |
-|---|---|---:|
-| Compliant summary, formatted through the approved helper | 0 | 0 |
-| Noncompliant summary using `formatC()` directly | 1 | 1 |
-| The approved helper itself | 2 | 0 |
+### Key finding at the pinned metalite commit
 
-The last row is the honest weakness: the scan flags your own approved helper
-every run, and someone must discard it.
+All metalite locations and results below refer to commit
+[`85757ba1bf5d863971e142b7872b6f92c265d6ef`](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef)
+(2025-09-17). They must be reverified before use with another commit.
 
-### Run it on metalite
+A search for `round(` found zero matches. The broader scan found six
+candidates. Context review discarded three calls that format variable names,
+an index label, or factor levels.
 
-All results are from commit
-[`85757ba`](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef)
-(2025-09-17). Line numbers apply only to that commit.
+The discarded candidates were `R/adam_mapping.R:151`, which formats variable
+names; `R/bind_rows2.R:74`, which formats an index label; and
+`R/collect_n_subject.R:51`, which formats factor levels.
 
-A hurried reviewer searches for `round(` first:
+The chapter's key evidence table contains the three confirmed rounding sites,
+all of which use `formatC()`:
 
-```bash
-grep -rn "round(" metalite/R | wc -l
-# 0
-```
+| Confirmed site | Reported value |
+|---|---|
+| `R/collect_n_subject.R:248` | Summary statistic formatted with `decimal_places_summary` |
+| `R/collect_n_subject.R:263` | Percentage formatted with `decimal_places_percent` |
+| `R/collect_n_subject.R:304` | Percentage formatted with `decimal_places_percent` |
 
-Zero hits. Under the naive reading, metalite is clean. It is not.
+Both precision arguments default to one decimal. The boundary probe reported:
 
-The catalog scan finds six candidate sites, and the agent's triage keeps three:
-
-| File and line | Call | Triage |
-|---|---|---|
-| `R/collect_n_subject.R:248` | `formatC(value, format = "f", digits = decimal_places_summary)` | keep, numeric summary statistics |
-| `R/collect_n_subject.R:263` | `formatC(pop_n[[i]] / pop_all[[i]] * 100, ...)` | keep, percentages |
-| `R/collect_n_subject.R:304` | `formatC(pop_tmp[[i]] / pop_all[[i]] * 100, ...)` | keep, percentages |
-| `R/adam_mapping.R:151` | ``format(paste0("`", names(x), "`"))`` | discard, variable names |
-| `R/bind_rows2.R:74` | `as.character(i)` | discard, index label |
-| `R/collect_n_subject.R:51` | `as.character(levels(group))` | discard, factor levels |
-
-Both `decimal_places_summary` and `decimal_places_percent` default to `1`, so
-the probe runs at one decimal:
-
-```
+```text
 expression: formatC(x, format = "f", digits = 1)
 
        input      observed      approved  agree
@@ -294,81 +291,90 @@ verdict: FAIL
 disagreements: 6 of 10
 ```
 
-### Report the cause precisely
+### Keep the two causes distinct
 
-Do not write "uses banker's rounding" and stop. Two causes combine:
+The divergence is not explained by one blanket claim about "banker's
+rounding." It has two causes:
 
-1. **Tie mode.** Where the tie is exactly representable in binary, such as
-   `2.5` at zero decimals, `formatC()` applies round half to even and returns
-   `2`.
-2. **Binary representation.** At one decimal the tie usually is not
-   representable. The literal `2.05` is stored as `2.0499999999999998`, so
-   correct rounding of the stored value gives `2.0`, while `-1.05` is stored
-   just above the tie and rounds to `-1.1`.
+1. **Tie mode.** When a tie is exactly representable in binary, such as 2.5 at
+   zero decimals, `formatC()` uses half-to-even behavior and returns 2.
+2. **Binary representation.** Most one-decimal ties are not stored exactly.
+   For example, 2.05 is stored just below the intended tie, so formatting the
+   stored value produces 2.0. Other inputs can fall on the other side of the
+   intended tie.
 
-Net effect: you cannot predict tie direction by reading source. At zero
-decimals the same call renders `-0.5` as `-0` in a reported cell.
-
-The agent adds value by linking scan, probe, and binary detail, but it can
-also invent a tidy wrong mechanism. The contract tells it to report observed
-divergence and frequency, not assert a mechanism.
+These causes interact, so source inspection alone cannot predict every
+direction. At zero decimals, the same call can also display -0.5 as `-0`,
+which violates the negative-zero clause.
 
 ### Canonical artifact: Benchmark report
 
-| Criterion | Result |
-|---|---|
-| Seeded fixture violation detected | 1 of 1 |
-| False positives on the compliant fixture | 0 |
-| Findings carrying a reproducible probe | 3 of 3 |
-| Candidate sites requiring human or agent triage | 3 of 6 |
-| Coverage reported | Yes: 24 files, rule 1 only |
-| Rules left unchecked | BR-NUM-001.2 and BR-NUM-001.3 |
+- Seeded violation detected: 1 of 1.
+- False positives on the compliant fixture: 0.
+- Confirmed metalite sites with probes: 3 of 3.
+- Decimal-tie disagreements for the tested expression: 6 of 10.
+- Coverage reported: 24 R files; BR-NUM-001.1 only.
+- Explicit gaps: BR-NUM-001.2 and BR-NUM-001.3.
+- Limitation: the book does not distribute the scripts or evidence files
+  needed to rerun this report.
 
-Every number above can be re-derived at the pinned commit from the catalog and
-the probe shown earlier in this chapter. Decision: reviewer signs the benchmark;
-question: "do I trust this check enough to run it again?"
+The Test gate is human review of site triage, probe output, and coverage. If the
+reviewer accepts the evidence as sufficient for an advisory dry run, the
+accepted benchmark report initiates Deploy.
 
 ## Deploy --- Operationalize the workflow
 
-The workflow drafts the issue file and stops. Posting needs explicit approval:
-
-- **Not our repo.** Writing to `Merck/metalite` is outward-facing.
-- **Not their rule.** metalite documents no tie convention, so the finding is "does not implement our rule", not "has a bug".
-- **Not yet a defect.** The reviewer classifies it.
+Deployment in this design means preparing a review record and stopping before
+any external action. Posting to `Merck/metalite` would be inappropriate without
+explicit approval: it is another team's repository, metalite does not state
+BR-NUM-001 as its rule, and the evidence has not been classified as a defect by
+its maintainers.
 
 ### Canonical artifact: Release record
 
-| Field | Value |
-|---|---|
-| Release model | Manual, advisory. Run on demand by a reviewer |
-| Versions | Rule contract BR-NUM-001 v1.0; scan and probe scripts as committed |
-| Scope | One R source tree per run |
-| Permissions | Read source, run two R scripts, write a draft file. No network writes |
-| Output | Findings, probe output, coverage statement, drafted issue body |
-| Accountable reviewer | The rule owner named in the contract |
-| Reversal | Stop running it |
+- **Release model:** Manual and advisory; a reviewer requests one run.
+- **Versioned scope:** BR-NUM-001 v1.0 and the reviewed prototype design.
+- **Permissions:** Read source, execute an approved local implementation, and
+  prepare a draft record; no network writes.
+- **Output:** Findings, probes, coverage, limitations, and a draft issue body.
+- **Accountable human:** The named rule owner approves classification and any
+  communication.
+- **Reversal:** Stop the manual practice; no source or external system has been
+  changed.
 
-The drafted issue for metalite records the rule and its version, the three
-locations, the probe output, both causes of the divergence, and the coverage
-statement. It is marked as a dry run and was not submitted.
+No implementation is released by this book. The metalite issue body is a dry
+run containing the three sites, 6-of-10 result, two distinct causes, coverage,
+and rule version. It was not submitted.
+
+The Deploy gate is explicit rule-owner approval of the record. An approved
+manual practice would initiate monitoring; it would not authorize issue
+creation.
 
 ## Maintain --- Monitor and improve
 
-Four gaps the next cycle must fix: knowledge in one head, runs not comparable,
-trigger by memory, recurring triage cost.
+The one-off exercise reveals four workflow risks: the procedure depends on one
+reviewer's memory, runs are not comparable, the trigger is easy to forget, and
+approved-helper triage repeats each time.
 
 ### Canonical artifact: Monitoring report
 
-The first cycle's monitoring output is a single decision: the detection logic
-works and the delivery mechanism does not. The rule owner accepts the findings
-and asks for the procedure to be packaged so that it survives its author.
+There is no operating history because the book distributes no workflow. The
+monitoring report is therefore specified, not populated. Its starting
+conclusion would be supported by the cycle-1 evidence: the broader site
+definition produced a real finding, while the delivery method is not durable.
 
-That accepted decision initiates a second cycle, which is
-@sec-workflow-rounding-skill.
+The rule owner must decide whether that evidence justifies a second design
+cycle. Acceptance of the portability problem---not an automated event---starts
+@sec-workflow-rounding-skill. Future monitoring would track coverage,
+classifications, false positives, unresolved precision, and review effort.
 
 ## Summary
 
-One prompt found a real divergence, and would also have reported metalite clean
-if rounding were assumed to mean `round()`. The value sits in the versioned
-site definition, the tie test, and the human decision. The prompt is the least
-durable part, which is why the next cycle replaces it.
+The prompt mattered because it started the review, but the rule definition
+changed the result. At the pinned metalite commit, a `round()` search found
+nothing while three `formatC()` sites affected reported values; 6 of 10 tie
+probes diverged because tie mode and binary representation are separate causes.
+
+That is this chapter's main finding. The next cycle asks how to preserve the
+definition, checks, coverage, and human stop point in a reusable design without
+pretending that the book ships an implementation.
