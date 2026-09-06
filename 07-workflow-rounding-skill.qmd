@@ -2,10 +2,11 @@
 
 ::: callout-tip
 ## 30-second takeaway
-The first cycle found three hidden rounding sites, but the procedure still
-depended on one reviewer. A skill design can make the rule, scan, tie probe,
-coverage, and human stop point portable. This book specifies that design; it
-does not distribute or run the skill.
+The first cycle found one report-filtering rounding decision and seven display
+rounding sites, but the procedure still depended on one reviewer. A skill
+design can make the rule, scan, tie probe, coverage, and human stop point
+portable. This book specifies that design; it does not distribute or run the
+skill.
 :::
 
 During a study handoff, a statistical programmer inherits an R reporting
@@ -13,9 +14,12 @@ package and must repeat the earlier rounding review. The review note preserves
 the conclusion, but not the method: which functions to search, which ties to
 test, how to explain a mismatch, or when to stop before posting an issue.
 
-At metalite commit `85757ba1bf5d863971e142b7872b6f92c265d6ef`,
-@sec-workflow-rounding found three `formatC()` sites and 6 divergences among 10
-tie probes. Repeating that result requires preserving more than the prompt.
+At `metalite.ae` commit `9647930642f7060bbb28779468dbb9f04f141901`,
+@sec-workflow-rounding found one `round()` site that controls row inclusion and
+seven `formatC()` sites that format displayed statistics. Under R 4.6.1, the
+one-decimal probes diverged from BR-NUM-001.1 for 10 of 10 `round()` results and
+6 of 10 `formatC()` results. Repeating those results requires preserving more
+than the prompt.
 
 This second lifecycle turn designs an agent skill. For a Biometrics reader, the
 skill can be understood as a small review kit: instructions, the approved rule,
@@ -25,9 +29,9 @@ able to use the same procedure without reconstructing it from memory.
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
 installable skill, scripts, small test programs, evidence files, an automated
-check on source-code changes, or a scheduled job. The cycle-1 metalite evidence
-is the baseline for a future benchmark; it is not evidence that the skill
-described here has been built or run.
+check on source-code changes, or a scheduled job. The cycle-1 `metalite.ae`
+evidence is the baseline for a future benchmark; it is not evidence that the
+skill described here has been built or run.
 :::
 
 The chapter has one main finding: **a reusable check must package its context
@@ -50,8 +54,8 @@ and limits, not only its detection logic.**
 
 ### Turn observed weaknesses into requirements
 
-Cycle 1 exposed four weaknesses in the review process, not four more metalite
-defects. Cycle 2 therefore needs to:
+Cycle 1 exposed four weaknesses in the review process, not additional
+`metalite.ae` defects. Cycle 2 therefore needs to:
 
 - replace reviewer memory with a written procedure;
 - report coverage for every run;
@@ -72,8 +76,8 @@ defects. Cycle 2 therefore needs to:
 - **Human decision:** The rule owner approves the procedure, classifications,
   policy changes, release, and external communication.
 - **Success measures:** A new reviewer reproduces the answer key for the small
-  test programs and the pinned metalite result; every run states coverage and
-  unchecked rules.
+  test programs and the pinned `metalite.ae` result; every run states coverage,
+  execution environment, and unchecked rules.
 - **Main risk:** A polished skill description can create confidence before the
   underlying checks have been implemented and benchmarked.
 
@@ -123,7 +127,7 @@ conditions; the rule reference carries the full rule and its version.
 - **Inputs:** Target commit, source folder, rule contract, catalog, reference
   behavior, and any approved allowlist.
 - **Fixed, repeatable checks (deterministic work):** Run the catalog scan and
-  two-sign decimal-tie probe.
+  two-sign decimal-tie probes at each site's precision.
 - **Agent work:** Apply the site definition, read context, explain divergence,
   and draft the report.
 - **Required output:** Candidates, triage reasons, probes, coverage, unchecked
@@ -162,8 +166,9 @@ rounding-rule-review/
 The proposed procedure must preserve three decisions from cycle 1:
 
 1. Search beyond `round(` because formatting functions can also round reported
-   values.
-2. Report how often results diverge and explain tie mode and binary
+   values, and classify whether each site affects display or a report decision.
+2. Probe both direct rounding and formatting behavior at the precision used by
+   each site. Record the R version, and explain tie mode and binary
    representation as distinct causes.
 3. Write findings to a draft and stop before any source change or GitHub issue.
 
@@ -191,16 +196,17 @@ this prompt to [arena.ai](https://arena.ai/agent):
 Review the R source at the fixed commit below for BR-NUM-001.1: values intended
 as exact decimal ties must round half away from zero.
 
-A rounding site is any call that can change a reported numeric value at an
-exact decimal tie. Formatting functions can round as a side effect of display,
-so do not limit the search to round(). Test decimal ties of both signs. Report
-file and line, observed results, coverage, and unchecked rules. Explain tie
-mode and binary representation separately.
+A rounding site is any call that can change a numeric value displayed in a
+report or used to decide which rows the report includes. Formatting functions
+can round as a side effect of display, so do not limit the search to round().
+Test decimal ties of both signs at the precision used by each site. Report file
+and line, observed results, R version, coverage, and unchecked rules. Explain
+tie mode and binary representation separately.
 
 Draft a GitHub issue if evidence diverges from the rule, but do not post it. Do
 not modify the repository or propose a code change.
 
-https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef
+https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901
 ```
 
 Arena.ai cannot create the GitHub issue. Responses can vary, so compare the
@@ -219,19 +225,19 @@ occurred.
 
 ### What a future implementation must reproduce
 
-No skill has been run. The accepted cycle-1 results at metalite commit
-`85757ba1bf5d863971e142b7872b6f92c265d6ef` are only the answer key for a
-future test. A future implementation would pass only if it met every criterion
-below.
+No skill has been run. The accepted cycle-1 results at `metalite.ae` commit
+`9647930642f7060bbb28779468dbb9f04f141901` are only the answer key for a future
+test. A future implementation would pass only if it met every criterion below.
 
 | Acceptance criterion | Required result |
 |---|---|
-| Test example with one deliberate violation | Detect 1 of 1 violation |
+| Test example with one deliberate `formatC()` violation | Detect 1 of 1 violation |
+| Test example with one deliberate `round()` filtering violation | Detect 1 of 1 violation |
 | Compliant test example | Report 0 false findings |
 | Approved-helper test example | Record 2 candidates and 0 findings |
-| Pinned metalite source | Reproduce 3 confirmed `formatC()` sites |
-| Pinned tie probe | Reproduce 6 divergences in 10 inputs |
-| Coverage | Name files examined, files not examined, and rule version |
+| Pinned `metalite.ae` source | Reproduce 1 in-scope `round()` and 7 in-scope `formatC()` sites |
+| Pinned one-decimal tie probe | Under R 4.6.1 on arm64 macOS, reproduce 10 `round()` and 6 `formatC()` divergences in 10 inputs |
+| Coverage | Name 27 files examined, any exclusions, 21 candidates, rule version, and R version |
 | Known gaps | State that BR-NUM-001.2 and BR-NUM-001.3 are unchecked |
 | Reproducibility | A reviewer unfamiliar with cycle 1 obtains the same answer key |
 
@@ -279,7 +285,8 @@ coverage and review burden. A schedule should not rerun unchanged source.
 - **Scope:** One identified R source folder and commit per run.
 - **Permissions:** Read source, run approved local scripts, and write a draft
   report; no network writes.
-- **Output:** Versioned draft findings, coverage, limitations, and run log.
+- **Output:** Versioned draft findings, coverage, execution environment,
+  limitations, and run log.
 - **Human gate:** The rule owner approves release, classifications, exceptions,
   and any external communication.
 - **Reversal:** Disable the approved trigger and retain the run record.
@@ -319,10 +326,11 @@ measured coverage gap is the event that starts the next cycle.
 
 ## Summary
 
-Cycle 1 established the evidence: three `formatC()` sites and 6 divergences in
-10 decimal-tie probes at the pinned metalite commit. Cycle 2 establishes what a
-reusable procedure would need: a discoverable `SKILL.md`, versioned rule,
-deterministic scripts, explicit coverage, known limits, and human gates.
+Cycle 1 established the evidence: one report-filtering `round()` site, seven
+display `formatC()` sites, and two different probe results at the pinned
+`metalite.ae` commit. Cycle 2 establishes what a reusable procedure would need:
+a discoverable `SKILL.md`, versioned rule, deterministic scripts, explicit
+coverage, known limits, and human gates.
 
 Repeatability requires packaging context and limits with the check.
 Implementation, independent benchmarking, release, and operating evidence

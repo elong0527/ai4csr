@@ -1,24 +1,30 @@
-# Finding hidden rounding sites with one prompt {#sec-workflow-rounding}
+# Finding hidden rounding decisions with one prompt {#sec-workflow-rounding}
 
 ::: callout-tip
 ## 30-second takeaway
-A search for `round()` can miss real rounding. At a fixed metalite commit,
-`formatC()` rounded reported values at three sites, and 6 of 10 decimal-tie
-probes diverged from the specified rule. The durable result is the rule,
-boundary test, coverage statement, and human decision---not the prompt alone.
+A search for `round()` can miss real rounding. At a fixed `metalite.ae` commit,
+that search found one report-filtering site, while a broader review found seven
+`formatC()` sites that round displayed statistics. One-decimal probes diverged
+from the specified rule for 10 of 10 `round()` results and 6 of 10 `formatC()`
+results. The durable result is the rule, boundary test, coverage statement, and
+human decision---not the prompt alone.
 :::
 
-A Biometrics team prepares the same efficacy table in SAS and R. Most values
-agree, but a reviewer notices that 2.05 appears as 2.1 in one output and 2.0 in
-the other. At one decimal place, 2.05 is halfway between 2.0 and 2.1; this
-halfway case is called a decimal tie. The two programs handled it differently,
-and nobody discovered the difference until table review.
+A Biometrics team prepares an adverse-event table in SAS and R. The display
+specification calls for one decimal place and includes terms whose percentage
+meets a reporting threshold. A reviewer notices that 2.05 percent becomes 2.1
+under the specified rule but 2.0 in the R result. At one decimal place, 2.05 is
+halfway between 2.0 and 2.1; this halfway case is called a decimal tie. The
+difference can change both a displayed statistic and whether a row passes the
+reporting threshold.
 
 This is not only a choice between SAS `ROUND()` and R `round()`. R functions
 that format a number for display can also round it. In this example,
-`formatC(x, format = "f", digits = 1)` displays 2.05 as 2.0. A review limited
-to calls named `round()` would miss the problem. The Test section explains why
-the result can differ.
+`round(2.05, 1)` returns 2.0, and
+`formatC(2.05, format = "f", digits = 1)` displays 2.0. A review limited to
+calls named `round()` would find the threshold decision but miss the display
+helpers used for percentages, estimates, confidence intervals, p-values, and
+exposure-adjusted event rates. The Test section explains why results can differ.
 
 This chapter is the first of two passes through the AI-first SDLC from
 @sec-ai-first-sdlc. It turns the review question into a bounded check and tests
@@ -27,22 +33,22 @@ learned to design a reusable agent skill.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The workflow is specified, not distributed. The book includes the rule,
-prototype design, and results verified at the pinned metalite commit, but it
+prototype design, and results verified at the pinned `metalite.ae` commit, but it
 does not include runnable scripts or evidence files. The GitHub issue is a dry
 run that was not submitted. Deployment is a proposed manual practice, not an
 operating service.
 :::
 
-The chapter has one main finding: **a rounding rule must cover formatting
-functions, not just functions named `round()`.**
+The chapter has one main finding: **a rounding rule must cover report decisions
+and formatting functions, not just functions named `round()`.**
 
 - **Problem:** Rounding rules can be applied inconsistently across programs,
   languages, and studies.
 - **Learning objective:** Show how a short review request becomes a bounded
   workflow with an explicit rule and reproducible evidence.
-- **Workflow boundary:** Begin when a reviewer asks whether one folder of R files
-  follows the approved tie rule; end when a named human classifies each
-  finding.
+- **Workflow boundary:** Begin when a reviewer asks whether one folder of R
+  files follows the approved tie rule for reported values and row-selection
+  decisions; end when a named human classifies each finding.
 - **Non-goals:** Validate statistical methods, replace independent QC, review
   every programming standard, change source data, or approve exceptions.
 - **Why this is well defined:** One rule, one pinned source folder, observable
@@ -61,16 +67,18 @@ rule unstated.
 
 A reviewer might begin with this under-specified request:
 
-> At metalite commit 85757ba1bf5d863971e142b7872b6f92c265d6ef, verify whether
-> the R source properly uses round half away from zero. If not, identify the
-> source and draft a GitHub issue to report the finding.
+> At `metalite.ae` commit 9647930642f7060bbb28779468dbb9f04f141901,
+> verify whether the R source uses round half away from zero for reported
+> values and report-filtering decisions. If not, identify the source and draft
+> a GitHub issue to report the finding.
 
 The request does not yet say what counts as a rounding site, which source files
 are in scope, what test to run, or who decides whether a difference is a defect.
 
 The review target is
-[`Merck/metalite` at a fixed commit](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef),
-a public R package that builds ADaM-based analysis and reporting tables.
+[`Merck/metalite.ae` at a fixed commit](https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901),
+a public R package that analyzes adverse events from ADaM data and produces
+tables, listings, and figures using the `metalite` data structure.
 
 ### Try it yourself
 
@@ -78,13 +86,13 @@ Send the following prompt to [arena.ai](https://arena.ai/agent) before reading
 the result in this chapter:
 
 ```text
-Review the R source of the metalite package at the commit linked below. Verify
-whether it follows this business rule: values intended as exact decimal ties
-must round half away from zero, as SAS ROUND() does.
+Review the R source of the metalite.ae package at the commit linked below.
+Verify whether it follows this business rule: values intended as exact decimal
+ties must round half away from zero, as SAS ROUND() does.
 
-A rounding site is any call that can change a reported numeric value at an
-exact decimal tie. Formatting functions can round as a side effect of display,
-so do not limit the search to round().
+A rounding site is any call that can change a numeric value displayed in a
+report or used to decide which rows the report includes. Formatting functions
+can round as a side effect of display, so do not limit the search to round().
 
 Report every candidate location with file and line number. For each location
 that rounds a reported numeric value, show evidence at decimal ties of both
@@ -92,10 +100,10 @@ signs. Distinguish tie-mode differences from effects of binary representation.
 If the rule is violated, draft a GitHub issue, but do not post it.
 
 Repository at fixed commit:
-https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef
+https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901
 
 R source directory at the same commit:
-https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef/R
+https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901/R
 
 Do not propose a code change. Do not modify any repository. State what was and
 was not checked.
@@ -114,8 +122,8 @@ answer key. Instead, ask:
 
 The rule owner records the following brief:
 
-- **Objective:** Find calls that can round a reported numeric value and test
-  them against the half-away-from-zero rule.
+- **Objective:** Find calls that can round a displayed value or a value used in
+  a report decision and test them against the half-away-from-zero rule.
 - **Inputs:** One R source folder, a versioned rule, and an approved reference
   implementation.
 - **Output:** Located findings, probe results, coverage, and known gaps.
@@ -136,15 +144,15 @@ performing. The accepted workflow brief initiates Design.
 ### Define the business rule before refining the prompt
 
 The phrase "properly uses round half away from zero" does not say which calls
-count as rounding sites. At the pinned metalite commit, a search of the R source
-for `round(` returns no matches. That is not a clean result: formatting
-functions still round reported numbers. The team must first define a rounding
+count as rounding sites. At the pinned `metalite.ae` commit, a search of the R
+source for `round(` returns one match. That is not complete coverage: formatting
+functions also round reported numbers. The team must first define a rounding
 site, then interpret the search.
 
 ### Business rule: BR-NUM-001
 
-BR-NUM-001 is an illustrative contract, not an approved industry or metalite
-standard. Version 1.0 contains three rules:
+BR-NUM-001 is an illustrative contract, not an approved industry or
+`metalite.ae` standard. Version 1.0 contains three rules:
 
 > **BR-NUM-001.1:** Values intended as exact decimal ties are rounded half away
 > from zero. A displayed value is never a negative zero.
@@ -161,10 +169,11 @@ comparison behavior. This is not an industry endorsement.
 
 The contract also defines the scope that the original prompt omitted:
 
-> A rounding site is any call that can change a reported numeric value at an
-> exact decimal tie. Formatting functions round as a side effect of display,
-> so `formatC()`, `sprintf()`, and `format()` are candidate rounding sites. A
-> package that never calls `round()` can still violate the rule.
+> A rounding site is any call that can change a numeric value displayed in a
+> report or used to decide which rows the report includes. Formatting functions
+> round as a side effect of display, so `formatC()`, `sprintf()`, and `format()`
+> are candidate rounding sites. Finding one `round()` call does not establish
+> complete coverage.
 
 ### Canonical artifact: Task contract
 
@@ -173,9 +182,9 @@ The contract also defines the scope that the original prompt omitted:
 - **Required context:** Target commit, R source, BR-NUM-001 v1.0, and approved
   reference behavior.
 - **Fixed, repeatable checks (deterministic work):** Scan a catalog of possible
-  rounding functions and probe candidates at decimal ties.
-- **Agent work:** Decide whether each candidate affects a reported numeric value
-  and explain any divergence.
+  rounding and numeric-to-text functions and probe candidates at decimal ties.
+- **Agent work:** Decide whether each candidate affects a displayed numeric
+  value or a report decision and explain any divergence.
 - **Required output:** `file:line`, source expression, probe result, cause,
   coverage, and unchecked rules.
 - **Boundaries:** Read and test; do not edit source, post an issue, or approve an
@@ -193,17 +202,17 @@ Build.
 
 The prototype has three steps: find possible rounding calls, test each one with
 decimal ties, and read the surrounding code to see whether it affects a
-reported value. The first two steps are fixed checks. The third requires
-reviewable agent judgment and human confirmation. The book specifies these
-components but does not distribute them.
+displayed value or report decision. The first two steps are fixed checks. The
+third requires reviewable agent judgment and human confirmation. The book
+specifies these components but does not distribute them.
 
 ### Step 1: Scan for candidates
 
 The proposed scanner uses a broad checklist. It includes direct calculation
 functions such as `round()` and `signif()`, formatting functions such as
-`formatC()` and `sprintf()`, and conversion functions such as
-`as.character()`. The scan produces candidates, not findings: a listed call may
-format a label rather than a reported number.
+`formatC()`, `sprintf()`, `format()`, and `prettyNum()`, and conversion
+functions such as `as.character()`. The scan produces candidates, not findings:
+a listed call may format a label rather than a reported number.
 
 ### Step 2: Compare each site with the agreed result
 
@@ -227,9 +236,9 @@ round_half_away <- function(x, digits = 0) {
 ### Step 3: Classify candidates in context
 
 The agent reads the surrounding source and answers one question: does this
-candidate round a reported numeric value? This provisional classification is
-called triage. A human reviewer confirms or changes it. Fixed test results and
-agent judgment remain labeled separately.
+candidate round a displayed numeric value or a value used in a report decision?
+This provisional classification is called triage. A human reviewer confirms or
+changes it. Fixed test results and agent judgment remain labeled separately.
 
 ### Canonical artifact: Prototype
 
@@ -243,56 +252,76 @@ source.
 
 ### Establish expected behavior with small test examples
 
-Before inspecting metalite, the benchmark uses three small R programs with
-known expected results. The compliant program produced no candidates or
-findings. The program with a direct `formatC()` call produced one candidate and
-the expected finding. The program using the approved helper produced two
-candidates but no findings. That result shows the cost of a broad search: it
-avoids a false clean report, but a reviewer must dismiss candidates that
-follow the approved rule.
+Before inspecting `metalite.ae`, the benchmark uses four small R programs with
+known expected results. The compliant program produces no candidates or
+findings. One program uses `formatC()` for display, and another uses `round()`
+before a threshold comparison; each produces one candidate and the expected
+finding. The program using the approved helper produces two candidates but no
+findings. These examples show the cost of a broad search: it avoids a false
+clean report, but a reviewer must dismiss candidates that follow the approved
+rule.
 
-### Key finding at the pinned metalite commit
+### Key finding at the pinned metalite.ae commit
 
-All metalite locations and results below refer to commit
-[`85757ba1bf5d863971e142b7872b6f92c265d6ef`](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef)
-(2025-09-17). They must be reverified before use with another commit.
+All `metalite.ae` locations and results below refer to commit
+[`9647930642f7060bbb28779468dbb9f04f141901`](https://github.com/Merck/metalite.ae/tree/9647930642f7060bbb28779468dbb9f04f141901)
+(2026-09-03). They must be reverified before use with another commit.
 
 The evidence narrows in three steps:
 
-1. A search for `round(` found zero matches.
-2. The broader scan found six candidates.
-3. Context review excluded three calls that format names, labels, or factor
-   levels, leaving three calls that round reported values.
+1. A search for `round(` found one match, where a rounded percentage controls
+   whether an adverse-event row passes a reporting threshold.
+2. A catalog scan for seven function names found 21 candidate calls: one
+   `round()`, eight `formatC()`, one `sprintf()`, and 11 `as.character()` calls.
+3. Context review excluded 13 calls that operate on character or structural
+   values, leaving eight in-scope sites: one report-filtering decision and seven
+   display-formatting calls.
 
-The excluded calls were `R/adam_mapping.R:151`, `R/bind_rows2.R:74`, and
-`R/collect_n_subject.R:51`. The three confirmed sites all use `formatC()`:
+The confirmed sites make the business impact visible:
 
-| Confirmed site | Reported value |
+| Confirmed site | Role in the adverse-event report |
 |---|---|
-| `R/collect_n_subject.R:248` | Summary statistic formatted with `decimal_places_summary` |
-| `R/collect_n_subject.R:263` | Percentage formatted with `decimal_places_percent` |
-| `R/collect_n_subject.R:304` | Percentage formatted with `decimal_places_percent` |
+| [`R/format_ae_specific.R:330`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/format_ae_specific.R#L330) | Round a percentage before applying the row-inclusion threshold |
+| [`R/fmt.R:33`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L33) | Format percentages and total exposure |
+| [`R/fmt.R:75`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L75) | Format an estimate or mean |
+| [`R/fmt.R:79`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L79) | Format a standard deviation or standard error |
+| [`R/fmt.R:99`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L99) | Format a confidence-interval lower limit |
+| [`R/fmt.R:100`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L100) | Format a confidence-interval upper limit |
+| [`R/fmt.R:122`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L122) | Format a p-value above the display cutoff |
+| [`R/format_ae_exp_adj.R:208`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/format_ae_exp_adj.R#L208) | Format an exposure-adjusted event rate |
 
-Both precision arguments default to one decimal. In the probe, `observed` is
-what R displayed and `approved` is what the rule requires:
+The excluded `formatC()` call receives text that is already formatted rather
+than a numeric value
+([`R/fmt.R:37`](https://github.com/Merck/metalite.ae/blob/9647930642f7060bbb28779468dbb9f04f141901/R/fmt.R#L37)).
+The `sprintf()` call builds JavaScript, and the 11 `as.character()` calls do not
+apply a specified decimal precision. They remain recorded as reviewed
+candidates rather than silently disappearing from the coverage statement.
+
+The source accepts different precision arguments, so a complete implementation
+would construct decimal ties at the precision used by each call. The compact
+probe below uses one decimal place to compare the two underlying expressions.
+It was run with R 4.6.1 on arm64 macOS. `formatC` and `round` are observed
+results; `approved` is what BR-NUM-001.1 requires:
 
 ```text
-expression: formatC(x, format = "f", digits = 1)
+expressions:
+  formatC(x, format = "f", digits = 1)
+  round(x, digits = 1)
 
-       input      observed      approved  agree
-      -76.05         -76.0         -76.1  NO
-       -3.05          -3.0          -3.1  NO
-       -2.05          -2.0          -2.1  NO
-       -1.05          -1.1          -1.1  yes
-       -0.05          -0.1          -0.1  yes
-        0.05           0.1           0.1  yes
-        1.05           1.1           1.1  yes
-        2.05           2.0           2.1  NO
-        3.05           3.0           3.1  NO
-       76.05          76.0          76.1  NO
+ input  formatC  round  approved
+-76.05    -76.0  -76.0     -76.1
+ -3.05     -3.0   -3.0      -3.1
+ -2.05     -2.0   -2.0      -2.1
+ -1.05     -1.1   -1.0      -1.1
+ -0.05     -0.1   -0.0      -0.1
+  0.05      0.1    0.0       0.1
+  1.05      1.1    1.0       1.1
+  2.05      2.0    2.0       2.1
+  3.05      3.0    3.0       3.1
+ 76.05     76.0   76.0      76.1
 
-verdict: FAIL
-disagreements: 6 of 10
+formatC disagreements: 6 of 10
+round disagreements: 10 of 10
 ```
 
 ### Keep the two causes distinct
@@ -301,24 +330,29 @@ The divergence is not explained by one blanket claim about "banker's
 rounding." One cause determines the direction at a true tie; the other places
 the stored number slightly above or below the intended tie:
 
-1. **Tie mode.** When a tie is exactly representable in binary, such as 2.5 at
-   zero decimals, `formatC()` uses half-to-even behavior and returns 2.
+1. **Tie mode.** The [Base R documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html)
+   describes `round()` as using round-to-nearest-even at a true tie. When a tie
+   is exactly representable in binary, such as 2.5 at zero decimals, both
+   tested expressions return 2 rather than the rule's 3.
 2. **Binary representation.** Most one-decimal ties are not stored exactly.
    For example, 2.05 is stored just below the intended tie, so formatting the
    stored value produces 2.0. Other inputs can fall on the other side of the
    intended tie.
 
 These causes interact, so source inspection alone cannot predict every
-direction. At zero decimals, the same call can also display -0.5 as `-0`,
-which violates the negative-zero clause.
+direction. The probe also exposes the negative-zero risk: formatting the
+one-decimal result of `round(-0.05, 1)` produces `-0.0`. At zero decimals,
+`formatC(-0.5, digits = 0, format = "f")` produces `-0`. Both violate the
+negative-zero clause.
 
 ### Canonical artifact: Benchmark report
 
-- Seeded violation detected: 1 of 1.
+- Seeded display and filtering violations detected: 2 of 2.
 - False positives on the compliant small test program: 0.
-- Confirmed metalite sites with probes: 3 of 3.
-- Decimal-tie disagreements for the tested expression: 6 of 10.
-- Coverage reported: 24 R files; BR-NUM-001.1 only.
+- Answer-key `metalite.ae` sites identified: 8 of 8.
+- One-decimal probe disagreements: 6 of 10 for `formatC()` and 10 of 10
+  for `round()` under R 4.6.1 on arm64 macOS.
+- Coverage reported: 27 R files and 21 catalog candidates; BR-NUM-001.1 only.
 - Explicit gaps: BR-NUM-001.2 and BR-NUM-001.3.
 - Limitation: the book does not distribute the scripts or evidence files
   needed to rerun this report.
@@ -330,10 +364,10 @@ accepted benchmark report initiates Deploy.
 ## Deploy --- Operationalize the workflow
 
 Deployment in this design means preparing a review record and stopping before
-any external action. Posting to `Merck/metalite` would be inappropriate without
-explicit approval: it is another team's repository, metalite does not state
-BR-NUM-001 as its rule, and the evidence has not been classified as a defect by
-its maintainers.
+any external action. Posting to `Merck/metalite.ae` would be inappropriate
+without explicit approval: it is another team's repository, `metalite.ae` does
+not state BR-NUM-001 as its rule, and the evidence has not been classified as a
+defect by its maintainers.
 
 ### Canonical artifact: Release record
 
@@ -347,9 +381,9 @@ its maintainers.
 - **Reversal:** Stop the manual practice; no source or external system has been
   changed.
 
-No implementation is released by this book. The metalite issue body is a dry
-run containing the three sites, 6-of-10 result, two distinct causes, coverage,
-and rule version. It was not submitted.
+No implementation is released by this book. The `metalite.ae` issue body is a
+dry run containing the eight sites, both probe results, the two distinct causes,
+coverage, and the rule version. It was not submitted.
 
 The Deploy gate is explicit rule-owner approval of the record. An approved
 manual practice would initiate monitoring; it would not authorize issue
@@ -376,9 +410,11 @@ classifications, false positives, unresolved precision, and review effort.
 ## Summary
 
 The prompt mattered because it started the review, but the rule definition
-changed the result. At the pinned metalite commit, a `round()` search found
-nothing while three `formatC()` sites affected reported values; 6 of 10 tie
-probes diverged because tie mode and binary representation are separate causes.
+changed the result. At the pinned `metalite.ae` commit, a `round()` search found
+one filtering decision, while broader review found seven `formatC()` sites that
+affect displayed values. The one-decimal probes produced 10 divergences in 10
+`round()` results and 6 in 10 `formatC()` results. Tie mode and binary
+representation remain separate causes.
 
 That is this chapter's main finding. The next cycle asks how to preserve the
 definition, checks, coverage, and human stop point in a reusable design without

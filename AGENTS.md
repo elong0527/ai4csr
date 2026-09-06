@@ -58,7 +58,7 @@ Order the current and planned examples by increasing workflow maturity:
    workflow. This example spans two chapters because it runs the lifecycle
    loop twice. `06-workflow-rounding.qmd` is the first cycle, in which a single
    prompt and two deterministic scripts produce a real finding in
-   `Merck/metalite`. `07-workflow-rounding-skill.qmd` is the second cycle, in
+   `Merck/metalite.ae`. `07-workflow-rounding-skill.qmd` is the second cycle, in
    which the same check is packaged as an agent skill. Keep the two chapters as
    consecutive turns of one loop rather than two independent examples.
 3. **Agentic R code review:** survey and benchmark mature code-review workflows
@@ -198,16 +198,16 @@ Both chapters are at design-pattern maturity.
   `scripts/`, `references/`, and `assets/` directories, and a `name` that
   matches the directory name.
 - Every reader-facing prompt and every quoted file, line number, or result must
-  be pinned to a commit SHA, never to a branch. metalite is maintained, so an
+  be pinned to a commit SHA, never to a branch. metalite.ae is maintained, so an
   unpinned reference can silently stop reproducing. The chapters currently pin
-  `85757ba1bf5d863971e142b7872b6f92c265d6ef` (2025-09-17). Changing it means
+  `9647930642f7060bbb28779468dbb9f04f141901` (2026-09-03). Changing it means
   re-verifying every quoted line number and probe result in the same change.
 - The "Try it yourself" sections send a prompt to <https://arena.ai/agent>,
   matching the demonstration in `04-ai-agent.qmd`. State that no GitHub issue
   can be created there, and never assert a specific agent response. Prompt
   results vary between runs, and that variability is the point being taught.
 - The drafted GitHub issue is a **dry run**. It has not been submitted to
-  `Merck/metalite`, and BR-NUM-001 is an illustrative contract rather than an
+  `Merck/metalite.ae`, and BR-NUM-001 is an illustrative contract rather than an
   approved standard. Do not post it, and do not describe it as filed.
 - Automation triggers in the Deploy section of `07-workflow-rounding-skill.qmd`
   are a design. No CI workflow or scheduled job is committed. Do not add one
