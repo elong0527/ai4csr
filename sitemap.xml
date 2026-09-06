@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ai4csr.org/index.html</loc>
-    <lastmod>2026-09-05T23:30:12.048Z</lastmod>
+    <lastmod>2026-09-06T00:48:32.646Z</lastmod>
   </url>
   <url>
     <loc>https://ai4csr.org/01-preface.html</loc>
-    <lastmod>2026-09-05T23:30:12.043Z</lastmod>
+    <lastmod>2026-09-06T00:48:32.642Z</lastmod>
   </url>
   <url>
     <loc>https://ai4csr.org/02-ai-first.html</loc>
-    <lastmod>2026-09-05T23:30:12.043Z</lastmod>
+    <lastmod>2026-09-06T00:48:32.642Z</lastmod>
   </url>
   <url>
     <loc>https://ai4csr.org/03-principle.html</loc>
-    <lastmod>2026-09-05T23:30:12.043Z</lastmod>
+    <lastmod>2026-09-06T00:48:32.642Z</lastmod>
   </url>
   <url>
     <loc>https://ai4csr.org/04-ai-agent.html</loc>
-    <lastmod>2026-09-05T23:30:12.043Z</lastmod>
+    <lastmod>2026-09-06T00:48:32.642Z</lastmod>
   </url>
   <url>
-    <loc>https://ai4csr.org/05-workflow-rounding.html</loc>
-    <lastmod>2026-09-05T23:30:12.043Z</lastmod>
+    <loc>https://ai4csr.org/05-ai-first-sdlc.html</loc>
+    <lastmod>2026-09-06T00:48:32.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ai4csr.org/06-workflow-rounding.html</loc>
+    <lastmod>2026-09-06T00:48:32.642Z</lastmod>
   </url>
 </urlset>

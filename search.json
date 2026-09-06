@@ -109,7 +109,7 @@
     "href": "02-ai-first.html#start-with-one-bounded-workflow",
     "title": "2  AI-first workflows in Biometrics",
     "section": "2.5 Start with one bounded workflow",
-    "text": "2.5 Start with one bounded workflow\nAn organization does not need to begin with autonomous, end-to-end execution. A useful first workflow is small enough to observe closely but valuable enough to improve real work. It has a clear beginning and end, accessible source artifacts, a reviewable output, and a named person responsible for the decision.\nA workflow is bounded when the team can state:\n\nwhat event starts it;\nwhich artifacts and tools it may use;\nwhich actions the agent may take;\nwhat output it must return;\nwhen it must stop or escalate; and\nwho reviews the result and makes the decision.\n\nThe initial implementation should include a task contract, a deterministic foundation wherever exact rules can be encoded, and a reviewable result. It can begin in advisory mode and expand one boundary at a time. The applied examples develop these implementations through the shared AI-first SDLC rather than introducing a separate development sequence for each workflow.\nFor example, a first workflow for reviewing a changed table could be defined as follows:\n\n\n\n\n\n\n\nElement\nDefinition\n\n\n\n\nTrigger\nA pull request changes a table program or rendered output\n\n\nInputs\nCurrent SAP, output specification, analysis metadata, source code, and rendered table\n\n\nAgent task\nCompare the change with the requirements and identify inconsistencies or missing evidence\n\n\nRequired output\nStructured findings with source references, coverage, uncertainty, and recommended follow-up\n\n\nStop conditions\nA required artifact is missing, versions conflict, or the finding requires statistical judgment\n\n\nHuman decision\nThe accountable reviewer accepts, rejects, or investigates each finding\n\n\n\nThis workflow is deliberately narrow, but it establishes reusable capabilities: artifact retrieval, traceable review, structured findings, escalation, and a recorded human decision. Those capabilities become the foundation for broader AI-first workflows and for the AI-first software development lifecycle used by the applied examples in this book.",
+    "text": "2.5 Start with one bounded workflow\nAn organization does not need to begin with autonomous, end-to-end execution. A useful first workflow is small enough to observe closely but valuable enough to improve real work. It has a clear beginning and end, accessible source artifacts, a reviewable output, and a named person responsible for the decision.\nA workflow is bounded when the team can state:\n\nwhat event starts it;\nwhich artifacts and tools it may use;\nwhich actions the agent may take;\nwhat output it must return;\nwhen it must stop or escalate; and\nwho reviews the result and makes the decision.\n\nThe initial implementation should include a task contract, a deterministic foundation wherever exact rules can be encoded, and a reviewable result. It can begin in advisory mode and expand one boundary at a time. The applied examples develop these implementations through the shared AI-first SDLC rather than introducing a separate development sequence for each workflow.\nFor example, a first workflow for reviewing a changed table could be defined as follows:\n\n\n\n\n\n\n\nElement\nDefinition\n\n\n\n\nTrigger\nA pull request changes a table program or rendered output\n\n\nInputs\nCurrent SAP, output specification, analysis metadata, source code, and rendered table\n\n\nAgent task\nCompare the change with the requirements and identify inconsistencies or missing evidence\n\n\nRequired output\nStructured findings with source references, coverage, uncertainty, and recommended follow-up\n\n\nStop conditions\nA required artifact is missing, versions conflict, or the finding requires statistical judgment\n\n\nHuman decision\nThe accountable reviewer accepts, rejects, or investigates each finding\n\n\n\nThis workflow is deliberately narrow, but it establishes reusable capabilities: artifact retrieval, traceable review, structured findings, escalation, and a recorded human decision. Those capabilities become the foundation for broader AI-first workflows and for the lifecycle described in Chapter 5.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>AI-first workflows in Biometrics</span>"
@@ -208,7 +208,7 @@
     "href": "03-principle.html#putting-the-principles-together",
     "title": "3  Principles of trustworthy assistance",
     "section": "3.8 Putting the principles together",
-    "text": "3.8 Putting the principles together\nThe five principles form a connected system. Inspectable artifacts establish a shared basis for the work. Explicit state provides continuity. Events and rules make action predictable. Tools connect findings to evidence. Human judgment sets the boundary of authority and accountability.\nIf any one element is missing, the workflow becomes harder to evaluate and trust. Together, the principles provide the foundation for the example-first, AI-first SDLC used in the remainder of the book.",
+    "text": "3.8 Putting the principles together\nThe five principles form a connected system. Inspectable artifacts establish a shared basis for the work. Explicit state provides continuity. Events and rules make action predictable. Tools connect findings to evidence. Human judgment sets the boundary of authority and accountability.\nIf any one element is missing, the workflow becomes harder to evaluate and trust. Together, the principles provide the foundation for the example-first, AI-first SDLC defined in Chapter 5.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Principles of trustworthy assistance</span>"
@@ -285,87 +285,219 @@
     "href": "04-ai-agent.html#from-one-result-to-an-ai-first-workflow",
     "title": "4  Onboarding an AI agent",
     "section": "4.6 From one result to an AI-first workflow",
-    "text": "4.6 From one result to an AI-first workflow\nThe next design step is not a longer prompt. It is to turn the useful parts of the interaction into a bounded, repeatable process: define an event, version the task contract, retrieve the governing artifacts, execute deterministic checks, measure the result against a benchmark, record the human decision, and use that state in the next run.\nThe applied examples in this book make that transition through the shared AI-first SDLC. Each example begins with a bounded business problem and develops the artifacts, evidence, and decision points needed to move beyond a single prompt.",
+    "text": "4.6 From one result to an AI-first workflow\nThe next design step is not a longer prompt. It is to turn the useful parts of the interaction into a bounded, repeatable process: define an event, version the task contract, retrieve the governing artifacts, execute deterministic checks, measure the result against a benchmark, record the human decision, and use that state in the next run.\nThe applied examples in this book make that transition through the shared AI-first SDLC defined in Chapter 5. Each example begins with a bounded business problem and develops the artifacts, evidence, and decision points needed to move beyond a single prompt.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Onboarding an AI agent</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html",
-    "href": "05-workflow-rounding.html",
-    "title": "5  AI-first workflow for business rules",
+    "objectID": "05-ai-first-sdlc.html",
+    "href": "05-ai-first-sdlc.html",
+    "title": "5  The AI-first software development lifecycle",
     "section": "",
-    "text": "5.1 Why business rules need active enforcement\nClinical teams rely on business rules to produce consistent work across studies, tools, and programmers. The rules may govern derivations, naming, rounding, display conventions, or escalation. A rule is useful only when the team can tell where it applies, whether it was followed, and who decides an exception.\nThis chapter builds one small workflow for clinical analysis and reporting. When project code changes, the workflow checks three rules for numeric rounding and display precision. The example is intentionally narrow, but the design can be reused for other organizational rules.\nBusiness rules translate an organization’s policies, standards, and experience into repeatable constraints on how work is done. Many never appear in a protocol or SAP. They live in standards documents, review comments, and the memory of experienced colleagues.\nManual review is therefore fragile. It depends on the right reviewer noticing the right detail at the right time. As code moves between projects and languages, an unstated convention can quietly become several different implementations. An AI-first workflow makes the rule available at the moment of change, checks what can be checked mechanically, and brings unresolved edge cases to the subject matter expert for a decision.",
+    "text": "5.1 Why an AI-first workflow needs a lifecycle\nImagine that a statistical programmer asks an agent to review a table program. The agent finds a rounding problem and explains it clearly. The result is useful, but it leaves several questions unanswered. Will the same check run after the next code change? Which rules govern the review? What counts as a successful finding? Who decides whether the code must change? What happens when the agent misses a known problem?\nThese questions cannot be answered by improving the prompt alone. They concern the process used to develop and operate the workflow. That process is the AI-first software development lifecycle, abbreviated AI-first SDLC.\nThe word software includes more than application code. An AI-first workflow may contain R functions, model instructions, business rules, retrieval logic, tool interfaces, test cases, evaluation data, release configuration, and monitoring rules. It also depends on human roles and decisions. The lifecycle develops this complete working system.\nThe six stages in this chapter are adapted from the conventional SDLC and from Anthropic’s AI-Native SDLC Playbook, which connects stages through committed artifacts and human gates. Anthropic’s security perspective on its lifecycle also emphasizes bounded access, deterministic and agentic review, monitoring, and human accountability. The sources use the term AI-native; this book uses AI-first SDLC to keep the focus on developing a bounded AI-first workflow.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html#why-business-rules-need-active-enforcement",
-    "href": "05-workflow-rounding.html#why-business-rules-need-active-enforcement",
-    "title": "5  AI-first workflow for business rules",
+    "objectID": "05-ai-first-sdlc.html#distinguish-the-development-loop-from-the-agent-loop",
+    "href": "05-ai-first-sdlc.html#distinguish-the-development-loop-from-the-agent-loop",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.2 Distinguish the development loop from the agent loop",
+    "text": "5.2 Distinguish the development loop from the agent loop\nChapter 4 describes the execution loop inside an agent interaction: the model selects a step, uses a tool, observes the result, and continues. The AI-first SDLC is a different loop. It governs how the workflow itself changes over days, releases, and repeated use.\n\n\n\n\n\n\n\n\n\nAgent execution loop\nAI-first SDLC\n\n\n\n\nUnit of work\nOne assigned task\nThe workflow as a maintained system\n\n\nTime scale\nOne interaction or run\nMultiple development and operating cycles\n\n\nState\nMessages, plans, and tool results\nVersioned requirements, code, evaluations, releases, and monitoring decisions\n\n\nSuccess\nCompletion of the assigned task\nSustained performance against the workflow’s intended outcome\n\n\nHuman role\nReview exceptions and make the task decision\nApprove intent, design, benchmark, release, and improvement\n\n\n\nAn agent may assist in every SDLC stage, but it should not approve its own requirements, evaluation, release, or proposed policy change.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#artifacts-connect-the-six-stages",
+    "href": "05-ai-first-sdlc.html#artifacts-connect-the-six-stages",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.3 Artifacts connect the six stages",
+    "text": "5.3 Artifacts connect the six stages\nThe lifecycle uses six stages:\n\nPlan — Frame the workflow\nDesign — Specify the workflow\nBuild — Prototype the workflow\nTest — Benchmark and evaluate\nDeploy — Operationalize the workflow\nMaintain — Monitor and improve\n\n\n\n\n\n\n\nflowchart LR\n  P[\"Plan&lt;br/&gt;Workflow brief\"] --&gt; D[\"Design&lt;br/&gt;Task contract\"]\n  D --&gt; B[\"Build&lt;br/&gt;Prototype\"]\n  B --&gt; T[\"Test&lt;br/&gt;Benchmark report\"]\n  T --&gt; O[\"Deploy&lt;br/&gt;Release record\"]\n  O --&gt; M[\"Maintain&lt;br/&gt;Monitoring report\"]\n  M --&gt;|new need or accepted improvement| P\n\n\n\n\nFigure 5.1: The AI-first SDLC is a loop connected by six accepted artifacts.\n\n\n\n\n\nEach stage ends with a canonical artifact:\n\n\n\n\n\n\n\n\n\nStage\nPrimary question\nCanonical artifact\nHuman gate\n\n\n\n\nPlan\nIs there a valuable, bounded workflow to develop?\nWorkflow brief\nAccept the problem, boundary, and success measures\n\n\nDesign\nWhat exactly should the workflow do?\nTask contract\nAccept the specification and decision rights\n\n\nBuild\nCan the specified path work end to end?\nPrototype\nAccept the implementation for formal evaluation\n\n\nTest\nDoes it meet the benchmark, and how does it fail?\nBenchmark report\nAccept, revise, or reject the candidate\n\n\nDeploy\nHow will the accepted candidate enter real work?\nRelease record\nAuthorize the release or advisory pilot\n\n\nMaintain\nIs the released workflow still useful and reliable?\nMonitoring report\nContinue, change, restrict, or retire the workflow\n\n\n\nA committed artifact is durable, versioned, reviewable, and accepted into the team’s system of record. It does not have to be a long document or a Git commit. Depending on the environment, it may be a Markdown file, YAML specification, R package, test report, approved ticket, release entry, or dashboard snapshot.\nThe artifact becomes the shared interface between Biometrics and engineering. It records the decision in terms both groups can inspect, and its acceptance provides the event that begins the next stage.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#plan-frame-the-workflow",
+    "href": "05-ai-first-sdlc.html#plan-frame-the-workflow",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.4 Plan — Frame the workflow",
+    "text": "5.4 Plan — Frame the workflow\nThe Plan stage asks whether a problem is worth solving and whether it can be bounded as an AI-first workflow. A broad ambition such as “use AI for study design” is not yet a workable unit. A bounded candidate identifies a repeatable beginning, a reviewable end, and a decision that remains with a named human role.\nThe Biometrics workflow owner contributes the clinical problem, current process, expected value, known failure costs, source artifacts, non-goals, and success measures. The AI engineer contributes an early feasibility assessment: which artifacts can be accessed, which steps can be deterministic, where model reasoning may help, and which constraints could make the proposed boundary unworkable.\n\n5.4.1 Canonical artifact: Workflow brief\nThe workflow brief records:\n\nthe problem and the people affected;\nthe current process and the event that starts the work;\nthe minimum valuable workflow and explicit non-goals;\nexpected inputs, output, and accountable decision owner;\ncandidate success measures and baseline performance;\nmaterial assumptions, risks, and dependencies; and\nthe reason AI is useful within the proposed boundary.\n\nPlanning ends when the workflow owner accepts the brief as a valuable and testable development target. That accepted brief initiates Design. If the problem cannot be bounded or measured, the correct decision is to revise or stop rather than proceed to implementation.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#design-specify-the-workflow",
+    "href": "05-ai-first-sdlc.html#design-specify-the-workflow",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.5 Design — Specify the workflow",
+    "text": "5.5 Design — Specify the workflow\nThe Design stage converts intent into an executable specification. It defines what happens from the triggering event through the recorded human decision, including the parts performed by deterministic software, the agent, and people.\nThe Biometrics workflow owner defines the business rules, required evidence, acceptable outputs, examples, exceptions, escalation paths, and decision rights. The AI engineer defines artifact retrieval, tool interfaces, state, permissions, model context, failure handling, and observability. Both roles agree on the cases that will later demonstrate success or failure.\n\n5.5.1 Canonical artifact: Task contract\nThe task contract introduced in Chapter 4 becomes the central Design artifact. It records:\n\nobjective, inputs, scope, output, boundaries, and escalation conditions;\ntrigger events and stopping conditions;\ndeterministic rules and model-assisted tasks;\ntool access and prohibited actions;\nevidence, coverage, and uncertainty requirements;\nhuman review and approval points;\ndurable state and decision records; and\nbenchmark cases and acceptance thresholds.\n\nDesign ends when the responsible roles can read the contract and agree on what will be built, how it will be evaluated, and which decisions the agent cannot make. The accepted task contract initiates Build.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#build-prototype-the-workflow",
+    "href": "05-ai-first-sdlc.html#build-prototype-the-workflow",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.6 Build — Prototype the workflow",
+    "text": "5.6 Build — Prototype the workflow\nThe Build stage creates the smallest end-to-end implementation that can test the design. The objective is not to reproduce the full operating environment. It is to make the important assumptions executable and observable.\nThe Biometrics workflow owner supplies representative examples, expected behavior, business-rule interpretations, and rapid feedback. The AI engineer implements the instructions, R code or other deterministic functions, tool connections, structured outputs, logging, and test fixtures. Where practical, the first prototype uses synthetic or public data.\n\n5.6.1 Canonical artifact: Prototype\nThe prototype is a versioned package of working materials, which may include:\n\nexecutable R code and deterministic checks;\nmodel instructions and task-specific context;\ntool definitions and access boundaries;\nsynthetic inputs, seeded violations, and expected outputs;\nstructured finding and decision formats;\nautomated tests and a reproducible run command; and\nknown gaps between the prototype and the intended workflow.\n\nBuild ends when the prototype completes the specified path, exposes its tool activity and evidence, and is reproducible enough for independent evaluation. The accepted prototype initiates Test. A successful demonstration is not yet a release decision.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#test-benchmark-and-evaluate",
+    "href": "05-ai-first-sdlc.html#test-benchmark-and-evaluate",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.7 Test — Benchmark and evaluate",
+    "text": "5.7 Test — Benchmark and evaluate\nThe Test stage asks whether the prototype meets the success criteria defined before results were observed. It also asks how the workflow fails, not only whether it succeeds on an ordinary case.\nThe Biometrics workflow owner confirms that the evaluation cases represent the intended work and judges the usefulness of findings, false positives, missed issues, and escalations. The AI engineer runs controlled evaluations, preserves the component versions and settings, measures repeatability and coverage, and investigates technical failure modes.\n\n5.7.1 Canonical artifact: Benchmark report\nThe benchmark report records:\n\nthe benchmark dataset, cases, and independently stated expected results;\nthe workflow, model, instruction, tool, and dependency versions;\npredefined metrics and acceptance thresholds;\nresults for ordinary, boundary, negative, and missing-context cases;\nfalse positives, missed findings, unsupported claims, and escalation quality;\ncoverage, reproducibility, latency, and cost when relevant; and\nlimitations, residual uncertainty, and recommended disposition.\n\nTesting ends with a human decision: return to Plan, Design, or Build; reject the candidate; or accept it for a controlled release. An agent may prepare the evidence and diagnose failures, but it does not approve its own benchmark.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#deploy-operationalize-the-workflow",
+    "href": "05-ai-first-sdlc.html#deploy-operationalize-the-workflow",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.8 Deploy — Operationalize the workflow",
+    "text": "5.8 Deploy — Operationalize the workflow\nThe Deploy stage connects an accepted candidate to real work. Deployment does not require immediate autonomous execution. An advisory pilot, in which the agent produces findings and a person decides every action, is often the first operating mode.\nThe Biometrics workflow owner confirms the operating roles, handoffs, communication, exception handling, and intended scope. The AI engineer packages the accepted components, configures the trigger and environment, applies the approved access boundary, connects logging and monitoring, and prepares a way to suspend or reverse the release.\n\n5.8.1 Canonical artifact: Release record\nThe release record identifies:\n\nthe approved workflow and component versions;\nthe target environment, users, inputs, and operating scope;\nthe trigger, schedule, and expected outputs;\naccess permissions and human approval gates;\ninstallation, configuration, and verification results;\nmonitoring measures and control bands;\nsupport ownership, escalation contacts, and recovery procedure; and\nthe person authorizing the release and the release decision.\n\nDeploy ends when the authorized release is available to its intended users and monitoring is active. That release event initiates Maintain.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#maintain-monitor-and-improve",
+    "href": "05-ai-first-sdlc.html#maintain-monitor-and-improve",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.9 Maintain — Monitor and improve",
+    "text": "5.9 Maintain — Monitor and improve\nThe Maintain stage determines whether the released workflow continues to perform as intended. Changes in artifacts, business rules, data, tools, models, or user behavior can invalidate earlier evidence even when the software still runs.\nThe Biometrics workflow owner reviews usefulness, overrides, missed issues, unresolved exceptions, and changes in the underlying work. The AI engineer monitors availability, errors, latency, cost, version drift, and technical signals. Both roles investigate material changes and decide whether the workflow should continue, be restricted, or enter a new development cycle.\n\n5.9.1 Canonical artifact: Monitoring report\nThe monitoring report records:\n\nrun volume, completion, and failure trends;\nquality measures compared with benchmark expectations;\nfalse positives, missed findings, overrides, and escalations;\ncoverage gaps and changes in inputs or dependencies;\nincidents, root causes, corrective actions, and unresolved risks;\nuser feedback and proposed rule, instruction, test, or workflow changes; and\nthe accountable decision to continue, change, restrict, or retire the workflow.\n\nAn agent may collect signals, identify patterns, and propose improvements. A human accepts any change to business rules, decision rights, benchmarks, or operating scope. An accepted improvement or a breached control band creates a new workflow brief and returns the lifecycle to Plan.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#how-the-applied-examples-use-the-lifecycle",
+    "href": "05-ai-first-sdlc.html#how-the-applied-examples-use-the-lifecycle",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.10 How the applied examples use the lifecycle",
+    "text": "5.10 How the applied examples use the lifecycle\nEach applied example begins with a clinical problem and then follows the same six stages. The canonical artifacts make examples comparable even when their technical implementations differ.\nThe artifact’s level of completion depends on the example’s declared maturity:\n\n\n\n\n\n\n\nMaturity\nExpected artifact evidence\n\n\n\n\nDesign pattern\nWorkflow brief and task contract are concrete; later artifacts describe the proposed implementation and known gaps\n\n\nReproducible prototype\nCode, data, tests, expected results, and benchmark report can be rerun\n\n\nComparative survey\nA shared task contract and benchmark compare time-stamped product behavior\n\n\nReference implementation\nRelease and monitoring evidence come from a maintained implementation\n\n\n\nAn example may revisit an earlier stage when evidence changes the design. A failed benchmark can return to Build, an inaccessible artifact can return to Design, and a monitoring signal can return to Plan. The headings provide a shared reasoning structure, not a claim that development proceeds in a straight line.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "05-ai-first-sdlc.html#summary",
+    "href": "05-ai-first-sdlc.html#summary",
+    "title": "5  The AI-first software development lifecycle",
+    "section": "5.11 Summary",
+    "text": "5.11 Summary\nThe AI-first SDLC organizes development around six questions and six committed artifacts:\n\n\n\nStage\nArtifact\n\n\n\n\nPlan\nWorkflow brief\n\n\nDesign\nTask contract\n\n\nBuild\nPrototype\n\n\nTest\nBenchmark report\n\n\nDeploy\nRelease record\n\n\nMaintain\nMonitoring report\n\n\n\nThe artifacts allow Biometrics workflow owners and AI engineers to define the same work, inspect the same evidence, and concentrate human judgment at explicit gates. Their sequence creates continuity; the monitoring report closes the loop by providing evidence for the next workflow brief.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The AI-first software development lifecycle</span>"
+    ]
+  },
+  {
+    "objectID": "06-workflow-rounding.html",
+    "href": "06-workflow-rounding.html",
+    "title": "6  Rounding as an AI-first workflow",
     "section": "",
-    "text": "5.1.1 Rounding exposes the problem\nNumeric rounding looks universal, but common programming tools disagree at exact ties:\n\n\n\nLanguage or tool\nDefault tie behavior\n-2.5\n2.5\n\n\n\n\nSAS ROUND()\nhalf away from zero\n-3\n3\n\n\nR round()\nhalf to even\n-2\n2\n\n\nPython round()\nhalf to even\n-2\n2\n\n\n\nDisplay adds a separate choice. The values 76, 76.0, and 76.00 are numerically equal, but they communicate different precision in a table. A program can therefore calculate the expected number and still produce an output that violates the organization’s reporting convention.\nThe lesson is not that one language is correct. A language default is an implementation choice, not organizational policy. The workflow needs an explicit rule that applies independently of the tool used to implement it.",
+    "text": "6.1 Plan — Frame the workflow\nImagine that two programmers prepare the same summary in different languages. One implementation uses the default SAS rounding function; the other uses the default R function. Most values agree, but exact ties do not. A reviewer finds the difference only after a table has been produced. The calculation is small; the real problem is that an organizational rule was never made executable at the moment the code changed.\nThis chapter applies the AI-first SDLC from Chapter 5 to that problem.\nClinical teams use business rules to produce consistent work across studies, tools, and programmers. The rules may govern derivations, naming, rounding, display conventions, or escalation. A rule is useful only when the team can tell where it applies, whether it was followed, and who decides an exception.\nMany rules never appear in a protocol or statistical analysis plan (SAP). They live in standards documents, review comments, and the memory of experienced colleagues. Manual review is therefore fragile. It depends on the right reviewer noticing the right detail at the right time.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html#define-rules-that-can-be-enforced",
-    "href": "05-workflow-rounding.html#define-rules-that-can-be-enforced",
-    "title": "5  AI-first workflow for business rules",
-    "section": "5.2 Define rules that can be enforced",
-    "text": "5.2 Define rules that can be enforced\nAn organization must define the method, the point in the calculation when it applies, and the required display. For this example, suppose it adopts three rules:\n\nBusiness rule 1: Exact decimal ties are rounded half away from zero.\n\n\nBusiness rule 2: Calculations use unrounded values; rounding occurs once, when the final result is prepared for display.\n\n\nBusiness rule 3: Display precision is specified for each reported statistic and preserved, including trailing zeros.\n\nTogether, the rules form one reporting contract:\n\n\n\n\n\n\n\n\nRule\nWhat it prevents\nEvidence needed\n\n\n\n\nTie method\nTool defaults changing a result\nBoundary-test results and the formatter used\n\n\nRounding stage\nDouble or intermediate rounding\nThe calculation path from source value to display\n\n\nDisplay precision\nSuppressed or inconsistent decimals\nThe precision specification and rendered output\n\n\n\nStore the contract as a versioned artifact that both people and tools can read. The format is less important than the content. The business rules need an owner, scope, version history, and examples that determine the expected result. If a rule cannot determine an answer, the first workflow finding should be a request to clarify the rule.",
+    "objectID": "06-workflow-rounding.html#plan-frame-the-workflow",
+    "href": "06-workflow-rounding.html#plan-frame-the-workflow",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "",
+    "text": "6.1.1 Rounding exposes the problem\nCommon programming tools differ at exact ties:\n\n\n\nLanguage or tool\nDefault tie behavior\n-2.5\n2.5\n\n\n\n\nSAS ROUND()\nhalf away from zero\n-3\n3\n\n\nR round()\nhalf to even\n-2\n2\n\n\nPython round()\nhalf to even\n-2\n2\n\n\n\nDisplay adds a separate choice. The values 76, 76.0, and 76.00 are numerically equal, but they communicate different precision in a table. A program can calculate the intended number and still produce an output that violates an organization’s reporting convention.\nThe lesson is not that one language is correct. A language default is an implementation choice, not organizational policy. The minimum valuable workflow is a review of three rounding rules whenever relevant project code changes.\n\n\n6.1.2 Canonical artifact: Workflow brief\nThe workflow brief is defined in the opening contract and adds three candidate success measures:\n\nknown violations are found with a rule identifier, code location, and supporting evidence;\ncompliant examples are not flagged, and every run reports its coverage; and\nexceptions reach the named reviewer and the resulting decision is recorded.\n\nArtifact status: defined as a design pattern. The rule owner still needs to accept the intended scope, baseline, and quantitative thresholds before a prototype is built. An accepted workflow brief would initiate Design.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html#design-the-workflow-around-one-change",
-    "href": "05-workflow-rounding.html#design-the-workflow-around-one-change",
-    "title": "5  AI-first workflow for business rules",
-    "section": "5.3 Design the workflow around one change",
-    "text": "5.3 Design the workflow around one change\nThe workflow starts when project source code changes. Keeping one trigger makes each finding easy to explain: this change, at this location, conflicts with this rule.\n\n\n\n\n\n\nFigure 5.1: A project code change triggers deterministic checks followed by a focused AI review. Findings go to a human reviewer, whose decisions are recorded and may lead to an approved rule update.\n\n\n\nThe workflow has five steps:\n\n\n\n\n\n\n\n\nStep\nAction\nOwner\n\n\n\n\n1. Trigger\nIdentify the changed files and affected outputs\nVersion-control system\n\n\n2. Load context\nRead the current rule contract and prior approved decisions\nWorkflow\n\n\n3. Check\nScan call sites, run boundary tests, and compare rendered output\nDeterministic tools\n\n\n4. Interpret\nTrace data flow and explain cases the checks cannot settle\nAI agent\n\n\n5. Decide\nAccept, reject, or request a change; record the reason\nAccountable reviewer\n\n\n\nTwo design choices matter. Deterministic checks run before the model, because repeatable facts should not depend on model judgment. The human reviewer acts last, because an agent can prepare evidence but cannot approve an exception or change organizational policy.\n\n5.3.1 Walk through one code change\nSuppose a programmer adds this code while preparing a mean change from baseline:\nsubject_change &lt;- round(adam$CHG, 1)\nmean_change &lt;- mean(subject_change, na.rm = TRUE)\ndisplay_mean &lt;- as.character(mean_change)\nThe workflow evaluates the change against all three rules:\n\n\n\n\n\n\n\nRule\nFinding\n\n\n\n\n1\nround() uses R’s default tie method rather than the approved method.\n\n\n2\nSubject-level values are rounded before the mean is calculated.\n\n\n3\nas.character() does not apply the specified precision or preserve trailing zeros.\n\n\n\nA source scanner can locate round() and as.character(). Boundary tests can show the tie behavior, and an output comparison can detect lost zeros. The AI agent adds value by tracing subject_change into mean_change and explaining that the first rounding occurs before aggregation.\nA compliant implementation should keep the values unrounded and route the final statistic through an organization-approved formatter:\nmean_change &lt;- mean(adam$CHG, na.rm = TRUE)\ndisplay_mean &lt;- format_org_number(mean_change)\nHere, format_org_number() represents a validated helper that implements the rule contract. Centralizing the convention reduces the number of places the workflow must monitor.\n\n\n5.3.2 Return a finding, not an essay\nEach finding should be a small record that a reviewer can verify and close:\nid: BR-NUM-001-0042\nrule: BR-NUM-001.2\nlocation: R/table-change.R:18\nobserved: subject values are rounded before the mean is calculated\nevidence: subject_change flows into mean_change on line 19\nstatus: needs_review\nowner: statistical-programming-lead\nquestion: Should the intermediate rounding be removed?\nUse a CI failure only when a deterministic check proves a violation. Use a code review comment or task when interpretation is required. Every run should also report its coverage: files checked, outputs compared, and anything it could not resolve. Silence must not be interpreted as proof that every rule was checked.",
+    "objectID": "06-workflow-rounding.html#design-specify-the-workflow",
+    "href": "06-workflow-rounding.html#design-specify-the-workflow",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "6.2 Design — Specify the workflow",
+    "text": "6.2 Design — Specify the workflow\nThe Design stage turns the business intent into rules and a task contract that both deterministic tools and an agent can follow.\n\n6.2.1 Make the three rules explicit\nThis design assumes that the organization adopts the following contract:\n\nBusiness rule 1: Exact decimal ties are rounded half away from zero.\n\n\nBusiness rule 2: Calculations use unrounded values; rounding occurs once, when the final result is prepared for display.\n\n\nBusiness rule 3: Display precision is specified for each reported statistic and preserved, including trailing zeros.\n\nTogether, the rules identify both the expectation and the evidence needed to review it:\n\n\n\n\n\n\n\n\nRule\nWhat it prevents\nEvidence needed\n\n\n\n\nTie method\nTool defaults changing a result\nBoundary-test results and the formatter used\n\n\nRounding stage\nDouble or intermediate rounding\nCalculation path from source value to display\n\n\nDisplay precision\nSuppressed or inconsistent decimals\nPrecision specification and rendered output\n\n\n\nThe rule contract should be versioned and include an owner, scope, examples, and change history. If a rule cannot determine an answer, the workflow should ask for clarification rather than invent a convention.\n\n\n6.2.2 Canonical artifact: Task contract\n\n\n\n\n\n\n\nContract element\nSpecification\n\n\n\n\nObjective\nReview changed code for violations of the three approved rounding rules\n\n\nTrigger\nA pull request or equivalent event changes relevant project code or output\n\n\nInputs\nChanged files, current rule contract, precision specification, affected output, and prior approved decisions\n\n\nDeterministic work\nScan call sites, run boundary tests, and compare rendered output with expected display\n\n\nAgent work\nTrace data flow, connect evidence across files, and explain cases that deterministic checks cannot settle\n\n\nRequired output\nStructured findings plus a coverage report\n\n\nBoundaries\nRead the scoped artifacts and run approved checks; do not modify source data or approve an exception\n\n\nStop conditions\nMissing rule version, missing precision specification, conflicting evidence, or a question requiring policy judgment\n\n\nHuman decision\nAccept, reject, or request a change, then record the reason\n\n\n\n\n\n\n\n\n\nFigure 6.1: A project code change triggers deterministic checks followed by a focused AI review. Findings go to a human reviewer, whose decisions are recorded and may lead to an approved rule update.\n\n\n\nThe task contract produces a five-step runtime path:\n\n\n\n\n\n\n\n\nStep\nAction\nOwner\n\n\n\n\n1. Trigger\nIdentify changed files and affected outputs\nVersion-control system\n\n\n2. Load context\nRead the rule contract and prior approved decisions\nWorkflow\n\n\n3. Check\nRun source scans, boundary tests, and output comparisons\nDeterministic tools\n\n\n4. Interpret\nTrace data flow and explain unresolved cases\nAI agent\n\n\n5. Decide\nAccept, reject, or request a change; record the reason\nAccountable reviewer\n\n\n\nDeterministic checks run before model interpretation because repeatable facts should not depend on model judgment. The human reviewer acts last because an agent can prepare evidence but cannot approve an exception or change policy.\n\n\n6.2.3 Walk through one code change\nSuppose a programmer adds this code while preparing a mean change from baseline:\nsubject_change &lt;- round(adam$CHG, 1)\nmean_change &lt;- mean(subject_change, na.rm = TRUE)\ndisplay_mean &lt;- as.character(mean_change)\nThe design expects three findings:\n\n\n\n\n\n\n\nRule\nExpected finding\n\n\n\n\n1\nround() uses R’s default tie method rather than the approved method\n\n\n2\nSubject-level values are rounded before the mean is calculated\n\n\n3\nas.character() does not apply the specified precision or preserve trailing zeros\n\n\n\nA source scanner can locate round() and as.character(). Boundary tests can demonstrate tie behavior, and an output comparison can detect lost zeros. The agent adds value by tracing subject_change into mean_change and explaining that rounding occurs before aggregation.\nAn implementation consistent with the contract would retain the unrounded values and route the final statistic through an organization-approved helper:\nmean_change &lt;- mean(adam$CHG, na.rm = TRUE)\ndisplay_mean &lt;- format_org_number(mean_change)\nHere, format_org_number() is a proposed interface, not an implementation provided by this chapter.\nEach finding should be a small record that a reviewer can verify and close:\nid: BR-NUM-001-0042\nrule: BR-NUM-001.2\nlocation: R/table-change.R:18\nobserved: subject values are rounded before the mean is calculated\nevidence: subject_change flows into mean_change on line 19\nstatus: needs_review\nowner: statistical-programming-lead\nquestion: Should the intermediate rounding be removed?\nArtifact status: the task contract is specified at design-pattern maturity. The example has not yet demonstrated that all required inputs and evidence can be retrieved from a working environment. Acceptance of this contract would initiate Build.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html#build-the-minimum-viable-workflow",
-    "href": "05-workflow-rounding.html#build-the-minimum-viable-workflow",
-    "title": "5  AI-first workflow for business rules",
-    "section": "5.4 Build the minimum viable workflow",
-    "text": "5.4 Build the minimum viable workflow\nA team can pilot this pattern without building a large agent platform:\n\nChoose one rule and one trigger. Name the rule owner and limit the first workflow to project code changes.\nWrite executable examples. Include positive and negative ties, intermediate rounding, and trailing-zero expectations.\nAutomate repeatable checks. Run source scans, boundary tests, and output comparisons in CI.\nUse AI only for the remainder. Give the agent the changed code, rule contract, test results, and prior approved decisions. Require locations, evidence, uncertainty, and a question for the reviewer.\nRecord the human decision. Preserve the resolution with the code commit, rule version, check version, and reviewer. Repeated questions may justify a human-approved rule update.\n\nStart by running the workflow in advisory mode. Review false positives, missed cases, and coverage reports before allowing any deterministic check to block a change. Model-generated findings should remain advisory unless a human converts the underlying condition into an approved deterministic rule.",
+    "objectID": "06-workflow-rounding.html#build-prototype-the-workflow",
+    "href": "06-workflow-rounding.html#build-prototype-the-workflow",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "6.3 Build — Prototype the workflow",
+    "text": "6.3 Build — Prototype the workflow\nThe minimum prototype should implement one complete path from a changed R file to a structured finding and recorded human decision. It does not require a large agent platform.\n\n6.3.1 Canonical artifact: Prototype\nThe intended build sequence is:\n\nencode the three rules and their owners in a versioned, machine-readable contract;\nimplement an organization-approved rounding and formatting helper;\ncreate compliant and noncompliant R fixtures, including positive and negative ties, intermediate rounding, and trailing-zero cases;\nautomate deterministic scans, boundary tests, and output comparisons;\ngive the agent only the changed code, rule contract, test results, affected output, and prior approved decisions; and\nstore structured findings, coverage, and reviewer decisions together.\n\nThe prototype should use AI only for the remainder after deterministic checks: tracing context across artifacts, explaining uncertain cases, and preparing a focused question for the reviewer.\n\n\n\n\n\n\nNotePrototype artifact not yet available\n\n\n\nThis design pattern does not include runnable R functions, fixtures, automated tests, agent instructions, or expected output files. Those materials are required before the chapter can claim reproducible-prototype maturity. Their implementation is tracked in GitHub issue #5.\n\n\nBecause the canonical Prototype artifact is unavailable, Build has no acceptance event and the lifecycle cannot yet advance to a real Test stage.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html#know-the-boundary",
-    "href": "05-workflow-rounding.html#know-the-boundary",
-    "title": "5  AI-first workflow for business rules",
-    "section": "5.5 Know the boundary",
-    "text": "5.5 Know the boundary\nThis workflow is intentionally limited:\n\nIt reacts to project code changes. Dependency updates, specification changes, and data refreshes need their own triggers and checks.\nIt enforces an organizational convention; it does not validate the statistical method or replace independent QC.\nIt can identify missing or ambiguous policy, but only the rule owner can resolve it.\nIt must run inside an approved environment when code or data are confidential.\n\nThese limits are part of the result. A trustworthy workflow says what it checked, what it did not check, and who must decide what remains.",
+    "objectID": "06-workflow-rounding.html#test-benchmark-and-evaluate",
+    "href": "06-workflow-rounding.html#test-benchmark-and-evaluate",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "6.4 Test — Benchmark and evaluate",
+    "text": "6.4 Test — Benchmark and evaluate\nThe future benchmark should be specified before prototype results are examined. At minimum, it should include the following controlled cases:\n\n6.4.1 Canonical artifact: Benchmark report\n\n\n\n\n\n\n\nCase\nExpected behavior\n\n\n\n\nPositive and negative exact ties\nApply half away from zero consistently\n\n\nCompliant unrounded aggregation\nProduce no rounding-stage finding\n\n\nIntermediate rounding before a mean\nCite the data flow and flag rule 2\n\n\nA two-decimal display of the value 76\nPreserve the result as 76.00\n\n\nMissing precision specification\nStop the affected check and request clarification\n\n\nFiles outside the declared scope\nExclude them and report that coverage boundary\n\n\n\nCandidate acceptance thresholds are complete detection of the seeded deterministic violations, no false positives in the compliant fixtures, and a coverage report on every run. Agent-assisted findings should be evaluated separately for correct evidence, unsupported claims, missed findings, repeatability, and useful escalation.\n\n\n\n\n\n\nNoteBenchmark report not yet available\n\n\n\nNo controlled benchmark has been run. The expected cases and candidate thresholds above are a Test plan, not measured performance.\n\n\nWithout a versioned Prototype artifact and Benchmark report, no evidence supports a deployment decision.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
     ]
   },
   {
-    "objectID": "05-workflow-rounding.html#summary",
-    "href": "05-workflow-rounding.html#summary",
-    "title": "5  AI-first workflow for business rules",
-    "section": "5.6 Summary",
-    "text": "5.6 Summary\nBusiness rules become practical when they are explicit, versioned, testable, and connected to a trigger. For each rule:\n\nuse deterministic tools for facts that can be reproduced;\nuse an AI agent for narrow interpretation and evidence assembly;\nsend judgment and policy changes to an accountable human; and\nrecord the decision and the workflow’s coverage.\n\nThat is the reusable AI-first pattern: rules define expectations, tools check facts, agents explain context, and people decide.",
+    "objectID": "06-workflow-rounding.html#deploy-operationalize-the-workflow",
+    "href": "06-workflow-rounding.html#deploy-operationalize-the-workflow",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "6.5 Deploy — Operationalize the workflow",
+    "text": "6.5 Deploy — Operationalize the workflow\nThe first intended release is an advisory pilot on relevant code changes. Deterministic checks may block a change only when an approved test proves a violation. Agent interpretations should appear as nonblocking findings for a named human reviewer.\n\n6.5.1 Canonical artifact: Release record\nA future Release record should identify:\n\nthe accepted rule, code, test, instruction, and tool versions;\nthe repositories, file patterns, and output types in scope;\nthe pull-request trigger and required inputs;\nthe permissions granted to deterministic tools and the agent;\nthe format and destination of findings and coverage reports;\nthe accountable reviewer and escalation path;\nthe monitoring measures; and\nthe procedure for suspending or reversing the release.\n\n\n\n\n\n\n\nNoteRelease record not yet available\n\n\n\nThe workflow has not passed its benchmark and has not been released or piloted. The advisory operating model above is a deployment design, not operating evidence.\n\n\nDeploy remains unavailable until a human accepts the Benchmark report and authorizes the pilot.",
     "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>AI-first workflow for business rules</span>"
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
+    ]
+  },
+  {
+    "objectID": "06-workflow-rounding.html#maintain-monitor-and-improve",
+    "href": "06-workflow-rounding.html#maintain-monitor-and-improve",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "6.6 Maintain — Monitor and improve",
+    "text": "6.6 Maintain — Monitor and improve\nOnce released, the workflow should be monitored as both a rule-enforcement process and a human-agent collaboration. Useful measures include:\n\n6.6.1 Canonical artifact: Monitoring report\n\nfindings, false positives, missed cases, and coverage by rule;\nhuman acceptance, rejection, override, and escalation patterns;\nchanges in R, dependencies, formatting helpers, or source conventions;\ncases that repeatedly require policy clarification;\nlatency and cost when they affect use; and\nincidents or suspended runs caused by missing or conflicting evidence.\n\nThe feedback loop is governed. An agent may propose a rule, instruction, test, or workflow update, but the rule owner approves the change. An accepted change updates the Workflow brief or Task contract, adds the corresponding fixtures, and begins a new lifecycle cycle.\n\n\n\n\n\n\nNoteMonitoring report not yet available\n\n\n\nThere is no operating workflow and therefore no monitoring history. This section defines the signals and decisions that the future Monitoring report must contain.",
+    "crumbs": [
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
+    ]
+  },
+  {
+    "objectID": "06-workflow-rounding.html#summary",
+    "href": "06-workflow-rounding.html#summary",
+    "title": "6  Rounding as an AI-first workflow",
+    "section": "6.7 Summary",
+    "text": "6.7 Summary\nRounding becomes a well-defined AI-first workflow when three explicit business rules are connected to a code-change event, deterministic evidence, focused agent interpretation, and a recorded human decision.\nAt design-pattern maturity, the Workflow brief and Task contract can be inspected. The Prototype, Benchmark report, Release record, and Monitoring report remain future artifacts. Making those gaps explicit prevents a proposed workflow from being mistaken for a tested or operating system.",
+    "crumbs": [
+      "Applied examples",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Rounding as an AI-first workflow</span>"
     ]
   }
 ]
