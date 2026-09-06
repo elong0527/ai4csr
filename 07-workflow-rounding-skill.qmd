@@ -19,9 +19,9 @@ an issue. Repeating the original one-sentence prompt may not repeat the result.
 `formatC()` sites and 6 divergences among 10 tie probes. The result depended on
 instructions that were more durable than the prompt.
 
-This chapter begins a second turn of the same AI-first SDLC loop. Its unit of
-work is a specified agent skill: a small, reviewable folder that would carry
-the procedure with the check.
+This chapter begins a second turn of the same AI-first SDLC loop. It designs an
+agent skill: a small, reviewable folder of instructions and supporting files
+that tells a compatible agent how to perform the check.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
@@ -82,8 +82,7 @@ cycle. The accepted workflow brief initiates Design.
 
 ### Treat the skill as a controlled procedure
 
-An **agent skill** is a folder that tells a compatible agent when and how to
-perform a task. Under the [Agent Skills specification](https://agentskills.io/specification),
+Under the [Agent Skills specification](https://agentskills.io/specification),
 the folder requires a `SKILL.md` file with `name` and `description` in YAML
 frontmatter. The `name` must match the directory name. The folder may also have
 `scripts/`, `references/`, and `assets/` directories.
@@ -98,9 +97,11 @@ For a Biometrics owner, the important distinction is simple:
 This structure is a proposed system of record for the procedure. Merely
 describing the folders does not create them.
 
-### Make discovery specific enough to be safe
+### State when the skill applies
 
-The proposed `SKILL.md` begins:
+The proposed `SKILL.md` starts with a short machine-readable label. Readers do
+not need to write YAML to follow the example; the key fields are the skill name,
+when it applies, required software, skill version, and rule version:
 
 ```yaml
 ---
@@ -117,8 +118,8 @@ metadata:
 ---
 ```
 
-The description says both what the skill would do and when it should be used.
-The metadata ties an execution to one skill version and one rule version.
+These fields help a compatible agent select the skill for the intended task and
+record which procedure and rule versions govern the run.
 
 ### Canonical artifact: Task contract
 
@@ -187,10 +188,12 @@ Third, preserve the human gate:
 > Render findings to a draft file and stop. Do not create a GitHub issue or
 > change source unless an accountable human explicitly authorizes that action.
 
-The procedure must also state its limitations: a line-based scanner can miss a
-dynamically constructed call; an unresolved `digits` argument requires a stop;
-the approved helper remains a candidate until the rule owner approves an
-allowlist; and rules BR-NUM-001.2 and BR-NUM-001.3 are not checked.
+The procedure must also state four limits. A source scanner can miss a function
+call that the program constructs only when it runs. If the `digits` argument,
+which specifies the number of decimal places, cannot be determined, the review
+must stop. The approved helper remains a candidate until the rule owner approves
+an allowlist, a list of known acceptable calls. Rules BR-NUM-001.2 and
+BR-NUM-001.3 are not checked.
 
 ::: callout-warning
 ## When not to use this skill

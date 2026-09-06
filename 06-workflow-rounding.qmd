@@ -10,14 +10,15 @@ boundary test, coverage statement, and human decision---not the prompt alone.
 
 A Biometrics team prepares the same efficacy table in SAS and R. Most values
 agree, but a reviewer notices that 2.05 appears as 2.1 in one output and 2.0 in
-the other. The programs used different ways to handle a value intended as an
-exact decimal tie, and nobody discovered the difference until table review.
+the other. At one decimal place, 2.05 is halfway between 2.0 and 2.1; this
+halfway case is called a decimal tie. The two programs handled it differently,
+and nobody discovered the difference until table review.
 
 This is not only a choice between SAS `ROUND()` and R `round()`. R functions
 that format a number for display can also round it. In this example,
-`formatC(x, format = "f", digits = 1)` displays 2.05 as 2.0 because the stored
-binary value is just below the intended decimal tie. A review limited to calls
-named `round()` would miss the problem.
+`formatC(x, format = "f", digits = 1)` displays 2.05 as 2.0 because R stores
+the value in binary just below the intended halfway point. A review limited to
+calls named `round()` would miss the problem.
 
 This chapter follows one turn of the AI-first SDLC introduced in
 @sec-ai-first-sdlc. It begins with a short review prompt and ends with a
@@ -209,8 +210,10 @@ format labels rather than reported numbers.
 
 ### Step 2: Probe observed behavior
 
-For a candidate that affects a reported value, the proposed probe compares
-decimal ties of both signs with this reference behavior:
+For a candidate that affects a reported value, the proposed probe tests
+decimal ties of both signs against the reference below. Given a value and the
+number of displayed decimal places, this helper applies the half-away-from-zero
+rule.
 
 ```r
 round_half_away <- function(x, digits = 0) {
@@ -219,8 +222,9 @@ round_half_away <- function(x, digits = 0) {
 }
 ```
 
-The intended output is `PASS` or `FAIL` plus the comparison table. A function
-name alone is not evidence.
+Readers do not need to interpret each R operator. The important point is that
+every candidate is compared with the same reference behavior. The probe reports
+`PASS` or `FAIL` plus a comparison table; a function name alone is not evidence.
 
 ### Step 3: Triage in context
 
@@ -240,12 +244,12 @@ acceptance initiates an evidence run against fixtures and the pinned source.
 
 ### Establish expected behavior with fixtures
 
-The reported evidence includes three controlled fixtures. The compliant summary
-produced no candidates or findings. A noncompliant summary using `formatC()`
-directly produced one candidate and one finding. The approved helper itself
-produced two candidates and no findings. That last fixture exposes a known cost:
-the broad scan finds the approved helper, and a reviewer must discard those
-candidates.
+The benchmark uses three small R examples with known expected results. The
+compliant example produced no candidates or findings. The example that called
+`formatC()` directly produced one candidate and the expected finding. The
+example using the approved helper produced two candidates but no findings. This
+last result shows the cost of a broad search: it avoids a false clean report,
+but a reviewer must dismiss candidates that follow the approved rule.
 
 ### Key finding at the pinned metalite commit
 
