@@ -16,9 +16,9 @@ and nobody discovered the difference until table review.
 
 This is not only a choice between SAS `ROUND()` and R `round()`. R functions
 that format a number for display can also round it. In this example,
-`formatC(x, format = "f", digits = 1)` displays 2.05 as 2.0 because R stores
-the value in binary just below the intended halfway point. A review limited to
-calls named `round()` would miss the problem.
+`formatC(x, format = "f", digits = 1)` displays 2.05 as 2.0. A review limited
+to calls named `round()` would miss the problem. The Test section explains why
+the result can differ.
 
 This chapter applies one turn of the AI-first SDLC from @sec-ai-first-sdlc. It
 turns a short review prompt into a bounded workflow.
@@ -122,8 +122,9 @@ The rule owner records the following brief:
   explain evidence.
 - **Human decision:** The rule owner classifies each result as a defect,
   documented convention, accepted exception, or not applicable.
-- **Success measures:** Find every genuine seeded site, flag no compliant
-  fixture, attach a tie probe to every finding, and state what was not checked.
+- **Success measures:** Find every deliberately noncompliant test site, flag no
+  compliant test example, attach a tie probe to every finding, and state what
+  was not checked.
 - **Main risk:** A narrow search can produce a convincing false clean report.
 
 The Plan gate is the rule owner's acceptance that this one-rule review is worth
@@ -189,8 +190,10 @@ Build.
 
 ## Build --- Prototype the workflow
 
-The prototype design separates two deterministic checks from one small agent
-judgment. The book specifies these components but does not distribute them.
+The prototype uses two fixed, repeatable checks---a broad scan and a decimal-tie
+probe---plus one limited agent judgment about whether each candidate affects a
+reported value. The book specifies these components but does not distribute
+them.
 
 ### Step 1: Scan for candidates
 
@@ -208,10 +211,9 @@ format labels rather than reported numbers.
 
 ### Step 2: Probe observed behavior
 
-The probe compares each candidate at decimal ties of both signs with one
-reference behavior. Readers can skip the R details below; the important point
-is that every candidate receives the same test. Given a value and the number
-of displayed decimal places, the helper applies the half-away-from-zero rule.
+The probe gives every candidate the same decimal-tie test using values of both
+signs. The R helper below calculates the approved half-away-from-zero result.
+Readers do not need to follow its syntax to understand the comparison.
 
 ```r
 round_half_away <- function(x, digits = 0) {
@@ -223,12 +225,12 @@ round_half_away <- function(x, digits = 0) {
 The probe reports `PASS` or `FAIL` with a comparison table; a function name
 alone is not evidence.
 
-### Step 3: Triage in context
+### Step 3: Classify candidates in context
 
 The agent reads the surrounding source and answers one question: does this
-candidate round a reported numeric value? A human reviewer then confirms or
-changes that triage. Deterministic results and model judgment remain labeled
-separately.
+candidate round a reported numeric value? This provisional classification is
+called triage. A human reviewer confirms or changes it. Fixed test results and
+agent judgment remain labeled separately.
 
 ### Canonical artifact: Prototype
 
@@ -254,11 +256,15 @@ All metalite locations and results below refer to commit
 [`85757ba1bf5d863971e142b7872b6f92c265d6ef`](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef)
 (2025-09-17). They must be reverified before use with another commit.
 
-A search for `round(` found zero matches. The broader scan found six
-candidates. Context review discarded three: `R/adam_mapping.R:151` formats
-variable names, `R/bind_rows2.R:74` formats an index label, and
-`R/collect_n_subject.R:51` formats factor levels. The other three are confirmed
-rounding sites, all using `formatC()`:
+The evidence narrows in three steps:
+
+1. A search for `round(` found zero matches.
+2. The broader scan found six candidates.
+3. Context review excluded three calls that format names, labels, or factor
+   levels, leaving three calls that round reported values.
+
+The excluded calls were `R/adam_mapping.R:151`, `R/bind_rows2.R:74`, and
+`R/collect_n_subject.R:51`. The three confirmed sites all use `formatC()`:
 
 | Confirmed site | Reported value |
 |---|---|

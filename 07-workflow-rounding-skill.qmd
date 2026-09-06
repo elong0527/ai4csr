@@ -8,18 +8,18 @@ coverage, and human stop point portable. This book specifies that design; it
 does not distribute or run the skill.
 :::
 
-A programmer inherits an R reporting package after the reviewer who performed
-the original rounding check has moved to another study. The conclusion remains
-in a review note, but the useful details do not: which functions to search,
-which ties to test, how to explain a mismatch, and when to stop before posting
-an issue. Repeating the original one-sentence prompt may not repeat the result.
+During a study handoff, a statistical programmer inherits an R reporting
+package and must repeat the earlier rounding review. The review note preserves
+the conclusion, but not the method: which functions to search, which ties to
+test, how to explain a mismatch, or when to stop before posting an issue.
 
 At metalite commit `85757ba1bf5d863971e142b7872b6f92c265d6ef`,
 @sec-workflow-rounding found three `formatC()` sites and 6 divergences among 10
 tie probes. Repeating that result requires preserving more than the prompt.
 
 This second lifecycle turn designs an agent skill: a reviewable folder that
-preserves the instructions and supporting material for the check.
+carries the instructions and supporting material from one reviewer or study to
+the next.
 
 ::: {.callout-note title="Maturity: Design pattern"}
 The skill layout and procedure are a design. The book does not contain an
@@ -55,7 +55,8 @@ Cycle 2 therefore needs to:
 - replace reviewer memory with a written procedure;
 - report coverage for every run;
 - define a trigger without implying that automation exists; and
-- measure repeated triage and let the rule owner approve an allowlist.
+- measure repeated candidate classification, or triage, and let the rule owner
+  approve a list of known acceptable calls.
 
 ### Canonical artifact: Workflow brief
 
@@ -80,26 +81,25 @@ cycle. The accepted workflow brief initiates Design.
 
 ### Treat the skill as a controlled procedure
 
+For a Biometrics owner, the proposed folder is like a controlled work
+instruction with supporting attachments:
+
+- `SKILL.md` is the instruction: when to use the check, what to do, and when to
+  stop.
+- `references/` holds the approved business rule and definitions.
+- `scripts/` holds fixed checks that can be tested separately.
+- `assets/` holds the report template.
+
 Under the [Agent Skills specification](https://agentskills.io/specification),
-the folder requires a `SKILL.md` file with `name` and `description` in YAML
-frontmatter. The `name` must match the directory name. The folder may also have
-`scripts/`, `references/`, and `assets/` directories.
-
-For a Biometrics owner, the important distinction is simple:
-
-- `SKILL.md` contains the operating instructions and stop points.
-- `references/` contains the approved business rule and definitions.
-- `scripts/` contains deterministic checks that can be tested separately.
-- `assets/` contains a consistent output template.
-
-This structure is a proposed system of record for the procedure. Merely
-describing the folders does not create them.
+`SKILL.md` must begin with a short machine-readable header containing `name`
+and `description`; the name must match the folder name. The other directories
+are optional.
 
 ### State when the skill applies
 
-The proposed `SKILL.md` starts with a short machine-readable label. Readers do
-not need to write YAML to follow the example; the key fields are the skill name,
-when it applies, required software, skill version, and rule version:
+In this example, the header also records required software, the skill version,
+and the rule version. Readers do not need to write YAML to understand these
+fields:
 
 ```yaml
 ---
@@ -109,7 +109,7 @@ description: Reviews R source for BR-NUM-001.1, which requires values intended
   including formatting functions; tests ties of both signs; reports coverage;
   and drafts findings for human review. Use for a bounded rounding-rule review
   of an R source tree.
-compatibility: Requires Rscript on PATH and read access to the target source.
+compatibility: Requires the Rscript command and read access to the target source.
 metadata:
   version: "1.0"
   rule-contract: "BR-NUM-001 v1.0"
@@ -160,36 +160,23 @@ rounding-rule-review/
     issue-template.md
 ```
 
-This proposed layout applies the structure described above. None of these files
-is distributed by the book.
-
 ### Preserve the decisions that changed the result
 
-The proposed procedure must include three instructions.
+The proposed procedure must always:
 
-First, prevent a false clean report:
+1. Search beyond `round(` because formatting functions can also round reported
+   values.
+2. Report how often results diverge and explain tie mode and binary
+   representation as distinct causes.
+3. Write findings to a draft and stop before any source change or GitHub issue.
 
-> Do not substitute a plain search for `round(`. A rounding site is any call
-> that can change a reported numeric value at an exact decimal tie. Formatting
-> functions can round as a side effect of display.
+It must also state these limits:
 
-Second, keep the explanation precise:
-
-> Report observed divergence and its frequency. Explain tie mode and binary
-> representation as distinct causes; do not reduce the result to a blanket
-> claim that a function uses "banker's rounding."
-
-Third, preserve the human gate:
-
-> Render findings to a draft file and stop. Do not create a GitHub issue or
-> change source unless an accountable human explicitly authorizes that action.
-
-The procedure must also state four limits. A source scanner can miss a function
-call that the program constructs only when it runs. If the `digits` argument,
-which specifies the number of decimal places, cannot be determined, the review
-must stop. The approved helper remains a candidate until the rule owner approves
-an allowlist, a list of known acceptable calls. Rules BR-NUM-001.2 and
-BR-NUM-001.3 are not checked.
+- A scanner can miss calls that are constructed only while the program runs.
+- If the number of decimal places cannot be determined, the review stops.
+- An approved helper remains a candidate until the rule owner approves an
+  allowlist.
+- Only BR-NUM-001.1 is checked; BR-NUM-001.2 and BR-NUM-001.3 remain gaps.
 
 ::: callout-warning
 ## When not to use this skill
@@ -245,9 +232,9 @@ has been built or run.
 
 | Acceptance criterion | Required result |
 |---|---|
-| Seeded noncompliant fixture | Detect 1 of 1 violation |
-| Compliant fixture | Report 0 false findings |
-| Approved-helper fixture | Record 2 candidates and 0 findings |
+| Test example with one deliberate violation | Detect 1 of 1 violation |
+| Compliant test example | Report 0 false findings |
+| Approved-helper test example | Record 2 candidates and 0 findings |
 | Pinned metalite source | Reproduce 3 confirmed `formatC()` sites |
 | Pinned tie probe | Reproduce 6 divergences in 10 inputs |
 | Coverage | Name files examined, files not examined, and rule version |
@@ -279,10 +266,12 @@ The team has three trigger options:
 
 - **On demand:** A reviewer requests the check. Setup is minimal, but the process
   still depends on memory.
-- **On pull request:** The check runs when relevant reporting source changes.
-  This is timely but needs path filters and noise control.
+- **On a proposed source-code change:** The check runs when relevant reporting
+  source changes. This is timely but requires rules that limit when it runs and
+  control unnecessary findings.
 - **Scheduled:** The check runs before a release or after source changes. It can
-  detect drift, but the finding may be separated from the change that caused it.
+  detect drift from approved behavior, but the finding may be separated from
+  the change that caused it.
 
 The proposed first release is on demand and advisory. Pull-request or scheduled
 execution requires separate approval after benchmark evidence shows acceptable
