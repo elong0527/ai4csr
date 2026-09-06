@@ -1,4 +1,4 @@
-# Rounding in analysis and reporting {#sec-workflow-rounding}
+# Rounding in analysis and reporting {#sec-workflow-rounding-prompt}
 
 ::: callout-tip
 Treat a rounding review as a scope question before treating it as a coding
@@ -65,6 +65,17 @@ BR-003 covers a problem that is easy to overlook because it is not arithmetic.
 The values `76`, `76.0`, and `76.00` are numerically equal, but they communicate
 different precision in a table. A program can calculate the intended number and
 still produce an output that violates a reporting convention.
+
+::: {.callout-note title="Beyond this example: A community rounding skill"}
+This book uses all three rules to define the policy, then deliberately limits
+the skill design in @sec-workflow-rounding-skill to BR-001. A broader
+`rounding` skill covering tie method, rounding stage, and display precision is
+being developed through
+[`RConsortium/pharma-skills` issue #208](https://github.com/RConsortium/pharma-skills/issues/208).
+As of 2026-09-06, the issue defines the first benchmark and states that the
+skill does not yet exist. Interested readers can follow the issue as the
+community turns the three-rule policy into a tested skill.
+:::
 
 ### Define which calls are in scope
 
@@ -164,7 +175,7 @@ accepted, and no task contract specifies a repeatable check.
 
 Leaving the search open can reveal functions, wrappers, and code paths that the
 reviewer did not anticipate. The tradeoff is that the prompt sets no minimum
-check against which another run can be compared. Three workflow capabilities
+check against which another run can be compared. Four workflow capabilities
 are still missing:
 
 - **Coverage assurance.** A response can state which files and rules it checked,
@@ -172,10 +183,14 @@ are still missing:
   against which to test that claim. Silence is not evidence that every file or
   rule was reviewed.
 - **Repeatability.** Repeatability does not require the agent to reason the same
-  way on every run. It does require a stable minimum procedure and expected results. 
+  way on every run. It does require a stable minimum procedure and expected results.
   The exploratory prompt supplies none
   of those controls, so another run can follow a different path and return
   different coverage.
+- **Separation of checks from judgment.** The response can mix reproduced
+  observations, causal explanations, provisional triage, and proposed decisions.
+  A workflow must label deterministic evidence separately from agent judgment
+  and human classification.
 - **A named human gate.** The prompt requests a draft but does not name who
   classifies each finding as a defect, a documented convention, an accepted
   exception, or not applicable, or who decides whether to post it.
