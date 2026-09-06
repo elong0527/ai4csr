@@ -1,16 +1,19 @@
 # Enforcing a rounding rule with a prompt {#sec-workflow-rounding}
 
 ::: callout-tip
-A single well-aimed prompt can find a real defect in real code. Turning that
-result into something a team can rely on is a separate problem, and it is the
-one the lifecycle solves.
+## 30-second takeaway
+SAS and R break ties differently. A short prompt found real rounding sites in the metalite R package that a search for `round()` missed. The durable value is a versioned rule plus a small tie test, with a person deciding each finding.
 :::
 
-Two programmers prepare the same summary in different languages. One uses the
-default SAS rounding function, the other the default R function. Most values
-agree, but exact ties do not. A reviewer finds the difference only after a table
-has been produced. The calculation is small; the real problem is that an
-organizational rule was never made executable at the moment the code changed.
+A Biometrics team prepares the same efficacy table in SAS and R. Most values
+agree, but exact ties do not: SAS `ROUND()` goes half away from zero while R
+`round()` goes half to even. The reviewer spots it after the table is out. The
+fix is an executable rule that runs when code changes, not a post hoc comment.
+
+One number shows the stakes. A mean change of 2.05 displayed at one decimal:
+SAS `ROUND()` gives 2.1 (half away from zero); R `formatC(x, format = "f",
+digits = 1)` gives 2.0 (the stored binary value sits just below the tie). Same
+data, different table cell, no warning.
 
 This chapter runs the AI-first SDLC from @sec-ai-first-sdlc once, end to end,
 around the smallest possible unit of work: one prompt, run by hand, against one
@@ -93,26 +96,7 @@ https://github.com/pharmaverse/cards/blob/main/R/round5.R
 Do not propose a code change. Do not modify any repository.
 ```
 
-Three points about running it.
-
-**No issue will be created.** The agent has no write access to
-`Merck/metalite`, so the last clause of the original prompt cannot be carried
-out. The instruction is left in on purpose. Watch what the agent does with a
-task it cannot complete: reporting the limitation and drafting the body is the
-correct behavior; describing the issue as filed is not.
-
-**The commit pin is part of the task.** metalite is a maintained package. An
-unpinned prompt asks about whatever the code happens to be today, so the same
-prompt can return opposite answers in successive months and neither answer can
-be checked later. A finding is a statement about a specific state of the code,
-and the citation has to say which state.
-
-**Expect the answers to differ.** Two runs of this prompt, or two colleagues
-running it, can disagree about how many rounding sites exist and whether the
-package complies. That variability is the observation this chapter is built
-on, not a defect in the platform. Compare whatever you receive against the
-questions below, and then against the deterministic result later in the
-chapter.
+Three run notes: the agent cannot file the issue (no write access), so a drafted body is the correct output. The commit pin is part of the task, since metalite changes over time. Expect runs to disagree; that variability is the point. Judge any answer with four checks:
 
 - Did it search only for `round()`, or for functions that round while
   formatting?
@@ -133,26 +117,21 @@ chapter.
   enough evidence to decide.
 - **Non-goals.** Fixing the code, granting exceptions, or judging the
   statistical method.
-- **Success measures.** Every genuine rounding site is located; no compliant
-  code is reported as a violation; every claimed violation carries a
-  reproducible boundary test; and the run states what it did not check.
-- **Why AI is useful here.** The search is mechanical, but deciding whether a
-  given call actually rounds a reported number requires reading surrounding
-  code.
+- **Success measures.** Every genuine site found, no compliant code flagged, every violation backed by a tie test, and each run states what it did not check.
+- **Why AI helps.** Scanning is mechanical; judging whether a call rounds a reported number needs reading context.
 
-Planning ends when a rule owner accepts that one rule, checked on one
-repository, is a worthwhile target. That accepted brief initiates Design.
+Planning ends when the rule owner accepts that one rule, checked on one
+repository, is worthwhile. Decision: rule owner signs the brief; question
+answered: "is this one rule worth checking?" That acceptance initiates Design.
 
 ## Design --- Specify the workflow
 
 ### The prompt is under-specified, and that is the finding
 
-Read the prompt again as an implementer. "Properly uses round half away from
-zero" does not say what counts as a rounding site. A reader who assumes it
-means calls to `round()` will search for `round(`, find nothing in metalite, and
-report that the package is clean. That answer is wrong, and no amount of prompt
-rewording fixes it, because the missing information is organizational, not
-linguistic.
+Read the prompt as an implementer: "properly uses round half away from zero"
+never defines a rounding site. A search for `round(` finds nothing in metalite
+and reports it clean. That answer is wrong, and rewording cannot fix it,
+because the gap is organizational, not linguistic.
 
 So the first Design output is not a prompt. It is a versioned rule contract.
 
@@ -198,19 +177,21 @@ finding. It belongs in a versioned document with an owner, not in a prompt.
 | **Stop conditions** | Missing rule version, an unresolvable `digits` argument, or a documented conflicting convention in the target repository |
 | **Human decision** | Defect, documented convention, or accepted exception, with the reason recorded |
 
+Decision: rule owner signs the task contract; question: "what exactly counts,
+and who decides the outcome?"
+
 ::: {.content-visible when-format="html"}
 ![A project code change triggers deterministic checks followed by a focused AI
 review. Findings go to a human reviewer, whose decisions are recorded and may
 lead to an approved rule update.](assets/diagrams/workflow-code-review.svg){#fig-code-review fig-alt="A project code change feeds deterministic checks and then an AI agent. The workflow produces a CI signal, task, code review comment, and a coverage report. A human reviews findings, records decisions, and approves any update to the business rules."}
 :::
 
-Deterministic checks run before model interpretation because repeatable facts
-should not depend on model judgment. The human decides last because an agent
-can prepare evidence but cannot approve an exception.
+Deterministic checks run before model judgment; the human decides last, since an
+agent prepares evidence but cannot grant exceptions.
 
 ## Build --- Prototype the workflow
 
-The prototype is two small R scripts and a triage step the agent performs.
+Two small R scripts plus one agent triage step.
 
 ### Scan: find candidate rounding sites
 
@@ -224,8 +205,8 @@ catalog <- c(
 )
 ```
 
-Over-inclusion is a design choice. A missed rounding site is a silent wrong
-number in a table; an extra candidate costs a few seconds of triage.
+Over-inclusion is deliberate: a missed site is a silent wrong number, while an
+extra candidate costs seconds of triage.
 
 ### Probe: prove the tie behavior
 
@@ -239,17 +220,13 @@ round_half_away <- function(x, digits = 0) {
 }
 ```
 
-The probe exists so that no finding rests on an assumption about what a
-function name implies. It returns `PASS` or `FAIL` and the table that produced
-the verdict.
+The probe returns `PASS` or `FAIL` with its table, so no finding rests on a
+function name.
 
 ### The agent's share of the work
 
-Between the two scripts sits the judgment the scripts cannot make: given a
-candidate site, is the value being rounded a reported number, or is it a label?
-That requires reading the surrounding code and, when the file is not enough,
-tracing an argument to its origin. That is the agent's contribution, and it is
-deliberately small.
+One judgment scripts cannot make: does the candidate round a reported number
+or a label? That needs reading context, and it is deliberately small.
 
 Build ends with a runnable path from an R source tree to a drafted finding.
 
@@ -257,10 +234,8 @@ Build ends with a runnable path from an R source tree to a drafted finding.
 
 ### Control the false positives first
 
-Three small fixtures establish the baseline before the real repository is
-touched: a compliant summary that aggregates unrounded values and formats once
-through the approved helper, a noncompliant summary that calls `formatC()`
-directly, and the approved helper itself.
+Three fixtures set the baseline: a compliant summary via the approved helper,
+a noncompliant one calling `formatC()` directly, and the helper itself.
 
 | Fixture | Sites reported | Confirmed findings |
 |---|---|---:|
@@ -268,19 +243,16 @@ directly, and the approved helper itself.
 | Noncompliant summary using `formatC()` directly | 1 | 1 |
 | The approved helper itself | 2 | 0 |
 
-The last row matters. The scan reports the organization's own approved
-implementation every time, and a human or agent has to discard it. That
-recurring cost is a real weakness, recorded here rather than hidden.
+The last row is the honest weakness: the scan flags your own approved helper
+every run, and someone must discard it.
 
 ### Run it on metalite
 
-All results below are from commit
+All results are from commit
 [`85757ba`](https://github.com/Merck/metalite/tree/85757ba1bf5d863971e142b7872b6f92c265d6ef)
-(2025-09-17). Line numbers are only meaningful against that commit, and the
-package may since have changed.
+(2025-09-17). Line numbers apply only to that commit.
 
-The naive reading of the prompt comes first, because it is what a hurried
-reviewer would do:
+A hurried reviewer searches for `round(` first:
 
 ```bash
 grep -rn "round(" metalite/R | wc -l
@@ -324,9 +296,7 @@ disagreements: 6 of 10
 
 ### Report the cause precisely
 
-A careless report would say that `formatC()` uses banker's rounding. The probe
-output shows that this is not the whole story, because the disagreements do not
-follow an obvious pattern. Two distinct causes are at work:
+Do not write "uses banker's rounding" and stop. Two causes combine:
 
 1. **Tie mode.** Where the tie is exactly representable in binary, such as
    `2.5` at zero decimals, `formatC()` applies round half to even and returns
@@ -336,17 +306,12 @@ follow an obvious pattern. Two distinct causes are at work:
    correct rounding of the stored value gives `2.0`, while `-1.05` is stored
    just above the tie and rounds to `-1.1`.
 
-The practical consequence is stronger than either cause alone: the direction of
-rounding at a tie cannot be predicted by reading the source. At zero decimals
-the same expression also renders `-0.5` as `-0`, a negative zero in a reported
-cell.
+Net effect: you cannot predict tie direction by reading source. At zero
+decimals the same call renders `-0.5` as `-0` in a reported cell.
 
-This is where an agent earns its place and also where it is most dangerous. It
-can connect the scan, the probe, and the binary representation into an
-explanation a maintainer can act on. It can equally produce a confident,
-tidy, wrong sentence about banker's rounding. The rule contract therefore
-instructs it to report the observed divergence and its frequency rather than
-assert a mechanism.
+The agent adds value by linking scan, probe, and binary detail, but it can
+also invent a tidy wrong mechanism. The contract tells it to report observed
+divergence and frequency, not assert a mechanism.
 
 ### Canonical artifact: Benchmark report
 
@@ -360,24 +325,16 @@ assert a mechanism.
 | Rules left unchecked | BR-NUM-001.2 and BR-NUM-001.3 |
 
 Every number above can be re-derived at the pinned commit from the catalog and
-the probe shown earlier in this chapter.
+the probe shown earlier in this chapter. Decision: reviewer signs the benchmark;
+question: "do I trust this check enough to run it again?"
 
 ## Deploy --- Operationalize the workflow
 
-The prompt asked the agent to create a GitHub issue. It did not.
+The workflow drafts the issue file and stops. Posting needs explicit approval:
 
-The workflow renders the issue body to a file and stops. Posting is a separate,
-explicitly approved step, for three reasons that generalize well beyond this
-example.
-
-- **The target is not ours.** `Merck/metalite` is a third-party repository.
-  Writing to it is an outward-facing action, and an agent should not take one
-  because a prompt implied it.
-- **The rule is not theirs.** BR-NUM-001 is an illustrative contract in this
-  book. metalite does not document a tie-rounding convention, so the honest
-  finding is "this package does not implement our rule", not "this package has
-  a bug".
-- **A finding is not yet a defect.** Classifying it is the reviewer's job.
+- **Not our repo.** Writing to `Merck/metalite` is outward-facing.
+- **Not their rule.** metalite documents no tie convention, so the finding is "does not implement our rule", not "has a bug".
+- **Not yet a defect.** The reviewer classifies it.
 
 ### Canonical artifact: Release record
 
@@ -397,18 +354,8 @@ statement. It is marked as a dry run and was not submitted.
 
 ## Maintain --- Monitor and improve
 
-One cycle is enough to see what this workflow cannot do.
-
-- **The knowledge is in a person's head.** The catalog of rounding sites, the
-  triage rules, and the instruction to report causes precisely all lived in the
-  reviewer who ran the prompt. A colleague running the same prompt gets the
-  false clean report.
-- **Runs are not comparable.** Nothing records what was scanned, at which
-  commit, under which rule version. Two runs a month apart cannot be compared.
-- **The check runs when someone remembers.** The trigger is a human intention,
-  which is the least reliable trigger available.
-- **Triage cost is recurring.** Half the candidate sites in the metalite run,
-  and the whole approved-helper fixture, were discarded by hand every time.
+Four gaps the next cycle must fix: knowledge in one head, runs not comparable,
+trigger by memory, recurring triage cost.
 
 ### Canonical artifact: Monitoring report
 
@@ -421,11 +368,7 @@ That accepted decision initiates a second cycle, which is
 
 ## Summary
 
-A one-line prompt found a real divergence in a real package. It also would have
-reported that package clean, if the reviewer had assumed that rounding means
-`round()`.
-
-The value was never in the prompt. It was in the versioned statement of what
-counts as a rounding site, in a deterministic test that proves behavior instead
-of asserting it, and in a human deciding what a finding means. The prompt was
-the least durable part of the workflow, which is why the next cycle replaces it.
+One prompt found a real divergence, and would also have reported metalite clean
+if rounding were assumed to mean `round()`. The value sits in the versioned
+site definition, the tie test, and the human decision. The prompt is the least
+durable part, which is why the next cycle replaces it.
