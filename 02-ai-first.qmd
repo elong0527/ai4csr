@@ -143,7 +143,9 @@ The initial implementation should include a task contract, a deterministic
 foundation wherever exact rules can be encoded, and a reviewable result. It can
 begin in advisory mode and expand one boundary at a time. The applied examples
 develop these implementations through the shared AI-first SDLC rather than
-introducing a separate development sequence for each workflow.
+introducing a separate development sequence for each workflow. When the
+workflow owner accepts the workflow brief, that acceptance initiates Design
+as described in @sec-ai-first-sdlc.
 
 For example, a first workflow for reviewing a changed table could be defined as
 follows:
