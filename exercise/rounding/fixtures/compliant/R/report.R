@@ -8,4 +8,3 @@ display_percentage <- function(x) {
   if (value == 0) value <- 0
   formatC(value, format = "f", digits = 1L)
 }
-

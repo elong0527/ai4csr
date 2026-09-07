@@ -27,4 +27,3 @@ BR-002 and BR-003 were not checked. Findings are differences from an
 illustrative rule and are not maintainer-approved defect classifications.
 
 <!-- rounding-review-managed:END -->
-
