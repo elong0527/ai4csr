@@ -12,8 +12,6 @@ pdf/
 
 # Mutable state and caches from the rounding workflow lab
 /exercise/rounding/var/
-**/__pycache__/
-*.pyc
 
 # Fetched locally by the reader, not redistributed
 exercise/day1/*.pdf

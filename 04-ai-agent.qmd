@@ -72,7 +72,8 @@ Two distinctions are important:
 
 - **Working state is not durable project memory.** Rules and decisions that
   must survive an interaction belong in versioned artifacts rather than only
-  in chat history.
+  in chat history. Day-one repo context, commands, and conventions live in a
+  versioned `AGENTS.md`; repeatable policy lives in versioned skills.
 - **Tool access is not authority.** The technical ability to edit a file or
   call an API does not grant approval or decision rights.
 
@@ -108,7 +109,11 @@ repeated task. The open [Agent Skills
 specification](https://agentskills.io/specification) defines `SKILL.md` as the
 required entry point. Supporting resources are added only when the task needs
 them. Code-agent products may differ in where skills are installed and how they
-are invoked.
+are invoked. Keep three layers distinct: `AGENTS.md` holds repo-wide context,
+skills hold repeatable task policy, and scoped helpers hold jobs such as
+verification or codebase research inside one run. When the agent repeats the
+same mistake twice, promote the correction into `AGENTS.md` or the relevant
+skill. Verification before reporting done also lives in `AGENTS.md`.
 
 A skill is not the complete AI-first workflow. It can make the task procedure
 operational, but it does not decide whether the task is valuable, define the

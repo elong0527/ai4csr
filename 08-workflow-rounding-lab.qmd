@@ -40,9 +40,10 @@ exercise/rounding/
   expected/
   fixtures/
   schemas/review-report.schema.json
-  scripts/run_rotation.py
-  scripts/validate_report.py
-  scripts/publish_issue.py
+  scripts/run-rotation.R
+  scripts/validate-report.R
+  scripts/publish-issue.R
+  scripts/rounding-workflow.R
   targets.json
   state.example.json
   cron.example
@@ -102,7 +103,7 @@ the pinned `cards` 0.9.0 comparison dependency. Then run the offline tests from
 the lab directory:
 
 ```bash
-python3 -m unittest discover -s tests -v
+Rscript tests/test-rounding-workflow.R
 ```
 
 The benchmark recorded on 2026-09-06 passed the offline tests. They cover
@@ -142,7 +143,7 @@ for the offline exercise:
 
 ```bash
 rounding_tmp="$(mktemp -d)"
-python3 scripts/run_rotation.py \
+Rscript scripts/run-rotation.R \
   --registry fixtures/targets.json \
   --state "$rounding_tmp/state.json" \
   --runs-dir "$rounding_tmp/runs" \
@@ -171,7 +172,7 @@ After installing the dependencies and testing Codex authentication, run one
 package without publishing:
 
 ```bash
-python3 scripts/run_rotation.py
+Rscript scripts/run-rotation.R
 ```
 
 The first run selects `Merck/r2rtf`, resolves its `master` branch to an exact

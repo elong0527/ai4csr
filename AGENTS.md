@@ -227,7 +227,8 @@ same prototype and does not declare a separate workflow maturity level.
 - The repository ships the prototype under `exercise/rounding/`. Keep the
   skill, deterministic scripts, synthetic fixtures, schema, expected results,
   controller, issue publisher, tests, and inactive cron template consistent
-  with Chapters 07 and 08. Do not describe the prototype as a validated,
+  with Chapters 07 and 08. Implement the prototype workflow in R; use `gh` only
+  for GitHub issue operations. Do not describe the prototype as a validated,
   production-qualified, or operating system.
 - The skill layout described in `07-workflow-rounding-skill.qmd` follows the
   Agent Skills specification (<https://agentskills.io/specification>): a

@@ -5,7 +5,7 @@
 - Rule: BR-001 v1.0
 - Comparison: `cards::round5()` from `cards` 0.9.0
 - R environment: R 4.6.1 on arm64 macOS
-- Python environment: Python 3 standard library
+- Workflow implementation: R 4.1 or later with `jsonlite`
 - Target data: synthetic R source under `fixtures/`
 
 ## Executed results
@@ -13,7 +13,7 @@
 | Check | Result |
 |---|---|
 | Agent Skills structure validation | Passed |
-| Offline Python and R tests | 14 of 14 passed |
+| Offline R tests | 14 of 14 passed |
 | Catalog scan of `fixtures/violations/R` | 1 file, 2 candidates, 0 parse errors |
 | Pinned two-value `round()` probe | 2 of 2 results diverged as expected |
 | Pinned four-value `formatC()` probe | 3 divergences, including negative zero |

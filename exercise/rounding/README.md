@@ -12,9 +12,10 @@ the process owner has accepted the release record.
 
 - `.agents/skills/rounding-rule-review/`: the portable Agent Skills package
 - `schemas/review-report.schema.json`: structured agent output contract
-- `scripts/run_rotation.py`: one-package-per-run rotation and change detection
-- `scripts/validate_report.py`: finding admission checks
-- `scripts/publish_issue.py`: deterministic package-level issue management
+- `scripts/run-rotation.R`: one-package-per-run rotation and change detection
+- `scripts/validate-report.R`: finding admission checks
+- `scripts/publish-issue.R`: deterministic package-level issue management
+- `scripts/rounding-workflow.R`: shared implementation used by those commands
 - `fixtures/`: synthetic R sources and an offline target registry
 - `expected/`: independently stated expected report
 - `targets.json`: the five-package, 30-run pilot registry
@@ -22,17 +23,18 @@ the process owner has accepted the release record.
 
 ## Prepare the environment
 
-Use Python 3.10 or later, R 4.1 or later, Git, and GitHub CLI. Install the pinned
+Use R 4.1 or later, Git, and GitHub CLI. Install `jsonlite` and the pinned
 comparison package into the R library used by the scheduled identity:
 
 ```bash
+Rscript -e 'install.packages("jsonlite", repos = "https://cloud.r-project.org")'
 Rscript -e 'pak::pkg_install("cards@0.9.0")'
 ```
 
 Run the offline tests:
 
 ```bash
-python3 -m unittest discover -s tests -v
+Rscript tests/test-rounding-workflow.R
 ```
 
 Run the deterministic scanner and tie probe directly:
@@ -54,7 +56,7 @@ Use temporary state and the supplied answer-key report:
 
 ```bash
 rounding_tmp="$(mktemp -d)"
-python3 scripts/run_rotation.py \
+Rscript scripts/run-rotation.R \
   --registry fixtures/targets.json \
   --state "$rounding_tmp/state.json" \
   --runs-dir "$rounding_tmp/runs" \
@@ -77,7 +79,7 @@ As verified on 2026-09-06, Codex discovers repository skills under
 Test one dry run before installing a schedule:
 
 ```bash
-python3 scripts/run_rotation.py
+Rscript scripts/run-rotation.R
 ```
 
 The controller checks out the selected package at the resolved commit, invokes

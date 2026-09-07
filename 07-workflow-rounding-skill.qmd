@@ -37,8 +37,8 @@ the resource-backed prototype and a companion lab. Comparing the increments
 shows what each additional resource is intended to improve.
 
 ::: {.callout-note title="Maturity: Reproducible prototype"}
-The book distributes a valid `rounding-rule-review` skill, deterministic R and
-Python scripts, synthetic R examples, expected results, a structured report
+The book distributes a valid `rounding-rule-review` skill, deterministic R
+scripts, synthetic R examples, expected results, a structured report
 schema, a five-package registry, and offline tests. @sec-workflow-rounding-lab
 shows how to create, invoke, and schedule the prototype. The tests establish
 the deterministic foundation; they do not establish agent accuracy across
