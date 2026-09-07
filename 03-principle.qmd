@@ -61,7 +61,9 @@ State should show:
 
 Clinical study work changes repeatedly. Without explicit state, every agent run
 becomes a disconnected review. With explicit state, the workflow can distinguish
-new, repeated, fixed, acknowledged, and unresolved findings.
+new, repeated, fixed, acknowledged, and unresolved findings. Coverage is
+reported for every run; silence is not evidence that every rule or file was
+checked.
 
 > Workflow state should be visible, reusable, and reviewable.
 
@@ -101,8 +103,11 @@ Example tools include:
 - `compare_expected_actual()`.
 
 A finding should state what was checked, what was expected, what was observed,
-where the evidence came from, and which human role should review it. A statement
-without traceable evidence is an unsupported opinion, not a finding.
+where the evidence came from, what was not covered, and which human role should review it. A statement
+without traceable evidence is an unsupported opinion, not a finding. Where an
+exact rule can be encoded, deterministic software applies it and the agent
+interprets the resulting evidence; an agent fixing code does not weaken its own
+check by editing the test during the fix.
 
 > No finding without evidence.
 
