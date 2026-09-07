@@ -1,0 +1,4 @@
+# Replace every /absolute/path placeholder before installing this crontab.
+# One invocation reviews one package. The controller stops after 30 runs.
+15 2 * * * cd /absolute/path/ai4csr/exercise/rounding && /absolute/path/python3 scripts/run_rotation.py >> var/cron.log 2>&1
+

@@ -100,6 +100,24 @@ A task contract does not require every uncertainty to be resolved in advance.
 It requires uncertainties to be visible so the agent does not silently turn an
 assumption into a decision.
 
+### Distinguish a skill from a workflow
+
+An **agent skill** is a versioned package of instructions and optional
+references, scripts, and templates that teaches a code agent how to perform a
+repeated task. The open [Agent Skills
+specification](https://agentskills.io/specification) defines `SKILL.md` as the
+required entry point. Supporting resources are added only when the task needs
+them. Code-agent products may differ in where skills are installed and how they
+are invoked.
+
+A skill is not the complete AI-first workflow. It can make the task procedure
+operational, but it does not decide whether the task is valuable, define the
+business rule, approve its own benchmark, authorize its release, or own the
+result. The workflow brief, task contract, prototype, benchmark report, release
+record, and monitoring report govern those decisions across the AI-first SDLC.
+The rounding example in @sec-workflow-rounding-skill shows how one skill changes
+as those lifecycle artifacts become concrete.
+
 ## A minimal AI-adoption example
 
 This example demonstrates the smallest useful form of AI adoption: one person

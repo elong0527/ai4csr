@@ -1,0 +1,18 @@
+{
+  "campaign": {
+    "id": "br001-offline-fixture",
+    "maximum_runs": 2,
+    "rule_id": "BR-001",
+    "rule_version": "1.0",
+    "process_owner": "fixture-owner",
+    "publisher_login": "fixture-bot"
+  },
+  "targets": [
+    {
+      "repository": "ai4csr/rounding-violations-fixture",
+      "branch": "main",
+      "source_directory": "R"
+    }
+  ]
+}
+

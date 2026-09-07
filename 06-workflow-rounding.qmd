@@ -32,8 +32,9 @@ one prompt to an agent to check a real R package against the first rule. The
 exercise can reveal a real finding, but a one-off prompt does not produce a
 workflow. In the AI-first SDLC from @sec-ai-first-sdlc, the problem, rules,
 scope, and evidence gathered here are discovery inputs rather than completed
-Plan or Design artifacts. @sec-workflow-rounding-skill starts from those inputs
-and the limits identified here.
+Plan or Design artifacts. @sec-workflow-rounding-skill starts from those inputs,
+builds a skill through the lifecycle, and connects it to the runnable lab in
+@sec-workflow-rounding-lab.
 
 ## Define the rules before checking the work
 
@@ -218,4 +219,5 @@ separating candidate evidence, reproduced observations, causal explanations,
 and proposed decisions. Turning that review into a workflow additionally
 requires assured coverage, repeatable minimum checks and a recorded human decision.
 @sec-workflow-rounding-skill begins the lifecycle by turning those gaps into
-workflow requirements.
+workflow requirements, and @sec-workflow-rounding-lab lets the reader exercise
+the resulting prototype.

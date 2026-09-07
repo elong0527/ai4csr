@@ -55,14 +55,17 @@ Order the current and planned examples by increasing workflow maturity:
    well-defined AI-first workflow, then reframe it as design parameter ->
    analytical approximation -> simulation confirmation -> design report.
 2. **Rounding:** encode and enforce explicit business rules in a small R
-   workflow. This example spans two chapters that divide problem from design.
+   workflow. This example spans three chapters that divide motivation, lifecycle
+   design, and a hands-on lab.
    `06-workflow-rounding.qmd` is the motivating chapter: it states the rounding
    problem, writes the business rule down, sends one prompt to an agent, and
    ends by naming what a prompt cannot supply. It does not run the lifecycle.
-   `07-workflow-rounding-skill.qmd` runs the lifecycle once, turning those
-   named gaps into requirements and designing the check as an agent skill.
-   Keep the two chapters as one example: problem then design, not two
-   independent examples and not two turns of a loop.
+   `07-workflow-rounding-skill.qmd` runs the lifecycle once, turning those named
+   gaps into requirements and building the check as an agent skill.
+   `08-workflow-rounding-lab.qmd` is a companion lab that exercises the
+   prototype, schedule, state, identity, and issue policy without running a
+   second lifecycle. Keep the three chapters as one example rather than three
+   independent examples or multiple turns of a loop.
 3. **Agentic R code review:** survey and benchmark mature code-review workflows
    in Codex, Claude Code, and GitHub Copilot.
 4. **SAP -> code -> results:** manage changes and traceability across connected
@@ -196,19 +199,23 @@ future work rather than adding it incidentally to unrelated chapters.
 
 ## Special requirements for the rounding example
 
-The rounding chapters specify a workflow that the book does not distribute.
+The rounding chapters describe and distribute a teaching prototype.
 `06-workflow-rounding.qmd` is the motivating chapter and declares no maturity
 level; `07-workflow-rounding-skill.qmd` runs the lifecycle and is at
-design-pattern maturity.
+reproducible-prototype maturity; `08-workflow-rounding-lab.qmd` exercises the
+same prototype and does not declare a separate workflow maturity level.
 
-- Keep the division of material between the two chapters. Chapter 06 owns the
+- Keep the division of material between the three chapters. Chapter 06 owns the
   problem, the cross-language tie table, BR-001, BR-002, and BR-003, and the
   scope clause defining which calls are in scope. It also owns the exploratory
   request, the first `arena.ai` prompt, the one-versus-eight call contrast, and
   the four gaps. Chapter 07 owns the task contract, the prototype, every pinned
   `file:line` result, the tie probe and its two causes, the benchmark, the
   release record, and monitoring. Do not move a task contract, benchmark, or
-  release record into chapter 06.
+  release record into chapter 06. Chapter 08 owns the hands-on setup, skill
+  invocation, offline controller exercise, agent adapter, 30-run rotation,
+  issue lifecycle exercise, and monitoring questions. It applies the lifecycle
+  artifacts from Chapter 07 rather than defining a second workflow.
 - Present the open request in Chapter 06 as useful for discovery, not simply as
   a defective prompt. Chapter 07 combines a required minimum scan with a
   separately labeled exploratory pass. Repeatability does not require the
@@ -217,10 +224,11 @@ design-pattern maturity.
   example stays simple. The one-decimal probe belongs in chapter 07, where both
   causes are visible; chapter 07 states why it changes precision.
 
-- The repository ships **no** `examples/rounding/` directory, no skill package,
-  no scripts, and no evidence files. Do not add links or paths to such files,
-  and do not describe the skill as installable or runnable from this book. If
-  that material is added later, raise the maturity label in the same change.
+- The repository ships the prototype under `exercise/rounding/`. Keep the
+  skill, deterministic scripts, synthetic fixtures, schema, expected results,
+  controller, issue publisher, tests, and inactive cron template consistent
+  with Chapters 07 and 08. Do not describe the prototype as a validated,
+  production-qualified, or operating system.
 - The skill layout described in `07-workflow-rounding-skill.qmd` follows the
   Agent Skills specification (<https://agentskills.io/specification>): a
   required `SKILL.md` with `name` and `description` frontmatter, optional
@@ -232,6 +240,9 @@ design-pattern maturity.
   v0.1.4 at `bdb23d472b16bc9dadbc774e64c5ca40321e9c6b` (2026-09-01). Changing it
   means re-verifying every quoted line number and probe result in the same
   change.
+- The scheduled controller may resolve a configured branch only to identify the
+  current commit. Every generated agent prompt, report, finding, and issue
+  action must record that exact SHA. A branch name alone is never evidence.
 - The "Try it yourself" sections send a prompt to <https://arena.ai/agent>,
   matching the demonstration in `04-ai-agent.qmd`. State that no GitHub issue
   can be created there, and never present a specific agent response as the
@@ -247,9 +258,13 @@ design-pattern maturity.
   why `R/fmt.R:37` and `R/format_ae_exp_adj.R:203` are not direct numeric
   formatting calls in the answer key. Do not carry the issue's proposed code
   into the book as a recommended solution without separate benchmarking.
-- Automation triggers in the Deploy section of `07-workflow-rounding-skill.qmd`
-  are a design. No CI workflow or scheduled job is committed. Do not add one
-  without agreement, and do not write about it as if it were operating.
+- The repository contains an inactive cron template, not an installed schedule
+  or active CI job. Publishing is disabled by default. Do not activate a
+  schedule or perform a live GitHub issue action without separately confirming
+  the configured service identity, process owner, repository permissions, and
+  maintainer authorization. After release authorization, individual issue
+  actions do not require separate approval, but the process owner retains
+  authority to restrict or stop the workflow.
 - Report a `formatC()` or `sprintf()` divergence as two distinct causes, tie
   mode and binary representation. Do not compress it into a claim that the
   function uses banker's rounding.
