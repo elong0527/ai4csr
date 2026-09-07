@@ -5,10 +5,8 @@
 This book is designed for people who are interested in using AI for clinical trial development.
 Each part of the book makes certain assumptions about the readers' background:
 
-- Part 1, TBD
-- Part 2, TBD
-- Part 3, TBD
-- Part 4, TBD
+- Introduction, for shared concepts, principles, agent basics, and the AI-first SDLC.
+- Applied examples, for bounded workflows developed through that lifecycle.
 
 ## Authors and contributors {.unnumbered}
 

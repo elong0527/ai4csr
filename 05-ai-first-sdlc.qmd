@@ -127,7 +127,9 @@ The workflow brief records:
 Planning ends when the workflow owner accepts the brief as a valuable and
 testable development target. That accepted brief initiates Design. If the
 problem cannot be bounded or measured, the correct decision is to revise or
-stop rather than proceed to implementation.
+stop rather than proceed to implementation. The brief uses the same intent
+shape that Maintain writes when a breached band or accepted improvement
+restarts the loop.
 
 ## Design --- Specify the workflow
 
@@ -157,7 +159,9 @@ artifact. It records:
 
 Design ends when the responsible roles can read the contract and agree on what
 will be built, how it will be evaluated, and which decisions the agent cannot
-make. The accepted task contract initiates Build.
+make. The accepted task contract initiates Build. A versioned `spec.md` may
+carry the working specification; skills apply live policy as constraints and
+flagged concerns go to named policy owners before Build.
 
 ## Build --- Prototype the workflow
 
@@ -186,7 +190,9 @@ The prototype is a versioned package of working materials, which may include:
 Build ends when the prototype completes the specified path, exposes its tool
 activity and evidence, and is reproducible enough for independent evaluation.
 The accepted prototype initiates Test. A successful demonstration is not yet a
-release decision.
+release decision. A versioned `plan.md` may name files, order, tests, and
+risks. `AGENTS.md` holds repo context and skills hold policy; deterministic
+checks enforce must-hold rules while an advisory skill alone is not a gate.
 
 ## Test --- Benchmark and evaluate
 
@@ -215,6 +221,10 @@ The benchmark report records:
 Testing ends with a human decision: return to Plan, Design, or Build; reject the
 candidate; or accept it for a controlled release. An agent may prepare the
 evidence and diagnose failures, but it does not approve its own benchmark.
+Verification runs before reporting done with toolchain output attached;
+coverage is reported and silence is not evidence. The agent does not edit its
+test during a fix; instruction, skill, or hook changes re-run the evals and
+each incident adds a permanent case.
 
 ## Deploy --- Operationalize the workflow
 
@@ -243,7 +253,9 @@ The release record identifies:
 - the person authorizing the release and the release decision.
 
 Deploy ends when the authorized release is available to its intended users and
-monitoring is active. That release event initiates Maintain.
+monitoring is active. That release event initiates Maintain. Review uses named
+passes with severity and human code-owner approval remains required; hooks
+enforce gates, autonomy is tiered by environment, and rollback is rehearsed.
 
 ## Maintain --- Monitor and improve
 
@@ -274,7 +286,10 @@ The monitoring report records:
 An agent may collect signals, identify patterns, and propose improvements. A
 human accepts any change to business rules, decision rights, benchmarks, or
 operating scope. An accepted improvement or a breached control band creates a
-new workflow brief and returns the lifecycle to Plan.
+new workflow brief and returns the lifecycle to Plan. Detection stays
+deterministic with tiered log, diagnose read-only, and propose PR or
+pre-approved runbook routes; the owner triages fix now, schedule, or dismiss
+and tune.
 
 ## How the applied examples use the lifecycle
 
@@ -295,7 +310,9 @@ An example may revisit an earlier stage when evidence changes the design. A
 failed benchmark can return to Build, an inaccessible artifact can return to
 Design, and a monitoring signal can return to Plan. The headings provide a
 shared reasoning structure, not a claim that development proceeds in a straight
-line.
+line. Stages can be adopted out of order where prerequisites allow; each stage
+tracks a leading signal from Git, review, or CI history alongside a lagging
+outcome such as rework, escape, or repeat incident.
 
 ## Summary
 
