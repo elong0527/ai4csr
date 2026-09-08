@@ -8,7 +8,8 @@ evidence requirements, and human decision rights.
 
 Clinical trial development is already organized as a chain of connected
 workflows. The study protocol informs trial operations and the statistical
-analysis plan (SAP). Collected data move through SDTM and ADaM into tables,
+analysis plan (SAP). Collected data move through the Study Data Tabulation
+Model (SDTM) and Analysis Data Model (ADaM) into tables,
 listings, and figures (TLFs). Those results support the clinical study report
 and regulatory submission. Every step has inputs, rules, handoffs, reviews, and
 accountable owners.
@@ -96,7 +97,8 @@ An April 2026
 [FDA warning letter to Purolea Cosmetics Lab](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/purolea-cosmetics-lab-722591-04022026)
 described a drug manufacturer that used AI agents to create specifications,
 procedures, and production records. FDA found that the firm had not adequately
-reviewed the generated documents for accuracy and CGMP compliance. The firm
+reviewed the generated documents for accuracy and Current Good Manufacturing
+Practice (CGMP) compliance. The firm
 also reportedly relied on the agent's failure to mention a requirement as a
 reason for not knowing that the requirement applied.
 

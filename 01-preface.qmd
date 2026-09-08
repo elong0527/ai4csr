@@ -2,13 +2,31 @@
 
 ## In this book {.unnumbered}
 
-This book is designed for people who are interested in using AI for clinical trial development.
+This book is designed for members of Biometrics departments in
+biopharmaceutical companies who design, perform, review, or govern clinical
+study reports and want to integrate AI systematically into their work.
+
+After reading the Introduction, you will be able to:
+
+- distinguish AI adoption for an isolated task from an AI-first workflow;
+- state the five principles of trustworthy assistance and read a task
+  contract;
+- name the six AI-first SDLC stages, their canonical artifacts, and the human
+  gate at each stage; and
+- choose one bounded workflow in your own work that could become AI-first.
+
+Familiarity with clinical study artifacts such as the protocol, statistical
+analysis plan, and tables, listings, and figures will help you connect the
+examples to your own work. No coding experience and no prior experience
+building AI agents are required for the main route. The optional technical
+route uses R and the exercise folders described on the landing page.
+
 Each part of the book makes certain assumptions about the readers' background:
 
-- Part 1, TBD
-- Part 2, TBD
-- Part 3, TBD
-- Part 4, TBD
+- Introduction, for shared concepts, principles, agent basics, and the AI-first SDLC.
+- Applied examples, for bounded workflows developed through that lifecycle.
+  The rounding example (Chapters 5--7) is the most complete; later examples
+  follow the same lifecycle at the maturity their evidence supports.
 
 ## Authors and contributors {.unnumbered}
 
