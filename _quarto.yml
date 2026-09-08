@@ -5,8 +5,7 @@ project:
     - CNAME
     - slides/
     - diagrams/
-    - exercise/rounding/
-    - "!exercise/rounding/var/**"
+    - exercise/rounding/.agents/skills/rounding-rule-review/SKILL.md
 
 book:
   title: "AI-First Workflows for Clinical Study Reporting"

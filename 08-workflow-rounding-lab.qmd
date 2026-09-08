@@ -1,273 +1,126 @@
-# Run the rounding skill as a scheduled workflow {#sec-workflow-rounding-lab}
+# Lab: Run a one-file rounding skill {#sec-workflow-rounding-lab}
 
-::: callout-tip
-Build the skill first, test one run second, and install the schedule last. A cron
-expression cannot compensate for an untested task contract.
+This lab turns the design in @sec-workflow-rounding-skill into one short,
+hands-on exercise. The objective is to inspect a repository skill, invoke it on
+a bounded R example, and evaluate its evidence before a person classifies the
+result.
+
+The example is synthetic. It contains no participant data and supports no
+conclusion about a clinical study or an R package.
+
+::: {.callout-note title="What this lab does not cover"}
+This lab does not build a scheduler, controller, report schema, or GitHub issue
+publisher. Those may be useful after the skill itself has been evaluated, but
+they are separate workflow increments.
 :::
 
-This lab implements the workflow designed in @sec-workflow-rounding-skill. It is
-not a second workflow or another pass through the AI-first SDLC. The workflow
-brief, task contract, benchmark, release record, and monitoring design remain in
-that chapter. Here, the reader exercises their prototype counterparts.
+## Inspect the skill
 
-The learning objective is practical: create a code-agent skill, invoke it on a
-bounded R project, and connect it to a scheduled controller that reviews one
-package per run. The controller rotates across five packages, skips unchanged
-commits, and prepares one package-level GitHub issue containing all current
-verified BR-001 findings.
-
-::: {.callout-warning title="A safe default for a public book"}
-The lab defaults to a dry run. It does not create, update, comment on, or close
-an issue unless the operator explicitly enables publishing. Readers must not
-enable publishing against repositories they do not administer or have
-permission to automate. The five-package pilot requires maintainer authorization
-and separate process-owner acceptance before every external issue action.
-:::
-
-## Inspect the working prototype
-
-The prototype is under
-[`exercise/rounding/`](exercise/rounding/README.md):
+The complete skill package contains one file:
 
 ```text
 exercise/rounding/
   .agents/skills/rounding-rule-review/
     SKILL.md
-    references/br-001.md
-    scripts/scan-rounding-calls.R
-    scripts/scan-rounding-lib.R
-    scripts/probe-tie-behavior.R
-    assets/review-report-template.md
-  expected/
-  fixtures/
-  schemas/review-report.schema.json
-  scripts/run-rotation.R
-  scripts/validate-report.R
-  scripts/publish-issue.R
-  scripts/rounding-workflow.R
-  targets.json
-  state.example.json
-  cron.example
 ```
 
-The skill and the surrounding workflow have different responsibilities. The
-skill tells an agent how to inspect and reason about one checked-out package.
-The controller selects the package and commit and independently runs the
-catalog scanner. The report validator enforces the finding admission rule and
-checks source evidence against that selected checkout. The publisher owns
-GitHub issue mechanics after a human gate. The process owner governs the
-complete system.
+Open
+[`SKILL.md`](exercise/rounding/.agents/skills/rounding-rule-review/SKILL.md)
+and find four things:
 
-That separation is visible in the permissions:
+1. The `name` and `description` that help Codex discover the skill.
+2. BR-001 and the boundary around that rule.
+3. The review procedure and required report.
+4. The actions reserved for the accountable human.
 
-| Component | Can do | Cannot do |
-|---|---|---|
-| External agent adapter in an independently approved boundary | Read the mounted checkout and immutable skill inputs, run local evidence scripts, produce JSON | Receive host credentials, unrelated host files, network access, or issue-write authority |
-| Scheduled controller | Select one package, resolve a commit, run the scanner, manage rotation state, invoke an approved adapter | Decide that unsupported evidence is a finding |
-| Report validator | Enforce required fields and minimum evidence | Interpret clinical intent |
-| Issue publisher | Manage one automation-owned BR-001 issue per package after per-run acceptance | Change source or another identity's issue |
-| Process owner | Approve the operating policy and each issue action, monitor results, restrict or stop the workflow | Transfer accountability to the agent |
+The
+[official Codex skill documentation](https://learn.chatgpt.com/docs/build-skills)
+describes this instruction-only structure as a valid skill. Scripts,
+references, and assets are optional.
 
-## Create and inspect the skill
+## Open the lab directory in Codex
 
-The required `SKILL.md` contains `name` and `description` frontmatter. Its name
-matches the `rounding-rule-review` directory. The description distinguishes the
-BR-001 repository review from general R review and from BR-002 or BR-003 work.
-That distinction matters because code agents can use the description when
-deciding whether a skill applies.
+Start Codex with `exercise/rounding/` as the working directory. Codex searches
+for repository skills in `.agents/skills` from the working directory up to the
+repository root.
 
-The remaining content is disclosed only when needed:
+Invoke the skill explicitly by mentioning:
 
-- `references/br-001.md` controls the rule, scope, comparison version, catalog,
-  and finding admission rule.
-- `scan-rounding-calls.R` creates the complete R-file inventory and the minimum
-  catalog candidate list from R parse data.
-- `probe-tie-behavior.R` produces repeatable evidence for direct `round()` and
-  numeric `formatC()` calls.
-- `review-report-template.md` shows the managed section that can appear in a
-  package issue.
-
-This structure follows the [Agent Skills
-specification](https://agentskills.io/specification). As verified on 2026-09-06,
-the official [Codex skill documentation](https://learn.chatgpt.com/codex/build-skills)
-states that Codex discovers repository skills under `.agents/skills` and can
-invoke a skill explicitly with `$skill-name`. The lab keeps the package in that
-location, so launching Codex from `exercise/rounding/` makes it discoverable.
-
-To use the same skill in another repository with Codex, copy the complete
-`rounding-rule-review` directory into that repository's `.agents/skills/`
-directory. For another code agent, retain the skill contents and follow that
-product's current first-party installation instructions.
-
-## Verify the deterministic foundation
-
-Follow [`exercise/rounding/README.md`](exercise/rounding/README.md) to install
-the pinned `cards` 0.9.0 comparison dependency. Then run the offline tests from
-the lab directory:
-
-```bash
-Rscript tests/test-rounding-workflow.R
+```text
+$rounding-rule-review
 ```
 
-The benchmark recorded on 2026-09-08 passes 31 offline tests. They cover report
-admission, source-evidence validation, evidence from both tie signs, scanner
-identity, commit matching, failure rotation, publication reconciliation, issue
-rendering, preservation of human issue text, cron initialization, and the
-Quarto boundary between immutable assets and runtime data. The full result and
-its limitations are in the
-[`benchmark report`](exercise/rounding/expected/benchmark-report.md).
+Explicit invocation makes the exercise easier to follow. In routine use, Codex
+can also select a skill when a request matches its description.
 
-Run the catalog scanner directly against the violation fixture:
+## Review the synthetic example
 
-```bash
-Rscript .agents/skills/rounding-rule-review/scripts/scan-rounding-calls.R \
-  fixtures/violations/R
+Send the following prompt with the skill:
+
+````text
+$rounding-rule-review
+
+Review this synthetic R source under BR-001 version 1.0. Both calls affect a
+report. The required precision is zero decimal places. Treat the code block as
+R/report.R and do not modify it.
+
+```r
+display_value <- formatC(c(-0.5, 0.5), digits = 0, format = "f")
+include_row <- round(2.5, digits = 0) >= 3
 ```
+````
 
-The expected result is one R file, two catalog candidates, and no parse errors.
-The scanner reports candidates rather than findings. Only source context and an
-executed probe can admit a candidate to the verified finding list.
+Allow Codex to run a small isolated R probe if R is available. The skill should
+not need network access, another file, or an external service.
 
-Run the fixed probe:
+## Evaluate the response
 
-```bash
-Rscript .agents/skills/rounding-rule-review/scripts/probe-tie-behavior.R \
-  round 1 -2.05,2.05
-```
+Compare the response with this answer key:
 
-The probe compares the observed one-decimal results with `cards::round5()`
-0.9.0. Both values diverge in the recorded environment. The script returns a
-nonzero status because it found a divergence; that status is evidence, not a
-broken lab command.
+| Check | Expected evidence |
+|---|---|
+| Coverage | One pasted source, labeled `R/report.R` |
+| Candidates | One `formatC()` call and one `round()` call |
+| Observed `formatC()` output | `"-0"` and `"0"` |
+| BR-001 display result | `"-1"` and `"1"` |
+| Observed `round()` result | `2` |
+| BR-001 rounding result | `3` |
+| Draft findings | Both calls diverge from BR-001 in their stated report context |
+| Unchecked rules | BR-002 (rounding stage) and BR-003 (display precision policy) |
+| Human gate | A person still decides whether either divergence is a defect |
 
-## Exercise change detection without network access
+The wording can vary. Evaluate the evidence rather than expecting an identical
+response. A satisfactory response:
 
-The controller needs state that persists across runs. Use a temporary directory
-for the offline exercise:
+- accounts for the complete supplied source;
+- distinguishes search candidates from supported findings;
+- records the probe expression, environment, and observed results;
+- states that BR-001 is illustrative rather than a requirement of another
+  project; and
+- stops before changing code or posting an issue.
 
-```bash
-rounding_tmp="$(mktemp -d)"
-Rscript scripts/run-rotation.R \
-  --registry fixtures/targets.json \
-  --state "$rounding_tmp/state.json" \
-  --runs-dir "$rounding_tmp/runs" \
-  --observed-sha aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa \
-  --local-target fixtures/violations \
-  --report-input expected/violations-report.json
-```
+If the response misses a candidate, invents a requirement, or omits the human
+decision, record that as a gap in the skill. Do not silently expand the skill to
+cover every possible review problem.
 
-The first run validates the answer-key report and renders the issue action
-without executing it. Run the same command again with the same temporary state.
-The second run records `no-change` and skips the full review.
+## Make one controlled improvement
 
-This small exercise demonstrates a central workflow distinction. The daily
-schedule is the event that asks for attention. The changed commit is the rule
-that decides whether verification work should begin.
+Choose one observed gap and revise only `SKILL.md`. For example, clarify the
+description if the skill did not activate, or clarify the report requirements
+if coverage was missing. Run the same prompt again and record whether the
+change improved the result without introducing a new error.
 
-## Connect an independently isolated code-agent adapter
+This comparison is a small prototype observation, not a formal benchmark.
+Several repeated runs and additional examples would be needed before claiming
+reliable behavior.
 
-The prototype does not enable its built-in Codex adapter. A read-only Codex
-sandbox alone does not establish the credential-free operating-system boundary
-required for untrusted repository content, so a run without `--report-input` or
-`--agent-adapter` fails closed.
+## Close the exercise
 
-An approved external adapter receives a prompt path, JSON Schema path, and
-report output path. It succeeds only when it writes one conforming JSON report.
-The adapter must run in a credential-free operating-system context with only
-the required checkout and immutable skill inputs readable and with network,
-web, Model Context Protocol (MCP), app, and connector access disabled. Clearing
-common GitHub environment variables is defense in depth, not that isolation
-boundary.
+The lab ends with two artifacts:
 
-After independently verifying those controls, run one package without
-publishing:
+1. The reviewed `SKILL.md`.
+2. A short comparison between the response and the answer key.
 
-```bash
-Rscript scripts/run-rotation.R \
-  --agent-adapter /absolute/path/to/isolated-adapter
-```
-
-The first run selects `Merck/r2rtf`, resolves its `master` branch to an exact
-commit, and stores that SHA before the agent starts. Later runs rotate through
-`Merck/metalite.ae`, `Merck/metalite`, `Merck/forestly`, and
-`elong0527/r4csr`. Every result is attached to the commit resolved for that
-specific run. This interface keeps the workflow contract stable while product
-commands change; the repository does not claim that a named agent product
-supplies the required isolation by itself.
-
-## Install the 30-run rotation
-
-The repository does not activate a scheduled workflow. Instead,
-[`cron.example`](exercise/rounding/cron.example) contains an inactive daily
-template. It initializes the private `var/` directory before opening its log
-file and names a placeholder for the independently isolated adapter. Replace
-every placeholder with an absolute path and install it under the scheduled
-service identity.
-
-One invocation handles one package. The state advances rotationally even after
-a failed attempt so one package cannot block the other four. A failed package
-does not receive a new `last_completed_sha`, so its unchanged commit is retried
-on its next turn. The controller refuses to start a second overlapping run and
-stops after 30 scheduled attempts.
-
-The schedule therefore produces this pattern:
-
-| Run | Package |
-|---:|---|
-| 1, 6, 11, 16, 21, 26 | `Merck/r2rtf` |
-| 2, 7, 12, 17, 22, 27 | `Merck/metalite.ae` |
-| 3, 8, 13, 18, 23, 28 | `Merck/metalite` |
-| 4, 9, 14, 19, 24, 29 | `Merck/forestly` |
-| 5, 10, 15, 20, 25, 30 | `elong0527/r4csr` |
-
-If the selected branch did not change, the run ends with a no-change record.
-If it changed, the workflow reviews the complete configured R folder at the new
-SHA rather than assuming that a source diff proves full coverage.
-
-## Authorize package-level issues
-
-Issue publication is a separate action after review, not an automatic
-consequence of accepting the release policy. Before any release, the process
-owner must configure the dedicated automation login, confirm the target
-registry, obtain maintainer authorization for all five repositories, and grant
-the identity only content-read and issue-write access. For every completed run,
-the process owner must inspect the scanner evidence and report, classify the
-findings, and explicitly accept or reject the proposed issue action.
-
-Publishing remains off unless the accountable operator records that per-run
-acceptance by passing `--publish` for the reviewed report. The deterministic
-publisher then applies these rules:
-
-1. Search open issues for the package-and-rule marker.
-2. Create one issue containing all current verified findings when none exists.
-3. Update only the automation-managed section when the issue exists.
-4. Add a comment when editing the issue body is unavailable.
-5. Close the issue after a complete later review shows all findings addressed.
-6. Create a new linked issue when findings recur after closure.
-7. Refuse to modify an issue created by another identity.
-
-Unresolved candidates do not qualify for automatic posting. A clean package
-with no open automated issue produces a run record but no issue.
-
-The controller refuses `--publish` without a pre-reviewed `--report-input`.
-The standalone publisher likewise requires `--source-directory` when
-`--publish` is present, then rechecks the scanner inventory, source evidence,
-clean checkout, and exact commit before any GitHub action.
-
-## Review the monitoring evidence
-
-The mutable `var/` directory contains campaign state and one directory for each
-run. At the end of the month, the process owner uses those records to account
-for all 30 events and answer:
-
-- Did each package receive six review opportunities?
-- Which commits changed, and which runs correctly skipped unchanged source?
-- Which runs completed, failed, or stopped with unresolved evidence?
-- Were any duplicate open issues created?
-- Which issues were created, updated, commented on, or closed?
-- What findings were rejected or missed during human review?
-- What were the review burden, detection delay, latency, and cost?
-- Should the workflow continue, change, be restricted, or retire?
-
-The month-long result is operating evidence, not proof that the workflow is
-validated, compliant, or suitable for another organization's intended use.
+The accountable reviewer decides whether the one-file skill is useful enough
+for another iteration. Scheduling, automated publishing, or broader rounding
+rules require a new planning decision rather than being added silently.

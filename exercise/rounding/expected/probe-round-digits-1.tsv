@@ -1,4 +1,0 @@
-input	observed	approved	tie_divergence	negative_zero	status
--2.05	-2.0	-2.1	true	false	FAIL
-2.05	2.0	2.1	true	false	FAIL
-summary			2	0	2_of_2_diverge
