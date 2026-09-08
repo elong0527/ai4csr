@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>7&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting</title>
+<title>8&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,13 +78,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="7&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting">
+<meta property="og:title" content="8&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="7&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="8&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./08-workflow-rounding-lab.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./08-workflow-rounding-lab.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -209,20 +209,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./study-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-workflow-rounding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-workflow-rounding-skill.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-workflow-rounding-lab.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
   </div>
 </li>
       </ul>
@@ -237,21 +243,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#inspect-the-skill" id="toc-inspect-the-skill" class="nav-link active" data-scroll-target="#inspect-the-skill"><span class="header-section-number">7.1</span> Inspect the skill</a></li>
-  <li><a href="#open-the-book-repository-in-codex" id="toc-open-the-book-repository-in-codex" class="nav-link" data-scroll-target="#open-the-book-repository-in-codex"><span class="header-section-number">7.2</span> Open the book repository in Codex</a></li>
-  <li><a href="#review-the-synthetic-example" id="toc-review-the-synthetic-example" class="nav-link" data-scroll-target="#review-the-synthetic-example"><span class="header-section-number">7.3</span> Review the synthetic example</a></li>
-  <li><a href="#evaluate-the-response" id="toc-evaluate-the-response" class="nav-link" data-scroll-target="#evaluate-the-response"><span class="header-section-number">7.4</span> Evaluate the response</a></li>
-  <li><a href="#make-one-controlled-improvement" id="toc-make-one-controlled-improvement" class="nav-link" data-scroll-target="#make-one-controlled-improvement"><span class="header-section-number">7.5</span> Make one controlled improvement</a></li>
-  <li><a href="#close-the-exercise" id="toc-close-the-exercise" class="nav-link" data-scroll-target="#close-the-exercise"><span class="header-section-number">7.6</span> Close the exercise</a></li>
+  <li><a href="#inspect-the-skill" id="toc-inspect-the-skill" class="nav-link active" data-scroll-target="#inspect-the-skill"><span class="header-section-number">8.1</span> Inspect the skill</a></li>
+  <li><a href="#open-the-book-repository-in-codex" id="toc-open-the-book-repository-in-codex" class="nav-link" data-scroll-target="#open-the-book-repository-in-codex"><span class="header-section-number">8.2</span> Open the book repository in Codex</a></li>
+  <li><a href="#review-the-synthetic-example" id="toc-review-the-synthetic-example" class="nav-link" data-scroll-target="#review-the-synthetic-example"><span class="header-section-number">8.3</span> Review the synthetic example</a></li>
+  <li><a href="#evaluate-the-response" id="toc-evaluate-the-response" class="nav-link" data-scroll-target="#evaluate-the-response"><span class="header-section-number">8.4</span> Evaluate the response</a></li>
+  <li><a href="#make-one-controlled-improvement" id="toc-make-one-controlled-improvement" class="nav-link" data-scroll-target="#make-one-controlled-improvement"><span class="header-section-number">8.5</span> Make one controlled improvement</a></li>
+  <li><a href="#close-the-exercise" id="toc-close-the-exercise" class="nav-link" data-scroll-target="#close-the-exercise"><span class="header-section-number">8.6</span> Close the exercise</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/08-workflow-rounding-lab.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/08-workflow-rounding-lab.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./08-workflow-rounding-lab.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./08-workflow-rounding-lab.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-workflow-rounding-lab" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></h1>
+<h1 class="title"><span id="sec-workflow-rounding-lab" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></h1>
 </div>
 
 
@@ -268,7 +274,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This lab turns the design in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 6</span></a> into one short, hands-on exercise. The objective is to inspect a repository skill, invoke it on a bounded R example, and evaluate its evidence before a person classifies the result.</p>
+<p>This lab turns the design in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 7</span></a> into one short, hands-on exercise. The objective is to inspect a repository skill, invoke it on a bounded R example, and evaluate its evidence before a person classifies the result.</p>
 <p>The example is synthetic. It contains no participant data and supports no conclusion about a clinical study or an R package.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="What this lab does not cover">
 <div class="callout-header d-flex align-content-center">
@@ -283,8 +289,8 @@ ul.task-list li input[type="checkbox"] {
 <p>This lab does not build a scheduler, controller, report schema, or GitHub issue publisher. Those may be useful after the skill itself has been evaluated, but they are separate workflow increments.</p>
 </div>
 </div>
-<section id="inspect-the-skill" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="inspect-the-skill"><span class="header-section-number">7.1</span> Inspect the skill</h2>
+<section id="inspect-the-skill" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="inspect-the-skill"><span class="header-section-number">8.1</span> Inspect the skill</h2>
 <p>The complete skill package contains one file:</p>
 <pre class="text"><code>rounding/
   SKILL.md</code></pre>
@@ -297,15 +303,15 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p>The <a href="https://learn.chatgpt.com/docs/build-skills">official Codex skill documentation</a> describes this instruction-only structure as a valid skill. Scripts, references, and assets are optional.</p>
 </section>
-<section id="open-the-book-repository-in-codex" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="open-the-book-repository-in-codex"><span class="header-section-number">7.2</span> Open the book repository in Codex</h2>
+<section id="open-the-book-repository-in-codex" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="open-the-book-repository-in-codex"><span class="header-section-number">8.2</span> Open the book repository in Codex</h2>
 <p>Start Codex with the book repository as the working directory. This lab keeps the skill at a visible teaching path instead of installing it into Codex’s repository skill directory.</p>
 <p>Tell Codex which instruction file to use:</p>
 <pre class="text"><code>Use the skill in rounding/SKILL.md for this review.</code></pre>
 <p>Referencing the file directly keeps installation and skill selection outside the exercise. After evaluation, a team can install the same folder at <code>.agents/skills/rounding/</code> when automatic discovery is useful.</p>
 </section>
-<section id="review-the-synthetic-example" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="review-the-synthetic-example"><span class="header-section-number">7.3</span> Review the synthetic example</h2>
+<section id="review-the-synthetic-example" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="review-the-synthetic-example"><span class="header-section-number">8.3</span> Review the synthetic example</h2>
 <p>Send the following prompt with the skill:</p>
 <pre class="text"><code>Use the skill in rounding/SKILL.md for this review.
 
@@ -319,8 +325,8 @@ include_row &lt;- round(2.5, digits = 0) &gt;= 3
 ```</code></pre>
 <p>Allow Codex to run a small isolated R probe if R is available. The skill should not need network access, another file, or an external service.</p>
 </section>
-<section id="evaluate-the-response" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="evaluate-the-response"><span class="header-section-number">7.4</span> Evaluate the response</h2>
+<section id="evaluate-the-response" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="evaluate-the-response"><span class="header-section-number">8.4</span> Evaluate the response</h2>
 <p>Compare the response with this answer key:</p>
 <table class="caption-top table">
 <colgroup>
@@ -382,13 +388,13 @@ include_row &lt;- round(2.5, digits = 0) &gt;= 3
 </ul>
 <p>If the response misses a candidate, invents a requirement, or omits the human decision, record that as a gap in the skill. Do not silently expand the skill to cover every possible review problem.</p>
 </section>
-<section id="make-one-controlled-improvement" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="make-one-controlled-improvement"><span class="header-section-number">7.5</span> Make one controlled improvement</h2>
+<section id="make-one-controlled-improvement" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="make-one-controlled-improvement"><span class="header-section-number">8.5</span> Make one controlled improvement</h2>
 <p>Choose one observed gap and revise only <code>rounding/SKILL.md</code>. For example, clarify the procedure if a candidate was missed, or clarify the report requirements if coverage was missing. Run the same prompt again and record whether the change improved the result without introducing a new error.</p>
 <p>This comparison is a small prototype observation, not a formal benchmark. Several repeated runs and additional examples would be needed before claiming reliable behavior.</p>
 </section>
-<section id="close-the-exercise" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="close-the-exercise"><span class="header-section-number">7.6</span> Close the exercise</h2>
+<section id="close-the-exercise" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="close-the-exercise"><span class="header-section-number">8.6</span> Close the exercise</h2>
 <p>The lab ends with two artifacts:</p>
 <ol type="1">
 <li>The reviewed <code>rounding/SKILL.md</code>.</li>
@@ -803,7 +809,7 @@ include_row &lt;- round(2.5, digits = 0) &gt;= 3
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./07-workflow-rounding-skill.html" class="pagination-link" aria-label="From one-file skill to maintainable rounding workflow">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

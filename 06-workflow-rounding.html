@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>5&nbsp; Rounding in analysis and reporting – AI-First Workflows for Clinical Study Reporting</title>
+<title>6&nbsp; Rounding in analysis and reporting – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./07-workflow-rounding-skill.html" rel="next">
-<link href="./05-ai-first-sdlc.html" rel="prev">
+<link href="./study-design.html" rel="prev">
 <link href="./assets/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,13 +79,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="5&nbsp; Rounding in analysis and reporting – AI-First Workflows for Clinical Study Reporting">
+<meta property="og:title" content="6&nbsp; Rounding in analysis and reporting – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="5&nbsp; Rounding in analysis and reporting – AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="6&nbsp; Rounding in analysis and reporting – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./06-workflow-rounding.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./06-workflow-rounding.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -210,20 +210,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./study-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-workflow-rounding.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-workflow-rounding-skill.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-workflow-rounding-lab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
   </div>
 </li>
       </ul>
@@ -238,26 +244,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#define-the-rules-before-checking-the-work" id="toc-define-the-rules-before-checking-the-work" class="nav-link active" data-scroll-target="#define-the-rules-before-checking-the-work"><span class="header-section-number">5.1</span> Define the rules before checking the work</a>
+  <li><a href="#define-the-rules-before-checking-the-work" id="toc-define-the-rules-before-checking-the-work" class="nav-link active" data-scroll-target="#define-the-rules-before-checking-the-work"><span class="header-section-number">6.1</span> Define the rules before checking the work</a>
   <ul class="collapse">
-  <li><a href="#three-business-rules" id="toc-three-business-rules" class="nav-link" data-scroll-target="#three-business-rules"><span class="header-section-number">5.1.1</span> Three business rules</a></li>
-  <li><a href="#define-which-calls-are-in-scope" id="toc-define-which-calls-are-in-scope" class="nav-link" data-scroll-target="#define-which-calls-are-in-scope"><span class="header-section-number">5.1.2</span> Define which calls are in scope</a></li>
+  <li><a href="#three-business-rules" id="toc-three-business-rules" class="nav-link" data-scroll-target="#three-business-rules"><span class="header-section-number">6.1.1</span> Three business rules</a></li>
+  <li><a href="#define-which-calls-are-in-scope" id="toc-define-which-calls-are-in-scope" class="nav-link" data-scroll-target="#define-which-calls-are-in-scope"><span class="header-section-number">6.1.2</span> Define which calls are in scope</a></li>
   </ul></li>
-  <li><a href="#an-exploratory-request" id="toc-an-exploratory-request" class="nav-link" data-scroll-target="#an-exploratory-request"><span class="header-section-number">5.2</span> An exploratory request</a>
+  <li><a href="#an-exploratory-request" id="toc-an-exploratory-request" class="nav-link" data-scroll-target="#an-exploratory-request"><span class="header-section-number">6.2</span> An exploratory request</a>
   <ul class="collapse">
-  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself"><span class="header-section-number">5.2.1</span> Try it yourself</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself"><span class="header-section-number">6.2.1</span> Try it yourself</a></li>
   </ul></li>
-  <li><a href="#what-one-exploratory-prompt-cannot-provide" id="toc-what-one-exploratory-prompt-cannot-provide" class="nav-link" data-scroll-target="#what-one-exploratory-prompt-cannot-provide"><span class="header-section-number">5.3</span> What one exploratory prompt cannot provide</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">5.4</span> Summary</a></li>
+  <li><a href="#what-one-exploratory-prompt-cannot-provide" id="toc-what-one-exploratory-prompt-cannot-provide" class="nav-link" data-scroll-target="#what-one-exploratory-prompt-cannot-provide"><span class="header-section-number">6.3</span> What one exploratory prompt cannot provide</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.4</span> Summary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/06-workflow-rounding.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/06-workflow-rounding.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./06-workflow-rounding.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./06-workflow-rounding.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-workflow-rounding-prompt" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></h1>
+<h1 class="title"><span id="sec-workflow-rounding-prompt" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></h1>
 </div>
 
 
@@ -320,12 +326,12 @@ Tip
 </tbody>
 </table>
 <p>The lesson is not that one language is correct. A language default is an implementation choice, not organizational policy.</p>
-<p>This chapter explores the problem, writes three related rules down, and sends one prompt to an agent to check a real R package against the first rule. The exercise can reveal a real finding, but a one-off prompt does not produce a workflow. In the AI-first SDLC from <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>, the problem, rules, scope, and evidence gathered here are discovery inputs rather than completed Plan or Design artifacts. <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 6</span></a> starts from those inputs and the limits identified here.</p>
-<section id="define-the-rules-before-checking-the-work" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="define-the-rules-before-checking-the-work"><span class="header-section-number">5.1</span> Define the rules before checking the work</h2>
+<p>This chapter explores the problem, writes three related rules down, and sends one prompt to an agent to check a real R package against the first rule. The exercise can reveal a real finding, but a one-off prompt does not produce a workflow. In the AI-first SDLC from <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>, the problem, rules, scope, and evidence gathered here are discovery inputs rather than completed Plan or Design artifacts. <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 7</span></a> starts from those inputs and the limits identified here.</p>
+<section id="define-the-rules-before-checking-the-work" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="define-the-rules-before-checking-the-work"><span class="header-section-number">6.1</span> Define the rules before checking the work</h2>
 <p>A reviewer cannot ask an agent or a team member to verify conventions that exist only in habit. The first task is not writing a prompt. It is producing a short, versioned set of statements describing what the organization requires.</p>
-<section id="three-business-rules" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="three-business-rules"><span class="header-section-number">5.1.1</span> Three business rules</h3>
+<section id="three-business-rules" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="three-business-rules"><span class="header-section-number">6.1.1</span> Three business rules</h3>
 <p>This example uses three separate, illustrative business rules: BR-001, BR-002, and BR-003. They are not approved industry standards, and they are not the stated rules of any package reviewed here.</p>
 <p>The rules answer three different questions: how ties are rounded, when rounding occurs, and how display precision is preserved. The exercise below checks only tie behavior; rounding stage and display precision remain explicit gaps.</p>
 <blockquote class="blockquote">
@@ -348,12 +354,12 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This book uses all three rules to define the policy, then deliberately limits the skill design in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 6</span></a> to BR-001. A broader <code>rounding</code> skill covering tie method, rounding stage, and display precision is being developed through <a href="https://github.com/RConsortium/pharma-skills/issues/208"><code>RConsortium/pharma-skills</code> issue #208</a>. As of 2026-09-06, the issue defines the first benchmark and states that the skill does not yet exist. Interested readers can follow the issue as the community turns the three-rule policy into a tested skill.</p>
+<p>This book uses all three rules to define the policy, then deliberately limits the skill design in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 7</span></a> to BR-001. A broader <code>rounding</code> skill covering tie method, rounding stage, and display precision is being developed through <a href="https://github.com/RConsortium/pharma-skills/issues/208"><code>RConsortium/pharma-skills</code> issue #208</a>. As of 2026-09-06, the issue defines the first benchmark and states that the skill does not yet exist. Interested readers can follow the issue as the community turns the three-rule policy into a tested skill.</p>
 </div>
 </div>
 </section>
-<section id="define-which-calls-are-in-scope" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="define-which-calls-are-in-scope"><span class="header-section-number">5.1.2</span> Define which calls are in scope</h3>
+<section id="define-which-calls-are-in-scope" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="define-which-calls-are-in-scope"><span class="header-section-number">6.1.2</span> Define which calls are in scope</h3>
 <p>Naming BR-001 is not enough. The rule must also say where it applies. A request to check that source code “properly rounds half away from zero” does not say which calls are in scope, and the answer changes completely depending on that definition. BR-001 therefore carries this scope:</p>
 <blockquote class="blockquote">
 <p>For this review, include any function call that can change a numeric value displayed in a report or used to decide which rows the report includes. Formatting functions round as a side effect of display, so <code>formatC()</code>, <code>sprintf()</code>, and <code>format()</code> are candidates. Finding one <code>round()</code> call does not establish complete coverage.</p>
@@ -361,16 +367,16 @@ Tip
 <p>That clause is the difference between a review that inspects one function name and a review that inspects the calls that actually reach the table. The rest of this chapter shows how much difference it makes.</p>
 </section>
 </section>
-<section id="an-exploratory-request" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="an-exploratory-request"><span class="header-section-number">5.2</span> An exploratory request</h2>
+<section id="an-exploratory-request" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="an-exploratory-request"><span class="header-section-number">6.2</span> An exploratory request</h2>
 <p>The review target is <a href="https://github.com/Merck/metalite.ae/releases/tag/v0.1.4"><code>Merck/metalite.ae</code> v0.1.4</a>, an open source R package that analyzes adverse events from ADaM data and produces tables, listings, and figures using the <code>metalite</code> data structure. The release is pinned to commit <a href="https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b"><code>bdb23d472b16bc9dadbc774e64c5ca40321e9c6b</code></a>.</p>
 <p>A reviewer beginning a check against BR-001 might write this:</p>
 <blockquote class="blockquote">
 <p>In <code>metalite.ae</code> v0.1.4 (commit <code>https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b</code>), verify whether the R source uses round half away from zero for analysis and reporting. If not, identify the source and draft a GitHub issue to report the finding.</p>
 </blockquote>
 <p>The request names a target and a rule while leaving the search method open. That gives the agent room to inspect the package, follow unexpected paths, and surface assumptions, which is useful during an exploratory review. The same freedom makes the result difficult to evaluate or repeat: the request does not define the minimum files that must be covered, the evidence needed to demonstrate a violation, or who classifies the finding. A reusable workflow must clarify those evaluation and decision boundaries without prescribing every step in the agent’s reasoning.</p>
-<section id="try-it-yourself" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="try-it-yourself"><span class="header-section-number">5.2.1</span> Try it yourself</h3>
+<section id="try-it-yourself" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="try-it-yourself"><span class="header-section-number">6.2.1</span> Try it yourself</h3>
 <p>Send the following prompt to <a href="https://arena.ai/agent">arena.ai</a> before reading the rest of this chapter. The prompt deliberately leaves the investigation open. It fixes the target and rule, then lets the agent choose how to search, which clues to follow, and what supporting evidence to gather.</p>
 <pre class="text"><code>Review the R source of the metalite.ae package at release v0.1.4 and the exact
 commit linked below.
@@ -409,8 +415,8 @@ If evidence diverges from the rule, draft a GitHub issue.</code></pre>
 <p>The prompt did not ask the agent to search only for <code>round()</code>. It also did not prescribe a function catalog or a minimum search procedure. The response saved in issue #249 interpreted the request broadly: it examined an explicit <code>round()</code> call, formatting helpers, decimal-tie examples, negative-zero output, and a possible effect on report filtering. That breadth illustrates the value of leaving an exploratory investigation open.</p>
 </section>
 </section>
-<section id="what-one-exploratory-prompt-cannot-provide" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="what-one-exploratory-prompt-cannot-provide"><span class="header-section-number">5.3</span> What one exploratory prompt cannot provide</h2>
+<section id="what-one-exploratory-prompt-cannot-provide" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="what-one-exploratory-prompt-cannot-provide"><span class="header-section-number">6.3</span> What one exploratory prompt cannot provide</h2>
 <p>Reviewing the saved response makes that response easier to judge. It does not turn the interaction into a workflow. No workflow brief has been accepted, and no task contract specifies a repeatable check.</p>
 <p>Leaving the search open can reveal functions, wrappers, and code paths that the reviewer did not anticipate. The tradeoff is that the prompt sets no minimum check against which another run can be compared. Four workflow capabilities are still missing:</p>
 <ul>
@@ -419,12 +425,12 @@ If evidence diverges from the rule, draft a GitHub issue.</code></pre>
 <li><strong>Separation of checks from judgment.</strong> The response can mix reproduced observations, causal explanations, provisional triage, and proposed decisions. A workflow must label deterministic evidence separately from agent judgment and human classification.</li>
 <li><strong>A named human gate.</strong> The prompt requests a draft but does not name who classifies each finding as a defect, a documented convention, an accepted exception, or not applicable, or who decides whether to post it.</li>
 </ul>
-<p>These are workflow requirements, not criticisms of the response’s breadth. The gaps, together with the problem, rules, and reviewed evidence, are inputs to Plan in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 6</span></a>. The next chapter organizes them into a workflow brief, then carries them into a task contract in Design. That design establishes required checks as a minimum while preserving a separate exploratory pass.</p>
+<p>These are workflow requirements, not criticisms of the response’s breadth. The gaps, together with the problem, rules, and reviewed evidence, are inputs to Plan in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 7</span></a>. The next chapter organizes them into a workflow brief, then carries them into a task contract in Design. That design establishes required checks as a minimum while preserving a separate exploratory pass.</p>
 </section>
-<section id="summary" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.4</span> Summary</h2>
+<section id="summary" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.4</span> Summary</h2>
 <p>Rounding looks like a settled question until two tools disagree at a tie. The disagreement is not a bug in a language; it is an unwritten policy. Writing the three rules down makes the policy explicit. Defining where BR-001 applies is what makes the response reviewable. The later source review contrasts one direct <code>round()</code> match with eight <code>formatC()</code> candidates.</p>
-<p>An exploratory prompt can surface useful candidates and testable claims, and it may reveal paths the reviewer did not anticipate. Reading its output requires separating candidate evidence, reproduced observations, causal explanations, and proposed decisions. Turning that review into a workflow additionally requires assured coverage, repeatable minimum checks and a recorded human decision. <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 6</span></a> begins the lifecycle by turning those gaps into workflow requirements.</p>
+<p>An exploratory prompt can surface useful candidates and testable claims, and it may reveal paths the reviewer did not anticipate. Reading its output requires separating candidate evidence, reproduced observations, causal explanations, and proposed decisions. Turning that review into a workflow additionally requires assured coverage, repeatable minimum checks and a recorded human decision. <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 7</span></a> begins the lifecycle by turning those gaps into workflow requirements.</p>
 
 
 </section>
@@ -832,13 +838,13 @@ If evidence diverges from the rule, draft a GitHub issue.</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05-ai-first-sdlc.html" class="pagination-link" aria-label="The AI-first SDLC">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></span>
+      <a href="./study-design.html" class="pagination-link" aria-label="Bounding study design before building it">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./07-workflow-rounding-skill.html" class="pagination-link" aria-label="From one-file skill to maintainable rounding workflow">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

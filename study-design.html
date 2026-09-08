@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Yilong Zhang">
-<meta name="author" content="Nan Xiao">
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>AI-First Workflows for Clinical Study Reporting</title>
+<title>5&nbsp; Bounding study design before building it – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -39,7 +37,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-preface.html" rel="next">
+<link href="./06-workflow-rounding.html" rel="next">
+<link href="./05-ai-first-sdlc.html" rel="prev">
 <link href="./assets/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,14 +78,43 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="AI-First Workflows for Clinical Study Reporting">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="5&nbsp; Bounding study design before building it – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="5&nbsp; Bounding study design before building it – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -103,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./study-design.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -211,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./study-design.html" class="sidebar-item-text sidebar-link">
+  <a href="./study-design.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></span></a>
   </div>
 </li>
@@ -245,38 +273,50 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#the-unbounded-request" id="toc-the-unbounded-request" class="nav-link active" data-scroll-target="#the-unbounded-request"><span class="header-section-number">5.1</span> The unbounded request</a></li>
+  <li><a href="#narrowing-with-a-scope-check" id="toc-narrowing-with-a-scope-check" class="nav-link" data-scroll-target="#narrowing-with-a-scope-check"><span class="header-section-number">5.2</span> Narrowing with a scope check</a></li>
+  <li><a href="#the-bounded-question" id="toc-the-bounded-question" class="nav-link" data-scroll-target="#the-bounded-question"><span class="header-section-number">5.3</span> The bounded question</a></li>
+  <li><a href="#plan-frame-the-workflow" id="toc-plan-frame-the-workflow" class="nav-link" data-scroll-target="#plan-frame-the-workflow"><span class="header-section-number">5.4</span> Plan — Frame the workflow</a>
   <ul class="collapse">
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to use this book</a></li>
-  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events">Events</a></li>
+  <li><a href="#canonical-artifact-workflow-brief" id="toc-canonical-artifact-workflow-brief" class="nav-link" data-scroll-target="#canonical-artifact-workflow-brief"><span class="header-section-number">5.4.1</span> Canonical artifact: Workflow brief</a></li>
   </ul></li>
+  <li><a href="#design-specify-the-workflow" id="toc-design-specify-the-workflow" class="nav-link" data-scroll-target="#design-specify-the-workflow"><span class="header-section-number">5.5</span> Design — Specify the workflow</a>
+  <ul class="collapse">
+  <li><a href="#canonical-artifact-task-contract" id="toc-canonical-artifact-task-contract" class="nav-link" data-scroll-target="#canonical-artifact-task-contract"><span class="header-section-number">5.5.1</span> Canonical artifact: Task contract</a></li>
+  </ul></li>
+  <li><a href="#build-prototype-the-workflow" id="toc-build-prototype-the-workflow" class="nav-link" data-scroll-target="#build-prototype-the-workflow"><span class="header-section-number">5.6</span> Build — Prototype the workflow</a>
+  <ul class="collapse">
+  <li><a href="#canonical-artifact-prototype-planned" id="toc-canonical-artifact-prototype-planned" class="nav-link" data-scroll-target="#canonical-artifact-prototype-planned"><span class="header-section-number">5.6.1</span> Canonical artifact: Prototype (planned)</a></li>
+  </ul></li>
+  <li><a href="#test-benchmark-and-evaluate" id="toc-test-benchmark-and-evaluate" class="nav-link" data-scroll-target="#test-benchmark-and-evaluate"><span class="header-section-number">5.7</span> Test — Benchmark and evaluate</a>
+  <ul class="collapse">
+  <li><a href="#canonical-artifact-benchmark-report-planned" id="toc-canonical-artifact-benchmark-report-planned" class="nav-link" data-scroll-target="#canonical-artifact-benchmark-report-planned"><span class="header-section-number">5.7.1</span> Canonical artifact: Benchmark report (planned)</a></li>
+  </ul></li>
+  <li><a href="#deploy-operationalize-the-workflow" id="toc-deploy-operationalize-the-workflow" class="nav-link" data-scroll-target="#deploy-operationalize-the-workflow"><span class="header-section-number">5.8</span> Deploy — Operationalize the workflow</a>
+  <ul class="collapse">
+  <li><a href="#canonical-artifact-release-record" id="toc-canonical-artifact-release-record" class="nav-link" data-scroll-target="#canonical-artifact-release-record"><span class="header-section-number">5.8.1</span> Canonical artifact: Release record</a></li>
+  </ul></li>
+  <li><a href="#maintain-monitor-and-improve" id="toc-maintain-monitor-and-improve" class="nav-link" data-scroll-target="#maintain-monitor-and-improve"><span class="header-section-number">5.9</span> Maintain — Monitor and improve</a>
+  <ul class="collapse">
+  <li><a href="#canonical-artifact-monitoring-report" id="toc-canonical-artifact-monitoring-report" class="nav-link" data-scroll-target="#canonical-artifact-monitoring-report"><span class="header-section-number">5.9.1</span> Canonical artifact: Monitoring report</a></li>
+  </ul></li>
+  <li><a href="#workshop-activity-frame-one-design-40-minutes" id="toc-workshop-activity-frame-one-design-40-minutes" class="nav-link" data-scroll-target="#workshop-activity-frame-one-design-40-minutes"><span class="header-section-number">5.10</span> Workshop activity: frame one design (40 minutes)</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">5.11</span> Summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/index.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/index.md" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/study-design.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/study-design.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./study-design.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">AI-First Workflows for Clinical Study Reporting</h1>
+<h1 class="title"><span id="sec-workflow-study-design" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></span></h1>
 </div>
 
-<div>
-  <div class="description">
-    <p>Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.</p>
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Yilong Zhang </p>
-             <p>Nan Xiao </p>
-          </div>
-  </div>
     
   
     
@@ -287,47 +327,158 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1><p><img src="assets/cover.jpg" title="AI-First Workflows for Clinical Study Reporting" class="quarto-cover-image nolightbox img-fluid"></p>
-<!-- Quarto requires this entry point; the numbered source below contains the landing-page content. -->
-<p>Welcome to a practical guide to AI-first workflows for clinical study reports.</p>
-<p>This book explores how organizations can move from isolated AI adoption toward an AI-native way of working by building <strong>AI-first workflows</strong> across clinical study reports. In these workflows, an AI agent performs a bounded, repeatable first pass; people define and monitor the process, review the evidence, and remain responsible for decisions.</p>
-<p>The focus is not a particular model or software stack. Instead, it is on durable principles that teams can adapt to their own technology, governance, and operating environment.</p>
-<p>The book is written for people who design, perform, review, or govern clinical study reports and want to integrate AI systematically into their work. No prior experience building AI agents is required. Familiarity with clinical study artifacts and review processes will help readers connect the examples to their own work.</p>
-<section id="how-to-use-this-book" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="how-to-use-this-book">How to use this book</h2>
-<p>The main route is reading: begin with the Introduction (Chapters 1–4), then follow the applied examples in order. Each example states its teaching purpose, maturity, and prerequisites up front.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Maturity: Design pattern">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Maturity: Design pattern
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This chapter specifies a bounded workflow and its planned evidence. The skill it uses is production-ready elsewhere; the workflow around it is a design with explicit assumptions and gaps, not a benchmarked prototype.</p>
+</div>
+</div>
 <ul>
-<li><strong>Main route (no setup required).</strong> Read the chapters in order and work the exercises through a browser-based AI agent. You will specify requirements and review prepared code and results; no local R, Python, Git, or Codespaces setup is required on this route.</li>
-<li><strong>Technical route (optional).</strong> If you want to run the materials yourself, the <a href="https://github.com/elong0527/ai4csr/tree/main/exercise/day1">day-one exercise</a> and the rounding prototype described in Chapters 6–8 give you synthetic data, scripts, and expected results. Contributor setup is documented in the repository README.</li>
-<li><strong>Facilitator route.</strong> Shared worksheets, completed examples, and assessment rubrics are linked from the exercise chapters as they become available.</li>
+<li><strong>Problem:</strong> A request to “design the study” is too broad to execute, evaluate, or govern. The chapter turns it into a testable workflow.</li>
+<li><strong>Learning objective:</strong> Take an unbounded design assignment, expose what is unspecified, and reframe it as design parameter -&gt; analytical approximation -&gt; simulation confirmation -&gt; design report.</li>
+<li><strong>Workflow boundary:</strong> Begin when a statistician receives a design request with a named indication and phase; end when the accountable statistician accepts or rejects the design report.</li>
+<li><strong>Non-goals:</strong> Teach group-sequential theory, validate a design method, replace statistical judgment, or run a simulation.</li>
+<li><strong>Why this is not yet a workflow:</strong> “Design the study” names no event, artifacts, success measures, or decision rights. Until those are fixed, no agent run can be repeated, checked, or trusted.</li>
+<li><strong>Maturity:</strong> Design pattern.</li>
+</ul>
+<p>An <strong>AI-first workflow</strong> here means the bounded design-preparation process defined in <a href="02-ai-first.html" class="quarto-xref"><span>Chapter 1</span></a>; the <strong>task contract</strong> and lifecycle below follow <a href="04-ai-agent.html" class="quarto-xref"><span>Chapter 3</span></a> and <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<section id="the-unbounded-request" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="the-unbounded-request"><span class="header-section-number">5.1</span> The unbounded request</h2>
+<p>Imagine you are the lead statistician for a Phase 3 program. The clinical team asks:</p>
+<blockquote class="blockquote">
+<p>Design the study for our new first-line therapy.</p>
+</blockquote>
+<p>The request is familiar and genuinely useful for discovery: it starts a conversation. As a workflow, it is unbounded. Nothing states the endpoint, the hypotheses, the number of analyses, how the Type I error is controlled, which assumptions need a human signature, or what a finished design report contains. An agent given this request must guess every one of those answers, and a second run will guess differently.</p>
+<p>The missing items are decisions, not details. Each one changes the design:</p>
+<ul>
+<li><strong>Endpoint and population.</strong> Overall survival, progression-free survival, or something else? Which patients count?</li>
+<li><strong>Fixed or adaptive structure.</strong> Is the set of hypotheses and analyses pre-planned, or may interim data change the population, sample size, or hypotheses?</li>
+<li><strong>Error control.</strong> How is the family-wise Type I error spent across analyses, and who approves the spending?</li>
+<li><strong>Confirmation.</strong> What simulation must confirm the analytical design before anyone acts on it?</li>
 </ul>
 </section>
-<section id="events" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="events">Events</h2>
+<section id="narrowing-with-a-scope-check" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="narrowing-with-a-scope-check"><span class="header-section-number">5.2</span> Narrowing with a scope check</h2>
+<p>The reframed workflow borrows its scope check from a production-ready agent skill, <a href="https://github.com/RConsortium/pharma-skills/tree/main/group-sequential-design"><code>group-sequential-design</code></a> (RConsortium/pharma-skills, commit <code>544aa08</code>). The skill designs standard group-sequential trials for survival endpoints with a fixed set of hypotheses, pre-planned analyses, and pre-specified alpha spending. It refuses adaptive enrichment, sample-size re-estimation, dose selection, platform protocols, non-survival primary endpoints, and adaptive randomization, and it says exactly which framework fits instead.</p>
+<p>This chapter does not teach the skill’s internals. It uses the skill as the Build component inside a workflow that prepares real work: the workflow asks the scoping questions, records the answers as accepted artifacts, and requires confirmation before the design report is approved. The skill computes; the workflow governs.</p>
+</section>
+<section id="the-bounded-question" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-bounded-question"><span class="header-section-number">5.3</span> The bounded question</h2>
+<p>The owner-accepted narrow question for this chapter is synthetic:</p>
+<blockquote class="blockquote">
+<p>Prepare a group-sequential design for a two-arm Phase 3 trial with a progression-free survival primary endpoint, one interim and one final analysis, a fixed hypothesis set, and pre-specified alpha spending.</p>
+</blockquote>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Venue</th>
-<th>Format</th>
-<th>Date</th>
-<th>Materials</th>
+<th>Element</th>
+<th>Accepted assumption</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Deming Conference</td>
-<td>Workshop</td>
-<td>December 7, 2026</td>
-<td>To be announced</td>
+<td>Endpoint and population</td>
+<td>PFS in the intention-to-treat population</td>
+</tr>
+<tr class="even">
+<td>Hypotheses</td>
+<td>One fixed superiority hypothesis, two-sided alpha 0.05</td>
+</tr>
+<tr class="odd">
+<td>Analyses</td>
+<td>One interim plus final, event-driven timing</td>
+</tr>
+<tr class="even">
+<td>Spending</td>
+<td>Pre-specified Lan-DeMets spending approximating O’Brien-Fleming bounds</td>
+</tr>
+<tr class="odd">
+<td>Target effect</td>
+<td>Hazard ratio 0.70; 90% power</td>
+</tr>
+<tr class="even">
+<td>Confirmation</td>
+<td>Simulation of the boundaries before approval (planned, not executed)</td>
 </tr>
 </tbody>
 </table>
-<p>The listing above is planned; confirm the date and format with the organizers before traveling.</p>
-
-
+<p>These assumptions are illustrative teaching inputs accepted for this chapter, not a real protocol. A real design replaces every row with sourced, signed values.</p>
+<p>One hand-worked illustration shows what the analytical approximation produces. The Schoenfeld approximation for the required events is <span class="math inline">\(d = 4(z_{1-\alpha/2} + z_{1-\beta})^2 / (\log \mathrm{HR})^2\)</span>. With the assumptions above, <span class="math inline">\(d \approx 331\)</span> events. This number is illustrative, not evidence: it was computed from the stated assumptions to show the approximation step, and no simulation has confirmed it.</p>
 </section>
+<section id="plan-frame-the-workflow" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="plan-frame-the-workflow"><span class="header-section-number">5.4</span> Plan — Frame the workflow</h2>
+<p>The Plan stage asks whether the narrowed question is worth developing and bounded enough to govern. It is: the beginning (a design request with indication and phase), the end (an accepted or rejected design report), and the decision maker (the accountable statistician) are all named.</p>
+<section id="canonical-artifact-workflow-brief" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="canonical-artifact-workflow-brief"><span class="header-section-number">5.4.1</span> Canonical artifact: Workflow brief</h3>
+<p>The brief records the unbounded starting request, the scoped question, the non-goals above, the success measures (a design report whose assumptions are sourced, whose analysis was confirmed by simulation, and whose gaps are explicit), and the assumption owners. Planning ends when the workflow owner accepts the brief. The brief for this scenario is worked in the accompanying <a href="https://github.com/elong0527/ai4csr/tree/main/workshop/participant/study-design-set.md">participant worksheet</a>.</p>
+</section>
+</section>
+<section id="design-specify-the-workflow" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="design-specify-the-workflow"><span class="header-section-number">5.5</span> Design — Specify the workflow</h2>
+<p>The Design stage converts the brief into an executable specification that separates three kinds of work: deterministic computation (boundary calculation, event prediction), agent interpretation (collecting inputs, assembling the report), and accountable statistical decisions (endpoint, spending, assumptions, approval).</p>
+<section id="canonical-artifact-task-contract" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="canonical-artifact-task-contract"><span class="header-section-number">5.5.1</span> Canonical artifact: Task contract</h3>
+<p>The contract names the trigger (accepted brief), the stopping conditions (an out-of-scope pattern, an unsupported assumption, a missing input), the tool boundary (the skill plus R computation; no protocol amendments, no regulatory submission), the evidence requirements (sourced assumptions, computed boundaries, simulation confirmation), and the benchmark cases with acceptance thresholds agreed before results. Design ends when the responsible roles agree on what will be prepared and how it will be evaluated.</p>
+</section>
+</section>
+<section id="build-prototype-the-workflow" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="build-prototype-the-workflow"><span class="header-section-number">5.6</span> Build — Prototype the workflow</h2>
+<p>At Design-pattern maturity there is no executed prototype. The Build artifact is a prototype plan: invoke the group-sequential skill for the accepted inputs, run its verification simulation, and generate the design report from its template. The skill’s pacing (one artifact per turn), input confirmation, and verification procedure become build requirements rather than observed behavior. The explicit gap is that none of this has been executed for the synthetic question.</p>
+<section id="canonical-artifact-prototype-planned" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="canonical-artifact-prototype-planned"><span class="header-section-number">5.6.1</span> Canonical artifact: Prototype (planned)</h3>
+<p>A prototype manifest pointing at skill outputs, the verification log, and the generated report. Status: planned.</p>
+</section>
+</section>
+<section id="test-benchmark-and-evaluate" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="test-benchmark-and-evaluate"><span class="header-section-number">5.7</span> Test — Benchmark and evaluate</h2>
+<p>The benchmark is defined before results exist. Targets and tolerances: the computed boundaries reproduce the skill’s reference values within rounding; the verification simulation meets its pass criteria; an out-of-scope request (for example, adding sample-size re-estimation at interim) is refused with the skill’s redirect; an unsupported assumption stops the workflow for human input. The illustrative 331-event figure above is a target input to confirmation, not a result. No benchmark has been run.</p>
+<section id="canonical-artifact-benchmark-report-planned" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="canonical-artifact-benchmark-report-planned"><span class="header-section-number">5.7.1</span> Canonical artifact: Benchmark report (planned)</h3>
+<p>Dataset, cases, thresholds, and the empty results table. Status: planned.</p>
+</section>
+</section>
+<section id="deploy-operationalize-the-workflow" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="deploy-operationalize-the-workflow"><span class="header-section-number">5.8</span> Deploy — Operationalize the workflow</h2>
+<p>Deployment is a proposal: an advisory pilot in which a statistician runs the specified workflow for a real design question and decides every action. No schedule, installation, or access boundary is committed.</p>
+<section id="canonical-artifact-release-record" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="canonical-artifact-release-record"><span class="header-section-number">5.8.1</span> Canonical artifact: Release record</h3>
+<p>Status: proposed; no operating history exists.</p>
+</section>
+</section>
+<section id="maintain-monitor-and-improve" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="maintain-monitor-and-improve"><span class="header-section-number">5.9</span> Maintain — Monitor and improve</h2>
+<p>Monitoring is a proposal: track assumption changes, skill-version drift, and overridden dispositions across design runs. A changed assumption or skill version returns the lifecycle to Plan with a new brief.</p>
+<section id="canonical-artifact-monitoring-report" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="canonical-artifact-monitoring-report"><span class="header-section-number">5.9.1</span> Canonical artifact: Monitoring report</h3>
+<p>Status: proposed; no operating history exists.</p>
+</section>
+</section>
+<section id="workshop-activity-frame-one-design-40-minutes" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="workshop-activity-frame-one-design-40-minutes"><span class="header-section-number">5.10</span> Workshop activity: frame one design (40 minutes)</h2>
+<p>Work in pairs with a browser agent or the prepared packet. The facilitator gives the broad request (“design the study”) plus the partially completed brief from the <a href="https://github.com/elong0527/ai4csr/tree/main/workshop/participant/study-design-set.md">study-design worksheet</a>.</p>
+<ol type="1">
+<li><strong>Expose (10 min).</strong> List everything the request leaves unspecified.</li>
+<li><strong>Narrow (15 min).</strong> Complete the brief for the synthetic PFS question; record one assumption that requires a human decision.</li>
+<li><strong>Contract (10 min).</strong> Name one condition that stops or narrows the workflow and who decides.</li>
+<li><strong>Debrief (5 min).</strong> Compare with the <a href="https://github.com/elong0527/ai4csr/tree/main/workshop/facilitator/study-design-set.md">facilitator example</a>. Success is a bounded brief with an explicit gap list, not a finished design.</li>
+</ol>
+</section>
+<section id="summary" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.11</span> Summary</h2>
+<p>A broad design ambition becomes a workflow when its boundary, artifacts, evidence, and decision rights are written down. The production-ready skill supplies the computation; this chapter supplies the governance around it. The rounding chapters next show the same lifecycle with an executed prototype.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -733,10 +884,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05-ai-first-sdlc.html" class="pagination-link" aria-label="The AI-first SDLC">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-preface.html" class="pagination-link" aria-label="Preface">
-        <span class="nav-page-text">Preface</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-workflow-rounding.html" class="pagination-link" aria-label="Rounding in analysis and reporting">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -745,4 +899,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/index.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/index.md" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/study-design.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/study-design.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>

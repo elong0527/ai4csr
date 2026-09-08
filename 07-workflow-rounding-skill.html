@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>6&nbsp; From one-file skill to maintainable rounding workflow – AI-First Workflows for Clinical Study Reporting</title>
+<title>7&nbsp; From one-file skill to maintainable rounding workflow – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,13 +79,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="6&nbsp; From one-file skill to maintainable rounding workflow – AI-First Workflows for Clinical Study Reporting">
+<meta property="og:title" content="7&nbsp; From one-file skill to maintainable rounding workflow – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="6&nbsp; From one-file skill to maintainable rounding workflow – AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="7&nbsp; From one-file skill to maintainable rounding workflow – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./07-workflow-rounding-skill.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./07-workflow-rounding-skill.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -210,20 +210,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./study-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bounding study design before building it</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-workflow-rounding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-workflow-rounding-skill.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-workflow-rounding-lab.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
   </div>
 </li>
       </ul>
@@ -238,55 +244,55 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-evolution-strategy" id="toc-the-evolution-strategy" class="nav-link active" data-scroll-target="#the-evolution-strategy"><span class="header-section-number">6.1</span> The evolution strategy</a></li>
-  <li><a href="#plan-frame-the-workflow" id="toc-plan-frame-the-workflow" class="nav-link" data-scroll-target="#plan-frame-the-workflow"><span class="header-section-number">6.2</span> Plan — Frame the workflow</a>
+  <li><a href="#the-evolution-strategy" id="toc-the-evolution-strategy" class="nav-link active" data-scroll-target="#the-evolution-strategy"><span class="header-section-number">7.1</span> The evolution strategy</a></li>
+  <li><a href="#plan-frame-the-workflow" id="toc-plan-frame-the-workflow" class="nav-link" data-scroll-target="#plan-frame-the-workflow"><span class="header-section-number">7.2</span> Plan — Frame the workflow</a>
   <ul class="collapse">
-  <li><a href="#turn-the-prompts-limits-into-requirements" id="toc-turn-the-prompts-limits-into-requirements" class="nav-link" data-scroll-target="#turn-the-prompts-limits-into-requirements"><span class="header-section-number">6.2.1</span> Turn the prompt’s limits into requirements</a></li>
-  <li><a href="#canonical-artifact-workflow-brief" id="toc-canonical-artifact-workflow-brief" class="nav-link" data-scroll-target="#canonical-artifact-workflow-brief"><span class="header-section-number">6.2.2</span> Canonical artifact: Workflow brief</a></li>
+  <li><a href="#turn-the-prompts-limits-into-requirements" id="toc-turn-the-prompts-limits-into-requirements" class="nav-link" data-scroll-target="#turn-the-prompts-limits-into-requirements"><span class="header-section-number">7.2.1</span> Turn the prompt’s limits into requirements</a></li>
+  <li><a href="#canonical-artifact-workflow-brief" id="toc-canonical-artifact-workflow-brief" class="nav-link" data-scroll-target="#canonical-artifact-workflow-brief"><span class="header-section-number">7.2.2</span> Canonical artifact: Workflow brief</a></li>
   </ul></li>
-  <li><a href="#design-specify-the-workflow" id="toc-design-specify-the-workflow" class="nav-link" data-scroll-target="#design-specify-the-workflow"><span class="header-section-number">6.3</span> Design — Specify the workflow</a>
+  <li><a href="#design-specify-the-workflow" id="toc-design-specify-the-workflow" class="nav-link" data-scroll-target="#design-specify-the-workflow"><span class="header-section-number">7.3</span> Design — Specify the workflow</a>
   <ul class="collapse">
-  <li><a href="#carry-the-rule-and-its-scope-clause-forward-unchanged" id="toc-carry-the-rule-and-its-scope-clause-forward-unchanged" class="nav-link" data-scroll-target="#carry-the-rule-and-its-scope-clause-forward-unchanged"><span class="header-section-number">6.3.1</span> Carry the rule and its scope clause forward unchanged</a></li>
-  <li><a href="#start-with-one-instruction-file" id="toc-start-with-one-instruction-file" class="nav-link" data-scroll-target="#start-with-one-instruction-file"><span class="header-section-number">6.3.2</span> Start with one instruction file</a></li>
-  <li><a href="#design-the-maintainable-target" id="toc-design-the-maintainable-target" class="nav-link" data-scroll-target="#design-the-maintainable-target"><span class="header-section-number">6.3.3</span> Design the maintainable target</a></li>
-  <li><a href="#define-promotion-signals" id="toc-define-promotion-signals" class="nav-link" data-scroll-target="#define-promotion-signals"><span class="header-section-number">6.3.4</span> Define promotion signals</a></li>
-  <li><a href="#canonical-artifact-task-contract" id="toc-canonical-artifact-task-contract" class="nav-link" data-scroll-target="#canonical-artifact-task-contract"><span class="header-section-number">6.3.5</span> Canonical artifact: Task contract</a></li>
+  <li><a href="#carry-the-rule-and-its-scope-clause-forward-unchanged" id="toc-carry-the-rule-and-its-scope-clause-forward-unchanged" class="nav-link" data-scroll-target="#carry-the-rule-and-its-scope-clause-forward-unchanged"><span class="header-section-number">7.3.1</span> Carry the rule and its scope clause forward unchanged</a></li>
+  <li><a href="#start-with-one-instruction-file" id="toc-start-with-one-instruction-file" class="nav-link" data-scroll-target="#start-with-one-instruction-file"><span class="header-section-number">7.3.2</span> Start with one instruction file</a></li>
+  <li><a href="#design-the-maintainable-target" id="toc-design-the-maintainable-target" class="nav-link" data-scroll-target="#design-the-maintainable-target"><span class="header-section-number">7.3.3</span> Design the maintainable target</a></li>
+  <li><a href="#define-promotion-signals" id="toc-define-promotion-signals" class="nav-link" data-scroll-target="#define-promotion-signals"><span class="header-section-number">7.3.4</span> Define promotion signals</a></li>
+  <li><a href="#canonical-artifact-task-contract" id="toc-canonical-artifact-task-contract" class="nav-link" data-scroll-target="#canonical-artifact-task-contract"><span class="header-section-number">7.3.5</span> Canonical artifact: Task contract</a></li>
   </ul></li>
-  <li><a href="#build-prototype-the-workflow" id="toc-build-prototype-the-workflow" class="nav-link" data-scroll-target="#build-prototype-the-workflow"><span class="header-section-number">6.4</span> Build — Prototype the workflow</a>
+  <li><a href="#build-prototype-the-workflow" id="toc-build-prototype-the-workflow" class="nav-link" data-scroll-target="#build-prototype-the-workflow"><span class="header-section-number">7.4</span> Build — Prototype the workflow</a>
   <ul class="collapse">
-  <li><a href="#level-1-build-the-one-file-prototype" id="toc-level-1-build-the-one-file-prototype" class="nav-link" data-scroll-target="#level-1-build-the-one-file-prototype"><span class="header-section-number">6.4.1</span> Level 1: Build the one-file prototype</a></li>
-  <li><a href="#level-2-separate-components-that-need-independent-maintenance" id="toc-level-2-separate-components-that-need-independent-maintenance" class="nav-link" data-scroll-target="#level-2-separate-components-that-need-independent-maintenance"><span class="header-section-number">6.4.2</span> Level 2: Separate components that need independent maintenance</a></li>
-  <li><a href="#level-3-add-the-operating-system-around-the-package" id="toc-level-3-add-the-operating-system-around-the-package" class="nav-link" data-scroll-target="#level-3-add-the-operating-system-around-the-package"><span class="header-section-number">6.4.3</span> Level 3: Add the operating system around the package</a></li>
-  <li><a href="#preserve-the-decisions-that-made-the-check-useful" id="toc-preserve-the-decisions-that-made-the-check-useful" class="nav-link" data-scroll-target="#preserve-the-decisions-that-made-the-check-useful"><span class="header-section-number">6.4.4</span> Preserve the decisions that made the check useful</a></li>
-  <li><a href="#canonical-artifact-prototype" id="toc-canonical-artifact-prototype" class="nav-link" data-scroll-target="#canonical-artifact-prototype"><span class="header-section-number">6.4.5</span> Canonical artifact: Prototype</a></li>
+  <li><a href="#level-1-build-the-one-file-prototype" id="toc-level-1-build-the-one-file-prototype" class="nav-link" data-scroll-target="#level-1-build-the-one-file-prototype"><span class="header-section-number">7.4.1</span> Level 1: Build the one-file prototype</a></li>
+  <li><a href="#level-2-separate-components-that-need-independent-maintenance" id="toc-level-2-separate-components-that-need-independent-maintenance" class="nav-link" data-scroll-target="#level-2-separate-components-that-need-independent-maintenance"><span class="header-section-number">7.4.2</span> Level 2: Separate components that need independent maintenance</a></li>
+  <li><a href="#level-3-add-the-operating-system-around-the-package" id="toc-level-3-add-the-operating-system-around-the-package" class="nav-link" data-scroll-target="#level-3-add-the-operating-system-around-the-package"><span class="header-section-number">7.4.3</span> Level 3: Add the operating system around the package</a></li>
+  <li><a href="#preserve-the-decisions-that-made-the-check-useful" id="toc-preserve-the-decisions-that-made-the-check-useful" class="nav-link" data-scroll-target="#preserve-the-decisions-that-made-the-check-useful"><span class="header-section-number">7.4.4</span> Preserve the decisions that made the check useful</a></li>
+  <li><a href="#canonical-artifact-prototype" id="toc-canonical-artifact-prototype" class="nav-link" data-scroll-target="#canonical-artifact-prototype"><span class="header-section-number">7.4.5</span> Canonical artifact: Prototype</a></li>
   </ul></li>
-  <li><a href="#test-benchmark-and-evaluate" id="toc-test-benchmark-and-evaluate" class="nav-link" data-scroll-target="#test-benchmark-and-evaluate"><span class="header-section-number">6.5</span> Test — Benchmark and evaluate</a>
+  <li><a href="#test-benchmark-and-evaluate" id="toc-test-benchmark-and-evaluate" class="nav-link" data-scroll-target="#test-benchmark-and-evaluate"><span class="header-section-number">7.5</span> Test — Benchmark and evaluate</a>
   <ul class="collapse">
-  <li><a href="#grow-evaluation-with-the-skill" id="toc-grow-evaluation-with-the-skill" class="nav-link" data-scroll-target="#grow-evaluation-with-the-skill"><span class="header-section-number">6.5.1</span> Grow evaluation with the skill</a></li>
-  <li><a href="#use-pinned-source-evidence-without-calling-it-skill-performance" id="toc-use-pinned-source-evidence-without-calling-it-skill-performance" class="nav-link" data-scroll-target="#use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">6.5.2</span> Use pinned source evidence without calling it skill performance</a></li>
-  <li><a href="#set-acceptance-criteria-for-each-level" id="toc-set-acceptance-criteria-for-each-level" class="nav-link" data-scroll-target="#set-acceptance-criteria-for-each-level"><span class="header-section-number">6.5.3</span> Set acceptance criteria for each level</a></li>
-  <li><a href="#canonical-artifact-benchmark-report" id="toc-canonical-artifact-benchmark-report" class="nav-link" data-scroll-target="#canonical-artifact-benchmark-report"><span class="header-section-number">6.5.4</span> Canonical artifact: Benchmark report</a></li>
+  <li><a href="#grow-evaluation-with-the-skill" id="toc-grow-evaluation-with-the-skill" class="nav-link" data-scroll-target="#grow-evaluation-with-the-skill"><span class="header-section-number">7.5.1</span> Grow evaluation with the skill</a></li>
+  <li><a href="#use-pinned-source-evidence-without-calling-it-skill-performance" id="toc-use-pinned-source-evidence-without-calling-it-skill-performance" class="nav-link" data-scroll-target="#use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">7.5.2</span> Use pinned source evidence without calling it skill performance</a></li>
+  <li><a href="#set-acceptance-criteria-for-each-level" id="toc-set-acceptance-criteria-for-each-level" class="nav-link" data-scroll-target="#set-acceptance-criteria-for-each-level"><span class="header-section-number">7.5.3</span> Set acceptance criteria for each level</a></li>
+  <li><a href="#canonical-artifact-benchmark-report" id="toc-canonical-artifact-benchmark-report" class="nav-link" data-scroll-target="#canonical-artifact-benchmark-report"><span class="header-section-number">7.5.4</span> Canonical artifact: Benchmark report</a></li>
   </ul></li>
-  <li><a href="#deploy-operationalize-the-workflow" id="toc-deploy-operationalize-the-workflow" class="nav-link" data-scroll-target="#deploy-operationalize-the-workflow"><span class="header-section-number">6.6</span> Deploy — Operationalize the workflow</a>
+  <li><a href="#deploy-operationalize-the-workflow" id="toc-deploy-operationalize-the-workflow" class="nav-link" data-scroll-target="#deploy-operationalize-the-workflow"><span class="header-section-number">7.6</span> Deploy — Operationalize the workflow</a>
   <ul class="collapse">
-  <li><a href="#deploy-the-version-that-was-tested" id="toc-deploy-the-version-that-was-tested" class="nav-link" data-scroll-target="#deploy-the-version-that-was-tested"><span class="header-section-number">6.6.1</span> Deploy the version that was tested</a></li>
-  <li><a href="#canonical-artifact-release-record" id="toc-canonical-artifact-release-record" class="nav-link" data-scroll-target="#canonical-artifact-release-record"><span class="header-section-number">6.6.2</span> Canonical artifact: Release record</a></li>
+  <li><a href="#deploy-the-version-that-was-tested" id="toc-deploy-the-version-that-was-tested" class="nav-link" data-scroll-target="#deploy-the-version-that-was-tested"><span class="header-section-number">7.6.1</span> Deploy the version that was tested</a></li>
+  <li><a href="#canonical-artifact-release-record" id="toc-canonical-artifact-release-record" class="nav-link" data-scroll-target="#canonical-artifact-release-record"><span class="header-section-number">7.6.2</span> Canonical artifact: Release record</a></li>
   </ul></li>
-  <li><a href="#maintain-monitor-and-improve" id="toc-maintain-monitor-and-improve" class="nav-link" data-scroll-target="#maintain-monitor-and-improve"><span class="header-section-number">6.7</span> Maintain — Monitor and improve</a>
+  <li><a href="#maintain-monitor-and-improve" id="toc-maintain-monitor-and-improve" class="nav-link" data-scroll-target="#maintain-monitor-and-improve"><span class="header-section-number">7.7</span> Maintain — Monitor and improve</a>
   <ul class="collapse">
-  <li><a href="#make-improvement-a-governed-change" id="toc-make-improvement-a-governed-change" class="nav-link" data-scroll-target="#make-improvement-a-governed-change"><span class="header-section-number">6.7.1</span> Make improvement a governed change</a></li>
-  <li><a href="#canonical-artifact-monitoring-report" id="toc-canonical-artifact-monitoring-report" class="nav-link" data-scroll-target="#canonical-artifact-monitoring-report"><span class="header-section-number">6.7.2</span> Canonical artifact: Monitoring report</a></li>
+  <li><a href="#make-improvement-a-governed-change" id="toc-make-improvement-a-governed-change" class="nav-link" data-scroll-target="#make-improvement-a-governed-change"><span class="header-section-number">7.7.1</span> Make improvement a governed change</a></li>
+  <li><a href="#canonical-artifact-monitoring-report" id="toc-canonical-artifact-monitoring-report" class="nav-link" data-scroll-target="#canonical-artifact-monitoring-report"><span class="header-section-number">7.7.2</span> Canonical artifact: Monitoring report</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6.8</span> Summary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.8</span> Summary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/07-workflow-rounding-skill.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/07-workflow-rounding-skill.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./07-workflow-rounding-skill.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./07-workflow-rounding-skill.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-workflow-rounding-skill" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></h1>
+<h1 class="title"><span id="sec-workflow-rounding-skill" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span></h1>
 </div>
 
 
@@ -316,8 +322,8 @@ Tip
 <p>A useful skill can begin as one visible <code>SKILL.md</code>. Production readiness is a later operating state, not a larger folder. Add references, scripts, evaluation fixtures, templates, and release controls only when each one addresses a named weakness and has an owner.</p>
 </div>
 </div>
-<p>During clinical development, the R scripts used for analysis and reporting may change over time. The developer must repeat the rounding review from <a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 5</span></a>. The saved response preserves candidate locations, example outputs, explanations, and a proposed solution, but not a repeatable method: which functions must be searched, which ties must be tested, how coverage is recorded, or when to stop before posting an issue. The draft survived the handoff. The ability to reproduce and evaluate it did not.</p>
-<p><a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 5</span></a> established three business rules, defined the scope of BR-001, and showed how to read an exploratory response as a draft rather than an answer key. It also named four things a prompt cannot provide: coverage, repeatability, separation of fixed checks from judgment, and a named human gate. This chapter turns those gaps into requirements and specifies each stage of the AI-first SDLC from <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p>During clinical development, the R scripts used for analysis and reporting may change over time. The developer must repeat the rounding review from <a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 6</span></a>. The saved response preserves candidate locations, example outputs, explanations, and a proposed solution, but not a repeatable method: which functions must be searched, which ties must be tested, how coverage is recorded, or when to stop before posting an issue. The draft survived the handoff. The ability to reproduce and evaluate it did not.</p>
+<p><a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 6</span></a> established three business rules, defined the scope of BR-001, and showed how to read an exploratory response as a draft rather than an answer key. It also named four things a prompt cannot provide: coverage, repeatability, separation of fixed checks from judgment, and a named human gate. This chapter turns those gaps into requirements and specifies each stage of the AI-first SDLC from <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
 <p>The <a href="https://academy.claude.com/courses/ai-native-sdlc-playbook/skills-as-institutional-knowledge">AI-Native SDLC Playbook lesson on skills as institutional knowledge</a> describes a skill as a way to make owned, written knowledge operational. This chapter adapts that idea to Biometrics: BR-001 is the source of truth, the rule owner controls it, and a skill tells an agent how to apply it during a bounded review. The chapter follows two implementations of that idea: the book’s one-file teaching skill and the more comprehensive <a href="https://github.com/RConsortium/pharma-skills/tree/main/rounding"><code>RConsortium/pharma-skills/rounding</code></a> example. The first makes the contract easy to see. The second shows how the same contract can be separated into maintained instructions, references, scripts, report assets, and evaluation evidence. Both remain advisory. A person still approves the rule and classifies each finding.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Maturity: Design pattern">
 <div class="callout-header d-flex align-content-center">
@@ -341,8 +347,8 @@ Tip
 <li><strong>Non-goals:</strong> Build an agent platform, validate statistical methods, replace independent QC, automate human classification, or claim that either example is qualified for production or GxP use. The one-file lab does not cover BR-002 or BR-003, schedule reviews, or publish issues.</li>
 <li><strong>Why this is well defined:</strong> One rule, one bounded source set, observable results, explicit boundaries, versioned inputs when available, and a named decision maker keep the task bounded.</li>
 </ul>
-<section id="the-evolution-strategy" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="the-evolution-strategy"><span class="header-section-number">6.1</span> The evolution strategy</h2>
+<section id="the-evolution-strategy" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="the-evolution-strategy"><span class="header-section-number">7.1</span> The evolution strategy</h2>
 <p>The two examples are not competing designs. They are different stages in one development path.</p>
 <table class="caption-top table">
 <colgroup>
@@ -382,11 +388,11 @@ Tip
 </table>
 <p>More files do not move a skill to the next stage. A single file can remain the right design for a small, low-risk advisory task. A comprehensive package can still be unready when its benchmark has not been accepted, its owner is unclear, or its operating controls are missing. The team should stop at the least complex structure that satisfies the approved task contract and evidence requirements.</p>
 </section>
-<section id="plan-frame-the-workflow" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="plan-frame-the-workflow"><span class="header-section-number">6.2</span> Plan — Frame the workflow</h2>
-<section id="turn-the-prompts-limits-into-requirements" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="turn-the-prompts-limits-into-requirements"><span class="header-section-number">6.2.1</span> Turn the prompt’s limits into requirements</h3>
-<p>The four gaps in <a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 5</span></a> are not additional <code>metalite.ae</code> defects. They are limitations of the one-off review, and each one becomes a workflow requirement:</p>
+<section id="plan-frame-the-workflow" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="plan-frame-the-workflow"><span class="header-section-number">7.2</span> Plan — Frame the workflow</h2>
+<section id="turn-the-prompts-limits-into-requirements" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="turn-the-prompts-limits-into-requirements"><span class="header-section-number">7.2.1</span> Turn the prompt’s limits into requirements</h3>
+<p>The four gaps in <a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 6</span></a> are not additional <code>metalite.ae</code> defects. They are limitations of the one-off review, and each one becomes a workflow requirement:</p>
 <ul>
 <li>replace reviewer memory with a written minimum procedure while leaving room for the agent to investigate beyond it;</li>
 <li>report coverage for every run, including rules left unchecked;</li>
@@ -396,8 +402,8 @@ Tip
 <p>The function catalog is a required starting point, not a ceiling. The agent can follow wrappers, helper functions, or other unexpected code paths, but it must label candidates found through that exploratory pass separately.</p>
 <p>Planning must also name the intended operating level. A one-person experiment, a shared team package, and a routine production control need different evidence, ownership, distribution, and support. Starting with one file is useful only when the team also knows which observed failures would trigger a more maintainable design.</p>
 </section>
-<section id="canonical-artifact-workflow-brief" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="canonical-artifact-workflow-brief"><span class="header-section-number">6.2.2</span> Canonical artifact: Workflow brief</h3>
+<section id="canonical-artifact-workflow-brief" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="canonical-artifact-workflow-brief"><span class="header-section-number">7.2.2</span> Canonical artifact: Workflow brief</h3>
 <ul>
 <li><strong>Objective:</strong> Specify a check that finds calls able to round a displayed value or a value used in a report decision, tests them against the half-away-from-zero rule, and can be performed by a reviewer who did not design it.</li>
 <li><strong>Inputs:</strong> Named R source or a pasted snippet, its version when available, BR-001 v1.0, the precision used by each relevant call, and the call’s intended report use.</li>
@@ -413,16 +419,16 @@ Tip
 <p>The Plan gate is the rule owner’s decision that a repeatable check is worth building. The accepted workflow brief initiates Design.</p>
 </section>
 </section>
-<section id="design-specify-the-workflow" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="design-specify-the-workflow"><span class="header-section-number">6.3</span> Design — Specify the workflow</h2>
-<section id="carry-the-rule-and-its-scope-clause-forward-unchanged" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="carry-the-rule-and-its-scope-clause-forward-unchanged"><span class="header-section-number">6.3.1</span> Carry the rule and its scope clause forward unchanged</h3>
-<p>BR-001, BR-002, and BR-003, stated in <a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 5</span></a>, are separate business rules. BR-001 requires exact decimal ties to round half away from zero and prohibits a displayed negative zero. BR-002 requires calculations to use unrounded values and to round once for display. BR-003 requires display precision to be specified and preserved. Each rule is version 1.0 in this example.</p>
+<section id="design-specify-the-workflow" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="design-specify-the-workflow"><span class="header-section-number">7.3</span> Design — Specify the workflow</h2>
+<section id="carry-the-rule-and-its-scope-clause-forward-unchanged" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="carry-the-rule-and-its-scope-clause-forward-unchanged"><span class="header-section-number">7.3.1</span> Carry the rule and its scope clause forward unchanged</h3>
+<p>BR-001, BR-002, and BR-003, stated in <a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 6</span></a>, are separate business rules. BR-001 requires exact decimal ties to round half away from zero and prohibits a displayed negative zero. BR-002 requires calculations to use unrounded values and to round once for display. BR-003 requires display precision to be specified and preserved. Each rule is version 1.0 in this example.</p>
 <p>The scope clause attached to BR-001 defines which calls are in scope: any call that can change a numeric value displayed in a report or used to decide which rows the report includes. It therefore places <code>formatC()</code>, <code>sprintf()</code>, and <code>format()</code> among the candidates.</p>
 <p>The <strong>book prototype</strong> checks only <strong>BR-001</strong>. BR-002 and BR-003 remain explicit gaps, declared in every run rather than left unmentioned. The comprehensive community example expands the contract to all three rules. The reference behavior for BR-001 is stated directly: at zero decimal places, for example, <code>-2.5</code> and <code>2.5</code> become <code>-3</code> and <code>3</code>, and displayed zero has no negative sign.</p>
 </section>
-<section id="start-with-one-instruction-file" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="start-with-one-instruction-file"><span class="header-section-number">6.3.2</span> Start with one instruction file</h3>
+<section id="start-with-one-instruction-file" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="start-with-one-instruction-file"><span class="header-section-number">7.3.2</span> Start with one instruction file</h3>
 <p>The <a href="https://learn.chatgpt.com/docs/build-skills">official Codex skill documentation</a> states that a skill can be one directory containing <code>SKILL.md</code>. Its frontmatter contains <code>name</code> and <code>description</code>; scripts, references, and assets are optional.</p>
 <p>The book lab deliberately chooses the smallest visible structure:</p>
 <pre class="text"><code>rounding/
@@ -430,8 +436,8 @@ Tip
 <p>The task contract defines what the one file must make visible. The initial lab does not need supporting resources. The book keeps the artifact at <code>rounding/SKILL.md</code> so readers can find it without navigating a hidden installation directory.</p>
 <p>The <a href="https://learn.chatgpt.com/docs/build-skills">official Codex skill documentation</a> also describes the larger package shape and progressive disclosure: Codex sees the name and description first, loads <code>SKILL.md</code> when the skill applies, and uses optional resources when the instructions direct it to them. This makes <code>SKILL.md</code> the stable entry point even after the package grows. It should route the work, not duplicate every policy, test case, and output template.</p>
 </section>
-<section id="design-the-maintainable-target" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="design-the-maintainable-target"><span class="header-section-number">6.3.3</span> Design the maintainable target</h3>
+<section id="design-the-maintainable-target" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="design-the-maintainable-target"><span class="header-section-number">7.3.3</span> Design the maintainable target</h3>
 <p>At commit <a href="https://github.com/RConsortium/pharma-skills/tree/544aa0818208a973e6e22901118c8f97b758c146/rounding"><code>544aa0818208a973e6e22901118c8f97b758c146</code></a>, the R Consortium example separates the broader workflow this way:</p>
 <pre class="text"><code>rounding/
   SKILL.md
@@ -497,8 +503,8 @@ Tip
 </table>
 <p>This structure is a worked example, not a universal checklist. Empty folders and copied boilerplate create maintenance work without improving the workflow. Conversely, leaving a changing rule, repeated scanner, or benchmark corpus inside one long instruction file makes ownership and testing harder.</p>
 </section>
-<section id="define-promotion-signals" class="level3" data-number="6.3.4">
-<h3 data-number="6.3.4" class="anchored" data-anchor-id="define-promotion-signals"><span class="header-section-number">6.3.4</span> Define promotion signals</h3>
+<section id="define-promotion-signals" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="define-promotion-signals"><span class="header-section-number">7.3.4</span> Define promotion signals</h3>
 <p>Decide during Design what evidence would justify moving beyond one file:</p>
 <ul>
 <li>repeated manual probe logic is a signal for a deterministic script;</li>
@@ -510,8 +516,8 @@ Tip
 </ul>
 <p>These are promotion signals, not automatic actions. The accountable owner still decides whether the expected benefit justifies the additional component and its maintenance burden.</p>
 </section>
-<section id="canonical-artifact-task-contract" class="level3" data-number="6.3.5">
-<h3 data-number="6.3.5" class="anchored" data-anchor-id="canonical-artifact-task-contract"><span class="header-section-number">6.3.5</span> Canonical artifact: Task contract</h3>
+<section id="canonical-artifact-task-contract" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="canonical-artifact-task-contract"><span class="header-section-number">7.3.5</span> Canonical artifact: Task contract</h3>
 <ul>
 <li><strong>Objective:</strong> Report candidate divergences from BR-001 in one bounded R source set.</li>
 <li><strong>Trigger:</strong> An approved on-demand request; automated triggers remain future options.</li>
@@ -527,10 +533,10 @@ Tip
 <p>The Design gate is approval of the rule scope, task contract, initial package shape, promotion signals, and stop conditions by the rule owner and an R programmer. Acceptance authorizes a prototype, not a finding or a code change, and initiates Build.</p>
 </section>
 </section>
-<section id="build-prototype-the-workflow" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="build-prototype-the-workflow"><span class="header-section-number">6.4</span> Build — Prototype the workflow</h2>
-<section id="level-1-build-the-one-file-prototype" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="level-1-build-the-one-file-prototype"><span class="header-section-number">6.4.1</span> Level 1: Build the one-file prototype</h3>
+<section id="build-prototype-the-workflow" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="build-prototype-the-workflow"><span class="header-section-number">7.4</span> Build — Prototype the workflow</h2>
+<section id="level-1-build-the-one-file-prototype" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="level-1-build-the-one-file-prototype"><span class="header-section-number">7.4.1</span> Level 1: Build the one-file prototype</h3>
 <p>The book prototype is the one-file skill at <a href="rounding/SKILL.md"><code>rounding/SKILL.md</code></a>. The complete package contains no supporting files:</p>
 <pre class="text"><code>rounding/
   SKILL.md</code></pre>
@@ -572,8 +578,8 @@ Tip
 <p>The description is deliberately narrow. It should match a request to review R rounding under BR-001 without attracting general R review or work on BR-002 and BR-003. The body gives the agent enough direction to perform the review while leaving room to follow wrappers or unexpected code paths.</p>
 <p>The skill uses a direct <code>Rscript -e</code> probe rather than a helper script. This keeps the lab self-contained and makes the executed expression visible in the report. The tradeoff is important: prose cannot enforce a complete syntax scan or a machine-readable output schema. Those remain possible future increments if evaluation shows that the one-file skill misses source or produces inconsistent reports.</p>
 </section>
-<section id="level-2-separate-components-that-need-independent-maintenance" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="level-2-separate-components-that-need-independent-maintenance"><span class="header-section-number">6.4.2</span> Level 2: Separate components that need independent maintenance</h3>
+<section id="level-2-separate-components-that-need-independent-maintenance" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="level-2-separate-components-that-need-independent-maintenance"><span class="header-section-number">7.4.2</span> Level 2: Separate components that need independent maintenance</h3>
 <p>The <a href="https://github.com/RConsortium/pharma-skills/tree/544aa0818208a973e6e22901118c8f97b758c146/rounding"><code>RConsortium/pharma-skills/rounding</code></a> example shows the next build level. Its <code>SKILL.md</code> remains the task router and human-boundary statement, while supporting files take on work that benefits from separate ownership and verification:</p>
 <ul>
 <li>three rule references keep tie method, rounding stage, and display precision distinct;</li>
@@ -585,12 +591,12 @@ Tip
 <p>This separation helps a team review a rule change without treating it as a scanner change, test a scanner change without rewriting the workflow prose, and revise a report contract without hiding the difference in a prompt. The entry point links to each resource at the step where it is needed, preserving progressive disclosure.</p>
 <p>The community package covers BR-001, BR-002, and BR-003, while the book’s one-file prototype intentionally covers only BR-001. Expanding rule scope is a new approved requirement, not a mechanical refactor. A team should first prove the one-rule behavior, then add each new rule with its own owner, reference, test cases, and acceptance criteria.</p>
 </section>
-<section id="level-3-add-the-operating-system-around-the-package" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="level-3-add-the-operating-system-around-the-package"><span class="header-section-number">6.4.3</span> Level 3: Add the operating system around the package</h3>
+<section id="level-3-add-the-operating-system-around-the-package" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="level-3-add-the-operating-system-around-the-package"><span class="header-section-number">7.4.3</span> Level 3: Add the operating system around the package</h3>
 <p>Production usage needs controls that do not belong entirely inside <code>SKILL.md</code>: an approved version, controlled installation, dependency and permission review, an accepted benchmark in the target environment, named support ownership, monitoring, incident handling, rollback, and retirement. The skill package is the governed unit being released; it is not the complete production system.</p>
 </section>
-<section id="preserve-the-decisions-that-made-the-check-useful" class="level3" data-number="6.4.4">
-<h3 data-number="6.4.4" class="anchored" data-anchor-id="preserve-the-decisions-that-made-the-check-useful"><span class="header-section-number">6.4.4</span> Preserve the decisions that made the check useful</h3>
+<section id="preserve-the-decisions-that-made-the-check-useful" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="preserve-the-decisions-that-made-the-check-useful"><span class="header-section-number">7.4.4</span> Preserve the decisions that made the check useful</h3>
 <p>The agent may explore beyond the named function catalog, but it must preserve the minimum coverage record. Every candidate remains visible as in scope, excluded, or unresolved. Search matches become draft findings only after source context and an executed probe support the divergence.</p>
 <p>The output also keeps three decisions separate:</p>
 <ol type="1">
@@ -599,8 +605,8 @@ Tip
 <li>The accountable human decides whether the divergence is a defect, accepted convention, exception, or not applicable.</li>
 </ol>
 </section>
-<section id="canonical-artifact-prototype" class="level3" data-number="6.4.5">
-<h3 data-number="6.4.5" class="anchored" data-anchor-id="canonical-artifact-prototype"><span class="header-section-number">6.4.5</span> Canonical artifact: Prototype</h3>
+<section id="canonical-artifact-prototype" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="canonical-artifact-prototype"><span class="header-section-number">7.4.5</span> Canonical artifact: Prototype</h3>
 <p>For the book lab, the artifact is the versioned <code>SKILL.md</code> itself. For a maintainable package, the artifact is the versioned folder plus a traceable record of its rule, script, template, and evaluation versions. The Build gate requires the rule owner and an R programmer to confirm that:</p>
 <ul>
 <li>BR-001 and its scope match the approved exercise;</li>
@@ -610,15 +616,15 @@ Tip
 <li>the agent stops before decisions reserved for a person.</li>
 </ul>
 <p>For the comprehensive level, the gate also requires every supporting resource to have a named purpose, an owner, a link from the entry point or evaluation workflow, and a relevant check. Files that cannot meet those conditions should not be added merely to make the package look mature.</p>
-<p>Acceptance makes the skill ready for the small evaluation in <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 7</span></a> and initiates Test.</p>
+<p>Acceptance makes the skill ready for the small evaluation in <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 8</span></a> and initiates Test.</p>
 </section>
 </section>
-<section id="test-benchmark-and-evaluate" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="test-benchmark-and-evaluate"><span class="header-section-number">6.5</span> Test — Benchmark and evaluate</h2>
+<section id="test-benchmark-and-evaluate" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="test-benchmark-and-evaluate"><span class="header-section-number">7.5</span> Test — Benchmark and evaluate</h2>
 <p>The Test stage asks whether the skill improves the review, not whether the folder looks complete. Deterministic scripts can establish what was scanned and executed. They cannot establish that the agent chose the right scope, interpreted the evidence correctly, or produced a useful handoff.</p>
-<section id="grow-evaluation-with-the-skill" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="grow-evaluation-with-the-skill"><span class="header-section-number">6.5.1</span> Grow evaluation with the skill</h3>
-<p>The one-file lab in <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 7</span></a> uses one synthetic snippet and a small answer key. That is enough to reveal whether the instruction finds the two seeded BR-001 problems, records coverage, and stops at the human decision.</p>
+<section id="grow-evaluation-with-the-skill" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="grow-evaluation-with-the-skill"><span class="header-section-number">7.5.1</span> Grow evaluation with the skill</h3>
+<p>The one-file lab in <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 8</span></a> uses one synthetic snippet and a small answer key. That is enough to reveal whether the instruction finds the two seeded BR-001 problems, records coverage, and stops at the human decision.</p>
 <p>The comprehensive community package demonstrates the next layer in <a href="https://github.com/RConsortium/pharma-skills/tree/544aa0818208a973e6e22901118c8f97b758c146/rounding/evals"><code>evals/</code></a>: a synthetic R package, an approved precision specification, evaluation prompts, and an answer key kept out of the run input. The fixture includes direct rounding, early rounding, lost trailing zeros, a compliant helper, allowlisted behavior, an operator without a function name, a dynamic call the scanner cannot see, and out-of-scope negative controls.</p>
 <p>Evaluation should grow in layers with the implementation:</p>
 <table class="caption-top table">
@@ -664,8 +670,8 @@ Tip
 </table>
 <p>A maintained benchmark should include compliant and noncompliant programs, catalog and uncataloged calls, justified exclusions, missing precision, and a case that the deterministic scanner cannot see. It should record selection accuracy, detected and missed seeded problems, unsupported findings, file and candidate coverage, report completeness, repeated-run agreement, review time, and human triage agreement.</p>
 </section>
-<section id="use-pinned-source-evidence-without-calling-it-skill-performance" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">6.5.2</span> Use pinned source evidence without calling it skill performance</h3>
+<section id="use-pinned-source-evidence-without-calling-it-skill-performance" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">7.5.2</span> Use pinned source evidence without calling it skill performance</h3>
 <p>The following evidence remains a useful benchmark seed. All locations refer to <a href="https://github.com/Merck/metalite.ae/releases/tag/v0.1.4"><code>metalite.ae</code> v0.1.4</a> at commit <a href="https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b"><code>bdb23d472b16bc9dadbc774e64c5ca40321e9c6b</code></a>. It was manually reverified at that commit; it is not output from either skill.</p>
 <p>The review accounted for 27 R files and narrowed the evidence in three steps:</p>
 <ol type="1">
@@ -704,8 +710,8 @@ Tip
 <p>Two causes must remain separate. The <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html">Base R documentation</a> describes <code>round()</code> as round-to-nearest-even at a true tie. At nonzero decimal precision, binary representation can place the stored value just above or below the intended tie. Source inspection alone cannot predict every direction, so the executed probe is evidence and the explanation is interpretation.</p>
 <p>These counts and probes establish an answer key for the pinned source. They do not prove that every wrapper or dynamic path was found, that BR-001 governs the package, or that an agent reproduces the review.</p>
 </section>
-<section id="set-acceptance-criteria-for-each-level" class="level3" data-number="6.5.3">
-<h3 data-number="6.5.3" class="anchored" data-anchor-id="set-acceptance-criteria-for-each-level"><span class="header-section-number">6.5.3</span> Set acceptance criteria for each level</h3>
+<section id="set-acceptance-criteria-for-each-level" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="set-acceptance-criteria-for-each-level"><span class="header-section-number">7.5.3</span> Set acceptance criteria for each level</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -761,17 +767,17 @@ Tip
 </tbody>
 </table>
 </section>
-<section id="canonical-artifact-benchmark-report" class="level3" data-number="6.5.4">
-<h3 data-number="6.5.4" class="anchored" data-anchor-id="canonical-artifact-benchmark-report"><span class="header-section-number">6.5.4</span> Canonical artifact: Benchmark report</h3>
-<p>No formal benchmark report exists for the book’s one-file prototype. <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 7</span></a> provides a guided observation, while the community package provides a broader corpus. The presence of fixtures and an answer key is not itself an accepted result for a particular model, host, or organization.</p>
+<section id="canonical-artifact-benchmark-report" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="canonical-artifact-benchmark-report"><span class="header-section-number">7.5.4</span> Canonical artifact: Benchmark report</h3>
+<p>No formal benchmark report exists for the book’s one-file prototype. <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 8</span></a> provides a guided observation, while the community package provides a broader corpus. The presence of fixtures and an answer key is not itself an accepted result for a particular model, host, or organization.</p>
 <p>A benchmark report must identify the skill version, target, environment, rules, and precision; compare every run with an independently maintained answer key; separate deterministic output from agent judgment; report misses, false findings, coverage, stopped runs, reproducibility, time, and limitations; and record the reviewers’ disposition.</p>
 <p>The Test gate remains open for the book prototype. At either package level, the rule owner and an independent reviewer must accept the executed benchmark report. A production candidate also needs results in its target model, harness, R environment, and permission configuration. Only that accepted evidence would initiate Deploy.</p>
 </section>
 </section>
-<section id="deploy-operationalize-the-workflow" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="deploy-operationalize-the-workflow"><span class="header-section-number">6.6</span> Deploy — Operationalize the workflow</h2>
-<section id="deploy-the-version-that-was-tested" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="deploy-the-version-that-was-tested"><span class="header-section-number">6.6.1</span> Deploy the version that was tested</h3>
+<section id="deploy-operationalize-the-workflow" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="deploy-operationalize-the-workflow"><span class="header-section-number">7.6</span> Deploy — Operationalize the workflow</h2>
+<section id="deploy-the-version-that-was-tested" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="deploy-the-version-that-was-tested"><span class="header-section-number">7.6.1</span> Deploy the version that was tested</h3>
 <p>The first deployment should remain modest: an on-demand, repository-scoped advisory review. The skill may read the named source, run small isolated probes, and write a draft report. It receives no permission to modify source or communicate externally.</p>
 <p>The lab references <code>rounding/SKILL.md</code> directly. This keeps the source artifact easy to find but does not make it an auto-discovered repository skill. For a later Codex installation, copy the <code>rounding</code> directory under <code>.agents/skills/</code> in the working directory or repository where it should be available. The installed path becomes <code>.agents/skills/rounding/SKILL.md</code>.</p>
 <p>A maintained package adds distribution choices, but the rule is the same: install an immutable version that matches the accepted benchmark, record where it is enabled, and preserve a way to disable or roll it back. Do not test one commit and deploy a moving <code>main</code> branch. Review executable scripts and their permissions before installation, and keep external writes disabled unless a separate task contract and approval explicitly allow them.</p>
@@ -804,8 +810,8 @@ Tip
 <p>The <a href="https://github.com/RConsortium/pharma-skills/tree/544aa0818208a973e6e22901118c8f97b758c146/rounding"><code>RConsortium/pharma-skills/rounding</code></a> directory is a community distribution example. Its <code>README.md</code>, <code>LICENSE</code>, versioned skill metadata, and repository lifecycle make shared maintenance more visible than the book lab. They do not by themselves authorize installation or establish fitness for an organization’s production use.</p>
 <p><a href="https://github.com/Merck/metalite.ae/issues/249">Issue #249</a> was posted manually from an exploratory response outside this workflow. It is not a Deploy artifact or evidence that the skill was released or that BR-001 governs <code>metalite.ae</code>.</p>
 </section>
-<section id="canonical-artifact-release-record" class="level3" data-number="6.6.2">
-<h3 data-number="6.6.2" class="anchored" data-anchor-id="canonical-artifact-release-record"><span class="header-section-number">6.6.2</span> Canonical artifact: Release record</h3>
+<section id="canonical-artifact-release-record" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="canonical-artifact-release-record"><span class="header-section-number">7.6.2</span> Canonical artifact: Release record</h3>
 <ul>
 <li><strong>Book status:</strong> Not released; design-pattern evaluation only.</li>
 <li><strong>Book candidate:</strong> The one-file <code>rounding</code> skill.</li>
@@ -820,10 +826,10 @@ Tip
 <p>Acceptance of the release record after the benchmark would initiate Maintain. Neither event has occurred in this book.</p>
 </section>
 </section>
-<section id="maintain-monitor-and-improve" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="maintain-monitor-and-improve"><span class="header-section-number">6.7</span> Maintain — Monitor and improve</h2>
-<section id="make-improvement-a-governed-change" class="level3" data-number="6.7.1">
-<h3 data-number="6.7.1" class="anchored" data-anchor-id="make-improvement-a-governed-change"><span class="header-section-number">6.7.1</span> Make improvement a governed change</h3>
+<section id="maintain-monitor-and-improve" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="maintain-monitor-and-improve"><span class="header-section-number">7.7</span> Maintain — Monitor and improve</h2>
+<section id="make-improvement-a-governed-change" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="make-improvement-a-governed-change"><span class="header-section-number">7.7.1</span> Make improvement a governed change</h3>
 <p>An operating check could suggest catalog additions, clearer instructions, or rule clarifications. Those are proposals. Before a change becomes active, the rule owner approves policy changes, an R programmer reviews technical changes, and an independent reviewer reruns the affected test examples. The agent does not edit the rule against which it is evaluated.</p>
 <p>The comprehensive structure makes impact analysis possible when ownership is explicit:</p>
 <table class="caption-top table">
@@ -881,17 +887,17 @@ Tip
 <li>Keep this BR-001 skill bounded. Use the implemented three-rule <a href="https://github.com/RConsortium/pharma-skills/tree/544aa0818208a973e6e22901118c8f97b758c146/rounding"><code>RConsortium/pharma-skills/rounding</code></a> package as a design input, but approve BR-002 and BR-003 separately before expanding the book skill’s active scope.</li>
 </ol>
 </section>
-<section id="canonical-artifact-monitoring-report" class="level3" data-number="6.7.2">
-<h3 data-number="6.7.2" class="anchored" data-anchor-id="canonical-artifact-monitoring-report"><span class="header-section-number">6.7.2</span> Canonical artifact: Monitoring report</h3>
+<section id="canonical-artifact-monitoring-report" class="level3" data-number="7.7.2">
+<h3 data-number="7.7.2" class="anchored" data-anchor-id="canonical-artifact-monitoring-report"><span class="header-section-number">7.7.2</span> Canonical artifact: Monitoring report</h3>
 <p>There is no operating history because the skill has not been released. The monitoring report is therefore specified, not populated. A future report must show applicable requests that did and did not select the skill, unrelated requests that selected it incorrectly, runs by trigger, coverage, confirmed findings, false positives, missed defects, stopped runs, triage effort, and unresolved precision. It also records how long an approved BR-001 change takes to reach the skill and its tests, whether the active skill still names the current rule version, incidents, and approved changes.</p>
 <p>The rule owner reviews that report and chooses among continued use, correction, promotion to a more maintainable package, retirement, or a new planning cycle. An accepted policy change, incident, measured coverage gap, new operating scope, or dependency change is the event that starts the next cycle.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.8</span> Summary</h2>
-<p><a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 5</span></a> showed that a written rule and one open prompt can produce useful candidates, examples, explanations, and a proposed solution. It did not treat that response as an answer key. The separate source review in this chapter identifies one <code>round()</code> call used in a report-filtering decision and seven in-scope numeric <code>formatC()</code> calls. Its one-decimal probe diverges from BR-001 in 10 of 10 <code>round()</code> results and 6 of 10 <code>formatC()</code> results in the recorded environment. These are differences from the illustrative rule, not a maintainer-approved defect classification. Tie mode and binary representation remain separate causes.</p>
+<section id="summary" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.8</span> Summary</h2>
+<p><a href="06-workflow-rounding.html" class="quarto-xref"><span>Chapter 6</span></a> showed that a written rule and one open prompt can produce useful candidates, examples, explanations, and a proposed solution. It did not treat that response as an answer key. The separate source review in this chapter identifies one <code>round()</code> call used in a report-filtering decision and seven in-scope numeric <code>formatC()</code> calls. Its one-decimal probe diverges from BR-001 in 10 of 10 <code>round()</code> results and 6 of 10 <code>formatC()</code> results in the recorded environment. These are differences from the illustrative rule, not a maintainer-approved defect classification. Tie mode and binary representation remain separate causes.</p>
 <p>The distributed book skill packages the trigger, BR-001, procedure, report, and boundaries in one <code>SKILL.md</code>. It may be proportionate for a small, low-risk review, but one file does not guarantee reliable behavior. A future benchmark must evaluate selection, findings, false findings, coverage, output completeness, and repeated-run agreement.</p>
-<p><a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 7</span></a> keeps the first evaluation equally small: one synthetic source, one invocation, one answer key, and one human review. An accepted benchmark report, release, and operating evidence remain future work.</p>
+<p><a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 8</span></a> keeps the first evaluation equally small: one synthetic source, one invocation, one answer key, and one human review. An accepted benchmark report, release, and operating evidence remain future work.</p>
 <p>The <a href="https://github.com/RConsortium/pharma-skills/tree/544aa0818208a973e6e22901118c8f97b758c146/rounding"><code>RConsortium/pharma-skills/rounding</code></a> package demonstrates the maintainable next level: <code>SKILL.md</code> remains the entry point while rule references, deterministic R scripts, a report asset, and evaluation fixtures can change under focused review. It covers BR-001, BR-002, and BR-003 and grew from the benchmark discussion in <a href="https://github.com/RConsortium/pharma-skills/issues/208"><code>RConsortium/pharma-skills</code> issue #208</a>.</p>
 <p>The strategic path is therefore <strong>one bounded contract -&gt; evidence-backed modules -&gt; controlled production operation</strong>. Promotion occurs only when the current level exposes a measured gap and the next component has a purpose, owner, test, and release gate. That is how a skill becomes maintainable and ready to be evaluated for production use without confusing package complexity with proven fitness.</p>
 
@@ -1302,12 +1308,12 @@ Tip
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./06-workflow-rounding.html" class="pagination-link" aria-label="Rounding in analysis and reporting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rounding in analysis and reporting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./08-workflow-rounding-lab.html" class="pagination-link" aria-label="Lab: Run a one-file rounding skill">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
