@@ -67,7 +67,7 @@ The lifecycle uses six stages:
 ```{mermaid}
 %%| label: fig-ai-first-sdlc
 %%| fig-cap: "The AI-first SDLC is a loop connected by six accepted artifacts."
-flowchart LR
+flowchart TB
   P["Plan<br/>Workflow brief"] --> D["Design<br/>Task contract"]
   D --> B["Build<br/>Prototype"]
   B --> T["Test<br/>Benchmark report"]
@@ -300,16 +300,9 @@ line.
 ## Summary
 
 The AI-first SDLC organizes development around six questions and six committed
-artifacts:
-
-| Stage | Artifact |
-|---|---|
-| Plan | Workflow brief |
-| Design | Task contract |
-| Build | Prototype |
-| Test | Benchmark report |
-| Deploy | Release record |
-| Maintain | Monitoring report |
+artifacts: the Plan stage produces the workflow brief, Design the task
+contract, Build the prototype, Test the benchmark report, Deploy the release
+record, and Maintain the monitoring report.
 
 The artifacts allow Biometrics workflow owners and AI engineers to define the
 same work, inspect the same evidence, and concentrate human judgment at explicit

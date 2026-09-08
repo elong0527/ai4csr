@@ -1,5 +1,3 @@
-# Welcome {.unnumbered}
-
 Welcome to a practical guide to AI-first workflows for clinical study reports.
 
 This book explores how organizations can move from isolated AI adoption toward
@@ -18,6 +16,24 @@ No prior experience building AI agents is required. Familiarity with clinical
 study artifacts and review processes will help readers connect the examples to
 their own work.
 
+## How to use this book {.unnumbered}
+
+The main route is reading: begin with the Introduction (Chapters 1--4), then
+follow the applied examples in order. Each example states its teaching
+purpose, maturity, and prerequisites up front.
+
+- **Main route (no setup required).** Read the chapters in order and work the
+  exercises through a browser-based AI agent. You will specify requirements
+  and review prepared code and results; no local R, Python, Git, or Codespaces
+  setup is required on this route.
+- **Technical route (optional).** If you want to run the materials yourself,
+  the [day-one exercise](https://github.com/elong0527/ai4csr/tree/main/exercise/day1)
+  and the rounding prototype described in Chapters 5--7 give you synthetic
+  data, scripts, and expected results. Contributor setup is documented in the
+  repository README.
+- **Facilitator route.** Shared worksheets, completed examples, and assessment
+  rubrics are linked from the exercise chapters as they become available.
+
 ::: {.content-visible when-format="html"}
 
 ## Events {.unnumbered}
@@ -25,5 +41,8 @@ their own work.
 | Venue | Format | Date | Materials |
 |---|---|---|---|
 | Deming Conference | Workshop | December 7, 2026 | To be announced |
+
+The listing above is planned; confirm the date and format with the organizers
+before traveling.
 
 :::
