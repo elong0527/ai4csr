@@ -423,11 +423,22 @@
     ]
   },
   {
+    "objectID": "05-ai-first-sdlc.html#reusable-forms-and-workshop-materials",
+    "href": "05-ai-first-sdlc.html#reusable-forms-and-workshop-materials",
+    "title": "4  The AI-first SDLC",
+    "section": "4.11 Reusable forms and workshop materials",
+    "text": "4.11 Reusable forms and workshop materials\nThe repository distributes editable forms for all six artifacts under templates/: the workflow brief, task contract, prototype manifest, benchmark report, release record, and monitoring report. Participant worksheets and completed facilitator examples for the study-design, rounding, and SAP scenarios live under workshop/, scored with the shared assessment rubric. Use the forms rather than copying their contents into chapters.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The AI-first SDLC</span>"
+    ]
+  },
+  {
     "objectID": "05-ai-first-sdlc.html#summary",
     "href": "05-ai-first-sdlc.html#summary",
     "title": "4  The AI-first SDLC",
-    "section": "4.11 Summary",
-    "text": "4.11 Summary\nThe AI-first SDLC organizes development around six questions and six committed artifacts: the Plan stage produces the workflow brief, Design the task contract, Build the prototype, Test the benchmark report, Deploy the release record, and Maintain the monitoring report.\nThe artifacts allow Biometrics workflow owners and AI engineers to define the same work, inspect the same evidence, and concentrate human judgment at explicit gates. Their sequence creates continuity; the monitoring report closes the loop by providing evidence for the next workflow brief.",
+    "section": "4.12 Summary",
+    "text": "4.12 Summary\nThe AI-first SDLC organizes development around six questions and six committed artifacts: the Plan stage produces the workflow brief, Design the task contract, Build the prototype, Test the benchmark report, Deploy the release record, and Maintain the monitoring report.\nThe artifacts allow Biometrics workflow owners and AI engineers to define the same work, inspect the same evidence, and concentrate human judgment at explicit gates. Their sequence creates continuity; the monitoring report closes the loop by providing evidence for the next workflow brief.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>The AI-first SDLC</span>"
