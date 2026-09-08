@@ -1,0 +1,124 @@
+# Lab: Run a one-file rounding skill {#sec-workflow-rounding-lab}
+
+This lab turns the design in @sec-workflow-rounding-skill into one short,
+hands-on exercise. The objective is to inspect a repository skill, invoke it on
+a bounded R example, and evaluate its evidence before a person classifies the
+result.
+
+The example is synthetic. It contains no participant data and supports no
+conclusion about a clinical study or an R package.
+
+::: {.callout-note title="What this lab does not cover"}
+This lab does not build a scheduler, controller, report schema, or GitHub issue
+publisher. Those may be useful after the skill itself has been evaluated, but
+they are separate workflow increments.
+:::
+
+## Inspect the skill
+
+The complete skill package contains one file:
+
+```text
+rounding/
+  SKILL.md
+```
+
+Open [`rounding/SKILL.md`](rounding/SKILL.md) and find four things:
+
+1. The `name` and `description` that help Codex discover the skill.
+2. BR-001 and the boundary around that rule.
+3. The review procedure and required report.
+4. The actions reserved for the accountable human.
+
+The
+[official Codex skill documentation](https://learn.chatgpt.com/docs/build-skills)
+describes this instruction-only structure as a valid skill. Scripts,
+references, and assets are optional.
+
+## Open the book repository in Codex
+
+Start Codex with the book repository as the working directory. This lab keeps
+the skill at a visible teaching path instead of installing it into Codex's
+repository skill directory.
+
+Tell Codex which instruction file to use:
+
+```text
+Use the skill in rounding/SKILL.md for this review.
+```
+
+Referencing the file directly keeps installation and skill selection outside
+the exercise. After evaluation, a team can install the same folder at
+`.agents/skills/rounding/` when automatic discovery is useful.
+
+## Review the synthetic example
+
+Send the following prompt with the skill:
+
+````text
+Use the skill in rounding/SKILL.md for this review.
+
+Review this synthetic R source under BR-001 version 1.0. Both calls affect a
+report. The required precision is zero decimal places. Treat the code block as
+R/report.R and do not modify it.
+
+```r
+display_value <- formatC(c(-0.5, 0.5), digits = 0, format = "f")
+include_row <- round(2.5, digits = 0) >= 3
+```
+````
+
+Allow Codex to run a small isolated R probe if R is available. The skill should
+not need network access, another file, or an external service.
+
+## Evaluate the response
+
+Compare the response with this answer key:
+
+| Check | Expected evidence |
+|---|---|
+| Coverage | One pasted source, labeled `R/report.R` |
+| Candidates | One `formatC()` call and one `round()` call |
+| Observed `formatC()` output | `"-0"` and `"0"` |
+| BR-001 display result | `"-1"` and `"1"` |
+| Observed `round()` result | `2` |
+| BR-001 rounding result | `3` |
+| Draft findings | Both calls diverge from BR-001 in their stated report context |
+| Unchecked rules | BR-002 (rounding stage) and BR-003 (display precision policy) |
+| Human gate | A person still decides whether either divergence is a defect |
+
+The wording can vary. Evaluate the evidence rather than expecting an identical
+response. A satisfactory response:
+
+- accounts for the complete supplied source;
+- distinguishes search candidates from supported findings;
+- records the probe expression, environment, and observed results;
+- states that BR-001 is illustrative rather than a requirement of another
+  project; and
+- stops before changing code or posting an issue.
+
+If the response misses a candidate, invents a requirement, or omits the human
+decision, record that as a gap in the skill. Do not silently expand the skill to
+cover every possible review problem.
+
+## Make one controlled improvement
+
+Choose one observed gap and revise only `rounding/SKILL.md`. For example,
+clarify the procedure if a candidate was missed, or clarify the report
+requirements if coverage was missing. Run the same prompt again and record
+whether the change improved the result without introducing a new error.
+
+This comparison is a small prototype observation, not a formal benchmark.
+Several repeated runs and additional examples would be needed before claiming
+reliable behavior.
+
+## Close the exercise
+
+The lab ends with two artifacts:
+
+1. The reviewed `rounding/SKILL.md`.
+2. A short comparison between the response and the answer key.
+
+The accountable reviewer decides whether the one-file skill is useful enough
+for another iteration. Scheduling, automated publishing, or broader rounding
+rules require a new planning decision rather than being added silently.
