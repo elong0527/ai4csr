@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>3&nbsp; Onboarding an AI agent – AI-First Workflows for Clinical Study Reporting</title>
+<title>7&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05-ai-first-sdlc.html" rel="next">
-<link href="./03-principle.html" rel="prev">
+<link href="./07-workflow-rounding-skill.html" rel="prev">
 <link href="./assets/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,13 +78,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="3&nbsp; Onboarding an AI agent – AI-First Workflows for Clinical Study Reporting">
+<meta property="og:title" content="7&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="3&nbsp; Onboarding an AI agent – AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="7&nbsp; Lab: Run a one-file rounding skill – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -102,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./04-ai-agent.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./08-workflow-rounding-lab.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-ai-agent.html" class="sidebar-item-text sidebar-link active">
+  <a href="./04-ai-agent.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></span></a>
   </div>
 </li>
@@ -222,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-workflow-rounding-lab.html" class="sidebar-item-text sidebar-link">
+  <a href="./08-workflow-rounding-lab.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></a>
   </div>
 </li>
@@ -238,26 +237,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-onboarding-analogy" id="toc-the-onboarding-analogy" class="nav-link active" data-scroll-target="#the-onboarding-analogy"><span class="header-section-number">3.1</span> The onboarding analogy</a></li>
-  <li><a href="#what-an-ai-agent-is" id="toc-what-an-ai-agent-is" class="nav-link" data-scroll-target="#what-an-ai-agent-is"><span class="header-section-number">3.2</span> What an AI agent is</a></li>
-  <li><a href="#make-the-task-contract-explicit" id="toc-make-the-task-contract-explicit" class="nav-link" data-scroll-target="#make-the-task-contract-explicit"><span class="header-section-number">3.3</span> Make the task contract explicit</a></li>
-  <li><a href="#a-minimal-ai-adoption-example" id="toc-a-minimal-ai-adoption-example" class="nav-link" data-scroll-target="#a-minimal-ai-adoption-example"><span class="header-section-number">3.4</span> A minimal AI-adoption example</a>
-  <ul class="collapse">
-  <li><a href="#two-teaching-artifacts" id="toc-two-teaching-artifacts" class="nav-link" data-scroll-target="#two-teaching-artifacts"><span class="header-section-number">3.4.1</span> Two teaching artifacts</a></li>
-  <li><a href="#one-prompt-in-arena-agent" id="toc-one-prompt-in-arena-agent" class="nav-link" data-scroll-target="#one-prompt-in-arena-agent"><span class="header-section-number">3.4.2</span> One prompt in Arena Agent</a></li>
-  <li><a href="#one-result" id="toc-one-result" class="nav-link" data-scroll-target="#one-result"><span class="header-section-number">3.4.3</span> One result</a></li>
-  </ul></li>
-  <li><a href="#why-the-demonstration-is-adoption-not-a-workflow" id="toc-why-the-demonstration-is-adoption-not-a-workflow" class="nav-link" data-scroll-target="#why-the-demonstration-is-adoption-not-a-workflow"><span class="header-section-number">3.5</span> Why the demonstration is adoption, not a workflow</a></li>
-  <li><a href="#from-one-result-to-an-ai-first-workflow" id="toc-from-one-result-to-an-ai-first-workflow" class="nav-link" data-scroll-target="#from-one-result-to-an-ai-first-workflow"><span class="header-section-number">3.6</span> From one result to an AI-first workflow</a></li>
+  <li><a href="#inspect-the-skill" id="toc-inspect-the-skill" class="nav-link active" data-scroll-target="#inspect-the-skill"><span class="header-section-number">7.1</span> Inspect the skill</a></li>
+  <li><a href="#open-the-book-repository-in-codex" id="toc-open-the-book-repository-in-codex" class="nav-link" data-scroll-target="#open-the-book-repository-in-codex"><span class="header-section-number">7.2</span> Open the book repository in Codex</a></li>
+  <li><a href="#review-the-synthetic-example" id="toc-review-the-synthetic-example" class="nav-link" data-scroll-target="#review-the-synthetic-example"><span class="header-section-number">7.3</span> Review the synthetic example</a></li>
+  <li><a href="#evaluate-the-response" id="toc-evaluate-the-response" class="nav-link" data-scroll-target="#evaluate-the-response"><span class="header-section-number">7.4</span> Evaluate the response</a></li>
+  <li><a href="#make-one-controlled-improvement" id="toc-make-one-controlled-improvement" class="nav-link" data-scroll-target="#make-one-controlled-improvement"><span class="header-section-number">7.5</span> Make one controlled improvement</a></li>
+  <li><a href="#close-the-exercise" id="toc-close-the-exercise" class="nav-link" data-scroll-target="#close-the-exercise"><span class="header-section-number">7.6</span> Close the exercise</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/04-ai-agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/04-ai-agent.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/08-workflow-rounding-lab.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/08-workflow-rounding-lab.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./04-ai-agent.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-workflow-rounding.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./08-workflow-rounding-lab.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-intro-ai-agent" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></span></h1>
+<h1 class="title"><span id="sec-workflow-rounding-lab" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span></h1>
 </div>
 
 
@@ -274,75 +268,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>This lab turns the design in <a href="07-workflow-rounding-skill.html" class="quarto-xref"><span>Chapter 6</span></a> into one short, hands-on exercise. The objective is to inspect a repository skill, invoke it on a bounded R example, and evaluate its evidence before a person classifies the result.</p>
+<p>The example is synthetic. It contains no participant data and supports no conclusion about a clinical study or an R package.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="What this lab does not cover">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<span class="screen-reader-only">Note</span>What this lab does not cover
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Adding an AI agent to a clinical trial workflow is an onboarding problem before it is a technology problem.</p>
+<p>This lab does not build a scheduler, controller, report schema, or GitHub issue publisher. Those may be useful after the skill itself has been evaluated, but they are separate workflow increments.</p>
 </div>
 </div>
-<section id="the-onboarding-analogy" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-onboarding-analogy"><span class="header-section-number">3.1</span> The onboarding analogy</h2>
-<p>Imagine that a new team member has joined. They recently finished school and understand the basics of clinical trials. They know what a protocol and statistical analysis plan (SAP) are, but they do not yet know standard operating procedures (SOPs), computing environment, folder structure, naming conventions, or review habits of your organization.</p>
-<p>For their first assignment, you choose a simple task:</p>
-<blockquote class="blockquote">
-<p>Summarize the age distribution in a clinical trial’s ADSL dataset.</p>
-</blockquote>
-<p>The task is deliberately small. You are onboarding them more on the workflow than the tool. Can the new colleague find and use the relevant documents? Can they identify the correct analysis population, handle missing values, notice protocol deviations, and report findings and assumptions?</p>
-<p>Now replace “new colleague” with “AI agent.” Almost everything you would set up for a person still applies, but each item has to become something written down rather than something learned by sitting nearby.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>For a new colleague</th>
-<th>For an agent</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Orientation and procedural training</td>
-<td>Written instructions supplied when needed</td>
-</tr>
-<tr class="even">
-<td>An invitation to ask when uncertain</td>
-<td>Explicit conditions for stopping and escalation</td>
-</tr>
-<tr class="odd">
-<td>Shadowing and code review</td>
-<td>A record of sources, tool actions, and outputs</td>
-</tr>
-<tr class="even">
-<td>Access to the study environment</td>
-<td>A bounded set of files, tools, and destinations</td>
-</tr>
-<tr class="odd">
-<td>Managerial sign-off</td>
-<td>A named human accountable for the result</td>
-</tr>
-</tbody>
-</table>
-<p>The model matters, but a more capable model does not define an acceptable result. The surrounding task and workflow establish the evidence, boundaries, and human decision rights.</p>
-</section>
-<section id="what-an-ai-agent-is" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="what-an-ai-agent-is"><span class="header-section-number">3.2</span> What an AI agent is</h2>
-<p>A <strong>large language model (LLM)</strong> interprets supplied context and generates a response. The <strong>context</strong> includes the request, instructions, documents, prior messages, and tool results made available for the current interaction.</p>
-<p>An <strong>AI agent</strong> adds a controlled execution loop around the model:</p>
+<section id="inspect-the-skill" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="inspect-the-skill"><span class="header-section-number">7.1</span> Inspect the skill</h2>
+<p>The complete skill package contains one file:</p>
+<pre class="text"><code>rounding/
+  SKILL.md</code></pre>
+<p>Open <a href="rounding/SKILL.md"><code>rounding/SKILL.md</code></a> and find four things:</p>
 <ol type="1">
-<li>interpret the task and select a next step;</li>
-<li>use an allowed tool, such as a document reader or R;</li>
-<li>observe the tool result and update the plan; and</li>
-<li>continue until the task is complete, blocked, or requires approval.</li>
+<li>The <code>name</code> and <code>description</code> that help Codex discover the skill.</li>
+<li>BR-001 and the boundary around that rule.</li>
+<li>The review procedure and required report.</li>
+<li>The actions reserved for the accountable human.</li>
 </ol>
-<p>The main components are distinguished by their responsibilities:</p>
+<p>The <a href="https://learn.chatgpt.com/docs/build-skills">official Codex skill documentation</a> describes this instruction-only structure as a valid skill. Scripts, references, and assets are optional.</p>
+</section>
+<section id="open-the-book-repository-in-codex" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="open-the-book-repository-in-codex"><span class="header-section-number">7.2</span> Open the book repository in Codex</h2>
+<p>Start Codex with the book repository as the working directory. This lab keeps the skill at a visible teaching path instead of installing it into Codex’s repository skill directory.</p>
+<p>Tell Codex which instruction file to use:</p>
+<pre class="text"><code>Use the skill in rounding/SKILL.md for this review.</code></pre>
+<p>Referencing the file directly keeps installation and skill selection outside the exercise. After evaluation, a team can install the same folder at <code>.agents/skills/rounding/</code> when automatic discovery is useful.</p>
+</section>
+<section id="review-the-synthetic-example" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="review-the-synthetic-example"><span class="header-section-number">7.3</span> Review the synthetic example</h2>
+<p>Send the following prompt with the skill:</p>
+<pre class="text"><code>Use the skill in rounding/SKILL.md for this review.
+
+Review this synthetic R source under BR-001 version 1.0. Both calls affect a
+report. The required precision is zero decimal places. Treat the code block as
+R/report.R and do not modify it.
+
+```r
+display_value &lt;- formatC(c(-0.5, 0.5), digits = 0, format = "f")
+include_row &lt;- round(2.5, digits = 0) &gt;= 3
+```</code></pre>
+<p>Allow Codex to run a small isolated R probe if R is available. The skill should not need network access, another file, or an external service.</p>
+</section>
+<section id="evaluate-the-response" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="evaluate-the-response"><span class="header-section-number">7.4</span> Evaluate the response</h2>
+<p>Compare the response with this answer key:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -350,257 +329,72 @@ Tip
 </colgroup>
 <thead>
 <tr class="header">
-<th>Component</th>
-<th>Responsibility</th>
+<th>Check</th>
+<th>Expected evidence</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>LLM</strong></td>
-<td>Interpret context, plan steps, and draft an explanation</td>
+<td>Coverage</td>
+<td>One pasted source, labeled <code>R/report.R</code></td>
 </tr>
 <tr class="even">
-<td><strong>Harness</strong></td>
-<td>Assemble context, call the model, invoke tools, record events, and control the loop</td>
+<td>Candidates</td>
+<td>One <code>formatC()</code> call and one <code>round()</code> call</td>
 </tr>
 <tr class="odd">
-<td><strong>Model gateway</strong></td>
-<td>Route model requests and apply authentication, logging, or policy controls</td>
+<td>Observed <code>formatC()</code> output</td>
+<td><code>"-0"</code> and <code>"0"</code></td>
 </tr>
 <tr class="even">
-<td><strong>Tool interfaces</strong></td>
-<td>Perform observable actions such as reading a PDF, querying data, or running R</td>
+<td>BR-001 display result</td>
+<td><code>"-1"</code> and <code>"1"</code></td>
 </tr>
 <tr class="odd">
-<td><strong>Working state</strong></td>
-<td>Hold messages, plans, tool results, and unresolved questions during the interaction</td>
+<td>Observed <code>round()</code> result</td>
+<td><code>2</code></td>
 </tr>
 <tr class="even">
-<td><strong>Accessible environment</strong></td>
-<td>Limit the files, commands, APIs, network destinations, and credentials the agent can reach</td>
+<td>BR-001 rounding result</td>
+<td><code>3</code></td>
+</tr>
+<tr class="odd">
+<td>Draft findings</td>
+<td>Both calls diverge from BR-001 in their stated report context</td>
+</tr>
+<tr class="even">
+<td>Unchecked rules</td>
+<td>BR-002 (rounding stage) and BR-003 (display precision policy)</td>
+</tr>
+<tr class="odd">
+<td>Human gate</td>
+<td>A person still decides whether either divergence is a defect</td>
 </tr>
 </tbody>
 </table>
-<div id="fig-agent-anatomy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, working state, and tool interfaces inside a limited accessible environment.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-agent-anatomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="assets/diagrams/intro-ai-agent.svg" class="img-fluid figure-img" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, working state, and tool interfaces inside a limited accessible environment.">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agent-anatomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: A general AI-agent architecture. The harness coordinates the model, working state, and tool interfaces. The accessible environment limits which resources the agent can reach.
-</figcaption>
-</figure>
-</div>
-<p>Two distinctions are important:</p>
+<p>The wording can vary. Evaluate the evidence rather than expecting an identical response. A satisfactory response:</p>
 <ul>
-<li><strong>Working state is not durable project memory.</strong> Rules and decisions that must survive an interaction belong in versioned artifacts rather than only in chat history.</li>
-<li><strong>Tool access is not authority.</strong> The technical ability to edit a file or call an API does not grant approval or decision rights.</li>
+<li>accounts for the complete supplied source;</li>
+<li>distinguishes search candidates from supported findings;</li>
+<li>records the probe expression, environment, and observed results;</li>
+<li>states that BR-001 is illustrative rather than a requirement of another project; and</li>
+<li>stops before changing code or posting an issue.</li>
 </ul>
-<p>Tools also do not make a model reliable by default. An agent can omit a source, resolve ambiguity silently, write code without executing it, misread a tool result, or follow an instruction from an untrusted artifact. Bounded access, observable tool use, and human review limit the consequences and make failures easier to detect.</p>
+<p>If the response misses a candidate, invents a requirement, or omits the human decision, record that as a gap in the skill. Do not silently expand the skill to cover every possible review problem.</p>
 </section>
-<section id="make-the-task-contract-explicit" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="make-the-task-contract-explicit"><span class="header-section-number">3.3</span> Make the task contract explicit</h2>
-<p>The <strong>task contract</strong> records the expectations for a delegated task. It is a small specification for the assignment rather than a prompt-writing trick.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Part</th>
-<th>Question</th>
-<th>Age-summary example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Objective</strong></td>
-<td>What should be produced?</td>
-<td>An age summary and a short review note</td>
-</tr>
-<tr class="even">
-<td><strong>Inputs</strong></td>
-<td>Which artifact versions govern the work?</td>
-<td>A public protocol and a named synthetic CSV snapshot</td>
-</tr>
-<tr class="odd">
-<td><strong>Scope</strong></td>
-<td>Which population and variables are relevant?</td>
-<td>The protocol-defined population and <code>AGE</code></td>
-</tr>
-<tr class="even">
-<td><strong>Output</strong></td>
-<td>What must the result contain?</td>
-<td>Statistics, executed R code, sources, assumptions, and questions</td>
-</tr>
-<tr class="odd">
-<td><strong>Boundaries</strong></td>
-<td>Which data, tools, and destinations are allowed?</td>
-<td>Read-only access to the two linked public artifacts</td>
-</tr>
-<tr class="even">
-<td><strong>Escalation</strong></td>
-<td>When should the agent stop or ask?</td>
-<td>Missing artifacts, ambiguous scope, conflicting evidence, or suspected data issues</td>
-</tr>
-</tbody>
-</table>
-<p>A task contract does not require every uncertainty to be resolved in advance. It requires uncertainties to be visible so the agent does not silently turn an assumption into a decision.</p>
+<section id="make-one-controlled-improvement" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="make-one-controlled-improvement"><span class="header-section-number">7.5</span> Make one controlled improvement</h2>
+<p>Choose one observed gap and revise only <code>rounding/SKILL.md</code>. For example, clarify the procedure if a candidate was missed, or clarify the report requirements if coverage was missing. Run the same prompt again and record whether the change improved the result without introducing a new error.</p>
+<p>This comparison is a small prototype observation, not a formal benchmark. Several repeated runs and additional examples would be needed before claiming reliable behavior.</p>
 </section>
-<section id="a-minimal-ai-adoption-example" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="a-minimal-ai-adoption-example"><span class="header-section-number">3.4</span> A minimal AI-adoption example</h2>
-<p>This example demonstrates the smallest useful form of AI adoption: one person sends one prompt to an agent and receives one result. It is not presented as an AI-first workflow.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Synthetic teaching data: not KEYNOTE-189 trial data">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Synthetic teaching data: not KEYNOTE-189 trial data
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The CSV in this example is wholly synthetic and contains no participant data from KEYNOTE-189. It was constructed as a teaching example to be interpreted with the public KEYNOTE-189 protocol and cannot support any conclusion about that study.</p>
-</div>
-</div>
-<section id="two-teaching-artifacts" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="two-teaching-artifacts"><span class="header-section-number">3.4.1</span> Two teaching artifacts</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Artifact</th>
-<th>Role in the demonstration</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf">Public KEYNOTE-189 protocol</a></td>
-<td>Supplies example population and age requirements</td>
-</tr>
-<tr class="even">
-<td><a href="https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv"><code>kn189-synthetic-adsl.csv</code></a></td>
-<td>Supplies fabricated ADSL-style records for calculation</td>
-</tr>
-</tbody>
-</table>
-<p>The synthetic data include three enrolled but nonrandomized records, two missing <code>AGE</code> values, and one randomized record with an age below the protocol threshold. These conditions exist only to make assumptions and exceptions visible in the returned result.</p>
-</section>
-<section id="one-prompt-in-arena-agent" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="one-prompt-in-arena-agent"><span class="header-section-number">3.4.2</span> One prompt in Arena Agent</h3>
-<p>For this demonstration, the entire assignment is sent to <a href="https://arena.ai/agent">arena.ai</a> in one request. The platform provides a concrete setting for showing what one agent interaction can accomplish; this chapter does not evaluate or benchmark the product.</p>
-<pre class="text"><code>This is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data.
-
-Using only the public KEYNOTE-189 protocol and the synthetic CSV linked below,
-identify the protocol-defined analysis population and summarize its age
-distribution. Use R for the calculation. Return the statistics, executed R
-code, protocol sources, assumptions, and questions for human review.
-
-Protocol:
-https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
-
-Synthetic data:
-https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
-
-Do not search for or use published KEYNOTE-189 results. Do not modify the data.</code></pre>
-</section>
-<section id="one-result" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="one-result"><span class="header-section-number">3.4.3</span> One result</h3>
-<p>A sufficient response identifies the intention-to-treat population as the 25 synthetic records marked as randomized, runs the calculation in R, and reports one summary:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Result from the synthetic ITT records</th>
-<th style="text-align: right;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Randomized records</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="even">
-<td>Nonmissing <code>AGE</code></td>
-<td style="text-align: right;">24</td>
-</tr>
-<tr class="odd">
-<td>Missing <code>AGE</code></td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td>Mean</td>
-<td style="text-align: right;">50.58</td>
-</tr>
-<tr class="odd">
-<td>Standard deviation</td>
-<td style="text-align: right;">14.97</td>
-</tr>
-<tr class="even">
-<td>Median</td>
-<td style="text-align: right;">51</td>
-</tr>
-<tr class="odd">
-<td>Minimum</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td>Maximum</td>
-<td style="text-align: right;">76</td>
-</tr>
-</tbody>
-</table>
-<p>The same response should flag the invented 17-year-old record for human review without removing it from the requested population. It should also include the executed code, cited protocol sections, assumptions, and unresolved questions requested by the prompt.</p>
-<p>Here, one prompt enabled an agent to inspect a document, read data, execute R, and combine the observations into one answer. However, it remains one result from one interaction, not evidence that the task will be performed consistently.</p>
-</section>
-</section>
-<section id="why-the-demonstration-is-adoption-not-a-workflow" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="why-the-demonstration-is-adoption-not-a-workflow"><span class="header-section-number">3.5</span> Why the demonstration is adoption, not a workflow</h2>
-<p>The demonstration leaves the underlying process unchanged. A person manually starts the work, supplies the context, interprets the response, and decides what happens next.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Missing workflow capability</th>
-<th>What the demonstration does instead</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Defined trigger</td>
-<td>A person chooses when to send the prompt</td>
-</tr>
-<tr class="even">
-<td>Controlled artifact retrieval</td>
-<td>Links are assembled inside one interaction</td>
-</tr>
-<tr class="odd">
-<td>Repeatable execution contract</td>
-<td>The agent may choose a different path on another run</td>
-</tr>
-<tr class="even">
-<td>Predetermined benchmark</td>
-<td>The returned result is inspected after it is produced</td>
-</tr>
-<tr class="odd">
-<td>Durable state</td>
-<td>Findings and decisions remain in the interaction unless recorded elsewhere</td>
-</tr>
-<tr class="even">
-<td>Explicit decision record</td>
-<td>Human follow-up is expected but not captured by the task</td>
-</tr>
-</tbody>
-</table>
-<p>The distinction is not a criticism of prompt-based use. AI adoption is a fast way to discover whether a task is valuable and what an agent can accomplish. The single result reveals the artifacts, tools, assumptions, exceptions, and human decisions that a future workflow must govern.</p>
-</section>
-<section id="from-one-result-to-an-ai-first-workflow" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="from-one-result-to-an-ai-first-workflow"><span class="header-section-number">3.6</span> From one result to an AI-first workflow</h2>
-<p>The next design step is not a longer prompt. It is to turn the useful parts of the interaction into a bounded, repeatable process: define an event, version the task contract, retrieve the governing artifacts, execute deterministic checks, measure the result against a benchmark, record the human decision, and use that state in the next run.</p>
-<p>The applied examples in this book make that transition through the shared AI-first SDLC defined in <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>. Each example begins with a bounded business problem and develops the artifacts, evidence, and decision points needed to move beyond a single prompt.</p>
+<section id="close-the-exercise" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="close-the-exercise"><span class="header-section-number">7.6</span> Close the exercise</h2>
+<p>The lab ends with two artifacts:</p>
+<ol type="1">
+<li>The reviewed <code>rounding/SKILL.md</code>.</li>
+<li>A short comparison between the response and the answer key.</li>
+</ol>
+<p>The accountable reviewer decides whether the one-file skill is useful enough for another iteration. Scheduling, automated publishing, or broader rounding rules require a new planning decision rather than being added silently.</p>
 
 
 </section>
@@ -1008,14 +802,11 @@ Do not search for or use published KEYNOTE-189 results. Do not modify the data.<
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-principle.html" class="pagination-link" aria-label="Principles of trustworthy assistance">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principles of trustworthy assistance</span></span>
+      <a href="./07-workflow-rounding-skill.html" class="pagination-link" aria-label="From one-file skill to maintainable rounding workflow">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">From one-file skill to maintainable rounding workflow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-ai-first-sdlc.html" class="pagination-link" aria-label="The AI-first SDLC">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1023,4 +814,4 @@ Do not search for or use published KEYNOTE-189 results. Do not modify the data.<
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/04-ai-agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/04-ai-agent.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/08-workflow-rounding-lab.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/08-workflow-rounding-lab.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
