@@ -31,22 +31,27 @@ review. The skill remains an advisory control. Fixed scripts can produce
 repeatable evidence, but a person still approves the rule and classifies the
 finding.
 
-The Build stage develops the same proposed skill in two examples. The first
-uses only `SKILL.md`, making the trigger, instruction, boundaries, and output
-visible in one place. The second keeps that entry point small and adds a rule
-reference, fixed scripts, and a report template. Comparing them shows when one
-file is enough and when additional resources are justified.
+The Build stage contrasts a one-file design listing with the runnable,
+resource-backed prototype distributed under `exercise/rounding/`. The latter
+adds a controlled rule reference, deterministic scripts, a structured report,
+and a controller because the task contract requires evidence that prose alone
+cannot supply.
 
-::: {.callout-note title="Maturity: Design pattern"}
-The workflow is specified, not distributed. The book contains no installable
-skill package, no executable script files, no small test programs, no evidence
-files, no automated check on source-code changes, and no scheduled job. The
-results quoted at the pinned
-`metalite.ae` commit were verified for this book and serve as the answer key for
-a future benchmark; they are not evidence that the skill described here has been
-built or run. The public issue linked in @sec-workflow-rounding-prompt contains one
-Arena.ai response that a person copied to GitHub; it is not output from this
-skill or evidence that this workflow was released.
+::: {.callout-note title="Maturity: Reproducible prototype"}
+The book distributes a runnable teaching prototype, synthetic fixtures,
+expected results, and benchmark criteria under
+[`exercise/rounding/`](exercise/rounding/README.md). Its deterministic offline
+suite has been executed. The built-in Codex adapter is intentionally disabled
+because this repository does not verify a credential-free operating-system
+isolation boundary. Live agent behavior, live GitHub operations, and the
+five-package campaign have not been benchmarked or released. This maturity
+label does not mean that the prototype is validated, production-qualified, or
+suitable for GxP use.
+
+The results quoted at the pinned `metalite.ae` commit were verified separately
+for this book. The public issue linked in @sec-workflow-rounding-prompt contains
+one Arena.ai response that a person copied to GitHub; it is not output from this
+skill or evidence that this workflow was operationally released.
 
 A broader three-rule skill is being developed separately through
 [`RConsortium/pharma-skills` issue #208](https://github.com/RConsortium/pharma-skills/issues/208).
@@ -60,16 +65,17 @@ improve.**
 
 - **Problem:** A useful one-off review cannot be repeated reliably when its
   procedure remains in one person's memory.
-- **Learning objective:** Build a minimal one-file skill, identify its limits,
-  and design a resource-backed version with more reproducible evidence, stated
+- **Learning objective:** Build a minimal one-file design, identify its limits,
+  and evaluate a resource-backed prototype with reproducible evidence, stated
   coverage, and an accountable human decision.
-- **Workflow boundary:** Begin when a reviewer asks whether one folder of R
-  files follows the approved tie rule for reported values and row-selection
-  decisions; end when a named human classifies each finding.
-- **Non-goals:** Build an agent platform, distribute a runnable skill, validate
-  statistical methods, replace independent QC, automate human classification,
-  cover BR-002 or BR-003 within this chapter, or claim qualification for GxP
-  use.
+- **Workflow boundary:** Begin when an approved manual or scheduled event
+  selects one configured R source folder and exact commit; end when the named
+  process owner accepts or rejects that run's classification and decides
+  whether its reconciled issue action may be executed.
+- **Non-goals:** Build an agent platform, activate the five-package schedule,
+  validate statistical methods, replace independent QC, automate human
+  classification or per-run acceptance, cover BR-002 or BR-003, or claim
+  qualification for GxP use.
 - **Why this is well defined:** One rule, one pinned source folder, observable
   results, explicit boundaries, versioned inputs, and a named decision maker
   keep the task bounded.
@@ -87,8 +93,8 @@ workflow requirement:
 - report coverage for every run, including rules left unchecked;
 - keep fixed, repeatable checks separate from exploratory agent work and
   judgment in the output; and
-- name the human who classifies each finding, and stop before any external
-  action.
+- name the human who classifies each finding, and require per-run human
+  acceptance before any external issue action.
 
 A fifth design need appears when the review is repeated: a previously reviewed
 call should not require the same triage on every run. The rule owner may approve
@@ -101,19 +107,19 @@ label candidates found through that exploratory pass separately.
 
 ### Canonical artifact: Workflow brief
 
-- **Objective:** Specify a check that finds calls able to round a displayed
-  value or a value used in a report decision, tests them against the
-  half-away-from-zero rule, and can be performed by a reviewer who did not
-  design it.
+- **Objective:** Check one configured R source folder at an exact commit for
+  calls able to round a displayed value or a report decision, test them against
+  the half-away-from-zero rule, and prepare evidence for an accountable human.
 - **Inputs:** One R source folder at a pinned commit, BR-001 v1.0, the precision
   used by each relevant output, rule-owner-selected comparison behavior, and
   any approved allowlist.
-- **Intended output:** A versioned draft review report containing candidate
-  locations, triage reasons, probe results, coverage, unchecked rules, and
-  items requiring a human decision.
+- **Intended output:** A versioned draft review report containing the
+  controller's structured scanner inventory, candidate locations, triage
+  reasons, probe results, coverage, unchecked rules, and items requiring a
+  human decision.
 - **Baseline evidence:** Issue #249 shows what an open investigation can
-  contribute. The manually reviewed source inventory and tie probe below
-  provide the answer key, not measured workflow performance.
+  contribute. The synthetic fixtures and manually reviewed source inventory
+  below provide independently stated expected results.
 - **Value hypothesis:** A stable minimum check plus an exploratory pass will
   reduce repeated manual search. Moving the controlled rule, fixed checks, and
   report structure into separate resources should make evidence and coverage
@@ -125,13 +131,12 @@ label candidates found through that exploratory pass separately.
 - **Human decision:** The rule owner approves the procedure and classifies each
   result as a defect, documented convention, accepted exception, or not
   applicable.
-- **Success measures:** Select the skill for applicable requests and not for
-  unrelated requests; find every deliberately noncompliant test call; flag no
-  compliant test example; attach rule-specific probe evidence to every finding;
-  state what was not checked; and distinguish catalog results from exploratory
-  findings. Under an identical environment, the resource-backed version must
-  preserve its fixed scan output, probe output, and required report fields
-  across repeated runs.
+- **Success measures:** Preserve every catalog token, including multiple calls
+  on one line; reject missing or fabricated source evidence; rotate after
+  failures; reconcile unchanged clean results without suppressing a failed
+  closure retry; attach rule-specific probe evidence to every finding; and
+  state what was not checked. Live-agent selection, exploratory recall,
+  latency, cost, and human review burden remain planned measures.
 - **Main risks:** A narrow search can produce a convincing false clean report,
   and a polished skill description can create confidence before the underlying
   checks have been implemented and benchmarked.
@@ -159,8 +164,9 @@ This workflow checks only **BR-001**. BR-002 and BR-003 remain explicit gaps,
 declared in every run rather than left unmentioned. For this exercise, the
 illustrative rule owner selects the documented behavior of
 [`cards::round5()`](https://stat.ethz.ch/CRAN/web/packages/cards/refman/cards.html#round5)
-as the comparison behavior. A future implementation must pin the package
-version and test the selected behavior, including values near a tie. This is
+as the comparison behavior. Any implementation must pin the package version
+and test the selected behavior, including values near a tie. For this exercise,
+the prototype pins `cards` 0.9.0 and records the executed probe results. This is
 not an industry endorsement.
 
 ### Design two increments of the same skill
@@ -189,8 +195,10 @@ not strong enough.
 
 - **Objective:** Report candidate divergences from BR-001 in one named R source
   folder.
-- **Trigger:** An approved on-demand request; automated triggers remain future
-  options.
+- **Trigger:** An approved manual run or the inactive 30-attempt schedule
+  design. Each event selects one package in registry order; the controller
+  skips full review only after the same commit has completed and, when
+  publishing was requested, its issue state was reconciled.
 - **Required context:** Target commit, source folder, BR-001 v1.0, the
   function catalog, the selected comparison function and its version, required
   display precision, and any approved allowlist.
@@ -202,17 +210,22 @@ not strong enough.
   paths, provisionally determine whether each candidate affects a displayed
   numeric value or a report decision, explain any divergence, and draft the
   report.
-- **Required output:** `file:line`, source expression, probe result, supported
-  explanation or unresolved cause, discovery method, triage reason, coverage,
-  execution environment, and unchecked rules. Results from the catalog scan
-  and exploratory search remain labeled separately.
-- **Boundaries:** Read and test only; no source edits, policy changes,
-  classification approval, or external posting.
+- **Required output:** A JSON report containing `file:line`, source expression,
+  function, probe result, supported explanation or unresolved cause, discovery
+  method, triage reason, coverage, execution environment, and unchecked rules.
+  The catalog is a structured per-token inventory with candidate ID, line,
+  column, parser token ID, function, and exact call expression. Results from the
+  catalog scan and exploratory search remain labeled separately.
+- **Boundaries:** Read and test only; no source edits or policy changes. The
+  agent cannot approve classifications or perform GitHub actions. The
+  deterministic publisher can act only after validation against the pinned
+  checkout and explicit per-run human acceptance through `--publish`.
 - **Stop conditions:** Missing rule version, unreadable files, unresolved
   display precision or tie intent, a documented conflicting convention, or
   failed checks.
-- **Human decision:** The rule owner confirms triage, classifies each finding,
-  approves exceptions, and authorizes any communication.
+- **Human decision:** The process owner confirms triage, classifies each
+  finding, approves exceptions, and records per-run human acceptance before
+  authorizing any issue creation, update, comment, or closure.
 
 The contract describes the target behavior. The one-file example can require
 the scan and probe, but it cannot make their execution deterministic by itself.
@@ -226,10 +239,11 @@ initiates Build.
 
 ## Build --- Prototype the workflow
 
-The Build stage makes the proposed skill visible in two increments. These are
-manuscript listings, not files distributed by the book. They show how a team
-could start with one inspectable instruction and then add resources in response
-to evidence about its limitations.
+The Build stage makes the skill visible in two increments. The one-file version
+is a manuscript design listing. The resource-backed increment is the runnable
+prototype distributed by the book. Together they show how a team can start
+with one inspectable instruction and add resources in response to evidence
+about its limitations.
 
 ### Example 1: Start with `SKILL.md` only
 
@@ -308,8 +322,9 @@ skip the one-file version: a small, low-risk task may not justify more machinery
 ### Example 2: Add resources to improve behavior
 
 For this review, the task contract requires stronger separation of policy,
-fixed evidence, and presentation. The second example keeps `SKILL.md` as the
-entry point and adds only the resources needed for those requirements:
+fixed evidence, and presentation. The implemented second example keeps
+`SKILL.md` as the entry point and adds only the resources needed for those
+requirements:
 
 ```text
 rounding-rule-review/
@@ -318,6 +333,7 @@ rounding-rule-review/
     br-001.md
   scripts/
     scan-rounding-calls.R
+    scan-rounding-lib.R
     probe-tie-behavior.R
   assets/
     review-report-template.md
@@ -374,7 +390,7 @@ the agent must follow.
 
 ### How the resource-backed version performs the check
 
-The proposed scanner covers direct calculation functions such as `round()` and
+The prototype scanner covers direct calculation functions such as `round()` and
 `signif()`, formatting functions such as `formatC()`, `sprintf()`, `format()`,
 and `prettyNum()`, and conversions such as `as.character()`. It produces
 candidates, not findings. The agent then explores beyond the catalog, reads each
@@ -389,7 +405,7 @@ required precision or intended tie cannot be determined, the workflow records
 the unresolved context and stops.
 
 ::: {.callout-note title="Optional technical detail: Comparison call"}
-The proposed probe obtains the selected comparison result with this call.
+The prototype probe obtains the selected comparison result with this call.
 Readers do not need to follow its syntax to understand the comparison.
 
 ```r
@@ -397,9 +413,9 @@ approved <- cards::round5(x, digits = required_digits)
 ```
 
 This call is a benchmark comparison for the exercise, not a proposed fix for
-`metalite.ae`. A future implementation must record the `cards` version, test
-values near a tie, and document how it decides that an input is intended as an
-exact decimal tie.
+`metalite.ae`. The prototype pins and records the `cards` version and tests
+values near a tie. Deciding whether a source input is intended as an exact
+decimal tie remains a human review question.
 :::
 
 ### Preserve the decisions that made the check useful
@@ -492,35 +508,48 @@ https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c
 ```
 
 Arena.ai cannot create the GitHub issue. This is a behavioral preview, not a run
-of either proposed skill. Responses vary between runs, so compare the response
+of either skill version. Responses vary between runs, so compare the response
 with the pinned evidence below rather than expecting a particular answer.
 
 ### Canonical artifact: Prototype
 
-No executable prototype artifact exists. At design-pattern maturity, the two
-listings specify a one-file baseline and a resource-backed candidate. The
-second adds a controlled rule reference, fixed scan and probe interfaces, and a
-review-report template; it does not establish that behavior improved.
+The committed prototype artifact is the resource-backed skill and controller
+under [`exercise/rounding/`](exercise/rounding/README.md). It includes the
+controlled BR-001 reference, scanner and probe, synthetic fixtures, JSON
+schema, independently stated expected report, rotation state model,
+deterministic publisher, and inactive cron template. The one-file listing
+remains the design baseline; the book does not distribute it as a second skill.
 
-The Build gate remains open until an R programmer and the rule owner review a
-working version of both examples and confirm that the resource-backed candidate
-exposes fixed results separately from agent judgment. Only their acceptance
-would initiate a comparative benchmark against synthetic cases and the pinned
-source.
+Before report admission, the controller creates its own structured inventory
+of every catalog call and verifies the report's files, candidates, parse
+errors, `file:line` locations, expressions, and probe function against the
+selected source checkout. Distinct calls on one line retain separate column,
+parser-token, and candidate identities. The built-in Codex path is disabled:
+the prototype accepts only a pre-reviewed report or an external adapter whose
+operating-system isolation is established outside this repository.
+
+The versioned prototype and its accepted deterministic test scope initiate
+Test. This handoff does not accept an agent finding, authorize external issue
+activity, or establish that the exploratory pass improved over the one-file
+baseline.
 
 ## Test --- Benchmark and evaluate
 
-The benchmark must evaluate two different failure modes. First, does the agent
-select the skill for an applicable request and leave it unused for an unrelated
-request? Second, after selection, does the skill produce the required evidence
-and coverage? Adding files counts as improvement only if the second example
-performs better against predefined criteria.
+The executed prototype benchmark evaluates the deterministic foundation:
+scanner identity, report and source-evidence admission, probe recomputation,
+rotation, publication reconciliation, rendering boundaries, and fail-closed
+conditions. A later live-agent benchmark must evaluate two additional failure
+modes. First, does the agent select the skill for an applicable request and
+leave it unused for an unrelated request? Second, after selection, does the
+skill produce the required evidence and coverage? Adding files counts as an
+improvement only if the resource-backed version performs better against
+predefined criteria.
 
 ### Test whether the skill is selected
 
 Both examples use the same `name` and `description`, so they should have the
-same selection behavior. A future implementation would present differently
-worded requests without naming the skill and record whether it loads:
+same selection behavior. The planned live-agent benchmark presents differently
+worded requests without naming the skill and records whether it loads:
 
 | Request | Expected selection behavior |
 |---|---|
@@ -536,26 +565,23 @@ behaviors require task-level cases.
 
 ### Compare behavior with small test examples
 
-A future benchmark would run the one-file baseline and the resource-backed
-candidate against the same five small synthetic R programs, with expected
-results recorded before either version runs. The cases include a compliant
-program, one `formatC()` display call that violates the tie and negative-zero
-clauses, one `round()` call before a threshold comparison, one approved-helper
-use, and one violation hidden behind a wrapper that is not named in the catalog.
-Together they test correct findings, false findings, allowlist handling, and the
-exploratory pass.
+The book distributes small synthetic programs under
+[`exercise/rounding/fixtures/`](exercise/rounding/fixtures/): a compliant
+program, a program containing direct `formatC()` display and `round()`
+row-selection calls, and a violation hidden behind a wrapper outside the
+catalog. The deterministic suite uses the direct-violation fixture to test the
+scanner, expected report, source-evidence checks, and controller. The compliant
+and wrapper programs remain inputs for the unexecuted live-agent benchmark;
+they are not reported as measured detection results.
 
-The book does not distribute these programs, so their outcomes are acceptance
-criteria rather than measured skill performance. They also show the cost of a
-broad search: it reduces the risk of a false clean report, but the workflow must
-retain and explain candidates that do not become findings.
-
-The comparison records detection, false findings, missed problems, file and
-candidate coverage, required-field completion, repeated-run agreement, review
-time, and stopped runs. The resource-backed version is better only if it
-preserves the required findings while making the catalog scan, probe output,
-coverage record, and report structure more reproducible. Exploratory paths may
-still vary between runs and remain labeled separately.
+That later comparison also needs an approved-helper case and must run the
+one-file baseline and resource-backed prototype against the same inputs. It
+records detection, false findings, missed problems, file and candidate
+coverage, required-field completion, repeated-run agreement, review time, and
+stopped runs. The resource-backed version is better only if it preserves the
+required findings while making the catalog scan, probe output, coverage record,
+and report structure more reproducible. Exploratory paths may still vary
+between runs and remain labeled separately.
 
 ### Pinned source evidence for the answer key
 
@@ -565,8 +591,9 @@ All `metalite.ae` locations and results below refer to
 [`bdb23d472b16bc9dadbc774e64c5ca40321e9c6b`](https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b).
 The file count, candidate count, quoted locations, and probe results were
 manually reverified at this commit. They define reference evidence for a future
-benchmark; they are not output from the proposed skill. Every count, location,
-and result must be reverified again before use with another version or commit.
+live-agent benchmark; they are not output from the prototype. Every count,
+location, and result must be reverified again before use with another version
+or commit.
 
 The evidence narrows in three steps:
 
@@ -599,9 +626,9 @@ benchmark below.
 
 Those manually verified counts define the expected coverage of the required
 catalog scan. They do not prove that no relevant wrapper or unexpected code
-path exists. A future implementation must report the exploratory pass
-separately and test that pass with a seeded example that is not named in the
-catalog.
+path exists. A live-agent benchmark must report the exploratory pass separately
+and test that pass with the distributed wrapper example, which is not named in
+the catalog.
 
 The in-scope calls show where the illustrative rule could affect an
 adverse-event report:
@@ -624,8 +651,8 @@ The `sprintf()` call builds JavaScript, and the 11 `as.character()` calls do not
 apply a specified decimal precision. They remain recorded as reviewed
 candidates rather than silently disappearing from the coverage statement.
 
-The source accepts different precision arguments, so a complete implementation
-would construct decimal ties at the precision used by each call. The compact
+The source accepts different precision arguments, so a complete source review
+must construct decimal ties at the precision used by each call. The compact
 probe below uses one decimal place to compare the two underlying expressions.
 It was run with R 4.6.1 on arm64 macOS. `formatC` and `round` are observed
 results; `approved` is what BR-001 requires:
@@ -676,12 +703,15 @@ of `round(-0.05, 1)` produces `-0.0`. At zero decimals,
 `formatC(-0.5, digits = 0, format = "f")` produces `-0`. Both violate the
 negative-zero clause.
 
-### What both proposed implementations must reproduce
+### What the prototype proves and what remains to reproduce
 
-No skill has been run. The results above are the answer key for a future test.
-The benchmark applies the accuracy and boundary criteria below to both build
-examples. The resource-backed candidate is eligible for release only if it also
-preserves fixed outputs and required report fields across repeated runs.
+The deterministic prototype has been run; a live code agent has not. The
+synthetic report and probe artifacts establish expected deterministic results,
+while the pinned `metalite.ae` results above remain the independently reviewed
+answer key for a future live-agent test. The complete benchmark applies the
+accuracy and boundary criteria below to both build examples. The
+resource-backed prototype is eligible for release only if it also preserves
+fixed outputs and required report fields across repeated runs.
 
 | Acceptance criterion | Required result |
 |---|---|
@@ -701,39 +731,35 @@ preserves fixed outputs and required report fields across repeated runs.
 
 ### Canonical artifact: Benchmark report
 
-No benchmark report exists because no prototype has been implemented or run. At
-design-pattern maturity, this artifact is specified rather than populated. The
-manually verified source inventory and tie probe above form the reference
-answer key; they are not workflow performance results.
+The committed
+[`benchmark report`](exercise/rounding/expected/benchmark-report.md) records
+the exact test command, execution environment, deterministic checks, expected
+artifacts, and limitations. The suite passes 31 tests, including false-clean
+catalog rejection, fabricated source-evidence rejection, same-line scanner
+identity, rotation after resolution failure, clean no-issue reconciliation,
+and retry after failed issue closure. These are workflow-component results, not
+live-agent detection or live GitHub integration results.
 
-A future benchmark report must:
-
-- identify both skill versions, the target, workflow components, R environment,
-  rule, comparison function, and their versions;
-- report skill-selection results for the five activation requests;
-- report results for all five synthetic cases and the pinned-source criteria;
-- record detected and missed problems, incorrect findings, stopped runs,
-  coverage, reproducibility, review time, and triage agreement;
-- preserve fixed check output separately from agent exploration and judgment;
-- compare each version with the independently maintained answer key and with
-  the other version; and
-- record limitations and the reviewers' disposition.
-
-The Test gate remains open. It requires the rule owner and an independent
-reviewer to accept an executed benchmark report; the person who wrote the
-procedure should not be the only person judging whether it works. Only that
-accepted report would initiate Deploy.
+The Test gate for a live release remains open. The future report must add skill
+selection, exploratory recall, the compliant and wrapper cases, the one-file
+comparison, pinned-source reproduction, false positives, latency, cost, and
+human review burden. The rule owner and an independent reviewer must accept
+that expanded evidence; the person who wrote the procedure should not be the
+only person judging whether it works. An accepted live-agent benchmark would
+initiate Deploy review, not authorize a package issue by itself.
 
 ## Deploy --- Operationalize the workflow
 
-::: {.callout-important title="Design, not implementation"}
-The triggers below are options for the owning team. No skill, CI workflow, or
-scheduled job has been committed or run.
+::: {.callout-important title="Prototype controls, inactive release"}
+The skill, controller, deterministic publisher, and cron template are
+distributed as prototype artifacts. No CI workflow or scheduled job is active,
+no live-agent or GitHub integration benchmark has passed, and the five-package
+campaign has not run.
 :::
 
-The Deploy design connects a future accepted prototype to an advisory review
-process. It prepares a review record and stops before any external action unless
-a named human authorizes it. [Issue
+The Deploy design connects the prototype to an advisory review process. It
+prepares a review record and stops before any external action unless the
+process owner records per-run acceptance. [Issue
 #249](https://github.com/Merck/metalite.ae/issues/249) was posted manually from
 one response to the exploratory prompt in @sec-workflow-rounding-prompt. That action
 occurred outside the workflow designed here. The public issue is not evidence
@@ -752,43 +778,50 @@ The team has three trigger options:
   change that caused it.
 
 The one-file version is the teaching baseline, not the proposed release
-candidate. If the comparative benchmark is accepted, the resource-backed
-version is the candidate because its rule, fixed evidence, and report structure
-can be reviewed and versioned separately. A team could first place it in the
-repository-level skill location supported by its agent platform.
+candidate. The resource-backed prototype is the candidate because its rule,
+fixed evidence, and report structure can be reviewed and versioned separately.
 Organization-wide distribution would require a separately approved owner,
-support model, and change process. This chapter specifies neither installation
-path.
+support model, and change process. This chapter specifies neither.
 
-The proposed first release is on demand and advisory. Pull-request or scheduled
-execution requires separate approval after benchmark evidence shows acceptable
-coverage and review burden. A schedule should not rerun unchanged source. The
-continuous, change-triggered check is a possible later destination, not the
-first release.
+The proposed first release is an advisory, 30-attempt pilot that selects one of
+five packages per scheduled event. The schedule remains dry-run only. After
+each completed run, the process owner reviews the evidence, classifies the
+result, and separately decides whether to invoke the deterministic publisher
+with `--publish`. The controller skips a completed unchanged commit, but an
+unreconciled publication request is retried; a failed package still yields a
+run record and rotation advances to the next target. Continuous
+change-triggered review is a possible later destination, not the first release.
 
 ### Canonical artifact: Release record
 
-- **Status:** Not released; this is the record structure required before use.
-- **Candidate:** The resource-backed version; the one-file version remains the
-  benchmark baseline.
-- **Release model:** Manual and advisory; a reviewer requests one run.
+- **Status:** Prototype only; the live release gate remains open.
+- **Candidate:** The resource-backed prototype; the one-file version remains
+  the benchmark baseline.
+- **Release model:** Inactive 30-attempt advisory pilot; one package per event,
+  dry-run by default, with separate per-run acceptance for any issue action.
 - **Proposed versions:** `rounding-rule-review` v1.0 and BR-001 v1.0.
 - **Scope:** One identified R source folder and commit per run.
-- **Permissions:** Read source, run approved local scripts, and write a draft
-  report; no network writes.
+- **Permissions:** The agent may read the bounded source and immutable skill
+  inputs and write a draft report only inside an independently established
+  execution boundary. The publisher alone receives issue-write access after
+  per-run acceptance.
 - **Output:** Versioned draft review report containing findings, probes,
-  coverage, execution environment, limitations, run log, and an optional draft
-  issue body.
-- **Accountable human:** The named rule owner approves release, classifications,
-  exceptions, and any external communication.
-- **Reversal:** If released, disable the approved trigger and retain the run
-  record. A normal advisory run changes no source or external system.
+  structured scanner inventory, coverage, execution environment, limitations,
+  run log, and a rendered issue action.
+- **Evidence:** The deterministic benchmark passes; live-agent selection,
+  exploratory recall, live GitHub operations, latency, cost, and review burden
+  remain unmeasured.
+- **Accountable human:** The named process owner approves release,
+  classifications, exceptions, and every external issue action.
+- **Reversal:** Disable the approved trigger and retain the run records. Dry-run
+  execution changes no source or external system.
 
 Because it was copied from an exploratory response outside this workflow,
 issue #249 is not the Deploy artifact or evidence that the Deploy gate passed.
-That gate is explicit rule-owner approval of the release record and any external
-communication. An accepted benchmark plus that approval would activate the
-chosen trigger and initiate Maintain. Neither event has occurred in this book.
+That gate requires acceptance of the remaining benchmark evidence and this
+release record. Activation would initiate Maintain. Even after activation,
+each external issue action retains its separate human gate. None of those
+events has occurred in this book.
 
 ## Maintain --- Monitor and improve
 
@@ -815,9 +848,10 @@ The first list of improvements follows directly from known limitations:
 
 ### Canonical artifact: Monitoring report
 
-There is no operating history because the book distributes no workflow. The
-monitoring report is therefore specified, not populated. A future report must
-show applicable requests that did and did not select the skill, unrelated
+There is no operating history because the distributed prototype has not been
+released and the schedule is inactive. The monitoring report is therefore
+specified, not populated. A future report must show applicable requests that
+did and did not select the skill, unrelated
 requests that selected it incorrectly, runs by trigger, coverage, confirmed
 findings, false positives, missed defects, stopped runs, triage effort, and
 unresolved precision. It also records how long an approved BR-001 change takes
@@ -841,18 +875,19 @@ maintainer-approved defect classification. Tie mode and binary representation
 remain separate causes.
 
 The first build example packages the trigger, BR-001, procedure, boundaries,
-and output in one `SKILL.md`. That is the minimal visible skill and may be
-proportionate for a small, low-risk review. The second example adds a controlled
-rule reference, fixed scan and probe interfaces, and a report template. Each
-resource addresses a named limitation while the agent continues to explore and
-perform provisional triage.
+and output in one `SKILL.md` listing. That is the minimal visible baseline and
+may be proportionate for a small, low-risk review. The distributed second
+example adds a controlled rule reference, fixed scan and probe interfaces, a
+structured report, controller, and deterministic publisher. Its 31-test
+benchmark establishes reproducible component behavior and preserves runtime
+evidence outside the published immutable assets.
 
-The design does not assume that more files produce better behavior. A future
-benchmark must compare both versions for skill selection, findings, false
-findings, coverage, output completeness, and reproducibility. The
-resource-backed version becomes a release candidate only if that evidence is
-accepted. An executable prototype, an accepted benchmark report, a release,
-and operating evidence remain future work.
+The prototype does not assume that more files produce better agent behavior.
+A future live-agent benchmark must compare both versions for selection,
+findings, false findings, coverage, output completeness, exploratory recall,
+and review burden. Live-agent evidence, an accepted release, the inactive
+30-attempt campaign, and operating evidence remain future work. Every external
+issue action requires the accountable human's separate acceptance.
 
 Readers who want to continue beyond this bounded design can follow
 [`RConsortium/pharma-skills` issue #208](https://github.com/RConsortium/pharma-skills/issues/208).

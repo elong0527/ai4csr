@@ -1,3 +1,5 @@
 # Replace every /absolute/path placeholder before installing this crontab.
-# One invocation reviews one package. The controller stops after 30 runs.
-15 2 * * * /absolute/path/Rscript /absolute/path/ai4csr/exercise/rounding/scripts/run-rotation.R >> /absolute/path/ai4csr/exercise/rounding/var/cron.log 2>&1
+# One invocation initializes private runtime storage and reviews one package.
+# The controller stops after 30 runs. The adapter placeholder must name an
+# independently isolated adapter reviewed by the process owner.
+15 2 * * * install -d -m 0700 /absolute/path/ai4csr/exercise/rounding/var && /absolute/path/Rscript /absolute/path/ai4csr/exercise/rounding/scripts/run-rotation.R --agent-adapter /absolute/path/to/isolated-adapter >> /absolute/path/ai4csr/exercise/rounding/var/cron.log 2>&1

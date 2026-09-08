@@ -21,7 +21,7 @@ The lab defaults to a dry run. It does not create, update, comment on, or close
 an issue unless the operator explicitly enables publishing. Readers must not
 enable publishing against repositories they do not administer or have
 permission to automate. The five-package pilot requires maintainer authorization
-and process-owner acceptance before its first external write.
+and separate process-owner acceptance before every external issue action.
 :::
 
 ## Inspect the working prototype
@@ -35,6 +35,7 @@ exercise/rounding/
     SKILL.md
     references/br-001.md
     scripts/scan-rounding-calls.R
+    scripts/scan-rounding-lib.R
     scripts/probe-tie-behavior.R
     assets/review-report-template.md
   expected/
@@ -51,19 +52,21 @@ exercise/rounding/
 
 The skill and the surrounding workflow have different responsibilities. The
 skill tells an agent how to inspect and reason about one checked-out package.
-The controller selects the package and commit. The report validator enforces
-the finding admission rule. The publisher owns GitHub issue actions. The process
-owner governs the complete system.
+The controller selects the package and commit and independently runs the
+catalog scanner. The report validator enforces the finding admission rule and
+checks source evidence against that selected checkout. The publisher owns
+GitHub issue mechanics after a human gate. The process owner governs the
+complete system.
 
 That separation is visible in the permissions:
 
 | Component | Can do | Cannot do |
 |---|---|---|
-| Code agent and skill | Read one checkout, run approved local evidence scripts, produce JSON | Receive the GitHub credential, modify source, or post an issue |
-| Scheduled controller | Select one package, resolve a commit, manage rotation state, invoke the agent | Decide that unsupported evidence is a finding |
+| External agent adapter in an independently approved boundary | Read the mounted checkout and immutable skill inputs, run local evidence scripts, produce JSON | Receive host credentials, unrelated host files, network access, or issue-write authority |
+| Scheduled controller | Select one package, resolve a commit, run the scanner, manage rotation state, invoke an approved adapter | Decide that unsupported evidence is a finding |
 | Report validator | Enforce required fields and minimum evidence | Interpret clinical intent |
-| Issue publisher | Manage one automation-owned BR-001 issue per package | Change source or another identity's issue |
-| Process owner | Approve the operating policy, monitor results, restrict or stop the workflow | Transfer accountability to the agent |
+| Issue publisher | Manage one automation-owned BR-001 issue per package after per-run acceptance | Change source or another identity's issue |
+| Process owner | Approve the operating policy and each issue action, monitor results, restrict or stop the workflow | Transfer accountability to the agent |
 
 ## Create and inspect the skill
 
@@ -106,11 +109,12 @@ the lab directory:
 Rscript tests/test-rounding-workflow.R
 ```
 
-The benchmark recorded on 2026-09-06 passed the offline tests. They cover
-report admission, evidence from both tie signs, commit matching, issue
-rendering, preservation of human issue text, historical episode selection,
-incomplete-review handling, deterministic catalog scanning, and same-commit
-skipping. The full result and its limitations are in the
+The benchmark recorded on 2026-09-08 passes 31 offline tests. They cover report
+admission, source-evidence validation, evidence from both tie signs, scanner
+identity, commit matching, failure rotation, publication reconciliation, issue
+rendering, preservation of human issue text, cron initialization, and the
+Quarto boundary between immutable assets and runtime data. The full result and
+its limitations are in the
 [`benchmark report`](exercise/rounding/expected/benchmark-report.md).
 
 Run the catalog scanner directly against the violation fixture:
@@ -160,42 +164,45 @@ This small exercise demonstrates a central workflow distinction. The daily
 schedule is the event that asks for attention. The changed commit is the rule
 that decides whether verification work should begin.
 
-## Run the skill through a code agent
+## Connect an independently isolated code-agent adapter
 
-The reference adapter uses Codex non-interactive mode. Official OpenAI
-documentation describes `codex exec` as the interface for scripts, CI, and
-scheduled jobs. The controller invokes it in a read-only sandbox, explicitly
-names `$rounding-rule-review`, requests schema-conforming output, and removes
-GitHub publishing credentials from the subprocess.
+The prototype does not enable its built-in Codex adapter. A read-only Codex
+sandbox alone does not establish the credential-free operating-system boundary
+required for untrusted repository content, so a run without `--report-input` or
+`--agent-adapter` fails closed.
 
-After installing the dependencies and testing Codex authentication, run one
-package without publishing:
+An approved external adapter receives a prompt path, JSON Schema path, and
+report output path. It succeeds only when it writes one conforming JSON report.
+The adapter must run in a credential-free operating-system context with only
+the required checkout and immutable skill inputs readable and with network,
+web, Model Context Protocol (MCP), app, and connector access disabled. Clearing
+common GitHub environment variables is defense in depth, not that isolation
+boundary.
+
+After independently verifying those controls, run one package without
+publishing:
 
 ```bash
-Rscript scripts/run-rotation.R
+Rscript scripts/run-rotation.R \
+  --agent-adapter /absolute/path/to/isolated-adapter
 ```
 
 The first run selects `Merck/r2rtf`, resolves its `master` branch to an exact
 commit, and stores that SHA before the agent starts. Later runs rotate through
 `Merck/metalite.ae`, `Merck/metalite`, `Merck/forestly`, and
 `elong0527/r4csr`. Every result is attached to the commit resolved for that
-specific run.
-
-The controller also accepts `--agent-adapter`. An adapter for Claude Code,
-OpenCode, Hermes, or another code agent receives a prompt path, JSON Schema
-path, and report output path. It succeeds only when it writes one conforming
-JSON report. This interface keeps the workflow contract stable while product
-commands change. The adapter must also enforce read-only source access and no
-network access. Run it in a credential-free operating-system context; removing
-environment tokens alone cannot isolate credentials held by every agent
-product.
+specific run. This interface keeps the workflow contract stable while product
+commands change; the repository does not claim that a named agent product
+supplies the required isolation by itself.
 
 ## Install the 30-run rotation
 
 The repository does not activate a scheduled workflow. Instead,
 [`cron.example`](exercise/rounding/cron.example) contains an inactive daily
-template. Replace every placeholder with an absolute path and install it under
-the scheduled service identity.
+template. It initializes the private `var/` directory before opening its log
+file and names a placeholder for the independently isolated adapter. Replace
+every placeholder with an absolute path and install it under the scheduled
+service identity.
 
 One invocation handles one package. The state advances rotationally even after
 a failed attempt so one package cannot block the other four. A failed package
@@ -219,13 +226,16 @@ SHA rather than assuming that a source diff proves full coverage.
 
 ## Authorize package-level issues
 
-Issue creation is the final external action of a finding run. It does not
-require approval each time after the release policy is accepted. Before that
-release, the process owner must configure the dedicated automation login,
-confirm the target registry, obtain maintainer authorization for all five
-repositories, and grant the identity only content-read and issue-write access.
+Issue publication is a separate action after review, not an automatic
+consequence of accepting the release policy. Before any release, the process
+owner must configure the dedicated automation login, confirm the target
+registry, obtain maintainer authorization for all five repositories, and grant
+the identity only content-read and issue-write access. For every completed run,
+the process owner must inspect the scanner evidence and report, classify the
+findings, and explicitly accept or reject the proposed issue action.
 
-Publishing remains off unless the operator passes `--publish`. The deterministic
+Publishing remains off unless the accountable operator records that per-run
+acceptance by passing `--publish` for the reviewed report. The deterministic
 publisher then applies these rules:
 
 1. Search open issues for the package-and-rule marker.
@@ -238,6 +248,11 @@ publisher then applies these rules:
 
 Unresolved candidates do not qualify for automatic posting. A clean package
 with no open automated issue produces a run record but no issue.
+
+The controller refuses `--publish` without a pre-reviewed `--report-input`.
+The standalone publisher likewise requires `--source-directory` when
+`--publish` is present, then rechecks the scanner inventory, source evidence,
+clean checkout, and exact commit before any GitHub action.
 
 ## Review the monitoring evidence
 

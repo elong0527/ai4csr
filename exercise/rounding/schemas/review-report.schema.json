@@ -71,6 +71,7 @@
         "files",
         "exclusions",
         "catalog_candidates",
+        "catalog",
         "exploratory_candidates",
         "parse_errors"
       ],
@@ -79,6 +80,10 @@
         "files": {"type": "array", "items": {"type": "string"}},
         "exclusions": {"type": "array", "items": {"type": "string"}},
         "catalog_candidates": {"type": "integer", "minimum": 0},
+        "catalog": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/catalog_candidate"}
+        },
         "exploratory_candidates": {"type": "integer", "minimum": 0},
         "parse_errors": {"type": "array", "items": {"type": "string"}}
       }
@@ -105,6 +110,38 @@
     }
   },
   "$defs": {
+    "catalog_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "file",
+        "line",
+        "column",
+        "token_id",
+        "function",
+        "expression"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "minLength": 1},
+        "file": {"type": "string", "minLength": 1},
+        "line": {"type": "integer", "minimum": 1},
+        "column": {"type": "integer", "minimum": 1},
+        "token_id": {"type": "integer", "minimum": 1},
+        "function": {
+          "enum": [
+            "round",
+            "signif",
+            "sprintf",
+            "formatC",
+            "format",
+            "prettyNum",
+            "as.character"
+          ]
+        },
+        "expression": {"type": "string", "minLength": 1}
+      }
+    },
     "probe": {
       "type": "object",
       "additionalProperties": false,

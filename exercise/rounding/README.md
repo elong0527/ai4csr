@@ -5,8 +5,9 @@ chapters. It is a reproducible teaching prototype, not a validated or
 production-qualified system.
 
 The default commands do not create GitHub issues. Do not enable publishing to a
-repository unless its maintainers have authorized the automation identity and
-the process owner has accepted the release record.
+repository unless its maintainers have authorized the automation identity, the
+process owner has accepted the release record, and that process owner has
+separately accepted the current run's classification and issue action.
 
 ## What the lab contains
 
@@ -68,39 +69,40 @@ Rscript scripts/run-rotation.R \
 Run the same command again with the same state. The second run records
 `no-change` and does not repeat the full review.
 
-## Run with Codex
+## Run with an independently isolated agent adapter
 
-As verified on 2026-09-06, Codex discovers repository skills under
-`.agents/skills`, supports explicit `$skill-name` invocation, and provides
-`codex exec` for scripts and scheduled jobs. See the official documentation for
-[skills](https://learn.chatgpt.com/codex/build-skills) and
-[non-interactive mode](https://learn.chatgpt.com/codex/non-interactive-mode).
+The built-in Codex adapter is disabled. This repository does not verify that a
+normal user-level Codex configuration provides the credential-free
+operating-system boundary required for reviewing untrusted source. A run
+without `--report-input` or `--agent-adapter` therefore fails closed.
 
-Test one dry run before installing a schedule:
+An external adapter receives three arguments: prompt path, JSON Schema path,
+and report output path. It must write one conforming JSON report and exit with
+status zero. Run it in a separately verified environment with only the target
+checkout and immutable skill inputs readable and with credentials, unrelated
+host files, network, web, MCP, app, and connector access unavailable. The
+controller's removal of common GitHub environment tokens is defense in depth,
+not an isolation boundary.
+
+Test one dry run with that adapter before installing a schedule:
 
 ```bash
-Rscript scripts/run-rotation.R
+Rscript scripts/run-rotation.R \
+  --agent-adapter /absolute/path/to/isolated-adapter
 ```
 
-The controller checks out the selected package at the resolved commit, invokes
-Codex in a read-only sandbox, validates the JSON report, and renders the issue
-action without executing it. It removes GitHub publishing credentials from the
-agent subprocess.
-
-To use another code agent, pass `--agent-adapter /absolute/path/to/adapter`.
-The adapter receives three arguments: prompt path, JSON Schema path, and report
-output path. It must write one conforming JSON report and exit with status zero.
-The adapter must enforce read-only source access and no network access. Run it
-in a credential-free operating-system context; the controller removes common
-GitHub environment tokens and supplies an empty GitHub CLI configuration, but
-it cannot isolate credentials held by every third-party agent product.
+The controller checks out the selected package at the resolved commit, records
+its own structured scan, invokes the adapter, validates the JSON report against
+the scan and source, and renders the issue action without executing it.
 
 ## Install a daily schedule
 
 Copy `cron.example`, replace its absolute paths, and install it with the
-scheduler owned by the automation identity. The schedule invokes one package
-per day in registry order. Five packages over 30 runs give each package six
-review opportunities and a maximum scheduled detection delay of five days.
+scheduler owned by the automation identity. Each invocation creates the
+private runtime directory before opening the log, then invokes one package per
+day in registry order through the approved adapter. Five packages over 30 runs
+give each package six review opportunities and a maximum scheduled detection
+delay of five days.
 
 Codex scheduled tasks are another possible harness when they are available in
 the reader's ChatGPT workspace. Official documentation states that local
@@ -110,24 +112,29 @@ therefore remains the portable reference for this lab.
 
 ## Authorize issue publishing
 
-Before publishing:
+Before the pilot and before publishing:
 
 1. Replace `SET_PROCESS_OWNER` and `SET_AUTOMATION_LOGIN` in `targets.json`.
 2. Authenticate GitHub CLI as that exact automation identity.
 3. Grant only repository-content read and issue read/write permissions.
 4. Confirm that the five repository maintainers accept automated issue
    creation, updates, comments, and closure.
-5. Test the first run without `--publish` and inspect its report and rendered
-   issue body.
+5. Test the first run without `--publish` and inspect its scanner evidence,
+   report, and rendered issue body.
 
-Then add `--publish` to the scheduled command. The publisher creates at most one
-open automation-owned BR-001 issue per package, updates its managed section or
-comments when editing is unavailable, and closes it after all verified findings
-are addressed. It never changes an issue created by another identity.
+Do not add `--publish` to the unattended cron entry. For each completed run,
+the process owner classifies the result and separately accepts or rejects its
+issue action. The `--publish` flag requires a pre-reviewed report, and the
+publisher rechecks the report against a clean source checkout at the report's
+exact commit before acting. It creates at most one open automation-owned
+BR-001 issue per package, updates its managed section or comments when editing
+is unavailable, and closes it after all verified findings are addressed. It
+never changes an issue created by another identity.
 
 ## Inspect the 30-run record
 
 The mutable `var/` directory contains rotation state and one directory per run.
-Each run records the selected package, exact commit, status, report, agent log,
-and issue action. Use these records to produce the monitoring report described
-in the chapter.
+Each run records the selected package, exact commit, status, deterministic scan,
+report, agent log, and issue action. Quarto excludes this directory from the
+published book while copying the immutable exercise assets. Use the local
+records to produce the monitoring report described in the chapter.

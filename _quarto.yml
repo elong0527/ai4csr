@@ -6,6 +6,7 @@ project:
     - slides/
     - diagrams/
     - exercise/rounding/
+    - "!exercise/rounding/var/**"
 
 book:
   title: "AI-First Workflows for Clinical Study Reporting"

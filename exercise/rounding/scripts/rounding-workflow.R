@@ -1,5 +1,17 @@
 library(jsonlite)
 
+rounding_workflow_file <- normalizePath(sys.frame(1)$ofile, mustWork = TRUE)
+rounding_lab_root <- dirname(dirname(rounding_workflow_file))
+source(file.path(
+  rounding_lab_root,
+  ".agents",
+  "skills",
+  "rounding-rule-review",
+  "scripts",
+  "scan-rounding-lib.R"
+))
+rm(rounding_workflow_file, rounding_lab_root)
+
 MANAGED_BEGIN <- "<!-- rounding-review-managed:BEGIN -->"
 MANAGED_END <- "<!-- rounding-review-managed:END -->"
 SHA_PATTERN <- "^[0-9a-f]{40}$"
@@ -114,13 +126,90 @@ write_json_atomic <- function(path, value) {
   }
 }
 
+catalog_candidate_fields <- c(
+  "candidate_id", "file", "line", "column", "token_id", "function",
+  "expression"
+)
+
+catalog_candidate_key <- function(candidate) {
+  if (!is.list(candidate) ||
+    !setequal(names(candidate), catalog_candidate_fields)) {
+    return(NA_character_)
+  }
+  text_fields <- c("candidate_id", "file", "function", "expression")
+  if (any(!vapply(candidate[text_fields], is_nonempty_string, logical(1)))) {
+    return(NA_character_)
+  }
+  count_fields <- c("line", "column", "token_id")
+  if (any(!vapply(
+    candidate[count_fields], is_count, logical(1), minimum = 1L
+  ))) {
+    return(NA_character_)
+  }
+  paste(
+    candidate$candidate_id,
+    candidate$file,
+    candidate$line,
+    candidate$column,
+    candidate$token_id,
+    candidate[["function"]],
+    candidate$expression,
+    sep = "\t"
+  )
+}
+
+source_evidence_matches <- function(source_root, file, line, expression) {
+  if (!is_nonempty_string(file) || !is_count(line, minimum = 1L) ||
+    !is_nonempty_string(expression) || grepl("^/", file) ||
+    any(strsplit(file, "/", fixed = TRUE)[[1]] == "..")) {
+    return(FALSE)
+  }
+  root <- normalizePath(source_root, mustWork = TRUE)
+  path <- tryCatch(
+    normalizePath(file.path(root, file), mustWork = TRUE),
+    error = function(error) NULL
+  )
+  if (is.null(path) ||
+    !(identical(path, root) || startsWith(path, paste0(root, .Platform$file.sep)))) {
+    return(FALSE)
+  }
+  source_text <- paste(readLines(path, warn = FALSE), collapse = "\n")
+  positions <- gregexpr(expression, source_text, fixed = TRUE)[[1]]
+  if (identical(positions, -1L)) {
+    return(FALSE)
+  }
+  start_lines <- vapply(positions, function(position) {
+    prefix <- if (position <= 1L) "" else substr(source_text, 1L, position - 1L)
+    newlines <- gregexpr("\n", prefix, fixed = TRUE)[[1]]
+    1L + if (identical(newlines, -1L)) 0L else length(newlines)
+  }, integer(1))
+  line %in% start_lines
+}
+
+expression_function_names <- function(expression) {
+  parsed <- tryCatch(
+    parse(text = expression, keep.source = TRUE),
+    error = function(error) NULL
+  )
+  if (is.null(parsed)) {
+    return(character())
+  }
+  tokens <- getParseData(parsed)
+  if (is.null(tokens)) {
+    return(character())
+  }
+  tokens$text[tokens$token == "SYMBOL_FUNCTION_CALL"]
+}
+
 validate_report <- function(
   report,
   expected_repository = NULL,
   expected_sha = NULL,
   expected_branch = NULL,
   expected_run_id = NULL,
-  expected_files = NULL
+  expected_files = NULL,
+  expected_scan = NULL,
+  source_root = NULL
 ) {
   errors <- character()
   required <- c(
@@ -227,6 +316,7 @@ validate_report <- function(
   }
 
   coverage_files <- character()
+  coverage_catalog <- list()
   if (!is.list(report$coverage)) {
     errors <- c(errors, "coverage must be an object")
   } else {
@@ -260,17 +350,74 @@ validate_report <- function(
         )
       }
     }
-    for (field in c("catalog_candidates", "exploratory_candidates")) {
-      if (!is_count(report$coverage[[field]])) {
+    if (!is_count(report$coverage$catalog_candidates)) {
+      errors <- c(
+        errors,
+        "coverage.catalog_candidates must be a nonnegative integer"
+      )
+    }
+    if (!is_count(report$coverage$exploratory_candidates)) {
+      errors <- c(
+        errors,
+        "coverage.exploratory_candidates must be a nonnegative integer"
+      )
+    }
+    coverage_catalog <- report$coverage$catalog
+    if (!is.list(coverage_catalog)) {
+      errors <- c(errors, "coverage.catalog must be a list")
+      coverage_catalog <- list()
+    } else {
+      catalog_keys <- vapply(
+        coverage_catalog, catalog_candidate_key, character(1)
+      )
+      if (anyNA(catalog_keys)) {
         errors <- c(
           errors,
-          sprintf("coverage.%s must be a nonnegative integer", field)
+          paste0(
+            "coverage.catalog entries must contain valid candidate_id, file, ",
+            "line, column, token_id, function, and expression fields"
+          )
+        )
+      }
+      if (is_count(report$coverage$catalog_candidates) &&
+        report$coverage$catalog_candidates != length(coverage_catalog)) {
+        errors <- c(
+          errors,
+          "coverage.catalog_candidates must equal coverage.catalog length"
         )
       }
     }
     for (field in c("exclusions", "parse_errors")) {
       if (!is.list(report$coverage[[field]])) {
         errors <- c(errors, sprintf("coverage.%s must be a list", field))
+      }
+    }
+    if (!is.null(expected_scan)) {
+      expected_keys <- vapply(
+        expected_scan$candidates, catalog_candidate_key, character(1)
+      )
+      actual_keys <- vapply(
+        coverage_catalog, catalog_candidate_key, character(1)
+      )
+      if (anyNA(actual_keys) || !identical(actual_keys, expected_keys)) {
+        errors <- c(
+          errors,
+          "coverage.catalog must match the controller scanner inventory"
+        )
+      }
+      reported_parse_errors <- if (is.list(report$coverage$parse_errors)) {
+        unlist(report$coverage$parse_errors, use.names = FALSE)
+      } else {
+        character()
+      }
+      if (is.null(reported_parse_errors)) {
+        reported_parse_errors <- character()
+      }
+      if (!identical(reported_parse_errors, expected_scan$parse_errors)) {
+        errors <- c(
+          errors,
+          "coverage.parse_errors must match the controller scanner output"
+        )
       }
     }
   }
@@ -328,6 +475,18 @@ validate_report <- function(
       if (length(coverage_files) > 0L && !finding$file %in% coverage_files) {
         errors <- c(errors, paste0(prefix, ".file must appear in coverage.files"))
       }
+      if (!is.null(source_root) &&
+        !source_evidence_matches(
+          source_root,
+          finding$file,
+          finding$line,
+          finding$expression
+        )) {
+        errors <- c(
+          errors,
+          paste0(prefix, " source evidence does not match the pinned source")
+        )
+      }
 
       probe <- finding$probe
       if (!is.list(probe)) {
@@ -371,6 +530,38 @@ validate_report <- function(
           paste0(prefix, ".probe.function must be round or formatC")
         )
         probe_method <- NULL
+      }
+      if (!is.null(probe_method) && is_nonempty_string(finding$expression)) {
+        if (identical(finding$discovery_method, "catalog")) {
+          matching_candidates <- Filter(function(candidate) {
+            identical(candidate$file, finding$file) &&
+              identical(as.integer(candidate$line), as.integer(finding$line)) &&
+              (identical(candidate$expression, finding$expression) ||
+                grepl(candidate$expression, finding$expression, fixed = TRUE))
+          }, coverage_catalog)
+          matching_functions <- vapply(
+            matching_candidates,
+            function(candidate) candidate[["function"]] %||% "",
+            character(1)
+          )
+          if (length(matching_candidates) == 0L) {
+            errors <- c(
+              errors,
+              paste0(prefix, " must match one structured catalog candidate")
+            )
+          } else if (!probe_method %in% matching_functions) {
+            errors <- c(
+              errors,
+              paste0(prefix, ".probe.function must match the catalog function")
+            )
+          }
+        } else if (!probe_method %in%
+          expression_function_names(finding$expression)) {
+          errors <- c(
+            errors,
+            paste0(prefix, ".probe.function must appear in the source expression")
+          )
+        }
       }
       digits <- finding$required_digits
       digits_valid <- is_count(digits) && digits <= 15L
@@ -468,6 +659,18 @@ validate_report <- function(
       }
       if (length(coverage_files) > 0L && !candidate$file %in% coverage_files) {
         errors <- c(errors, paste0(prefix, ".file must appear in coverage.files"))
+      }
+      if (!is.null(source_root) &&
+        !source_evidence_matches(
+          source_root,
+          candidate$file,
+          candidate$line,
+          candidate$expression
+        )) {
+        errors <- c(
+          errors,
+          paste0(prefix, " source evidence does not match the pinned source")
+        )
       }
     }
   }
@@ -877,6 +1080,39 @@ prepare_checkout <- function(repository, sha, destination) {
   destination
 }
 
+verify_checkout_at_commit <- function(path, expected_sha) {
+  checkout <- normalizePath(path, mustWork = TRUE)
+  root <- trimws(run_checked(
+    "git",
+    c("-C", checkout, "rev-parse", "--show-toplevel"),
+    "git rev-parse --show-toplevel"
+  ))
+  actual_sha <- trimws(run_checked(
+    "git",
+    c("-C", root, "rev-parse", "HEAD"),
+    "git rev-parse HEAD"
+  ))
+  if (!identical(actual_sha, expected_sha)) {
+    stop(
+      sprintf(
+        "checkout HEAD %s does not match report commit %s",
+        actual_sha,
+        expected_sha
+      ),
+      call. = FALSE
+    )
+  }
+  changes <- run_checked(
+    "git",
+    c("-C", root, "status", "--porcelain=v1", "--untracked-files=all"),
+    "git status"
+  )
+  if (nzchar(changes)) {
+    stop("checkout has uncommitted or untracked content", call. = FALSE)
+  }
+  root
+}
+
 build_prompt <- function(
   run_id,
   target,
@@ -953,28 +1189,19 @@ run_logged <- function(command, arguments, log_path) {
   status
 }
 
+codex_adapter_available <- function() {
+  FALSE
+}
+
 run_codex <- function(lab_root, prompt, schema, report_path, model, log_path) {
-  version <- trimws(run_checked("codex", "--version", "codex --version"))
-  model_name <- model %||% "configured-default"
-  arguments <- c(
-    "exec", "--ephemeral", "--sandbox", "read-only", "--output-schema", schema,
-    "--output-last-message", report_path
+  stop(
+    paste(
+      "the built-in Codex adapter is disabled because this prototype does not",
+      "verify a credential-free OS isolation boundary; provide an independently",
+      "isolated --agent-adapter or a pre-reviewed --report-input"
+    ),
+    call. = FALSE
   )
-  if (!is.null(model)) {
-    arguments <- c(arguments, "--model", model)
-  }
-  arguments <- c(arguments, prompt)
-  old_directory <- getwd()
-  on.exit(setwd(old_directory), add = TRUE)
-  setwd(lab_root)
-  status <- with_agent_environment(
-    file.path(dirname(log_path), "agent-gh-config"),
-    run_logged("codex", arguments, log_path)
-  )
-  if (status != 0L) {
-    stop("Codex failed; see ", log_path, call. = FALSE)
-  }
-  list(version = version, model = model_name)
 }
 
 run_external_adapter <- function(
@@ -997,6 +1224,19 @@ run_external_adapter <- function(
   }
 }
 
+allocate_attempt_directory <- function(runs_dir, sequence, slug) {
+  dir.create(runs_dir, recursive = TRUE, showWarnings = FALSE)
+  base <- sprintf("attempt-%02d-%s", sequence, slug)
+  for (suffix in 0:999) {
+    attempt_id <- if (suffix == 0L) base else sprintf("%s-%03d", base, suffix)
+    run_dir <- file.path(runs_dir, attempt_id)
+    if (dir.create(run_dir, showWarnings = FALSE)) {
+      return(list(id = attempt_id, path = run_dir))
+    }
+  }
+  stop("could not allocate a unique run directory under ", runs_dir, call. = FALSE)
+}
+
 run_once <- function(options, gh_runner = run_gh) {
   registry <- read_json(options$registry)
   validate_registry(registry)
@@ -1008,6 +1248,12 @@ run_once <- function(options, gh_runner = run_gh) {
     }
     if (startsWith(campaign$publisher_login, "SET_")) {
       stop("configure campaign.publisher_login before publishing", call. = FALSE)
+    }
+    if (is.null(options$report_input)) {
+      stop(
+        "--publish requires a pre-reviewed --report-input",
+        call. = FALSE
+      )
     }
   }
 
@@ -1028,38 +1274,45 @@ run_once <- function(options, gh_runner = run_gh) {
   target <- targets[[target_index + 1L]]
   repository <- target$repository
   package_state <- state$packages[[repository]] %||% list(attempts = 0L)
-  sha <- options$observed_sha %||% resolve_sha(repository, target$branch)
-  if (!grepl(SHA_PATTERN, sha)) {
-    stop("--observed-sha must contain 40 lowercase hexadecimal characters")
-  }
-
   sequence <- state$completed_runs + 1L
   slug <- gsub("/", "--", repository, fixed = TRUE)
-  run_id <- sprintf("run-%02d-%s-%s", sequence, slug, substr(sha, 1L, 8L))
-  dir.create(options$runs_dir, recursive = TRUE, showWarnings = FALSE)
-  run_dir <- file.path(options$runs_dir, run_id)
-  if (!dir.create(run_dir)) {
-    stop("run directory already exists: ", run_dir, call. = FALSE)
-  }
   run_record <- list(
-    run_id = run_id,
     sequence = sequence,
     started_at = utc_now(),
     repository = repository,
     branch = target$branch,
-    commit_sha = sha,
     scheduled_identity = campaign$publisher_login,
     process_owner = campaign$process_owner
   )
-
+  run_dir <- NULL
   exit_status <- 0L
   package_state$attempts <- package_state$attempts + 1L
-  package_state$last_seen_sha <- sha
   tryCatch(
     {
-      published_sha <- package_state$last_published_sha
+      attempt <- allocate_attempt_directory(options$runs_dir, sequence, slug)
+      run_dir <- attempt$path
+      run_record$attempt_id <- attempt$id
+
+      sha_resolver <- options$sha_resolver %||% resolve_sha
+      sha <- options$observed_sha %||%
+        sha_resolver(repository, target$branch)
+      if (!is.character(sha) || length(sha) != 1L ||
+        !grepl(SHA_PATTERN, sha)) {
+        stop(
+          "--observed-sha must contain 40 lowercase hexadecimal characters",
+          call. = FALSE
+        )
+      }
+      run_id <- sprintf(
+        "run-%02d-%s-%s", sequence, slug, substr(sha, 1L, 8L)
+      )
+      run_record$run_id <- run_id
+      run_record$commit_sha <- sha
+      package_state$last_seen_sha <- sha
+
+      reconciled_sha <- package_state$last_reconciled_sha
       if (identical(package_state$last_completed_sha, sha) &&
-        (!isTRUE(options$publish) || identical(published_sha, sha))) {
+        (!isTRUE(options$publish) || identical(reconciled_sha, sha))) {
         run_record$status <- "no-change"
         package_state$last_status <- "no-change"
         message(repository, ": unchanged at ", sha, "; full review skipped")
@@ -1071,31 +1324,29 @@ run_once <- function(options, gh_runner = run_gh) {
           prepare_checkout(repository, sha, file.path(run_dir, "source"))
         }
         if (use_local_target && isTRUE(options$publish)) {
-          actual_head <- trimws(paste(
-            suppressWarnings(system2(
-              "git",
-              c("-C", checkout, "rev-parse", "HEAD"),
-              stdout = TRUE, stderr = FALSE
-            )),
-            collapse = ""
-          ))
-          if (!identical(actual_head, sha)) {
-            stop(
-              sprintf(
-                paste0(
-                  "local target HEAD %s does not match --observed-sha %s; ",
-                  "refusing to publish from an unverified checkout"
-                ),
-                actual_head, sha
-              ),
-              call. = FALSE
-            )
-          }
+          tryCatch(
+            verify_checkout_at_commit(checkout, sha),
+            error = function(error) {
+              stop(
+                "local target is not a clean checkout at the observed SHA: ",
+                conditionMessage(error),
+                call. = FALSE
+              )
+            }
+          )
         }
         source_path <- file.path(checkout, target$source_directory)
         if (!dir.exists(source_path)) {
           stop("source directory does not exist: ", source_path, call. = FALSE)
         }
+        source_scan <- scan_source_directory(source_path)
+        scanner_path <- file.path(run_dir, "scanner.json")
+        write_json_atomic(scanner_path, list(
+          files = unname(as.list(source_scan$files)),
+          candidates = source_scan$candidates,
+          parse_errors = unname(as.list(source_scan$parse_errors))
+        ))
+        run_record$scanner_evidence <- scanner_path
 
         report_path <- file.path(run_dir, "report.json")
         log_path <- file.path(run_dir, "agent.log")
@@ -1105,38 +1356,30 @@ run_once <- function(options, gh_runner = run_gh) {
           }
         } else {
           if (is.null(options$agent_adapter)) {
-            agent_product <- "Codex CLI"
-            agent_version <- trimws(run_checked(
-              "codex", "--version", "codex --version"
-            ))
-            agent_model <- options$model %||% "configured-default"
-          } else {
-            agent_product <- basename(options$agent_adapter)
-            agent_version <- "external-adapter"
-            agent_model <- "adapter-configured"
-          }
-          prompt <- build_prompt(
-            run_id,
-            target,
-            sha,
-            checkout,
-            options$schema,
-            agent_product,
-            agent_version,
-            agent_model
-          )
-          prompt_path <- file.path(run_dir, "prompt.md")
-          writeLines(prompt, prompt_path, useBytes = TRUE)
-          if (is.null(options$agent_adapter)) {
             run_codex(
               options$lab_root,
-              prompt,
+              "",
               options$schema,
               report_path,
               options$model,
               log_path
             )
           } else {
+            agent_product <- basename(options$agent_adapter)
+            agent_version <- "external-adapter"
+            agent_model <- "adapter-configured"
+            prompt <- build_prompt(
+              run_id,
+              target,
+              sha,
+              checkout,
+              options$schema,
+              agent_product,
+              agent_version,
+              agent_model
+            )
+            prompt_path <- file.path(run_dir, "prompt.md")
+            writeLines(prompt, prompt_path, useBytes = TRUE)
             run_external_adapter(
               options$agent_adapter,
               options$lab_root,
@@ -1149,16 +1392,15 @@ run_once <- function(options, gh_runner = run_gh) {
         }
 
         report <- read_json(report_path)
-        source_inventory <- sort(list.files(
-          source_path, pattern = "\\.[rR]$", recursive = TRUE
-        ))
         errors <- validate_report(
           report,
           expected_repository = repository,
           expected_sha = sha,
           expected_branch = target$branch,
           expected_run_id = run_id,
-          expected_files = source_inventory
+          expected_files = source_scan$files,
+          expected_scan = source_scan,
+          source_root = source_path
         )
         if (length(errors) > 0L) {
           stop("invalid report: ", paste(errors, collapse = "; "), call. = FALSE)
@@ -1185,10 +1427,9 @@ run_once <- function(options, gh_runner = run_gh) {
           package_state$last_status <- "completed"
           if (isTRUE(options$publish) &&
             publication$action %in% c(
-              "created", "updated", "commented", "closed",
-              "commented-incomplete", "commented-addressed"
+              "created", "updated", "commented", "closed", "no-issue-needed"
             )) {
-            package_state$last_published_sha <- sha
+            package_state$last_reconciled_sha <- sha
           }
         }
         cat(jsonlite::toJSON(publication, auto_unbox = TRUE, pretty = TRUE), "\n")
@@ -1205,7 +1446,9 @@ run_once <- function(options, gh_runner = run_gh) {
   )
 
   run_record$finished_at <- utc_now()
-  write_json_atomic(file.path(run_dir, "run.json"), run_record)
+  if (!is.null(run_dir) && dir.exists(run_dir)) {
+    write_json_atomic(file.path(run_dir, "run.json"), run_record)
+  }
   state$packages[[repository]] <- package_state
   state$completed_runs <- state$completed_runs + 1L
   state$next_target_index <- (target_index + 1L) %% length(targets)
@@ -1229,7 +1472,9 @@ parse_named_options <- function(arguments, defaults) {
     "--repository" = "repository",
     "--commit-sha" = "commit_sha",
     "--branch" = "branch",
-    "--run-id" = "run_id"
+    "--run-id" = "run_id",
+    "--source-directory" = "source_directory",
+    "--scheduled-identity" = "scheduled_identity"
   )
   options <- defaults
   index <- 1L
@@ -1263,7 +1508,9 @@ rotation_main <- function(arguments, lab_root) {
     local_target = NULL,
     publish = FALSE,
     lock = file.path(lab_root, "var", "rotation.lock"),
-    lab_root = lab_root
+    lab_root = lab_root,
+    source_directory = NULL,
+    scheduled_identity = NULL
   ))
   with_exclusive_lock(options$lock, run_once(options))
 }
@@ -1296,7 +1543,9 @@ validate_report_main <- function(arguments) {
       repository = NULL,
       commit_sha = NULL,
       branch = NULL,
-      run_id = NULL
+      run_id = NULL,
+      source_directory = NULL,
+      scheduled_identity = NULL
     )
   )
   errors <- validate_report(
@@ -1315,20 +1564,71 @@ validate_report_main <- function(arguments) {
 }
 
 publish_issue_main <- function(arguments) {
-  if (length(arguments) < 3L || arguments[[2]] != "--scheduled-identity") {
+  if (length(arguments) < 1L) {
     stop(
-      "usage: publish-issue.R REPORT --scheduled-identity LOGIN [--publish]",
+      paste(
+        "usage: publish-issue.R REPORT --scheduled-identity LOGIN",
+        "[--source-directory SOURCE_DIRECTORY] [--publish]"
+      ),
       call. = FALSE
     )
   }
   report <- read_json(arguments[[1]])
-  errors <- validate_report(report)
+  options <- parse_named_options(
+    arguments[-1L],
+    list(
+      registry = NULL,
+      state = NULL,
+      runs_dir = NULL,
+      schema = NULL,
+      model = NULL,
+      agent_adapter = NULL,
+      report_input = NULL,
+      observed_sha = NULL,
+      local_target = NULL,
+      publish = FALSE,
+      lock = NULL,
+      repository = NULL,
+      commit_sha = NULL,
+      branch = NULL,
+      run_id = NULL,
+      source_directory = NULL,
+      scheduled_identity = NULL
+    )
+  )
+  if (!is_nonempty_string(options$scheduled_identity)) {
+    stop("--scheduled-identity is required", call. = FALSE)
+  }
+  source_scan <- NULL
+  source_root <- NULL
+  if (!is.null(options$source_directory)) {
+    source_root <- normalizePath(options$source_directory, mustWork = TRUE)
+    source_scan <- scan_source_directory(source_root)
+  }
+  if (isTRUE(options$publish)) {
+    if (is.null(source_root)) {
+      stop(
+        "--publish requires --source-directory for pinned source validation",
+        call. = FALSE
+      )
+    }
+    verify_checkout_at_commit(source_root, report$commit_sha)
+  }
+  errors <- validate_report(
+    report,
+    expected_files = if (is.null(source_scan)) NULL else source_scan$files,
+    expected_scan = source_scan,
+    source_root = source_root
+  )
   if (length(errors) > 0L) {
     message(paste("ERROR:", errors))
     return(1L)
   }
-  execute <- "--publish" %in% arguments
-  result <- publish_report(report, arguments[[3]], execute)
+  result <- publish_report(
+    report,
+    options$scheduled_identity,
+    isTRUE(options$publish)
+  )
   cat(jsonlite::toJSON(result, auto_unbox = TRUE, pretty = TRUE), "\n")
   0L
 }

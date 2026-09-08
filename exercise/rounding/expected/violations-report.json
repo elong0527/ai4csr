@@ -28,6 +28,26 @@
     "files": ["report.R"],
     "exclusions": [],
     "catalog_candidates": 2,
+    "catalog": [
+      {
+        "candidate_id": "report.R:2:3:14",
+        "file": "report.R",
+        "line": 2,
+        "column": 3,
+        "token_id": 14,
+        "function": "round",
+        "expression": "round(percentage, digits = 1L)"
+      },
+      {
+        "candidate_id": "report.R:6:3:60",
+        "file": "report.R",
+        "line": 6,
+        "column": 3,
+        "token_id": 60,
+        "function": "formatC",
+        "expression": "formatC(percentage, format = \"f\", digits = 1L)"
+      }
+    ],
     "exploratory_candidates": 0,
     "parse_errors": []
   },
