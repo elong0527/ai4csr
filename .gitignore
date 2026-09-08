@@ -10,6 +10,9 @@
 .DS_Store
 pdf/
 
+# Mutable state and caches from the rounding workflow lab
+/exercise/rounding/var/
+
 # Fetched locally by the reader, not redistributed
 exercise/day1/*.pdf
 

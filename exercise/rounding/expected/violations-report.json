@@ -1,0 +1,76 @@
+{
+  "run_id": "run-01-ai4csr--rounding-violations-fixture-aaaaaaaa",
+  "repository": "ai4csr/rounding-violations-fixture",
+  "branch": "main",
+  "commit_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "rule": {
+    "id": "BR-001",
+    "version": "1.0",
+    "comparison": "cards::round5",
+    "comparison_version": "0.9.0"
+  },
+  "skill": {
+    "name": "rounding-rule-review",
+    "version": "1.0.0"
+  },
+  "agent": {
+    "product": "fixture",
+    "version": "1.0",
+    "model": "deterministic-answer-key"
+  },
+  "execution": {
+    "started_at": "2026-09-06T12:00:00Z",
+    "r_version": "R 4.6.1",
+    "platform": "synthetic"
+  },
+  "coverage": {
+    "files_examined": 1,
+    "files": ["report.R"],
+    "exclusions": [],
+    "catalog_candidates": 2,
+    "exploratory_candidates": 0,
+    "parse_errors": []
+  },
+  "findings": [
+    {
+      "finding_id": "BR001-ROUND-FILTER",
+      "file": "report.R",
+      "line": 2,
+      "expression": "round(percentage, digits = 1L) >= threshold",
+      "affects": "row-selection",
+      "discovery_method": "catalog",
+      "required_digits": 1,
+      "probe": {
+        "function": "round",
+        "inputs": ["-2.05", "-0.01", "0.01", "2.05"],
+        "observed": ["-2.0", "-0.0", "0.0", "2.0"],
+        "approved": ["-2.1", "0.0", "0.0", "2.1"],
+        "divergence_count": 3,
+        "negative_zero": true
+      },
+      "summary": "Base R rounding diverges from BR-001 before row selection.",
+      "status": "verified"
+    },
+    {
+      "finding_id": "BR001-FORMATC-DISPLAY",
+      "file": "report.R",
+      "line": 6,
+      "expression": "formatC(percentage, format = \"f\", digits = 1L)",
+      "affects": "display",
+      "discovery_method": "catalog",
+      "required_digits": 1,
+      "probe": {
+        "function": "formatC",
+        "inputs": ["-2.05", "-0.01", "0.01", "2.05"],
+        "observed": ["-2.0", "-0.0", "0.0", "2.0"],
+        "approved": ["-2.1", "0.0", "0.0", "2.1"],
+        "divergence_count": 3,
+        "negative_zero": true
+      },
+      "summary": "Numeric formatting diverges from BR-001 for tested ties.",
+      "status": "verified"
+    }
+  ],
+  "unresolved_candidates": [],
+  "unchecked_rules": ["BR-002", "BR-003"]
+}

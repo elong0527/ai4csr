@@ -9,6 +9,7 @@ Description: Source files and examples for the AI for Clinical Study
     Workflows book.
 Encoding: UTF-8
 Imports:
+    jsonlite,
     knitr,
     reticulate,
     rmarkdown

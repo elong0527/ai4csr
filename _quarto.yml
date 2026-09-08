@@ -5,6 +5,7 @@ project:
     - CNAME
     - slides/
     - diagrams/
+    - exercise/rounding/
 
 book:
   title: "AI-First Workflows for Clinical Study Reporting"
@@ -47,6 +48,7 @@ book:
       chapters:
         - 06-workflow-rounding.qmd
         - 07-workflow-rounding-skill.qmd
+        - 08-workflow-rounding-lab.qmd
 
 bibliography: references.bib
 
