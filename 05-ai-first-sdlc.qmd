@@ -297,6 +297,18 @@ Design, and a monitoring signal can return to Plan. The headings provide a
 shared reasoning structure, not a claim that development proceeds in a straight
 line.
 
+## Reusable forms and workshop materials
+
+The repository distributes editable forms for all six artifacts under
+[`templates/`](https://github.com/elong0527/ai4csr/tree/main/templates):
+the workflow brief, task contract, prototype manifest, benchmark report,
+release record, and monitoring report. Participant worksheets and completed
+facilitator examples for the study-design, rounding, and SAP scenarios live
+under
+[`workshop/`](https://github.com/elong0527/ai4csr/tree/main/workshop),
+scored with the shared assessment rubric. Use the forms rather than copying
+their contents into chapters.
+
 ## Summary
 
 The AI-first SDLC organizes development around six questions and six committed
