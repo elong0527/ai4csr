@@ -46,6 +46,7 @@ book:
         - 05-ai-first-sdlc.qmd
     - part: "Applied examples"
       chapters:
+        - study-design.qmd
         - 06-workflow-rounding.qmd
         - 07-workflow-rounding-skill.qmd
         - 08-workflow-rounding-lab.qmd

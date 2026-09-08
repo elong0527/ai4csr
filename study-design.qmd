@@ -1,0 +1,208 @@
+# Bounding study design before building it {#sec-workflow-study-design}
+
+::: {.callout-note title="Maturity: Design pattern"}
+This chapter specifies a bounded workflow and its planned evidence. The
+skill it uses is production-ready elsewhere; the workflow around it is a
+design with explicit assumptions and gaps, not a benchmarked prototype.
+:::
+
+- **Problem:** A request to "design the study" is too broad to execute,
+  evaluate, or govern. The chapter turns it into a testable workflow.
+- **Learning objective:** Take an unbounded design assignment, expose what
+  is unspecified, and reframe it as design parameter -> analytical
+  approximation -> simulation confirmation -> design report.
+- **Workflow boundary:** Begin when a statistician receives a design
+  request with a named indication and phase; end when the accountable
+  statistician accepts or rejects the design report.
+- **Non-goals:** Teach group-sequential theory, validate a design method,
+  replace statistical judgment, or run a simulation.
+- **Why this is not yet a workflow:** "Design the study" names no event,
+  artifacts, success measures, or decision rights. Until those are fixed,
+  no agent run can be repeated, checked, or trusted.
+- **Maturity:** Design pattern.
+
+An **AI-first workflow** here means the bounded design-preparation process
+defined in @sec-ai-first-workflow; the **task contract** and lifecycle
+below follow @sec-intro-ai-agent and @sec-ai-first-sdlc.
+
+## The unbounded request
+
+Imagine you are the lead statistician for a Phase 3 program. The clinical
+team asks:
+
+> Design the study for our new first-line therapy.
+
+The request is familiar and genuinely useful for discovery: it starts a
+conversation. As a workflow, it is unbounded. Nothing states the endpoint,
+the hypotheses, the number of analyses, how the Type I error is controlled,
+which assumptions need a human signature, or what a finished design report
+contains. An agent given this request must guess every one of those
+answers, and a second run will guess differently.
+
+The missing items are decisions, not details. Each one changes the design:
+
+- **Endpoint and population.** Overall survival, progression-free survival,
+  or something else? Which patients count?
+- **Fixed or adaptive structure.** Is the set of hypotheses and analyses
+  pre-planned, or may interim data change the population, sample size, or
+  hypotheses?
+- **Error control.** How is the family-wise Type I error spent across
+  analyses, and who approves the spending?
+- **Confirmation.** What simulation must confirm the analytical design
+  before anyone acts on it?
+
+## Narrowing with a scope check
+
+The reframed workflow borrows its scope check from a production-ready
+agent skill,
+[`group-sequential-design`](https://github.com/RConsortium/pharma-skills/tree/main/group-sequential-design)
+(RConsortium/pharma-skills, commit `544aa08`). The skill designs standard
+group-sequential trials for survival endpoints with a fixed set of
+hypotheses, pre-planned analyses, and pre-specified alpha spending. It
+refuses adaptive enrichment, sample-size re-estimation, dose selection,
+platform protocols, non-survival primary endpoints, and adaptive
+randomization, and it says exactly which framework fits instead.
+
+This chapter does not teach the skill's internals. It uses the skill as the
+Build component inside a workflow that prepares real work: the workflow
+asks the scoping questions, records the answers as accepted artifacts, and
+requires confirmation before the design report is approved. The skill
+computes; the workflow governs.
+
+## The bounded question
+
+The owner-accepted narrow question for this chapter is synthetic:
+
+> Prepare a group-sequential design for a two-arm Phase 3 trial with a
+> progression-free survival primary endpoint, one interim and one final
+> analysis, a fixed hypothesis set, and pre-specified alpha spending.
+
+| Element | Accepted assumption |
+|---|---|
+| Endpoint and population | PFS in the intention-to-treat population |
+| Hypotheses | One fixed superiority hypothesis, two-sided alpha 0.05 |
+| Analyses | One interim plus final, event-driven timing |
+| Spending | Pre-specified Lan-DeMets spending approximating O'Brien-Fleming bounds |
+| Target effect | Hazard ratio 0.70; 90% power |
+| Confirmation | Simulation of the boundaries before approval (planned, not executed) |
+
+These assumptions are illustrative teaching inputs accepted for this
+chapter, not a real protocol. A real design replaces every row with
+sourced, signed values.
+
+One hand-worked illustration shows what the analytical approximation
+produces. The Schoenfeld approximation for the required events is
+$d = 4(z_{1-\alpha/2} + z_{1-\beta})^2 / (\log \mathrm{HR})^2$.
+With the assumptions above, $d \approx 331$ events. This number is
+illustrative, not evidence: it was computed from the stated assumptions to
+show the approximation step, and no simulation has confirmed it.
+
+## Plan --- Frame the workflow
+
+The Plan stage asks whether the narrowed question is worth developing and
+bounded enough to govern. It is: the beginning (a design request with
+indication and phase), the end (an accepted or rejected design report),
+and the decision maker (the accountable statistician) are all named.
+
+### Canonical artifact: Workflow brief
+
+The brief records the unbounded starting request, the scoped question, the
+non-goals above, the success measures (a design report whose assumptions
+are sourced, whose analysis was confirmed by simulation, and whose gaps
+are explicit), and the assumption owners. Planning ends when the workflow
+owner accepts the brief. The brief for this scenario is worked in the
+accompanying
+[participant worksheet](https://github.com/elong0527/ai4csr/tree/main/workshop/participant/study-design-set.md).
+
+## Design --- Specify the workflow
+
+The Design stage converts the brief into an executable specification that
+separates three kinds of work: deterministic computation (boundary
+calculation, event prediction), agent interpretation (collecting inputs,
+assembling the report), and accountable statistical decisions (endpoint,
+spending, assumptions, approval).
+
+### Canonical artifact: Task contract
+
+The contract names the trigger (accepted brief), the stopping conditions
+(an out-of-scope pattern, an unsupported assumption, a missing input), the
+tool boundary (the skill plus R computation; no protocol amendments, no
+regulatory submission), the evidence requirements (sourced assumptions,
+computed boundaries, simulation confirmation), and the benchmark cases
+with acceptance thresholds agreed before results. Design ends when the
+responsible roles agree on what will be prepared and how it will be
+evaluated.
+
+## Build --- Prototype the workflow
+
+At Design-pattern maturity there is no executed prototype. The Build
+artifact is a prototype plan: invoke the group-sequential skill for the
+accepted inputs, run its verification simulation, and generate the design
+report from its template. The skill's pacing (one artifact per turn),
+input confirmation, and verification procedure become build requirements
+rather than observed behavior. The explicit gap is that none of this has
+been executed for the synthetic question.
+
+### Canonical artifact: Prototype (planned)
+
+A prototype manifest pointing at skill outputs, the verification log, and
+the generated report. Status: planned.
+
+## Test --- Benchmark and evaluate
+
+The benchmark is defined before results exist. Targets and tolerances: the
+computed boundaries reproduce the skill's reference values within rounding;
+the verification simulation meets its pass criteria; an out-of-scope
+request (for example, adding sample-size re-estimation at interim) is
+refused with the skill's redirect; an unsupported assumption stops the
+workflow for human input. The illustrative 331-event figure above is a
+target input to confirmation, not a result. No benchmark has been run.
+
+### Canonical artifact: Benchmark report (planned)
+
+Dataset, cases, thresholds, and the empty results table. Status: planned.
+
+## Deploy --- Operationalize the workflow
+
+Deployment is a proposal: an advisory pilot in which a statistician runs
+the specified workflow for a real design question and decides every
+action. No schedule, installation, or access boundary is committed.
+
+### Canonical artifact: Release record
+
+Status: proposed; no operating history exists.
+
+## Maintain --- Monitor and improve
+
+Monitoring is a proposal: track assumption changes, skill-version drift,
+and overridden dispositions across design runs. A changed assumption or
+skill version returns the lifecycle to Plan with a new brief.
+
+### Canonical artifact: Monitoring report
+
+Status: proposed; no operating history exists.
+
+## Workshop activity: frame one design (40 minutes)
+
+Work in pairs with a browser agent or the prepared packet. The facilitator
+gives the broad request ("design the study") plus the partially completed
+brief from the
+[study-design worksheet](https://github.com/elong0527/ai4csr/tree/main/workshop/participant/study-design-set.md).
+
+1. **Expose (10 min).** List everything the request leaves unspecified.
+2. **Narrow (15 min).** Complete the brief for the synthetic PFS question;
+   record one assumption that requires a human decision.
+3. **Contract (10 min).** Name one condition that stops or narrows the
+   workflow and who decides.
+4. **Debrief (5 min).** Compare with the
+   [facilitator example](https://github.com/elong0527/ai4csr/tree/main/workshop/facilitator/study-design-set.md).
+   Success is a bounded brief with an explicit gap list, not a finished
+   design.
+
+## Summary
+
+A broad design ambition becomes a workflow when its boundary, artifacts,
+evidence, and decision rights are written down. The production-ready skill
+supplies the computation; this chapter supplies the governance around it.
+The rounding chapters next show the same lifecycle with an executed
+prototype.
