@@ -28,7 +28,7 @@ purpose, maturity, and prerequisites up front.
   setup is required on this route.
 - **Technical route (optional).** If you want to run the materials yourself,
   the [day-one exercise](https://github.com/elong0527/ai4csr/tree/main/exercise/day1)
-  and the rounding prototype described in Chapters 5--7 give you synthetic
+  and the rounding prototype described in Chapters 6--8 give you synthetic
   data, scripts, and expected results. Contributor setup is documented in the
   repository README.
 - **Facilitator route.** Shared worksheets, completed examples, and assessment
