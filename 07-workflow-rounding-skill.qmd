@@ -145,16 +145,17 @@ documentation](https://learn.chatgpt.com/docs/build-skills) states that a skill
 can be one directory containing `SKILL.md`. Its frontmatter contains `name` and
 `description`; scripts, references, and assets are optional.
 
-This example deliberately chooses the smallest structure:
+This example deliberately chooses the smallest visible structure:
 
 ```text
-rounding-rule-review/
+rounding/
   SKILL.md
 ```
 
 The task contract defines what the one file must make visible. Supporting
 resources remain possible future increments, but the initial lab does not need
-them.
+them. The book keeps the artifact at `rounding/SKILL.md` so readers can find it
+without navigating a hidden installation directory.
 
 ### Canonical artifact: Task contract
 
@@ -196,11 +197,11 @@ initiates Build.
 ## Build --- Prototype the workflow
 
 The prototype is the one-file skill at
-[`exercise/rounding/.agents/skills/rounding-rule-review/SKILL.md`](exercise/rounding/.agents/skills/rounding-rule-review/SKILL.md).
+[`rounding/SKILL.md`](rounding/SKILL.md).
 The complete package contains no supporting files:
 
 ```text
-rounding-rule-review/
+rounding/
   SKILL.md
 ```
 
@@ -460,10 +461,11 @@ repository-scoped advisory review. The skill may read the named source, run
 small isolated probes, and write a draft report. It receives no permission to
 modify source or communicate externally.
 
-For Codex, place the `rounding-rule-review` directory under
-`.agents/skills/` in the working directory or repository where it should be
-available. The lab already uses that layout. Invoke the skill explicitly during
-initial evaluation so selection behavior does not obscure task behavior.
+The lab references `rounding/SKILL.md` directly. This keeps the source artifact
+easy to find but does not make it an auto-discovered repository skill. For a
+later Codex installation, copy the `rounding` directory under `.agents/skills/`
+in the working directory or repository where it should be available. The
+installed path becomes `.agents/skills/rounding/SKILL.md`.
 
 [Issue #249](https://github.com/Merck/metalite.ae/issues/249) was posted manually
 from an exploratory response outside this workflow. It is not a Deploy artifact
@@ -473,7 +475,7 @@ or evidence that the skill was released or that BR-001 governs
 ### Canonical artifact: Release record
 
 - **Status:** Not released; design-pattern evaluation only.
-- **Candidate:** The one-file `rounding-rule-review` skill.
+- **Candidate:** The one-file `rounding` skill.
 - **Release model:** Manual and advisory; a reviewer requests one run.
 - **Scope:** One bounded R source set and BR-001 version 1.0.
 - **Permissions:** Read source, run isolated local probes, and draft Markdown;

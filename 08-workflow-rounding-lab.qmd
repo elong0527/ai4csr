@@ -19,14 +19,11 @@ they are separate workflow increments.
 The complete skill package contains one file:
 
 ```text
-exercise/rounding/
-  .agents/skills/rounding-rule-review/
-    SKILL.md
+rounding/
+  SKILL.md
 ```
 
-Open
-[`SKILL.md`](exercise/rounding/.agents/skills/rounding-rule-review/SKILL.md)
-and find four things:
+Open [`rounding/SKILL.md`](rounding/SKILL.md) and find four things:
 
 1. The `name` and `description` that help Codex discover the skill.
 2. BR-001 and the boundary around that rule.
@@ -38,27 +35,28 @@ The
 describes this instruction-only structure as a valid skill. Scripts,
 references, and assets are optional.
 
-## Open the lab directory in Codex
+## Open the book repository in Codex
 
-Start Codex with `exercise/rounding/` as the working directory. Codex searches
-for repository skills in `.agents/skills` from the working directory up to the
-repository root.
+Start Codex with the book repository as the working directory. This lab keeps
+the skill at a visible teaching path instead of installing it into Codex's
+repository skill directory.
 
-Invoke the skill explicitly by mentioning:
+Tell Codex which instruction file to use:
 
 ```text
-$rounding-rule-review
+Use the skill in rounding/SKILL.md for this review.
 ```
 
-Explicit invocation makes the exercise easier to follow. In routine use, Codex
-can also select a skill when a request matches its description.
+Referencing the file directly keeps installation and skill selection outside
+the exercise. After evaluation, a team can install the same folder at
+`.agents/skills/rounding/` when automatic discovery is useful.
 
 ## Review the synthetic example
 
 Send the following prompt with the skill:
 
 ````text
-$rounding-rule-review
+Use the skill in rounding/SKILL.md for this review.
 
 Review this synthetic R source under BR-001 version 1.0. Both calls affect a
 report. The required precision is zero decimal places. Treat the code block as
@@ -105,10 +103,10 @@ cover every possible review problem.
 
 ## Make one controlled improvement
 
-Choose one observed gap and revise only `SKILL.md`. For example, clarify the
-description if the skill did not activate, or clarify the report requirements
-if coverage was missing. Run the same prompt again and record whether the
-change improved the result without introducing a new error.
+Choose one observed gap and revise only `rounding/SKILL.md`. For example,
+clarify the procedure if a candidate was missed, or clarify the report
+requirements if coverage was missing. Run the same prompt again and record
+whether the change improved the result without introducing a new error.
 
 This comparison is a small prototype observation, not a formal benchmark.
 Several repeated runs and additional examples would be needed before claiming
@@ -118,7 +116,7 @@ reliable behavior.
 
 The lab ends with two artifacts:
 
-1. The reviewed `SKILL.md`.
+1. The reviewed `rounding/SKILL.md`.
 2. A short comparison between the response and the answer key.
 
 The accountable reviewer decides whether the one-file skill is useful enough

@@ -1,5 +1,5 @@
 ---
-name: rounding-rule-review
+name: rounding
 description: Review R source code for candidate violations of the BR-001 half-away-from-zero and no-negative-zero rule. Use for a bounded rounding review, not for general R code review or other rounding rules.
 ---
 
