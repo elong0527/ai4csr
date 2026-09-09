@@ -95,9 +95,11 @@ date (200 = reachable); page wording was confirmed only where noted.
 ### SRC-003: KEYNOTE-189 public protocol as teaching context
 
 - Location: `04-ai-agent.qmd`, assignment table and exercise prompt.
-- Claim: the public KEYNOTE-189 protocol supplies the example population
-  and age requirements used with the synthetic CSV.
-- Type: external fact.
+- Claim: the ClinicalTrials.gov record for KEYNOTE-189 records a minimum age
+  of 18 years. The public protocol PDF is the reader-facing teaching context
+  used with the synthetic CSV.
+- Type: external fact (minimum age) and teaching assumption (use of the PDF
+  as context).
 - Source and locator: ClinicalTrials.gov API study record,
   `https://clinicaltrials.gov/api/v2/studies/NCT02578680`,
   `protocolSection.eligibilityModule.minimumAge` = `18 Years`, inspected
