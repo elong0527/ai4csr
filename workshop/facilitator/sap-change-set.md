@@ -1,14 +1,16 @@
 # SAP change review: facilitator answers
 
-> Facilitator-only. This answer set applies to the synthetic teaching
-> prototype in `examples/sap-change/`. The extracts contain no real
-> participant records. The prototype teaches traceability and review
-> boundaries; it does not support a conclusion about an actual study.
+> Facilitator-only. This answer set applies to the teaching prototype
+> in `examples/sap-change/`, built on de-identified public Pilot 1
+> extracts. The extracts carry real record structure from the public
+> data and remain teaching context only. The prototype teaches
+> traceability and review boundaries; it does not support a conclusion
+> about an actual study.
 
 ## 1. Change and potential impact
 
-The constructed v1.1 requirement narrows the Week 24 upper window from
-Day 196 to Day 182. The potential effect is selection of ADADAS records
+The constructed v1.1 requirement caps the previously unbounded Week 24
+upper window (v1.0 `WindowUpper: none`) at Day 182. The potential effect is selection of ADADAS records
 for the Week 24 analysis and therefore Table 14-3.01 rows; it does not
 change the ADSL disposition extract.
 
