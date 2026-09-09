@@ -97,7 +97,7 @@ The control is to pin every input and refuse mismatched stamps.
 for a v1.1 claim without interpretation, and its release record pins
 the tested combination (code version, SAP excerpt versions, extracts
 by sha256, R version, benchmark result). The rounding chapters pin
-The rounding chapters pin their external reference to a commit SHA
+their external reference to a commit SHA
 rather than a branch, following the deploy rule: install an immutable
 version that matches the accepted benchmark, and do not test one
 commit while deploying a moving `main` branch. A reader applying the
