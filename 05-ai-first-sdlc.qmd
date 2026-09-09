@@ -239,8 +239,34 @@ The release record identifies:
 - access permissions and human approval gates;
 - installation, configuration, and verification results;
 - monitoring measures and control bands;
-- support ownership, escalation contacts, and recovery procedure; and
-- the person authorizing the release and the release decision.
+- support ownership, escalation contacts, and recovery procedure;
+- the person authorizing the release and the release decision; and
+- the deployment context and the data boundary: which artifacts may leave
+  the company boundary, under which agreement, and what never leaves.
+
+### Where the data may go
+
+Clinical artifacts can carry patient-level data, so the first deployment
+question is not which model to use but where data is allowed to travel. Three
+options cover most Biometrics settings:
+
+- On-premises or virtual-private-cloud execution: data stays inside the
+  company boundary. This is the default when artifacts contain
+  patient-level records.
+- Software-as-a-service agents: artifact content leaves the building. Use
+  this option only for de-identified or synthetic inputs, under an
+  agreement the security team has reviewed.
+- Mixed routing: planning and review happen outside while execution on
+  data happens inside. The release record states exactly which artifacts
+  cross the boundary in each direction.
+
+Two rules hold regardless of option. First, de-identification happens before
+an artifact leaves the building, not after it arrives; the workflow owner
+confirms what was removed and the evidence is recorded. Second, some material
+never leaves: patient-level datasets, credentials, and anything the governing
+SOP or agreement excludes. When the deployment context changes -- a new
+vendor, a new data flow, a moved boundary -- the release returns to Plan
+rather than silently continuing.
 
 Deploy ends when the authorized release is available to its intended users and
 monitoring is active. That release event initiates Maintain.
