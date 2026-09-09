@@ -1,0 +1,275 @@
+# Review one SAP change across code and results {#sec-workflow-sap-change}
+
+A statistical analysis plan (SAP) changes; the analysis code does not
+follow, or the results presented to reviewers mix an old SAP with new
+code. This chapter builds a bounded workflow that detects one accepted
+SAP change, determines which downstream artifacts it affects, gathers
+traceable evidence, and presents findings for an accountable human
+decision.
+
+The learning objective is to run all six stages of the AI-first software
+development lifecycle (SDLC) on a change-review workflow: frame the
+workflow, specify it, prototype it, benchmark it, release it, and monitor
+it. Each stage produces one canonical artifact, and each artifact names
+the Biometrics decision, the engineering contribution, and the human gate
+that accepted it. (@sec-ai-first-sdlc defines the lifecycle once; this
+chapter applies it without redefining it.)
+
+::: {.callout-important title="Teaching context, not study evidence"}
+The extracts in `examples/sap-change/` derive from the public Pilot 1
+development repository (RConsortium/submissions-pilot1). They are teaching
+context only and cannot support a conclusion about the actual CDISCPILOT01
+study. The v1.1 amendment is constructed for this example: it is not part
+of the real SAP and must never be presented as a real protocol change.
+:::
+
+## Problem, boundary, and maturity
+
+**Problem.** When an SAP requirement changes after results exist,
+reviewers must answer three questions: what changed, what was checked,
+and what was decided. Without explicit state, every agent run re-argues
+the same change, stale outputs get interpreted as current, and ambiguity
+gets silently resolved by whoever --- or whatever --- runs first.
+
+**Boundary.** The workflow begins with one accepted requirement change
+(REQ-WIN-01, the Week 24 analysis-window rule) and ends with an
+evidence-backed impact report plus a recorded reviewer disposition. It
+covers one SAP excerpt, one R selection program, two data extracts, and
+one summary table. Non-goals: parsing a full SAP, re-deriving visit
+assignment (AVISITN is taken as given from ADaM), executing a sensitivity
+analysis (planned, not executed), and any production deployment.
+
+**Why this is a well-defined AI-first workflow.** The trigger is a
+versioned artifact change, the scope is enumerated in a change manifest,
+success has numeric thresholds stated before evaluation, and stopping
+conditions are explicit: a version-stamp mismatch ends the review as
+limited, and a missing window parameter ends it as escalated. The agent
+compares and cites; only the accountable reviewer interprets clinical
+acceptability and records the disposition.
+
+**Maturity: Reproducible prototype.** The prototype runs in base R with
+pinned extracts, versioned SAP excerpts, expected results, and benchmark
+criteria; all six benchmark cases pass and the run was independently
+reproduced (see Test below). It is not a validated production system, and
+the release and monitoring records in this chapter are proposed designs
+without operating history.
+
+This chapter currently follows the rounding lab in the Applied examples
+part. It moves after the code-review survey chapter once that chapter
+exists, as the example ordering requires.
+
+## Plan --- Frame the workflow
+
+The purpose of planning is to state what should be built and how success
+will be measured before any code is written. The inputs are the owner
+interview decisions recorded on the issue: the single traced change is a
+visit-window rule, the downstream output is a disposition and
+population-count table, and the build order is fixtures plus code plus
+benchmark first, chapter prose after. The required context is the
+principles chapter preview of change review across SAP, code, and
+results, which this chapter now carries out; @sec-principle-overview
+defines the principles once, so they are referenced here, not restated.
+
+The agent's role at this stage is to draft the brief from the interview
+record. The accountable human role is the Biometrics owner, who accepts
+the brief and its success thresholds.
+
+### Canonical artifact: Workflow brief
+
+The accepted brief states one teaching purpose --- show that an accepted
+SAP change reaches every downstream artifact exactly once, with no
+overreach and no silent guessing --- and fixes the scope: one requirement
+(REQ-WIN-01), one code program, one table, four seeded review cases
+(affected change, unaffected control, stale mismatch, ambiguous
+requirement). The business rule is that thresholds are frozen before
+evaluation: exact selection match, CSR Table 14-3.01 numbers reproduced,
+212 subjects selected after amendment with 22 excluded, disposition
+control unchanged, stale output rejected, missing window escalated. The
+approval gate is the Biometrics owner's acceptance of the brief; the risk
+carried forward is that the v1.1 amendment is constructed, so every
+downstream artifact must label it as such. The accepted brief initiates
+design.
+
+## Design --- Specify the workflow
+
+The purpose of design is to turn the brief into a task contract the agent
+cannot reinterpret: objective, inputs, scope, outputs, boundaries, and
+escalation conditions. The inputs are the accepted brief and the real SAP
+Section 8.2 rule (baseline v1.0, window after Day 140 with no upper
+bound). The agent drafts the contract; the Biometrics owner approves the
+finding states and decision rights.
+
+### Canonical artifact: Task contract
+
+The contract fixes the objective (for one accepted SAP change, produce an
+impact report in which every finding cites its evidence chain and the
+review coverage), the inputs (claimed SAP version, pinned extracts, pinned
+code), and the outputs (re-derived selection, comparison against the
+presented output, findings with status, coverage statement). The scope
+boundary is the stable identifier chain every finding must cite:
+
+```text
+SAP Section 8.2 -> AWLO/AWHI/AWTARGET -> ANL01FL -> Table 14-3.01 rows
+```
+
+Findings carry one of five states --- new, repeated, fixed,
+acknowledged, or unresolved --- and an acknowledged finding is not fixed:
+the next run must show it as repeated, not new. Disposition recording is
+append-only; recording the same disposition twice is refused. The
+escalation conditions are explicit: conflicting duplicate SAP declarations
+escalate instead of silently using the first, and an SAP excerpt without
+window parameters refuses selection with an ESCALATE message rather than
+an invented window. The stopping condition for stale artifacts is a
+version-stamp check: a v1.0-stamped selection presented for a v1.1 claim
+is rejected without interpretation. The human gate is contract approval;
+the accepted contract initiates the build.
+
+## Build --- Prototype the workflow
+
+The purpose of the build is a runnable prototype that the benchmark can
+execute without human judgment in the loop. The prototype lives in
+`examples/sap-change/` and uses base R with no extra dependencies:
+
+```text
+examples/sap-change/
+  sap/REQ-WIN-01_v1.0.md, sap/REQ-WIN-01_v1.1.md
+  data/adsl_extract.csv, data/adadas_week24_extract.csv
+  code/select_week24.R
+  outputs/selection_v1.0.csv, outputs/selection_v1.1.csv
+  outputs/summary_v1.0.csv, outputs/summary_v1.1.csv
+  change-manifest.md, expected-impacts.md, provenance.md
+  review-instructions.md, findings/findings-state.json
+  benchmark/run-benchmark.R, benchmark/record-disposition.R
+```
+
+The agent wrote the selection program and the benchmark harness; the
+engineering contribution is version stamping (every output carries
+SAP_VERSION and CODE_VERSION stamps, verified in the exact-match case)
+and fixture pinning (sha256 hashes for both extracts, recorded in
+`provenance.md`). Reproduction needs only:
+
+```sh
+Rscript code/select_week24.R --sap=sap/REQ-WIN-01_v1.1.md \
+  --data=data/adadas_week24_extract.csv \
+  --out_selection=/tmp/sel.csv --out_summary=/tmp/sum.csv
+Rscript benchmark/run-benchmark.R
+```
+
+One pinning detail shows why the hashes matter: the extracts preserve the
+character site group (SITEGR1) as quoted strings, and the R program
+coerces it to a factor. Getting this wrong moves the dose-response
+p-value from 0.245 to 0.201 --- a silent corruption that exact-number
+benchmarking catches and eyeballing does not. The accountable human
+contribution is the review-instructions file, which reserves clinical
+interpretation and the final disposition to the reviewer. The limitation
+carried forward is that the benchmark covers deterministic comparisons
+only; no model judgment was evaluated. The committed prototype plus its
+provenance record initiates testing.
+
+## Test --- Benchmark and evaluate
+
+The purpose of testing is to check the prototype against the thresholds
+frozen at planning, with expected impacts stated before evaluation in
+`expected-impacts.md`. The benchmark executes six cases and writes
+`benchmark/benchmark-report.md`:
+
+| Case | Result |
+|---|---|
+| Baseline selection matches shipped ANL01FL exactly (234 subjects) | PASS |
+| Summary matches CSR Table 14-3.01 (n 79/81/74, means 2.5/2.0/1.5, p 0.245) | PASS |
+| Affected change: 212 selected, 22 excluded, low-dose mean 2.0 to 1.9, p 0.245 to 0.215 | PASS |
+| Unaffected control: ADSL extract unchanged (254 subjects, ITT 254) | PASS |
+| Stale mismatch: v1.0-stamped selection rejected for a v1.1 claim | PASS |
+| Ambiguous requirement: windowless excerpt refuses with ESCALATE | PASS |
+
+Coverage is 6 of 6 defined cases with 0 skipped and 0 failed; the
+disposition control tests overreach directly, since a reviewer flagging
+disposition fails the benchmark. The run was independently reproduced on
+R 4.5.3 with code v2.0, confirming the reported numbers. Cost and latency
+were not measured and are labelled as such in the report. Deterministic
+data and result comparisons are separated from interpretation throughout:
+the benchmark asserts numbers and stamps, while whether the Day 182 cap
+is clinically acceptable belongs to the reviewer and appears in no
+automated verdict. The unresolved question is how the thresholds
+generalize beyond this one requirement change; the benchmark claims
+nothing beyond its six defined cases. The accepted benchmark report
+initiates deployment planning.
+
+## Deploy --- Operationalize the workflow
+
+The purpose of deployment is a release record that states exactly what
+was tested and what would carry it into use --- without implying
+production use or operating history, which do not exist. The proposed
+release pins the tested combination: code v2.0, SAP excerpts v1.0 and
+v1.1, extracts by sha256, R 4.5.3, benchmark 6 of 6 passing. The release
+record declares the operating boundary: the workflow may be re-run
+against new SAP excerpts that keep the same machine-readable parameters
+(WindowLower, WindowUpper, WindowTarget), but a requirement without those
+parameters is out of scope and must escalate. Automation triggers, if
+added later, re-derive and compare rather than re-interpret; no scheduled
+job or CI workflow is committed here. The human gate is the Biometrics
+owner's release decision, recorded with the report; the event that would
+initiate monitoring is acceptance of that record.
+
+## Maintain --- Monitor and improve
+
+The purpose of maintenance is a monitoring design that keeps approved
+state stable across runs and treats every improvement as a governed
+change. The proposed monitoring report tracks three signals: finding
+transitions across runs (a fixed finding must not reappear as new; an
+acknowledged finding must reappear as repeated), coverage of the six
+cases on every re-run (silence is not evidence that every case ran), and
+escalation counts by cause (stale stamps versus ambiguous requirements).
+The agent may propose instruction, test, or workflow updates from these
+signals, but the accountable human approves policy changes before they
+become active --- for example, widening the machine-readable parameters
+is a contract change, not a silent fix. A reviewer accepting, rejecting,
+or escalating finding F-01 records that disposition in
+`findings-state.json`, and the next run reads the recorded state instead
+of re-arguing the change. Monitoring closes the loop: new incidents,
+approved feedback, or changed requirements initiate a new planning cycle.
+
+## Try it yourself: trace one change in 45 minutes
+
+Work in pairs with no coding. One participant plays the reviewer, the
+other challenges the evidence.
+
+1. **Read the change (10 minutes).** Open `sap/REQ-WIN-01_v1.0.md` and
+   `sap/REQ-WIN-01_v1.1.md`. State in one sentence what changed and which
+   table rows it could affect.
+2. **Check the evidence chain (15 minutes).** For finding F-01 in
+   `findings/findings-state.json`, verify each link of the identifier
+   chain back to its artifact. Note anything you cannot inspect.
+3. **Challenge the review (10 minutes).** Present the v1.0-stamped
+   selection as satisfying the v1.1 claim, then present a disposition
+   concern. The reviewer must reject the first by stamp and the second as
+   overreach, citing `review-instructions.md`.
+4. **Record a disposition (10 minutes).** Use the participant worksheet in
+   `workshop/participant/sap-change-set.md` to accept, reject, or escalate
+   F-01 with reasons, and state the coverage you still require.
+
+The facilitator set in `workshop/facilitator/sap-change-set.md` holds the
+expected answers. As with every exercise in this book, prompt results and
+reviewer judgments vary between runs; that variability is the point being
+taught.
+
+## Summary
+
+One accepted SAP change, traced from requirement to table cell with
+version stamps at every step, turns change review from re-argument into
+re-execution plus an accountable decision. The lifecycle spine for this
+example is:
+
+| Stage | Canonical artifact | Accepted by |
+|---|---|---|
+| Plan | Workflow brief with frozen thresholds | Biometrics owner |
+| Design | Task contract with identifier chain and escalation | Biometrics owner |
+| Build | Runnable base-R prototype with provenance | Reviewer instructions |
+| Test | Benchmark report, 6 of 6 cases passing | Independent reproduction |
+| Deploy | Proposed release record, no production claim | Biometrics release decision |
+| Maintain | Proposed monitoring report with governed change | Accountable reviewer |
+
+The open question --- whether these thresholds generalize to the next
+requirement change --- is exactly what the monitoring design watches.
+Until that evidence exists, the example stays at Reproducible prototype:
+runnable, pinned, benchmarked, and honest about its limits.

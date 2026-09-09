@@ -1,6 +1,6 @@
 # Benchmark report: SAP change review (Pilot 1 prototype)
 
-Rendered: 2026-09-09 04:15 UTC
+Rendered: 2026-09-09 04:54 UTC
 Code version: v2.0 | R version: 4.5.3
 
 Thresholds (agreed before evaluation): exact selection match;
