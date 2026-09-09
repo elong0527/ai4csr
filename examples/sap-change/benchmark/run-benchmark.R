@@ -39,8 +39,10 @@ run_select(sap11, dataf, fresh_sel11, fresh_sum11)
 fresh10 <- read.csv(fresh_sel10, stringsAsFactors = FALSE)
 expect10 <- read.csv(exp_sel10, stringsAsFactors = FALSE)
 key <- function(d) paste(d$USUBJID, d$ADY)
-add("exact-selection-match", setequal(key(fresh10), key(expect10)),
-    "re-derived Week 24 selection matches the committed v1.0 selection exactly")
+stamp_ok <- all(fresh10$SAP_VERSION == "v1.0") && all(fresh10$CODE_VERSION == "v2.0")
+add("exact-selection-match",
+    setequal(key(fresh10), key(expect10)) && stamp_ok,
+    "re-derived Week 24 selection matches the committed v1.0 selection exactly, with SAP_VERSION v1.0 and CODE_VERSION v2.0 stamps verified")
 
 sum10 <- read.csv(fresh_sum10, stringsAsFactors = FALSE)
 csr_n <- c(79, 81, 74)
@@ -67,10 +69,20 @@ add("disposition-control",
     nrow(ctl_rows) == 254 && sum(ctl_rows$ITTFL == "Y") == 254,
     "ADSL disposition extract unchanged: 254 subjects, ITT 254; no finding outside affected scope")
 
+claim_version <- function(selection_path, claimed_version) {
+  d <- read.csv(selection_path, stringsAsFactors = FALSE)
+  stamped <- unique(d$SAP_VERSION)
+  if (length(stamped) != 1 || stamped != claimed_version) {
+    return(paste0("REJECTED: selection stamped ", paste(stamped, collapse = ","),
+                  " cannot satisfy a review claiming ", claimed_version))
+  }
+  "ACCEPTED"
+}
 stale <- file.path(outdir, "stale_claim.csv")
 file.copy(fresh_sel10, stale, overwrite = TRUE)
-add("stale-mismatch", TRUE,
-    "v1.0-stamped selection cannot satisfy a v1.1 review claim: re-derivation required (checked by SAP_VERSION stamp)")
+stale_verdict <- claim_version(stale, "v1.1")
+add("stale-mismatch", grepl("^REJECTED", stale_verdict),
+    paste0("v1.0-stamped selection presented for a v1.1 claim is rejected: ", stale_verdict))
 
 nosuch <- file.path(root, "..", "sap", "REQ-WIN-01_nowindow.md")
 sap_txt <- readLines(sap11, warn = FALSE)

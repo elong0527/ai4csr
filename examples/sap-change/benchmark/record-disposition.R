@@ -19,6 +19,10 @@ state_path <- file.path(root, "..", "findings", "findings-state.json")
 txt <- paste(readLines(state_path, warn = FALSE), collapse = "\n")
 if (!grepl(paste0('"id": "', finding_id, '"'), txt, fixed = TRUE)) stop("unknown finding id")
 if (length(grep('"id":', txt, fixed = TRUE)) > 1) stop("multi-finding state not supported")
+if (grepl('"disposition": "[^"]', txt)) {
+  stop(paste0("refusing to overwrite the recorded disposition for ", finding_id,
+              "; audit state is append-only in this example"))
+}
 status <- if (decision == "accepted") "acknowledged" else "unresolved"
 txt <- sub('"status": "[^"]*"', paste0('"status": "', status, '"'), txt)
 txt <- sub('"disposition": null', paste0('"disposition": "', decision, '"'), txt, fixed = TRUE)

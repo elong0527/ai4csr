@@ -1,6 +1,6 @@
 # Benchmark report: SAP change review (Pilot 1 prototype)
 
-Rendered: 2026-09-09 01:54 UTC
+Rendered: 2026-09-09 04:15 UTC
 Code version: v2.0 | R version: 4.5.3
 
 Thresholds (agreed before evaluation): exact selection match;
@@ -10,7 +10,7 @@ stale output rejected by version stamp; missing window escalates.
 
 ## exact-selection-match: PASS
 
-re-derived Week 24 selection matches the committed v1.0 selection exactly
+re-derived Week 24 selection matches the committed v1.0 selection exactly, with SAP_VERSION v1.0 and CODE_VERSION v2.0 stamps verified
 
 ## csr-numbers-match: PASS
 
@@ -26,7 +26,7 @@ ADSL disposition extract unchanged: 254 subjects, ITT 254; no finding outside af
 
 ## stale-mismatch: PASS
 
-v1.0-stamped selection cannot satisfy a v1.1 review claim: re-derivation required (checked by SAP_VERSION stamp)
+v1.0-stamped selection presented for a v1.1 claim is rejected: REJECTED: selection stamped v1.0 cannot satisfy a review claiming v1.1
 
 ## ambiguous-missing: PASS
 

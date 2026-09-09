@@ -16,6 +16,10 @@ sap_lines <- readLines(sap_path, warn = FALSE)
 grab <- function(key) {
   hit <- grep(paste0("^", key, ":\\s*"), sap_lines, value = TRUE)
   if (length(hit) == 0) return(NA_character_)
+  if (length(hit) > 1) {
+    stop(paste0("ESCALATE: SAP excerpt declares ", key, " ", length(hit),
+                " times with possible conflict; refusing to select Week 24 records."))
+  }
   sub(paste0("^", key, ":\\s*"), "", hit[1])
 }
 sap_version <- grab("Version")
