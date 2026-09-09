@@ -63,10 +63,11 @@ quarto render slides/<TBD>/index.qmd
 Python is pinned by `.python-version` and locked by `uv.lock`; restore it
 with `uv sync`. R packages come from `DESCRIPTION` and install unpinned from
 CRAN, so an exact historical R package set is not guaranteed to reproduce.
-The pull-request verification workflow (`.github/workflows/pr-verify.yml`)
-renders the full HTML book and runs the deterministic example checks on every
-pull request without publishing, and records the verified Quarto, R, Python,
-and uv versions in its job summary. No vendor credentials or paid live model
+A pull-request verification workflow (`.github/workflows/pr-verify.yml`) is
+planned but not yet in place: once added, it will render the full HTML book
+and run the deterministic example checks on every pull request without
+publishing, and record the verified Quarto, R, Python, and uv versions in its
+job summary. No vendor credentials or paid live model
 calls are used. A fresh Codespaces/container launch has not been verified
 yet.
 
