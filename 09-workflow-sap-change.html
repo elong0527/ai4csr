@@ -8,7 +8,7 @@
 
 <meta name="description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 
-<title>3&nbsp; Onboarding an AI agent – AI-First Workflows for Clinical Study Reporting</title>
+<title>9&nbsp; Review one SAP change across code and results – AI-First Workflows for Clinical Study Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -37,8 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05-ai-first-sdlc.html" rel="next">
-<link href="./03-principle.html" rel="prev">
+<link href="./08-workflow-rounding-lab.html" rel="prev">
 <link href="./assets/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,13 +113,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="3&nbsp; Onboarding an AI agent – AI-First Workflows for Clinical Study Reporting">
+<meta property="og:title" content="9&nbsp; Review one SAP change across code and results – AI-First Workflows for Clinical Study Reporting">
 <meta property="og:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta property="og:image" content="https://ai4csr.org/assets/preview.png">
 <meta property="og:site_name" content="AI-First Workflows for Clinical Study Reporting">
 <meta property="og:image:height" content="640">
 <meta property="og:image:width" content="1280">
-<meta name="twitter:title" content="3&nbsp; Onboarding an AI agent – AI-First Workflows for Clinical Study Reporting">
+<meta name="twitter:title" content="9&nbsp; Review one SAP change across code and results – AI-First Workflows for Clinical Study Reporting">
 <meta name="twitter:description" content="Learn how to design trustworthy AI-first workflows for clinical study reporting and regulatory submission, combining agent-assisted execution, evidence-backed review, and accountable human decisions.">
 <meta name="twitter:image" content="https://ai4csr.org/assets/preview.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -102,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./04-ai-agent.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./09-workflow-sap-change.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Review one SAP change across code and results</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-ai-agent.html" class="sidebar-item-text sidebar-link active">
+  <a href="./04-ai-agent.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></span></a>
   </div>
 </li>
@@ -234,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-workflow-sap-change.html" class="sidebar-item-text sidebar-link">
+  <a href="./09-workflow-sap-change.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Review one SAP change across code and results</span></span></a>
   </div>
 </li>
@@ -250,26 +284,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-onboarding-analogy" id="toc-the-onboarding-analogy" class="nav-link active" data-scroll-target="#the-onboarding-analogy"><span class="header-section-number">3.1</span> The onboarding analogy</a></li>
-  <li><a href="#what-an-ai-agent-is" id="toc-what-an-ai-agent-is" class="nav-link" data-scroll-target="#what-an-ai-agent-is"><span class="header-section-number">3.2</span> What an AI agent is</a></li>
-  <li><a href="#make-the-task-contract-explicit" id="toc-make-the-task-contract-explicit" class="nav-link" data-scroll-target="#make-the-task-contract-explicit"><span class="header-section-number">3.3</span> Make the task contract explicit</a></li>
-  <li><a href="#a-minimal-ai-adoption-example" id="toc-a-minimal-ai-adoption-example" class="nav-link" data-scroll-target="#a-minimal-ai-adoption-example"><span class="header-section-number">3.4</span> A minimal AI-adoption example</a>
+  <li><a href="#problem-boundary-and-maturity" id="toc-problem-boundary-and-maturity" class="nav-link active" data-scroll-target="#problem-boundary-and-maturity"><span class="header-section-number">9.1</span> Problem, boundary, and maturity</a></li>
+  <li><a href="#plan-frame-the-workflow" id="toc-plan-frame-the-workflow" class="nav-link" data-scroll-target="#plan-frame-the-workflow"><span class="header-section-number">9.2</span> Plan — Frame the workflow</a>
   <ul class="collapse">
-  <li><a href="#two-teaching-artifacts" id="toc-two-teaching-artifacts" class="nav-link" data-scroll-target="#two-teaching-artifacts"><span class="header-section-number">3.4.1</span> Two teaching artifacts</a></li>
-  <li><a href="#one-prompt-in-arena-agent" id="toc-one-prompt-in-arena-agent" class="nav-link" data-scroll-target="#one-prompt-in-arena-agent"><span class="header-section-number">3.4.2</span> One prompt in Arena Agent</a></li>
-  <li><a href="#one-result" id="toc-one-result" class="nav-link" data-scroll-target="#one-result"><span class="header-section-number">3.4.3</span> One result</a></li>
+  <li><a href="#canonical-artifact-workflow-brief" id="toc-canonical-artifact-workflow-brief" class="nav-link" data-scroll-target="#canonical-artifact-workflow-brief"><span class="header-section-number">9.2.1</span> Canonical artifact: Workflow brief</a></li>
   </ul></li>
-  <li><a href="#why-the-demonstration-is-adoption-not-a-workflow" id="toc-why-the-demonstration-is-adoption-not-a-workflow" class="nav-link" data-scroll-target="#why-the-demonstration-is-adoption-not-a-workflow"><span class="header-section-number">3.5</span> Why the demonstration is adoption, not a workflow</a></li>
-  <li><a href="#from-one-result-to-an-ai-first-workflow" id="toc-from-one-result-to-an-ai-first-workflow" class="nav-link" data-scroll-target="#from-one-result-to-an-ai-first-workflow"><span class="header-section-number">3.6</span> From one result to an AI-first workflow</a></li>
+  <li><a href="#design-specify-the-workflow" id="toc-design-specify-the-workflow" class="nav-link" data-scroll-target="#design-specify-the-workflow"><span class="header-section-number">9.3</span> Design — Specify the workflow</a>
+  <ul class="collapse">
+  <li><a href="#canonical-artifact-task-contract" id="toc-canonical-artifact-task-contract" class="nav-link" data-scroll-target="#canonical-artifact-task-contract"><span class="header-section-number">9.3.1</span> Canonical artifact: Task contract</a></li>
+  </ul></li>
+  <li><a href="#build-prototype-the-workflow" id="toc-build-prototype-the-workflow" class="nav-link" data-scroll-target="#build-prototype-the-workflow"><span class="header-section-number">9.4</span> Build — Prototype the workflow</a></li>
+  <li><a href="#test-benchmark-and-evaluate" id="toc-test-benchmark-and-evaluate" class="nav-link" data-scroll-target="#test-benchmark-and-evaluate"><span class="header-section-number">9.5</span> Test — Benchmark and evaluate</a></li>
+  <li><a href="#deploy-operationalize-the-workflow" id="toc-deploy-operationalize-the-workflow" class="nav-link" data-scroll-target="#deploy-operationalize-the-workflow"><span class="header-section-number">9.6</span> Deploy — Operationalize the workflow</a></li>
+  <li><a href="#maintain-monitor-and-improve" id="toc-maintain-monitor-and-improve" class="nav-link" data-scroll-target="#maintain-monitor-and-improve"><span class="header-section-number">9.7</span> Maintain — Monitor and improve</a></li>
+  <li><a href="#try-it-yourself-trace-one-change-in-45-minutes" id="toc-try-it-yourself-trace-one-change-in-45-minutes" class="nav-link" data-scroll-target="#try-it-yourself-trace-one-change-in-45-minutes"><span class="header-section-number">9.8</span> Try it yourself: trace one change in 45 minutes</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">9.9</span> Summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/04-ai-agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/04-ai-agent.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/09-workflow-sap-change.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/09-workflow-sap-change.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-ai-first.html">Introduction</a></li><li class="breadcrumb-item"><a href="./04-ai-agent.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./study-design.html">Applied examples</a></li><li class="breadcrumb-item"><a href="./09-workflow-sap-change.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Review one SAP change across code and results</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-intro-ai-agent" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Onboarding an AI agent</span></span></h1>
+<h1 class="title"><span id="sec-workflow-sap-change" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Review one SAP change across code and results</span></span></h1>
 </div>
 
 
@@ -286,28 +324,71 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>A statistical analysis plan (SAP) changes; the analysis code does not follow, or the results presented to reviewers mix an old SAP with new code. This chapter builds a bounded workflow that detects one accepted SAP change, determines which downstream artifacts it affects, gathers traceable evidence, and presents findings for an accountable human decision.</p>
+<p>The learning objective is to run all six stages of the AI-first software development lifecycle (SDLC) on a change-review workflow: frame the workflow, specify it, prototype it, benchmark it, release it, and monitor it. Each stage produces one canonical artifact, and each artifact names the Biometrics decision, the engineering contribution, and the human gate that accepted it. (<a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a> defines the lifecycle once; this chapter applies it without redefining it.)</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Teaching context, not study evidence">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<span class="screen-reader-only">Important</span>Teaching context, not study evidence
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Adding an AI agent to a clinical trial workflow is an onboarding problem before it is a technology problem.</p>
+<p>The extracts in <code>examples/sap-change/</code> derive from the public Pilot 1 development repository (RConsortium/submissions-pilot1). They are teaching context only and cannot support a conclusion about the actual CDISCPILOT01 study. The v1.1 amendment is constructed for this example: it is not part of the real SAP and must never be presented as a real protocol change.</p>
 </div>
 </div>
-<section id="the-onboarding-analogy" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-onboarding-analogy"><span class="header-section-number">3.1</span> The onboarding analogy</h2>
-<p>Imagine that a new team member has joined. They recently finished school and understand the basics of clinical trials. They know what a protocol and statistical analysis plan (SAP) are, but they do not yet know standard operating procedures (SOPs), computing environment, folder structure, naming conventions, or review habits of your organization.</p>
-<p>For their first assignment, you choose a simple task:</p>
-<blockquote class="blockquote">
-<p>Summarize the age distribution in a clinical trial’s ADSL dataset.</p>
-</blockquote>
-<p>The task is deliberately small. You are onboarding them more on the workflow than the tool. Can the new colleague find and use the relevant documents? Can they identify the correct analysis population, handle missing values, notice protocol deviations, and report findings and assumptions?</p>
-<p>Now replace “new colleague” with “AI agent.” Almost everything you would set up for a person still applies, but each item has to become something written down rather than something learned by sitting nearby.</p>
+<section id="problem-boundary-and-maturity" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="problem-boundary-and-maturity"><span class="header-section-number">9.1</span> Problem, boundary, and maturity</h2>
+<p><strong>Problem.</strong> When an SAP requirement changes after results exist, reviewers must answer three questions: what changed, what was checked, and what was decided. Without explicit state, every agent run re-argues the same change, stale outputs get interpreted as current, and ambiguity gets silently resolved by whoever — or whatever — runs first.</p>
+<p><strong>Boundary.</strong> The workflow begins with one accepted requirement change (REQ-WIN-01, the Week 24 analysis-window rule) and ends with an evidence-backed impact report plus a recorded reviewer disposition. It covers one SAP excerpt, one R selection program, two data extracts, and one summary table. Non-goals: parsing a full SAP, re-deriving visit assignment (AVISITN is taken as given from ADaM), executing a sensitivity analysis (planned, not executed), and any production deployment.</p>
+<p><strong>Why this is a well-defined AI-first workflow.</strong> The trigger is a versioned artifact change, the scope is enumerated in a change manifest, success has numeric thresholds stated before evaluation, and stopping conditions are explicit: a version-stamp mismatch ends the review as limited, and a missing window parameter ends it as escalated. The agent compares and cites; only the accountable reviewer interprets clinical acceptability and records the disposition.</p>
+<p><strong>Maturity: Reproducible prototype.</strong> The prototype runs in base R with pinned extracts, versioned SAP excerpts, expected results, and benchmark criteria; all six benchmark cases pass and the run was independently reproduced (see Test below). It is not a validated production system, and the release and monitoring records in this chapter are proposed designs without operating history.</p>
+<p>This chapter currently follows the rounding lab in the Applied examples part. It moves after the code-review survey chapter once that chapter exists, as the example ordering requires.</p>
+</section>
+<section id="plan-frame-the-workflow" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="plan-frame-the-workflow"><span class="header-section-number">9.2</span> Plan — Frame the workflow</h2>
+<p>The purpose of planning is to state what should be built and how success will be measured before any code is written. The inputs are the owner interview decisions recorded on the issue: the single traced change is a visit-window rule, the downstream output is a disposition and population-count table, and the build order is fixtures plus code plus benchmark first, chapter prose after. The required context is the principles chapter preview of change review across SAP, code, and results, which this chapter now carries out; <a href="03-principle.html" class="quarto-xref"><span>Chapter 2</span></a> defines the principles once, so they are referenced here, not restated.</p>
+<p>The agent’s role at this stage is to draft the brief from the interview record. The accountable human role is the Biometrics owner, who accepts the brief and its success thresholds.</p>
+<section id="canonical-artifact-workflow-brief" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="canonical-artifact-workflow-brief"><span class="header-section-number">9.2.1</span> Canonical artifact: Workflow brief</h3>
+<p>The accepted brief states one teaching purpose — show that an accepted SAP change reaches every downstream artifact exactly once, with no overreach and no silent guessing — and fixes the scope: one requirement (REQ-WIN-01), one code program, one table, four seeded review cases (affected change, unaffected control, stale mismatch, ambiguous requirement). The business rule is that thresholds are frozen before evaluation: exact selection match, CSR Table 14-3.01 numbers reproduced, 212 subjects selected after amendment with 22 excluded, disposition control unchanged, stale output rejected, missing window escalated. The approval gate is the Biometrics owner’s acceptance of the brief; the risk carried forward is that the v1.1 amendment is constructed, so every downstream artifact must label it as such. The accepted brief initiates design.</p>
+</section>
+</section>
+<section id="design-specify-the-workflow" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="design-specify-the-workflow"><span class="header-section-number">9.3</span> Design — Specify the workflow</h2>
+<p>The purpose of design is to turn the brief into a task contract the agent cannot reinterpret: objective, inputs, scope, outputs, boundaries, and escalation conditions. The inputs are the accepted brief and the real SAP Section 8.2 rule (baseline v1.0, window after Day 140 with no upper bound). The agent drafts the contract; the Biometrics owner approves the finding states and decision rights.</p>
+<section id="canonical-artifact-task-contract" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="canonical-artifact-task-contract"><span class="header-section-number">9.3.1</span> Canonical artifact: Task contract</h3>
+<p>The contract fixes the objective (for one accepted SAP change, produce an impact report in which every finding cites its evidence chain and the review coverage), the inputs (claimed SAP version, pinned extracts, pinned code), and the outputs (re-derived selection, comparison against the presented output, findings with status, coverage statement). The scope boundary is the stable identifier chain every finding must cite:</p>
+<pre class="text"><code>SAP Section 8.2 -&gt; AWLO/AWHI/AWTARGET -&gt; ANL01FL -&gt; Table 14-3.01 rows</code></pre>
+<p>Findings carry one of five states — new, repeated, fixed, acknowledged, or unresolved — and an acknowledged finding is not fixed: the next run must show it as repeated, not new. Disposition recording is append-only; recording the same disposition twice is refused. The escalation conditions are explicit: conflicting duplicate SAP declarations escalate instead of silently using the first, and an SAP excerpt without window parameters refuses selection with an ESCALATE message rather than an invented window. The stopping condition for stale artifacts is a version-stamp check: a v1.0-stamped selection presented for a v1.1 claim is rejected without interpretation. The human gate is contract approval; the accepted contract initiates the build.</p>
+</section>
+</section>
+<section id="build-prototype-the-workflow" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="build-prototype-the-workflow"><span class="header-section-number">9.4</span> Build — Prototype the workflow</h2>
+<p>The purpose of the build is a runnable prototype that the benchmark can execute without human judgment in the loop. The prototype lives in <code>examples/sap-change/</code> and uses base R with no extra dependencies:</p>
+<pre class="text"><code>examples/sap-change/
+  sap/REQ-WIN-01_v1.0.md, sap/REQ-WIN-01_v1.1.md
+  data/adsl_extract.csv, data/adadas_week24_extract.csv
+  code/select_week24.R
+  outputs/selection_v1.0.csv, outputs/selection_v1.1.csv
+  outputs/summary_v1.0.csv, outputs/summary_v1.1.csv
+  change-manifest.md, expected-impacts.md, provenance.md
+  review-instructions.md, findings/findings-state.json
+  benchmark/run-benchmark.R, benchmark/record-disposition.R</code></pre>
+<p>The agent wrote the selection program and the benchmark harness; the engineering contribution is version stamping (the selection and summary outputs carry SAP_VERSION and CODE_VERSION stamps, verified by the benchmark) and fixture pinning (sha256 hashes for both extracts, recorded in <code>provenance.md</code>). Reproduction needs only:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> examples/sap-change</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> code/select_week24.R <span class="at">--sap</span><span class="op">=</span>sap/REQ-WIN-01_v1.1.md <span class="dt">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--data</span><span class="op">=</span>data/adadas_week24_extract.csv <span class="dt">\</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--out_selection</span><span class="op">=</span>/tmp/sel.csv <span class="at">--out_summary</span><span class="op">=</span>/tmp/sum.csv</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> benchmark/run-benchmark.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>One pinning detail shows why the hashes matter: the extracts preserve the character site group (SITEGR1) as quoted strings, and the R program coerces it to a factor. Getting this wrong moves the dose-response p-value from 0.245 to 0.201 — a silent corruption that exact-number benchmarking catches and eyeballing does not. The accountable human contribution is the review-instructions file, which reserves clinical interpretation and the final disposition to the reviewer. The limitation carried forward is that the benchmark covers deterministic comparisons only; no model judgment was evaluated. The committed prototype plus its provenance record initiates testing.</p>
+</section>
+<section id="test-benchmark-and-evaluate" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="test-benchmark-and-evaluate"><span class="header-section-number">9.5</span> Test — Benchmark and evaluate</h2>
+<p>The purpose of testing is to check the prototype against the thresholds frozen at planning, with expected impacts stated before evaluation in <code>expected-impacts.md</code>. The benchmark executes six cases and writes <code>benchmark/benchmark-report.md</code>:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -315,104 +396,61 @@ Tip
 </colgroup>
 <thead>
 <tr class="header">
-<th>For a new colleague</th>
-<th>For an agent</th>
+<th>Case</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Orientation and procedural training</td>
-<td>Written instructions supplied when needed</td>
+<td>Baseline selection matches shipped ANL01FL exactly (234 subjects)</td>
+<td>PASS</td>
 </tr>
 <tr class="even">
-<td>An invitation to ask when uncertain</td>
-<td>Explicit conditions for stopping and escalation</td>
+<td>Summary matches CSR Table 14-3.01 (n 79/81/74, means 2.5/2.0/1.5, p 0.245)</td>
+<td>PASS</td>
 </tr>
 <tr class="odd">
-<td>Shadowing and code review</td>
-<td>A record of sources, tool actions, and outputs</td>
+<td>Affected change: 212 selected, 22 excluded, low-dose mean 2.0 to 1.9, p 0.245 to 0.215, and v1.1/v2.0 summary stamps</td>
+<td>PASS</td>
 </tr>
 <tr class="even">
-<td>Access to the study environment</td>
-<td>A bounded set of files, tools, and destinations</td>
+<td>Unaffected control: pinned ADSL extract unchanged (254 subjects, ITT 254)</td>
+<td>PASS</td>
 </tr>
 <tr class="odd">
-<td>Managerial sign-off</td>
-<td>A named human accountable for the result</td>
+<td>Stale mismatch: v1.0-stamped selection and summary rejected for a v1.1 claim</td>
+<td>PASS</td>
+</tr>
+<tr class="even">
+<td>Ambiguous requirement: windowless excerpt refuses with ESCALATE</td>
+<td>PASS</td>
 </tr>
 </tbody>
 </table>
-<p>The model matters, but a more capable model does not define an acceptable result. The surrounding task and workflow establish the evidence, boundaries, and human decision rights.</p>
+<p>Coverage is 6 of 6 defined cases with 0 skipped and 0 failed. The disposition control verifies the identity of the pinned, unaffected ADSL extract; it is not a test of a reviewer’s judgment about an overreach. A reviewer must record and escalate a disposition concern separately. The run was independently reproduced on R 4.5.3 with code v2.0, confirming the reported numbers. Cost and latency were not measured and are labelled as such in the report. Deterministic data and result comparisons are separated from interpretation throughout: the benchmark asserts numbers and stamps, while whether the Day 182 cap is clinically acceptable belongs to the reviewer and appears in no automated verdict. The unresolved question is how the thresholds generalize beyond this one requirement change; the benchmark claims nothing beyond its six defined cases. The accepted benchmark report initiates deployment planning.</p>
 </section>
-<section id="what-an-ai-agent-is" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="what-an-ai-agent-is"><span class="header-section-number">3.2</span> What an AI agent is</h2>
-<p>A <strong>large language model (LLM)</strong> interprets supplied context and generates a response. The <strong>context</strong> includes the request, instructions, documents, prior messages, and tool results made available for the current interaction.</p>
-<p>An <strong>AI agent</strong> adds a controlled execution loop around the model:</p>
+<section id="deploy-operationalize-the-workflow" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="deploy-operationalize-the-workflow"><span class="header-section-number">9.6</span> Deploy — Operationalize the workflow</h2>
+<p>The purpose of deployment is a release record that states exactly what was tested and what would carry it into use — without implying production use or operating history, which do not exist. The proposed release pins the tested combination: code v2.0, SAP excerpts v1.0 and v1.1, extracts by sha256, R 4.5.3, benchmark 6 of 6 passing. The release record declares the operating boundary: the workflow may be re-run against new SAP excerpts that keep the same machine-readable parameters (WindowLower, WindowUpper, WindowTarget), but a requirement without those parameters is out of scope and must escalate. Automation triggers, if added later, re-derive and compare rather than re-interpret; no scheduled job or CI workflow is committed here. The human gate is the Biometrics owner’s release decision, recorded with the report; the event that would initiate monitoring is acceptance of that record.</p>
+</section>
+<section id="maintain-monitor-and-improve" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="maintain-monitor-and-improve"><span class="header-section-number">9.7</span> Maintain — Monitor and improve</h2>
+<p>The purpose of maintenance is a monitoring design that keeps approved state stable across runs and treats every improvement as a governed change. The proposed monitoring report tracks three signals: finding transitions across runs (a fixed finding must not reappear as new; an acknowledged finding must reappear as repeated), coverage of the six cases on every re-run (silence is not evidence that every case ran), and escalation counts by cause (stale stamps versus ambiguous requirements). The agent may propose instruction, test, or workflow updates from these signals, but the accountable human approves policy changes before they become active — for example, widening the machine-readable parameters is a contract change, not a silent fix. A reviewer accepting, rejecting, or escalating finding F-01 records that disposition in <code>findings-state.json</code>, and the next run reads the recorded state instead of re-arguing the change. Monitoring closes the loop: new incidents, approved feedback, or changed requirements initiate a new planning cycle.</p>
+</section>
+<section id="try-it-yourself-trace-one-change-in-45-minutes" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="try-it-yourself-trace-one-change-in-45-minutes"><span class="header-section-number">9.8</span> Try it yourself: trace one change in 45 minutes</h2>
+<p>Work in pairs with no coding. One participant plays the reviewer, the other challenges the evidence.</p>
 <ol type="1">
-<li>interpret the task and select a next step;</li>
-<li>use an allowed tool, such as a document reader or R;</li>
-<li>observe the tool result and update the plan; and</li>
-<li>continue until the task is complete, blocked, or requires approval.</li>
+<li><strong>Read the change (10 minutes).</strong> Open <code>sap/REQ-WIN-01_v1.0.md</code> and <code>sap/REQ-WIN-01_v1.1.md</code>. State in one sentence what changed and which table rows it could affect.</li>
+<li><strong>Check the evidence chain (15 minutes).</strong> For finding F-01 in <code>findings/findings-state.json</code>, verify each link of the identifier chain back to its artifact. Note anything you cannot inspect.</li>
+<li><strong>Challenge the review (10 minutes).</strong> Present the v1.0-stamped selection as satisfying the v1.1 claim, then present a disposition concern. The reviewer must reject the first by stamp and the second as overreach, citing <code>review-instructions.md</code>.</li>
+<li><strong>Record a disposition (10 minutes).</strong> Use the participant worksheet in <code>workshop/participant/sap-change-set.md</code> to accept, reject, or escalate F-01 with reasons, and state the coverage you still require.</li>
 </ol>
-<p>The main components are distinguished by their responsibilities:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Responsibility</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>LLM</strong></td>
-<td>Interpret context, plan steps, and draft an explanation</td>
-</tr>
-<tr class="even">
-<td><strong>Harness</strong></td>
-<td>Assemble context, call the model, invoke tools, record events, and control the loop</td>
-</tr>
-<tr class="odd">
-<td><strong>Model gateway</strong></td>
-<td>Route model requests and apply authentication, logging, or policy controls</td>
-</tr>
-<tr class="even">
-<td><strong>Tool interfaces</strong></td>
-<td>Perform observable actions such as reading a PDF, querying data, or running R</td>
-</tr>
-<tr class="odd">
-<td><strong>Working state</strong></td>
-<td>Hold messages, plans, tool results, and unresolved questions during the interaction</td>
-</tr>
-<tr class="even">
-<td><strong>Accessible environment</strong></td>
-<td>Limit the files, commands, APIs, network destinations, and credentials the agent can reach</td>
-</tr>
-</tbody>
-</table>
-<div id="fig-agent-anatomy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, working state, and tool interfaces inside a limited accessible environment.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-agent-anatomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="assets/diagrams/intro-ai-agent.svg" class="img-fluid figure-img" alt="A general AI-agent architecture with users and applications connected to a harness, which coordinates an LLM, working state, and tool interfaces inside a limited accessible environment.">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-agent-anatomy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: A general AI-agent architecture. The harness coordinates the model, working state, and tool interfaces. The accessible environment limits which resources the agent can reach.
-</figcaption>
-</figure>
-</div>
-<p>Two distinctions are important:</p>
-<ul>
-<li><strong>Working state is not durable project memory.</strong> Rules and decisions that must survive an interaction belong in versioned artifacts rather than only in chat history.</li>
-<li><strong>Tool access is not authority.</strong> The technical ability to edit a file or call an API does not grant approval or decision rights.</li>
-</ul>
-<p>Tools also do not make a model reliable by default. An agent can omit a source, resolve ambiguity silently, write code without executing it, misread a tool result, or follow an instruction from an untrusted artifact. Bounded access, observable tool use, and human review limit the consequences and make failures easier to detect.</p>
+<p>The facilitator set in <code>workshop/facilitator/sap-change-set.md</code> holds the expected answers. As with every exercise in this book, prompt results and reviewer judgments vary between runs; that variability is the point being taught.</p>
 </section>
-<section id="make-the-task-contract-explicit" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="make-the-task-contract-explicit"><span class="header-section-number">3.3</span> Make the task contract explicit</h2>
-<p>The <strong>task contract</strong> records the expectations for a delegated task. It is a small specification for the assignment rather than a prompt-writing trick.</p>
+<section id="summary" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="summary"><span class="header-section-number">9.9</span> Summary</h2>
+<p>One accepted SAP change, traced from requirement to table cell with version stamps at every step, turns change review from re-argument into re-execution plus an accountable decision. The lifecycle spine for this example is:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -421,198 +459,45 @@ Figure&nbsp;3.1: A general AI-agent architecture. The harness coordinates the mo
 </colgroup>
 <thead>
 <tr class="header">
-<th>Part</th>
-<th>Question</th>
-<th>Age-summary example</th>
+<th>Stage</th>
+<th>Canonical artifact</th>
+<th>Accepted by</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Objective</strong></td>
-<td>What should be produced?</td>
-<td>An age summary and a short review note</td>
+<td>Plan</td>
+<td>Workflow brief with frozen thresholds</td>
+<td>Biometrics owner</td>
 </tr>
 <tr class="even">
-<td><strong>Inputs</strong></td>
-<td>Which artifact versions govern the work?</td>
-<td>A public protocol and a named synthetic CSV snapshot</td>
+<td>Design</td>
+<td>Task contract with identifier chain and escalation</td>
+<td>Biometrics owner</td>
 </tr>
 <tr class="odd">
-<td><strong>Scope</strong></td>
-<td>Which population and variables are relevant?</td>
-<td>The protocol-defined population and <code>AGE</code></td>
+<td>Build</td>
+<td>Runnable base-R prototype with provenance</td>
+<td>Reviewer instructions</td>
 </tr>
 <tr class="even">
-<td><strong>Output</strong></td>
-<td>What must the result contain?</td>
-<td>Statistics, executed R code, sources, assumptions, and questions</td>
+<td>Test</td>
+<td>Benchmark report, 6 of 6 cases passing</td>
+<td>Independent reproduction</td>
 </tr>
 <tr class="odd">
-<td><strong>Boundaries</strong></td>
-<td>Which data, tools, and destinations are allowed?</td>
-<td>Read-only access to the two linked public artifacts</td>
+<td>Deploy</td>
+<td>Proposed release record, no production claim</td>
+<td>Biometrics release decision</td>
 </tr>
 <tr class="even">
-<td><strong>Escalation</strong></td>
-<td>When should the agent stop or ask?</td>
-<td>Missing artifacts, ambiguous scope, conflicting evidence, or suspected data issues</td>
+<td>Maintain</td>
+<td>Proposed monitoring report with governed change</td>
+<td>Accountable reviewer</td>
 </tr>
 </tbody>
 </table>
-<p>A task contract does not require every uncertainty to be resolved in advance. It requires uncertainties to be visible so the agent does not silently turn an assumption into a decision.</p>
-</section>
-<section id="a-minimal-ai-adoption-example" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="a-minimal-ai-adoption-example"><span class="header-section-number">3.4</span> A minimal AI-adoption example</h2>
-<p>This example demonstrates the smallest useful form of AI adoption: one person sends one prompt to an agent and receives one result. It is not presented as an AI-first workflow.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Synthetic teaching data: not KEYNOTE-189 trial data">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Synthetic teaching data: not KEYNOTE-189 trial data
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The CSV in this example is wholly synthetic and contains no participant data from KEYNOTE-189. It was constructed as a teaching example to be interpreted with the public KEYNOTE-189 protocol and cannot support any conclusion about that study.</p>
-</div>
-</div>
-<section id="two-teaching-artifacts" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="two-teaching-artifacts"><span class="header-section-number">3.4.1</span> Two teaching artifacts</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Artifact</th>
-<th>Role in the demonstration</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf">Public KEYNOTE-189 protocol</a></td>
-<td>Supplies example population and age requirements</td>
-</tr>
-<tr class="even">
-<td><a href="https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv"><code>kn189-synthetic-adsl.csv</code></a></td>
-<td>Supplies fabricated ADSL-style records for calculation</td>
-</tr>
-</tbody>
-</table>
-<p>The synthetic data include three enrolled but nonrandomized records, two missing <code>AGE</code> values, and one randomized record with an age below the protocol threshold. These conditions exist only to make assumptions and exceptions visible in the returned result.</p>
-</section>
-<section id="one-prompt-in-arena-agent" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="one-prompt-in-arena-agent"><span class="header-section-number">3.4.2</span> One prompt in Arena Agent</h3>
-<p>For this demonstration, the entire assignment is sent to <a href="https://arena.ai/agent">arena.ai</a> in one request. The platform provides a concrete setting for showing what one agent interaction can accomplish; this chapter does not evaluate or benchmark the product.</p>
-<pre class="text"><code>This is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data.
-
-Using only the public KEYNOTE-189 protocol and the synthetic CSV linked below,
-identify the protocol-defined analysis population and summarize its age
-distribution. Use R for the calculation. Return the statistics, executed R
-code, protocol sources, assumptions, and questions for human review.
-
-Protocol:
-https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
-
-Synthetic data:
-https://raw.githubusercontent.com/elong0527/ai4csr/refs/heads/main/exercise/day1/kn189-synthetic-adsl.csv
-
-Do not search for or use published KEYNOTE-189 results. Do not modify the data.</code></pre>
-</section>
-<section id="one-result" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="one-result"><span class="header-section-number">3.4.3</span> One result</h3>
-<p>A sufficient response identifies the intention-to-treat population as the 25 synthetic records marked as randomized, runs the calculation in R, and reports one summary:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Result from the synthetic ITT records</th>
-<th style="text-align: right;">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Randomized records</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="even">
-<td>Nonmissing <code>AGE</code></td>
-<td style="text-align: right;">24</td>
-</tr>
-<tr class="odd">
-<td>Missing <code>AGE</code></td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td>Mean</td>
-<td style="text-align: right;">50.58</td>
-</tr>
-<tr class="odd">
-<td>Standard deviation</td>
-<td style="text-align: right;">14.97</td>
-</tr>
-<tr class="even">
-<td>Median</td>
-<td style="text-align: right;">51</td>
-</tr>
-<tr class="odd">
-<td>Minimum</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td>Maximum</td>
-<td style="text-align: right;">76</td>
-</tr>
-</tbody>
-</table>
-<p>The same response should flag the invented 17-year-old record for human review without removing it from the requested population. It should also include the executed code, cited protocol sections, assumptions, and unresolved questions requested by the prompt.</p>
-<p>Here, one prompt enabled an agent to inspect a document, read data, execute R, and combine the observations into one answer. However, it remains one result from one interaction, not evidence that the task will be performed consistently.</p>
-</section>
-</section>
-<section id="why-the-demonstration-is-adoption-not-a-workflow" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="why-the-demonstration-is-adoption-not-a-workflow"><span class="header-section-number">3.5</span> Why the demonstration is adoption, not a workflow</h2>
-<p>The demonstration leaves the underlying process unchanged. A person manually starts the work, supplies the context, interprets the response, and decides what happens next.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Missing workflow capability</th>
-<th>What the demonstration does instead</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Defined trigger</td>
-<td>A person chooses when to send the prompt</td>
-</tr>
-<tr class="even">
-<td>Controlled artifact retrieval</td>
-<td>Links are assembled inside one interaction</td>
-</tr>
-<tr class="odd">
-<td>Repeatable execution contract</td>
-<td>The agent may choose a different path on another run</td>
-</tr>
-<tr class="even">
-<td>Predetermined benchmark</td>
-<td>The returned result is inspected after it is produced</td>
-</tr>
-<tr class="odd">
-<td>Durable state</td>
-<td>Findings and decisions remain in the interaction unless recorded elsewhere</td>
-</tr>
-<tr class="even">
-<td>Explicit decision record</td>
-<td>Human follow-up is expected but not captured by the task</td>
-</tr>
-</tbody>
-</table>
-<p>The distinction is not a criticism of prompt-based use. AI adoption is a fast way to discover whether a task is valuable and what an agent can accomplish. The single result reveals the artifacts, tools, assumptions, exceptions, and human decisions that a future workflow must govern.</p>
-</section>
-<section id="from-one-result-to-an-ai-first-workflow" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="from-one-result-to-an-ai-first-workflow"><span class="header-section-number">3.6</span> From one result to an AI-first workflow</h2>
-<p>The next design step is not a longer prompt. It is to turn the useful parts of the interaction into a bounded, repeatable process: define an event, version the task contract, retrieve the governing artifacts, execute deterministic checks, measure the result against a benchmark, record the human decision, and use that state in the next run.</p>
-<p>The applied examples in this book make that transition through the shared AI-first SDLC defined in <a href="05-ai-first-sdlc.html" class="quarto-xref"><span>Chapter 4</span></a>. Each example begins with a bounded business problem and develops the artifacts, evidence, and decision points needed to move beyond a single prompt.</p>
+<p>The open question — whether these thresholds generalize to the next requirement change — is exactly what the monitoring design watches. Until that evidence exists, the example stays at Reproducible prototype: runnable, pinned, benchmarked, and honest about its limits.</p>
 
 
 </section>
@@ -1020,14 +905,11 @@ Do not search for or use published KEYNOTE-189 results. Do not modify the data.<
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-principle.html" class="pagination-link" aria-label="Principles of trustworthy assistance">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principles of trustworthy assistance</span></span>
+      <a href="./08-workflow-rounding-lab.html" class="pagination-link" aria-label="Lab: Run a one-file rounding skill">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab: Run a one-file rounding skill</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-ai-first-sdlc.html" class="pagination-link" aria-label="The AI-first SDLC">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The AI-first SDLC</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1035,4 +917,4 @@ Do not search for or use published KEYNOTE-189 results. Do not modify the data.<
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/04-ai-agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/04-ai-agent.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elong0527/ai4csr/edit/main/09-workflow-sap-change.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/elong0527/ai4csr/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/elong0527/ai4csr/blob/main/09-workflow-sap-change.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
