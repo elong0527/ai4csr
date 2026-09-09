@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Render every diagrams/*.excalidraw file to assets/diagrams/*.svg.
 
-Run automatically by Quarto as a pre-render step, so the SVG files are build
-artifacts and never committed. The .excalidraw JSON is the only source of truth.
+Run automatically by Quarto as a pre-render step. The generated SVGs are
+committed so the rendered book and pull-request diffs stay reviewable;
+regenerate them with this script after changing a diagram source and re-run
+asciilint on the result. The .excalidraw JSON is the only source of truth:
+never edit an SVG by hand.
 
 Standard library only, so the book build needs no extra dependency.
 """

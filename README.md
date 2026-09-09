@@ -58,6 +58,24 @@ Render slides:
 quarto render slides/<TBD>/index.qmd
 ```
 
+### Environment and tool versions
+
+Python is pinned by `.python-version` and locked by `uv.lock`; restore it
+with `uv sync`. R packages come from `DESCRIPTION` and install unpinned from
+CRAN, so an exact historical R package set is not guaranteed to reproduce.
+A pull-request verification workflow (`.github/workflows/pr-verify.yml`) is
+planned but not yet in place: once added, it will render the full HTML book
+and run the deterministic example checks on every pull request without
+publishing, and record the verified Quarto, R, Python, and uv versions in its
+job summary. No vendor credentials or paid live model
+calls are used. A fresh Codespaces/container launch has not been verified
+yet.
+
+Diagram sources live in `diagrams/*.excalidraw`. The SVGs under
+`assets/diagrams/` are committed generated files: regenerate them with
+`python3 scripts/build-diagrams.py` after changing a source, and never edit
+them by hand.
+
 ## Maintenance
 
 Update Python version:
