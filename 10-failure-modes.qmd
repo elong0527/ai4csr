@@ -48,10 +48,11 @@ formatting call the finding describes. Precision of citation is not
 accuracy of citation.
 
 The control is to check the cited content, not the citation format.
-@sec-workflow-rounding-skill records this lesson explicitly: two
-candidates from an early answer key looked like direct numeric
-formatting calls but were not, and critical review of the pinned lines
-caught them. Every finding in @sec-workflow-sap-change must cite its
+@sec-workflow-rounding-skill records this lesson in its probe results:
+the catalog preserves excluded candidates, for example `R/fmt.R:37`,
+which pads text formatted at line 33 and does not round numeric input.
+That correction shows why scanner hits are coverage evidence, not
+automatic findings. Every finding in @sec-workflow-sap-change must cite its
 full evidence chain back to a pinned artifact, and the "Try it
 yourself" exercise trains the reviewer to verify each link rather than
 accept the chain on presentation.
@@ -69,9 +70,12 @@ is the quietest failure in this appendix, because nothing looks wrong.
 
 The control is a required coverage statement on every run, including
 rules left unchecked. @sec-workflow-rounding-skill requires coverage
-and unchecked rules in the minimum report, and its monitoring stage
-states the rule plainly: silence is not evidence that every rule or
-file was checked. @sec-workflow-sap-change reports coverage as "6 of
+and unchecked rules in the minimum report. The maxim behind the
+requirement comes from the motivating chapter
+(@sec-workflow-rounding-prompt): an ad hoc response can state which
+files and rules it checked, but with no required file list, silence is
+not evidence that every file or rule was reviewed.
+@sec-workflow-sap-change reports coverage as "6 of
 6 defined cases with 0 skipped and 0 failed" and re-checks all six
 cases on every re-run, with cost and latency labelled as unmeasured
 rather than silently omitted.
@@ -93,10 +97,12 @@ The control is to pin every input and refuse mismatched stamps.
 for a v1.1 claim without interpretation, and its release record pins
 the tested combination (code version, SAP excerpt versions, extracts
 by sha256, R version, benchmark result). The rounding chapters pin
-their external reference to a commit SHA rather than a branch, with
-the stated reason that a maintained package can otherwise silently
-stop reproducing. A reader applying the same discipline pins the model
-or agent version behind a benchmark before comparing runs.
+The rounding chapters pin their external reference to a commit SHA
+rather than a branch, following the deploy rule: install an immutable
+version that matches the accepted benchmark, and do not test one
+commit while deploying a moving `main` branch. A reader applying the
+same discipline pins the model or agent version behind a benchmark
+before comparing runs.
 
 TODO: the manuscript pins code, data extracts, and one library
 reference; it does not yet pin the agent or model versions used in
