@@ -1,0 +1,115 @@
+# How these workflows fail, and how to catch it {#sec-failure-modes}
+
+A skeptical Biometrics head's first question about any AI-assisted
+workflow is "show me how this fails and how I would catch it." The
+applied examples answer that question inside their own lifecycle
+stages. This appendix consolidates the four failure patterns that cut
+across examples: prompt injection through artifact content,
+confabulated evidence citations, benchmark gaming with silent coverage
+gaps, and version skew between artifacts the agent silently combines.
+For each pattern the appendix names the failure, the control in this
+book designed to catch it, and what remains unevidenced.
+
+This appendix proposes no workflow, so it runs no lifecycle stages and
+declares no maturity level. It is a cross-cutting reader's guide to
+controls defined in @sec-workflow-rounding-skill and
+@sec-workflow-sap-change, collected in one place.
+
+## Prompt injection through artifact content
+
+The failure: the agent reads untrusted text as instructions. A draft
+SAP paragraph, a code comment, or a review note can carry phrasing
+that steers the agent --- to prefer one SAP version, to skip an
+awkward check, or to interpret an ambiguous requirement instead of
+escalating it. The agent treats content as context, and content can
+push.
+
+The control is to make the task contract uninterpretable in the
+relevant directions. In @sec-workflow-sap-change, conflicting
+duplicate SAP declarations escalate instead of silently using the
+first, and an SAP excerpt without window parameters refuses selection
+with an ESCALATE message rather than an invented window. The contract
+fixes the identifier chain every finding must cite
+(SAP Section 8.2 -> AWLO/AWHI/AWTARGET -> ANL01FL -> Table 14-3.01
+rows), so there is no offered path by which artifact wording alone can
+authorize a different selection.
+
+TODO: no live injection probe has been run against these workflows, so
+the control above is a design claim, not red-team evidence. A first
+probe would plant a steering sentence in a draft SAP excerpt and check
+that the run escalates rather than complies.
+
+## Confabulated evidence citations
+
+The failure: a finding cites artifacts that do not say what is
+claimed. A file and line number look verifiable, but the cited lines
+may be a wrapper, a comment, or an unrelated helper rather than the
+formatting call the finding describes. Precision of citation is not
+accuracy of citation.
+
+The control is to check the cited content, not the citation format.
+@sec-workflow-rounding-skill records this lesson explicitly: two
+candidates from an early answer key looked like direct numeric
+formatting calls but were not, and critical review of the pinned lines
+caught them. Every finding in @sec-workflow-sap-change must cite its
+full evidence chain back to a pinned artifact, and the "Try it
+yourself" exercise trains the reviewer to verify each link rather than
+accept the chain on presentation.
+
+TODO: the book has no measured rate of confabulated citations from a
+held-out benchmark, so reviewers should assume the failure recurs and
+budget check time accordingly until such a measurement exists.
+
+## Benchmark gaming and silent coverage gaps
+
+The failure: the agent reports "checked" without a minimum check
+list, or a benchmark passes because the hard cases were never
+selected. A green report then certifies work that never happened. This
+is the quietest failure in this appendix, because nothing looks wrong.
+
+The control is a required coverage statement on every run, including
+rules left unchecked. @sec-workflow-rounding-skill requires coverage
+and unchecked rules in the minimum report, and its monitoring stage
+states the rule plainly: silence is not evidence that every rule or
+file was checked. @sec-workflow-sap-change reports coverage as "6 of
+6 defined cases with 0 skipped and 0 failed" and re-checks all six
+cases on every re-run, with cost and latency labelled as unmeasured
+rather than silently omitted.
+
+TODO: the six SAP cases and the rounding benchmark rows are
+author-defined; an independent check that the minimum check lists are
+complete (rather than merely fully executed) has not been done.
+
+## Version skew between combined artifacts
+
+The failure: the agent silently combines inputs from different
+versions --- a selection derived under SAP v1.0 presented as
+satisfying a v1.1 claim, results computed by one code version
+described by another's documentation, or a library whose behavior
+changed under a floating reference.
+
+The control is to pin every input and refuse mismatched stamps.
+@sec-workflow-sap-change rejects a v1.0-stamped selection presented
+for a v1.1 claim without interpretation, and its release record pins
+the tested combination (code version, SAP excerpt versions, extracts
+by sha256, R version, benchmark result). The rounding chapters pin
+their external reference to a commit SHA rather than a branch, with
+the stated reason that a maintained package can otherwise silently
+stop reproducing. A reader applying the same discipline pins the model
+or agent version behind a benchmark before comparing runs.
+
+TODO: the manuscript pins code, data extracts, and one library
+reference; it does not yet pin the agent or model versions used in
+each benchmark run, so cross-run comparisons carry that caveat.
+
+## Summary
+
+Each failure pattern above pairs a concrete way the work can go wrong
+with a control already present in the applied examples: escalation
+conditions against injection, content-level citation review against
+confabulation, required coverage statements against silent gaps, and
+version-stamp refusal against skew. The TODO markers record where the
+catch is a designed control rather than a measured one. Closing those
+markers --- one planted probe, one citation error rate, one
+completeness review, one version-pinning pass --- is the proposed
+adversarial test program for the next planning cycle.

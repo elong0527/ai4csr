@@ -51,6 +51,9 @@ book:
         - 07-workflow-rounding-skill.qmd
         - 08-workflow-rounding-lab.qmd
         - 09-workflow-sap-change.qmd
+    - part: "Appendix"
+      chapters:
+        - 10-failure-modes.qmd
 
 bibliography: references.bib
 
