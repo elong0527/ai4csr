@@ -25,6 +25,15 @@ with operating roles, scope, and support confirmed.>
 <Target environment, users, inputs, trigger, schedule, expected outputs, and
 explicit scope limits.>
 
+## Execution environment and sandboxing
+
+<Where agent-generated code is allowed to execute. Agent-generated code runs
+only inside a sandbox: no network access, no writes outside the declared
+workspace, and no access to credentials or production data stores. Name the
+sandbox mechanism (container image, OS sandbox profile, or equivalent) and its
+version. The benchmark harness runs inside the same sandbox. A release that
+cannot name its sandbox is not ready for authorization.>
+
 ## Access permissions and human approval gates
 
 <Permissions, approval points, and conditions for suspending or reversing the
