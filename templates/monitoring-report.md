@@ -31,6 +31,17 @@ numbers.>
 <False positives, missed findings, human overrides, escalations, and coverage
 gaps or input changes.>
 
+## Review economics and reviewer calibration
+
+<Operating review design. Sampling rates by finding class: deep review vs
+spot check, and the basis for the split. Review cost: review time per finding
+class compared against the cost of doing the work directly, and the
+conditions under which the gate pays for itself. Calibration signals:
+override rate, inter-reviewer agreement on shared samples, and trend
+indicators of rubber-stamping decay, such as falling variance in review
+outcomes or declining override rates without improvement in upstream
+quality. Report the calibration metric even when it looks healthy.>
+
 ## Incidents and corrective actions
 
 <Incidents, root causes, corrective actions, and unresolved risks.>

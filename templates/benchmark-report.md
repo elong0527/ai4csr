@@ -57,6 +57,17 @@ it.>
 <False positives, missed findings, unsupported claims, escalation quality, and
 what each failure implies for the design.>
 
+## Review sampling and calibration
+
+<The review design behind the human judgments in this evaluation. Which
+findings received deep review vs spot checks, and the basis for the split:
+risk-stratified sampling, targeted review of low-confidence cases, or random
+spot checks. Report the sampling fraction per finding class. Reviewer
+calibration: inter-reviewer agreement on a shared subset, or the rate at
+which spot checks overturned the agent's disposition. Report the sampling
+plan and calibration even when review was unanimous; silence is not
+evidence.>
+
 ## Coverage, reproducibility, latency, and cost
 
 <Coverage of rules and files; repeat-run stability; time and cost when
