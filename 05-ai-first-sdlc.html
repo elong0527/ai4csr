@@ -275,6 +275,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#deploy-operationalize-the-workflow" id="toc-deploy-operationalize-the-workflow" class="nav-link" data-scroll-target="#deploy-operationalize-the-workflow"><span class="header-section-number">4.8</span> Deploy — Operationalize the workflow</a>
   <ul class="collapse">
   <li><a href="#canonical-artifact-release-record" id="toc-canonical-artifact-release-record" class="nav-link" data-scroll-target="#canonical-artifact-release-record"><span class="header-section-number">4.8.1</span> Canonical artifact: Release record</a></li>
+  <li><a href="#where-the-data-may-go" id="toc-where-the-data-may-go" class="nav-link" data-scroll-target="#where-the-data-may-go"><span class="header-section-number">4.8.2</span> Where the data may go</a></li>
   </ul></li>
   <li><a href="#maintain-monitor-and-improve" id="toc-maintain-monitor-and-improve" class="nav-link" data-scroll-target="#maintain-monitor-and-improve"><span class="header-section-number">4.9</span> Maintain — Monitor and improve</a>
   <ul class="collapse">
@@ -563,9 +564,20 @@ Figure&nbsp;4.1: The AI-first SDLC is a loop connected by six accepted artifacts
 <li>access permissions and human approval gates;</li>
 <li>installation, configuration, and verification results;</li>
 <li>monitoring measures and control bands;</li>
-<li>support ownership, escalation contacts, and recovery procedure; and</li>
-<li>the person authorizing the release and the release decision.</li>
+<li>support ownership, escalation contacts, and recovery procedure;</li>
+<li>the person authorizing the release and the release decision; and</li>
+<li>the deployment context and the data boundary: which artifacts may leave the company boundary, under which agreement, and what never leaves.</li>
 </ul>
+</section>
+<section id="where-the-data-may-go" class="level3" data-number="4.8.2">
+<h3 data-number="4.8.2" class="anchored" data-anchor-id="where-the-data-may-go"><span class="header-section-number">4.8.2</span> Where the data may go</h3>
+<p>Clinical artifacts can carry patient-level data, so the first deployment question is not which model to use but where data is allowed to travel. Three options cover most Biometrics settings:</p>
+<ul>
+<li>On-premises or virtual-private-cloud execution: data stays inside the company boundary. This is the default when artifacts contain patient-level records.</li>
+<li>Software-as-a-service agents: artifact content leaves the building. Use this option only for de-identified or synthetic inputs, under an agreement the security team has reviewed.</li>
+<li>Mixed routing: planning and review happen outside while execution on data happens inside. The release record states exactly which artifacts cross the boundary in each direction.</li>
+</ul>
+<p>Two rules hold regardless of option. First, de-identification happens before an artifact leaves the building, not after it arrives; the workflow owner confirms what was removed and the evidence is recorded. Second, some material never leaves: patient-level datasets, credentials, and anything the governing SOP or agreement excludes. When the deployment context changes – a new vendor, a new data flow, a moved boundary – the release returns to Plan rather than silently continuing.</p>
 <p>Deploy ends when the authorized release is available to its intended users and monitoring is active. That release event initiates Maintain.</p>
 </section>
 </section>
