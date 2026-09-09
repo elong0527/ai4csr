@@ -143,12 +143,13 @@ examples/sap-change/
 ```
 
 The agent wrote the selection program and the benchmark harness; the
-engineering contribution is version stamping (every output carries
-SAP_VERSION and CODE_VERSION stamps, verified in the exact-match case)
-and fixture pinning (sha256 hashes for both extracts, recorded in
-`provenance.md`). Reproduction needs only:
+engineering contribution is version stamping (the selection and summary
+outputs carry SAP_VERSION and CODE_VERSION stamps, verified by the
+benchmark) and fixture pinning (sha256 hashes for both extracts, recorded
+in `provenance.md`). Reproduction needs only:
 
 ```sh
+cd examples/sap-change
 Rscript code/select_week24.R --sap=sap/REQ-WIN-01_v1.1.md \
   --data=data/adadas_week24_extract.csv \
   --out_selection=/tmp/sel.csv --out_summary=/tmp/sum.csv
@@ -177,15 +178,17 @@ frozen at planning, with expected impacts stated before evaluation in
 |---|---|
 | Baseline selection matches shipped ANL01FL exactly (234 subjects) | PASS |
 | Summary matches CSR Table 14-3.01 (n 79/81/74, means 2.5/2.0/1.5, p 0.245) | PASS |
-| Affected change: 212 selected, 22 excluded, low-dose mean 2.0 to 1.9, p 0.245 to 0.215 | PASS |
-| Unaffected control: ADSL extract unchanged (254 subjects, ITT 254) | PASS |
-| Stale mismatch: v1.0-stamped selection rejected for a v1.1 claim | PASS |
+| Affected change: 212 selected, 22 excluded, low-dose mean 2.0 to 1.9, p 0.245 to 0.215, and v1.1/v2.0 summary stamps | PASS |
+| Unaffected control: pinned ADSL extract unchanged (254 subjects, ITT 254) | PASS |
+| Stale mismatch: v1.0-stamped selection and summary rejected for a v1.1 claim | PASS |
 | Ambiguous requirement: windowless excerpt refuses with ESCALATE | PASS |
 
-Coverage is 6 of 6 defined cases with 0 skipped and 0 failed; the
-disposition control tests overreach directly, since a reviewer flagging
-disposition fails the benchmark. The run was independently reproduced on
-R 4.5.3 with code v2.0, confirming the reported numbers. Cost and latency
+Coverage is 6 of 6 defined cases with 0 skipped and 0 failed. The
+disposition control verifies the identity of the pinned, unaffected ADSL
+extract; it is not a test of a reviewer's judgment about an overreach. A
+reviewer must record and escalate a disposition concern separately. The run
+was independently reproduced on R 4.5.3 with code v2.0, confirming the
+reported numbers. Cost and latency
 were not measured and are labelled as such in the report. Deterministic
 data and result comparisons are separated from interpretation throughout:
 the benchmark asserts numbers and stamps, while whether the Day 182 cap

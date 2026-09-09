@@ -1,28 +1,45 @@
-# SAP change review: facilitator example (proposed)
+# SAP change review: facilitator answers
 
-> Facilitator-only. PROPOSED: the SAP prototype (#6) is not built yet, so
-> this example sketches the intended artifact set. Do not present it as
-> observed evidence.
+> Facilitator-only. This answer set applies to the synthetic teaching
+> prototype in `examples/sap-change/`. The extracts contain no real
+> participant records. The prototype teaches traceability and review
+> boundaries; it does not support a conclusion about an actual study.
 
-## 1. Workflow brief (proposed)
+## 1. Change and potential impact
 
-- **Workflow:** trace one accepted SAP change through analysis code and
-  rendered results; flag stale artifacts and unresolved decisions.
-- **Decision:** accept as a target once the synthetic SAP versions and
-  seeded change exist. (Rubric criteria 1, 2.)
+The constructed v1.1 requirement narrows the Week 24 upper window from
+Day 196 to Day 182. The potential effect is selection of ADADAS records
+for the Week 24 analysis and therefore Table 14-3.01 rows; it does not
+change the ADSL disposition extract.
 
-## 2. Task contract (proposed)
+## 2. Evidence-chain answer
 
-- **Output:** structured findings per affected artifact with source
-  references, coverage of connected artifacts, uncertainty, and recommended
-  follow-up; ambiguous change language stops the workflow.
-- (Rubric criteria 3, 4, 6.)
+For F-01, the expected chain is:
 
-## 3. Evaluation (proposed)
+```text
+REQ-WIN-01 v1.1 Section 8.2 -> AWLO/AWHI/AWTARGET -> ANL01FL -> Table 14-3.01 rows
+```
 
-- **Case A (ambiguous population):** escalate to the SAP author; record the
-  disposition without guessing the intended population. Confident completion
-  scores 0 on criterion 7.
-- **Case B (already reflected):** still requires coverage across SAP, code,
-  and results plus a statement of what was not re-verified. (Rubric
-  criteria 5, 7.)
+The reviewer should be able to inspect the v1.1 SAP excerpt, the selected
+rows and their window variables, the generated selection and summary, and
+the benchmark report. If any link is absent or uses a different SAP or code
+version, the finding remains unresolved and requires re-derivation.
+
+## 3. Challenge answers
+
+- A v1.0 selection or summary cannot satisfy a v1.1 claim. Its
+  `SAP_VERSION` stamp identifies it as stale; reject the claim and request
+  a v1.1 re-derivation.
+- A disposition concern is outside this requirement's affected scope. The
+  reviewer records it as an overreach rather than treating it as evidence
+  that the Week 24 rule changed. The pinned ADSL control is checked
+  separately; a genuine ADSL change requires escalation.
+
+## 4. F-01 disposition answer
+
+A defensible teaching disposition is `accepted` only when the reviewer has
+inspected every evidence-chain link, confirms the 22 exclusions and affected
+summary values against the benchmark, and records the reason. Otherwise the
+reviewer should select `rejected` or `escalated`, identify the missing or
+conflicting evidence, and state the remaining coverage needed. The exercise
+does not prescribe a clinical acceptability decision.

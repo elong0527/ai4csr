@@ -51,38 +51,51 @@ csr_p <- "0.245"
 got_n <- as.integer(sum10$n)
 got_mean <- round(as.numeric(sum10$mean), 1)
 got_p <- sum10$dose_response_p[1]
+sum10_stamps <- all(sum10$SAP_VERSION == "v1.0") && all(sum10$CODE_VERSION == "v2.0")
 add("csr-numbers-match",
-    all(got_n == csr_n) && all(got_mean == csr_mean) && got_p == csr_p,
+    all(got_n == csr_n) && all(got_mean == csr_mean) && got_p == csr_p && sum10_stamps,
     paste0("summary matches CSR Table 14-3.01: n=", paste(got_n, collapse = "/"),
-           " means=", paste(got_mean, collapse = "/"), " dose-response p=", got_p))
+           " means=", paste(got_mean, collapse = "/"), " dose-response p=", got_p,
+           "; SAP_VERSION v1.0 and CODE_VERSION v2.0 stamps verified"))
 
 sum11 <- read.csv(fresh_sum11, stringsAsFactors = FALSE)
 fresh11 <- read.csv(fresh_sel11, stringsAsFactors = FALSE)
 n11 <- sum(as.integer(sum11$n))
 lost <- nrow(fresh10) - nrow(fresh11)
-ctl_rows <- read.csv(adslf, stringsAsFactors = FALSE)
-add("affected-change", nrow(fresh11) == 212 && lost == 22,
+low_mean11 <- round(as.numeric(sum11$mean[2]), 1)
+p11 <- sum11$dose_response_p[1]
+sum11_stamps <- all(sum11$SAP_VERSION == "v1.1") && all(sum11$CODE_VERSION == "v2.0")
+add("affected-change", nrow(fresh11) == 212 && lost == 22 &&
+      low_mean11 == 1.9 && p11 == "0.215" && sum11_stamps,
     paste0("amended window selects 212 subjects (22 excluded); ",
-           "low-dose mean moved 2.0 -> ", round(as.numeric(sum11$mean[2]), 1),
-           ", dose-response p 0.245 -> ", sum11$dose_response_p[1]))
-add("disposition-control",
-    nrow(ctl_rows) == 254 && sum(ctl_rows$ITTFL == "Y") == 254,
-    "ADSL disposition extract unchanged: 254 subjects, ITT 254; no finding outside affected scope")
+           "low-dose mean moved 2.0 -> ", low_mean11,
+           ", dose-response p 0.245 -> ", p11,
+           "; SAP_VERSION v1.1 and CODE_VERSION v2.0 stamps verified"))
+ctl_rows <- read.csv(adslf, stringsAsFactors = FALSE)
+control_ok <- nrow(ctl_rows) == 254 && sum(ctl_rows$ITTFL == "Y") == 254 &&
+  identical(unname(tools::md5sum(adslf)),
+            "167994d347160d3897e33822a1dce758")
+add("disposition-control", control_ok,
+    "ADSL disposition extract matches the pinned control: 254 subjects, ITT 254; no finding outside affected scope")
 
-claim_version <- function(selection_path, claimed_version) {
-  d <- read.csv(selection_path, stringsAsFactors = FALSE)
+claim_version <- function(path, claimed_version) {
+  d <- read.csv(path, stringsAsFactors = FALSE)
   stamped <- unique(d$SAP_VERSION)
   if (length(stamped) != 1 || stamped != claimed_version) {
-    return(paste0("REJECTED: selection stamped ", paste(stamped, collapse = ","),
+    return(paste0("REJECTED: output stamped ", paste(stamped, collapse = ","),
                   " cannot satisfy a review claiming ", claimed_version))
   }
   "ACCEPTED"
 }
-stale <- file.path(outdir, "stale_claim.csv")
-file.copy(fresh_sel10, stale, overwrite = TRUE)
-stale_verdict <- claim_version(stale, "v1.1")
-add("stale-mismatch", grepl("^REJECTED", stale_verdict),
-    paste0("v1.0-stamped selection presented for a v1.1 claim is rejected: ", stale_verdict))
+stale_sel <- file.path(outdir, "stale_claim_selection.csv")
+stale_sum <- file.path(outdir, "stale_claim_summary.csv")
+file.copy(fresh_sel10, stale_sel, overwrite = TRUE)
+file.copy(fresh_sum10, stale_sum, overwrite = TRUE)
+stale_verdicts <- c(claim_version(stale_sel, "v1.1"),
+                    claim_version(stale_sum, "v1.1"))
+add("stale-mismatch", all(grepl("^REJECTED", stale_verdicts)),
+    paste0("v1.0-stamped selection and summary presented for a v1.1 claim are rejected: ",
+           paste(stale_verdicts, collapse = "; ")))
 
 nosuch <- file.path(root, "..", "sap", "REQ-WIN-01_nowindow.md")
 sap_txt <- readLines(sap11, warn = FALSE)
@@ -102,8 +115,8 @@ lines <- c("# Benchmark report: SAP change review (Pilot 1 prototype)",
            "",
            "Thresholds (agreed before evaluation): exact selection match;",
            "CSR Table 14-3.01 numbers reproduced (n 79/81/74, means 2.5/2.0/1.5, p 0.245);",
-           "amended selection 212 with 22 excluded; disposition control unchanged;",
-           "stale output rejected by version stamp; missing window escalates.",
+           "amended selection 212 with 22 excluded; pinned disposition control matches;",
+           "stale selection and summary rejected by version stamp; missing window escalates.",
            "")
 for (id in names(results)) {
   verdict <- if (results[[id]]$passed) "PASS" else "FAIL"
