@@ -31,13 +31,26 @@ used in the run.>
 
 ## Predefined metrics and acceptance thresholds
 
-<Metrics with denominators fixed before the run; the threshold for each.>
+<Metrics with denominators fixed before the run; the threshold for each.
+Name abstention and trace-completeness metrics explicitly alongside
+accuracy-style metrics:
+
+- Abstention: correct abstentions / cases where the evidence was genuinely
+  ambiguous or the required context was missing. A confident fabrication on
+  such a case is a failure, not a neutral miss.
+- Claim-to-evidence trace completeness: factual claims in the output carrying
+  a valid citation to an artifact that states what is claimed / total factual
+  claims in the output.>
 
 ## Results
 
 <Per-case results. For detection-style cases report: true positives, false
 positives, missed findings (false negatives), and coverage with denominators.
-Label any measurement that was unavailable instead of omitting it.>
+Report abstentions separately from misses: a case the agent correctly declined
+to decide is not a false negative. For every finding, report the
+trace-completeness check: claims with valid artifact citations versus total
+factual claims. Label any measurement that was unavailable instead of omitting
+it.>
 
 ## Failure analysis
 

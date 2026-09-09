@@ -32,7 +32,7 @@ assignees: ''
 
 ## Metrics and denominators
 
-<!-- Predefined metrics with denominators, e.g. detection rate = detected seeded defects / total seeded defects; false-positive count; coverage = rules checked / rules in scope. Label any unavailable measurement instead of omitting it. -->
+<!-- Predefined metrics with denominators, e.g. detection rate = detected seeded defects / total seeded defects; false-positive count; coverage = rules checked / rules in scope. Label any unavailable measurement instead of omitting it. Also define: abstention = correct abstentions / genuinely ambiguous or missing-context cases (a confident fabrication there is a failure, not a neutral miss); trace completeness = claims carrying a valid artifact citation / total factual claims. -->
 
 ## Acceptance threshold
 
