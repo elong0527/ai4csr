@@ -50,6 +50,7 @@ book:
         - 06-workflow-rounding.qmd
         - 07-workflow-rounding-skill.qmd
         - 08-workflow-rounding-lab.qmd
+        - 09-workflow-sap-change.qmd
 
 bibliography: references.bib
 

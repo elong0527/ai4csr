@@ -11,13 +11,16 @@
 - 22 subjects leave the Week 24 summary (late observed assessments after
   Day 182); 212 remain. Exclusions concentrate in xanomeline low dose.
 - Low-dose mean moves 2.0 -> 1.9; dose-response p-value moves 0.245 -> 0.215.
+- The v1.1 summary carries SAP_VERSION v1.1 and CODE_VERSION v2.0.
 - Expected finding F-01 (new): Week-24 selection change with the evidence
   chain SAP Section 8.2 -> AWLO/AWHI -> ANL01FL -> Table 14-3.01 rows.
 
 ## Unaffected control
 
-- ADSL extract unchanged: 254 subjects, ITT 254. A reviewer flagging
-  disposition overreaches; the benchmark fails such a reviewer.
+- ADSL extract matches its pinned control: 254 subjects, ITT 254. A
+  reviewer flagging disposition overreaches; record and escalate the
+  concern separately rather than treating it as evidence that the Week 24
+  selection changed.
 
 ## Stale / mismatched artifact
 

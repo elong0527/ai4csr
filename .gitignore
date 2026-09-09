@@ -13,5 +13,8 @@ pdf/
 # Fetched locally by the reader, not redistributed
 exercise/day1/*.pdf
 
+# Generated SAP benchmark intermediates
+examples/sap-change/benchmark/runs/
+
 # Local virtual environment (kept out of asciilint and git)
 /.venv/

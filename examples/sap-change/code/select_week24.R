@@ -69,6 +69,8 @@ rows <- lapply(arms, function(a) {
   c(arm = a, summarize_arm(d, "CHG"))
 })
 sum_df <- as.data.frame(do.call(rbind, rows), stringsAsFactors = FALSE)
+sum_df$SAP_VERSION <- sap_version
+sum_df$CODE_VERSION <- code_version
 
 fit <- (function() {
   op <- options(contrasts = c("contr.sum", "contr.poly"))
