@@ -1,0 +1,13 @@
+USUBJID,ARM,W24_OFFSET,DISP
+S01,Placebo,0,Completed
+S02,Placebo,2,Completed
+S03,Placebo,5,Completed
+S04,Placebo,-6,Completed
+S05,Placebo,10,Discontinued
+S06,Placebo,-1,Completed
+S07,Active,1,Completed
+S08,Active,-4,Completed
+S09,Active,7,Completed
+S10,Active,3,Completed
+S11,Active,-9,Completed
+S12,Active,0,Completed

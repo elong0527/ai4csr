@@ -1,0 +1,1 @@
+{"findings": [{"disposition": null, "disposition_by": null, "evidence": {"chain": "REQ-VW-01 -> derive_pp_flag -> PPFL -> disposition per-protocol rows", "changed_pp_total": 10}, "id": "F-01", "status": "new", "summary": "Per-protocol total changed 6 -> 10 after the visit-window amendment."}], "version": 1}

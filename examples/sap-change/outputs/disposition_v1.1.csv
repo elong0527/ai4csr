@@ -1,0 +1,5 @@
+# Disposition table rendered from sap/REQ-VW-01_v1.1.md | sap_version=v1.1 code_version=v1.0
+row,Placebo,Active,Total
+Randomized (ITT),6,6,12
+Per-protocol (PP),5,5,10
+Excluded from PP,1,1,2
