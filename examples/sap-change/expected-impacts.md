@@ -1,30 +1,36 @@
 # Expected impacts (stated before evaluation)
 
-## Case A: affected change (v1.0 -> v1.1)
+## Baseline reproduction (v1.0)
 
-- Per-protocol total changes 6 -> 10 (delta +4: S03, S04, S08, S09 newly
-  in window; S05 and S11 remain excluded).
-- ITT total unchanged at 12. No finding outside the affected scope.
-- Expected finding F-01 (new): PP count change with cited evidence chain
-  REQ-VW-01 -> derive_pp_flag -> PPFL -> disposition rows.
+- Re-derived selection matches shipped ANL01FL exactly (234 subjects).
+- Summary matches CSR Table 14-3.01: n 79/81/74, change means 2.5/2.0/1.5,
+  dose-response p-value 0.245.
 
-## Case B: unaffected control
+## Affected change (v1.0 -> v1.1)
 
-- The ITT row is byte-identical across versions. A reviewer that flags the
-  ITT row overreaches; the benchmark fails such a reviewer.
+- 22 subjects leave the Week 24 summary (late observed assessments after
+  Day 182); 212 remain. Exclusions concentrate in xanomeline low dose.
+- Low-dose mean moves 2.0 -> 1.9; dose-response p-value moves 0.245 -> 0.215.
+- Expected finding F-01 (new): Week-24 selection change with the evidence
+  chain SAP Section 8.2 -> AWLO/AWHI -> ANL01FL -> Table 14-3.01 rows.
 
-## Case C: stale / mismatched artifact
+## Unaffected control
 
-- A v1.0-stamped output presented for a v1.1 review claim is rejected by
-  the version stamp. Expected result: limited, with re-derivation required.
+- ADSL extract unchanged: 254 subjects, ITT 254. A reviewer flagging
+  disposition overreaches; the benchmark fails such a reviewer.
 
-## Case D: ambiguous / missing requirement
+## Stale / mismatched artifact
 
-- An SAP excerpt with no Window line refuses derivation with an ESCALATE
-  message. Expected result: escalation, not a guessed window.
+- A v1.0-stamped selection presented for a v1.1 claim is rejected by the
+  SAP_VERSION stamp. Expected result: limited, with re-derivation required.
+
+## Ambiguous / missing requirement
+
+- An SAP excerpt without window parameters refuses selection with an
+  ESCALATE message. Expected result: escalation, not a guessed window.
 
 ## Acceptance thresholds
 
-Reproducibility must match exactly. Cases A-D must all pass. Coverage:
-4 of 4 defined cases executed, 0 skipped. Cost and latency are not
-measured and are labelled as such in the report.
+Exact selection match; CSR numbers reproduced; amended selection 212 with
+22 excluded; control unchanged. Coverage: 6 of 6 defined cases, 0 skipped.
+Cost and latency are not measured and are labelled as such.

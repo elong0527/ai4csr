@@ -1,34 +1,39 @@
-# Benchmark report: SAP change review (prototype)
+# Benchmark report: SAP change review (Pilot 1 prototype)
 
-Rendered: 2026-09-09 00:33 UTC
-Code version: v1.0 | R version: 4.5.3
+Rendered: 2026-09-09 01:54 UTC
+Code version: v2.0 | R version: 4.5.3
 
-Thresholds (agreed before evaluation): reproducibility exact match;
-affected case PP delta +4 with ITT delta 0; control ITT delta 0;
+Thresholds (agreed before evaluation): exact selection match;
+CSR Table 14-3.01 numbers reproduced (n 79/81/74, means 2.5/2.0/1.5, p 0.245);
+amended selection 212 with 22 excluded; disposition control unchanged;
 stale output rejected by version stamp; missing window escalates.
 
-## reproducibility: PASS
+## exact-selection-match: PASS
 
-fresh runs match committed expected outputs
+re-derived Week 24 selection matches the committed v1.0 selection exactly
+
+## csr-numbers-match: PASS
+
+summary matches CSR Table 14-3.01: n=79/81/74 means=2.5/2/1.5 dose-response p=0.245
 
 ## affected-change: PASS
 
-PP total 6 -> 10 (expected +4); ITT total 12 -> 12 (expected 0)
+amended window selects 212 subjects (22 excluded); low-dose mean moved 2.0 -> 1.9, dose-response p 0.245 -> 0.215
 
-## unaffected-control: PASS
+## disposition-control: PASS
 
-ITT row identical across versions; no finding raised outside affected scope
+ADSL disposition extract unchanged: 254 subjects, ITT 254; no finding outside affected scope
 
 ## stale-mismatch: PASS
 
-output stamped v1.0 cannot satisfy a review claiming v1.1; result limited, version re-derivation required
+v1.0-stamped selection cannot satisfy a v1.1 review claim: re-derivation required (checked by SAP_VERSION stamp)
 
 ## ambiguous-missing: PASS
 
-windowless SAP excerpt refuses derivation with ESCALATE
+windowless SAP excerpt refuses selection with ESCALATE
 
 ## Coverage and limits
 
-Cases executed: 5 of 4 defined; skipped: 0; failed: 0.
+Cases executed: 6 of 6 defined; skipped: 0; failed: 0.
 Deterministic comparisons only; no model judgment was evaluated.
 Cost and latency were not measured.
