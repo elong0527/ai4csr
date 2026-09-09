@@ -98,14 +98,18 @@ date (200 = reachable); page wording was confirmed only where noted.
 - Claim: the public KEYNOTE-189 protocol supplies the example population
   and age requirements used with the synthetic CSV.
 - Type: external fact.
-- Source and locator:
+- Source and locator: ClinicalTrials.gov API study record,
+  `https://clinicaltrials.gov/api/v2/studies/NCT02578680`,
+  `protocolSection.eligibilityModule.minimumAge` = `18 Years`, inspected
+  2026-09-09. The public protocol PDF remains the reader-facing teaching
+  context at
   `https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf`.
-  Returned HTTP 200 on 2026-09-09.
-- Dates: source version date not recorded; inspected 2026-09-09.
-- Status: attributed.
-- Reviewer and disposition: unassigned. Limitation: reachability confirmed;
-  the specific protocol sections behind the age requirements are not yet
-  pinned to section or page.
+- Dates: registry record current as inspected 2026-09-09; protocol version
+  date not recorded.
+- Status: verified.
+- Reviewer and disposition: unassigned. Limitation: the API confirms the
+  minimum age; any additional population definition used in the exercise
+  needs a separately pinned protocol or registry locator.
 
 ### SRC-004: R `round()` ties to even
 
@@ -162,10 +166,11 @@ date (200 = reachable); page wording was confirmed only where noted.
   `https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b`.
   Both returned HTTP 200 on 2026-09-09.
 - Dates: release tagged v0.1.4; inspected 2026-09-09.
-- Status: verified (release and commit exist as pinned).
-- Reviewer and disposition: unassigned. Limitation: confirms the pin
-  resolves, not that every quoted line number still matches; any pin change
-  must re-verify all quoted lines and probe results in the same change.
+- Status: attributed.
+- Reviewer and disposition: unassigned. Limitation: the release and pinned
+  commit resolve, but this row does not verify the universal manuscript claim
+  or every quoted line number. Any pin change must re-verify all quoted lines
+  and probe results in the same change.
 
 ### SRC-008: Issue #249 as Arena.ai response example
 
@@ -184,18 +189,22 @@ date (200 = reachable); page wording was confirmed only where noted.
   the "posted by a person, not Arena.ai" provenance rests on author
   knowledge, not on a check recorded in this row.
 
-### SRC-009: arena.ai as demonstration platform
+### SRC-009: arena.ai endpoint and teaching limitation
 
 - Location: `04-ai-agent.qmd` and "Try it yourself" sections.
-- Claim: prompts are sent to `https://arena.ai/agent`; results vary between
-  runs and no specific agent response is the expected result.
-- Type: vendor-documented behavior.
-- Source and locator: `https://arena.ai/agent` (HTTP 200 on 2026-09-09).
-- Dates: inspected 2026-09-09.
-- Status: attributed.
-- Reviewer and disposition: unassigned. Limitation: confirms the endpoint
-  exists; run-to-run variability is a teaching assertion, not a measured
-  result in this row.
+- Claim: prompts direct readers to `https://arena.ai/agent`; no specific
+  agent response is an expected result.
+- Type: vendor-documented behavior (endpoint) and teaching assumption
+  (no answer key).
+- Source and locator: `https://arena.ai/agent` returned HTTP 200 on
+  2026-09-09. No dated first-party documentation has been recorded for
+  current product behavior.
+- Dates: inspected 2026-09-09; source publication date TODO.
+- Status: TODO.
+- Reviewer and disposition: unassigned. Limitation: endpoint reachability is
+  not evidence of supported tools, model identity, or run-to-run behavior.
+  Capture dated first-party documentation or an observed, versioned run before
+  making a time-sensitive product-behavior claim.
 
 ### SRC-010: Agent Skills specification layout
 
