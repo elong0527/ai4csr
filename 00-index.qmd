@@ -12,7 +12,7 @@ and operating environment.
 
 The book is written for members of Biometrics departments in
 biopharmaceutical companies who design, perform, review, or govern clinical
-study reports and want to integrate AI systematically into their work.
+study reports and want to integrate AI systematically into their organization.
 No prior experience building AI agents is required. Familiarity with clinical
 study artifacts and review processes will help readers connect the examples to
 their own work.
