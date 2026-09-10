@@ -123,17 +123,21 @@ bounds that claim with one cheap re-run:
 2. Run it on a second frontier model with R execution available.
 3. Score the response against the same answer key in "Evaluate the response".
 4. Record the model or product identifier, run date, and tool activity
-   alongside the score.
+   alongside the score, and record the same three provenance items for the
+   baseline run so a later reader can verify the comparison actually
+   crossed model families with comparable tool access.
 
 Classify the outcome before interpreting it:
 
 - **Hold:** the second response meets the same satisfactory-response criteria.
   The skill shows early evidence of working at the principle level rather than
   depending on model-specific prompt behavior.
-- **Delta:** the second response misses a candidate, invents a requirement, or
-  omits the human decision. Record which check diverged; that check may depend
-  on model-specific behavior and needs a skill revision or a narrower scope
-  claim.
+- **Delta:** the second response fails any satisfactory-response criterion:
+  a missed candidate, an invented requirement, an omitted human decision, a
+  missing coverage report, an incorrect probe result, an unrecorded
+  environment, or a change to code or an issue. Record which check diverged;
+  that check may depend on model-specific behavior and needs a skill revision
+  or a narrower scope claim.
 
 TODO: no second-model run has been recorded yet. Until one is, the book makes
 no stack-agnostic claim for this skill beyond the single-model observation
