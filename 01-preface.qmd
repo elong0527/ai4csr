@@ -51,12 +51,13 @@ examples in order.
   used by @sec-intro-ai-agent, so no local R, Python, Git, or Codespaces setup
   is required on this route.
 - **Technical route (optional).** To work in a repository rather than a
-  browser, open the book repository locally or in Codespaces. The lab in
-  @sec-workflow-rounding-lab invokes the one-file skill in
-  [`rounding/SKILL.md`](rounding/SKILL.md) on a synthetic R example and
-  compares the response with a published answer key; an available R
-  installation lets the agent run the small numeric probe that lab describes.
-  Contributor setup is documented in the repository README.
+  browser, open the book repository locally or in Codespaces. The hands-on
+  exercise is @sec-workflow-rounding-lab, which reviews a synthetic R example
+  against one business rule and compares the response with a published answer
+  key. That chapter supplies the instruction file the exercise uses and states
+  what the result does and does not establish. An available R installation
+  lets the agent run the small numeric probe the lab describes. Contributor
+  setup is documented in the repository README.
 - **Facilitator route.** Participant worksheets, worked facilitator examples,
   and the assessment rubric are in
   [`workshop/`](https://github.com/elong0527/ai4csr/tree/main/workshop) and are
