@@ -10,7 +10,8 @@ The focus is not a particular model or software stack. Instead, it is on
 durable principles that teams can adapt to their own technology, governance,
 and operating environment.
 
-The book is written for people who design, perform, review, or govern clinical
+The book is written for members of Biometrics departments in
+biopharmaceutical companies who design, perform, review, or govern clinical
 study reports and want to integrate AI systematically into their work.
 No prior experience building AI agents is required. Familiarity with clinical
 study artifacts and review processes will help readers connect the examples to
