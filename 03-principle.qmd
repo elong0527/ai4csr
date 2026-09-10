@@ -136,10 +136,11 @@ must rebuild the missing reasoning.
 **Sampling.** Not every finding needs the same depth of review. Stratify by
 risk: deep review for high-severity, novel, or low-confidence findings, and
 spot checks for the rest. Record which finding class received which depth
-and why, so the split itself is inspectable. TODO: the book states no
-measured sampling fractions; each team sets them and records the plan with
+and why, so the split itself is inspectable. The book states no
+measured sampling fractions yet; each team sets them and records the plan with
 the benchmark report (`templates/benchmark-report.md`) and the monitoring
-report (`templates/monitoring-report.md`).
+report (`templates/monitoring-report.md`). Collecting measured fractions is
+tracked in [issue #68](https://github.com/elong0527/ai4csr/issues/68).
 
 **Calibration.** Review quality decays when reviewers start rubber-stamping.
 Watch for the signals: an override rate falling toward zero, shrinking
