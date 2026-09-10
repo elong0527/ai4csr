@@ -25,8 +25,9 @@ Each part of the book makes certain assumptions about the readers' background:
 
 - Introduction, for shared concepts, principles, agent basics, and the AI-first SDLC.
 - Applied examples, for bounded workflows developed through that lifecycle.
-  The rounding example (Chapters 6--8) spans a motivating chapter, one
-  lifecycle design, and a companion lab; later examples
+  The rounding example (Chapters 6--7) spans a motivating chapter and one
+  lifecycle design; Chapter 8 is a companion lab built on the same skill.
+  Later examples
   follow the same lifecycle at the maturity their evidence supports.
 
 ## Authors and contributors {.unnumbered}

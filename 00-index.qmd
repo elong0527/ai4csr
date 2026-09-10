@@ -29,9 +29,9 @@ purpose, maturity, and prerequisites up front.
 - **Technical route (optional).** If you want to run the materials yourself,
   the [day-one exercise](https://github.com/elong0527/ai4csr/tree/main/exercise/day1)
   gives you a synthetic dataset and a participant assignment (facilitator
-  expected results are kept separate). The rounding lab in Chapters 6--8 is a
-  one-file instruction-only skill (`rounding/SKILL.md`); it ships no scripts,
-  data, or expected results. Runnable deterministic evidence appears in the
+  expected results are kept separate). The rounding lab (Chapter 8) is an
+  instruction-only exercise; it ships no scripts,
+  data, or expected results to run. Runnable deterministic evidence appears in the
   SAP change-review example (Chapter 9), which pairs pinned extracts with
   expected results and a benchmark report. Contributor setup is documented in
   the repository README.
