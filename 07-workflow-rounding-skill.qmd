@@ -465,8 +465,12 @@ re-run (green) to confirm the improvement.
 
 Concretely, for the next skill built this way:
 
-1. Publish the eval first: the benchmark rows, the independently maintained
-   answer key, and the scoring rule, with no skill instructions present.
+1. Publish the eval first: the benchmark rows and the scoring rule, with no
+   skill instructions present. Keep the answer key outside the evaluated
+   agent's accessible environment (a sealed location the agent cannot
+   search, not the same repository or network path) and reveal it only
+   after scoring, so neither the red nor the green run can retrieve the
+   expected labels in advance.
 2. Run the base agent against the eval and record the red result: detected and
    missed seeded problems, unsupported findings, and coverage.
 3. Write the skill instructions to address the observed misses, keeping the
@@ -476,7 +480,11 @@ Concretely, for the next skill built this way:
 
 Fixing the benchmark before the instructions exist keeps the skill from grading
 its own interpretation: a passing run means the instructions closed a
-demonstrated gap rather than restating what the eval already checks.
+demonstrated gap rather than restating what the eval already checks. The
+identical red-green eval measures fit to the development set, so it cannot
+serve as acceptance evidence on its own: a green result advances only with
+held-out cases the skill was not tuned against, or a fresh independently
+authored benchmark run before the Test gate accepts it.
 
 TODO: confirm the eval-first sequencing attribution to Anthropic's published
 skill-building guidance with a first-party source link; the web lookup was
