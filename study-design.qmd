@@ -84,6 +84,7 @@ The owner-accepted narrow question for this chapter is synthetic:
 | Analyses | One interim plus final, event-driven timing |
 | Spending | Pre-specified Lan-DeMets spending approximating O'Brien-Fleming bounds |
 | Target effect | Hazard ratio 0.70; 90% power |
+| Allocation | 1:1 randomization |
 | Confirmation | Simulation of the boundaries before approval (planned, not executed) |
 
 These assumptions are illustrative teaching inputs accepted for this
@@ -93,9 +94,24 @@ sourced, signed values.
 One hand-worked illustration shows what the analytical approximation
 produces. The Schoenfeld approximation for the required events is
 $d = 4(z_{1-\alpha/2} + z_{1-\beta})^2 / (\log \mathrm{HR})^2$.
-With the assumptions above, $d \approx 331$ events. This number is
-illustrative, not evidence: it was computed from the stated assumptions to
-show the approximation step, and no simulation has confirmed it.
+The factor 4 comes from the accepted 1:1 randomization: with equal
+allocation the variance term $p(1 - p)$ equals $1/4$, so its reciprocal
+is 4. A different allocation would change the factor, which is why equal
+allocation is an accepted assumption in the table above rather than a
+default the workflow may fill in silently.
+
+Evaluating with full precision (in R,
+`4 * (qnorm(0.975) + qnorm(0.90))^2 / log(0.70)^2`) gives
+$d \approx 330.38$ events. A fraction of an event cannot be observed, so
+planning rounds upward to 331 events; rounding down would plan for less
+than the requested 90% power. This figure is a fixed-design planning
+illustration: it sizes the final analysis as if no interim look existed.
+A group-sequential design with an interim analysis typically plans
+additional events so the design retains 90% power under its sequential
+rejection boundaries, and no
+simulation has confirmed any number here. The accountable statistician
+accepts the allocation, the target effect, and the spending before the
+331-event figure may enter the design report.
 
 ## Plan --- Frame the workflow
 
