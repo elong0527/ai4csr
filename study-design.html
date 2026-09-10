@@ -414,13 +414,18 @@ window.Quarto = {
 <td>Hazard ratio 0.70; 90% power</td>
 </tr>
 <tr class="even">
+<td>Allocation</td>
+<td>1:1 randomization</td>
+</tr>
+<tr class="odd">
 <td>Confirmation</td>
 <td>Simulation of the boundaries before approval (planned, not executed)</td>
 </tr>
 </tbody>
 </table>
 <p>These assumptions are illustrative teaching inputs accepted for this chapter, not a real protocol. A real design replaces every row with sourced, signed values.</p>
-<p>One hand-worked illustration shows what the analytical approximation produces. The Schoenfeld approximation for the required events is <span class="math inline">\(d = 4(z_{1-\alpha/2} + z_{1-\beta})^2 / (\log \mathrm{HR})^2\)</span>. With the assumptions above, <span class="math inline">\(d \approx 331\)</span> events. This number is illustrative, not evidence: it was computed from the stated assumptions to show the approximation step, and no simulation has confirmed it.</p>
+<p>One hand-worked illustration shows what the analytical approximation produces. The Schoenfeld approximation for the required events is <span class="math inline">\(d = 4(z_{1-\alpha/2} + z_{1-\beta})^2 / (\log \mathrm{HR})^2\)</span>. The factor 4 comes from the accepted 1:1 randomization: with equal allocation the variance term <span class="math inline">\(p(1 - p)\)</span> equals <span class="math inline">\(1/4\)</span>, so its reciprocal is 4. A different allocation would change the factor, which is why equal allocation is an accepted assumption in the table above rather than a default the workflow may fill in silently.</p>
+<p>Evaluating with full precision (in R, <code>4 * (qnorm(0.975) + qnorm(0.90))^2 / log(0.70)^2</code>) gives <span class="math inline">\(d \approx 330.38\)</span> events. A fraction of an event cannot be observed, so planning rounds upward to 331 events; rounding down would plan for less than the requested 90% power. This figure is a fixed-design planning illustration: it sizes the final analysis as if no interim look existed. A group-sequential design with an interim analysis typically plans additional events so the design retains 90% power under its sequential rejection boundaries, and no simulation has confirmed any number here. The accountable statistician accepts the allocation, the target effect, and the spending before the 331-event figure may enter the design report.</p>
 </section>
 <section id="plan-frame-the-workflow" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="plan-frame-the-workflow"><span class="header-section-number">5.4</span> Plan — Frame the workflow</h2>
