@@ -1,16 +1,17 @@
 # Half-day Biometrics leader workshop: proposed curriculum
 
-Status: proposed draft for issue #10. Operational details (delivery
+Status: proposed draft. Operational details (delivery
 deadline, class size, participant platform, account budget, facilitator
-staffing) stay open and are tracked in #10; they do not block this draft.
+staffing) stay open; they do not block this draft.
 
-## Design constraints (confirmed in #10)
+## Design constraints (confirmed)
 
 - Audience: Biometrics leaders with little coding experience. The book
   keeps its wider Biometrics audience.
 - Duration: half a day, approximately three to four hours.
 - Each participant leaves with a workflow brief, a task contract, and an
-  evaluation of a prepared prototype.
+  evaluation of a prepared prototype, completed as one coherent set for
+  the anchor scenario (rounding by default; see the agenda).
 - Participants use a browser-based AI agent, with a recorded fallback so
   that accounts or setup problems do not block participation.
 - Prepared code and data are supplied so that unfamiliarity with R or Git
@@ -32,20 +33,21 @@ The warm-up pattern for slot 2 is the existing day-1 exercise
 evidence, and make an accountable decision about a prepared synthetic
 dataset.
 
-## Proposed agenda (about 3.5 hours)
+## Proposed agenda (about 2.5 hours)
 
 | Minutes | Activity |
 |---|---|
-| 20 | Welcome, objectives, and the three artifacts (brief, contract, evaluation). |
-| 30 | Slot 1 guided exercise: bound the study-design request, write the workflow brief. |
-| 15 | Break. |
-| 45 | Slot 2 guided exercise: state the rounding rule, run the check, judge the findings. |
-| 45 | Slot 3 guided exercise: trace one SAP change, check coverage, record open decisions. |
-| 30 | Read-out: each table defends one accountable decision; facilitator scores decisions, not coding speed. |
-| 15 | Close: what transfers to Monday work, and what stays a human approval. |
+| 15 | Welcome, objectives, the three take-home artifacts, and anchor-scenario choice. |
+| 25 | Slot 1 guided exercise: bound the study-design request, draft a practice brief. |
+| 10 | Break. |
+| 40 | Slot 2 guided exercise: state the rounding rule, write the rounding brief, complete the task contract, run the check, judge the findings. |
+| 35 | Slot 3 guided exercise: trace one SAP change, check coverage, record open decisions. |
+| 20 | Read-out: each table assembles its anchor-scenario set and defends one accountable decision; facilitator scores decisions, not coding speed. |
+| 10 | Close: what transfers to Monday work, and what stays a human approval. |
 
-Total: 200 minutes (3 hours 20 minutes), leaving a 10 to 40 minute
-buffer inside the half-day window.
+Total: 155 minutes (about 2 hours 35 minutes), leaving a 25-minute
+buffer inside a three-hour booking and a larger buffer inside the
+half-day window.
 
 ## Participant forms (follow the book, one page each)
 
@@ -63,5 +65,3 @@ decisions over coding speed.
 - Readiness check before scheduling: prepared code and data run end to end,
   forms print on one page each, and the fallback recording covers every
   hands-on step.
-
-Refs #10.
