@@ -28,9 +28,13 @@ purpose, maturity, and prerequisites up front.
   setup is required on this route.
 - **Technical route (optional).** If you want to run the materials yourself,
   the [day-one exercise](https://github.com/elong0527/ai4csr/tree/main/exercise/day1)
-  and the rounding prototype described in Chapters 6--8 give you synthetic
-  data, scripts, and expected results. Contributor setup is documented in the
-  repository README.
+  gives you a synthetic dataset and a participant assignment (facilitator
+  expected results are kept separate). The rounding lab in Chapters 6--8 is a
+  one-file instruction-only skill (`rounding/SKILL.md`); it ships no scripts,
+  data, or expected results. Runnable deterministic evidence appears in the
+  SAP change-review example (Chapter 9), which pairs pinned extracts with
+  expected results and a benchmark report. Contributor setup is documented in
+  the repository README.
 - **Facilitator route.** Shared worksheets, completed examples, and assessment
   rubrics are linked from the exercise chapters as they become available.
 
