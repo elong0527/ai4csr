@@ -255,7 +255,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#principle-2-explicit-state" id="toc-principle-2-explicit-state" class="nav-link" data-scroll-target="#principle-2-explicit-state"><span class="header-section-number">2.3</span> Principle 2: Explicit state</a></li>
   <li><a href="#principle-3-events-and-rules" id="toc-principle-3-events-and-rules" class="nav-link" data-scroll-target="#principle-3-events-and-rules"><span class="header-section-number">2.4</span> Principle 3: Events and rules</a></li>
   <li><a href="#principle-4-tools-and-evidence" id="toc-principle-4-tools-and-evidence" class="nav-link" data-scroll-target="#principle-4-tools-and-evidence"><span class="header-section-number">2.5</span> Principle 4: Tools and evidence</a></li>
-  <li><a href="#principle-5-human-judgment" id="toc-principle-5-human-judgment" class="nav-link" data-scroll-target="#principle-5-human-judgment"><span class="header-section-number">2.6</span> Principle 5: Human judgment</a></li>
+  <li><a href="#principle-5-human-judgment" id="toc-principle-5-human-judgment" class="nav-link" data-scroll-target="#principle-5-human-judgment"><span class="header-section-number">2.6</span> Principle 5: Human judgment</a>
+  <ul class="collapse">
+  <li><a href="#designing-review-so-the-gate-pays-for-itself" id="toc-designing-review-so-the-gate-pays-for-itself" class="nav-link" data-scroll-target="#designing-review-so-the-gate-pays-for-itself"><span class="header-section-number">2.6.1</span> Designing review so the gate pays for itself</a></li>
+  </ul></li>
   <li><a href="#preview-change-review-across-sap-code-and-results" id="toc-preview-change-review-across-sap-code-and-results" class="nav-link" data-scroll-target="#preview-change-review-across-sap-code-and-results"><span class="header-section-number">2.7</span> Preview: Change review across SAP, code, and results</a></li>
   <li><a href="#putting-the-principles-together" id="toc-putting-the-principles-together" class="nav-link" data-scroll-target="#putting-the-principles-together"><span class="header-section-number">2.8</span> Putting the principles together</a></li>
   </ul>
@@ -388,9 +391,16 @@ ul.task-list li input[type="checkbox"] {
 <p>Trust requires clear accountability. AI-first does not mean AI-only.</p>
 <p>An agent may identify discrepancies, assemble evidence, classify likely severity, and recommend follow-up. The accountable human decides whether a finding is valid, whether an artifact should change, and how the decision should be recorded.</p>
 <p>The agent should stop or escalate when language is ambiguous, a required artifact is missing, evidence conflicts, a decision requires domain judgment, or the workflow rule does not cover the case.</p>
+<section id="designing-review-so-the-gate-pays-for-itself" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="designing-review-so-the-gate-pays-for-itself"><span class="header-section-number">2.6.1</span> Designing review so the gate pays for itself</h3>
+<p>Accountability is a slogan until review is designed as work. Three questions decide whether the human gate functions or merely exists.</p>
+<p><strong>Review cost.</strong> Checking prepared evidence should cost less than redoing the work or absorbing an escaped defect. That is the economic test of the gate: if reviewers routinely re-derive results from scratch, the workflow has failed its evidence-preparation duty. Fix the workflow, not the reviewers. Principle 4 sets up this economy: a finding that states what was checked, what was expected, what was observed, and where the evidence came from is cheap to verify; an unsupported opinion is expensive because the reviewer must rebuild the missing reasoning.</p>
+<p><strong>Sampling.</strong> Not every finding needs the same depth of review. Stratify by risk: deep review for high-severity, novel, or low-confidence findings, and spot checks for the rest. Record which finding class received which depth and why, so the split itself is inspectable. TODO: the book states no measured sampling fractions; each team sets them and records the plan with the benchmark report (<code>templates/benchmark-report.md</code>) and the monitoring report (<code>templates/monitoring-report.md</code>).</p>
+<p><strong>Calibration.</strong> Review quality decays when reviewers start rubber-stamping. Watch for the signals: an override rate falling toward zero, shrinking variance in review dispositions, or poor agreement when two reviewers check a shared sample. Report the calibration signal even when it looks healthy; silence is not evidence that review still works.</p>
 <blockquote class="blockquote">
-<p>Agents prepare evidence; humans make accountable decisions.</p>
+<p>Agents prepare evidence; humans make accountable decisions. Design the review so checking stays cheaper than redoing, sample by risk, and calibrate the reviewers.</p>
 </blockquote>
+</section>
 </section>
 <section id="preview-change-review-across-sap-code-and-results" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="preview-change-review-across-sap-code-and-results"><span class="header-section-number">2.7</span> Preview: Change review across SAP, code, and results</h2>
