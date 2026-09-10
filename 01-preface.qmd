@@ -2,12 +2,10 @@
 
 ## In this book {.unnumbered}
 
-This book is written for members of Biometrics departments in biopharmaceutical
-companies who design, perform, review, or govern clinical study reports and
-want to integrate AI systematically into their organization. Colleagues in
-adjacent roles, including clinical operations, data management, quality, and
-regulatory affairs, will find the same principles useful wherever they own or
-review a comparable reporting process.
+Beyond the primary audience in Biometrics, colleagues in adjacent roles,
+including clinical operations, data management, quality, and regulatory
+affairs, will find the same principles useful wherever they own or review a
+comparable reporting process.
 
 After reading the Introduction, you will be able to:
 

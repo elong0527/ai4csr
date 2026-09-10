@@ -10,8 +10,9 @@ The focus is not a particular model or software stack. Instead, it is on
 durable principles that teams can adapt to their own technology, governance,
 and operating environment.
 
-The [Preface](01-preface.qmd) states who the book is written for, what you will
-be able to do after reading it, and how the material is organized.
+The book is written for members of Biometrics departments in
+biopharmaceutical companies who design, perform, review, or govern clinical
+study reports and want to integrate AI systematically into their organization.
 
 ::: {.content-visible when-format="html"}
 
