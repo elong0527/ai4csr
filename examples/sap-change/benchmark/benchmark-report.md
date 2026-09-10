@@ -1,12 +1,13 @@
 # Benchmark report: SAP change review (Pilot 1 prototype)
 
-Rendered: 2026-09-09 05:30 UTC
+Rendered: 2026-09-10 15:03 UTC
 Code version: v2.0 | R version: 4.5.3
 
 Thresholds (agreed before evaluation): exact selection match;
 CSR Table 14-3.01 numbers reproduced (n 79/81/74, means 2.5/2.0/1.5, p 0.245);
 amended selection 212 with 22 excluded; pinned disposition control matches;
-stale selection and summary rejected by version stamp; missing window escalates.
+stale selection and summary rejected by version stamp; missing window escalates;
+each singly omitted window parameter escalates.
 
 ## exact-selection-match: PASS
 
@@ -32,8 +33,12 @@ v1.0-stamped selection and summary presented for a v1.1 claim are rejected: REJE
 
 windowless SAP excerpt refuses selection with ESCALATE
 
+## omitted-single-window: PASS
+
+each singly omitted window parameter refuses selection with ESCALATE: WindowLower=refused; WindowUpper=refused; WindowTarget=refused
+
 ## Coverage and limits
 
-Cases executed: 6 of 6 defined; skipped: 0; failed: 0.
+Cases executed: 7 of 7 defined; skipped: 0; failed: 0.
 Deterministic comparisons only; no model judgment was evaluated.
 Cost and latency were not measured.
