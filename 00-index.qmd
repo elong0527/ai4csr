@@ -11,8 +11,7 @@ durable principles that teams can adapt to their own technology, governance,
 and operating environment.
 
 The [Preface](01-preface.qmd) states who the book is written for, what you will
-be able to do after reading it, how the material is organized, and how to
-choose a reading route.
+be able to do after reading it, and how the material is organized.
 
 ::: {.content-visible when-format="html"}
 
