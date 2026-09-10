@@ -275,9 +275,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#test-benchmark-and-evaluate" id="toc-test-benchmark-and-evaluate" class="nav-link" data-scroll-target="#test-benchmark-and-evaluate"><span class="header-section-number">7.5</span> Test — Benchmark and evaluate</a>
   <ul class="collapse">
   <li><a href="#grow-evaluation-with-the-skill" id="toc-grow-evaluation-with-the-skill" class="nav-link" data-scroll-target="#grow-evaluation-with-the-skill"><span class="header-section-number">7.5.1</span> Grow evaluation with the skill</a></li>
-  <li><a href="#use-pinned-source-evidence-without-calling-it-skill-performance" id="toc-use-pinned-source-evidence-without-calling-it-skill-performance" class="nav-link" data-scroll-target="#use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">7.5.2</span> Use pinned source evidence without calling it skill performance</a></li>
-  <li><a href="#set-acceptance-criteria-for-each-level" id="toc-set-acceptance-criteria-for-each-level" class="nav-link" data-scroll-target="#set-acceptance-criteria-for-each-level"><span class="header-section-number">7.5.3</span> Set acceptance criteria for each level</a></li>
-  <li><a href="#canonical-artifact-benchmark-report" id="toc-canonical-artifact-benchmark-report" class="nav-link" data-scroll-target="#canonical-artifact-benchmark-report"><span class="header-section-number">7.5.4</span> Canonical artifact: Benchmark report</a></li>
+  <li><a href="#write-the-eval-before-the-skill-instructions" id="toc-write-the-eval-before-the-skill-instructions" class="nav-link" data-scroll-target="#write-the-eval-before-the-skill-instructions"><span class="header-section-number">7.5.2</span> Write the eval before the skill instructions</a></li>
+  <li><a href="#use-pinned-source-evidence-without-calling-it-skill-performance" id="toc-use-pinned-source-evidence-without-calling-it-skill-performance" class="nav-link" data-scroll-target="#use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">7.5.3</span> Use pinned source evidence without calling it skill performance</a></li>
+  <li><a href="#set-acceptance-criteria-for-each-level" id="toc-set-acceptance-criteria-for-each-level" class="nav-link" data-scroll-target="#set-acceptance-criteria-for-each-level"><span class="header-section-number">7.5.4</span> Set acceptance criteria for each level</a></li>
+  <li><a href="#canonical-artifact-benchmark-report" id="toc-canonical-artifact-benchmark-report" class="nav-link" data-scroll-target="#canonical-artifact-benchmark-report"><span class="header-section-number">7.5.5</span> Canonical artifact: Benchmark report</a></li>
   </ul></li>
   <li><a href="#deploy-operationalize-the-workflow" id="toc-deploy-operationalize-the-workflow" class="nav-link" data-scroll-target="#deploy-operationalize-the-workflow"><span class="header-section-number">7.6</span> Deploy — Operationalize the workflow</a>
   <ul class="collapse">
@@ -676,8 +677,20 @@ Tip
 </table>
 <p>A maintained benchmark should include compliant and noncompliant programs, catalog and uncataloged calls, justified exclusions, missing precision, and a case that the deterministic scanner cannot see. It should record selection accuracy, detected and missed seeded problems, unsupported findings, file and candidate coverage, report completeness, repeated-run agreement, review time, and human triage agreement.</p>
 </section>
-<section id="use-pinned-source-evidence-without-calling-it-skill-performance" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">7.5.2</span> Use pinned source evidence without calling it skill performance</h3>
+<section id="write-the-eval-before-the-skill-instructions" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="write-the-eval-before-the-skill-instructions"><span class="header-section-number">7.5.2</span> Write the eval before the skill instructions</h3>
+<p>The layers above describe what to measure. They do not say when to write the eval, and the order matters. Write the benchmark rows first, run the base agent without the skill, and record the failing run before writing the skill instructions. The failing run (red) shows which seeded problems the unaided agent misses and which unsupported findings it produces. The skill instructions are then written to close those observed gaps, and the same benchmark is re-run (green) to confirm the improvement.</p>
+<p>Concretely, for the next skill built this way:</p>
+<ol type="1">
+<li>Publish the eval first: the benchmark rows and the scoring rule, with no skill instructions present. Keep the answer key outside the evaluated agent’s accessible environment (a sealed location the agent cannot search, not the same repository or network path) and reveal it only after scoring, so neither the red nor the green run can retrieve the expected labels in advance.</li>
+<li>Run the base agent against the eval and record the red result: detected and missed seeded problems, unsupported findings, and coverage.</li>
+<li>Write the skill instructions to address the observed misses, keeping the eval and answer key unchanged.</li>
+<li>Re-run the same eval and record the green result next to the red one, so the improvement is comparable across identical inputs.</li>
+</ol>
+<p>Fixing the benchmark before the instructions exist keeps the skill from grading its own interpretation: a passing run means the instructions closed a demonstrated gap rather than restating what the eval already checks. The identical red-green eval measures fit to the development set, so it cannot serve as acceptance evidence on its own: a green result advances only with held-out cases the skill was not tuned against, or a fresh independently authored benchmark run before the Test gate accepts it.</p>
+</section>
+<section id="use-pinned-source-evidence-without-calling-it-skill-performance" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="use-pinned-source-evidence-without-calling-it-skill-performance"><span class="header-section-number">7.5.3</span> Use pinned source evidence without calling it skill performance</h3>
 <p>The following evidence remains a useful benchmark seed. All locations refer to <a href="https://github.com/Merck/metalite.ae/releases/tag/v0.1.4"><code>metalite.ae</code> v0.1.4</a> at commit <a href="https://github.com/Merck/metalite.ae/tree/bdb23d472b16bc9dadbc774e64c5ca40321e9c6b"><code>bdb23d472b16bc9dadbc774e64c5ca40321e9c6b</code></a>. It was manually reverified at that commit; it is not output from either skill.</p>
 <p>The review accounted for 27 R files and narrowed the evidence in three steps:</p>
 <ol type="1">
@@ -716,8 +729,8 @@ Tip
 <p>Two causes must remain separate. The <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html">Base R documentation</a> describes <code>round()</code> as round-to-nearest-even at a true tie. At nonzero decimal precision, binary representation can place the stored value just above or below the intended tie. Source inspection alone cannot predict every direction, so the executed probe is evidence and the explanation is interpretation.</p>
 <p>These counts and probes establish an answer key for the pinned source. They do not prove that every wrapper or dynamic path was found, that BR-001 governs the package, or that an agent reproduces the review.</p>
 </section>
-<section id="set-acceptance-criteria-for-each-level" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="set-acceptance-criteria-for-each-level"><span class="header-section-number">7.5.3</span> Set acceptance criteria for each level</h3>
+<section id="set-acceptance-criteria-for-each-level" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="set-acceptance-criteria-for-each-level"><span class="header-section-number">7.5.4</span> Set acceptance criteria for each level</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -773,8 +786,8 @@ Tip
 </tbody>
 </table>
 </section>
-<section id="canonical-artifact-benchmark-report" class="level3" data-number="7.5.4">
-<h3 data-number="7.5.4" class="anchored" data-anchor-id="canonical-artifact-benchmark-report"><span class="header-section-number">7.5.4</span> Canonical artifact: Benchmark report</h3>
+<section id="canonical-artifact-benchmark-report" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="canonical-artifact-benchmark-report"><span class="header-section-number">7.5.5</span> Canonical artifact: Benchmark report</h3>
 <p>No formal benchmark report exists for the book’s one-file prototype. <a href="08-workflow-rounding-lab.html" class="quarto-xref"><span>Chapter 8</span></a> provides a guided observation, while the community package provides a broader corpus. The presence of fixtures and an answer key is not itself an accepted result for a particular model, host, or organization.</p>
 <p>A benchmark report must identify the skill version, target, environment, rules, and precision; compare every run with an independently maintained answer key; separate deterministic output from agent judgment; report misses, false findings, coverage, stopped runs, reproducibility, time, and limitations; and record the reviewers’ disposition.</p>
 <p>The Test gate remains open for the book prototype. At either package level, the rule owner and an independent reviewer must accept the executed benchmark report. A production candidate also needs results in its target model, harness, R environment, and permission configuration. Only that accepted evidence would initiate Deploy.</p>
