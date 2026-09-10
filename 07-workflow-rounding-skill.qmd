@@ -486,11 +486,6 @@ serve as acceptance evidence on its own: a green result advances only with
 held-out cases the skill was not tuned against, or a fresh independently
 authored benchmark run before the Test gate accepts it.
 
-The eval-first ordering above follows standard red-green practice; whether
-Anthropic's published skill-building guidance states it explicitly is
-tracked in issue #53, which will add the first-party source link if
-confirmed.
-
 ### Use pinned source evidence without calling it skill performance
 
 The following evidence remains a useful benchmark seed. All locations refer to
