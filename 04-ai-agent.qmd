@@ -137,8 +137,10 @@ This is a synthetic teaching exercise, not an analysis of KEYNOTE-189 trial data
 
 Using only the public KEYNOTE-189 protocol and the synthetic CSV linked below,
 identify the protocol-defined analysis population and summarize its age
-distribution. Use R for the calculation. Return the statistics, executed R
-code, protocol sources, assumptions, and questions for human review.
+distribution. Use R for the calculation. Report the randomized-record count, nonmissing and
+missing `AGE` counts, mean, standard deviation, median, Q1, Q3, minimum, and
+maximum. State the R quantile method. Return the statistics, executed R code,
+protocol sources, assumptions, and questions for human review.
 
 Protocol:
 https://cdn.clinicaltrials.gov/large-docs/80/NCT02578680/Prot_SAP_001.pdf
@@ -153,7 +155,9 @@ Do not search for or use published KEYNOTE-189 results. Do not modify the data.
 
 A sufficient response identifies the intention-to-treat population as the 25
 synthetic records marked as randomized, runs the calculation in R, and reports
-one summary:
+one summary. The table is an independently computed expected result from the
+versioned synthetic CSV, not a captured Arena Agent response. The quartiles use
+R's default `quantile()` method (type 7):
 
 | Result from the synthetic ITT records | Value |
 |---|---:|
@@ -163,6 +167,8 @@ one summary:
 | Mean | 50.58 |
 | Standard deviation | 14.97 |
 | Median | 51 |
+| Q1 | 41.25 |
+| Q3 | 61.25 |
 | Minimum | 17 |
 | Maximum | 76 |
 
