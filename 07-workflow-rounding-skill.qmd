@@ -453,6 +453,39 @@ accuracy, detected and missed seeded problems, unsupported findings, file and
 candidate coverage, report completeness, repeated-run agreement, review time,
 and human triage agreement.
 
+### Write the eval before the skill instructions
+
+The layers above describe what to measure. They do not say when to write the
+eval, and the order matters. Write the benchmark rows first, run the base
+agent without the skill, and record the failing run before writing the skill
+instructions. The failing run (red) shows which seeded problems the unaided
+agent misses and which unsupported findings it produces. The skill instructions
+are then written to close those observed gaps, and the same benchmark is
+re-run (green) to confirm the improvement.
+
+Concretely, for the next skill built this way:
+
+1. Publish the eval first: the benchmark rows and the scoring rule, with no
+   skill instructions present. Keep the answer key outside the evaluated
+   agent's accessible environment (a sealed location the agent cannot
+   search, not the same repository or network path) and reveal it only
+   after scoring, so neither the red nor the green run can retrieve the
+   expected labels in advance.
+2. Run the base agent against the eval and record the red result: detected and
+   missed seeded problems, unsupported findings, and coverage.
+3. Write the skill instructions to address the observed misses, keeping the
+   eval and answer key unchanged.
+4. Re-run the same eval and record the green result next to the red one, so
+   the improvement is comparable across identical inputs.
+
+Fixing the benchmark before the instructions exist keeps the skill from grading
+its own interpretation: a passing run means the instructions closed a
+demonstrated gap rather than restating what the eval already checks. The
+identical red-green eval measures fit to the development set, so it cannot
+serve as acceptance evidence on its own: a green result advances only with
+held-out cases the skill was not tuned against, or a fresh independently
+authored benchmark run before the Test gate accepts it.
+
 ### Use pinned source evidence without calling it skill performance
 
 The following evidence remains a useful benchmark seed. All locations refer to
