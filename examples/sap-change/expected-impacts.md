@@ -31,9 +31,13 @@
 
 - An SAP excerpt without window parameters refuses selection with an
   ESCALATE message. Expected result: escalation, not a guessed window.
+- An SAP excerpt with any single window parameter omitted (lower, upper,
+  or target) refuses selection with an ESCALATE message. Expected result:
+  escalation, not a defaulted parameter.
 
 ## Acceptance thresholds
 
 Exact selection match; CSR numbers reproduced; amended selection 212 with
-22 excluded; control unchanged. Coverage: 6 of 6 defined cases, 0 skipped.
+22 excluded; control unchanged; wholly windowless and singly omitted
+window parameters escalate. Coverage: 7 of 7 defined cases, 0 skipped.
 Cost and latency are not measured and are labelled as such.
