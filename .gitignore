@@ -18,3 +18,7 @@ examples/sap-change/benchmark/runs/
 
 # Local virtual environment (kept out of asciilint and git)
 /.venv/
+
+# PR verification logs (uploaded as CI artifacts, never committed)
+/render.log
+/benchmark.log

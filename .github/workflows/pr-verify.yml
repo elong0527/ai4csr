@@ -82,24 +82,10 @@ jobs:
           set -o pipefail
           Rscript examples/sap-change/benchmark/run-benchmark.R 2>&1 | tee benchmark.log
 
-      - name: Check ASCII and diff hygiene
+      - name: Check ASCII hygiene
         run: |
           python -m pip install asciilint==0.4.0
           asciilint .
-          git diff --check
-
-      - name: Fail on unintended tracked changes
-        run: |
-          # The benchmark rewrites its committed report on every run; restore
-          # it so the tree check below only sees genuine side effects.
-          git checkout -- examples/sap-change/benchmark/benchmark-report.md
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Unexpected tracked changes after verification:" >> "$GITHUB_STEP_SUMMARY"
-            git status --porcelain >> "$GITHUB_STEP_SUMMARY"
-            git status --porcelain
-            exit 1
-          fi
-          echo "No unintended tracked changes." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload verification logs
         if: always()
@@ -111,3 +97,17 @@ jobs:
             benchmark.log
             examples/sap-change/benchmark/benchmark-report.md
             examples/sap-change/benchmark/runs/
+
+      - name: Fail on unintended tracked changes
+        run: |
+          # The benchmark rewrites its committed report on every run; the
+          # fresh copy is uploaded above, so restore it here before checking.
+          git checkout -- examples/sap-change/benchmark/benchmark-report.md
+          git diff --check
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Unexpected tracked changes after verification:" >> "$GITHUB_STEP_SUMMARY"
+            git status --porcelain >> "$GITHUB_STEP_SUMMARY"
+            git status --porcelain
+            exit 1
+          fi
+          echo "No unintended tracked changes." >> "$GITHUB_STEP_SUMMARY"
