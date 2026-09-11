@@ -267,10 +267,15 @@ example is:
 |---|---|---|
 | Plan | Workflow brief with frozen thresholds | Biometrics owner |
 | Design | Task contract with identifier chain and escalation | Biometrics owner |
-| Build | Runnable base-R prototype with provenance | Reviewer instructions |
-| Test | Benchmark report, 6 of 6 cases passing | Independent reproduction |
-| Deploy | Proposed release record, no production claim | Biometrics release decision |
-| Maintain | Proposed monitoring report with governed change | Accountable reviewer |
+| Build | Runnable base-R prototype with provenance | Pending: Biometrics owner |
+| Test | Benchmark report, 6 of 6 cases passing | Pending: named independent reviewer |
+| Deploy | Proposed release record, no production claim | Pending: Biometrics owner's release decision |
+| Maintain | Proposed monitoring report with governed change | Pending: accountable reviewer |
+
+Cells marked pending record human reviews still needed. The reviewer
+instructions, the independent R 4.5.3 reproduction, and the benchmark
+report are evidence for those reviews, not approvals by accountable
+people.
 
 The open question --- whether these thresholds generalize to the next
 requirement change --- is exactly what the monitoring design watches.
