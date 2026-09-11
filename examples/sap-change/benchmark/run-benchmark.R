@@ -108,6 +108,24 @@ escalated <- !is.null(r_missing$status) && r_missing$status != 0 &&
 add("ambiguous-missing", escalated, "windowless SAP excerpt refuses selection with ESCALATE")
 unlink(nosuch)
 
+omit_checks <- vapply(c("WindowLower", "WindowUpper", "WindowTarget"), function(key) {
+  omit_path <- file.path(root, "..", "sap", paste0("REQ-WIN-01_no", key, ".md"))
+  writeLines(sap_txt[!grepl(paste0("^", key, ":"), sap_txt)], omit_path)
+  r_omit <- run_select(omit_path,
+                       dataf,
+                       file.path(outdir, paste0("omit_", key, "_sel.csv")),
+                       file.path(outdir, paste0("omit_", key, "_sum.csv")))
+  unlink(omit_path)
+  refused <- !is.null(r_omit$status) && r_omit$status != 0 &&
+    any(grepl("ESCALATE", r_omit$output))
+  if (!refused) warning(paste0("single omission of ", key, " did not escalate"))
+  refused
+}, logical(1))
+add("omitted-single-window", all(omit_checks),
+    paste0("each singly omitted window parameter refuses selection with ESCALATE: ",
+           paste(paste0(names(omit_checks), "=", ifelse(omit_checks, "refused", "NOT refused")),
+                 collapse = "; ")))
+
 lines <- c("# Benchmark report: SAP change review (Pilot 1 prototype)",
            "",
            paste0("Rendered: ", format(Sys.time(), "%Y-%m-%d %H:%M %Z")),
@@ -116,7 +134,8 @@ lines <- c("# Benchmark report: SAP change review (Pilot 1 prototype)",
            "Thresholds (agreed before evaluation): exact selection match;",
            "CSR Table 14-3.01 numbers reproduced (n 79/81/74, means 2.5/2.0/1.5, p 0.245);",
            "amended selection 212 with 22 excluded; pinned disposition control matches;",
-           "stale selection and summary rejected by version stamp; missing window escalates.",
+           "stale selection and summary rejected by version stamp; missing window escalates;",
+           "each singly omitted window parameter escalates.",
            "")
 for (id in names(results)) {
   verdict <- if (results[[id]]$passed) "PASS" else "FAIL"
@@ -125,7 +144,7 @@ for (id in names(results)) {
 lines <- c(lines,
   "## Coverage and limits",
   "",
-  paste0("Cases executed: ", length(results), " of 6 defined; skipped: 0; failed: ",
+  paste0("Cases executed: ", length(results), " of 7 defined; skipped: 0; failed: ",
          sum(!vapply(results, `[[`, logical(1), "passed")), "."),
   "Deterministic comparisons only; no model judgment was evaluated.",
   "Cost and latency were not measured.")

@@ -26,7 +26,10 @@ sap_version <- grab("Version")
 lower <- suppressWarnings(as.integer(grab("WindowLower")))
 target <- suppressWarnings(as.integer(grab("WindowTarget")))
 upper_raw <- grab("WindowUpper")
-upper <- if (is.na(upper_raw) || upper_raw == "none") Inf else suppressWarnings(as.integer(upper_raw))
+if (is.na(upper_raw)) {
+  stop("ESCALATE: SAP excerpt declares no WindowUpper; refusing to select Week 24 records.")
+}
+upper <- if (upper_raw == "none") Inf else suppressWarnings(as.integer(upper_raw))
 if (is.na(sap_version)) {
   stop("ESCALATE: SAP excerpt states no version; refusing to select Week 24 records.")
 }
