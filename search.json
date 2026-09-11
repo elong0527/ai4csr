@@ -4,17 +4,7 @@
     "href": "index.html",
     "title": "AI-First Workflows for Clinical Study Reporting",
     "section": "",
-    "text": "Welcome\nWelcome to a practical guide to AI-first workflows for clinical study reports.\nThis book explores how organizations can move from isolated AI adoption toward an AI-native way of working by building AI-first workflows across clinical study reports. In these workflows, an AI agent performs a bounded, repeatable first pass; people define and monitor the process, review the evidence, and remain responsible for decisions.\nThe focus is not a particular model or software stack. Instead, it is on durable principles that teams can adapt to their own technology, governance, and operating environment.\nThe book is written for members of Biometrics departments in biopharmaceutical companies who design, perform, review, or govern clinical study reports and want to integrate AI systematically into their organization. No prior experience building AI agents is required. Familiarity with clinical study artifacts and review processes will help readers connect the examples to their own work.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#how-to-use-this-book",
-    "href": "index.html#how-to-use-this-book",
-    "title": "AI-First Workflows for Clinical Study Reporting",
-    "section": "How to use this book",
-    "text": "How to use this book\nThe main route is reading: begin with the Introduction (Chapters 1–4), then follow the applied examples in order. Each example states its teaching purpose, maturity, and prerequisites up front.\n\nMain route (no setup required). Read the chapters in order and work the exercises through a browser-based AI agent. You will specify requirements and review prepared code and results; no local R, Python, Git, or Codespaces setup is required on this route.\nTechnical route (optional). If you want to run the materials yourself, the day-one exercise and the rounding prototype described in Chapters 6–8 give you synthetic data, scripts, and expected results. Contributor setup is documented in the repository README.\nFacilitator route. Shared worksheets, completed examples, and assessment rubrics are linked from the exercise chapters as they become available.",
+    "text": "Welcome\nWelcome to a practical guide to AI-first workflows for clinical study reports.\nThis book explores how organizations can move from isolated AI adoption toward an AI-native way of working by building AI-first workflows across clinical study reports. In these workflows, an AI agent performs a bounded, repeatable first pass; people define and monitor the process, review the evidence, and remain responsible for decisions.\nThe focus is not a particular model or software stack. Instead, it is on durable principles that teams can adapt to their own technology, governance, and operating environment.\nThe book is written for members of Biometrics departments in biopharmaceutical companies who design, perform, review, or govern clinical study reports and want to integrate AI systematically into their organization.",
     "crumbs": [
       "Welcome"
     ]
@@ -34,7 +24,7 @@
     "href": "01-preface.html",
     "title": "Preface",
     "section": "",
-    "text": "In this book\nThis book is designed for members of Biometrics departments in biopharmaceutical companies who design, perform, review, or govern clinical study reports and want to integrate AI systematically into their work.\nAfter reading the Introduction, you will be able to:\nFamiliarity with clinical study artifacts such as the protocol, statistical analysis plan, and tables, listings, and figures will help you connect the examples to your own work. No coding experience and no prior experience building AI agents are required for the main route. The optional technical route uses R and the exercise folders described on the landing page.\nEach part of the book makes certain assumptions about the readers’ background:",
+    "text": "In this book\nBeyond the primary audience in Biometrics, colleagues in adjacent roles, including clinical operations, data management, quality, and regulatory affairs, will find the same principles useful wherever they own or review a comparable reporting process.\nAfter reading the Introduction, you will be able to:\nFamiliarity with clinical study artifacts such as the protocol, statistical analysis plan, and tables, listings, and figures will help you connect the examples to your own work. The main route requires no coding experience and no prior experience building AI agents. The optional technical route uses R.",
     "crumbs": [
       "Preface"
     ]
@@ -44,7 +34,27 @@
     "href": "01-preface.html#in-this-book",
     "title": "Preface",
     "section": "",
-    "text": "distinguish AI adoption for an isolated task from an AI-first workflow;\nstate the five principles of trustworthy assistance and read a task contract;\nname the six AI-first SDLC stages, their canonical artifacts, and the human gate at each stage; and\nchoose one bounded workflow in your own work that could become AI-first.\n\n\n\n\nIntroduction, for shared concepts, principles, agent basics, and the AI-first SDLC.\nApplied examples, for bounded workflows developed through that lifecycle. The rounding example (Chapters 6–8) is the most complete; later examples follow the same lifecycle at the maturity their evidence supports.",
+    "text": "distinguish AI adoption for an isolated task from an AI-first workflow;\nstate the five principles of trustworthy assistance and read a task contract;\nname the six stages of the AI-first software development lifecycle (AI-first SDLC), their canonical artifacts, and the human gate at each stage; and\nchoose one bounded workflow in your own work that could become AI-first.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "01-preface.html#how-the-book-is-organized",
+    "href": "01-preface.html#how-the-book-is-organized",
+    "title": "Preface",
+    "section": "How the book is organized",
+    "text": "How the book is organized\nThe book has two parts:\n\nIntroduction defines the shared concepts once: what an AI-first workflow is, what an AI agent is, the principles of trustworthy assistance, the task contract, and the AI-first SDLC that the examples share.\nApplied examples develops bounded workflows through that lifecycle. Each example states its teaching purpose, maturity, and prerequisites up front, and the examples are ordered by increasing maturity. The rounding example (6  Rounding in analysis and reporting and 7  From one-file skill to maintainable rounding workflow) is the most complete; later examples follow the same lifecycle at the maturity their evidence supports.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "01-preface.html#how-to-use-this-book",
+    "href": "01-preface.html#how-to-use-this-book",
+    "title": "Preface",
+    "section": "How to use this book",
+    "text": "How to use this book\nThe main route is reading: begin with the Introduction, then follow the applied examples in order.\n\nMain route (no setup required). Read the chapters in order and work the exercises through a browser-based AI agent. You will specify requirements and review prepared code and results. The exercises supply what the agent needs, such as the synthetic dataset in the day-one exercise used by 3  Onboarding an AI agent, so no local R, Python, Git, or Codespaces setup is required on this route.\nTechnical route (optional). To work in a repository rather than a browser, open the book repository locally or in Codespaces. The hands-on exercise is 8  Lab: Run a one-file rounding skill, which reviews a synthetic R example against one business rule and compares the response with a published answer key. That chapter supplies the instruction file the exercise uses and states what the result does and does not establish. An available R installation lets the agent run the small numeric probe the lab describes. Contributor setup is documented in the repository README.\nFacilitator route. Participant worksheets, worked facilitator examples, and the assessment rubric are in workshop/ and are linked from the example chapters that use them. Reusable artifact templates are in templates/.",
     "crumbs": [
       "Preface"
     ]
@@ -54,7 +64,7 @@
     "href": "01-preface.html#authors-and-contributors",
     "title": "Preface",
     "section": "Authors and contributors",
-    "text": "Authors and contributors\nThis document is a collaborative effort maintained by a community. As you read through it, you also have the opportunity to contribute and enhance its quality. Your input and involvement play a vital role in shaping the excellence of this document.\n\nAuthors: made significant contributions to at least one chapter, constituting the majority of the content.\nYilong Zhang, Nan Xiao,",
+    "text": "Authors and contributors\nThis document is a collaborative effort maintained by a community. As you read through it, you also have the opportunity to contribute and enhance its quality. Your input and involvement play a vital role in shaping the excellence of this document.\n\nAuthors: made significant contributions to at least one chapter, constituting the majority of the content.\nYilong Zhang, Nan Xiao\nContributors: contributed at least one commit to the source code. The current list is maintained on the repository contributor page.",
     "crumbs": [
       "Preface"
     ]
