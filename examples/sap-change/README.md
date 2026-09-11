@@ -14,7 +14,15 @@ Rscript benchmark/run-benchmark.R
 Rscript benchmark/record-disposition.R --finding=F-01 --decision=accepted --reviewer="<name>"
 ```
 
-The benchmark executes 6 cases and writes benchmark/benchmark-report.md.
+The benchmark executes 7 cases and writes benchmark/benchmark-report.md.
+Each run uses a fresh timestamped directory under benchmark/runs/
+(e.g. runs/run-20260911-032101-<pid>/) for all intermediate outputs,
+so a rerun never reads another run's files. Optional flags relocate
+outputs without touching the repository's accepted evidence:
+
+```sh
+Rscript benchmark/run-benchmark.R --outdir=/tmp/sap-runs --report=/tmp/sap-report.md
+```
 
 ## What is real and what is constructed
 
