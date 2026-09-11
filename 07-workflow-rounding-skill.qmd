@@ -526,7 +526,12 @@ illustrative BR-001 result in 10 of 10 `round()` values and 6 of 10
 |---|---:|---:|
 | `round(2.5, 0)` | `2` | `3` |
 | `round(-2.5, 0)` | `-2` | `-3` |
-| `formatC(-0.5, digits = 0, format = "f")` | `"-0"` | `"0"` |
+| `formatC(-0.5, digits = 0, format = "f")` | `"-0"` | `"-1"` |
+
+A companion probe, `formatC(c(-0.04, 0.04), digits = 0, format = "f")`,
+returned `"-0"` and `"0"` under R 4.5.3: a displayed negative zero can also arise when a
+nonzero value rounds to zero, not only at a tie. BR-001 forbids the display
+in both cases; only the tie case tests the half-away direction.
 
 Two causes must remain separate. The
 [Base R documentation](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html)
