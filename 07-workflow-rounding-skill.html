@@ -722,10 +722,11 @@ Tip
 <tr class="odd">
 <td><code>formatC(-0.5, digits = 0, format = "f")</code></td>
 <td style="text-align: right;"><code>"-0"</code></td>
-<td style="text-align: right;"><code>"0"</code></td>
+<td style="text-align: right;"><code>"-1"</code></td>
 </tr>
 </tbody>
 </table>
+<p>A companion probe, <code>formatC(c(-0.04, 0.04), digits = 0, format = "f")</code>, returned <code>"-0"</code> and <code>"0"</code> under R 4.5.3: a displayed negative zero can also arise when a nonzero value rounds to zero, not only at a tie. BR-001 forbids the display in both cases; only the tie case tests the half-away direction.</p>
 <p>Two causes must remain separate. The <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html">Base R documentation</a> describes <code>round()</code> as round-to-nearest-even at a true tie. At nonzero decimal precision, binary representation can place the stored value just above or below the intended tie. Source inspection alone cannot predict every direction, so the executed probe is evidence and the explanation is interpretation.</p>
 <p>These counts and probes establish an answer key for the pinned source. They do not prove that every wrapper or dynamic path was found, that BR-001 governs the package, or that an agent reproduces the review.</p>
 </section>
