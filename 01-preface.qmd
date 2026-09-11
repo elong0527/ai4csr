@@ -2,31 +2,66 @@
 
 ## In this book {.unnumbered}
 
-This book is designed for members of Biometrics departments in
-biopharmaceutical companies who design, perform, review, or govern clinical
-study reports and want to integrate AI systematically into their work.
+Beyond the primary audience in Biometrics, colleagues in adjacent roles,
+including clinical operations, data management, quality, and regulatory
+affairs, will find the same principles useful wherever they own or review a
+comparable reporting process.
 
 After reading the Introduction, you will be able to:
 
 - distinguish AI adoption for an isolated task from an AI-first workflow;
 - state the five principles of trustworthy assistance and read a task
   contract;
-- name the six AI-first SDLC stages, their canonical artifacts, and the human
-  gate at each stage; and
+- name the six stages of the AI-first software development lifecycle
+  (AI-first SDLC), their canonical artifacts, and the human gate at each
+  stage; and
 - choose one bounded workflow in your own work that could become AI-first.
 
 Familiarity with clinical study artifacts such as the protocol, statistical
 analysis plan, and tables, listings, and figures will help you connect the
-examples to your own work. No coding experience and no prior experience
-building AI agents are required for the main route. The optional technical
-route uses R and the exercise folders described on the landing page.
+examples to your own work. The main route requires no coding experience and no
+prior experience building AI agents. The optional technical route uses R.
 
-Each part of the book makes certain assumptions about the readers' background:
+## How the book is organized {.unnumbered}
 
-- Introduction, for shared concepts, principles, agent basics, and the AI-first SDLC.
-- Applied examples, for bounded workflows developed through that lifecycle.
-  The rounding example (Chapters 6--8) is the most complete; later examples
-  follow the same lifecycle at the maturity their evidence supports.
+The book has two parts:
+
+- **Introduction** defines the shared concepts once: what an AI-first workflow
+  is, what an AI agent is, the principles of trustworthy assistance, the task
+  contract, and the AI-first SDLC that the examples share.
+- **Applied examples** develops bounded workflows through that lifecycle. Each
+  example states its teaching purpose, maturity, and prerequisites up front,
+  and the examples are ordered by increasing maturity. The rounding example
+  (@sec-workflow-rounding-prompt and @sec-workflow-rounding-skill) is the most
+  complete; later examples follow the same lifecycle at the maturity their
+  evidence supports.
+
+## How to use this book {.unnumbered}
+
+The main route is reading: begin with the Introduction, then follow the applied
+examples in order.
+
+- **Main route (no setup required).** Read the chapters in order and work the
+  exercises through a browser-based AI agent. You will specify requirements
+  and review prepared code and results. The exercises supply what the agent
+  needs, such as the synthetic dataset in the
+  [day-one exercise](https://github.com/elong0527/ai4csr/tree/main/exercise/day1)
+  used by @sec-intro-ai-agent, so no local R, Python, Git, or Codespaces setup
+  is required on this route.
+- **Technical route (optional).** To work in a repository rather than a
+  browser, open the book repository locally or in Codespaces. The hands-on
+  exercise is @sec-workflow-rounding-lab, which reviews a synthetic R example
+  against one business rule and compares the response with a published answer
+  key. That chapter supplies the instruction file the exercise uses and states
+  what the result does and does not establish. An available R installation
+  lets the agent run the small numeric probe the lab describes. Contributor
+  setup is documented in the repository README.
+- **Facilitator route.** Participant worksheets, worked facilitator examples,
+  and the assessment rubric are in
+  [`workshop/`](https://github.com/elong0527/ai4csr/tree/main/workshop) and are
+  linked from the example chapters that use them. Reusable artifact templates
+  are in
+  [`templates/`](https://github.com/elong0527/ai4csr/tree/main/templates).
 
 ## Authors and contributors {.unnumbered}
 
@@ -39,4 +74,8 @@ in shaping the excellence of this document.
   constituting the majority of the content.
 
   [Yilong Zhang](https://elong0527.github.io/),
-  [Nan Xiao](https://nanx.me/),
+  [Nan Xiao](https://nanx.me/)
+
+- Contributors: contributed at least one commit to the source code. The
+  current list is maintained on the
+  [repository contributor page](https://github.com/elong0527/ai4csr/graphs/contributors).
