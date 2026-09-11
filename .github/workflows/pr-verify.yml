@@ -83,9 +83,9 @@ jobs:
           Rscript examples/sap-change/benchmark/run-benchmark.R 2>&1 | tee benchmark.log
 
       - name: Check ASCII hygiene
-        run: |
-          python -m pip install asciilint==0.4.0
-          asciilint .
+        # The uv-managed venv has no pip, so use uvx (installed above),
+        # matching the canonical local command in AGENTS.md.
+        run: uvx asciilint@0.4.0 .
 
       - name: Upload verification logs
         if: always()
