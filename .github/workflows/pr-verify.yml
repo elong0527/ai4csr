@@ -1,0 +1,113 @@
+name: pr-verify
+
+# Read-only pull-request verification for #64. Renders the full HTML book
+# and runs the deterministic SAP benchmark without publishing, without
+# vendor credentials, and without paid model calls. Publishing stays on
+# the main-branch workflow (quarto-publish.yml).
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          install-quarto: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: .python-version
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Restore locked Python environment
+        run: |
+          uv sync --locked
+          echo "VIRTUAL_ENV=$PWD/.venv" >> "$GITHUB_ENV"
+          echo "RETICULATE_PYTHON=$PWD/.venv/bin/python" >> "$GITHUB_ENV"
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+
+      - name: Record tool versions
+        run: |
+          {
+            echo "## Verified versions"
+            echo ""
+            echo "- Quarto: $(quarto --version)"
+            echo "- R: $(R --version | head -n 1)"
+            echo "- Python: $(python --version)"
+            echo "- uv: $(uv --version)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Render full HTML book
+        run: |
+          set -o pipefail
+          quarto render --to html 2>&1 | tee render.log
+
+      - name: Fail on render errors
+        run: |
+          # Strip ANSI color codes before matching: local runs emit them,
+          # CI logs may or may not, so normalize first.
+          if sed -e 's/\x1b\[[0-9;]*m//g' render.log | grep -E "^ERROR"; then
+            echo "Render log contains ERROR lines." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "Render finished with no ERROR lines." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Run deterministic SAP benchmark
+        run: |
+          set -o pipefail
+          Rscript examples/sap-change/benchmark/run-benchmark.R 2>&1 | tee benchmark.log
+
+      - name: Check ASCII hygiene
+        # The uv-managed venv has no pip, so use uvx (installed above),
+        # matching the canonical local command in AGENTS.md.
+        run: uvx asciilint@0.4.0 .
+
+      - name: Upload verification logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-verify-logs
+          path: |
+            render.log
+            benchmark.log
+            examples/sap-change/benchmark/benchmark-report.md
+            examples/sap-change/benchmark/runs/
+
+      - name: Fail on unintended tracked changes
+        run: |
+          # The benchmark rewrites its committed report on every run; the
+          # fresh copy is uploaded above, so restore it here before checking.
+          git checkout -- examples/sap-change/benchmark/benchmark-report.md
+          git diff --check
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Unexpected tracked changes after verification:" >> "$GITHUB_STEP_SUMMARY"
+            git status --porcelain >> "$GITHUB_STEP_SUMMARY"
+            git status --porcelain
+            exit 1
+          fi
+          echo "No unintended tracked changes." >> "$GITHUB_STEP_SUMMARY"
