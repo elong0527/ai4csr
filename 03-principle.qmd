@@ -136,10 +136,13 @@ must rebuild the missing reasoning.
 **Sampling.** Not every finding needs the same depth of review. Stratify by
 risk: deep review for high-severity, novel, or low-confidence findings, and
 spot checks for the rest. Record which finding class received which depth
-and why, so the split itself is inspectable. TODO: the book states no
-measured sampling fractions; each team sets them and records the plan with
-the benchmark report (`templates/benchmark-report.md`) and the monitoring
-report (`templates/monitoring-report.md`).
+and why, so the split itself is inspectable. This book gives no universal
+fraction because the appropriate split depends on a workflow's observed
+finding mix, severity definitions, and reviewer capacity; a percentage from
+another setting would be a false benchmark. Each team sets and justifies its
+own fractions, then records the plan with the benchmark report
+(`templates/benchmark-report.md`) and the monitoring report
+(`templates/monitoring-report.md`).
 
 **Calibration.** Review quality decays when reviewers start rubber-stamping.
 Watch for the signals: an override rate falling toward zero, shrinking
