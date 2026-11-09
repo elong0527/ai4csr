@@ -10,8 +10,8 @@ the conference program.
 The deck starts as a copy of
 [`asa-boston-2026-11-12`](../asa-boston-2026-11-12/) (2026-11-09), with the
 title, presenters, venue, date and link changed; `custom.css` sets the long
-title smaller on the title slide. The schedule slide still names that
-course's presenters for Part 2 and the case studies.
+title smaller on the title slide. Eric presents Part 2 and co-presents the
+case studies, the parts Jimeng Sun had in Boston.
 
 [View the rendered slides](https://ai4csr.org/slides/deming-2026-12-07/)
 
