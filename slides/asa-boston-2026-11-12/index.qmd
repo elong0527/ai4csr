@@ -3,6 +3,7 @@ title: "AI-First Workflow"
 subtitle: "Starting from CDISC Data Standardization"
 author:
   - name: Yilong Zhang
+  - name: Jimeng Sun
 venue: "2026 Boston Pharmaceutical Statistics Symposium"
 date: "2026-11-12"
 date-format: "YYYY-MM-DD"
