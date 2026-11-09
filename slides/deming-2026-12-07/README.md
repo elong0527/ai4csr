@@ -1,16 +1,17 @@
 # deming-2026-12-07 slides
 
-"AI-First Workflow", subtitled "Starting from CDISC Data Standardization" --
-slides for Session A of the 81st Annual Deming Conference on Applied
-Statistics (2026-12-07, 09:00-12:00 EST, Tropicana Atlantic City, NJ). The
-program lists the session as "Towards an AI-First Workflow for Clinical
-Development and its Analysis and Reporting", presented by Yilong Zhang and
-Pingye (Eric) Zhang.
+"Towards an AI-First Workflow for Clinical Development and its Analysis and
+Reporting", subtitled "Starting from CDISC Data Standardization" -- slides
+for Session A of the 81st Annual Deming Conference on Applied Statistics
+(2026-12-07, 09:00-12:00 EST, Tropicana Atlantic City, NJ), presented by
+Yilong Zhang and Pingye (Eric) Zhang. The title is the session's title in
+the conference program.
 
 The deck starts as a copy of
 [`asa-boston-2026-11-12`](../asa-boston-2026-11-12/) (2026-11-09), with the
-title slide, venue, date and link changed. The schedule slide still names
-that course's presenters for Part 2 and the case studies.
+title, presenters, venue, date and link changed; `custom.css` sets the long
+title smaller on the title slide. The schedule slide still names that
+course's presenters for Part 2 and the case studies.
 
 [View the rendered slides](https://ai4csr.org/slides/deming-2026-12-07/)
 

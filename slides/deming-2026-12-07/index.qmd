@@ -1,5 +1,5 @@
 ---
-title: "AI-First Workflow"
+title: "Towards an AI-First Workflow for Clinical Development and its Analysis and Reporting"
 subtitle: "Starting from CDISC Data Standardization"
 author:
   - name: Yilong Zhang

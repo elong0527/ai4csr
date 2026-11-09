@@ -116,8 +116,16 @@
   color: white;
 }
 
-/* Title slide (title-slide.html): a larger subtitle under the title, then the
-   speaker, the venue and the date on their own lines at one size. */
+/* Title slide (title-slide.html): the Deming program title is long, so it is
+   set smaller than a section heading to fit in two lines; then a larger
+   subtitle, and the speakers, the venue and the date on their own lines at
+   one size. */
+.reveal #title-slide h1 {
+  font-size: 2.1em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
 .reveal #title-slide .subtitle {
   font-size: 1.5em;
   margin-bottom: 1.2em;

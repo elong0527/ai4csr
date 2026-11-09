@@ -10,7 +10,7 @@ published with the book at `https://ai4csr.org/slides/<deck>/`.
 | [njsug-2026-10-09](https://ai4csr.org/slides/njsug-2026-10-09/) | yamaa: agentic workflow for CDISC data standardization | NJSUG and PhilaSUG Joint In-Person Meeting, 2026-10-09 |
 | [slds-2026-11-03](https://ai4csr.org/slides/slds-2026-11-03/) | yamaa: agentic workflow for CDISC data standardization | SLDS 2026, New York, 2026-11-03 |
 | [asa-boston-2026-11-12](https://ai4csr.org/slides/asa-boston-2026-11-12/) | AI-First Workflow: Starting from CDISC Data Standardization | 2026 Boston Pharmaceutical Statistics Symposium short course, 2026-11-12 |
-| [deming-2026-12-07](https://ai4csr.org/slides/deming-2026-12-07/) | AI-First Workflow: Starting from CDISC Data Standardization | 81st Annual Deming Conference on Applied Statistics, Session A, Atlantic City, 2026-12-07 |
+| [deming-2026-12-07](https://ai4csr.org/slides/deming-2026-12-07/) | Towards an AI-First Workflow for Clinical Development and its Analysis and Reporting | 81st Annual Deming Conference on Applied Statistics, Session A, Atlantic City, 2026-12-07 |
 
 The decks moved here from the yamaa repository's `docs/slides/` in November
 2026; their earlier history is there, and the old yamaa addresses redirect
