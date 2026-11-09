@@ -926,17 +926,12 @@ table-layout: fixed;
 padding: 0.3em 0.5em;
 }
 .reveal .schedule th:nth-child(1) { width: 10%; }
-.reveal .schedule th:nth-child(2) { width: 57%; }
-.reveal .schedule th:nth-child(3) { width: 25%; }
-.reveal .schedule th:nth-child(4) { width: 8%; }
+.reveal .schedule th:nth-child(2) { width: 62%; }
+.reveal .schedule th:nth-child(3) { width: 28%; }
 .reveal .schedule td:first-child {
 color: var(--course-blue);
 font-weight: 700;
 white-space: nowrap;
-}
-.reveal .schedule th:last-child,
-.reveal .schedule td:last-child {
-text-align: right;
 }
 
 .reveal .glossary table {
@@ -1709,21 +1704,19 @@ margin-right: 0; }
 </section>
 <section id="schedule" class="slide level2">
 <h2>Schedule</h2>
-<p>The course has three parts, with a break in the middle. Times are approximate.</p>
+<p>The course runs about three hours, in three parts with a break after each of the first two.</p>
 <div class="schedule">
 <table class="caption-top">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 10%">
+<col style="width: 62%">
+<col style="width: 28%">
 </colgroup>
 <thead>
 <tr class="header">
 <th></th>
 <th>Topic</th>
 <th>Format</th>
-<th>Minutes</th>
 </tr>
 </thead>
 <tbody>
@@ -1731,49 +1724,46 @@ margin-right: 0; }
 <td>Welcome</td>
 <td>Objectives, setup check, and resources</td>
 <td>Talk, setup check</td>
-<td>10</td>
 </tr>
 <tr class="even">
 <td>Part 1</td>
 <td><strong>AI agents and the AI-first workflow</strong> (Yilong)<br>Designing an AI-first workflow, with CDISC data standardization as the example</td>
 <td>Talk, two brainstorms</td>
-<td>35</td>
 </tr>
 <tr class="odd">
 <td>Part 1</td>
 <td><strong>Agentic CDISC data standardization</strong> (Yilong)<br>Why two agents disagree on one specification, and a workflow that reviews the specification instead</td>
 <td>Talk, discussion, two hands-on exercises</td>
-<td>50</td>
 </tr>
 <tr class="even">
 <td>Break</td>
 <td></td>
 <td></td>
-<td>15</td>
 </tr>
 <tr class="odd">
 <td>Part 2</td>
 <td><strong>Language models and agents for statistical programming</strong> (Jimeng)<br>Strategies that improve AI agents beyond skills and tools</td>
 <td>Talk</td>
-<td>45</td>
 </tr>
 <tr class="even">
-<td>Part 3</td>
-<td><strong>AI evaluation</strong> (Yilong)<br>Designing the evaluation of an AI agent as a study</td>
-<td>Talk, discussion</td>
-<td>30</td>
+<td>Break</td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Part 3</td>
-<td><strong>Case studies: create, review, and assess</strong> (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent’s job read</td>
-<td>Three hands-on exercises</td>
-<td>40</td>
+<td><strong>AI evaluation</strong> (Yilong)<br>Designing the evaluation of an AI agent as a study</td>
+<td>Talk, discussion</td>
 </tr>
 <tr class="even">
+<td>Part 3</td>
+<td><strong>Case studies: create, review, and assess</strong> (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent’s job read</td>
+<td>Three hands-on exercises</td>
+</tr>
+<tr class="odd">
 <td>Wrap-up</td>
 <td>Takeaways, where to go next, and questions</td>
 <td>Talk</td>
-<td>10</td>
 </tr>
 </tbody>
 </table>
@@ -1825,7 +1815,7 @@ margin-right: 0; }
 </section>
 <section id="check-your-setup" class="slide level2">
 <h2>Check your setup</h2>
-<p><span class="pill">Hands-on: 5 min</span></p>
+<p><span class="pill">Hands-on</span></p>
 <p>Open the Codespace, start R from the repository root, and run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href aria-label="1"></a><span class="fu">library</span>(yamaa)</span>
 <span id="cb1-2"><a href aria-label="2"></a><span class="fu">yamaa_selftest</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1849,7 +1839,7 @@ margin-right: 0; }
 <section id="ai-agents" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>AI Agents</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> name the parts of an AI agent and say what each one can and cannot do.<br> <strong>Format:</strong> two examples and three diagrams, about 15 minutes.</p>
+<p><strong>You will:</strong> name the parts of an AI agent and say what each one can and cannot do.<br> <strong>Format:</strong> two examples and three diagrams.</p>
 </div>
 </section>
 <section id="example-arena.ai" class="slide level2 scrollable">
@@ -2009,12 +1999,12 @@ margin-right: 0; }
 <section id="ai-first-workflow" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>AI-first workflow</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> place CDISC data standardization in an AI-first workflow and decide where to start building.<br> <strong>Format:</strong> two brainstorms and one proposal, about 20 minutes.</p>
+<p><strong>You will:</strong> place CDISC data standardization in an AI-first workflow and decide where to start building.<br> <strong>Format:</strong> two brainstorms and one proposal.</p>
 </div>
 </section>
 <section id="a-mental-game" class="slide level2">
 <h2>A mental game</h2>
-<p><span class="pill">Discussion: 5 min</span></p>
+<p><span class="pill">Discussion</span></p>
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="scenario">
@@ -2089,7 +2079,7 @@ margin-right: 0; }
 <img role="img" data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDUwIiBoZWlnaHQ9IjQ5MCIgdmlld0JveD0iMCAwIDEwNTAgNDkwIiBmb250LWZhbWlseT0iSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhciIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI5IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjNDQ0Ii8+PC9tYXJrZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDUwIiBoZWlnaHQ9IjQ5MCIgZmlsbD0iI2ZmZmZmZiIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTcwKSI+CiAgPHJlY3QgeD0iNDAiIHk9Ijg4IiB3aWR0aD0iMTYwIiBoZWlnaHQ9Ijg0IiByeD0iMTIiIGZpbGw9IiNmYWZhZmEiIHN0cm9rZT0iIzc3NyIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSI1OCIgeT0iMTEwIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzU1NSI+Q29uZmlybWVkIHNvdXJjZTwvdGV4dD4KICA8cmVjdCB4PSI1MiIgeT0iMTIyIiB3aWR0aD0iMTM2IiBoZWlnaHQ9IjM4IiByeD0iMTAiIGZpbGw9IiNlY2VmZjEiIHN0cm9rZT0iIzc3NyIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSIxMjAiIHk9IjE0NiIgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPkVEQyBkYXRhPC90ZXh0PgogIDxyZWN0IHg9IjIyMCIgeT0iODgiIHdpZHRoPSI3NTAiIGhlaWdodD0iODQiIHJ4PSIxMiIgZmlsbD0iI2Y2ZmJmNiIgc3Ryb2tlPSIjNDNhMDQ3IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1kYXNoYXJyYXk9IjgsNSIvPgogIDx0ZXh0IHg9IjIzOCIgeT0iMTEwIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJlN2QzMiI+Q2FuZGlkYXRlIGlucHV0PC90ZXh0PgogIDxyZWN0IHg9IjIzMiIgeT0iMTIyIiB3aWR0aD0iMTEzIiBoZWlnaHQ9IjM4IiByeD0iMTAiIGZpbGw9IiNlOGY1ZTkiIHN0cm9rZT0iIzQzYTA0NyIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSIyODguNSIgeT0iMTQ2IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJlN2QzMiI+UHJvdG9jb2w8L3RleHQ+CiAgPHJlY3QgeD0iMzU0IiB5PSIxMjIiIHdpZHRoPSIxMTMiIGhlaWdodD0iMzgiIHJ4PSIxMCIgZmlsbD0iI2U4ZjVlOSIgc3Ryb2tlPSIjNDNhMDQ3IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjQxMC41IiB5PSIxNDYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmU3ZDMyIj5Bbm5vdGF0ZWQgQ1JGPC90ZXh0PgogIDxyZWN0IHg9IjQ3NiIgeT0iMTIyIiB3aWR0aD0iMTEzIiBoZWlnaHQ9IjM4IiByeD0iMTAiIGZpbGw9IiNlOGY1ZTkiIHN0cm9rZT0iIzQzYTA0NyIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSI1MzIuNSIgeT0iMTQ2IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJlN2QzMiI+U0FQPC90ZXh0PgogIDxyZWN0IHg9IjU5OCIgeT0iMTIyIiB3aWR0aD0iMTEzIiBoZWlnaHQ9IjM4IiByeD0iMTAiIGZpbGw9IiNlOGY1ZTkiIHN0cm9rZT0iIzQzYTA0NyIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSI2NTQuNSIgeT0iMTQ2IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJlN2QzMiI+U3BlY2lmaWNhdGlvbjwvdGV4dD4KICA8cmVjdCB4PSI3MjAiIHk9IjEyMiIgd2lkdGg9IjExMyIgaGVpZ2h0PSIzOCIgcng9IjEwIiBmaWxsPSIjZThmNWU5IiBzdHJva2U9IiM0M2EwNDciIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPHRleHQgeD0iNzc2LjUiIHk9IjE0NiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyZTdkMzIiPlNPUDwvdGV4dD4KICA8cmVjdCB4PSI4NDIiIHk9IjEyMiIgd2lkdGg9IjExMyIgaGVpZ2h0PSIzOCIgcng9IjEwIiBmaWxsPSIjZThmNWU5IiBzdHJva2U9IiM0M2EwNDciIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPHRleHQgeD0iODk4LjUiIHk9IjE0NiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyZTdkMzIiPlRlbXBsYXRlczwvdGV4dD4KICA8bGluZSB4MT0iMTIwIiB5MT0iMTc1IiB4Mj0iMTIwIiB5Mj0iMjYyIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSI1OTUiIHkxPSIxNzUiIHgyPSI1OTUiIHkyPSIyNjIiIHN0cm9rZT0iIzQ0NCIgc3Ryb2tlLXdpZHRoPSIyLjUiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPGNpcmNsZSBjeD0iNTk1IiBjeT0iMjE4IiByPSIxNCIgZmlsbD0iI2ZmZmRlNyIgc3Ryb2tlPSIjZjlhODI1IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjU5NSIgeT0iMjI0IiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2U2NTEwMCI+PzwvdGV4dD4KICA8dGV4dCB4PSI1NjUiIHk9IjIyMyIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iI2U2NTEwMCI+PHRzcGFuIGZvbnQtd2VpZ2h0PSJib2xkIj5BbGlnbm1lbnQgaGFwcGVuczwvdHNwYW4+IGluIG1lZXRpbmdzLCBlbWFpbHMsIG1lc3NhZ2VzPC90ZXh0PgogIDxyZWN0IHg9IjQwIiB5PSIyNjgiIHdpZHRoPSI5MzAiIGhlaWdodD0iMTA2IiByeD0iMTIiIGZpbGw9IiNmM2Y4ZmUiIHN0cm9rZT0iIzFlODhlNSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSI4LDUiLz4KICA8dGV4dCB4PSI1OCIgeT0iMjkwIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1NjVjMCI+Q2FuZGlkYXRlIG91dHB1dHM8L3RleHQ+CiAgPHJlY3QgeD0iMTIwIiB5PSIzMDIiIHdpZHRoPSIxNzAiIGhlaWdodD0iNjAiIHJ4PSIxMCIgZmlsbD0iI2UzZjJmZCIgc3Ryb2tlPSIjMWU4OGU1IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjIwNSIgeT0iMzI5IiBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1NjVjMCI+U0RUTTwvdGV4dD4KICA8dGV4dCB4PSIyMDUiIHk9IjM0OCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzU1NSI+ZGF0YXNldHM8L3RleHQ+CiAgPHJlY3QgeD0iNDIwIiB5PSIzMDIiIHdpZHRoPSIxNzAiIGhlaWdodD0iNjAiIHJ4PSIxMCIgZmlsbD0iI2UzZjJmZCIgc3Ryb2tlPSIjMWU4OGU1IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjUwNSIgeT0iMzI5IiBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1NjVjMCI+QURhTTwvdGV4dD4KICA8dGV4dCB4PSI1MDUiIHk9IjM0OCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzU1NSI+ZGF0YXNldHM8L3RleHQ+CiAgPHJlY3QgeD0iNzIwIiB5PSIzMDIiIHdpZHRoPSIxNzAiIGhlaWdodD0iNjAiIHJ4PSIxMCIgZmlsbD0iI2UzZjJmZCIgc3Ryb2tlPSIjMWU4OGU1IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjgwNSIgeT0iMzI5IiBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1NjVjMCI+RGVmaW5lLVhNTDwvdGV4dD4KICA8dGV4dCB4PSI4MDUiIHk9IjM0OCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzU1NSI+bWV0YWRhdGE8L3RleHQ+CiAgPGxpbmUgeDE9IjI5MiIgeTE9IjMzMiIgeDI9IjQxOCIgeTI9IjMzMiIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjIuNSIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8Y2lyY2xlIGN4PSIzNTUiIGN5PSIzMzIiIHI9IjEzIiBmaWxsPSIjZmZmZGU3IiBzdHJva2U9IiNmOWE4MjUiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPHRleHQgeD0iMzU1IiB5PSIzMzgiIGZvbnQtc2l6ZT0iMTciIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTY1MTAwIj4/PC90ZXh0PgogIDxsaW5lIHgxPSI1OTIiIHkxPSIzMzIiIHgyPSI3MTgiIHkyPSIzMzIiIHN0cm9rZT0iIzQ0NCIgc3Ryb2tlLXdpZHRoPSIyLjUiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPGNpcmNsZSBjeD0iNjU1IiBjeT0iMzMyIiByPSIxMyIgZmlsbD0iI2ZmZmRlNyIgc3Ryb2tlPSIjZjlhODI1IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjY1NSIgeT0iMzM4IiBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2U2NTEwMCI+PzwvdGV4dD4KICA8L2c+CiAgPHRleHQgeD0iNTIiIHk9IjM5MiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzIyMiI+PHRzcGFuIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNTU1Ij5Db25maXJtZWQ6PC90c3Bhbj4gRURDIGRhdGEgaXMgdGhlIHNvdXJjZS48L3RleHQ+CiAgPHRleHQgeD0iNTIiIHk9IjQyNCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzIyMiI+PHRzcGFuIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTY1MTAwIj5PcGVuOjwvdHNwYW4+IHRoZSBpbnB1dHMgYW5kIHRoZSBvdXRwdXRzIGFyZSBjYW5kaWRhdGVzLCB5b3VycyB0byBkZWNpZGUuPC90ZXh0Pgo8L3N2Zz4K" class="r-stretch"></section>
 <section id="brainstorm-where-to-start-building" class="slide level2">
 <h2>Brainstorm: where to start building</h2>
-<p><span class="pill">Discussion: 5 min</span></p>
+<p><span class="pill">Discussion</span></p>
 <p>You will build an AI agent for this workflow. <strong>Where do you start, and why?</strong></p>
 
 <img role="img" data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDYwIiBoZWlnaHQ9IjUyNCIgdmlld0JveD0iMCAwIDEwNjAgNTI0IiBmb250LWZhbWlseT0iSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiI+CiAgPGRlZnM+CiAgICA8bWFya2VyIGlkPSJhciIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI5IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjNDQ0Ii8+PC9tYXJrZXI+CiAgICA8bWFya2VyIGlkPSJhcmIiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iIzE1NjVjMCIvPjwvbWFya2VyPgogICAgPG1hcmtlciBpZD0iYXJnIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjkiIHJlZlk9IjUiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIG9yaWVudD0iYXV0by1zdGFydC1yZXZlcnNlIj48cGF0aCBkPSJNMCwwIEwxMCw1IEwwLDEwIHoiIGZpbGw9IiMyZTdkMzIiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFydCIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI5IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiBvcmllbnQ9ImF1dG8tc3RhcnQtcmV2ZXJzZSI+PHBhdGggZD0iTTAsMCBMMTAsNSBMMCwxMCB6IiBmaWxsPSIjMDA4MzhmIi8+PC9tYXJrZXI+CiAgICA8bWFya2VyIGlkPSJhcm0iIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOSIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0wLDAgTDEwLDUgTDAsMTAgeiIgZmlsbD0iI2I0NTMwOSIvPjwvbWFya2VyPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTA2MCIgaGVpZ2h0PSI1MjQiIGZpbGw9IiNmZmZmZmYiLz4KICA8cmVjdCB4PSIxNSIgeT0iMTIwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9IiNlY2VmZjEiIHN0cm9rZT0iIzc3NyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSI5MCIgeT0iMTUyIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+SW5wdXRzPC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIxNzIiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1NTUiPkVEQyBkYXRhICs8L3RleHQ+CiAgPHRleHQgeD0iOTAiIHk9IjE4NyIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzU1NSI+Y2FuZGlkYXRlIGlucHV0czwvdGV4dD4KICA8cmVjdCB4PSIxNSIgeT0iMjQwIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9IiNlM2YyZmQiIHN0cm9rZT0iIzFlODhlNSIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSI5MCIgeT0iMjcwIiBmb250LXNpemU9IjE5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1NjVjMCI+T3V0cHV0czwvdGV4dD4KICA8dGV4dCB4PSI5MCIgeT0iMjkxIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTU1Ij5TRFRNICYjeEI3OyBBRGFNPC90ZXh0PgogIDx0ZXh0IHg9IjkwIiB5PSIzMDciIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1NTUiPkRlZmluZS1YTUw8L3RleHQ+CiAgPHJlY3QgeD0iMjAwIiB5PSI1MCIgd2lkdGg9IjUxMCIgaGVpZ2h0PSIyODUiIHJ4PSIxNCIgZmlsbD0iI2ZhZjVmYyIgc3Ryb2tlPSIjOGUyNGFhIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTAsNiIvPgogIDx0ZXh0IHg9IjI0MCIgeT0iNzYiIGZvbnQtc2l6ZT0iMTciIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM2YTFiOWEiPkhhcm5lc3M8L3RleHQ+CiAgPHJlY3QgeD0iMjI1IiB5PSIxMjAiIHdpZHRoPSIxOTAiIGhlaWdodD0iODAiIHJ4PSIxMCIgZmlsbD0iI2UzZjJmZCIgc3Ryb2tlPSIjMWU4OGU1IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIzMjAiIHk9IjE2NyIgZm9udC1zaXplPSIxOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxNTY1YzAiPkNvbnRleHQ8L3RleHQ+CiAgPGxpbmUgeDE9IjQxNyIgeTE9IjE2MCIgeDI9IjQ4NiIgeTI9IjE2MCIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjIuNSIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8cmVjdCB4PSI0OTAiIHk9IjEyMCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSI4MCIgcng9IjEwIiBmaWxsPSIjZmZmM2UwIiBzdHJva2U9IiNmYjhjMDAiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPHRleHQgeD0iNTg1IiB5PSIxNjgiIGZvbnQtc2l6ZT0iMjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTY1MTAwIj5MTE08L3RleHQ+CiAgPHJlY3QgeD0iMjI1IiB5PSIyNDAiIHdpZHRoPSIxOTAiIGhlaWdodD0iODAiIHJ4PSIxMCIgZmlsbD0iI2UwZjdmYSIgc3Ryb2tlPSIjMDA4MzhmIiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDx0ZXh0IHg9IjMyMCIgeT0iMjg3IiBmb250LXNpemU9IjE5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzAwNjA2NCI+U2tpbGxzPC90ZXh0PgogIDxsaW5lIHgxPSIzMjAiIHkxPSIyMzgiIHgyPSIzMjAiIHkyPSIyMDQiIHN0cm9rZT0iIzAwODM4ZiIgc3Ryb2tlLXdpZHRoPSIyLjUiIG1hcmtlci1lbmQ9InVybCgjYXJ0KSIvPgogIDx0ZXh0IHg9IjMzMSIgeT0iMjI2IiBmb250LXNpemU9IjEzIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDA2MDY0Ij5sb2FkPC90ZXh0PgogIDxyZWN0IHg9Ijc4MCIgeT0iMTIwIiB3aWR0aD0iMTkwIiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9IiNmZmZkZTciIHN0cm9rZT0iI2Y5YTgyNSIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8dGV4dCB4PSI4NzUiIHk9IjE2NyIgZm9udC1zaXplPSIxOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNiNDUzMDkiPk1lbW9yeTwvdGV4dD4KICA8cmVjdCB4PSI3ODAiIHk9IjI1MCIgd2lkdGg9IjE5MCIgaGVpZ2h0PSI4MCIgcng9IjEwIiBmaWxsPSIjZThmNWU5IiBzdHJva2U9IiMyZTdkMzIiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPHRleHQgeD0iODc1IiB5PSIyOTciIGZvbnQtc2l6ZT0iMTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWI1ZTIwIj5Ub29sczwvdGV4dD4KICA8bGluZSB4MT0iODc1IiB5MT0iMjAyIiB4Mj0iODc1IiB5Mj0iMjQ2IiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItc3RhcnQ9InVybCgjYXIpIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSI3NzgiIHkxPSIxNjAiIHgyPSI3MTQiIHkyPSIxNjAiIHN0cm9rZT0iI2I0NTMwOSIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1kYXNoYXJyYXk9IjYsNCIgbWFya2VyLWVuZD0idXJsKCNhcm0pIi8+CiAgPHRleHQgeD0iNzQ2IiB5PSIxNTAiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYjQ1MzA5IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iNSIgcGFpbnQtb3JkZXI9InN0cm9rZSI+cmV0cmlldmU8L3RleHQ+CiAgPHBhdGggZD0iTSA2MDAgMjAyIFYgMjkwIEggNzc2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyZTdkMzIiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI2FyZykiLz4KICA8dGV4dCB4PSI2ODgiIHk9IjI4MiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyZTdkMzIiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBwYWludC1vcmRlcj0ic3Ryb2tlIj5hY3Rpb248L3RleHQ+CiAgPHBhdGggZD0iTSA5NzIgMjYyIEggMTAxMCBWIDkyIEggMzIwIFYgMTE4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxNTY1YzAiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI2FyYikiLz4KICA8dGV4dCB4PSI2NjUiIHk9Ijg2IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1NjVjMCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjUiIHBhaW50LW9yZGVyPSJzdHJva2UiPnJlc3VsdDwvdGV4dD4KICA8bGluZSB4MT0iMTY3IiB5MT0iMTYwIiB4Mj0iMjIxIiB5Mj0iMTYwIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxjaXJjbGUgY3g9IjQ5MiIgY3k9IjEyMiIgcj0iMTMiIGZpbGw9IiNlNjUxMDAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNDkyIiB5PSIxMjgiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj4xPC90ZXh0PgogIDxjaXJjbGUgY3g9IjIxOCIgY3k9IjUyIiByPSIxMyIgZmlsbD0iIzZhMWI5YSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIyMTgiIHk9IjU4IiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiI+MjwvdGV4dD4KICA8Y2lyY2xlIGN4PSIyMjciIGN5PSIyNDIiIHI9IjEzIiBmaWxsPSIjMDA4MzhmIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjIyNyIgeT0iMjQ4IiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiI+MzwvdGV4dD4KICA8Y2lyY2xlIGN4PSI3ODIiIGN5PSIyNTIiIHI9IjEzIiBmaWxsPSIjMmU3ZDMyIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9Ijc4MiIgeT0iMjU4IiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiI+NDwvdGV4dD4KICA8Y2lyY2xlIGN4PSI3ODIiIGN5PSIxMjIiIHI9IjEzIiBmaWxsPSIjYjQ1MzA5IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9Ijc4MiIgeT0iMTI4IiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiI+NTwvdGV4dD4KICA8Y2lyY2xlIGN4PSIxNyIgY3k9IjI0MiIgcj0iMTMiIGZpbGw9IiMxNTY1YzAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMTciIHk9IjI0OCIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiPjY8L3RleHQ+CiAgPGc+CiAgPHJlY3QgeD0iOSIgeT0iMzU4IiB3aWR0aD0iMjAyIiBoZWlnaHQ9IjEwNCIgcng9IjEwIiBmaWxsPSIjZmZmM2UwIiBzdHJva2U9IiNmYjhjMDAiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iMzMiIGN5PSIzODQiIHI9IjEzIiBmaWxsPSIjZTY1MTAwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMzIiB5PSIzOTAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj4xPC90ZXh0PgogIDx0ZXh0IHg9IjU1IiB5PSIzOTEiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlNjUxMDAiPkxMTTwvdGV4dD4KICA8dGV4dCB4PSIyMyIgeT0iNDE2IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjIyIj5XaGF0IG11c3QgaXQ8L3RleHQ+CiAgPHRleHQgeD0iMjMiIHk9IjQzNCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+YWxyZWFkeSBrbm93PzwvdGV4dD4KICA8L2c+CiAgPGc+CiAgPHJlY3QgeD0iMjE5IiB5PSIzNTgiIHdpZHRoPSIyMDIiIGhlaWdodD0iMTA0IiByeD0iMTAiIGZpbGw9IiNmYWY1ZmMiIHN0cm9rZT0iIzhlMjRhYSIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8Y2lyY2xlIGN4PSIyNDMiIGN5PSIzODQiIHI9IjEzIiBmaWxsPSIjNmExYjlhIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjI0MyIgeT0iMzkwIiBmb250LXNpemU9IjE2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiI+MjwvdGV4dD4KICA8dGV4dCB4PSIyNjUiIHk9IjM5MSIgZm9udC1zaXplPSIxOCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzZhMWI5YSI+SGFybmVzczwvdGV4dD4KICA8dGV4dCB4PSIyMzMiIHk9IjQxNiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+V2hhdCBtYXkgaXQgc2VlLDwvdGV4dD4KICA8dGV4dCB4PSIyMzMiIHk9IjQzNCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+d3JpdGUsIGFuZCBkZWNpZGU8L3RleHQ+CiAgPHRleHQgeD0iMjMzIiB5PSI0NTIiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPm9uIGl0cyBvd24/PC90ZXh0PgogIDwvZz4KICA8Zz4KICA8cmVjdCB4PSI0MjkiIHk9IjM1OCIgd2lkdGg9IjIwMiIgaGVpZ2h0PSIxMDQiIHJ4PSIxMCIgZmlsbD0iI2UwZjdmYSIgc3Ryb2tlPSIjMDA4MzhmIiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxjaXJjbGUgY3g9IjQ1MyIgY3k9IjM4NCIgcj0iMTMiIGZpbGw9IiMwMDYwNjQiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNDUzIiB5PSIzOTAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj4zPC90ZXh0PgogIDx0ZXh0IHg9IjQ3NSIgeT0iMzkxIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDA2MDY0Ij5Ta2lsbHM8L3RleHQ+CiAgPHRleHQgeD0iNDQzIiB5PSI0MTYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPldoaWNoIFNPUHMsPC90ZXh0PgogIDx0ZXh0IHg9IjQ0MyIgeT0iNDM0IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjIyIj5zcGVjaWZpY2F0aW9ucywgYW5kPC90ZXh0PgogIDx0ZXh0IHg9IjQ0MyIgeT0iNDUyIiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjIyIj50ZW1wbGF0ZXM/PC90ZXh0PgogIDwvZz4KICA8Zz4KICA8cmVjdCB4PSI2MzkiIHk9IjM1OCIgd2lkdGg9IjIwMiIgaGVpZ2h0PSIxMDQiIHJ4PSIxMCIgZmlsbD0iI2U4ZjVlOSIgc3Ryb2tlPSIjMmU3ZDMyIiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxjaXJjbGUgY3g9IjY2MyIgY3k9IjM4NCIgcj0iMTMiIGZpbGw9IiMxYjVlMjAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNjYzIiB5PSIzOTAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj40PC90ZXh0PgogIDx0ZXh0IHg9IjY4NSIgeT0iMzkxIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWI1ZTIwIj5Ub29sczwvdGV4dD4KICA8dGV4dCB4PSI2NTMiIHk9IjQxNiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+V2hpY2ggc3RlcHMgbXVzdDwvdGV4dD4KICA8dGV4dCB4PSI2NTMiIHk9IjQzNCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+Y29kZSBkbzogdmFsaWRhdGlvbiw8L3RleHQ+CiAgPHRleHQgeD0iNjUzIiB5PSI0NTIiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPmRlcml2YXRpb24/PC90ZXh0PgogIDwvZz4KICA8Zz4KICA8cmVjdCB4PSI4NDkiIHk9IjM1OCIgd2lkdGg9IjIwMiIgaGVpZ2h0PSIxMDQiIHJ4PSIxMCIgZmlsbD0iI2ZmZmRlNyIgc3Ryb2tlPSIjZjlhODI1IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxjaXJjbGUgY3g9Ijg3MyIgY3k9IjM4NCIgcj0iMTMiIGZpbGw9IiNiNDUzMDkiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iODczIiB5PSIzOTAiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj41PC90ZXh0PgogIDx0ZXh0IHg9Ijg5NSIgeT0iMzkxIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYjQ1MzA5Ij5NZW1vcnk8L3RleHQ+CiAgPHRleHQgeD0iODYzIiB5PSI0MTYiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPldoYXQgbXVzdCBpdCByZW1lbWJlcjwvdGV4dD4KICA8dGV4dCB4PSI4NjMiIHk9IjQzNCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzIyMiI+YmV0d2VlbiBydW5zLCBhbmQ8L3RleHQ+CiAgPHRleHQgeD0iODYzIiB5PSI0NTIiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPndoZXJlIGlzIGl0IHJlY29yZGVkPzwvdGV4dD4KICA8L2c+CiAgPHJlY3QgeD0iOSIgeT0iNDcyIiB3aWR0aD0iMTA0MiIgaGVpZ2h0PSI0MiIgcng9IjEwIiBmaWxsPSIjZTNmMmZkIiBzdHJva2U9IiMxZTg4ZTUiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iMzMiIGN5PSI0OTMiIHI9IjEzIiBmaWxsPSIjMTU2NWMwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMzIiB5PSI0OTkiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIj42PC90ZXh0PgogIDx0ZXh0IHg9IjU1IiB5PSI0OTkiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxNTY1YzAiPk91dHB1dHM8L3RleHQ+CiAgPHRleHQgeD0iMTU5IiB5PSI0OTkiIGZvbnQtc2l6ZT0iMTciIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPldobyBnZW5lcmF0ZXMgdGhlIG91dHB1dDogTExNIG9yIHRvb2xzPzwvdGV4dD4KPC9zdmc+Cg==" class="r-stretch"></section>
@@ -2121,7 +2111,7 @@ margin-right: 0; }
 <section id="agentic-cdisc-data-standardization" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>Agentic CDISC data standardization</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> see why two agents disagree on one specification, run a yamaa specification yourself, and review one that an agent drafted.<br> <strong>Format:</strong> talk, a discussion, and two hands-on exercises, about 50 minutes.</p>
+<p><strong>You will:</strong> see why two agents disagree on one specification, run a yamaa specification yourself, and review one that an agent drafted.<br> <strong>Format:</strong> talk, a discussion, and two hands-on exercises.</p>
 </div>
 </section>
 <section id="contributors" class="slide level2 center">
@@ -2161,7 +2151,7 @@ margin-right: 0; }
 </section>
 <section id="your-turn-find-an-implicit-rule" class="slide level2 compact">
 <h2>Your turn: find an implicit rule</h2>
-<p><span class="pill">Discussion: 5 min</span></p>
+<p><span class="pill">Discussion</span></p>
 <p>Take one derivation from a study you work on. Say its rule in one sentence to your neighbor, then find the words two programmers could read differently.</p>
 <div class="roles">
 <table class="caption-top">
@@ -2443,8 +2433,8 @@ display:block!important;
 </section>
 <section id="hands-on-1-run-a-specification-then-break-it" class="slide level2 compact scrollable">
 <h2>Hands-on 1: run a specification, then break it</h2>
-<p><span class="pill">Hands-on: 10 min</span></p>
-<p>Copy the benchmark with <code>mkdir -p exercise &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>, then run its specification from the repository root:</p>
+<p><span class="pill">Hands-on</span></p>
+<p>In a terminal at the repository root, copy the benchmark with <code>rm -rf exercise/advs &amp;&amp; mkdir -p exercise &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>, then run its specification there:</p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
 <div class="tab-content">
@@ -2469,7 +2459,7 @@ display:block!important;
 </ol>
 <p><strong>Takeaway:</strong> same specification and inputs, same datasets; the verification you kept catches the rule you removed.</p>
 <aside class="notes">
-<p>Answer key. Step 1: the output is the expected file, with MAP 94.33333333333333 and 91.33333333333333 for subject 101 and 70 for subject 102. Step 2: the MAP values become 101, 98 and 75; the collected records are unchanged. Step 3: the run fails before any output with one issue, <code>the row count is outside the bounds of verifications[0].row_count in 1 of the counted groups [row_count_failed, CHECK-13]</code>, because subjects 103 (no diastolic record) and 104 (missing diastolic result) each get a MAP record with no value, 14 rows against the 12 the verification demands. Before the next exercise, undo both edits or replace the copy with <code>rm -rf exercise/advs &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>; copying over the existing directory would nest the fresh copy inside it.</p>
+<p>Answer key. Step 1: the output is the expected file, with MAP 94.33333333333333 and 91.33333333333333 for subject 101 and 70 for subject 102. Step 2: the MAP values become 101, 98 and 75; the collected records are unchanged. Step 3: the run fails before any output with one issue, <code>the row count is outside the bounds of verifications[0].row_count in 1 of the counted groups [row_count_failed, CHECK-13]</code>, because subjects 103 (no diastolic record) and 104 (missing diastolic result) each get a MAP record with no value, 14 rows against the 12 the verification demands. The copy command removes <code>exercise/advs</code> first, so running it again restores a clean copy and discards every edit; copying over the existing directory would nest the fresh copy inside it.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2484,8 +2474,8 @@ display:block!important;
 </section>
 <section id="hands-on-2-draft-with-an-agent-then-review" class="slide level2 compact scrollable">
 <h2>Hands-on 2: draft with an agent, then review</h2>
-<p><span class="pill">Hands-on: 15 min</span></p>
-<p>Start from a fresh copy, <code>rm -rf exercise/advs &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>, then give OpenCode, Claude Code, or Codex this task:</p>
+<p><span class="pill">Hands-on</span></p>
+<p>In a terminal at the repository root, reset the copy with <code>rm -rf exercise/advs &amp;&amp; mkdir -p exercise &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>, then give your agent this task:</p>
 <div class="prompt">
 <p>In exercise/advs/spec.yaml, add a pulse pressure record for each subject and visit that has both a systolic and a diastolic result: PARAMCD “PP”, PARAM “Pulse Pressure (mmHg)”, AVAL is the systolic minus the diastolic pressure, not rounded, and DTYPE “CALCULATION”. Keep the MAP record and every collected record. Run the specification with yamaa and show me the output.</p>
 </div>
@@ -2757,7 +2747,7 @@ less memory than R
 <section id="ai-evaluation" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>AI evaluation</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> design the evaluation of an AI agent as a study: the decision, the tasks, the endpoint, the conduct, the bias, and the rigor.<br> <strong>Format:</strong> talk and a discussion, about 30 minutes.</p>
+<p><strong>You will:</strong> design the evaluation of an AI agent as a study: the decision, the tasks, the endpoint, the conduct, the bias, and the rigor.<br> <strong>Format:</strong> talk and a discussion.</p>
 </div>
 </section>
 <section id="would-you-sign-off" class="slide level2 scrollable">
@@ -3056,7 +3046,7 @@ display:block!important;
 </section>
 <section id="discussion-can-you-trust-133134" class="slide level2">
 <h2>Discussion: can you trust 133/134?</h2>
-<p><span class="pill">Discussion: 5 min</span></p>
+<p><span class="pill">Discussion</span></p>
 <p><strong>With your neighbor:</strong> pick the two limits that matter most for this result, and the cheapest way to address each.</p>
 <ul>
 <li>133 of 134 tasks pass: Python, full prompt, one model, one attempt, October 2026.</li>
@@ -3118,7 +3108,7 @@ display:block!important;
 <section id="case-study-creating-a-benchmark-for-adam-derivation" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>Case study: creating a benchmark for ADaM derivation</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> take one benchmark apart and list what makes it a fair test.<br> <strong>Format:</strong> walk-through, about 10 minutes.</p>
+<p><strong>You will:</strong> take one benchmark apart and list what makes it a fair test.<br> <strong>Format:</strong> walk-through.</p>
 </div>
 </section>
 <section id="anatomy-of-a-benchmark" class="slide level2">
@@ -3238,7 +3228,7 @@ display:block!important;
 <section id="case-study-review-and-finalize-a-benchmark" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>Case study: review and finalize a benchmark</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> review a yamaa benchmark and a Pilot 7 finding, and see how each is finalized.<br> <strong>Format:</strong> two hands-on reviews, about 15 minutes.</p>
+<p><strong>You will:</strong> review a yamaa benchmark and a Pilot 7 finding, and see how each is finalized.<br> <strong>Format:</strong> two hands-on reviews.</p>
 </div>
 </section>
 <section id="human-review-finalizes-the-truth" class="slide level2">
@@ -3278,11 +3268,11 @@ display:block!important;
 </section>
 <section id="reviewing-a-yamaa-benchmark" class="slide level2 scrollable">
 <h2>Reviewing a yamaa benchmark</h2>
-<p><span class="pill">Hands-on: 10 min</span></p>
+<p><span class="pill">Hands-on</span></p>
 <p><a href="https://elong0527.github.io/yamaa/benchmark/review/next/" class="try-it">Start reviewing</a></p>
 <ol type="1">
 <li>Sign in to GitHub; <strong>Start reviewing</strong> opens the next benchmark in the queue.</li>
-<li>Read the Summary, Inputs, and Expected output: about 5 minutes.</li>
+<li>Read the Summary, Inputs, and Expected output.</li>
 <li>Answer Agree or Disagree for the task, the inputs, and the AI-assisted review of three potential concerns; explain any disagreement.</li>
 <li>Select <strong>Submit and next</strong>, then <strong>Start discussion</strong> in the prefilled GitHub tab.</li>
 <li>Select <strong>Skip</strong> for a benchmark you cannot judge.</li>
@@ -3344,7 +3334,7 @@ display:block!important;
 </section>
 <section id="reviewing-a-pilot-7-finding" class="slide level2 scrollable">
 <h2>Reviewing a Pilot 7 finding</h2>
-<p><span class="pill">Hands-on: 5 min</span></p>
+<p><span class="pill">Hands-on</span></p>
 <p><a href="https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/" class="try-it">Open the review guide</a></p>
 <ol type="1">
 <li>Open the Pilot 5 consistency findings and select <strong>Start review</strong> on a finding; start with <strong>Critical finding: Yes</strong> or <strong>Needs review</strong>.</li>
@@ -3388,7 +3378,7 @@ display:block!important;
 <section id="case-study-assessing-an-agent-with-the-benchmark" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>Case study: assessing an agent with the benchmark</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> read one agent’s job on Harbor Hub and decide what a failure means.<br> <strong>Format:</strong> results and a hands-on exercise, about 15 minutes.</p>
+<p><strong>You will:</strong> read one agent’s job on Harbor Hub and decide what a failure means.<br> <strong>Format:</strong> results and a hands-on exercise.</p>
 </div>
 </section>
 <section id="muse-spark-1.3-on-harbor-hub" class="slide level2">
@@ -3439,7 +3429,7 @@ display:block!important;
 </section>
 <section id="hands-on-3-read-a-job-on-harbor-hub" class="slide level2 scrollable">
 <h2>Hands-on 3: read a job on Harbor Hub</h2>
-<p><span class="pill">Hands-on: 10 min</span></p>
+<p><span class="pill">Hands-on</span></p>
 <ol type="1">
 <li>Join the yamaa organization with the <a href="https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc">invitation link</a>.</li>
 <li>Open the <a href="https://hub.harborframework.com/jobs?access=all&amp;owner_org=yamaa">yamaa jobs</a>.</li>

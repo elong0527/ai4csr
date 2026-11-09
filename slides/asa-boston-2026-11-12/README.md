@@ -15,12 +15,13 @@ The output is one self-contained HTML file (`embed-resources: true`).
 
 ## Short course format
 
-The deck is written for a short course of about four hours for statisticians
-and statistical programmers from biopharma companies. The schedule slide
-gives each part's format and approximate minutes; adjust the minutes to the
-slot. Each section slide carries a brief, what the part teaches and how long
-it runs, and every participant activity opens with a time tag: a discussion
-with a neighbour, or a hands-on exercise in the Codespace or the browser.
+The deck is written for a short course of about three hours for
+statisticians and statistical programmers from biopharma companies. The
+schedule slide gives each part's format, with a break after Part 1 and after
+Part 2, and states no minutes, so the parts can be paced to the slot. Each
+section slide carries a brief and what the part teaches, and every
+participant activity opens with a tag naming its kind: a discussion with a
+neighbour, or a hands-on exercise in the Codespace or the browser.
 
 The hands-on exercises, with their answer keys in the speaker notes:
 
