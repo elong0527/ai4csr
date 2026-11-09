@@ -32,19 +32,21 @@ title-slide-attributes:
 
 ## Schedule
 
-The course has three parts, with a break in the middle. Times are approximate.
+The course runs about three hours, in three parts with a break after each of
+the first two.
 
 ::: {.schedule}
-| | Topic | Format | Minutes |
-| --- | --- | --- | --- |
-| Welcome | Objectives, setup check, and resources | Talk, setup check | 10 |
-| Part 1 | **AI agents and the AI-first workflow** (Yilong)<br>Designing an AI-first workflow, with CDISC data standardization as the example | Talk, two brainstorms | 35 |
-| Part 1 | **Agentic CDISC data standardization** (Yilong)<br>Why two agents disagree on one specification, and a workflow that reviews the specification instead | Talk, discussion, two hands-on exercises | 50 |
-| Break | | | 15 |
-| Part 2 | **Language models and agents for statistical programming** (Jimeng)<br>Strategies that improve AI agents beyond skills and tools | Talk | 45 |
-| Part 3 | **AI evaluation** (Yilong)<br>Designing the evaluation of an AI agent as a study | Talk, discussion | 30 |
-| Part 3 | **Case studies: create, review, and assess** (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent's job read | Three hands-on exercises | 40 |
-| Wrap-up | Takeaways, where to go next, and questions | Talk | 10 |
+| | Topic | Format |
+| ----- | ------------------------------- | -------------- |
+| Welcome | Objectives, setup check, and resources | Talk, setup check |
+| Part 1 | **AI agents and the AI-first workflow** (Yilong)<br>Designing an AI-first workflow, with CDISC data standardization as the example | Talk, two brainstorms |
+| Part 1 | **Agentic CDISC data standardization** (Yilong)<br>Why two agents disagree on one specification, and a workflow that reviews the specification instead | Talk, discussion, two hands-on exercises |
+| Break | | |
+| Part 2 | **Language models and agents for statistical programming** (Jimeng)<br>Strategies that improve AI agents beyond skills and tools | Talk |
+| Break | | |
+| Part 3 | **AI evaluation** (Yilong)<br>Designing the evaluation of an AI agent as a study | Talk, discussion |
+| Part 3 | **Case studies: create, review, and assess** (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent's job read | Three hands-on exercises |
+| Wrap-up | Takeaways, where to go next, and questions | Talk |
 :::
 
 ## Disclaimer
@@ -86,7 +88,7 @@ A preconfigured GitHub Codespace is ready for the workshop:
 
 ## Check your setup
 
-[Hands-on: 5 min]{.pill}
+[Hands-on]{.pill}
 
 Open the Codespace, start R from the repository root, and run:
 
@@ -114,7 +116,7 @@ names your engine and platform.
 ::: {.section-brief}
 **You will:** name the parts of an AI agent and say what each one can and
 cannot do.<br>
-**Format:** two examples and three diagrams, about 15 minutes.
+**Format:** two examples and three diagrams.
 :::
 
 ## Example: arena.ai
@@ -230,12 +232,12 @@ run code: a harness does that and puts the results back into the context.
 ::: {.section-brief}
 **You will:** place CDISC data standardization in an AI-first workflow and
 decide where to start building.<br>
-**Format:** two brainstorms and one proposal, about 20 minutes.
+**Format:** two brainstorms and one proposal.
 :::
 
 ## A mental game
 
-[Discussion: 5 min]{.pill}
+[Discussion]{.pill}
 
 :::: {.columns}
 
@@ -290,7 +292,7 @@ You have been hired by the CMO to build a biometrics group.
 
 ## Brainstorm: where to start building
 
-[Discussion: 5 min]{.pill}
+[Discussion]{.pill}
 
 You will build an AI agent for this workflow. **Where do you start, and why?**
 
@@ -322,7 +324,7 @@ For CDISC data standardization, we recommend:
 ::: {.section-brief}
 **You will:** see why two agents disagree on one specification, run a yamaa
 specification yourself, and review one that an agent drafted.<br>
-**Format:** talk, a discussion, and two hands-on exercises, about 50 minutes.
+**Format:** talk, a discussion, and two hands-on exercises.
 :::
 
 ## Contributors {.center}
@@ -354,7 +356,7 @@ From an FDA [warning letter](https://www.fda.gov/inspections-compliance-enforcem
 
 ## Your turn: find an implicit rule {.compact}
 
-[Discussion: 5 min]{.pill}
+[Discussion]{.pill}
 
 Take one derivation from a study you work on. Say its rule in one sentence to
 your neighbor, then find the words two programmers could read differently.
@@ -546,7 +548,7 @@ Inheritance reduces duplication while keeping every resolved study specification
 
 ## Hands-on 1: run a specification, then break it {.compact}
 
-[Hands-on: 10 min]{.pill}
+[Hands-on]{.pill}
 
 In a terminal at the repository root, copy the benchmark with
 `rm -rf exercise/advs && mkdir -p exercise && cp -r benchmarks/adam-advs-map exercise/advs`,
@@ -601,7 +603,7 @@ the fresh copy inside it.
 
 ## Hands-on 2: draft with an agent, then review {.compact}
 
-[Hands-on: 15 min]{.pill}
+[Hands-on]{.pill}
 
 In a terminal at the repository root, reset the copy with
 `rm -rf exercise/advs && mkdir -p exercise && cp -r benchmarks/adam-advs-map exercise/advs`,
@@ -795,7 +797,7 @@ One allocation among many. Adapt it to the roles and SOPs of your organization.
 ::: {.section-brief}
 **You will:** design the evaluation of an AI agent as a study: the decision,
 the tasks, the endpoint, the conduct, the bias, and the rigor.<br>
-**Format:** talk and a discussion, about 30 minutes.
+**Format:** talk and a discussion.
 :::
 
 ## Would you sign off?
@@ -1015,7 +1017,7 @@ reruns target leakage; human review of the expected output targets grader error.
 
 ## Discussion: can you trust 133/134?
 
-[Discussion: 5 min]{.pill}
+[Discussion]{.pill}
 
 **With your neighbor:** pick the two limits that matter most for this result, and
 the cheapest way to address each.
@@ -1084,7 +1086,7 @@ deterministic engine.
 
 ::: {.section-brief}
 **You will:** take one benchmark apart and list what makes it a fair test.<br>
-**Format:** walk-through, about 10 minutes.
+**Format:** walk-through.
 :::
 
 ## Anatomy of a benchmark
@@ -1144,7 +1146,7 @@ deterministic engine.
 ::: {.section-brief}
 **You will:** review a yamaa benchmark and a Pilot 7 finding, and see how each
 is finalized.<br>
-**Format:** two hands-on reviews, about 15 minutes.
+**Format:** two hands-on reviews.
 :::
 
 ## Human review finalizes the truth
@@ -1161,13 +1163,13 @@ Both projects collect reviews from a static page as public GitHub Discussions.
 
 ## Reviewing a yamaa benchmark
 
-[Hands-on: 10 min]{.pill}
+[Hands-on]{.pill}
 
 [Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/){.try-it}
 
 1. Sign in to GitHub; **Start reviewing** opens the next benchmark in the
    queue.
-2. Read the Summary, Inputs, and Expected output: about 5 minutes.
+2. Read the Summary, Inputs, and Expected output.
 3. Answer Agree or Disagree for the task, the inputs, and the AI-assisted
    review of three potential concerns; explain any disagreement.
 4. Select **Submit and next**, then **Start discussion** in the prefilled
@@ -1240,7 +1242,7 @@ not reviewed yet
 
 ## Reviewing a Pilot 7 finding
 
-[Hands-on: 5 min]{.pill}
+[Hands-on]{.pill}
 
 [Open the review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/){.try-it}
 
@@ -1294,7 +1296,7 @@ Human review
 ::: {.section-brief}
 **You will:** read one agent's job on Harbor Hub and decide what a failure
 means.<br>
-**Format:** results and a hands-on exercise, about 15 minutes.
+**Format:** results and a hands-on exercise.
 :::
 
 ## Muse Spark 1.3 on Harbor Hub
@@ -1316,7 +1318,7 @@ October 2026: nine jobs, one for each prompt tier and language.
 
 ## Hands-on 3: read a job on Harbor Hub
 
-[Hands-on: 10 min]{.pill}
+[Hands-on]{.pill}
 
 1. Join the yamaa organization with the [invitation link](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc).
 2. Open the [yamaa jobs](https://hub.harborframework.com/jobs?access=all&owner_org=yamaa).
