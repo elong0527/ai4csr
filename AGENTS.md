@@ -423,6 +423,35 @@ assets under `assets/diagrams/`. The generated SVG files are committed, so
 regenerate them with `python3 scripts/build-diagrams.py` after a diagram change
 and re-run `asciilint` on the result.
 
+## Slides
+
+`slides/` holds the talk and workshop decks, one Quarto reveal.js deck per
+folder named `<event>-<date>`. Slides that draw on several projects, including
+yamaa, belong here: add a new deck to this folder, never to the yamaa
+repository. The decks moved here from yamaa's `docs/slides/` in November 2026,
+and their earlier history stays in that repository.
+
+- A deck is a standalone presentation, not a book chapter. It is not listed in
+  `_quarto.yml`, and the book architecture, lifecycle, and maturity-label
+  rules above do not apply to it.
+- Each deck renders to one self-contained `index.html`
+  (`embed-resources: true`). CI renders every `slides/*/index.qmd` before the
+  book, and `resources: slides/` publishes the result at
+  `https://ai4csr.org/slides/<deck>/`. The rendered HTML is never committed.
+- Images the decks share live in `slides/assets/`, and a deck references them
+  as `../assets/...`. The SVGs there are maintained by hand, beside their
+  Excalidraw source where one exists. `scripts/build-diagrams.py` reads only
+  the top-level `diagrams/` and never touches them.
+- The character policy applies to decks. Write a glyph the ASCII source cannot
+  hold as an HTML entity in a deck (`&times;`, `&middot;`) and as an XML
+  character reference in an SVG (`&#x3B8;`); both render as the glyph.
+- Decks write the project name as lowercase `yamaa`, the project's own
+  spelling.
+- `slides/asa-boston-2026-11-12/index.qmd` carries no `fig-alt` or other image
+  alternative text; the owner does not want it in that deck.
+- Preview a deck with `quarto render index.qmd` from its folder, and inspect
+  the rendered slides, not only the exit code.
+
 ## Background references
 
 Use these as design inputs, not as prescriptions that override the needs of a

@@ -67,6 +67,15 @@ jobs:
           echo "RETICULATE_PYTHON=$PWD/.venv/bin/python" >> "$GITHUB_ENV"
           echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
 
+      - name: Render slide decks
+        # Each deck renders to a self-contained slides/<deck>/index.html,
+        # which the book copies to its output through `resources: slides/`.
+        # Render the decks before the book so the copy picks them up.
+        run: |
+          for deck in slides/*/index.qmd; do
+            quarto render "$deck"
+          done
+
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:

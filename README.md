@@ -52,10 +52,10 @@ Render HTML only:
 quarto render --to html
 ```
 
-Render slides:
+Render a slide deck (see [`slides/README.md`](slides/README.md)):
 
 ```bash
-quarto render slides/<TBD>/index.qmd
+quarto render slides/<deck>/index.qmd
 ```
 
 ### Environment and tool versions
