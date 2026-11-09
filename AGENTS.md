@@ -447,8 +447,9 @@ and their earlier history stays in that repository.
   character reference in an SVG (`&#x3B8;`); both render as the glyph.
 - Decks write the project name as lowercase `yamaa`, the project's own
   spelling.
-- `slides/asa-boston-2026-11-12/index.qmd` carries no `fig-alt` or other image
-  alternative text; the owner does not want it in that deck.
+- `slides/asa-boston-2026-11-12/index.qmd` and its copy
+  `slides/deming-2026-12-07/index.qmd` carry no `fig-alt` or other image
+  alternative text; the owner does not want it in those decks.
 - Preview a deck with `quarto render index.qmd` from its folder, and inspect
   the rendered slides, not only the exit code.
 
