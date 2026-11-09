@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "AI for Clinical Study Reports and Submission"
 authors = [
     { name = "Yilong Zhang", email = "elong0527@gmail.com" },
+    { name = "Pingye Zhang" },
     { name = "Nan Xiao", email = "hello@nanx.me" },
 ]
 dependencies = [
