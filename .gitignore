@@ -22,3 +22,8 @@ examples/sap-change/benchmark/runs/
 # PR verification logs (uploaded as CI artifacts, never committed)
 /render.log
 /benchmark.log
+
+# Rendered slide decks (CI renders them before the book publishes)
+/slides/*/index.html
+/slides/*/index_files/
+/slides/*/.quarto/
