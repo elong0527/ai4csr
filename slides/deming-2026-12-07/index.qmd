@@ -43,10 +43,10 @@ the first two.
 | Part 1 | **AI agents and the AI-first workflow** (Yilong)<br>Designing an AI-first workflow, with CDISC data standardization as the example | Talk, two brainstorms |
 | Part 1 | **Agentic CDISC data standardization** (Yilong)<br>Why two agents disagree on one specification, and a workflow that reviews the specification instead | Talk, discussion, two hands-on exercises |
 | Break | | |
-| Part 2 | **Language models and agents for statistical programming** (Jimeng)<br>Strategies that improve AI agents beyond skills and tools | Talk |
+| Part 2 | **Language models and agents for statistical programming** (Eric)<br>Strategies that improve AI agents beyond skills and tools | Talk |
 | Break | | |
 | Part 3 | **AI evaluation** (Yilong)<br>Designing the evaluation of an AI agent as a study | Talk, discussion |
-| Part 3 | **Case studies: create, review, and assess** (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent's job read | Three hands-on exercises |
+| Part 3 | **Case studies: create, review, and assess** (Eric and Yilong)<br>One benchmark taken apart, two reviews, and one agent's job read | Three hands-on exercises |
 | Wrap-up | Takeaways, where to go next, and questions | Talk |
 :::
 
