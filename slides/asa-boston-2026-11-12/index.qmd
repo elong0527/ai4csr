@@ -40,10 +40,10 @@ The course runs about three hours with break after each part.
 | Part 1 | **AI agents and AI-first workflow** | Yilong |
 | Part 1 | **Agentic CDISC data standardization** | Yilong |
 | Break | | |
-| Part 2 | **Language models and agents for statistical programming** | Jimeng |
+| Part 2 | **LLM and agents for statistical programming** | Jimeng |
 | Break | | |
 | Part 3 | **AI evaluation** | Yilong |
-| Part 3 | **Case studies: create, review, and assess** | Jimeng and Yilong |
+| Part 3 | **Case studies** | Jimeng and Yilong |
 
 ## Disclaimer
 
@@ -68,7 +68,7 @@ This workshop shows one possible approach, not the only one.
 ## Preparation
 
 This workshop assumes you are familiar with the clinical development
-lifecycle and CDISC standards, and that you have R programming experience.
+lifecycle and CDISC standards with R programming experience.
 
 A preconfigured GitHub Codespace is ready for the workshop:
 
