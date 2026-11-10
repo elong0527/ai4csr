@@ -59,9 +59,10 @@ The deck has eight sections:
 - **AI-first workflow:** a mental game on building an AI-native biometrics
   group, the levels of AI adoption, AI-first, and AI-native work, a
   brainstorm on designing an AI-first workflow for CDISC data standardization
-  (where to start building the agent, with its answer), and the design
-  principles: trustworthy assistance, plain text first, deterministic first,
-  and one source of truth.
+  (where to start building the agent, with its answer), and the primary goal,
+  trustworthy assistance, with the design principles that serve it: plain
+  text first, single source of truth, deterministic first, and
+  agent-specific identity.
 - **Agentic CDISC data standardization:** the problem of one specification
   producing two results, its root cause, a discussion that finds an implicit
   rule in the participant's own work, the evidence that prompt completeness
