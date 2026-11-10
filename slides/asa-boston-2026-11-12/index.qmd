@@ -84,35 +84,52 @@ A preconfigured GitHub Codespace is ready for the workshop:
     [Codex](https://learn.chatgpt.com/docs/codex/cli), or [Muse code](https://dev.meta.ai/)
     with your own account.
 
-## Verif
+## Verify the GitHub Codespace {.compact}
 
-Open the Codespace, start R from the repository root, and run:
+:::: {.columns}
+
+::: {.column width="50%"}
+**Step 1. Check R and yamaa**
+
+Open the Codespace, start R from the terminal, and run:
 
 ```r
 library(yamaa)
 yamaa_selftest()
 ```
 
-The first line of the result reads `yamaa selftest: succeeded`; the second
-names your engine and platform.
+**Expect:** the first line reads `yamaa selftest: succeeded`.
+:::
 
-- Then start an agent in the terminal: `opencode`, `claude`, or `codex`.
-- If the Codespace is not ready, keep going: the review and Harbor Hub
-  exercises need only a browser.
+::: {.column width="50%"}
+**Step 2. Check an AI agent**
+
+Start an agent in the terminal: `opencode`, `claude`, `codex`, or `muse`.
+Then ask:
+
+::: {.prompt}
+Explain ODM XML and its relationship to EDC and CRF form.
+:::
+
+**Expect:** the agent answers in the terminal.
+:::
+
+::::
 
 ## Resources
 
-* During the workshop, we will use [yamaa](https://github.com/elong0527/yamaa)
-  and the [R Consortium Pilot 7 project](https://github.com/RConsortium/submissions-pilot7-synthetic-data).
-   * Project links will be shared in the chat.
-   * Post your questions in the group chat.
+* During the workshop, we will use 3 github repos
+  - [yamaa](https://github.com/elong0527/yamaa): tools and benchmark for CDISC data standardization.
+  - [R Consortium Pilot 7 project](https://github.com/RConsortium/submissions-pilot7-synthetic-data): trials to demonstrate CDISC data standardization.
+  - [ai4csr](https://ai4csr.org/): book and slides for this short course. 
+
+* Post your questions in the group chat.
 
 # AI Agents {background-color="#385898"}
 
 ::: {.section-brief}
 **You will:** name the parts of an AI agent and say what each one can and
-cannot do.<br>
-**Format:** two examples and three diagrams.
+cannot do.
 :::
 
 ## Example: arena.ai
