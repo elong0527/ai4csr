@@ -559,3 +559,9 @@
 .reveal .sign-off .metric-label {
   font-size: 1.25rem;
 }
+
+/* Verify the GitHub Codespace: the expected result sits apart from the code
+   or prompt above it, so each step reads as action, then check. */
+.reveal .slides .expect {
+  margin-top: 1.5em;
+}

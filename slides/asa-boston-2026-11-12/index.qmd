@@ -98,7 +98,9 @@ library(yamaa)
 yamaa_selftest()
 ```
 
+::: {.expect}
 **Expect:** the first line reads `yamaa selftest: succeeded`.
+:::
 :::
 
 ::: {.column width="50%"}
@@ -111,7 +113,9 @@ Then ask:
 Explain ODM XML and its relationship to EDC and CRF form.
 :::
 
+::: {.expect}
 **Expect:** the agent answers in the terminal.
+:::
 :::
 
 ::::
