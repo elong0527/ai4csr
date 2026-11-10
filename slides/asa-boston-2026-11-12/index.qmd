@@ -67,24 +67,24 @@ This workshop shows one possible approach, not the only one.
 
 ## Preparation
 
-This workshop assumes you are familiar with the clinical development
-lifecycle and CDISC standards with R programming experience.
+This workshop assumes familiarity with the clinical development lifecycle
+and CDISC standards, as well as R programming experience.
 
 A preconfigured GitHub Codespace is ready for the workshop:
 
 - [![Open GitHub Codespaces](https://github.com/codespaces/badge.svg){.codespaces-badge}](https://codespaces.new/elong0527/yamaa)
-  + R, with the yamaa package installed
-  + OpenCode, Claude Code, Codex
+  + R and common R packages for data standardization.
+  + OpenCode, Claude Code, and Codex.
 
-- Start [OpenCode](https://opencode.ai/) and configure a model provider
-  + Select `opencode-go/muse-spark-1.3-contributor`.
-  + Keep API keys in your personal Codespaces secrets, never in the repository.
-  + Or sign in to the preinstalled [Claude Code](https://code.claude.com/docs/en/quickstart)
-    or [Codex](https://learn.chatgpt.com/docs/codex/cli).
+- Start [OpenCode](https://opencode.ai/).
+  + Run `/connect` to connect to [OpenCode Go](https://opencode.ai/console/go)
+    with the provided API key.
+  + Run `/models` to select `opencode-go/muse-spark-1.3-contributor`.
+  + Or sign in to the preinstalled [Claude Code](https://code.claude.com/docs/en/quickstart),
+    [Codex](https://learn.chatgpt.com/docs/codex/cli), or [Muse code](https://dev.meta.ai/)
+    with your own account.
 
-## Check your setup
-
-[Hands-on]{.pill}
+## Verif
 
 Open the Codespace, start R from the repository root, and run:
 
