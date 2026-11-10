@@ -565,8 +565,6 @@ Inheritance reduces duplication while keeping every resolved study specification
 
 ## Hands-on 1: run a specification, then break it {.compact}
 
-[Hands-on]{.pill}
-
 In a terminal at the repository root, copy the benchmark with
 `rm -rf exercise/advs && mkdir -p exercise && cp -r benchmarks/adam-advs-map exercise/advs`,
 then run its specification there:
@@ -619,8 +617,6 @@ the fresh copy inside it.
 :::
 
 ## Hands-on 2: draft with an agent, then review {.compact}
-
-[Hands-on]{.pill}
 
 In a terminal at the repository root, reset the copy with
 `rm -rf exercise/advs && mkdir -p exercise && cp -r benchmarks/adam-advs-map exercise/advs`,
@@ -1180,8 +1176,6 @@ Both projects collect reviews from a static page as public GitHub Discussions.
 
 ## Reviewing a yamaa benchmark
 
-[Hands-on]{.pill}
-
 [Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/){.try-it}
 
 1. Sign in to GitHub; **Start reviewing** opens the next benchmark in the
@@ -1259,8 +1253,6 @@ not reviewed yet
 
 ## Reviewing a Pilot 7 finding
 
-[Hands-on]{.pill}
-
 [Open the review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/){.try-it}
 
 1. Open the Pilot 5 consistency findings and select **Start review** on a
@@ -1334,8 +1326,6 @@ October 2026: nine jobs, one for each prompt tier and language.
 - A full-prompt job for one language cost $0.36 to $0.96 in model usage.
 
 ## Hands-on 3: read a job on Harbor Hub
-
-[Hands-on]{.pill}
 
 1. Join the yamaa organization with the [invitation link](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc).
 2. Open the [yamaa jobs](https://hub.harborframework.com/jobs?access=all&owner_org=yamaa).

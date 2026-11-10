@@ -20,9 +20,8 @@ statisticians and statistical programmers from biopharma companies. The
 outline slide gives each part's topics and instructor, with a break after
 Part 1 and after Part 2, and states no minutes, so the parts can be paced to
 the slot. Each
-section slide carries a brief and what the part teaches, and every
-participant activity opens with a tag naming its kind: a discussion with a
-neighbour, or a hands-on exercise in the Codespace or the browser.
+section slide carries a brief and what the part teaches, and each
+discussion with a neighbour opens with a Discussion tag.
 
 The hands-on exercises, with their answer keys in the speaker notes:
 

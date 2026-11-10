@@ -164,8 +164,8 @@
   margin-right: 1.2em;
 }
 
-/* Short course: a time tag on each hands-on exercise and discussion, the
-   first line under the slide title. */
+/* Short course: a tag on each discussion, the first line under the slide
+   title. */
 .reveal .slides .pill {
   background: #e8f0fc;
   border-radius: 1em;
