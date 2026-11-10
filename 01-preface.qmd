@@ -74,8 +74,7 @@ in shaping the excellence of this document.
   constituting the majority of the content.
 
   [Yilong Zhang](https://elong0527.github.io/),
-  Pingye Zhang,
-  [Nan Xiao](https://nanx.me/)
+  Pingye Zhang
 
 - Contributors: contributed at least one commit to the source code. The
   current list is maintained on the

@@ -75,8 +75,8 @@ magick "$BACKGROUND_FILE" \
 magick "$PROCESSED_BACKGROUND" \
 	assets/cover-title.png -geometry -150-450 \
 	-gravity center -composite \
-	assets/cover-author.png -geometry -120-950 \
-	-gravity center -composite \
+	assets/cover-author.png -geometry +205-950 \
+	-gravity west -composite \
 	-resize 50% \
 	assets/cover-temp.png
 
