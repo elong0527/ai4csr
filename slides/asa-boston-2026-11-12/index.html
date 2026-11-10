@@ -917,24 +917,6 @@ color: white;
 text-decoration: underline;
 }
 
-.reveal .schedule table {
-font-size: 0.62em;
-line-height: 1.3;
-table-layout: fixed;
-}
-.reveal .schedule th,
-.reveal .schedule td {
-padding: 0.3em 0.5em;
-}
-.reveal .schedule th:nth-child(1) { width: 10%; }
-.reveal .schedule th:nth-child(2) { width: 62%; }
-.reveal .schedule th:nth-child(3) { width: 28%; }
-.reveal .schedule td:first-child {
-color: var(--course-blue);
-font-weight: 700;
-white-space: nowrap;
-}
-
 .reveal .glossary table {
 font-size: 0.58em;
 line-height: 1.3;
@@ -1186,6 +1168,10 @@ font-size: 0.8em;
 
 .reveal .sign-off .metric-label {
 font-size: 1.25rem;
+}
+
+.reveal .slides .expect {
+margin-top: 1.5em;
 }
 </style>
   <style type="text/css">.reveal
@@ -1706,72 +1692,55 @@ margin-right: 0; }
 <h1>Welcome</h1>
 
 </section>
-<section id="schedule" class="slide level2">
-<h2>Schedule</h2>
-<p>The course runs about three hours, in three parts with a break after each of the first two.</p>
-<div class="schedule">
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<p>The course runs about three hours with break after each part.</p>
 <table class="caption-top">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 62%">
-<col style="width: 28%">
-</colgroup>
 <thead>
 <tr class="header">
 <th></th>
 <th>Topic</th>
-<th>Format</th>
+<th>Instructor</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Welcome</td>
-<td>Objectives, setup check, and resources</td>
-<td>Talk, setup check</td>
+<td>Part 1</td>
+<td><strong>AI agents and AI-first workflow</strong></td>
+<td>Yilong</td>
 </tr>
 <tr class="even">
 <td>Part 1</td>
-<td><strong>AI agents and the AI-first workflow</strong> (Yilong)<br>Designing an AI-first workflow, with CDISC data standardization as the example</td>
-<td>Talk, two brainstorms</td>
+<td><strong>Agentic CDISC data standardization</strong></td>
+<td>Yilong</td>
 </tr>
 <tr class="odd">
-<td>Part 1</td>
-<td><strong>Agentic CDISC data standardization</strong> (Yilong)<br>Why two agents disagree on one specification, and a workflow that reviews the specification instead</td>
-<td>Talk, discussion, two hands-on exercises</td>
-</tr>
-<tr class="even">
 <td>Break</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Part 2</td>
-<td><strong>Language models and agents for statistical programming</strong> (Jimeng)<br>Strategies that improve AI agents beyond skills and tools</td>
-<td>Talk</td>
+<td><strong>LLM and agents for statistical programming</strong></td>
+<td>Jimeng</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Break</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
-<td>Part 3</td>
-<td><strong>AI evaluation</strong> (Yilong)<br>Designing the evaluation of an AI agent as a study</td>
-<td>Talk, discussion</td>
-</tr>
 <tr class="even">
 <td>Part 3</td>
-<td><strong>Case studies: create, review, and assess</strong> (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent’s job read</td>
-<td>Three hands-on exercises</td>
+<td><strong>AI evaluation</strong></td>
+<td>Yilong</td>
 </tr>
 <tr class="odd">
-<td>Wrap-up</td>
-<td>Takeaways, where to go next, and questions</td>
-<td>Talk</td>
+<td>Part 3</td>
+<td><strong>Case studies</strong></td>
+<td>Jimeng and Yilong</td>
 </tr>
 </tbody>
 </table>
-</div>
 </section>
 <section id="disclaimer" class="slide level2">
 <h2>Disclaimer</h2>
@@ -1801,49 +1770,61 @@ margin-right: 0; }
 </section>
 <section id="preparation" class="slide level2">
 <h2>Preparation</h2>
-<p>This workshop assumes you are familiar with the clinical development lifecycle and CDISC standards, and that you have R programming experience.</p>
+<p>This workshop assumes familiarity with the clinical development lifecycle and CDISC standards, as well as R programming experience.</p>
 <p>A preconfigured GitHub Codespace is ready for the workshop:</p>
 <ul>
 <li><a href="https://codespaces.new/elong0527/yamaa"><img role="img" aria-label="Open GitHub Codespaces" data-src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNDkgMzIiIHdpZHRoPSIyNDkiPgogIDxwYXRoIGQ9Im02LjUuNWgyOS41djMxaC0yOS41Yy0zLjAzNzU3IDAtNS41LTIuNDYyNC01LjUtNS41di0yMGMwLTMuMDM3NTcgMi40NjI0My01LjUgNS41LTUuNXoiIGZpbGw9IiMyZjM2M2QiPjwvcGF0aD4KICA8cGF0aCBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Im0xOC41IDguNWMtNC4yMzU4IDAtNy42NjY3IDMuNDMwOC03LjY2NjcgNy42NjY3IDAgMy4zOTI1IDIuMTk0NiA2LjI1NzkgNS4yNDIxIDcuMjczNy4zODMzLjA2NzEuNTI3MS0uMTYyOS41MjcxLS4zNjQyIDAtLjE4Mi0uMDA5Ni0uNzg1OC0uMDA5Ni0xLjQyNzktMS45MjYyLjM1NDYtMi40MjQ2LS40Njk2LTIuNTc3OS0uOTAwOC0uMDg2My0uMjIwNC0uNDYtLjkwMDgtLjc4NTgtMS4wODI5LS4yNjg0LS4xNDM4LS42NTE3LS40OTg0LS4wMDk2LS41MDc5LjYwMzctLjAwOTYgMS4wMzUuNTU1OCAxLjE3ODcuNzg1OC42OSAxLjE1OTYgMS43OTIxLjgzMzcgMi4yMzI5LjYzMjUuMDY3MS0uNDk4My4yNjg0LS44MzM4LjQ4ODgtMS4wMjU0LTEuNzA1OC0uMTkxNy0zLjQ4ODMtLjg1MjktMy40ODgzLTMuNzg1NCAwLS44MzM4LjI5Ny0xLjUyMzguNzg1OC0yLjA2MDUtLjA3NjctLjE5MTYtLjM0NS0uOTc3NS4wNzY3LTIuMDMxNiAwIDAgLjY0Mi0uMjAxMyAyLjEwODMuNzg1OC42MTMzLS4xNzI1IDEuMjY1LS4yNTg3IDEuOTE2Ny0uMjU4Ny42NTE2IDAgMS4zMDMzLjA4NjIgMS45MTY2LjI1ODcgMS40NjYzLS45OTY2IDIuMTA4NC0uNzg1OCAyLjEwODQtLjc4NTguNDIxNiAxLjA1NDEuMTUzMyAxLjg0LjA3NjYgMi4wMzE2LjQ4ODguNTM2Ny43ODU5IDEuMjE3MS43ODU5IDIuMDYwNSAwIDIuOTQyLTEuNzkyMSAzLjU5MzctMy40OTggMy43ODU0LjI3OC4yMzk2LjUxNzUuNjk5Ni41MTc1IDEuNDE4MyAwIDEuMDI1NC0uMDA5NSAxLjg0OTYtLjAwOTUgMi4xMDgzIDAgLjIwMTMuMTQzNy40NDA5LjUyNy4zNjQyIDMuMDI4NC0xLjAxNTggNS4yMjMtMy44OTA4IDUuMjIzLTcuMjczNyAwLTQuMjM1OS0zLjQzMDktNy42NjY3LTcuNjY2Ny03LjY2Njd6IiBmaWxsPSIjZmZmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjwvcGF0aD4KICA8cGF0aCBkPSJtNi41LjVoMjkuNXYzMWgtMjkuNWMtMy4wMzc1NyAwLTUuNS0yLjQ2MjQtNS41LTUuNXYtMjBjMC0zLjAzNzU3IDIuNDYyNDMtNS41IDUuNS01LjV6IiBzdHJva2U9IiM0NDRkNTYiPjwvcGF0aD4KICA8cGF0aCBkPSJtMzYgLjVoMjA2LjVjMy4wMzggMCA1LjUgMi40NjI0MyA1LjUgNS41djIwYzAgMy4wMzc2LTIuNDYyIDUuNS01LjUgNS41aC0yMDYuNXoiIGZpbGw9IiMyNDI5MmUiPjwvcGF0aD4KICA8cGF0aCBkPSJtNTIuOTY4OCAxMC44ODk2Yy0yLjg2NDMgMC00LjY2OSAxLjk4OTMtNC42NjkgNS4xNzQ5IDAgMy4xNzg3IDEuNzc3MyA1LjE4MTYgNC42NjkgNS4xODE2IDIuODc3OSAwIDQuNjYyMS0yLjAwMjkgNC42NjIxLTUuMTgxNiAwLTMuMTg1Ni0xLjc5MTEtNS4xNzQ5LTQuNjYyMS01LjE3NDl6bTAgMS41MjQ1YzEuNzUgMCAyLjg2NDIgMS40MTUgMi44NjQyIDMuNjUwNCAwIDIuMjIxNi0xLjEwNzQgMy42NTcyLTIuODY0MiAzLjY1NzItMS43Nzc0IDAtMi44NjQzLTEuNDM1Ni0yLjg2NDMtMy42NTcyIDAtMi4yMzU0IDEuMTE0My0zLjY1MDQgMi44NjQzLTMuNjUwNHptMTAuNDMyLjk5MTJjLTEuMDI1NCAwLTEuODkzNi41MTI3LTIuMzI0MiAxLjM2MDNoLS4xMTYydi0xLjIzNzNoLTEuNjMzOHY5Ljk1MzFoMS42OTUzdi0zLjYxNjJoLjExNjJjLjM4MjguNzkzIDEuMjA5OSAxLjI1NzggMi4yODMyIDEuMjU3OCAxLjg4NjcgMCAzLjA2MjUtMS40ODM0IDMuMDYyNS0zLjg1NTQgMC0yLjM5MjYtMS4xODk1LTMuODYyMy0zLjA4My0zLjg2MjN6bS0uNTMzMiA2LjMwOTVjLTEuMTU1MyAwLTEuODczMS0uOTM2NS0xLjg3OTktMi40NDcyLjAwNjgtMS41MTA4LjczMTQtMi40NDczIDEuODg2Ny0yLjQ0NzMgMS4xNjIxIDAgMS44NjYyLjkxNiAxLjg2NjIgMi40NDczIDAgMS41MzEyLS42OTcyIDIuNDQ3Mi0xLjg3MyAyLjQ0NzJ6bTEwLjA0MjQtLjc1ODdjLS4yNDYxLjU2MDUtLjgyNzIuODc1LTEuNjY4Ljg3NS0xLjExNDMgMC0xLjgzMi0uNzkzLTEuODczMS0yLjA1Nzd2LS4wODg4aDUuMjIyN3YtLjU0MDFjMC0yLjM0NDctMS4yNzgzLTMuNzU5Ny0zLjQxMTEtMy43NTk3LTIuMTY3IDAtMy41MTM3IDEuNTEwNy0zLjUxMzcgMy45MTAxIDAgMi4zOTI2IDEuMzI2MiAzLjg1NTUgMy41MjczIDMuODU1NSAxLjc2MzcgMCAzLjAxNDctLjg0NzcgMy4zMjIzLTIuMTk0M3ptLTEuNzM2NC00LjI1MmMxLjAxODYgMCAxLjY4ODUuNzE3OCAxLjcyMjcgMS44NTI1aC0zLjUyMDVjLjA3NTItMS4xMjExLjc4NjEtMS44NTI1IDEuNzk3OC0xLjg1MjV6bTQuOTcwMSA2LjI5NTloMS42OTU0di00LjM1NDVjMC0xLjEyMTEuNjM1Ny0xLjgyNTIgMS42NDc0LTEuODI1MiAxLjAzMjIgMCAxLjUxMDguNTgxMSAxLjUxMDggMS43NDMydjQuNDM2NWgxLjY5NTN2LTQuODMzYzAtMS43Nzc0LS45MDkyLTIuNzgyMi0yLjU3NzItMi43ODIyLTEuMTE0MiAwLTEuODY2Mi41MDU4LTIuMjIxNyAxLjMzOThoLS4xMTYydi0xLjE5NjNoLTEuNjMzOHptMTIuODUyNC04LjcyMjdjLjU2MDUgMCAxLjAxODUtLjQ0NDMgMS4wMTg1LTEuMDA0OCAwLS41NTM3LS40NTgtMS4wMDQ5LTEuMDE4NS0xLjAwNDktLjU1MzcgMC0xLjAxMTcuNDUxMi0xLjAxMTcgMS4wMDQ5IDAgLjU2MDUuNDU4IDEuMDA0OCAxLjAxMTcgMS4wMDQ4em0tLjg0MDggOC43MjI3aDEuNjg4NXYtNy40NzE3aC0xLjY4ODV6bTMuNjQzOSAwaDEuNjk1M3YtNC4zNTQ1YzAtMS4xMjExLjYzNTgtMS44MjUyIDEuNjQ3NS0xLjgyNTIgMS4wMzIyIDAgMS41MTA3LjU4MTEgMS41MTA3IDEuNzQzMnY0LjQzNjVoMS42OTUzdi00LjgzM2MwLTEuNzc3NC0uOTA5MS0yLjc4MjItMi41NzcxLTIuNzgyMi0xLjExNDMgMC0xLjg2NjIuNTA1OC0yLjIyMTcgMS4zMzk4aC0uMTE2MnYtMS4xOTYzaC0xLjYzMzh6bTIwLjY5OTgtMy45Mzc1di0xLjIzMDVoLTQuMDk1djEuMzQ2N2gyLjM3M2wtLjAwNy4yMDUxYy0uMDI4IDEuMzk0NS0xLjA1MyAyLjMzMS0yLjU1NyAyLjMzMS0xLjc1NyAwLTIuODU3LTEuMzk0NS0yLjg1Ny0zLjY2NCAwLTIuMjM1NCAxLjA4LTMuNjI5OSAyLjgwMi0zLjYyOTkgMS4yNjUgMCAyLjE0Ny42Mjg5IDIuNTAyIDEuNzcwNWgxLjc1N2MtLjMxNC0yLjAwOTgtMS45ODItMy4zMDE4LTQuMjU5LTMuMzAxOC0yLjgwOSAwLTQuNjA3IDIuMDE2Ni00LjYwNyA1LjE3NDkgMCAzLjE5MjMgMS43NzcgNS4xODE2IDQuNjM1IDUuMTgxNiAyLjYzMiAwIDQuMzEzLTEuNjMzOCA0LjMxMy00LjE4MzZ6bTIuNTg1LTQuNzg1MmMuNTYgMCAxLjAxOC0uNDQ0MyAxLjAxOC0xLjAwNDggMC0uNTUzNy0uNDU4LTEuMDA0OS0xLjAxOC0xLjAwNDktLjU1NCAwLTEuMDEyLjQ1MTItMS4wMTIgMS4wMDQ5IDAgLjU2MDUuNDU4IDEuMDA0OCAxLjAxMiAxLjAwNDh6bS0uODQxIDguNzIyN2gxLjY4OHYtNy40NzE3aC0xLjY4OHptNC4xODQtOS4zMDM3djEuODc5OWgtMS4xODN2MS4zMTkzaDEuMTgzdjQuMTIyMWMwIDEuNDQyNC42ODMgMi4wMTY2IDIuMzk5IDIuMDE2Ni4zMjggMCAuNjQzLS4wMjc0Ljg4OS0uMDc1MnYtMS4yOTg4Yy0uMjA1LjAyMDUtLjMzNS4wMzQxLS41NzQuMDM0MS0uNzExIDAtMS4wMjYtLjMzNDktMS4wMjYtMS4wOHYtMy43MTg4aDEuNnYtMS4zMTkzaC0xLjZ2LTEuODc5OXptMTMuMzMgOS4zMDM3di05Ljg2NDNoLTEuNzU3djQuMTAxNmgtNC43OTh2LTQuMTAxNmgtMS43NjR2OS44NjQzaDEuNzY0di00LjI3OTNoNC43OTh2NC4yNzkzem04LjYyMS03LjQ3MTdoLTEuNjk2djQuMzU0NWMwIDEuMTI3OS0uNjAxIDEuODExNS0xLjcwMiAxLjgxMTUtMS4wMTEgMC0xLjQ4My0uNTYwNS0xLjQ4My0xLjcyMjZ2LTQuNDQzNGgtMS42OTV2NC44NTM1YzAgMS43NS45NTcgMi43Njg2IDIuNTkgMi43Njg2IDEuMTQyIDAgMS44NzMtLjQ4NTQgMi4yMzYtMS4zMzk5aC4xMTZ2MS4xODk1aDEuNjM0em02LjA4NCA3LjU5NDdjMS44ODcgMCAzLjA2OS0xLjQ4MzQgMy4wNjktMy44NTU0IDAtMi4zODU4LTEuMTc1LTMuODYyMy0zLjA2OS0zLjg2MjMtMS4wMjUgMC0xLjg4Ny40OTktMi4yNzYgMS4zMTI1aC0uMTE2di00LjA4MTFoLTEuNjk2djEwLjM2MzNoMS42MzR2LTEuMTgyNmguMTE2Yy40MjQuODIwMyAxLjI5MiAxLjMwNTYgMi4zMzggMS4zMDU2em0tLjUzMy02LjMwMjdjMS4xNTUgMCAxLjg1OS45MjI5IDEuODU5IDIuNDQ3M3MtLjY5NyAyLjQ0NzItMS44NTkgMi40NDcyLTEuODg3LS45MzY1LTEuODg3LTIuNDQ3MmMwLTEuNTEwOC43MzItMi40NDczIDEuODg3LTIuNDQ3M3ptMTMuMDMgNi40MjU4YzIuMjc2IDAgMy45NDQtMS4zNDY3IDQuMTc3LTMuMzQyOGgtMS43MzdjLS4yMzkgMS4xMDc0LTEuMTg5IDEuODExNS0yLjQ0IDEuODExNS0xLjY4MiAwLTIuNzI4LTEuNDAxMy0yLjcyOC0zLjY1MDMgMC0yLjI0MjIgMS4wNDYtMy42NDM2IDIuNzIxLTMuNjQzNiAxLjI0NCAwIDIuMTk0Ljc3MjUgMi40NDEgMS45NjE5aDEuNzM2Yy0uMjA1LTIuMDQzOS0xLjkzNS0zLjQ5MzItNC4xNzctMy40OTMyLTIuNzk2IDAtNC41MjUgMS45NzU2LTQuNTI1IDUuMTgxNyAwIDMuMTkyNCAxLjczNiA1LjE3NDggNC41MzIgNS4xNzQ4em05LjAzNy0uMDk1N2MyLjIzNiAwIDMuNTk2LTEuNDYyOSAzLjU5Ni0zLjg4OTcgMC0yLjQxMy0xLjM2Ny0zLjg3NTktMy41OTYtMy44NzU5LTIuMjIxIDAtMy41OTUgMS40Njk3LTMuNTk1IDMuODc1OSAwIDIuNDI2OCAxLjM1MyAzLjg4OTcgMy41OTUgMy44ODk3em0wLTEuMzg3N2MtMS4xODIgMC0xLjg1OS0uOTE2LTEuODU5LTIuNDk1MXMuNjc3LTIuNDk1MSAxLjg1OS0yLjQ5NTFjMS4xNzYgMCAxLjg1My45MTYgMS44NTMgMi40OTUxcy0uNjcgMi40OTUxLTEuODUzIDIuNDk1MXptNy44NjIgMS4zNjAzYzEuMDM5IDAgMS45MDEtLjQ4NTMgMi4zMjQtMS4zMDU2aC4xMTd2MS4xODI2aDEuNjR2LTEwLjM2MzNoLTEuNjk1djQuMDgxMWgtLjExNmMtLjM5Ny0uODIwMy0xLjI0NC0xLjMxMjUtMi4yNy0xLjMxMjUtMS44ODcgMC0zLjA3NiAxLjQ5MDItMy4wNzYgMy44NTU0IDAgMi4zNzIxIDEuMTgzIDMuODYyMyAzLjA3NiAzLjg2MjN6bS41MjctNi4zMDI3YzEuMTYyIDAgMS44NzkuOTM2NSAxLjg3OSAyLjQ0NzMgMCAxLjUxNzYtLjcxIDIuNDQ3Mi0xLjg3OSAyLjQ0NzItMS4xNjMgMC0xLjg2Ny0uOTE2LTEuODY3LTIuNDQ3MiAwLTEuNTI0NC43MTEtMi40NDczIDEuODY3LTIuNDQ3M3ptMTAuNDE4IDQuMTM1OGMtLjI0Ni41NjA1LS44MjcuODc1LTEuNjY4Ljg3NS0xLjExNCAwLTEuODMyLS43OTMtMS44NzMtMi4wNTc3di0uMDg4OGg1LjIyM3YtLjU0MDFjMC0yLjM0NDctMS4yNzktMy43NTk3LTMuNDEyLTMuNzU5Ny0yLjE2NyAwLTMuNTEzIDEuNTEwNy0zLjUxMyAzLjkxMDEgMCAyLjM5MjYgMS4zMjYgMy44NTU1IDMuNTI3IDMuODU1NSAxLjc2NCAwIDMuMDE1LS44NDc3IDMuMzIyLTIuMTk0M3ptLTEuNzM2LTQuMjUyYzEuMDE4IDAgMS42ODguNzE3OCAxLjcyMiAxLjg1MjVoLTMuNTJjLjA3NS0xLjEyMTEuNzg2LTEuODUyNSAxLjc5OC0xLjg1MjV6bTQuNzk5Ljk1N2MwIDEuMTIxMS42NzcgMS43Nzc0IDIuMTEyIDIuMTA1NWwxLjMyNi4zMDc2Yy43MTEuMTY0MSAxLjAzMy40Mzc1IDEuMDMzLjg2MTMgMCAuNTY3NC0uNTk1Ljk1NzEtMS40NS45NTcxLS44NDcgMC0xLjM3NC0uMzQxOC0xLjUzOC0uODk1NWgtMS42NzVjLjEzIDEuMzQ2NyAxLjMwNiAyLjE1MzMgMy4xNzIgMi4xNTMzczMuMTg2LS45NTAyIDMuMTg2LTIuMzc4OWMwLTEuMTAwNi0uNjYzLTEuNzA5LTIuMDkyLTIuMDM3MWwtMS4zMTktLjI5NGMtLjc1Mi0uMTc3Ny0xLjEwOC0uNDQ0My0xLjEwOC0uODY4MSAwLS41NTM3LjU4MS0uOTI5NyAxLjM1NC0uOTI5Ny43OTMgMCAxLjI5Mi4zNDE4IDEuNDE1Ljg2ODFoMS41OTNjLS4xMjMtMS4zNDY2LTEuMjM4LTIuMTI1OS0zLjAxNS0yLjEyNTktMS43NjQgMC0yLjk5NC45MzY1LTIuOTk0IDIuMjc2M3ptMTEuODA2LTIuMjU1OGMtMS4wMjYgMC0xLjg5NC41MTI3LTIuMzI0IDEuMzYwM2gtLjExN3YtMS4yMzczaC0xLjYzM3Y5Ljk1MzFoMS42OTV2LTMuNjE2MmguMTE2Yy4zODMuNzkzIDEuMjEgMS4yNTc4IDIuMjgzIDEuMjU3OCAxLjg4NyAwIDMuMDYzLTEuNDgzNCAzLjA2My0zLjg1NTQgMC0yLjM5MjYtMS4xOS0zLjg2MjMtMy4wODMtMy44NjIzem0tLjUzMyA2LjMwOTVjLTEuMTU2IDAtMS44NzMtLjkzNjUtMS44OC0yLjQ0NzIuMDA3LTEuNTEwOC43MzEtMi40NDczIDEuODg3LTIuNDQ3MyAxLjE2MiAwIDEuODY2LjkxNiAxLjg2NiAyLjQ0NzMgMCAxLjUzMTItLjY5OCAyLjQ0NzItMS44NzMgMi40NDcyem03LjIyNiAxLjQwODJjLjk3NyAwIDEuNzk4LS40MjM4IDIuMjE0LTEuMTQ4NGguMTE3djEuMDI1NGgxLjYzM3YtNS4xMDY0YzAtMS41NzkxLTEuMDgtMi41MDg4LTMtMi41MDg4LTEuNzc4IDAtMy4wMTUuODM0LTMuMTUyIDIuMTM5NmgxLjZjLjE1Ny0uNTEyNy42OS0uNzkzIDEuNDY5LS43OTMuOTE3IDAgMS40MDkuNDE3IDEuNDA5IDEuMTYyMnYuNjQyNWwtMS45MjguMTE2MmMtMS44MTguMTAyNi0yLjgzNy44ODg3LTIuODM3IDIuMjI4NiAwIDEuMzY3MSAxLjAzMiAyLjI0MjEgMi40NzUgMi4yNDIxem0uNDk5LTEuMzA1NmMtLjc1MiAwLTEuMjkyLS4zNzYtMS4yOTItMS4wMTg2IDAtLjYyMi40NDQtLjk3MDcgMS4zOTQtMS4wMzIybDEuNjg5LS4xMTYydi42MDg0YzAgLjg4ODctLjc2NiAxLjU1ODYtMS43OTEgMS41NTg2em0xMS44MTktMy43OTRjLS4xNzctMS41NDQ5LTEuMzM5LTIuNjM4Ni0zLjI2LTIuNjM4Ni0yLjI0OSAwLTMuNTY5IDEuNDQyMy0zLjU2OSAzLjg2MjMgMCAyLjQ0NzIgMS4zMjYgMy45MDMzIDMuNTc1IDMuOTAzMyAxLjg5NCAwIDMuMDctMS4wNTI3IDMuMjU0LTIuNTk3N2gtMS42MTNjLS4xNzguNzg2Mi0uNzY2IDEuMjAzMi0xLjY0NyAxLjIwMzItMS4xNTYgMC0xLjg1My0uOTIyOS0xLjg1My0yLjUwODggMC0xLjU1ODYuNjkxLTIuNDc0NiAxLjg1My0yLjQ3NDYuOTI5IDAgMS40OS41MjYzIDEuNjQ3IDEuMjUwOXptNi4zNDUgMi45MzI3Yy0uMjQ3LjU2MDUtLjgyOC44NzUtMS42NjguODc1LTEuMTE1IDAtMS44MzItLjc5My0xLjg3My0yLjA1Nzd2LS4wODg4aDUuMjIydi0uNTQwMWMwLTIuMzQ0Ny0xLjI3OC0zLjc1OTctMy40MTEtMy43NTk3LTIuMTY3IDAtMy41MTQgMS41MTA3LTMuNTE0IDMuOTEwMSAwIDIuMzkyNiAxLjMyNyAzLjg1NTUgMy41MjggMy44NTU1IDEuNzYzIDAgMy4wMTQtLjg0NzcgMy4zMjItMi4xOTQzem0tMS43MzctNC4yNTJjMS4wMTkgMCAxLjY4OS43MTc4IDEuNzIzIDEuODUyNWgtMy41MjFjLjA3Ni0xLjEyMTEuNzg2LTEuODUyNSAxLjc5OC0xLjg1MjV6bTQuNzk5Ljk1N2MwIDEuMTIxMS42NzcgMS43Nzc0IDIuMTEzIDIuMTA1NWwxLjMyNi4zMDc2Yy43MTEuMTY0MSAxLjAzMi40Mzc1IDEuMDMyLjg2MTMgMCAuNTY3NC0uNTk1Ljk1NzEtMS40NDkuOTU3MS0uODQ4IDAtMS4zNzQtLjM0MTgtMS41MzgtLjg5NTVoLTEuNjc1Yy4xMyAxLjM0NjcgMS4zMDYgMi4xNTMzIDMuMTcyIDIuMTUzM3MzLjE4NS0uOTUwMiAzLjE4NS0yLjM3ODljMC0xLjEwMDYtLjY2My0xLjcwOS0yLjA5MS0yLjAzNzFsLTEuMzItLjI5NGMtLjc1Mi0uMTc3Ny0xLjEwNy0uNDQ0My0xLjEwNy0uODY4MSAwLS41NTM3LjU4MS0uOTI5NyAxLjM1My0uOTI5Ny43OTMgMCAxLjI5Mi4zNDE4IDEuNDE1Ljg2ODFoMS41OTNjLS4xMjMtMS4zNDY2LTEuMjM3LTIuMTI1OS0zLjAxNC0yLjEyNTktMS43NjQgMC0yLjk5NS45MzY1LTIuOTk1IDIuMjc2M3oiIGZpbGw9IiNmZmYiPjwvcGF0aD4KICA8cGF0aCBkPSJtMzYgLjVoMjA2LjVjMy4wMzggMCA1LjUgMi40NjI0MyA1LjUgNS41djIwYzAgMy4wMzc2LTIuNDYyIDUuNS01LjUgNS41aC0yMDYuNXoiIHN0cm9rZT0iIzQ0NGQ1NiI+PC9wYXRoPiAKPC9zdmc+Cg==" class="codespaces-badge" alt="Open GitHub Codespaces"></a>
 <ul>
-<li>R, with the yamaa package installed</li>
-<li>OpenCode, Claude Code, Codex</li>
+<li>R and common R packages for data standardization.</li>
+<li>OpenCode, Claude Code, and Codex.</li>
 </ul></li>
-<li>Start <a href="https://opencode.ai/">OpenCode</a> and configure a model provider
+<li>Start <a href="https://opencode.ai/">OpenCode</a>.
 <ul>
-<li>Select <code>opencode-go/muse-spark-1.3-contributor</code>.</li>
-<li>Keep API keys in your personal Codespaces secrets, never in the repository.</li>
-<li>Or sign in to the preinstalled <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a> or <a href="https://learn.chatgpt.com/docs/codex/cli">Codex</a>.</li>
+<li>Run <code>/connect</code> to connect to <a href="https://opencode.ai/console/go">OpenCode Go</a> with the provided API key.</li>
+<li>Run <code>/models</code> to select <code>opencode-go/muse-spark-1.3-contributor</code>.</li>
+<li>Or sign in to the preinstalled <a href="https://code.claude.com/docs/en/quickstart">Claude Code</a>, <a href="https://learn.chatgpt.com/docs/codex/cli">Codex</a>, or <a href="https://dev.meta.ai/">Muse code</a> with your own account.</li>
 </ul></li>
 </ul>
 </section>
-<section id="check-your-setup" class="slide level2">
-<h2>Check your setup</h2>
-<p><span class="pill">Hands-on</span></p>
-<p>Open the Codespace, start R from the repository root, and run:</p>
+<section id="verify-the-github-codespace" class="slide level2 compact">
+<h2>Verify the GitHub Codespace</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Step 1. Check R and yamaa</strong></p>
+<p>Open the Codespace, start R from the terminal, and run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href aria-label="1"></a><span class="fu">library</span>(yamaa)</span>
 <span id="cb1-2"><a href aria-label="2"></a><span class="fu">yamaa_selftest</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first line of the result reads <code>yamaa selftest: succeeded</code>; the second names your engine and platform.</p>
-<ul>
-<li>Then start an agent in the terminal: <code>opencode</code>, <code>claude</code>, or <code>codex</code>.</li>
-<li>If the Codespace is not ready, keep going: the review and Harbor Hub exercises need only a browser.</li>
-</ul>
+<div class="expect">
+<p><strong>Expect:</strong> the first line reads <code>yamaa selftest: succeeded</code>.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Step 2. Check an AI agent</strong></p>
+<p>Start an agent in the terminal: <code>opencode</code>, <code>claude</code>, <code>codex</code>, or <code>muse</code>. Then ask:</p>
+<div class="prompt">
+<p>Explain ODM XML and its relationship to EDC and CRF form.</p>
+</div>
+<div class="expect">
+<p><strong>Expect:</strong> the agent answers in the terminal.</p>
+</div>
+</div></div>
 </section>
 <section id="resources" class="slide level2">
 <h2>Resources</h2>
 <ul>
-<li>During the workshop, we will use <a href="https://github.com/elong0527/yamaa">yamaa</a> and the <a href="https://github.com/RConsortium/submissions-pilot7-synthetic-data">R Consortium Pilot 7 project</a>.
+<li>During the workshop, we will use 3 github repos
 <ul>
-<li>Project links will be shared in the chat.</li>
-<li>Post your questions in the group chat.</li>
+<li><a href="https://github.com/elong0527/yamaa">yamaa</a>: tools and benchmark for CDISC data standardization.</li>
+<li><a href="https://github.com/RConsortium/submissions-pilot7-synthetic-data">R Consortium Pilot 7 project</a>: trials to demonstrate CDISC data standardization.</li>
+<li><a href="https://ai4csr.org/">ai4csr</a>: book and slides for this short course.</li>
 </ul></li>
+<li>Post your questions in the group chat.</li>
 </ul>
 </section></section>
 <section>
 <section id="ai-agents" class="title-slide slide level1 center" data-background-color="#385898">
 <h1>AI Agents</h1>
 <div class="section-brief">
-<p><strong>You will:</strong> name the parts of an AI agent and say what each one can and cannot do.<br> <strong>Format:</strong> two examples and three diagrams.</p>
+<p><strong>You will:</strong> name the parts of an AI agent and say what each one can and cannot do.</p>
 </div>
 </section>
 <section id="example-arena.ai" class="slide level2 scrollable">
@@ -2437,7 +2418,6 @@ display:block!important;
 </section>
 <section id="hands-on-1-run-a-specification-then-break-it" class="slide level2 compact scrollable">
 <h2>Hands-on 1: run a specification, then break it</h2>
-<p><span class="pill">Hands-on</span></p>
 <p>In a terminal at the repository root, copy the benchmark with <code>rm -rf exercise/advs &amp;&amp; mkdir -p exercise &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>, then run its specification there:</p>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
@@ -2478,7 +2458,6 @@ display:block!important;
 </section>
 <section id="hands-on-2-draft-with-an-agent-then-review" class="slide level2 compact scrollable">
 <h2>Hands-on 2: draft with an agent, then review</h2>
-<p><span class="pill">Hands-on</span></p>
 <p>In a terminal at the repository root, reset the copy with <code>rm -rf exercise/advs &amp;&amp; mkdir -p exercise &amp;&amp; cp -r benchmarks/adam-advs-map exercise/advs</code>, then give your agent this task:</p>
 <div class="prompt">
 <p>In exercise/advs/spec.yaml, add a pulse pressure record for each subject and visit that has both a systolic and a diastolic result: PARAMCD “PP”, PARAM “Pulse Pressure (mmHg)”, AVAL is the systolic minus the diastolic pressure, not rounded, and DTYPE “CALCULATION”. Keep the MAP record and every collected record. Run the specification with yamaa and show me the output.</p>
@@ -3272,7 +3251,6 @@ display:block!important;
 </section>
 <section id="reviewing-a-yamaa-benchmark" class="slide level2 scrollable">
 <h2>Reviewing a yamaa benchmark</h2>
-<p><span class="pill">Hands-on</span></p>
 <p><a href="https://elong0527.github.io/yamaa/benchmark/review/next/" class="try-it">Start reviewing</a></p>
 <ol type="1">
 <li>Sign in to GitHub; <strong>Start reviewing</strong> opens the next benchmark in the queue.</li>
@@ -3338,7 +3316,6 @@ display:block!important;
 </section>
 <section id="reviewing-a-pilot-7-finding" class="slide level2 scrollable">
 <h2>Reviewing a Pilot 7 finding</h2>
-<p><span class="pill">Hands-on</span></p>
 <p><a href="https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/" class="try-it">Open the review guide</a></p>
 <ol type="1">
 <li>Open the Pilot 5 consistency findings and select <strong>Start review</strong> on a finding; start with <strong>Critical finding: Yes</strong> or <strong>Needs review</strong>.</li>
@@ -3433,7 +3410,6 @@ display:block!important;
 </section>
 <section id="hands-on-3-read-a-job-on-harbor-hub" class="slide level2 scrollable">
 <h2>Hands-on 3: read a job on Harbor Hub</h2>
-<p><span class="pill">Hands-on</span></p>
 <ol type="1">
 <li>Join the yamaa organization with the <a href="https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc">invitation link</a>.</li>
 <li>Open the <a href="https://hub.harborframework.com/jobs?access=all&amp;owner_org=yamaa">yamaa jobs</a>.</li>

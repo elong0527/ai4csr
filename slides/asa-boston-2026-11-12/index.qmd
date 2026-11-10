@@ -31,24 +31,19 @@ title-slide-attributes:
 
 # Welcome {background-color="#385898"}
 
-## Schedule
+## Outline
 
-The course runs about three hours, in three parts with a break after each of
-the first two.
+The course runs about three hours with break after each part.
 
-::: {.schedule}
-| | Topic | Format |
-| ----- | ------------------------------- | -------------- |
-| Welcome | Objectives, setup check, and resources | Talk, setup check |
-| Part 1 | **AI agents and the AI-first workflow** (Yilong)<br>Designing an AI-first workflow, with CDISC data standardization as the example | Talk, two brainstorms |
-| Part 1 | **Agentic CDISC data standardization** (Yilong)<br>Why two agents disagree on one specification, and a workflow that reviews the specification instead | Talk, discussion, two hands-on exercises |
+| | Topic | Instructor |
+| ----- | ------------------------------- | ---------- |
+| Part 1 | **AI agents and AI-first workflow** | Yilong |
+| Part 1 | **Agentic CDISC data standardization** | Yilong |
 | Break | | |
-| Part 2 | **Language models and agents for statistical programming** (Jimeng)<br>Strategies that improve AI agents beyond skills and tools | Talk |
+| Part 2 | **LLM and agents for statistical programming** | Jimeng |
 | Break | | |
-| Part 3 | **AI evaluation** (Yilong)<br>Designing the evaluation of an AI agent as a study | Talk, discussion |
-| Part 3 | **Case studies: create, review, and assess** (Jimeng and Yilong)<br>One benchmark taken apart, two reviews, and one agent's job read | Three hands-on exercises |
-| Wrap-up | Takeaways, where to go next, and questions | Talk |
-:::
+| Part 3 | **AI evaluation** | Yilong |
+| Part 3 | **Case studies** | Jimeng and Yilong |
 
 ## Disclaimer
 
@@ -72,52 +67,73 @@ This workshop shows one possible approach, not the only one.
 
 ## Preparation
 
-This workshop assumes you are familiar with the clinical development
-lifecycle and CDISC standards, and that you have R programming experience.
+This workshop assumes familiarity with the clinical development lifecycle
+and CDISC standards, as well as R programming experience.
 
 A preconfigured GitHub Codespace is ready for the workshop:
 
 - [![Open GitHub Codespaces](https://github.com/codespaces/badge.svg){.codespaces-badge}](https://codespaces.new/elong0527/yamaa)
-  + R, with the yamaa package installed
-  + OpenCode, Claude Code, Codex
+  + R and common R packages for data standardization.
+  + OpenCode, Claude Code, and Codex.
 
-- Start [OpenCode](https://opencode.ai/) and configure a model provider
-  + Select `opencode-go/muse-spark-1.3-contributor`.
-  + Keep API keys in your personal Codespaces secrets, never in the repository.
-  + Or sign in to the preinstalled [Claude Code](https://code.claude.com/docs/en/quickstart)
-    or [Codex](https://learn.chatgpt.com/docs/codex/cli).
+- Start [OpenCode](https://opencode.ai/).
+  + Run `/connect` to connect to [OpenCode Go](https://opencode.ai/console/go)
+    with the provided API key.
+  + Run `/models` to select `opencode-go/muse-spark-1.3-contributor`.
+  + Or sign in to the preinstalled [Claude Code](https://code.claude.com/docs/en/quickstart),
+    [Codex](https://learn.chatgpt.com/docs/codex/cli), or [Muse code](https://dev.meta.ai/)
+    with your own account.
 
-## Check your setup
+## Verify the GitHub Codespace {.compact}
 
-[Hands-on]{.pill}
+:::: {.columns}
 
-Open the Codespace, start R from the repository root, and run:
+::: {.column width="50%"}
+**Step 1. Check R and yamaa**
+
+Open the Codespace, start R from the terminal, and run:
 
 ```r
 library(yamaa)
 yamaa_selftest()
 ```
 
-The first line of the result reads `yamaa selftest: succeeded`; the second
-names your engine and platform.
+::: {.expect}
+**Expect:** the first line reads `yamaa selftest: succeeded`.
+:::
+:::
 
-- Then start an agent in the terminal: `opencode`, `claude`, or `codex`.
-- If the Codespace is not ready, keep going: the review and Harbor Hub
-  exercises need only a browser.
+::: {.column width="50%"}
+**Step 2. Check an AI agent**
+
+Start an agent in the terminal: `opencode`, `claude`, `codex`, or `muse`.
+Then ask:
+
+::: {.prompt}
+Explain ODM XML and its relationship to EDC and CRF form.
+:::
+
+::: {.expect}
+**Expect:** the agent answers in the terminal.
+:::
+:::
+
+::::
 
 ## Resources
 
-* During the workshop, we will use [yamaa](https://github.com/elong0527/yamaa)
-  and the [R Consortium Pilot 7 project](https://github.com/RConsortium/submissions-pilot7-synthetic-data).
-   * Project links will be shared in the chat.
-   * Post your questions in the group chat.
+* During the workshop, we will use 3 github repos
+  - [yamaa](https://github.com/elong0527/yamaa): tools and benchmark for CDISC data standardization.
+  - [R Consortium Pilot 7 project](https://github.com/RConsortium/submissions-pilot7-synthetic-data): trials to demonstrate CDISC data standardization.
+  - [ai4csr](https://ai4csr.org/): book and slides for this short course. 
+
+* Post your questions in the group chat.
 
 # AI Agents {background-color="#385898"}
 
 ::: {.section-brief}
 **You will:** name the parts of an AI agent and say what each one can and
-cannot do.<br>
-**Format:** two examples and three diagrams.
+cannot do.
 :::
 
 ## Example: arena.ai
@@ -549,8 +565,6 @@ Inheritance reduces duplication while keeping every resolved study specification
 
 ## Hands-on 1: run a specification, then break it {.compact}
 
-[Hands-on]{.pill}
-
 In a terminal at the repository root, copy the benchmark with
 `rm -rf exercise/advs && mkdir -p exercise && cp -r benchmarks/adam-advs-map exercise/advs`,
 then run its specification there:
@@ -603,8 +617,6 @@ the fresh copy inside it.
 :::
 
 ## Hands-on 2: draft with an agent, then review {.compact}
-
-[Hands-on]{.pill}
 
 In a terminal at the repository root, reset the copy with
 `rm -rf exercise/advs && mkdir -p exercise && cp -r benchmarks/adam-advs-map exercise/advs`,
@@ -1164,8 +1176,6 @@ Both projects collect reviews from a static page as public GitHub Discussions.
 
 ## Reviewing a yamaa benchmark
 
-[Hands-on]{.pill}
-
 [Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/){.try-it}
 
 1. Sign in to GitHub; **Start reviewing** opens the next benchmark in the
@@ -1243,8 +1253,6 @@ not reviewed yet
 
 ## Reviewing a Pilot 7 finding
 
-[Hands-on]{.pill}
-
 [Open the review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/){.try-it}
 
 1. Open the Pilot 5 consistency findings and select **Start review** on a
@@ -1318,8 +1326,6 @@ October 2026: nine jobs, one for each prompt tier and language.
 - A full-prompt job for one language cost $0.36 to $0.96 in model usage.
 
 ## Hands-on 3: read a job on Harbor Hub
-
-[Hands-on]{.pill}
 
 1. Join the yamaa organization with the [invitation link](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc).
 2. Open the [yamaa jobs](https://hub.harborframework.com/jobs?access=all&owner_org=yamaa).
