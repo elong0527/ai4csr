@@ -164,8 +164,8 @@
   margin-right: 1.2em;
 }
 
-/* Short course: a time tag on each hands-on exercise and discussion, the
-   first line under the slide title. */
+/* Short course: a tag on each discussion, the first line under the slide
+   title. */
 .reveal .slides .pill {
   background: #e8f0fc;
   border-radius: 1em;
@@ -241,29 +241,6 @@
 .reveal .slides section .section-brief a {
   color: white;
   text-decoration: underline;
-}
-
-/* Short course: the schedule, with its part column kept on one line and the
-   minutes right-aligned. */
-.reveal .schedule table {
-  font-size: 0.62em;
-  line-height: 1.3;
-  table-layout: fixed;
-}
-
-.reveal .schedule th,
-.reveal .schedule td {
-  padding: 0.3em 0.5em;
-}
-
-.reveal .schedule th:nth-child(1) { width: 10%; }
-.reveal .schedule th:nth-child(2) { width: 62%; }
-.reveal .schedule th:nth-child(3) { width: 28%; }
-
-.reveal .schedule td:first-child {
-  color: var(--course-blue);
-  font-weight: 700;
-  white-space: nowrap;
 }
 
 /* Short course: the vocabulary, two tables side by side, each term in the
@@ -581,4 +558,10 @@
 /* AI evaluation: the opening result's labels read at body size. */
 .reveal .sign-off .metric-label {
   font-size: 1.25rem;
+}
+
+/* Verify the GitHub Codespace: the expected result sits apart from the code
+   or prompt above it, so each step reads as action, then check. */
+.reveal .slides .expect {
+  margin-top: 1.5em;
 }
