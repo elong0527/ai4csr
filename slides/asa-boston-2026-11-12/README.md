@@ -17,8 +17,9 @@ The output is one self-contained HTML file (`embed-resources: true`).
 
 The deck is written for a short course of about three hours for
 statisticians and statistical programmers from biopharma companies. The
-schedule slide gives each part's format, with a break after Part 1 and after
-Part 2, and states no minutes, so the parts can be paced to the slot. Each
+outline slide gives each part's topics and instructor, with a break after
+Part 1 and after Part 2, and states no minutes, so the parts can be paced to
+the slot. Each
 section slide carries a brief and what the part teaches, and every
 participant activity opens with a tag naming its kind: a discussion with a
 neighbour, or a hands-on exercise in the Codespace or the browser.
@@ -48,7 +49,7 @@ filter fails with `row_count_failed`.
 
 The deck has eight sections:
 
-- **Welcome:** the schedule, disclaimer, training objectives, preparation,
+- **Welcome:** the outline, disclaimer, training objectives, preparation,
   a setup check, and resources. It assumes familiarity with clinical
   development and CDISC standards, plus R programming experience. The
   preconfigured GitHub Codespace provides R with yamaa installed, OpenCode,
