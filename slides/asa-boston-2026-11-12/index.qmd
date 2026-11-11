@@ -410,32 +410,26 @@ Inheritance reduces duplication while keeping every resolved study specification
 <div class="perf-title">Real size: 254 subjects</div>
 
 <div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">26.45 s</span></div>
 <div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">0.60 GB</span></div>
-<div class="perf-callouts">
-<div><div class="big-number">16x</div><div class="metric-label">faster than R</div></div>
-<div><div class="big-number">2.4x</div><div class="metric-label">less memory than R</div></div>
-</div>
 :::
 
 ::: {.perf-panel}
 <div class="perf-title">Stress test: 10x subjects (2,540)</div>
 
 <div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">181.70 s</span></div>
 <div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">4.13 GB</span></div>
-<div class="perf-callouts">
-<div><div class="big-number">14x</div><div class="metric-label">faster than R</div></div>
-<div><div class="big-number">2.1x</div><div class="metric-label">less memory than R</div></div>
-</div>
 :::
 :::
+
+- R (yamaa) vs. original R (admiral): 14--16x faster, 2.1--2.4x less memory.
 
 ## Summary of the workflow
 
@@ -459,21 +453,22 @@ what a pass rate cannot tell you.
 ![](../assets/diagrams/benchmark-concept.svg)
 
 **Like double programming:** the agent is the production programmer, the
-expected output is the independent QC, and the grader compares the two like
-PROC COMPARE.
+expected output is the independent QC, and the grader compares the two
+datasets value by value.
 
 ## Benchmark for SDTM and ADaM
 
-**Goal:** measure whether an AI agent can do the everyday statistical
-programming tasks that derive SDTM and ADaM datasets.
+**Goal:** test whether an AI agent can derive SDTM and ADaM datasets.
 
 ::: {.roles}
 | Expectation | What each task needs | Example |
 | ------ | ------------ | ------------ |
-| **Relevant** | A derivation that study teams write for real studies, one per task | Study day in `VS`, age groups in `ADSL`, progression-free survival in `ADTTE` |
-| **Edge cases** | Inputs that hold the cases where two programmers could disagree: boundaries, missing values, ties, and partial dates | Age groups: subjects aged 17, 18, 64, and 65, and one with a missing age |
-| **Reviewed by experts** | Experienced statistical programmers and statisticians confirm the task, the inputs, and the expected output | Each benchmark moves from draft to reviewed to finalized; only people finalize |
+| **Relevant** | One real-study derivation | Study day in `VS`, age groups in `ADSL` |
+| **Edge cases** | Inputs where two programmers could disagree | Partial dates: `2024-03` (no day), `2024` (no month) |
+| **Reviewed by experts** | Experts confirm the task, inputs, and expected output | Draft, reviewed, finalized; only people finalize |
 :::
+
+![](../assets/diagrams/benchmark-reviewers-wanted.svg){fig-align="center" width="85%"}
 
 ## yamaa benchmarks
 
@@ -503,12 +498,22 @@ execution interfaces (Python, R, CLI)
 
 Scroll inside the frame to see the specification, inputs, and expected output.
 
+## Benchmark review progress
+
+Each square is one benchmark; hover for its name, or select it to open the
+benchmark.
+
+::: {#review-heatmap .review-heatmap}
+:::
+
+<script src="review-heatmap.js"></script>
+
 ## Harbor: run and grade an agent
 
-[Harbor](https://github.com/harbor-framework/harbor) is an open-source
-framework that runs an AI agent on each benchmark task and grades the result
-automatically; the Part 1 prompt-tier results came from it.
-[Join the yamaa organization on Harbor Hub](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc).
+[Harbor](https://github.com/harbor-framework/harbor) runs an agent on each
+benchmark task and grades the result. It produced the Part 1 prompt-tier
+results; [join yamaa on Harbor Hub](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc)
+to explore them.
 
 ![](../assets/diagrams/evaluate-harbor.svg)
 
@@ -520,6 +525,44 @@ automatically; the Part 1 prompt-tier results came from it.
 
 ![](../assets/diagrams/evaluate-yamaa.svg)
 
+## Pilot 7: whole-study evaluation
+
+Benchmarks test one derivation;
+[R Consortium Pilot 7](https://rconsortium.github.io/submissions-pilot7-synthetic-data/)
+tests whole studies.
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.big-number}
+20 / 20
+:::
+::: {.metric-label}
+ADaM datasets match the official submissions
+:::
+:::
+
+::: {.column width="48%"}
+::: {.big-number}
+13.7M
+:::
+::: {.metric-label}
+cells matched
+:::
+:::
+::::
+
+::: {.roles}
+| Study | Data flow | Result |
+| --- | --- | --- |
+| **CDISC Pilot 01** | SDTM -> ADaM | 10 / 10 ADaM datasets match |
+| **Submission Pilots 3 and 5** | SDTM -> ADaM | 5 / 5 ADaM datasets match in each |
+| **CAR-T (OpenClinica sample)** | ODM -> SDTM -> ADaM | No reference; people review |
+| **KN189, KN564 (synthetic)** | ODM -> SDTM -> ADaM | No reference; people review |
+:::
+
+Matching data is not the end: agents flag where Define-XML and the data
+disagree, and people decide each finding.
+
 # Case study: reviewing benchmarks {background-color="#385898"}
 
 ::: {.section-brief}
@@ -529,41 +572,19 @@ see how people finalize each one.
 
 ## Two benchmarks to review
 
-An AI-assisted draft is not truth until people who do the work confirm it.
+An AI-assisted draft is not truth until experts who do the work confirm it.
 
 | | yamaa benchmark | R Consortium Pilot 7 |
 | --- | --- | --- |
-| **Scope** | One derivation on a small input | Full studies, such as Submission Pilot 5 |
-| **Reviewers check** | The task, the inputs, the expected output, and three AI-assisted concerns | Each AI-reported discrepancy between Define-XML and the ADaM data |
-| **Finalized when** | Two reviewers approve and nobody disagrees | The publication record includes, clarifies, or excludes the finding |
+| **Scope** | One derivation, small input | Full study |
+| **Reviewers check** | Task, inputs, expected output, three AI concerns | Each AI-reported Define-XML vs. ADaM discrepancy |
+| **Improvement by** | Addressing reviewer feedbacks | Fix findings confirmed by reviewers |
+| **Finalized when** | Two reviewers agreed | Specification and deriviation consistency achieved |
+| **Review guide** | [Benchmark review](https://elong0527.github.io/yamaa/benchmark/review/) | [Pilot 7 review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/) |
 
 ## Reviewing a yamaa benchmark
 
 ![](../assets/diagrams/benchmark-review.svg)
-
-## Walkthrough: review a yamaa benchmark
-
-[Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/){.try-it}
-
-1. Sign in to GitHub; **Start reviewing** opens the next benchmark in the
-   queue.
-2. Read the summary, the inputs, and the expected output.
-3. Answer Agree or Disagree for the task, the inputs, and each of the three
-   concerns; explain any disagreement.
-4. Select **Submit and next**, then **Start discussion** in the GitHub tab.
-   Select **Skip** for a benchmark you cannot judge.
-
-> Reviews are public: use public or invented data only.
-
-## Benchmark review progress
-
-Each square is one benchmark; hover for its name, or select it to open the
-benchmark.
-
-::: {#review-heatmap .review-heatmap}
-:::
-
-<script src="review-heatmap.js"></script>
 
 ## Pilot 7: people decide on AI findings
 
@@ -572,28 +593,14 @@ data; people decide each finding.
 
 ![](../assets/diagrams/pilot7-review.svg)
 
-## Walkthrough: review a Pilot 7 finding
-
-[Open the review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/){.try-it}
-
-1. Open the Pilot 5 consistency findings and select **Start review** on a
-   finding; start with **Critical finding: Yes** or **Needs review**.
-2. Read **The finding**, compare the cited Define-XML item with the
-   reproduced yamaa specification, and check the **Subject examples**.
-3. Choose Agree, Disagree, or Need clarification, then Critical, Not
-   critical, or Unsure, and explain your reasoning.
-4. Select **Submit review on GitHub**, then **Start discussion**.
-
-> A 100% reproduced ADaM dataset does not resolve a disagreement between the
-> data and Define-XML.
-
 ## Takeaways
 
-- Define the workflow; reuse AI infrastructure; invest in skills and tools.
-- Make a plain-text specification the single source of truth for people and AI
-  agents.
-- Measure agents with benchmarks, and let experts review the truth they are
-  measured against.
+- **Define the AI-first workflow** with a clear input and output for every
+  step.
+- **Plain text first, deterministic first:** keep artifacts inspectable, and
+  let tested tools, not the model, produce the results.
+- **Establish a human baseline with benchmarks** before you trust an agent's
+  output.
 
 ## Keep going after the course
 
