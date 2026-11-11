@@ -19,70 +19,42 @@ The deck is written for a short course of about three hours for
 statisticians and statistical programmers from biopharma companies. The
 outline slide gives each part's topics and instructor, with a break after
 Part 1 and after Part 2, and states no minutes, so the parts can be paced to
-the slot. Each
-section slide carries a brief and what the part teaches, and each
-discussion with a neighbour opens with a Discussion tag.
+the slot. Each section slide carries a brief of what the part teaches.
 
-The hands-on exercises:
-
-1. **Check your setup** (Welcome): the yamaa selftest in R, then start an
-   agent.
-2. **Run a specification, then break it** (Agentic CDISC data
-   standardization): copy the `adam-advs-map` benchmark, run its
-   specification, change the formula, and delete a filter to see a
-   verification fail.
-3. **Draft with an agent, then review** (same section): ask OpenCode,
-   Claude Code, or Codex to add a pulse pressure record to the copied
-   specification, then review the draft against four questions.
-4. **Review a yamaa benchmark** and **review a Pilot 7 finding** (Case
-   study: review and finalize): browser-only, through the public review
-   pages.
-5. **Read a job on Harbor Hub** (Case study: assessing an agent): classify a
-   brief-prompt failure.
-
-The answer keys were verified with engine 0.8.0 in R and Python: the
-pulse pressure draft gives 15 rows with PP 40, 40 and 30, and the deleted
-filter fails with `row_count_failed`.
+The case study walks through two public review pages in the browser:
+reviewing a yamaa benchmark and reviewing an R Consortium Pilot 7 finding.
+The Harbor slide links to the yamaa jobs on Harbor Hub for a live demo.
 
 ## Outline
 
 The deck has six sections and an appendix:
 
-- **Welcome:** the outline, disclaimer, training objectives, preparation,
-  a setup check, and resources. It assumes familiarity with clinical
-  development and CDISC standards, plus R programming experience. The
-  preconfigured GitHub Codespace provides R with yamaa installed, OpenCode,
-  Claude Code, and Codex.
-- **AI Agents:** examples using arena.ai and the personal agent Muse,
+- **Welcome:** the outline, disclaimer, training objectives, and resources.
+- **AI agents:** examples using arena.ai and the personal agent Muse,
   explanations of AI agents, large language models, and harnesses, and a
   vocabulary for the rest of the course.
 - **AI-first workflow:** a mental game on building an AI-native biometrics
   group, the levels of AI adoption, AI-first, and AI-native work, a
-  brainstorm on designing an AI-first workflow for CDISC data standardization
-  (where to start building the agent, with its answer), and the primary goal,
-  trustworthy assistance, with the design principles that serve it: plain
-  text first, single source of truth, deterministic first, and
-  agent-specific identity.
-- **Agentic CDISC data standardization:** the problem of one specification
-  producing two results, its root cause, a discussion that finds an implicit
-  rule in the participant's own work, the evidence that prompt completeness
-  decides success, and the workflow's goal and principles. It introduces
-  yamaa's planning-stage collaboration, YAML specifications, core principle,
-  four components, and inheritance, then two hands-on exercises: run a
-  specification and break it, and draft one with an agent and review it. It
-  continues with the R Consortium submission pilots and Pilot 7, Pilot 5
-  performance, and who does what in the workflow, and closes with a workflow
-  summary.
+  brainstorm on where to start building an agent for CDISC data
+  standardization, with its answer, and the design principles that serve
+  trustworthy assistance.
+- **Agentic CDISC data standardization:** two agents producing two results
+  from one specification, the root cause (implicit business rules), the
+  evidence that prompt completeness decides success, and the mean arterial
+  pressure example. It then introduces yamaa: planning-stage collaboration,
+  a YAML specification, the core principle, where the uncertainty lives,
+  inheritance, and Pilot 5 performance, and closes with the workflow as a
+  loop (`workflow-summary.svg`).
 - **Benchmarks:** what a benchmark is, drawn as double programming
   (`benchmark-concept.svg`); the expectations for an SDTM and ADaM
-  benchmark; the yamaa benchmarks; how Harbor runs and grades an agent, with
-  a link to the yamaa jobs on Harbor Hub for a live demo; the results by
-  prompt tier and language; the limitations of a benchmark; how people review
-  and approve a yamaa benchmark (`benchmark-review.svg`), with a live review
-  heatmap drawn by `review-heatmap.js`; the path from benchmarks to real
-  studies; and how people decide on AI-reported R Consortium Pilot 7 findings
-  (`pilot7-review.svg`).
-- **Case study: assessing an agent with the benchmark:** per-task results
-  for Muse Spark 1.3 from its Harbor Hub jobs, and an exercise on reading a
-  job. The deck closes with the takeaways, where to go next, references,
-  and a questions slide.
+  benchmark; the yamaa benchmarks; how Harbor runs and grades an agent; the
+  limitations of a benchmark; and the path from benchmarks to real studies.
+- **Case study: reviewing benchmarks:** the two benchmarks side by side; how
+  people review and approve a yamaa benchmark (`benchmark-review.svg`), with
+  a walkthrough and a live review heatmap drawn by `review-heatmap.js`; and
+  how people decide on AI-reported Pilot 7 findings (`pilot7-review.svg`),
+  with a walkthrough. The deck closes with the takeaways, where to go next,
+  references, and a questions slide.
+- **Appendix:** preparation and the Codespace check, yamaa's four
+  components, the R Consortium submission pilots and Pilot 7 studies, and
+  the objective, intervention, and endpoint of an AI evaluation.
