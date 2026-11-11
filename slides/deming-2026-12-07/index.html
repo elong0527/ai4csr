@@ -2289,58 +2289,6 @@ margin-right: 0; }
 <div class="map-takeaway">
 <p><strong>Brief omits both the MAP formula and the rule for adding a record.</strong><br> <code>SYSBP</code> = systolic blood pressure; <code>DIABP</code> = diastolic blood pressure.<br> <a href="https://elong0527.github.io/yamaa/benchmark/adam-advs-map.html" class="uri">https://elong0527.github.io/yamaa/benchmark/adam-advs-map.html</a></p>
 </div>
-<aside class="notes">
-<p>The on-screen comparison summarizes the three prompts. Their complete wording, from evaluations/harbor/prompts/adam-advs-map/ (the brief prompt is derived from the full one), is below.</p>
-<h3 id="full---passes">Full - passes</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href aria-label="1"></a>Following CDISC ADaM standards, use the provided ADVS dataset to create an ADVS</span>
-<span id="cb2-2"><a href aria-label="2"></a>dataset with one record per subject, visit, and parameter.</span>
-<span id="cb2-3"><a href aria-label="3"></a></span>
-<span id="cb2-4"><a href aria-label="4"></a>The output dataset should contain the following columns in this order:</span>
-<span id="cb2-5"><a href aria-label="5"></a>STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE</span>
-<span id="cb2-6"><a href aria-label="6"></a></span>
-<span id="cb2-7"><a href aria-label="7"></a>An added record with PARAMCD &quot;MAP&quot; and PARAM &quot;Mean Arterial Pressure (mmHg)&quot;</span>
-<span id="cb2-8"><a href aria-label="8"></a>is created for each subject and visit that has both a systolic (SYSBP) and a</span>
-<span id="cb2-9"><a href aria-label="9"></a>diastolic (DIABP) blood pressure result. On the added record, AVAL is</span>
-<span id="cb2-10"><a href aria-label="10"></a>two-thirds of the diastolic pressure plus one-third of the systolic pressure.</span>
-<span id="cb2-11"><a href aria-label="11"></a>AVAL on the added record is not rounded. No record is added when either</span>
-<span id="cb2-12"><a href aria-label="12"></a>contributor is absent from the visit or its result is missing. DTYPE is</span>
-<span id="cb2-13"><a href aria-label="13"></a>&quot;CALCULATION&quot; on the added record and has no value on collected records.</span>
-<span id="cb2-14"><a href aria-label="14"></a></span>
-<span id="cb2-15"><a href aria-label="15"></a>Read the source datasets from /app/input and save the completed dataset as</span>
-<span id="cb2-16"><a href aria-label="16"></a>/app/output/advs.csv.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<h3 id="conventions---passes">Conventions - passes</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href aria-label="1"></a>Following CDISC ADaM standards, use the provided ADVS dataset to create an ADVS</span>
-<span id="cb3-2"><a href aria-label="2"></a>dataset with one record per subject, visit, and parameter.</span>
-<span id="cb3-3"><a href aria-label="3"></a></span>
-<span id="cb3-4"><a href aria-label="4"></a>The output dataset should contain the following columns in this order:</span>
-<span id="cb3-5"><a href aria-label="5"></a>STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE</span>
-<span id="cb3-6"><a href aria-label="6"></a></span>
-<span id="cb3-7"><a href aria-label="7"></a>PARAMCD is &quot;MAP&quot; and PARAM is &quot;Mean Arterial Pressure (mmHg)&quot; on the added</span>
-<span id="cb3-8"><a href aria-label="8"></a>record. AVAL on the added record is not rounded. DTYPE is &quot;CALCULATION&quot; or</span>
-<span id="cb3-9"><a href aria-label="9"></a>has no value.</span>
-<span id="cb3-10"><a href aria-label="10"></a></span>
-<span id="cb3-11"><a href aria-label="11"></a>Read the source datasets from /app/input and save the completed dataset as</span>
-<span id="cb3-12"><a href aria-label="12"></a>/app/output/advs.csv.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<h3 id="brief---fails">Brief - fails</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href aria-label="1"></a>Following CDISC ADaM standards, use the provided ADVS dataset to create an ADVS</span>
-<span id="cb4-2"><a href aria-label="2"></a>dataset with one record per subject, visit, and parameter.</span>
-<span id="cb4-3"><a href aria-label="3"></a></span>
-<span id="cb4-4"><a href aria-label="4"></a>The output dataset should contain the following columns in this order:</span>
-<span id="cb4-5"><a href aria-label="5"></a>STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE</span>
-<span id="cb4-6"><a href aria-label="6"></a></span>
-<span id="cb4-7"><a href aria-label="7"></a>Read the source datasets from /app/input and save the completed dataset as</span>
-<span id="cb4-8"><a href aria-label="8"></a>/app/output/advs.csv.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="goal" class="slide level2">
 <h2>Goal</h2>
@@ -2358,29 +2306,29 @@ display:block!important;
 </section>
 <section id="yamaa-yaml-specification-example" class="slide level2">
 <h2>yamaa: YAML specification example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href aria-label="1"></a><span class="fu">yamaa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;1.0&quot;</span></span>
-<span id="cb5-2"><a href aria-label="2"></a><span class="fu">type</span><span class="kw">:</span><span class="at"> spec</span></span>
-<span id="cb5-3"><a href aria-label="3"></a><span class="fu">model</span><span class="kw">:</span><span class="at"> ADaM</span></span>
-<span id="cb5-4"><a href aria-label="4"></a><span class="fu">domain</span><span class="kw">:</span><span class="at"> ADSL</span></span>
-<span id="cb5-5"><a href aria-label="5"></a><span class="fu">keys</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">]</span></span>
-<span id="cb5-6"><a href aria-label="6"></a><span class="fu">input</span><span class="kw">:</span></span>
-<span id="cb5-7"><a href aria-label="7"></a><span class="at">  </span><span class="fu">SOURCE</span><span class="kw">:</span></span>
-<span id="cb5-8"><a href aria-label="8"></a><span class="at">    </span><span class="fu">path</span><span class="kw">:</span><span class="at"> input/adsl.csv</span></span>
-<span id="cb5-9"><a href aria-label="9"></a><span class="at">    </span><span class="fu">types</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="fu">HEIGHTCM</span><span class="kw">:</span><span class="at"> float</span><span class="kw">,</span><span class="at"> </span><span class="fu">WEIGHTKG</span><span class="kw">:</span><span class="at"> float</span><span class="kw">}</span></span>
-<span id="cb5-10"><a href aria-label="10"></a></span>
-<span id="cb5-11"><a href aria-label="11"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb5-12"><a href aria-label="12"></a><span class="at">  </span><span class="fu">path</span><span class="kw">:</span><span class="at"> adsl.csv</span></span>
-<span id="cb5-13"><a href aria-label="13"></a><span class="at">  </span><span class="fu">columns</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">,</span><span class="at"> BMI</span><span class="kw">]</span></span>
-<span id="cb5-14"><a href aria-label="14"></a></span>
-<span id="cb5-15"><a href aria-label="15"></a><span class="fu">columns</span><span class="kw">:</span></span>
-<span id="cb5-16"><a href aria-label="16"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> STUDYID</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> str</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Study Identifier</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.STUDYID</span><span class="kw">}</span></span>
-<span id="cb5-17"><a href aria-label="17"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> USUBJID</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> str</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Unique Subject Identifier</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.USUBJID</span><span class="kw">}</span></span>
-<span id="cb5-18"><a href aria-label="18"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> HEIGHTCM</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Height (cm)</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.HEIGHTCM</span><span class="kw">}</span></span>
-<span id="cb5-19"><a href aria-label="19"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> WEIGHTKG</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Weight (kg)</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.WEIGHTKG</span><span class="kw">}</span></span>
-<span id="cb5-20"><a href aria-label="20"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> BMI</span></span>
-<span id="cb5-21"><a href aria-label="21"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span></span>
-<span id="cb5-22"><a href aria-label="22"></a><span class="at">    </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Body Mass Index (kg/m2)</span></span>
-<span id="cb5-23"><a href aria-label="23"></a><span class="at">    </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;WEIGHTKG / POWER(NULLIF(HEIGHTCM, 0) / 100, 2)&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href aria-label="1"></a><span class="fu">yamaa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;1.0&quot;</span></span>
+<span id="cb2-2"><a href aria-label="2"></a><span class="fu">type</span><span class="kw">:</span><span class="at"> spec</span></span>
+<span id="cb2-3"><a href aria-label="3"></a><span class="fu">model</span><span class="kw">:</span><span class="at"> ADaM</span></span>
+<span id="cb2-4"><a href aria-label="4"></a><span class="fu">domain</span><span class="kw">:</span><span class="at"> ADSL</span></span>
+<span id="cb2-5"><a href aria-label="5"></a><span class="fu">keys</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">]</span></span>
+<span id="cb2-6"><a href aria-label="6"></a><span class="fu">input</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href aria-label="7"></a><span class="at">  </span><span class="fu">SOURCE</span><span class="kw">:</span></span>
+<span id="cb2-8"><a href aria-label="8"></a><span class="at">    </span><span class="fu">path</span><span class="kw">:</span><span class="at"> input/adsl.csv</span></span>
+<span id="cb2-9"><a href aria-label="9"></a><span class="at">    </span><span class="fu">types</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="fu">HEIGHTCM</span><span class="kw">:</span><span class="at"> float</span><span class="kw">,</span><span class="at"> </span><span class="fu">WEIGHTKG</span><span class="kw">:</span><span class="at"> float</span><span class="kw">}</span></span>
+<span id="cb2-10"><a href aria-label="10"></a></span>
+<span id="cb2-11"><a href aria-label="11"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb2-12"><a href aria-label="12"></a><span class="at">  </span><span class="fu">path</span><span class="kw">:</span><span class="at"> adsl.csv</span></span>
+<span id="cb2-13"><a href aria-label="13"></a><span class="at">  </span><span class="fu">columns</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">,</span><span class="at"> BMI</span><span class="kw">]</span></span>
+<span id="cb2-14"><a href aria-label="14"></a></span>
+<span id="cb2-15"><a href aria-label="15"></a><span class="fu">columns</span><span class="kw">:</span></span>
+<span id="cb2-16"><a href aria-label="16"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> STUDYID</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> str</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Study Identifier</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.STUDYID</span><span class="kw">}</span></span>
+<span id="cb2-17"><a href aria-label="17"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> USUBJID</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> str</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Unique Subject Identifier</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.USUBJID</span><span class="kw">}</span></span>
+<span id="cb2-18"><a href aria-label="18"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> HEIGHTCM</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Height (cm)</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.HEIGHTCM</span><span class="kw">}</span></span>
+<span id="cb2-19"><a href aria-label="19"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="kw">{</span><span class="fu">name</span><span class="kw">:</span><span class="at"> WEIGHTKG</span><span class="kw">,</span><span class="at"> </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span><span class="kw">,</span><span class="at"> </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Weight (kg)</span><span class="kw">,</span><span class="at"> </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> SOURCE.WEIGHTKG</span><span class="kw">}</span></span>
+<span id="cb2-20"><a href aria-label="20"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> BMI</span></span>
+<span id="cb2-21"><a href aria-label="21"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span></span>
+<span id="cb2-22"><a href aria-label="22"></a><span class="at">    </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Body Mass Index (kg/m2)</span></span>
+<span id="cb2-23"><a href aria-label="23"></a><span class="at">    </span><span class="fu">derivation</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;WEIGHTKG / POWER(NULLIF(HEIGHTCM, 0) / 100, 2)&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="yamaa-core-principle" class="slide level2">
 <h2>yamaa: core principle</h2>
@@ -2448,16 +2396,16 @@ display:block!important;
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default href="#tabset-1-1">R</a></li><li><a href="#tabset-1-2">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href aria-label="1"></a><span class="fu">library</span>(yamaa)</span>
-<span id="cb6-2"><a href aria-label="2"></a>run <span class="ot">&lt;-</span> <span class="fu">yamaa_spec</span>(<span class="st">&quot;exercise/advs/spec.yaml&quot;</span>)<span class="sc">$</span><span class="fu">run</span>()</span>
-<span id="cb6-3"><a href aria-label="3"></a>run<span class="sc">$</span>status</span>
-<span id="cb6-4"><a href aria-label="4"></a>run<span class="sc">$</span>output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href aria-label="1"></a><span class="fu">library</span>(yamaa)</span>
+<span id="cb3-2"><a href aria-label="2"></a>run <span class="ot">&lt;-</span> <span class="fu">yamaa_spec</span>(<span class="st">&quot;exercise/advs/spec.yaml&quot;</span>)<span class="sc">$</span><span class="fu">run</span>()</span>
+<span id="cb3-3"><a href aria-label="3"></a>run<span class="sc">$</span>status</span>
+<span id="cb3-4"><a href aria-label="4"></a>run<span class="sc">$</span>output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="tabset-1-2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href aria-label="1"></a><span class="im">import</span> yamaa</span>
-<span id="cb7-2"><a href aria-label="2"></a>run <span class="op">=</span> yamaa.spec(<span class="st">&quot;exercise/advs/spec.yaml&quot;</span>).run()</span>
-<span id="cb7-3"><a href aria-label="3"></a>run.status</span>
-<span id="cb7-4"><a href aria-label="4"></a>run.output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href aria-label="1"></a><span class="im">import</span> yamaa</span>
+<span id="cb4-2"><a href aria-label="2"></a>run <span class="op">=</span> yamaa.spec(<span class="st">&quot;exercise/advs/spec.yaml&quot;</span>).run()</span>
+<span id="cb4-3"><a href aria-label="3"></a>run.status</span>
+<span id="cb4-4"><a href aria-label="4"></a>run.output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2467,19 +2415,6 @@ display:block!important;
 <li><strong>Delete the <code>filter:</code> line</strong> of the <code>derived_map</code> template and run again: the run fails with <code>row_count_failed</code>, since two visits with a missing pressure now get a <code>MAP</code> record.</li>
 </ol>
 <p><strong>Takeaway:</strong> same specification and inputs, same datasets; the verification you kept catches the rule you removed.</p>
-<aside class="notes">
-<p>Answer key. Step 1: the output is the expected file, with MAP 94.33333333333333 and 91.33333333333333 for subject 101 and 70 for subject 102. Step 2: the MAP values become 101, 98 and 75; the collected records are unchanged. Step 3: the run fails before any output with one issue, <code>the row count is outside the bounds of verifications[0].row_count in 1 of the counted groups [row_count_failed, CHECK-13]</code>, because subjects 103 (no diastolic record) and 104 (missing diastolic result) each get a MAP record with no value, 14 rows against the 12 the verification demands. The copy command removes <code>exercise/advs</code> first, so running it again restores a clean copy and discards every edit; copying over the existing directory would nest the fresh copy inside it.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="hands-on-2-draft-with-an-agent-then-review" class="slide level2 compact scrollable">
 <h2>Hands-on 2: draft with an agent, then review</h2>
@@ -2496,19 +2431,6 @@ display:block!important;
 <li>Would you approve the specification? What would you ask for first?</li>
 </ol>
 <p><strong>Takeaway:</strong> the agent drafts, you review the specification rather than the code, and the engine runs what you approved.</p>
-<aside class="notes">
-<p>Answer key. A correct draft adds a third row template, <code>derived_pp</code>, with the same <code>group_by</code>, the same <code>filter</code>, the same two <code>aggregate</code> derivations for <code>SYSBP_VAL</code> and <code>DIABP_VAL</code>, <code>AVAL: &quot;SYSBP_VAL - DIABP_VAL&quot;</code>, <code>PARAMCD: &quot;&#39;PP&#39;&quot;</code>, <code>PARAM: &quot;&#39;Pulse Pressure (mmHg)&#39;&quot;</code> and <code>DTYPE: &quot;&#39;CALCULATION&#39;&quot;</code>; it raises <code>row_count</code> to <code>min: 15, max: 15</code> and changes the assertion to <code>NOT (PARAMCD IN (&#39;MAP&#39;, &#39;PP&#39;) AND DTYPE IS NULL)</code>. The run then succeeds with 15 rows, and the three PP records are 40 (101, BASELINE), 40 (101, WEEK 2) and 30 (102, BASELINE). Common misses: the agent leaves <code>row_count</code> at 12 and reports the failure as a yamaa bug, derives PP inside the MAP template, or rounds. An agent that edits and then runs the specification shows the workflow; one that only claims success is the point of question 3.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="open-source-has-reached-the-regulators" class="slide level2">
 <h2>Open source has reached the regulators</h2>
@@ -2788,19 +2710,6 @@ less memory than R
 <p>“you must review the AI-generated documents to ensure they were accurate and actually compliant…” — FDA warning letter</p>
 </blockquote>
 <p>Reviewing AI output is evaluating it. This section designs that evaluation the way we design a trial.</p>
-<aside class="notes">
-<p>Welcome back. Part 1 showed the same 134 SDTM and ADaM tasks at three prompt tiers; this is the Python column. Each question returns later in the section: the first is grader error and the gate, the second is run-to-run noise, the third is the choose goal, and the fourth is rigor matched to risk.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="an-evaluation-is-a-study" class="slide level2">
 <h2>An evaluation is a study</h2>
@@ -2863,19 +2772,6 @@ display:block!important;
 </tbody>
 </table>
 </div>
-<aside class="notes">
-<p>This table is the map for the section: each slide title starts with the protocol element it covers.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="objective-name-the-decision-first" class="slide level2">
 <h2>Objective: name the decision first</h2>
@@ -2918,19 +2814,6 @@ display:block!important;
 </div>
 </div></div>
 <p><strong>One table, four answers:</strong> pick the decision before you read the number.</p>
-<aside class="notes">
-<p>The 95% interval is Clopper-Pearson for 133 of 134. It treats each task as an independent trial, so it describes these 134 tasks run once. The tasks are authored edge cases, not a random sample of real work, so the interval does not carry over to deployment. The brief-to-full comparison is paired: the same tasks, agent and model, with only the prompt changed.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="intervention-the-system-you-deploy" class="slide level2">
 <h2>Intervention: the system you deploy</h2>
@@ -3064,27 +2947,6 @@ display:block!important;
 <li>Each task isolates one derivation on a fixture of about 20 rows.</li>
 <li>People have approved 3 of the 199 SDTM, SEND, and ADaM benchmarks so far.</li>
 </ul>
-<aside class="notes">
-<p>Points to draw out:</p>
-<ul>
-<li>Sampling error: the interval treats the 134 tasks as independent trials and describes these tasks only. They are authored edge cases, not a random sample of real work, so no interval from them carries over to deployment. That gap is external validity, which more tasks of the same kind will not close.</li>
-<li>Run-to-run noise: one attempt per task; repeated runs show whether the same task fails again.</li>
-<li>Saturation: the full tier sits at the ceiling and cannot separate strong agents; the conventions and brief tiers can.</li>
-<li>Leakage: public benchmarks may be in a model’s training data. Hidden answers stop lookup during the run, and held-out reruns catch hard-coded answers, but neither rules out memorized rules.</li>
-<li>External validity: small fixtures are not full studies; the retrospective Pilot 7 studies on the results slide address this.</li>
-<li>Grader error: the expected output is truth only after human review, which is the second case study.</li>
-</ul>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="rigor-match-the-evidence-to-the-risk" class="slide level2">
 <h2>Rigor: match the evidence to the risk</h2>
@@ -3098,20 +2960,6 @@ display:block!important;
 <h2>Results: the evidence for yamaa so far</h2>
 
 <img role="img" data-src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjMwIiBoZWlnaHQ9IjQxNCIgdmlld0JveD0iMCAwIDEyMzAgNDE0IiBmb250LWZhbWlseT0iSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiI+CiAgPHJlY3Qgd2lkdGg9IjEyMzAiIGhlaWdodD0iNDE0IiBmaWxsPSIjZmZmZmZmIi8+CiAgPHRleHQgeD0iNDQiIHk9IjM4IiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzg4OCIgbGV0dGVyLXNwYWNpbmc9IjEiPlNURVA8L3RleHQ+CiAgPHRleHQgeD0iMzE4IiB5PSIzOCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM4ODgiIGxldHRlci1zcGFjaW5nPSIxIj5DTEFJTTwvdGV4dD4KICA8dGV4dCB4PSI3MTgiIHk9IjM4IiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzg4OCIgbGV0dGVyLXNwYWNpbmc9IjEiPkVWSURFTkNFPC90ZXh0PgogIDx0ZXh0IHg9IjEwNTIiIHk9IjM4IiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzg4OCIgbGV0dGVyLXNwYWNpbmc9IjEiPlNUQVRVUzwvdGV4dD4KICA8bGluZSB4MT0iNDQiIHkxPSI0OCIgeDI9IjEyMTAiIHkyPSI0OCIgc3Ryb2tlPSIjYmRiZGJkIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxyZWN0IHg9IjQ0IiB5PSI2MiIgd2lkdGg9IjExNjYiIGhlaWdodD0iNzAiIHJ4PSIxNCIgZmlsbD0iI2ZhZmFmYSIgc3Ryb2tlPSIjZTBlMGUwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxyZWN0IHg9IjQ0IiB5PSI2MiIgd2lkdGg9IjI1MCIgaGVpZ2h0PSI3MCIgcng9IjE0IiBmaWxsPSIjZjVmNWY1IiBzdHJva2U9IiM3NzciIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI5NyIgcj0iMTciIGZpbGw9IiM3NzciLz4KICA8dGV4dCB4PSI4MCIgeT0iMTA0IiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+MTwvdGV4dD4KICA8dGV4dCB4PSIxMTAiIHk9IjEwNCIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyMjIiPkJhc2VsaW5lPC90ZXh0PgogIDx0ZXh0IHg9IjMxOCIgeT0iMTAzIiBmb250LXNpemU9IjE5IiBmaWxsPSIjMjIyIj5BZ2VudC13cml0dGVuIGNvZGUgaXMgbm90IHJlbGlhYmxlIGVub3VnaDwvdGV4dD4KICA8dGV4dCB4PSI3MTgiIHk9IjEwMyIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzU1NSI+SGFyYm9yIGJlbmNobWFyaywgd2l0aG91dCB5YW1hYTwvdGV4dD4KICA8cmVjdCB4PSIxMDQ4IiB5PSI3OCIgd2lkdGg9IjE0NiIgaGVpZ2h0PSIzOCIgcng9IjE5IiBmaWxsPSIjZThmNWU5IiBzdHJva2U9IiMyZTdkMzIiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjExMjEiIHk9IjEwMyIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYjVlMjAiPlNob3duPC90ZXh0PgogIDxyZWN0IHg9IjQ0IiB5PSIxNDQiIHdpZHRoPSIxMTY2IiBoZWlnaHQ9IjcwIiByeD0iMTQiIGZpbGw9IiNmYWZhZmEiIHN0cm9rZT0iI2UwZTBlMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8cmVjdCB4PSI0NCIgeT0iMTQ0IiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjcwIiByeD0iMTQiIGZpbGw9IiNlM2YyZmQiIHN0cm9rZT0iIzFlODhlNSIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICA8Y2lyY2xlIGN4PSI4MCIgY3k9IjE3OSIgcj0iMTciIGZpbGw9IiMxZTg4ZTUiLz4KICA8dGV4dCB4PSI4MCIgeT0iMTg2IiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+MjwvdGV4dD4KICA8dGV4dCB4PSIxMTAiIHk9IjE4NiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxNTY1YzAiPldpdGggeWFtYWE8L3RleHQ+CiAgPHRleHQgeD0iMzE4IiB5PSIxODUiIGZvbnQtc2l6ZT0iMTkiIGZpbGw9IiMyMjIiPlNhbWUgc3BlYyBhbmQgaW5wdXRzLCBzYW1lIHJlc3VsdDwvdGV4dD4KICA8dGV4dCB4PSI3MTgiIHk9IjE4NSIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzU1NSI+QXV0aG9yZWQgY2FzZXMgdGVzdCB0aGUgZW5naW5lPC90ZXh0PgogIDxyZWN0IHg9IjEwNDgiIHk9IjE2MCIgd2lkdGg9IjE0NiIgaGVpZ2h0PSIzOCIgcng9IjE5IiBmaWxsPSIjZmZmOGUxIiBzdHJva2U9IiNmOWE4MjUiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjExMjEiIHk9IjE4NSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4ZDVhMDAiPlBhcnRseSBzaG93bjwvdGV4dD4KICA8cmVjdCB4PSI0NCIgeT0iMjQ2IiB3aWR0aD0iMTE2NiIgaGVpZ2h0PSI3MCIgcng9IjE0IiBmaWxsPSIjZmFmYWZhIiBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNDQiIHk9IjI0NiIgd2lkdGg9IjI1MCIgaGVpZ2h0PSI3MCIgcng9IjE0IiBmaWxsPSIjZTBmMmYxIiBzdHJva2U9IiMwMDg5N2IiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSIyODEiIHI9IjE3IiBmaWxsPSIjMDA4OTdiIi8+CiAgPHRleHQgeD0iODAiIHk9IjI4OCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiPjM8L3RleHQ+CiAgPHRleHQgeD0iMTEwIiB5PSIyODgiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDA2OTVjIj5SZXRyb3NwZWN0aXZlPC90ZXh0PgogIDx0ZXh0IHg9IjMxOCIgeT0iMjg3IiBmb250LXNpemU9IjE5IiBmaWxsPSIjMjIyIj5NYXRjaGVzIGV4aXN0aW5nIHN0dWRpZXMgZW5kIHRvIGVuZDwvdGV4dD4KICA8dGV4dCB4PSI3MTgiIHk9IjI4NyIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzU1NSI+UGlsb3RzIDAxLCAzLCA1OiAyMC8yMCBBRGFNIGRhdGFzZXRzPC90ZXh0PgogIDxyZWN0IHg9IjEwNDgiIHk9IjI2MiIgd2lkdGg9IjE0NiIgaGVpZ2h0PSIzOCIgcng9IjE5IiBmaWxsPSIjZThmNWU5IiBzdHJva2U9IiMyZTdkMzIiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjExMjEiIHk9IjI4NyIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYjVlMjAiPlNob3duLCBkcmFmdDwvdGV4dD4KICA8cmVjdCB4PSI0NCIgeT0iMzI4IiB3aWR0aD0iMTE2NiIgaGVpZ2h0PSI3MCIgcng9IjE0IiBmaWxsPSIjZmFmYWZhIiBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNDQiIHk9IjMyOCIgd2lkdGg9IjI1MCIgaGVpZ2h0PSI3MCIgcng9IjE0IiBmaWxsPSIjZThlYWY2IiBzdHJva2U9IiMzZjUxYjUiIHN0cm9rZS13aWR0aD0iMi41Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSIzNjMiIHI9IjE3IiBmaWxsPSIjM2Y1MWI1Ii8+CiAgPHRleHQgeD0iODAiIHk9IjM3MCIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiPjQ8L3RleHQ+CiAgPHRleHQgeD0iMTEwIiB5PSIzNzAiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjgzNTkzIj5Qcm9zcGVjdGl2ZTwvdGV4dD4KICA8dGV4dCB4PSIzMTgiIHk9IjM2OSIgZm9udC1zaXplPSIxOSIgZmlsbD0iIzIyMiI+U2NoZW1hIHN1ZmZpY2VzOyBleHBlcnRzIHJlYWQgdGhlIHNwZWM8L3RleHQ+CiAgPHRleHQgeD0iNzE4IiB5PSIzNjkiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM1NTUiPlRyaWFscyByZXZpZXdlZCBieSBleHBlcnRzPC90ZXh0PgogIDxyZWN0IHg9IjEwNDgiIHk9IjM0NCIgd2lkdGg9IjE0NiIgaGVpZ2h0PSIzOCIgcng9IjE5IiBmaWxsPSIjZmZmOGUxIiBzdHJva2U9IiNmOWE4MjUiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjExMjEiIHk9IjM2OSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4ZDVhMDAiPkVhcmx5IHJlc3VsdHM8L3RleHQ+CiAgPGxpbmUgeDE9IjMyIiB5MT0iNjYiIHgyPSIzMiIgeTI9IjIxMCIgc3Ryb2tlPSIjMWU4OGU1IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIyMiIgeT0iMTM4LjAiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMTU2NWMwIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMjIgMTM4LjApIj5CZW5jaG1hcms8L3RleHQ+CiAgPGxpbmUgeDE9IjMyIiB5MT0iMjUwIiB4Mj0iMzIiIHkyPSIzOTQiIHN0cm9rZT0iIzNmNTFiNSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMjIiIHk9IjMyMi4wIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzI4MzU5MyIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDIyIDMyMi4wKSI+SHVtYW4gY29uZmlybWF0aW9uPC90ZXh0Pgo8L3N2Zz4K" class="r-stretch"><p>Benchmarks carry the first two claims; real studies test the last two, where draft and early results suggest the schema is sufficient without many custom functions and experts can read the specification with help from AI.</p>
-<aside class="notes">
-<p>Bridge to the case studies: they open up the benchmark, showing how one is created, how people finalize its truth, and how an agent is assessed with it.</p>
-<p>The first two rows are the two rows of the “where the uncertainty lives” diagram: agent-written code, then a reviewed specification run by a deterministic engine.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section></section>
 <section>
 <section id="case-study-creating-a-benchmark-for-adam-derivation" class="title-slide slide level1 center" data-background-color="#385898">

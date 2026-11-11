@@ -23,7 +23,7 @@ the slot. Each
 section slide carries a brief and what the part teaches, and each
 discussion with a neighbour opens with a Discussion tag.
 
-The hands-on exercises, with their answer keys in the speaker notes:
+The hands-on exercises:
 
 1. **Check your setup** (Welcome): the yamaa selftest in R, then start an
    agent.

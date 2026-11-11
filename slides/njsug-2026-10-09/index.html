@@ -1658,52 +1658,6 @@ Yilong Zhang
 <div class="map-takeaway">
 <p><strong>Brief omits both the MAP formula and the rule for adding a record.</strong><br> SBP = systolic blood pressure; DBP = diastolic blood pressure.<br> <a href="https://elong0527.github.io/yamaa/benchmark/adam-advs-map.html" class="uri">https://elong0527.github.io/yamaa/benchmark/adam-advs-map.html</a></p>
 </div>
-<aside class="notes">
-<p>The on-screen comparison summarizes the three prompts. Their complete wording is retained below.</p>
-<h3 id="full-passes">Full — passes</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href aria-label="1"></a>Following CDISC ADaM standards, use the provided ADVS_RAW dataset to create an ADVS dataset with one record per subject per visit per parameter.</span>
-<span id="cb1-2"><a href aria-label="2"></a></span>
-<span id="cb1-3"><a href aria-label="3"></a>The output dataset should contain the following columns in this order:</span>
-<span id="cb1-4"><a href aria-label="4"></a>STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE</span>
-<span id="cb1-5"><a href aria-label="5"></a></span>
-<span id="cb1-6"><a href aria-label="6"></a>Keep every collected record, and add one mean arterial pressure record for each subject and visit that has both a systolic and a diastolic blood pressure result. Mark it with PARAMCD &quot;MAP&quot; and PARAM &quot;Mean Arterial Pressure (mmHg)&quot;.</span>
-<span id="cb1-7"><a href aria-label="7"></a></span>
-<span id="cb1-8"><a href aria-label="8"></a>AVAL keeps each collected result. On the added record it is the average that counts the diastolic pressure twice and the systolic pressure once, not rounded. No record is added when either contributor is absent from the visit or its result is missing.</span>
-<span id="cb1-9"><a href aria-label="9"></a></span>
-<span id="cb1-10"><a href aria-label="10"></a>DTYPE is CALCULATION on the added record and has no value on collected records.</span>
-<span id="cb1-11"><a href aria-label="11"></a></span>
-<span id="cb1-12"><a href aria-label="12"></a>Read the source datasets from /app/input and save the completed dataset as /app/output/advs.csv.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<h3 id="conventions-passes">Conventions — passes</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href aria-label="1"></a>Following CDISC ADaM standards, use the provided ADVS_RAW dataset to create an ADVS dataset with one record per subject per visit per parameter.</span>
-<span id="cb2-2"><a href aria-label="2"></a></span>
-<span id="cb2-3"><a href aria-label="3"></a>The output dataset should contain the following columns in this order:</span>
-<span id="cb2-4"><a href aria-label="4"></a>STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE</span>
-<span id="cb2-5"><a href aria-label="5"></a></span>
-<span id="cb2-6"><a href aria-label="6"></a>Mark a mean arterial pressure record with PARAMCD &quot;MAP&quot; and PARAM &quot;Mean Arterial Pressure (mmHg)&quot;.</span>
-<span id="cb2-7"><a href aria-label="7"></a></span>
-<span id="cb2-8"><a href aria-label="8"></a>On a mean arterial pressure record AVAL is not rounded.</span>
-<span id="cb2-9"><a href aria-label="9"></a></span>
-<span id="cb2-10"><a href aria-label="10"></a>DTYPE is CALCULATION or has no value.</span>
-<span id="cb2-11"><a href aria-label="11"></a></span>
-<span id="cb2-12"><a href aria-label="12"></a>Read the source datasets from /app/input and save the completed dataset as /app/output/advs.csv.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<h3 id="brief-fails">Brief — fails</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href aria-label="1"></a>Following CDISC ADaM standards, use the provided ADVS_RAW dataset to create an ADVS dataset with one record per subject per visit per parameter.</span>
-<span id="cb3-2"><a href aria-label="2"></a></span>
-<span id="cb3-3"><a href aria-label="3"></a>The output dataset should contain the following columns in this order:</span>
-<span id="cb3-4"><a href aria-label="4"></a>STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE</span>
-<span id="cb3-5"><a href aria-label="5"></a></span>
-<span id="cb3-6"><a href aria-label="6"></a>Read the source datasets from /app/input and save the completed dataset as /app/output/advs.csv.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
 </section>
 <section id="goal" class="slide level2">
 <h2>Goal</h2>
@@ -1716,22 +1670,22 @@ display:block!important;
 </section>
 <section id="yamaa-yaml-specification-example" class="slide level2">
 <h2>yamaa: YAML specification example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href aria-label="1"></a><span class="fu">schema_version</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;1.0&quot;</span></span>
-<span id="cb4-2"><a href aria-label="2"></a><span class="fu">domain</span><span class="kw">:</span><span class="at"> ADSL</span></span>
-<span id="cb4-3"><a href aria-label="3"></a><span class="fu">keys</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">]</span></span>
-<span id="cb4-4"><a href aria-label="4"></a><span class="fu">input</span><span class="kw">:</span></span>
-<span id="cb4-5"><a href aria-label="5"></a><span class="at">  </span><span class="fu">SOURCE</span><span class="kw">:</span><span class="at"> input/adsl.csv</span></span>
-<span id="cb4-6"><a href aria-label="6"></a></span>
-<span id="cb4-7"><a href aria-label="7"></a><span class="fu">columns</span><span class="kw">:</span></span>
-<span id="cb4-8"><a href aria-label="8"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> BMI</span></span>
-<span id="cb4-9"><a href aria-label="9"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span></span>
-<span id="cb4-10"><a href aria-label="10"></a><span class="at">    </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Body Mass Index (kg/m2)</span></span>
-<span id="cb4-11"><a href aria-label="11"></a><span class="at">    </span><span class="fu">derivation</span><span class="kw">:</span></span>
-<span id="cb4-12"><a href aria-label="12"></a><span class="at">      </span><span class="fu">compute</span><span class="kw">:</span></span>
-<span id="cb4-13"><a href aria-label="13"></a><span class="at">        </span><span class="fu">expr</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;WEIGHTKG / POWER(NULLIF(HEIGHTCM, 0) / 100, 2)&quot;</span></span>
-<span id="cb4-14"><a href aria-label="14"></a></span>
-<span id="cb4-15"><a href aria-label="15"></a><span class="fu">verifications</span><span class="kw">:</span></span>
-<span id="cb4-16"><a href aria-label="16"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">unique</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href aria-label="1"></a><span class="fu">schema_version</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;1.0&quot;</span></span>
+<span id="cb1-2"><a href aria-label="2"></a><span class="fu">domain</span><span class="kw">:</span><span class="at"> ADSL</span></span>
+<span id="cb1-3"><a href aria-label="3"></a><span class="fu">keys</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">]</span></span>
+<span id="cb1-4"><a href aria-label="4"></a><span class="fu">input</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href aria-label="5"></a><span class="at">  </span><span class="fu">SOURCE</span><span class="kw">:</span><span class="at"> input/adsl.csv</span></span>
+<span id="cb1-6"><a href aria-label="6"></a></span>
+<span id="cb1-7"><a href aria-label="7"></a><span class="fu">columns</span><span class="kw">:</span></span>
+<span id="cb1-8"><a href aria-label="8"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> BMI</span></span>
+<span id="cb1-9"><a href aria-label="9"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> float</span></span>
+<span id="cb1-10"><a href aria-label="10"></a><span class="at">    </span><span class="fu">label</span><span class="kw">:</span><span class="at"> Body Mass Index (kg/m2)</span></span>
+<span id="cb1-11"><a href aria-label="11"></a><span class="at">    </span><span class="fu">derivation</span><span class="kw">:</span></span>
+<span id="cb1-12"><a href aria-label="12"></a><span class="at">      </span><span class="fu">compute</span><span class="kw">:</span></span>
+<span id="cb1-13"><a href aria-label="13"></a><span class="at">        </span><span class="fu">expr</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;WEIGHTKG / POWER(NULLIF(HEIGHTCM, 0) / 100, 2)&quot;</span></span>
+<span id="cb1-14"><a href aria-label="14"></a></span>
+<span id="cb1-15"><a href aria-label="15"></a><span class="fu">verifications</span><span class="kw">:</span></span>
+<span id="cb1-16"><a href aria-label="16"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">unique</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">STUDYID</span><span class="kw">,</span><span class="at"> USUBJID</span><span class="kw">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="yamaa-benchmarks" class="slide level2">
 <h2>yamaa: benchmarks</h2>
