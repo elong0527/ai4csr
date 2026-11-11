@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1230" height="330" viewBox="0 0 1230 330" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+  </defs>
+  <rect width="1230" height="330" fill="#ffffff"/>
+
+  <rect x="10" y="20" width="210" height="220" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <rect x="26" y="36" width="78" height="24" rx="12" fill="#1e88e5"/>
+  <text x="65" y="53" font-size="12" fill="#ffffff" font-weight="bold" letter-spacing="1" text-anchor="middle">AGENT 1</text>
+  <text x="26" y="100" font-size="22" fill="#1565c0" font-weight="bold">Extract</text>
+  <line x1="26" y1="114" x2="204" y2="114" stroke="#1e88e5" stroke-width="1.5" opacity="0.5"/>
+  <text x="26" y="140" font-size="14" fill="#222">Quotes each documented</text>
+  <text x="26" y="160" font-size="14" fill="#222">rule and restates it as</text>
+  <text x="26" y="180" font-size="14" fill="#222">a rule the data can test</text>
+
+  <line x1="222" y1="130" x2="257" y2="130" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="260" y="20" width="210" height="220" rx="12" fill="#f5f5f5" stroke="#757575" stroke-width="2.5"/>
+  <rect x="276" y="36" width="78" height="24" rx="12" fill="#757575"/>
+  <text x="315" y="53" font-size="12" fill="#ffffff" font-weight="bold" letter-spacing="1" text-anchor="middle">SCRIPT</text>
+  <text x="276" y="100" font-size="22" fill="#424242" font-weight="bold">Verify</text>
+  <line x1="276" y1="114" x2="454" y2="114" stroke="#757575" stroke-width="1.5" opacity="0.5"/>
+  <text x="276" y="140" font-size="14" fill="#222">Checks every quote and</text>
+  <text x="276" y="160" font-size="14" fill="#222">runs every restated rule</text>
+  <text x="276" y="180" font-size="14" fill="#222">on the reference data</text>
+
+  <line x1="472" y1="130" x2="507" y2="130" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="510" y="20" width="210" height="220" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <rect x="526" y="36" width="78" height="24" rx="12" fill="#1e88e5"/>
+  <text x="565" y="53" font-size="12" fill="#ffffff" font-weight="bold" letter-spacing="1" text-anchor="middle">AGENT 2</text>
+  <text x="526" y="100" font-size="22" fill="#1565c0" font-weight="bold">Adjudicate</text>
+  <line x1="526" y1="114" x2="704" y2="114" stroke="#1e88e5" stroke-width="1.5" opacity="0.5"/>
+  <text x="526" y="140" font-size="14" fill="#222">Checks each finding</text>
+  <text x="526" y="160" font-size="14" fill="#222">against the sources</text>
+
+  <line x1="722" y1="130" x2="757" y2="130" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="760" y="20" width="210" height="220" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <rect x="776" y="36" width="78" height="24" rx="12" fill="#1e88e5"/>
+  <text x="815" y="53" font-size="12" fill="#ffffff" font-weight="bold" letter-spacing="1" text-anchor="middle">AGENT 3</text>
+  <text x="776" y="100" font-size="22" fill="#1565c0" font-weight="bold">Group</text>
+  <line x1="776" y1="114" x2="954" y2="114" stroke="#1e88e5" stroke-width="1.5" opacity="0.5"/>
+  <text x="776" y="140" font-size="14" fill="#222">Writes plain-language</text>
+  <text x="776" y="160" font-size="14" fill="#222">issues, traced to the</text>
+  <text x="776" y="180" font-size="14" fill="#222">documents</text>
+
+  <line x1="972" y1="130" x2="1007" y2="130" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="1010" y="20" width="210" height="220" rx="12" fill="#e8f5e9" stroke="#43a047" stroke-width="2.5"/>
+  <rect x="1026" y="36" width="78" height="24" rx="12" fill="#43a047"/>
+  <text x="1065" y="53" font-size="12" fill="#ffffff" font-weight="bold" letter-spacing="1" text-anchor="middle">PEOPLE</text>
+  <text x="1026" y="100" font-size="22" fill="#2e7d32" font-weight="bold">Decide</text>
+  <line x1="1026" y1="114" x2="1204" y2="114" stroke="#43a047" stroke-width="1.5" opacity="0.5"/>
+  <text x="1026" y="140" font-size="14" fill="#222">Agree, Disagree, or</text>
+  <text x="1026" y="160" font-size="14" fill="#222">Need clarification</text>
+  <text x="1026" y="190" font-size="14" fill="#222">The record includes,</text>
+  <text x="1026" y="210" font-size="14" fill="#222">clarifies, or excludes</text>
+  <text x="1026" y="230" font-size="14" fill="#222">each finding</text>
+
+  <rect x="10" y="262" width="1210" height="56" rx="12" fill="#f3e5f5" stroke="#8e24aa" stroke-width="2"/>
+  <text x="30" y="295" font-size="13" fill="#6a1b9a" font-weight="bold" letter-spacing="1">REVIEW RECORD</text>
+  <text x="170" y="295" font-size="15" fill="#222">Claims, adjudication, issues, and publication decisions are committed beside the study.</text>
+</svg>
