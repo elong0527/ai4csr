@@ -571,3 +571,79 @@
 .reveal .slides .expect {
   margin-top: 1.5em;
 }
+
+/* Benchmark review progress: one square per benchmark in GitHub's
+   contribution-graph style, seven rows filling column by column, one block
+   per standard. review-heatmap.js draws it. */
+.reveal .review-heatmap {
+  margin-top: 1.2em;
+}
+
+.reveal .heatmap-groups {
+  align-items: flex-start;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.reveal .heatmap-label {
+  color: var(--course-ink);
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-bottom: 0.4em;
+}
+
+.reveal .heatmap-label span {
+  color: var(--course-muted);
+  font-weight: 400;
+}
+
+.reveal .heatmap-grid {
+  display: grid;
+  gap: 5px;
+  grid-auto-columns: 26px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 26px);
+}
+
+.reveal .heatmap-cell {
+  border-radius: 4px;
+  display: inline-block;
+  height: 26px;
+  outline: 1px solid rgba(27, 31, 36, 0.06);
+  outline-offset: -1px;
+  width: 26px;
+}
+
+.reveal .heatmap-cell.level-0 {
+  background: #ebedf0;
+}
+
+.reveal .heatmap-cell.level-1 {
+  background: #9be9a8;
+}
+
+.reveal .heatmap-cell.level-2 {
+  background: #30a14e;
+}
+
+.reveal a.heatmap-cell:hover {
+  outline: 2px solid var(--course-blue);
+}
+
+.reveal .heatmap-legend {
+  align-items: center;
+  color: var(--course-muted);
+  display: flex;
+  font-size: 0.7em;
+  gap: 0.35em;
+  margin-top: 0.9em;
+}
+
+.reveal .heatmap-legend .heatmap-cell {
+  height: 16px;
+  width: 16px;
+}
+
+.reveal .heatmap-summary {
+  margin-top: 0.8em;
+}
