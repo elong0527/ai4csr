@@ -1,16 +1,19 @@
 "use strict";
 
 // Benchmark review progress as a GitHub-style heatmap: one square per yamaa
-// SDTM, SEND, or ADaM benchmark, grey with no review, light green with one
-// reviewer, green with two or more. Approval needs two reviewers.
+// SDTM or ADaM benchmark, grey with no review, light green with one
+// reviewer, green with two or more. Approval needs two reviewers. Within each
+// standard, squares with two or more reviewers come first, then one, then
+// none; ties keep the GROUPS order.
 //
-// GROUPS lists the benchmarks on yamaa main at commit 93a6757, by standard,
-// then domain, then name. SNAPSHOT counts the reviewers of each benchmark in
-// https://elong0527.github.io/yamaa/benchmark/review/reviews.json at the time
-// it names. The slide draws the snapshot, then redraws from the live file
-// when the network allows, again each time the slide is shown, so reviews
-// posted during the workshop appear. The yamaa Docs workflow rebuilds that
-// file whenever a review discussion is created.
+// GROUPS lists the SDTM and ADaM benchmarks on yamaa main at commit 93a6757,
+// by standard, then domain, then name. SNAPSHOT counts the reviewers of each
+// benchmark in https://elong0527.github.io/yamaa/benchmark/review/reviews.json
+// at the time it names; the slide shows only that date. The slide draws the
+// snapshot, then redraws from the live file when the network allows, again
+// each time the slide is shown, so reviews posted during the workshop appear.
+// The yamaa Docs workflow rebuilds that file whenever a review discussion is
+// created.
 (() => {
   const SOURCE = "https://elong0527.github.io/yamaa/benchmark/review/reviews.json";
   const PAGE = "https://elong0527.github.io/yamaa/benchmark/";
@@ -106,30 +109,28 @@
       "sdtm-vs-planned-time-points", "sdtm-vs-replicates", "sdtm-vs-study-day",
       "sdtm-vs-units"
     ]],
-    ["SEND", [
-      "send-bw-sendig311"
-    ]],
   ];
   const SNAPSHOT = {
-    updated: "2026-11-11 00:19 UTC",
+    updated: "2026-11-11 20:03 UTC",
     reviewers: {
       "adam-adae-adamig11": 2, "adam-adae-analysis-time": 2,
       "adam-adae-death": 1, "adam-adae-exposure-adjusted-incidence": 1,
-      "adam-adex-infusion-duration": 2, "adam-adex-uncollected": 2,
+      "adam-adex-infusion-duration": 2, "adam-adex-uncollected": 3,
       "adam-adfa-fever": 2, "adam-adice-governing-event": 1,
       "adam-adqs-missed-visit-locf": 1, "adam-adrs-best-response": 1,
-      "adam-adsl-flag-chain": 1, "adam-adsl-investigator-comment": 1,
-      "adam-adsl-new-therapy": 1, "sdtm-ae-coding": 2,
-      "sdtm-ae-seriousness": 1, "sdtm-dm-basic": 2, "sdtm-pp-pk-parameters": 1,
-      "sdtm-pr-procedures": 1, "sdtm-qs-questionnaire-items": 2,
-      "sdtm-relrec-dataset-level": 2, "sdtm-relrec-links": 2,
-      "sdtm-rs-timepoint-response": 2, "sdtm-se-subject-elements": 2,
-      "sdtm-suppdm-metadata": 2, "sdtm-suppmh-linkage": 2,
-      "sdtm-suppmh-long-terms": 2, "sdtm-suppmh-qualifiers": 1,
-      "sdtm-sv-sdtmig33": 2, "sdtm-sv-subject-visits": 1,
-      "sdtm-ta-sponsor-epoch": 1, "sdtm-tr-tumor-measurements": 1,
-      "sdtm-ts-trial-summary": 1, "sdtm-tu-tumor-identification": 2,
-      "sdtm-vs-collected-form": 1, "sdtm-vs-epoch-from-subject-elements": 1,
+      "adam-adrs-composite-response": 1, "adam-adsl-flag-chain": 1,
+      "adam-adsl-investigator-comment": 1, "adam-adsl-new-therapy": 1,
+      "sdtm-ae-coding": 2, "sdtm-ae-seriousness": 1, "sdtm-dm-basic": 2,
+      "sdtm-pp-pk-parameters": 1, "sdtm-pr-procedures": 1,
+      "sdtm-qs-questionnaire-items": 2, "sdtm-relrec-dataset-level": 2,
+      "sdtm-relrec-links": 2, "sdtm-rs-timepoint-response": 3,
+      "sdtm-se-subject-elements": 2, "sdtm-suppdm-metadata": 3,
+      "sdtm-suppmh-linkage": 2, "sdtm-suppmh-long-terms": 2,
+      "sdtm-suppmh-qualifiers": 1, "sdtm-sv-sdtmig33": 2,
+      "sdtm-sv-subject-visits": 1, "sdtm-ta-sponsor-epoch": 2,
+      "sdtm-tr-tumor-measurements": 1, "sdtm-ts-trial-summary": 1,
+      "sdtm-tu-tumor-identification": 2, "sdtm-vs-collected-form": 1,
+      "sdtm-vs-epoch-from-subject-elements": 1,
       "sdtm-vs-planned-time-points": 1, "sdtm-vs-replicates": 1,
       "sdtm-vs-study-day": 1, "sdtm-vs-units": 1
     },
@@ -153,13 +154,15 @@
     let total = 0;
     let once = 0;
     let twice = 0;
+    const level = (name) => Math.min(reviewers[name] || 0, 2);
     const groups = element("div", "heatmap-groups");
     for (const [standard, names] of GROUPS) {
       const group = element("div", "heatmap-group");
       const label = element("div", "heatmap-label", `${standard} `);
       label.append(element("span", "", String(names.length)));
       const grid = element("div", "heatmap-grid");
-      for (const name of names) {
+      const sorted = [...names].sort((a, b) => level(b) - level(a));
+      for (const name of sorted) {
         const count = reviewers[name] || 0;
         total += 1;
         if (count >= 1) once += 1;
@@ -183,7 +186,9 @@
       element("strong", "", `${once} of ${total}`),
       " benchmarks have a review; ",
       element("strong", "", String(twice)),
-      ` have two. ${live ? "Live" : "Snapshot"}: ${updated}.`,
+      " have two.",
+      element("br"),
+      `${live ? "Live" : "Snapshot"}: ${updated.slice(0, 10)}`,
     );
 
     root.replaceChildren(groups, legend, summary);

@@ -367,24 +367,6 @@
   background: var(--course-blue);
 }
 
-.reveal .perf-callouts {
-  border-top: 1px solid #dce4f0;
-  display: flex;
-  gap: 2rem;
-  margin-top: 0.6rem;
-  padding-top: 0.4rem;
-}
-
-.reveal .perf-callouts .big-number {
-  font-size: 2.6rem;
-  font-weight: 700;
-}
-
-.reveal .perf-callouts .metric-label {
-  font-size: 0.95rem;
-  margin-top: 0.15rem;
-}
-
 /* R Consortium pilots: hex stickers in rows of five, centered, each with its
    pilot name and years. Each sticker links to its pilot's page. Sized so two
    rows fit under a two-line title and a nested bullet. */
