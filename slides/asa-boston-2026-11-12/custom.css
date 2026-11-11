@@ -417,50 +417,6 @@
   font-size: 0.85em;
 }
 
-/* AI-first workflow: the six steps of a run as one strip of boxes joined by
-   arrows, each with a one-line note. Adapted from the SLDS deck's flow. */
-.reveal .flow {
-  align-items: stretch;
-  display: grid;
-  gap: 1.1rem;
-  grid-template-columns: repeat(6, 1fr);
-  margin: 0.6em 0 1em;
-}
-
-.reveal .flow-step {
-  background: #e8f0fc;
-  border-radius: 0.3em;
-  color: var(--course-ink);
-  font-size: 0.85em;
-  font-weight: 700;
-  line-height: 1.25;
-  padding: 0.6em 0.5em;
-  position: relative;
-  text-align: center;
-}
-
-.reveal .flow-step p {
-  margin: 0;
-}
-
-.reveal .flow-step .small {
-  color: var(--course-muted);
-  display: block;
-  font-size: 0.85em;
-  font-weight: 400;
-  margin-top: 0.35em;
-}
-
-.reveal .flow-step:not(:last-child)::after {
-  color: var(--course-blue);
-  content: "\2192";
-  font-size: 1.2em;
-  position: absolute;
-  right: -0.95em;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 /* Mean arterial pressure: the shared prompt, then the three prompt tiers side
    by side, from the SLDS deck. */
 .reveal .map-prompts .map-shared {
@@ -522,11 +478,6 @@
   margin: 0;
 }
 
-/* Harbor: a five-step strip. */
-.reveal .flow.flow-5 {
-  grid-template-columns: repeat(5, 1fr);
-}
-
 /* AI evaluation: the opening result, a second headline number in the muted
    colour, and a gap before it so the two read as separate results. */
 .reveal .big-number.muted {
@@ -570,4 +521,80 @@
    or prompt above it, so each step reads as action, then check. */
 .reveal .slides .expect {
   margin-top: 1.5em;
+}
+
+/* Benchmark review progress: one square per benchmark in GitHub's
+   contribution-graph style, seven rows filling column by column, one block
+   per standard. review-heatmap.js draws it. */
+.reveal .review-heatmap {
+  margin-top: 1.2em;
+}
+
+.reveal .heatmap-groups {
+  align-items: flex-start;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.reveal .heatmap-label {
+  color: var(--course-ink);
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-bottom: 0.4em;
+}
+
+.reveal .heatmap-label span {
+  color: var(--course-muted);
+  font-weight: 400;
+}
+
+.reveal .heatmap-grid {
+  display: grid;
+  gap: 5px;
+  grid-auto-columns: 26px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 26px);
+}
+
+.reveal .heatmap-cell {
+  border-radius: 4px;
+  display: inline-block;
+  height: 26px;
+  outline: 1px solid rgba(27, 31, 36, 0.06);
+  outline-offset: -1px;
+  width: 26px;
+}
+
+.reveal .heatmap-cell.level-0 {
+  background: #ebedf0;
+}
+
+.reveal .heatmap-cell.level-1 {
+  background: #9be9a8;
+}
+
+.reveal .heatmap-cell.level-2 {
+  background: #30a14e;
+}
+
+.reveal a.heatmap-cell:hover {
+  outline: 2px solid var(--course-blue);
+}
+
+.reveal .heatmap-legend {
+  align-items: center;
+  color: var(--course-muted);
+  display: flex;
+  font-size: 0.7em;
+  gap: 0.35em;
+  margin-top: 0.9em;
+}
+
+.reveal .heatmap-legend .heatmap-cell {
+  height: 16px;
+  width: 16px;
+}
+
+.reveal .heatmap-summary {
+  margin-top: 0.8em;
 }

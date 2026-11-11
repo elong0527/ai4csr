@@ -46,7 +46,7 @@ filter fails with `row_count_failed`.
 
 ## Outline
 
-The deck has eight sections:
+The deck has six sections and an appendix:
 
 - **Welcome:** the outline, disclaimer, training objectives, preparation,
   a setup check, and resources. It assumes familiarity with clinical
@@ -73,22 +73,15 @@ The deck has eight sections:
   continues with the R Consortium submission pilots and Pilot 7, Pilot 5
   performance, and who does what in the workflow, and closes with a workflow
   summary.
-- **AI evaluation:** designs an evaluation the way a statistician designs a
-  study. It opens on the 133 of 134 full-prompt result ("would you sign
-  off?") and a protocol map, then covers the objective (choose, improve, gate,
-  monitor), the intervention (the whole deployed system), the population (what
-  a benchmark is and the yamaa benchmarks), the endpoint (code, LLM-judge, and
-  human grading), the conduct (how Harbor runs and grades an agent, with an
-  invitation to the yamaa organization on Harbor Hub), bias and variance with a
-  discussion of how far 133 of 134 can be trusted, rigor matched to risk, and
-  the evidence for yamaa so far.
-- **Case study: creating a benchmark for ADaM derivation:** the anatomy of
-  the mean arterial pressure benchmark, its three prompt tiers, and rules for
-  a fair benchmark.
-- **Case study: review and finalize a benchmark:** how people review and
-  finalize a yamaa SDTM, SEND, or ADaM benchmark through its review page, with the current round
-  status, and how an AI-reported R Consortium Pilot 7 finding is reviewed and
-  finalized.
+- **Benchmarks:** what a benchmark is, drawn as double programming
+  (`benchmark-concept.svg`); the expectations for an SDTM and ADaM
+  benchmark; the yamaa benchmarks; how Harbor runs and grades an agent, with
+  a link to the yamaa jobs on Harbor Hub for a live demo; the results by
+  prompt tier and language; the limitations of a benchmark; how people review
+  and approve a yamaa benchmark (`benchmark-review.svg`), with a live review
+  heatmap drawn by `review-heatmap.js`; the path from benchmarks to real
+  studies; and how people decide on AI-reported R Consortium Pilot 7 findings
+  (`pilot7-review.svg`).
 - **Case study: assessing an agent with the benchmark:** per-task results
   for Muse Spark 1.3 from its Harbor Hub jobs, and an exercise on reading a
   job. The deck closes with the takeaways, where to go next, references,
