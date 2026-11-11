@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1230" height="470" viewBox="0 0 1230 470" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker>
+    <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker>
+  </defs>
+  <rect width="1230" height="470" fill="#ffffff"/>
+
+  <rect x="16" y="12" width="300" height="318" rx="16" fill="#f5f9ff" stroke="#1e88e5" stroke-width="2" stroke-dasharray="10,6"/>
+  <text x="36" y="40" font-size="13" fill="#1565c0" font-weight="bold" letter-spacing="1">AI-ASSISTED DRAFT</text>
+
+  <rect x="356" y="12" width="858" height="446" rx="16" fill="#f7fbf4" stroke="#43a047" stroke-width="2" stroke-dasharray="10,6"/>
+  <text x="376" y="40" font-size="13" fill="#2e7d32" font-weight="bold" letter-spacing="1">PEOPLE DECIDE</text>
+  <text x="1194" y="40" font-size="13" fill="#555" text-anchor="end">Public GitHub Discussions</text>
+
+  <rect x="36" y="58" width="260" height="254" rx="12" fill="#ffffff" stroke="#90caf9" stroke-width="2"/>
+  <text x="56" y="92" font-size="24" fill="#17243b" font-weight="bold">Draft</text>
+  <line x1="56" y1="106" x2="276" y2="106" stroke="#90caf9" stroke-width="1.5"/>
+  <circle cx="62" cy="129" r="4" fill="#1e88e5"/>
+  <text x="76" y="134" font-size="16" fill="#222" font-weight="bold">Task</text>
+  <text x="76" y="152" font-size="13" fill="#555">the derivation to perform</text>
+  <circle cx="62" cy="173" r="4" fill="#1e88e5"/>
+  <text x="76" y="178" font-size="16" fill="#222" font-weight="bold">Input datasets</text>
+  <text x="76" y="196" font-size="13" fill="#555">the data the agent reads</text>
+  <circle cx="62" cy="217" r="4" fill="#1e88e5"/>
+  <text x="76" y="222" font-size="16" fill="#222" font-weight="bold">Expected output</text>
+  <text x="76" y="240" font-size="13" fill="#555">the answer, authored independently</text>
+  <circle cx="62" cy="261" r="4" fill="#1e88e5"/>
+  <text x="76" y="266" font-size="16" fill="#222" font-weight="bold">Three review concerns</text>
+  <text x="76" y="284" font-size="13" fill="#555">drafted with AI for reviewers</text>
+
+  <line x1="298" y1="185" x2="387" y2="185" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="390" y="58" width="330" height="254" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <text x="410" y="92" font-size="24" fill="#1565c0" font-weight="bold">Review</text>
+  <text x="700" y="92" font-size="13" fill="#555" text-anchor="end">Two reviewers</text>
+  <line x1="410" y1="106" x2="700" y2="106" stroke="#1e88e5" stroke-width="1.5" opacity="0.5"/>
+  <text x="410" y="134" font-size="15" fill="#222">Each reviewer reads the benchmark</text>
+  <text x="410" y="154" font-size="15" fill="#222">and answers for the task, the inputs,</text>
+  <text x="410" y="174" font-size="15" fill="#222">and each concern:</text>
+  <rect x="410" y="190" width="88" height="28" rx="14" fill="#ffffff" stroke="#43a047" stroke-width="1.5"/>
+  <text x="454" y="209" font-size="14" fill="#2e7d32" font-weight="bold" text-anchor="middle">Agree</text>
+  <rect x="508" y="190" width="104" height="28" rx="14" fill="#ffffff" stroke="#e53935" stroke-width="1.5"/>
+  <text x="560" y="209" font-size="14" fill="#c62828" font-weight="bold" text-anchor="middle">Disagree</text>
+  <line x1="410" y1="236" x2="700" y2="236" stroke="#1e88e5" stroke-width="1.5" opacity="0.5"/>
+  <text x="410" y="262" font-size="13" fill="#999" font-weight="bold" letter-spacing="1">PUBLISHED AS</text>
+  <text x="410" y="288" font-size="16" fill="#222" font-weight="bold">A GitHub Discussion</text>
+
+  <line x1="722" y1="185" x2="877" y2="185" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ag)"/>
+  <text x="800" y="173" font-size="14" fill="#2e7d32" font-weight="bold" text-anchor="middle">All approve</text>
+
+  <rect x="880" y="58" width="314" height="254" rx="12" fill="#e8f5e9" stroke="#43a047" stroke-width="2.5"/>
+  <text x="900" y="92" font-size="24" fill="#2e7d32" font-weight="bold">Approved</text>
+  <circle cx="1166" cy="84" r="13" fill="#43a047"/>
+  <path d="M1159,84 l5,5 l9,-10" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="900" y1="106" x2="1174" y2="106" stroke="#43a047" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="906" cy="135" r="4" fill="#43a047"/>
+  <text x="920" y="140" font-size="16" fill="#222" font-weight="bold">Two reviewers approve</text>
+  <text x="920" y="158" font-size="13" fill="#555">and nobody disagrees</text>
+  <circle cx="906" cy="191" r="4" fill="#43a047"/>
+  <text x="920" y="196" font-size="16" fill="#222" font-weight="bold">The coordinator</text>
+  <text x="920" y="214" font-size="13" fill="#555">confirms the reviewers</text>
+  <circle cx="906" cy="247" r="4" fill="#43a047"/>
+  <text x="920" y="252" font-size="16" fill="#222" font-weight="bold">It stays approved</text>
+  <text x="920" y="270" font-size="13" fill="#555">and does not come back</text>
+
+  <line x1="470" y1="314" x2="470" y2="359" stroke="#c62828" stroke-width="2.5" marker-end="url(#ad)"/>
+  <text x="460" y="342" font-size="14" fill="#c62828" font-weight="bold" text-anchor="end">Any Disagree</text>
+  <line x1="640" y1="360" x2="640" y2="315" stroke="#1565c0" stroke-width="2.5" marker-end="url(#ab)"/>
+  <text x="652" y="334" font-size="14" fill="#1565c0" font-weight="bold">Review again</text>
+  <text x="652" y="352" font-size="12" fill="#555">the new review replaces the earlier one</text>
+
+  <rect x="390" y="362" width="330" height="84" rx="12" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+  <text x="410" y="392" font-size="20" fill="#e65100" font-weight="bold">Rework</text>
+  <text x="410" y="416" font-size="14" fill="#222">A rework issue opens with the comments;</text>
+  <text x="410" y="434" font-size="14" fill="#222">a pull request fixes the benchmark</text>
+</svg>
