@@ -69,7 +69,9 @@ Use ASCII only in every file; CI enforces this with `asciilint`. Write `---`,
 ## Slides
 
 `slides/<event>-<date>/` holds standalone reveal.js decks, not book chapters.
-Only the character and delivery rules apply to them.
+Only the character and delivery rules apply to them, plus one of their own:
+do not add speaker notes (`::: {.notes}`). Put what the audience needs on the
+slide, and leave the rest out.
 
 ## References
 

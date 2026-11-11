@@ -399,62 +399,6 @@ Agent: opencode 1.18.33. Model: opencode-go/muse-spark-1.3-contributor, 1 attemp
 <https://elong0527.github.io/yamaa/benchmark/adam-advs-map.html>
 :::
 
-::: {.notes}
-The on-screen comparison summarizes the three prompts. Their complete wording, from evaluations/harbor/prompts/adam-advs-map/ (the brief prompt is derived from the full one), is below.
-
-### Full - passes
-
-```text
-Following CDISC ADaM standards, use the provided ADVS dataset to create an ADVS
-dataset with one record per subject, visit, and parameter.
-
-The output dataset should contain the following columns in this order:
-STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE
-
-An added record with PARAMCD "MAP" and PARAM "Mean Arterial Pressure (mmHg)"
-is created for each subject and visit that has both a systolic (SYSBP) and a
-diastolic (DIABP) blood pressure result. On the added record, AVAL is
-two-thirds of the diastolic pressure plus one-third of the systolic pressure.
-AVAL on the added record is not rounded. No record is added when either
-contributor is absent from the visit or its result is missing. DTYPE is
-"CALCULATION" on the added record and has no value on collected records.
-
-Read the source datasets from /app/input and save the completed dataset as
-/app/output/advs.csv.
-```
-
-### Conventions - passes
-
-```text
-Following CDISC ADaM standards, use the provided ADVS dataset to create an ADVS
-dataset with one record per subject, visit, and parameter.
-
-The output dataset should contain the following columns in this order:
-STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE
-
-PARAMCD is "MAP" and PARAM is "Mean Arterial Pressure (mmHg)" on the added
-record. AVAL on the added record is not rounded. DTYPE is "CALCULATION" or
-has no value.
-
-Read the source datasets from /app/input and save the completed dataset as
-/app/output/advs.csv.
-```
-
-### Brief - fails
-
-```text
-Following CDISC ADaM standards, use the provided ADVS dataset to create an ADVS
-dataset with one record per subject, visit, and parameter.
-
-The output dataset should contain the following columns in this order:
-STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE
-
-Read the source datasets from /app/input and save the completed dataset as
-/app/output/advs.csv.
-```
-
-:::
-
 ## Goal
 
 - Reduce human review effort.
@@ -573,20 +517,6 @@ run.output
 **Takeaway:** same specification and inputs, same datasets; the verification
 you kept catches the rule you removed.
 
-::: {.notes}
-Answer key. Step 1: the output is the expected file, with MAP 94.33333333333333
-and 91.33333333333333 for subject 101 and 70 for subject 102. Step 2: the MAP
-values become 101, 98 and 75; the collected records are unchanged. Step 3: the
-run fails before any output with one issue,
-`the row count is outside the bounds of verifications[0].row_count in 1 of
-the counted groups [row_count_failed, CHECK-13]`, because subjects 103 (no
-diastolic record) and 104 (missing diastolic result) each get a MAP record
-with no value, 14 rows against the 12 the verification demands. The copy
-command removes `exercise/advs` first, so running it again restores a clean
-copy and discards every edit; copying over the existing directory would nest
-the fresh copy inside it.
-:::
-
 ## Hands-on 2: draft with an agent, then review {.compact}
 
 In a terminal at the repository root, reset the copy with
@@ -612,20 +542,6 @@ Review the draft as the owner of the rule:
 
 **Takeaway:** the agent drafts, you review the specification rather than the
 code, and the engine runs what you approved.
-
-::: {.notes}
-Answer key. A correct draft adds a third row template, `derived_pp`, with the
-same `group_by`, the same `filter`, the same two `aggregate` derivations for
-`SYSBP_VAL` and `DIABP_VAL`, `AVAL: "SYSBP_VAL - DIABP_VAL"`, `PARAMCD: "'PP'"`,
-`PARAM: "'Pulse Pressure (mmHg)'"` and `DTYPE: "'CALCULATION'"`; it raises
-`row_count` to `min: 15, max: 15` and changes the assertion to
-`NOT (PARAMCD IN ('MAP', 'PP') AND DTYPE IS NULL)`. The run then succeeds with
-15 rows, and the three PP records are 40 (101, BASELINE), 40 (101, WEEK 2)
-and 30 (102, BASELINE). Common misses: the agent leaves `row_count` at 12 and
-reports the failure as a yamaa bug, derives PP inside the MAP template, or
-rounds. An agent that edits and then runs the specification shows the
-workflow; one that only claims success is the point of question 3.
-:::
 
 ## Open source has reached the regulators
 
@@ -820,13 +736,6 @@ Before this result supports a decision, ask:
 Reviewing AI output is evaluating it. This section designs that evaluation the
 way we design a trial.
 
-::: {.notes}
-Welcome back. Part 1 showed the same 134 SDTM and ADaM tasks at three prompt
-tiers; this is the Python column. Each question returns later in the section:
-the first is grader error and the gate, the second is run-to-run noise, the
-third is the choose goal, and the fourth is rigor matched to risk.
-:::
-
 ## An evaluation is a study
 
 Statisticians already have the vocabulary. Read an AI evaluation as a study
@@ -843,11 +752,6 @@ protocol:
 | Bias and variance | What can mislead? | Leakage, grader error, noise, saturation |
 | Rigor | How much evidence is enough? | As much as the risk of the decision |
 | Results | Does it work? | The evidence for yamaa so far |
-:::
-
-::: {.notes}
-This table is the map for the section: each slide title starts with the
-protocol element it covers.
 :::
 
 ## Reference: Evaluation vocabulary
@@ -888,14 +792,6 @@ The prompt-tier results, read four ways:
 ::::
 
 **One table, four answers:** pick the decision before you read the number.
-
-::: {.notes}
-The 95% interval is Clopper-Pearson for 133 of 134. It treats each task as an
-independent trial, so it describes these 134 tasks run once. The tasks are
-authored edge cases, not a random sample of real work, so the interval does not
-carry over to deployment. The brief-to-full comparison is paired: the same
-tasks, agent and model, with only the prompt changed.
-:::
 
 ## Intervention: the system you deploy
 
@@ -1023,26 +919,6 @@ the cheapest way to address each.
 - Each task isolates one derivation on a fixture of about 20 rows.
 - People have approved 3 of the 199 SDTM, SEND, and ADaM benchmarks so far.
 
-::: {.notes}
-Points to draw out:
-
-- Sampling error: the interval treats the 134 tasks as independent trials and
-  describes these tasks only. They are authored edge cases, not a random sample
-  of real work, so no interval from them carries over to deployment. That gap
-  is external validity, which more tasks of the same kind will not close.
-- Run-to-run noise: one attempt per task; repeated runs show whether the same
-  task fails again.
-- Saturation: the full tier sits at the ceiling and cannot separate strong
-  agents; the conventions and brief tiers can.
-- Leakage: public benchmarks may be in a model's training data. Hidden answers
-  stop lookup during the run, and held-out reruns catch hard-coded answers, but
-  neither rules out memorized rules.
-- External validity: small fixtures are not full studies; the retrospective
-  Pilot 7 studies on the results slide address this.
-- Grader error: the expected output is truth only after human review, which is
-  the second case study.
-:::
-
 ## Rigor: match the evidence to the risk
 
 ![](../assets/diagrams/evaluate-design.svg)
@@ -1067,15 +943,6 @@ for drugs.
 Benchmarks carry the first two claims; real studies test the last two, where
 draft and early results suggest the schema is sufficient without many custom
 functions and experts can read the specification with help from AI.
-
-::: {.notes}
-Bridge to the case studies: they open up the benchmark, showing how one is
-created, how people finalize its truth, and how an agent is assessed with it.
-
-The first two rows are the two rows of the "where the uncertainty lives"
-diagram: agent-written code, then a reviewed specification run by a
-deterministic engine.
-:::
 
 # Case study: creating a benchmark for ADaM derivation {background-color="#385898"}
 
