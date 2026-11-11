@@ -33,7 +33,7 @@ title-slide-attributes:
 
 ## Outline
 
-The course runs about three hours with break after each part.
+The course runs about three hours, with a break after Parts 1 and 2.
 
 | | Topic | Instructor |
 | ----- | ------------------------------- | ---------- |
@@ -42,8 +42,8 @@ The course runs about three hours with break after each part.
 | Break | | |
 | Part 2 | **LLM and agents for statistical programming** | Jimeng |
 | Break | | |
-| Part 3 | **AI evaluation** | Yilong |
-| Part 3 | **Case studies** | Jimeng and Yilong |
+| Part 3 | **Benchmarks** | Yilong |
+| Part 3 | **Case study: reviewing benchmarks** | Jimeng and Yilong |
 
 ## Disclaimer
 
@@ -74,7 +74,7 @@ This workshop shows one possible approach, not the only one.
 
 * Post your questions in the group chat.
 
-# AI Agents {background-color="#385898"}
+# AI agents {background-color="#385898"}
 
 ::: {.section-brief}
 **You will:** name the parts of an AI agent and say what each one can and
@@ -168,7 +168,8 @@ run code: a harness does that and puts the results back into the context.
 # AI-first workflow {background-color="#385898"}
 
 ::: {.section-brief}
-**You will:** explore AI-first workflow.
+**You will:** design an AI-first workflow and the principles that keep it
+trustworthy.
 :::
 
 ## A mental game
@@ -207,16 +208,15 @@ You have been hired by the CMO to build a biometrics group.
 > connected through shared, inspectable artifacts.
 
 ::: {.ai-levels}
-| AI-Adoption | AI-First | AI-Native |
+| AI adoption | AI-first | AI-native |
 | --- | --- | --- |
-| **Adding AI to existing work** | **AI is the default starting point** | **AI is a core collaborator** |
-| Using AI for specific, isolated tasks. AI supplements existing workflows but does not fundamentally change how work is done. | Using AI as the primary approach. AI is systematically integrated into some workflows. AI is the default way to start and execute tasks. | AI is inseparable from how you think and work. AI-human collaboration is designed across workflows. AI is a natural extension of execution. |
-| *Example: Using ChatGPT to draft an email or summarize a document.* | *Example: Starting every analysis by prompting an AI agent before writing any code manually.* | *Example: Orchestrating multiple AI agents to handle CDISC data standardization end-to-end.* |
+| **AI added to existing work** | **AI is the default starting point** | **AI is a core collaborator** |
+| AI helps with isolated tasks; the workflow does not change. | AI starts and executes the tasks of some workflows. | AI-human collaboration is designed across workflows. |
+| *Example: ChatGPT drafts an email or summarizes a document.* | *Example: every analysis starts with a prompt to an AI agent.* | *Example: AI agents run CDISC data standardization end to end.* |
 :::
 
-> **AI-native is not just about tools** --- it is a mindset shift. Every team
-> member becomes an orchestrator who manages AI agents, focuses on exception
-> handling, and continuously improves the system.
+> **AI-native is a mindset, not a tool:** every team member orchestrates AI
+> agents, handles the exceptions, and keeps improving the system.
 
 ## Design an AI-first workflow
 
@@ -259,7 +259,8 @@ For CDISC data standardization, we recommend:
 # Agentic CDISC data standardization {background-color="#385898"}
 
 ::: {.section-brief}
-**You will:** explore agentic workflow for CDISC data standardization.
+**You will:** see why agents disagree on CDISC derivations and how a reviewed,
+plain-text specification removes the guesswork.
 :::
 
 ## Contributors {.center}
@@ -274,10 +275,10 @@ For CDISC data standardization, we recommend:
 
 ## Motivation
 
-* Two AI agents use the same specification to derive analysis datasets in clinical trials.
-  + [Example from arena.ai](https://arena.ai/c/01a18ded-d0db-7852-b6e9-1528ddf4eb42)
-* Both report completion, but their source code and outputs may differ.
-* A reviewer makes non-trivial efforts to resolve the difference before signing off.
+* Two AI agents derive the same analysis dataset from the same specification
+  ([example from arena.ai](https://arena.ai/c/01a18ded-d0db-7852-b6e9-1528ddf4eb42)).
+* Both report success, but their code and outputs may differ.
+* A reviewer must resolve every difference before signing off.
 
 From an FDA [warning letter](https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/purolea-cosmetics-lab-722591-04022026).
 
@@ -286,7 +287,7 @@ From an FDA [warning letter](https://www.fda.gov/inspections-compliance-enforcem
 ## One root cause
 
 * The user prompt leaves business rules implicit, so agents must infer them.
-* Business rules can differ from language defaults, e.g.:
+* Business rules can differ from language defaults:
   * [R](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Round.html) and [Python](https://docs.python.org/3/library/functions.html#round) round ties to even.
   * [SAS](https://documentation.sas.com/api/docsets/lrcon/9.4/content/lrcon.pdf) compares missing numeric values as lower than non-missing values.
 
@@ -298,8 +299,10 @@ From an FDA [warning letter](https://www.fda.gov/inspections-compliance-enforcem
 | Conventions | 35.8% (48/134) | 33.6% (45/134) | 34.3% (46/134) |
 | Brief | 18.7% (25/134) | 17.9% (24/134) | 15.7% (21/134) |
 
+**Same 134 tasks, same agent; only the prompt changed.** Writing the business
+rules into the prompt lifts the pass rate from under 20% to over 85%.
+
 ::: {style="font-size: 75%;"}
-Same 134 tasks, same agent. Only the prompt changed.<br>
 opensas: <https://github.com/kirha-ai/opensas><br>
 Agent: opencode 1.18.33. Model: opencode-go/muse-spark-1.3-contributor, 1 attempt, Oct 12 2026
 :::
@@ -333,7 +336,7 @@ Agent: opencode 1.18.33. Model: opencode-go/muse-spark-1.3-contributor, 1 attemp
 - Reduce human review effort.
 - Leverage organization templates.
 - Capture business rules that AI agents can apply.
-- Move human and AI agents collaboration at the planning stage.
+- Move human-AI collaboration to the planning stage.
 
 ## yamaa: collaboration at the planning stage
 
@@ -378,10 +381,10 @@ columns:
 *`output_dataset = derive(input_datasets, spec)`*
 :::
 
-The design of yamaa is a contract between human and AI agents.
+The specification is a contract between people and AI agents:
 
-- **spec**: schema following closed vocabulary.
-- **derive**: business rules with derivation semantics.
+- **spec:** written in the closed vocabulary of the schema.
+- **derive:** applies each business rule with one defined meaning.
 
 ## yamaa: where the uncertainty lives
 
@@ -407,50 +410,39 @@ Inheritance reduces duplication while keeping every resolved study specification
 <div class="perf-title">Real size: 254 subjects</div>
 
 <div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">26.45 s</span></div>
 <div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">0.60 GB</span></div>
-<div class="perf-callouts">
-<div><div class="big-number">16x</div><div class="metric-label">faster than R</div></div>
-<div><div class="big-number">2.4x</div><div class="metric-label">less memory than R</div></div>
-</div>
 :::
 
 ::: {.perf-panel}
 <div class="perf-title">Stress test: 10x subjects (2,540)</div>
 
 <div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">181.70 s</span></div>
 <div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">yamaa</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
 <div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">4.13 GB</span></div>
-<div class="perf-callouts">
-<div><div class="big-number">14x</div><div class="metric-label">faster than R</div></div>
-<div><div class="big-number">2.1x</div><div class="metric-label">less memory than R</div></div>
-</div>
 :::
 :::
+
+- R (yamaa) vs. original R (admiral): 14--16x faster, 2.1--2.4x less memory.
 
 ## Summary of the workflow
 
-- **Extract:** enable regular EDC extraction in ODM format for each study to create a versioned source.
-- **Draft:** ask an AI agent to draft the study specification from the organization or program template, adding only study differences.
-- **Review:** human and AI review study derivations and verifications in yamaa, where fixes are cheap.
-- **Finalize:** approve and tag the resolved specification in version control with full lineage.
-- **Automate:** run the same specification on schedule in R or Python to produce identical SDTM and ADaM datasets, plus Define-XML.
+![](../assets/diagrams/workflow-summary.svg)
 
-> This is an iterative process while the study is ongoing. Team members and AI
-> agents collaborate centrally on the version-controlled specification at the
-> **planning stage**.
+People and AI agents collaborate on one version-controlled specification at
+the planning stage, while the study is ongoing.
 
 # Benchmarks {background-color="#385898"}
 
 ::: {.section-brief}
-**You will:** see what a benchmark measures, how an agent is graded, and how
-people finalize the answers.
+**You will:** see what a benchmark measures, how Harbor grades an agent, and
+what a pass rate cannot tell you.
 :::
 
 ## What is a benchmark?
@@ -461,21 +453,22 @@ people finalize the answers.
 ![](../assets/diagrams/benchmark-concept.svg)
 
 **Like double programming:** the agent is the production programmer, the
-expected output is the independent QC, and the grader compares the two like
-PROC COMPARE.
+expected output is the independent QC, and the grader compares the two
+datasets value by value.
 
 ## Benchmark for SDTM and ADaM
 
-**Goal:** measure whether an AI agent can do the everyday statistical
-programming tasks that derive SDTM and ADaM datasets.
+**Goal:** test whether an AI agent can derive SDTM and ADaM datasets.
 
 ::: {.roles}
 | Expectation | What each task needs | Example |
 | ------ | ------------ | ------------ |
-| **Relevant** | A derivation that study teams write for real studies, one per task | Study day in `VS`, age groups in `ADSL`, progression-free survival in `ADTTE` |
-| **Edge cases** | Inputs that hold the cases where two programmers could disagree: boundaries, missing values, ties, and partial dates | Age groups: subjects aged 17, 18, 64, and 65, and one with a missing age |
-| **Reviewed by experts** | Experienced statistical programmers and statisticians confirm the task, the inputs, and the expected output | Each benchmark moves from draft to reviewed to finalized; only people finalize |
+| **Relevant** | One real-study derivation | Study day in `VS`, age groups in `ADSL` |
+| **Edge cases** | Inputs where two programmers could disagree | Partial dates: `2024-03` (no day), `2024` (no month) |
+| **Reviewed by experts** | Experts confirm the task, inputs, and expected output | Draft, reviewed, finalized; only people finalize |
 :::
+
+![](../assets/diagrams/benchmark-reviewers-wanted.svg){fig-align="center" width="85%"}
 
 ## yamaa benchmarks
 
@@ -503,45 +496,7 @@ execution interfaces (Python, R, CLI)
 
 <iframe class="benchmark-embed r-stretch" src="https://elong0527.github.io/yamaa/benchmark/adam-adsl-age-group.html" title="Age Groups benchmark dashboard"></iframe>
 
-Scroll inside the frame to explore the spec, inputs, and golden output.
-
-## Harbor: run and grade an agent
-
-[Harbor](https://github.com/harbor-framework/harbor) is an open-source
-framework that runs an AI agent on each benchmark task and grades the result
-automatically. ([yamaa benchmark harbor hub](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc))
-
-![](../assets/diagrams/evaluate-harbor.svg)
-
-## Benchmark performance
-
-| Prompt tier | Python | R | opensas |
-| --- | --- | --- | --- |
-| Full | 99.3% (133/134) | 98.5% (132/134) | 86.6% (116/134) |
-| Conventions | 35.8% (48/134) | 33.6% (45/134) | 34.3% (46/134) |
-| Brief | 18.7% (25/134) | 17.9% (24/134) | 15.7% (21/134) |
-
-**Same 134 tasks, same agent; only the prompt changed.** Writing the
-business rules into the prompt lifts the pass rate from under 20% to over
-85%.
-
-::: {style="font-size: 75%;"}
-opensas: <https://github.com/kirha-ai/opensas><br>
-Agent: opencode 1.18.33. Model: opencode-go/muse-spark-1.3-contributor, 1 attempt, Oct 12 2026
-:::
-
-## Benchmark limitations
-
-![](../assets/diagrams/evaluate-limits.svg)
-
-## Reviewing a yamaa benchmark
-
-An AI-assisted draft is not truth until people who do the work confirm it.
-
-![](../assets/diagrams/benchmark-review.svg)
-
-[Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/)
-with a GitHub account. Reviews are public: use public or invented data only.
+Scroll inside the frame to see the specification, inputs, and expected output.
 
 ## Benchmark review progress
 
@@ -553,9 +508,83 @@ benchmark.
 
 <script src="review-heatmap.js"></script>
 
+## Harbor: run and grade an agent
+
+[Harbor](https://github.com/harbor-framework/harbor) runs an agent on each
+benchmark task and grades the result. It produced the Part 1 prompt-tier
+results; [join yamaa on Harbor Hub](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc)
+to explore them.
+
+![](../assets/diagrams/evaluate-harbor.svg)
+
+## Benchmark limitations
+
+![](../assets/diagrams/evaluate-limits.svg)
+
 ## From benchmarks to real studies
 
 ![](../assets/diagrams/evaluate-yamaa.svg)
+
+## Pilot 7: whole-study evaluation
+
+Benchmarks test one derivation;
+[R Consortium Pilot 7](https://rconsortium.github.io/submissions-pilot7-synthetic-data/)
+tests whole studies.
+
+:::: {.columns}
+::: {.column width="48%"}
+::: {.big-number}
+20 / 20
+:::
+::: {.metric-label}
+ADaM datasets match the official submissions
+:::
+:::
+
+::: {.column width="48%"}
+::: {.big-number}
+13.7M
+:::
+::: {.metric-label}
+cells matched
+:::
+:::
+::::
+
+::: {.roles}
+| Study | Data flow | Result |
+| --- | --- | --- |
+| **CDISC Pilot 01** | SDTM -> ADaM | 10 / 10 ADaM datasets match |
+| **Submission Pilots 3 and 5** | SDTM -> ADaM | 5 / 5 ADaM datasets match in each |
+| **CAR-T (OpenClinica sample)** | ODM -> SDTM -> ADaM | No reference; people review |
+| **KN189, KN564 (synthetic)** | ODM -> SDTM -> ADaM | No reference; people review |
+:::
+
+Matching data is not the end: agents flag where Define-XML and the data
+disagree, and people decide each finding.
+
+# Case study: reviewing benchmarks {background-color="#385898"}
+
+::: {.section-brief}
+**You will:** review a yamaa benchmark and an R Consortium Pilot 7 finding, and
+see how people finalize each one.
+:::
+
+## Two benchmarks to review
+
+An AI-assisted draft is not truth until experts who do the work confirm it.
+
+| | yamaa benchmark | R Consortium Pilot 7 |
+| --- | --- | --- |
+| **Scope** | One derivation, small input | Full study |
+| **Reviewers check** | Task, inputs, expected output, three AI concerns | Each AI-reported Define-XML vs. ADaM discrepancy |
+| **Improvement by** | Addressing reviewer feedbacks | Fix findings confirmed by reviewers |
+| **Finalized when** | Two reviewers agreed | Specification and deriviation consistency achieved |
+| **Review guide** | [Benchmark review](https://elong0527.github.io/yamaa/benchmark/review/) | [Pilot 7 review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/) |
+
+## Reviewing a yamaa benchmark
+
+![](../assets/diagrams/benchmark-review.svg)
 
 ## Pilot 7: people decide on AI findings
 
@@ -564,70 +593,29 @@ data; people decide each finding.
 
 ![](../assets/diagrams/pilot7-review.svg)
 
-[Open the review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/)
-to review a finding from R Consortium Pilot 7.
-
-> A 100% reproduced ADaM dataset does not resolve a disagreement between the
-> data and Define-XML.
-
-# Case study: assessing an agent with the benchmark {background-color="#385898"}
-
-::: {.section-brief}
-**You will:** read one agent's job on Harbor Hub and decide what a failure
-means.
-:::
-
-## Muse Spark 1.3 on Harbor Hub
-
-OpenCode 1.18.33 with `opencode-go/muse-spark-1.3-contributor`, one attempt,
-October 2026: nine jobs, one for each prompt tier and language.
-
-| Benchmark (R) | Full | Conventions | Brief |
-| --- | --- | --- | --- |
-| `adam-adsl-age-group` | Pass | Pass | Fail (88% of cells) |
-| `adam-advs-map` | Pass | Pass | Fail (73% of cells) |
-| `adam-adae-death` | Pass | Fail (80% of cells) | Fail (75% of cells) |
-| `adam-adtte-dor` | Pass | Fail (97% of cells) | Fail (76% of cells) |
-
-> A failed task can still match 97% of its cells. Partial credit locates the
-> gap; the reward decides.
-
-- A full-prompt job for one language cost $0.36 to $0.96 in model usage.
-
-## Hands-on 3: read a job on Harbor Hub
-
-1. Join the yamaa organization with the [invitation link](https://hub.harborframework.com/invite/7chJ24hLaint4KnmK5VSTnW-Sow1D2yc).
-2. Open the [yamaa jobs](https://hub.harborframework.com/jobs?access=all&owner_org=yamaa).
-3. Pick a brief-prompt failure and open its trial: the prompt, the
-   trajectory, the program, and the verifier report.
-4. Decide whether it is a model failure, a rule missing from the prompt, or a
-   defect in the task.
-5. Compare the same task under the full prompt.
-
-> Integrity before pass rate: a defect found in a benchmark is a finding, too.
-
 ## Takeaways
 
-- Define the workflow, reuse AI infrastructure, and invest in skills and tools.
-- Make a plain-text specification the single source of truth for humans and AI agents.
-- Evaluate like a study: measure the whole system with benchmarks, let people
-  review the truth, and match the rigor to the risk.
+- **Define the AI-first workflow** with a clear input and output for every
+  step.
+- **Plain text first, deterministic first:** keep artifacts inspectable, and
+  let tested tools, not the model, produce the results.
+- **Establish a human baseline with benchmarks** before you trust an agent's
+  output.
 
 ## Keep going after the course
 
 - **Review a benchmark** in five minutes:
   [Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/).
-  Each public review helps finalize the truth that agents are measured against.
+  Each review helps finalize the truth that agents are measured against.
 - **Join R Consortium Pilot 7:** the
   [working group](https://rconsortium.github.io/submissions-wg/pilot7.html)
   and its
   [review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/).
-- **Repeat the hands-on exercises** on a public study: the Codespace link
-  keeps working, and the
+- **Explore a full study:** the
   [Pilot 7 synthetic data](https://github.com/RConsortium/submissions-pilot7-synthetic-data)
-  holds complete SDTM and ADaM packages.
-- **Before adopting an agent,** write down the decision, the tasks, and the
-  endpoint, then run it on the public benchmarks through
+  holds complete SDTM and ADaM packages; the Codespace in the appendix has
+  yamaa and the agents ready.
+- **Before adopting an agent,** run it on the public benchmarks through
   [Harbor Hub](https://hub.harborframework.com/jobs?access=all&owner_org=yamaa)
   or on benchmarks of your own.
 
@@ -657,7 +645,7 @@ Thank you. Post your questions in the group chat, or open an issue on
 [github.com/elong0527/yamaa](https://github.com/elong0527/yamaa/issues).
 :::
 
-# Appendix
+# Appendix {background-color="#385898"}
 
 ## Preparation
 
@@ -826,4 +814,4 @@ does not guarantee a working workflow.
 ![](../assets/diagrams/evaluate-how.svg)
 
 **Mix them:** code where the truth is checkable, an LLM judge to scale the
-rest, and people to calibrate and sign off. The case studies use all three.
+rest, and people to calibrate and sign off.
