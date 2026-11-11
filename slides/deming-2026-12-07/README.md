@@ -32,7 +32,7 @@ section slide carries a brief and what the part teaches, and every
 participant activity opens with a tag naming its kind: a discussion with a
 neighbour, or a hands-on exercise in the Codespace or the browser.
 
-The hands-on exercises, with their answer keys in the speaker notes:
+The hands-on exercises:
 
 1. **Check your setup** (Welcome): the yamaa selftest in R, then start an
    agent.
