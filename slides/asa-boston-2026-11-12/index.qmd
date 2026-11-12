@@ -269,7 +269,7 @@ plain-text specification removes the guesswork.
 - **Peng Zhang** CIMS Global
 - **Bingjun Wang** Genentech
 - **Ming-chun Chen** Summit Therapeutics
-- **Jingwei Xiong** Merck & Co., Inc
+- **Jingwei Xiong** Merck & Co., Inc.
 - **Yilong Zhang** BBSW AI Committee
 :::
 
@@ -312,7 +312,7 @@ Agent: opencode 1.18.33. Model: opencode-go/muse-spark-1.3-contributor, 1 attemp
 ::: {.map-shared}
 **Shared Prompt:**
 
-- derive `ADVS` from the provided `ADVS` dataset using CDISC ADaM standards; one record per subject, visit, and parameter.
+- create an output `ADVS` from the provided input `ADVS`, following CDISC ADaM standards; one record per subject, visit, and parameter.
 - `STUDYID, USUBJID, PARAMCD, PARAM, AVAL, VISIT, DTYPE`
 - read from `/app/input`; write `/app/output/advs.csv`.
 :::
@@ -323,10 +323,11 @@ Agent: opencode 1.18.33. Model: opencode-go/muse-spark-1.3-contributor, 1 attemp
 | MAP identifiers | `PARAMCD = "MAP"`<br>`PARAM = "Mean Arterial Pressure (mmHg)"` | Same MAP identifiers | Not stated |
 | Records to add | One per subject and visit with both `SYSBP` and `DIABP`; none when either is absent or missing. | Not stated | Not stated |
 | `AVAL` | Two-thirds `DIABP` plus one-third `SYSBP`;<br>not rounded. | Not rounded;<br>formula not stated. | Not stated |
-| `DTYPE` | Added record: `CALCULATION`.<br>Collected records: no value. | `CALCULATION` or no value;<br>assignment not stated. | Not stated |
+| `DTYPE`<br>(sponsor convention) | Added record: `CALCULATION`.<br>Collected records: no value. | `CALCULATION` or no value;<br>assignment not stated. | Not stated |
 :::
 ::: {.map-takeaway}
 **Brief omits both the MAP formula and the rule for adding a record.**<br>
+The ADaM IG uses `DTYPE` for records derived differently within a parameter; setting it on a whole derived parameter is a sponsor rule the agent cannot infer.<br>
 `SYSBP` = systolic blood pressure; `DIABP` = diastolic blood pressure.<br>
 <https://elong0527.github.io/yamaa/benchmark/adam-advs-map.html>
 :::
@@ -400,36 +401,6 @@ same datasets.
 
 Inheritance reduces duplication while keeping every resolved study specification self-contained and reviewable.
 ([example](https://elong0527.github.io/yamaa/benchmark/schema-inheritance.html))
-
-## yamaa reproduces R Submission Pilot 5 {.perf}
-
-- [Pilot 5 dashboard](https://rconsortium.github.io/submissions-pilot7-synthetic-data/studies/submission-pilot5/#submission-pilot5/datasets/ADSL)
-
-::: {.perf-grid}
-::: {.perf-panel}
-<div class="perf-title">Real size: 254 subjects</div>
-
-<div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">26.45 s</span></div>
-<div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">0.60 GB</span></div>
-:::
-
-::: {.perf-panel}
-<div class="perf-title">Stress test: 10x subjects (2,540)</div>
-
-<div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">181.70 s</span></div>
-<div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">4.13 GB</span></div>
-:::
-:::
-
-- R (yamaa) vs. original R (admiral): 14--16x faster, 2.1--2.4x less memory.
 
 ## Summary of the workflow
 
@@ -563,6 +534,36 @@ cells matched
 Matching data is not the end: agents flag where Define-XML and the data
 disagree, and people decide each finding.
 
+## yamaa reproduces R Submission Pilot 5 {.perf}
+
+- [Pilot 5 dashboard](https://rconsortium.github.io/submissions-pilot7-synthetic-data/studies/submission-pilot5/#submission-pilot5/datasets/ADSL)
+
+::: {.perf-grid}
+::: {.perf-panel}
+<div class="perf-title">Real size: 254 subjects</div>
+
+<div class="perf-group">End-to-end time, 1 core</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">26.45 s</span></div>
+<div class="perf-group">Peak memory</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">0.60 GB</span></div>
+:::
+
+::: {.perf-panel}
+<div class="perf-title">Stress test: 10x subjects (2,540)</div>
+
+<div class="perf-group">End-to-end time, 1 core</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">181.70 s</span></div>
+<div class="perf-group">Peak memory</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">4.13 GB</span></div>
+:::
+:::
+
+- R (yamaa) vs. original R (admiral): 14--16x faster, 2.1--2.4x less memory.
+
 # Case study: reviewing benchmarks {background-color="#385898"}
 
 ::: {.section-brief}
@@ -578,8 +579,8 @@ An AI-assisted draft is not truth until experts who do the work confirm it.
 | --- | --- | --- |
 | **Scope** | One derivation, small input | Full study |
 | **Reviewers check** | Task, inputs, expected output, three AI concerns | Each AI-reported Define-XML vs. ADaM discrepancy |
-| **Improvement by** | Addressing reviewer feedbacks | Fix findings confirmed by reviewers |
-| **Finalized when** | Two reviewers agreed | Specification and deriviation consistency achieved |
+| **Improvement by** | Address reviewer feedback | Fix findings confirmed by reviewers |
+| **Finalized when** | Two reviewers agreed | Specification and derivation consistency achieved |
 | **Review guide** | [Benchmark review](https://elong0527.github.io/yamaa/benchmark/review/) | [Pilot 7 review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/) |
 
 ## Reviewing a yamaa benchmark
