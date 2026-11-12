@@ -402,36 +402,6 @@ same datasets.
 Inheritance reduces duplication while keeping every resolved study specification self-contained and reviewable.
 ([example](https://elong0527.github.io/yamaa/benchmark/schema-inheritance.html))
 
-## yamaa reproduces R Submission Pilot 5 {.perf}
-
-- [Pilot 5 dashboard](https://rconsortium.github.io/submissions-pilot7-synthetic-data/studies/submission-pilot5/#submission-pilot5/datasets/ADSL)
-
-::: {.perf-grid}
-::: {.perf-panel}
-<div class="perf-title">Real size: 254 subjects</div>
-
-<div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">26.45 s</span></div>
-<div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">0.60 GB</span></div>
-:::
-
-::: {.perf-panel}
-<div class="perf-title">Stress test: 10x subjects (2,540)</div>
-
-<div class="perf-group">End-to-end time, 1 core</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">181.70 s</span></div>
-<div class="perf-group">Peak memory</div>
-<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
-<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">4.13 GB</span></div>
-:::
-:::
-
-- R (yamaa) vs. original R (admiral): 14--16x faster, 2.1--2.4x less memory.
-
 ## Summary of the workflow
 
 ![](../assets/diagrams/workflow-summary.svg)
@@ -563,6 +533,36 @@ cells matched
 
 Matching data is not the end: agents flag where Define-XML and the data
 disagree, and people decide each finding.
+
+## yamaa reproduces R Submission Pilot 5 {.perf}
+
+- [Pilot 5 dashboard](https://rconsortium.github.io/submissions-pilot7-synthetic-data/studies/submission-pilot5/#submission-pilot5/datasets/ADSL)
+
+::: {.perf-grid}
+::: {.perf-panel}
+<div class="perf-title">Real size: 254 subjects</div>
+
+<div class="perf-group">End-to-end time, 1 core</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.1%"></span></span><span class="perf-value">1.62 s</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">26.45 s</span></div>
+<div class="perf-group">Peak memory</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 41.1%"></span></span><span class="perf-value">0.25 GB</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">0.60 GB</span></div>
+:::
+
+::: {.perf-panel}
+<div class="perf-title">Stress test: 10x subjects (2,540)</div>
+
+<div class="perf-group">End-to-end time, 1 core</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 6.9%"></span></span><span class="perf-value">12.62 s</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">181.70 s</span></div>
+<div class="perf-group">Peak memory</div>
+<div class="perf-row yamaa"><span class="perf-label">R (yamaa)</span><span class="perf-track"><span class="perf-bar" style="width: 46.6%"></span></span><span class="perf-value">1.93 GB</span></div>
+<div class="perf-row"><span class="perf-label">R (admiral)</span><span class="perf-track"><span class="perf-bar" style="width: 100%"></span></span><span class="perf-value">4.13 GB</span></div>
+:::
+:::
+
+- R (yamaa) vs. original R (admiral): 14--16x faster, 2.1--2.4x less memory.
 
 # Case study: reviewing benchmarks {background-color="#385898"}
 
