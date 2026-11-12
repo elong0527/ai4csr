@@ -301,10 +301,16 @@
   margin-top: 0.35rem;
 }
 
-/* yamaa: YAML specification example: only the columns block, set larger
-   than the default code size so it reads from the back of the room. */
+/* yamaa: YAML specification example: the full 23-line specification, set
+   larger than the default code size and without Quarto's code-block height
+   cap, so every line shows on the slide without scrolling. */
 .reveal .spec-code pre {
-  font-size: 0.72em;
+  font-size: 0.66em;
+}
+
+.reveal .spec-code div.sourceCode pre,
+.reveal .spec-code div.sourceCode pre code {
+  max-height: none;
 }
 
 .reveal .benchmark-embed {
