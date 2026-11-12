@@ -608,16 +608,11 @@ data; people decide each finding.
   [Start reviewing](https://elong0527.github.io/yamaa/benchmark/review/next/).
   Each review helps finalize the truth that agents are measured against.
 - **Join R Consortium Pilot 7:** the
-  [working group](https://rconsortium.github.io/submissions-wg/pilot7.html)
-  and its
-  [review guide](https://rconsortium.github.io/submissions-pilot7-synthetic-data/review/).
+  [working group](https://rconsortium.github.io/submissions-wg/pilot7.html).
 - **Explore a full study:** the
   [Pilot 7 synthetic data](https://github.com/RConsortium/submissions-pilot7-synthetic-data)
   holds complete SDTM and ADaM packages; the Codespace in the appendix has
   yamaa and the agents ready.
-- **Before adopting an agent,** run it on the public benchmarks through
-  [Harbor Hub](https://hub.harborframework.com/jobs?access=all&owner_org=yamaa)
-  or on benchmarks of your own.
 
 ## References
 
@@ -635,8 +630,6 @@ data; people decide each finding.
   [draft guidance on AI to support regulatory decision-making](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-use-artificial-intelligence-support-regulatory-decision-making-drug-and-biological)
   and the CDRH [discussion paper](https://www.fda.gov/media/194242/download)
   on generative AI-enabled devices.
-- **These slides:**
-  <https://ai4csr.org/slides/asa-boston-2026-11-12/>
 
 ## Questions {background-color="#385898" .center}
 
