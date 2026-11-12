@@ -23,7 +23,7 @@ study reports and want to integrate AI systematically into their organization.
 | Pilot 7 open source community | Update | 2026-09-25 | [Slides](https://ai4csr.org/slides/pilot7-2026-09-25/) |
 | NJSUG and PhilaSUG Joint In-Person Meeting | Presentation | 2026-10-09 | [Slides](https://ai4csr.org/slides/njsug-2026-10-09/) |
 | SLDS 2026, New York | Presentation | 2026-11-03 | [Slides](https://ai4csr.org/slides/slds-2026-11-03/) |
-| 2026 Boston Pharmaceutical Statistics Symposium | Short course | 2026-11-12 | [Slides](https://ai4csr.org/slides/asa-boston-2026-11-12/) |
+| 2026 Boston Pharmaceutical Statistics Symposium | Short course | 2026-11-12 | [Slides](https://ai4csr.org/slides/asa-boston-2026-11-12/), [Slides: Part 2](https://ai4csr.org/slides/asa-boston-2026-11-12/part2/) |
 | 81st Annual Deming Conference on Applied Statistics | Workshop | 2026-12-07 | [Slides](https://ai4csr.org/slides/deming-2026-12-07/) |
 
 :::

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="790" height="404" viewBox="20 84 790 404" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="500" fill="#ffffff"/><rect x="40" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="129" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Questioner</text>
+<path d="M 221 34 L 241 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="245" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="334" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Learner</text>
+<path d="M 426 34 L 446 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="450" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="539" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Verifier</text>
+<path d="M 631 34 L 651 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="655" y="14" width="178" height="40" rx="20" fill="#385898"/>
+<text x="744" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">Manager</text>
+<path d="M 836 34 L 856 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="860" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="949" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Editor</text>
+<path d="M 1041 34 L 1061 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="1065" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="1154" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Owner</text>
+<line x1="40" y1="74" x2="1270" y2="74" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="850" y="110" font-size="13.5" fill="#888" text-anchor="start" font-weight="bold">YOUR JOB</text>
+<text x="850" y="138" font-size="18" fill="#17243b" text-anchor="start" font-weight="bold">Split the goal into tasks;</text>
+<text x="850" y="163" font-size="18" fill="#17243b" text-anchor="start">assign agents; set the</text>
+<text x="850" y="188" font-size="18" fill="#17243b" text-anchor="start">checks before work starts</text>
+<text x="850" y="232" font-size="13.5" fill="#888" text-anchor="start" font-weight="bold">FAILS WHEN</text>
+<text x="850" y="260" font-size="17" fill="#b71c1c" text-anchor="start">you delegate more</text>
+<text x="850" y="284" font-size="17" fill="#b71c1c" text-anchor="start">than you can verify</text>
+<rect x="850" y="345" width="420" height="132" rx="12" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="868" y="372" font-size="13" fill="#8d6e00" text-anchor="start" font-weight="bold">IN STATISTICAL PROGRAMMING</text>
+<text x="868" y="400" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">A study tracker: agents</text>
+<text x="868" y="424" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">assigned to datasets, QC</text>
+<text x="868" y="448" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">rules set in advance.</text>
+<line x1="815" y1="92" x2="815" y2="480" stroke="#eeeeee" stroke-width="1.5"/>
+<rect x="50" y="112" width="130" height="66" rx="12" fill="#e8f0fc" stroke="#385898" stroke-width="2.5"/>
+<text x="115" y="140" font-size="18" fill="#385898" text-anchor="middle" font-weight="bold">Plan</text>
+<text x="115" y="162" font-size="14.5" fill="#385898" text-anchor="middle">+ QC rules</text>
+<line x1="115" y1="180" x2="115" y2="232" stroke="#385898" stroke-width="2" stroke-dasharray="5,4"/>
+<circle cx="115" cy="261.4" r="19.5" fill="#385898"/>
+<path d="M 83.8 323.8 Q 83.8 287.4 115 287.4 Q 146.2 287.4 146.2 323.8 Z" fill="#385898"/>
+<text x="115" y="355.0" font-size="15" fill="#17243b" text-anchor="middle" font-weight="bold">Lead</text>
+<rect x="300" y="110" width="120" height="70" rx="14" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="360.0" y="154.0" font-size="26" fill="#e65100" text-anchor="middle" font-weight="bold">Agent</text>
+<path d="M 400 119 L 403 125 L 409 128 L 403 131 L 400 137 L 397 131 L 391 128 L 397 125 Z" fill="#fb8c00"/>
+<path d="M 165 275 L 296 145" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<path d="M 422 145 L 496 145" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="300" y="225" width="120" height="70" rx="14" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="360.0" y="269.0" font-size="26" fill="#e65100" text-anchor="middle" font-weight="bold">Agent</text>
+<path d="M 400 234 L 403 240 L 409 243 L 403 246 L 400 252 L 397 246 L 391 243 L 397 240 Z" fill="#fb8c00"/>
+<path d="M 165 275 L 296 260" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<path d="M 422 260 L 496 260" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="300" y="340" width="120" height="70" rx="14" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="360.0" y="384.0" font-size="26" fill="#e65100" text-anchor="middle" font-weight="bold">Agent</text>
+<path d="M 400 349 L 403 355 L 409 358 L 403 361 L 400 367 L 397 361 L 391 358 L 397 355 Z" fill="#fb8c00"/>
+<path d="M 165 275 L 296 375" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<path d="M 422 375 L 496 375" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="500" y="110" width="120" height="300" rx="14" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="560" y="240" font-size="19" fill="#1b5e20" text-anchor="middle" font-weight="bold">QC gate</text>
+<text x="560" y="268" font-size="14.5" fill="#222" text-anchor="middle">independent</text>
+<text x="560" y="288" font-size="14.5" fill="#222" text-anchor="middle">checks</text>
+<path d="M 622 260 L 656 260" fill="none" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#m_green)"/>
+<rect x="660" y="200" width="130" height="120" rx="12" fill="#f5f5f5" stroke="#777777" stroke-width="2"/>
+<text x="725" y="244" font-size="18" fill="#17243b" text-anchor="middle" font-weight="bold">Tracker</text>
+<text x="725" y="272" font-size="14" fill="#555" text-anchor="middle">every task</text>
+<text x="725" y="292" font-size="14" fill="#555" text-anchor="middle">and its status</text>
+<path d="M 560 412 L 560 434 L 360 434 L 360 414" fill="none" stroke="#c62828" stroke-width="2" marker-end="url(#m_red)"/>
+<text x="460" y="454" font-size="14" fill="#b71c1c" text-anchor="middle" font-weight="bold">fails &#8594; back to the agent</text>
+<text x="420" y="482" font-size="16" fill="#555" text-anchor="middle" font-style="italic">Your span of control is set by how much you can verify.</text></svg>
