@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1230" height="460" viewBox="0 0 1230 460" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+  </defs>
+  <rect width="1230" height="460" fill="#ffffff"/>
+
+  <rect x="16" y="10" width="1198" height="90" rx="12" fill="#f5f7fa" stroke="#b0bec5" stroke-width="1.5"/>
+  <text x="36" y="44" font-size="22" font-weight="bold" fill="#385898">Objective</text>
+  <text x="36" y="78" font-size="18" fill="#17243b">Test whether an AI agent can derive SDTM and ADaM datasets</text>
+  <line x1="630" y1="24" x2="630" y2="86" stroke="#b0bec5" stroke-width="1.5"/>
+  <text x="652" y="44" font-size="22" font-weight="bold" fill="#e65100">Hypothesis</text>
+  <text x="652" y="78" font-size="18" fill="#17243b">The pass rate rises with prompt completeness</text>
+
+  <rect x="16" y="116" width="200" height="330" rx="12" fill="#ffffff" stroke="#b0bec5" stroke-width="2"/>
+  <text x="32" y="152" font-size="22" font-weight="bold" fill="#37474f">Population</text>
+  <line x1="32" y1="168" x2="200" y2="168" stroke="#b0bec5" stroke-width="1.5"/>
+  <text x="32" y="192" font-size="12" font-weight="bold" fill="#546e7a" letter-spacing="1">TARGET</text>
+  <text x="32" y="214" font-size="15" fill="#222">SDTM and ADaM</text>
+  <text x="32" y="234" font-size="15" fill="#222">derivations in</text>
+  <text x="32" y="254" font-size="15" fill="#222">real studies</text>
+  <line x1="60" y1="266" x2="60" y2="292" stroke="#78909c" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+  <text x="74" y="284" font-size="13" fill="#777" font-style="italic">sampled</text>
+  <text x="32" y="316" font-size="12" font-weight="bold" fill="#546e7a" letter-spacing="1">SAMPLE</text>
+  <text x="32" y="346" font-size="26" font-weight="bold" fill="#17243b">134 tasks</text>
+  <text x="32" y="370" font-size="15" fill="#222">from the yamaa</text>
+  <text x="32" y="390" font-size="15" fill="#222">benchmarks</text>
+  <text x="32" y="432" font-size="13" fill="#777">Curated, not random</text>
+
+  <path d="M218,317 H268" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+  <path d="M236,317 V255 H268" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+  <path d="M236,317 V379 H268" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="256" y="116" width="300" height="330" rx="14" fill="#f7fbff" stroke="#1e88e5" stroke-width="2" stroke-dasharray="10,6"/>
+  <text x="272" y="152" font-size="22" font-weight="bold" fill="#1565c0">Intervention</text>
+  <line x1="272" y1="168" x2="540" y2="168" stroke="#1e88e5" stroke-width="1.5" opacity="0.5"/>
+  <text x="272" y="194" font-size="15" fill="#222">Every task runs in every arm;</text>
+  <text x="272" y="214" font-size="15" fill="#222">only the prompt changes</text>
+  <rect x="272" y="230" width="268" height="50" rx="10" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <text x="290" y="261" font-size="18" font-weight="bold" fill="#1565c0">Full prompt</text>
+  <rect x="272" y="292" width="268" height="50" rx="10" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <text x="290" y="323" font-size="18" font-weight="bold" fill="#1565c0">Conventions prompt</text>
+  <rect x="272" y="354" width="268" height="50" rx="10" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+  <text x="290" y="385" font-size="18" font-weight="bold" fill="#1565c0">Brief prompt</text>
+  <text x="272" y="432" font-size="13" fill="#777">Same agent and model; one attempt each</text>
+
+  <path d="M540,255 H572 V317" fill="none" stroke="#444" stroke-width="2.5"/>
+  <path d="M540,379 H572 V317" fill="none" stroke="#444" stroke-width="2.5"/>
+  <path d="M540,317 H592" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="596" y="116" width="260" height="330" rx="12" fill="#f3e5f5" stroke="#8e24aa" stroke-width="2.5"/>
+  <text x="612" y="152" font-size="22" font-weight="bold" fill="#6a1b9a">Endpoint</text>
+  <line x1="612" y1="168" x2="840" y2="168" stroke="#8e24aa" stroke-width="1.5" opacity="0.5"/>
+  <text x="612" y="198" font-size="20" font-weight="bold" fill="#6a1b9a">Cell-by-cell match</text>
+  <text x="612" y="220" font-size="15" fill="#222">with the expected output</text>
+  <rect x="612" y="234" width="228" height="84" rx="10" fill="#e8f5e9" stroke="#43a047" stroke-width="2"/>
+  <text x="626" y="256" font-size="12" font-weight="bold" fill="#2e7d32" letter-spacing="1">REFERENCE STANDARD</text>
+  <text x="626" y="280" font-size="15" fill="#222">Authored independently</text>
+  <text x="626" y="300" font-size="15" fill="#222">of any agent</text>
+  <circle cx="626" cy="346" r="12" fill="#2e7d32"/>
+  <text x="626" y="351" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="646" y="351" font-size="15" fill="#222">every dataset matches</text>
+  <circle cx="626" cy="380" r="12" fill="#c62828"/>
+  <text x="626" y="385" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">0</text>
+  <text x="646" y="385" font-size="15" fill="#222">otherwise</text>
+  <text x="612" y="432" font-size="13" fill="#777">Code-based: no model judgment</text>
+
+  <line x1="858" y1="317" x2="892" y2="317" stroke="#444" stroke-width="2.5" marker-end="url(#ar)"/>
+
+  <rect x="896" y="116" width="318" height="330" rx="12" fill="#ffffff" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="912" y="152" font-size="22" font-weight="bold" fill="#1b5e20">Result</text>
+  <line x1="912" y1="168" x2="1198" y2="168" stroke="#2e7d32" stroke-width="1.5" opacity="0.5"/>
+  <text x="912" y="202" font-size="15" font-weight="bold" fill="#222">Full</text>
+  <text x="1198" y="202" font-size="15" fill="#222" text-anchor="end">132 / 134 (98.5%)</text>
+  <rect x="912" y="212" width="286" height="16" rx="3" fill="#eceff1"/>
+  <rect x="912" y="212" width="281.7" height="16" rx="3" fill="#2e7d32"/>
+  <text x="912" y="266" font-size="15" font-weight="bold" fill="#222">Conventions</text>
+  <text x="1198" y="266" font-size="15" fill="#222" text-anchor="end">45 / 134 (33.6%)</text>
+  <rect x="912" y="276" width="286" height="16" rx="3" fill="#eceff1"/>
+  <rect x="912" y="276" width="96.1" height="16" rx="3" fill="#2e7d32"/>
+  <text x="912" y="330" font-size="15" font-weight="bold" fill="#222">Brief</text>
+  <text x="1198" y="330" font-size="15" fill="#222" text-anchor="end">24 / 134 (17.9%)</text>
+  <rect x="912" y="340" width="286" height="16" rx="3" fill="#eceff1"/>
+  <rect x="912" y="340" width="51.2" height="16" rx="3" fill="#2e7d32"/>
+  <text x="912" y="412" font-size="13" fill="#777">R shown; Python and opensas</text>
+  <text x="912" y="432" font-size="13" fill="#777">are in the Part 1 table</text>
+</svg>

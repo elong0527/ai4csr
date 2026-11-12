@@ -297,8 +297,14 @@
 
 .reveal .metric-label {
   color: var(--course-muted);
-  font-size: 0.78rem;
+  font-size: 0.8em;
   margin-top: 0.35rem;
+}
+
+/* yamaa: YAML specification example: only the columns block, set larger
+   than the default code size so it reads from the back of the room. */
+.reveal .spec-code pre {
+  font-size: 0.72em;
 }
 
 .reveal .benchmark-embed {
