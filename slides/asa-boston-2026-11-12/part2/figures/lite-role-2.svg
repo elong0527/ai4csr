@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="790" height="404" viewBox="20 84 790 404" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="500" fill="#ffffff"/><rect x="40" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="129" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Questioner</text>
+<path d="M 221 34 L 241 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="245" y="14" width="178" height="40" rx="20" fill="#1e88e5"/>
+<text x="334" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">Learner</text>
+<path d="M 426 34 L 446 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="450" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="539" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Verifier</text>
+<path d="M 631 34 L 651 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="655" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="744" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Manager</text>
+<path d="M 836 34 L 856 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="860" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="949" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Editor</text>
+<path d="M 1041 34 L 1061 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="1065" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="1154" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Owner</text>
+<line x1="40" y1="74" x2="1270" y2="74" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="850" y="110" font-size="13.5" fill="#888" text-anchor="start" font-weight="bold">YOUR JOB</text>
+<text x="850" y="138" font-size="18" fill="#17243b" text-anchor="start" font-weight="bold">Learn fast from the AI;</text>
+<text x="850" y="163" font-size="18" fill="#17243b" text-anchor="start">keep going until you</text>
+<text x="850" y="188" font-size="18" fill="#17243b" text-anchor="start">actually understand</text>
+<text x="850" y="232" font-size="13.5" fill="#888" text-anchor="start" font-weight="bold">RISK</text>
+<text x="850" y="260" font-size="17" fill="#b71c1c" text-anchor="start">Fluency without depth:</text>
+<text x="850" y="284" font-size="17" fill="#b71c1c" text-anchor="start">it feels understood</text>
+<text x="850" y="308" font-size="17" fill="#b71c1c" text-anchor="start">when it is not</text>
+<rect x="850" y="345" width="420" height="132" rx="12" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="868" y="372" font-size="13" fill="#8d6e00" text-anchor="start" font-weight="bold">IN STATISTICAL PROGRAMMING</text>
+<text x="868" y="400" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">Have the AI quiz you on</text>
+<text x="868" y="424" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">partial-date imputation,</text>
+<text x="868" y="448" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">then derive one by hand.</text>
+<line x1="815" y1="92" x2="815" y2="480" stroke="#eeeeee" stroke-width="1.5"/>
+<line x1="60" y1="130" x2="790" y2="130" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="9,6"/>
+<text x="60" y="122" font-size="13" fill="#888" text-anchor="start" font-style="italic">frontier of knowledge</text>
+<rect x="630" y="150" width="150" height="96" rx="14" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="705.0" y="207.0" font-size="26" fill="#e65100" text-anchor="middle" font-weight="bold">AI</text>
+<path d="M 760 159 L 763 165 L 769 168 L 763 171 L 760 177 L 757 171 L 751 168 L 757 165 Z" fill="#fb8c00"/>
+<rect x="80" y="420" width="150" height="50" fill="#e3f2fd" stroke="#1e88e5" stroke-width="1.5"/>
+<rect x="230" y="360" width="150" height="110" fill="#e3f2fd" stroke="#1e88e5" stroke-width="1.5"/>
+<rect x="380" y="300" width="150" height="170" fill="#e3f2fd" stroke="#1e88e5" stroke-width="1.5"/>
+<circle cx="455" cy="240.7" r="17.25" fill="#385898"/>
+<path d="M 427.4 295.9 Q 427.4 263.7 455 263.7 Q 482.6 263.7 482.6 295.9 Z" fill="#385898"/>
+<path d="M 628 205 L 520 228" fill="none" stroke="#1565c0" stroke-width="2" marker-end="url(#m_blue)"/>
+<path d="M 628 219 L 520 278" fill="none" stroke="#1565c0" stroke-width="2" marker-end="url(#m_blue)"/>
+<path d="M 628 233 L 520 328" fill="none" stroke="#1565c0" stroke-width="2" marker-end="url(#m_blue)"/>
+<text x="650" y="290" font-size="15" fill="#1565c0" text-anchor="start" font-weight="bold">explain &#183; quiz</text>
+<text x="650" y="312" font-size="15" fill="#1565c0" text-anchor="start" font-weight="bold">worked examples</text>
+<line x1="455" y1="136" x2="455" y2="210" stroke="#c62828" stroke-width="2.5" stroke-dasharray="4,3"/>
+<text x="468" y="180" font-size="14.5" fill="#c62828" text-anchor="start" font-weight="bold">the gap that remains</text>
+<text x="155" y="455" font-size="13.5" fill="#1565c0" text-anchor="middle">where you started</text></svg>

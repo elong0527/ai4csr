@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="420" viewBox="0 0 1300 420" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="420" fill="#ffffff"/><text x="44" y="38" font-size="14" fill="#888" text-anchor="start" font-weight="bold">PRACTICE</text>
+<text x="380" y="38" font-size="14" fill="#888" text-anchor="start" font-weight="bold">WHY</text>
+<text x="830" y="38" font-size="14" fill="#888" text-anchor="start" font-weight="bold">HOW, OR WHAT WE SAW</text>
+<line x1="44" y1="48" x2="1270" y2="48" stroke="#bdbdbd" stroke-width="1.5"/>
+<rect x="44" y="64" width="1226" height="72" rx="12" fill="#fafafa" stroke="#777777" stroke-width="1.5"/>
+<rect x="44" y="64" width="310" height="72" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+<text x="199" y="107" font-size="19" fill="#1565c0" text-anchor="middle" font-weight="bold">Metadata, not records</text>
+<text x="380" y="107" font-size="16.5" fill="#222" text-anchor="start">names &#183; types &#183; labels &#183; counts; one subject on request</text>
+<rect x="826" y="76" width="430" height="48" rx="10" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="1041" y="106" font-size="15" fill="#5d4037" text-anchor="middle" font-weight="bold">Tools read data; the model never retypes values</text>
+<rect x="44" y="152" width="1226" height="72" rx="12" fill="#fafafa" stroke="#777777" stroke-width="1.5"/>
+<rect x="44" y="152" width="310" height="72" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+<text x="199" y="195" font-size="19" fill="#1565c0" text-anchor="middle" font-weight="bold">One study per session</text>
+<text x="380" y="195" font-size="16.5" fill="#222" text-anchor="start">nothing leaks across studies or across a blind</text>
+<rect x="826" y="164" width="430" height="48" rx="10" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="1041" y="194" font-size="15" fill="#5d4037" text-anchor="middle" font-weight="bold">State scoped to the study by the harness</text>
+<rect x="44" y="240" width="1226" height="72" rx="12" fill="#fafafa" stroke="#777777" stroke-width="1.5"/>
+<rect x="44" y="240" width="310" height="72" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+<text x="199" y="283" font-size="19" fill="#1565c0" text-anchor="middle" font-weight="bold">Test the retrieval</text>
+<text x="380" y="283" font-size="16.5" fill="#222" text-anchor="start">a long specification cut short is a missing rule</text>
+<rect x="826" y="252" width="430" height="48" rx="10" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="1041" y="282" font-size="15" fill="#5d4037" text-anchor="middle" font-weight="bold">Truncated spec &#8594; invented PARAMCDs, failed runs</text>
+<rect x="44" y="328" width="1226" height="72" rx="12" fill="#fafafa" stroke="#777777" stroke-width="1.5"/>
+<rect x="44" y="328" width="310" height="72" rx="12" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+<text x="199" y="371" font-size="19" fill="#1565c0" text-anchor="middle" font-weight="bold">Put conventions in</text>
+<text x="380" y="371" font-size="16.5" fill="#222" text-anchor="start">sponsor macros and functions are not in training data</text>
+<rect x="826" y="340" width="430" height="48" rx="10" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="1041" y="370" font-size="15" fill="#5d4037" text-anchor="middle" font-weight="bold">Agents ignored attached admiral date functions</text></svg>

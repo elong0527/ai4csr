@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="790" height="404" viewBox="20 84 790 404" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="500" fill="#ffffff"/><rect x="40" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="129" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Questioner</text>
+<path d="M 221 34 L 241 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="245" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="334" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Learner</text>
+<path d="M 426 34 L 446 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="450" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="539" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Verifier</text>
+<path d="M 631 34 L 651 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="655" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="744" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Manager</text>
+<path d="M 836 34 L 856 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="860" y="14" width="178" height="40" rx="20" fill="#8e24aa"/>
+<text x="949" y="40" font-size="17" fill="#ffffff" text-anchor="middle" font-weight="bold">Editor</text>
+<path d="M 1041 34 L 1061 34" fill="none" stroke="#9e9e9e" stroke-width="1.8" marker-end="url(#m_grey)"/>
+<rect x="1065" y="14" width="178" height="40" rx="20" fill="#f5f5f5" stroke="#d6d6d6" stroke-width="1.5"/>
+<text x="1154" y="40" font-size="16" fill="#9e9e9e" text-anchor="middle" font-weight="bold">Owner</text>
+<line x1="40" y1="74" x2="1270" y2="74" stroke="#e6e6e6" stroke-width="1.5"/>
+<text x="850" y="110" font-size="13.5" fill="#888" text-anchor="start" font-weight="bold">YOUR JOB</text>
+<text x="850" y="138" font-size="18" fill="#17243b" text-anchor="start" font-weight="bold">Compress what survives</text>
+<text x="850" y="163" font-size="18" fill="#17243b" text-anchor="start">into a short, causal</text>
+<text x="850" y="188" font-size="18" fill="#17243b" text-anchor="start">story others can act on</text>
+<text x="850" y="232" font-size="13.5" fill="#888" text-anchor="start" font-weight="bold">NEEDS</text>
+<text x="850" y="260" font-size="17" fill="#1b5e20" text-anchor="start">Taste and real</text>
+<text x="850" y="284" font-size="17" fill="#1b5e20" text-anchor="start">understanding</text>
+<rect x="850" y="345" width="420" height="132" rx="12" fill="#fffde7" stroke="#f9a825" stroke-width="2"/>
+<text x="868" y="372" font-size="13" fill="#8d6e00" text-anchor="start" font-weight="bold">IN STATISTICAL PROGRAMMING</text>
+<text x="868" y="400" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">From hundreds of TLF outputs</text>
+<text x="868" y="424" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">to the paragraph the CSR,</text>
+<text x="868" y="448" font-size="16.5" fill="#5d4037" text-anchor="start" font-weight="bold">the DMC, or FDA will read.</text>
+<line x1="815" y1="92" x2="815" y2="480" stroke="#eeeeee" stroke-width="1.5"/>
+<path d="M 60 110 L 82 110 L 94 122 L 94 158 L 60 158 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="68" y1="130" x2="84" y2="130" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="141" x2="84" y2="141" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="152" x2="84" y2="152" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 104 110 L 126 110 L 138 122 L 138 158 L 104 158 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="112" y1="130" x2="128" y2="130" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="141" x2="128" y2="141" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="152" x2="128" y2="152" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 148 110 L 170 110 L 182 122 L 182 158 L 148 158 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="156" y1="130" x2="172" y2="130" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="141" x2="172" y2="141" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="152" x2="172" y2="152" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 192 110 L 214 110 L 226 122 L 226 158 L 192 158 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="200" y1="130" x2="216" y2="130" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="141" x2="216" y2="141" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="152" x2="216" y2="152" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 236 110 L 258 110 L 270 122 L 270 158 L 236 158 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="244" y1="130" x2="260" y2="130" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="141" x2="260" y2="141" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="152" x2="260" y2="152" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 60 176 L 82 176 L 94 188 L 94 224 L 60 224 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="68" y1="196" x2="84" y2="196" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="207" x2="84" y2="207" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="218" x2="84" y2="218" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 104 176 L 126 176 L 138 188 L 138 224 L 104 224 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="112" y1="196" x2="128" y2="196" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="207" x2="128" y2="207" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="218" x2="128" y2="218" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 148 176 L 170 176 L 182 188 L 182 224 L 148 224 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="156" y1="196" x2="172" y2="196" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="207" x2="172" y2="207" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="218" x2="172" y2="218" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 192 176 L 214 176 L 226 188 L 226 224 L 192 224 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="200" y1="196" x2="216" y2="196" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="207" x2="216" y2="207" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="218" x2="216" y2="218" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 236 176 L 258 176 L 270 188 L 270 224 L 236 224 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="244" y1="196" x2="260" y2="196" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="207" x2="260" y2="207" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="218" x2="260" y2="218" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 60 242 L 82 242 L 94 254 L 94 290 L 60 290 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="68" y1="262" x2="84" y2="262" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="273" x2="84" y2="273" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="284" x2="84" y2="284" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 104 242 L 126 242 L 138 254 L 138 290 L 104 290 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="112" y1="262" x2="128" y2="262" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="273" x2="128" y2="273" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="284" x2="128" y2="284" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 148 242 L 170 242 L 182 254 L 182 290 L 148 290 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="156" y1="262" x2="172" y2="262" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="273" x2="172" y2="273" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="284" x2="172" y2="284" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 192 242 L 214 242 L 226 254 L 226 290 L 192 290 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="200" y1="262" x2="216" y2="262" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="273" x2="216" y2="273" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="284" x2="216" y2="284" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 236 242 L 258 242 L 270 254 L 270 290 L 236 290 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="244" y1="262" x2="260" y2="262" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="273" x2="260" y2="273" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="284" x2="260" y2="284" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 60 308 L 82 308 L 94 320 L 94 356 L 60 356 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="68" y1="328" x2="84" y2="328" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="339" x2="84" y2="339" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="350" x2="84" y2="350" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 104 308 L 126 308 L 138 320 L 138 356 L 104 356 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="112" y1="328" x2="128" y2="328" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="339" x2="128" y2="339" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="350" x2="128" y2="350" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 148 308 L 170 308 L 182 320 L 182 356 L 148 356 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="156" y1="328" x2="172" y2="328" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="339" x2="172" y2="339" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="350" x2="172" y2="350" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 192 308 L 214 308 L 226 320 L 226 356 L 192 356 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="200" y1="328" x2="216" y2="328" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="339" x2="216" y2="339" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="350" x2="216" y2="350" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 236 308 L 258 308 L 270 320 L 270 356 L 236 356 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="244" y1="328" x2="260" y2="328" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="339" x2="260" y2="339" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="350" x2="260" y2="350" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 60 374 L 82 374 L 94 386 L 94 422 L 60 422 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="68" y1="394" x2="84" y2="394" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="405" x2="84" y2="405" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="68" y1="416" x2="84" y2="416" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 104 374 L 126 374 L 138 386 L 138 422 L 104 422 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="112" y1="394" x2="128" y2="394" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="405" x2="128" y2="405" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="112" y1="416" x2="128" y2="416" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 148 374 L 170 374 L 182 386 L 182 422 L 148 422 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="156" y1="394" x2="172" y2="394" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="405" x2="172" y2="405" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="156" y1="416" x2="172" y2="416" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 192 374 L 214 374 L 226 386 L 226 422 L 192 422 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="200" y1="394" x2="216" y2="394" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="405" x2="216" y2="405" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="200" y1="416" x2="216" y2="416" stroke="#cfcfcf" stroke-width="2"/>
+<path d="M 236 374 L 258 374 L 270 386 L 270 422 L 236 422 Z" fill="#faf5fc" stroke="#ce93d8" stroke-width="1.8"/>
+<line x1="244" y1="394" x2="260" y2="394" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="405" x2="260" y2="405" stroke="#cfcfcf" stroke-width="2"/>
+<line x1="244" y1="416" x2="260" y2="416" stroke="#cfcfcf" stroke-width="2"/>
+<text x="170" y="465" font-size="14.5" fill="#6a1b9a" text-anchor="middle" font-weight="bold">AI output: results, tables, drafts</text>
+<path d="M 300 120 L 420 220 L 420 330 L 300 430 Z" fill="#f3e5f5" stroke="#8e24aa" stroke-width="2.5"/>
+<circle cx="362" cy="240.2" r="13.5" fill="#385898"/>
+<path d="M 340.4 283.4 Q 340.4 258.2 362 258.2 Q 383.6 258.2 383.6 283.4 Z" fill="#385898"/>
+<text x="362" y="318" font-size="14" fill="#6a1b9a" text-anchor="middle" font-weight="bold">select,</text>
+<text x="362" y="336" font-size="14" fill="#6a1b9a" text-anchor="middle" font-weight="bold">explain</text>
+<path d="M 424 275 L 470 275" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="474" y="170" width="310" height="210" rx="14" fill="#ffffff" stroke="#8e24aa" stroke-width="3"/>
+<text x="496" y="206" font-size="20" fill="#6a1b9a" text-anchor="start" font-weight="bold">The story</text>
+<text x="496" y="244" font-size="17" fill="#17243b" text-anchor="start">What we found,</text>
+<text x="496" y="272" font-size="17" fill="#17243b" text-anchor="start">why it holds,</text>
+<text x="496" y="300" font-size="17" fill="#17243b" text-anchor="start">and what it means</text>
+<text x="496" y="328" font-size="17" fill="#17243b" text-anchor="start">for the decision.</text>
+<text x="629" y="412" font-size="15" fill="#6a1b9a" text-anchor="middle" font-weight="bold">short &#183; causal &#183; accountable</text></svg>

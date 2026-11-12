@@ -1,0 +1,462 @@
+---
+title: "Language Models and Agents<br>for Statistical Programming"
+pagetitle: "Part 2: Language Models and Agents for Statistical Programming"
+subtitle: "Part 2 &middot; AI-First Workflow: Starting from CDISC Data Standardization"
+kicker: "PART 2"
+author:
+  - "Jimeng Sun"
+  - "Yilong Zhang"
+venue: "Boston Pharmaceutical Statistics Symposium"
+date: 2026-11-12
+date-format: "MMM D, YYYY"
+embed-resources: true
+format:
+  revealjs:
+    css: custom.css
+    template-partials:
+      - title-slide.html
+    mainfont: "system-ui, -apple-system, Segoe UI, sans-serif"
+    monofont: "ui-monospace, SFMono-Regular, Consolas, monospace"
+    width: 1280
+    height: 720
+    smaller: true
+    scrollable: true
+    transition: fade
+    slide-number: c/t
+    menu: true
+    logo: ../../assets/images/yamaa-logo.jpeg
+title-slide-attributes:
+  data-background-color: "#385898"
+---
+
+## Part 2 at a glance {.lite-table}
+
+```{=html}
+<style>
+.reveal .bignums{justify-content:center;gap:5rem;margin:1.6em 0 1.4em;border-top:none}
+.reveal .bignums .big-number{font-size:5.4rem;line-height:1.1}
+.reveal .bignums .metric-label{font-size:1.25rem;max-width:20rem;margin:0.4em auto 0;text-align:center}
+.reveal .bignums > div{text-align:center}
+.reveal .lite-list ul, .reveal .lite-list ol, .reveal .lite-list p{font-size:1.35em;line-height:1.7}
+.reveal .lite-list ul, .reveal .lite-list ol{margin-top:0.6em;margin-bottom:0.8em}
+.reveal .lite-table table{font-size:1.35em;margin-top:1em}
+.reveal .lite-table td, .reveal .lite-table th{padding:0.55em 0.8em}
+</style>
+```
+
+::: schedule
+| | Topic | Time |
+|---|---|---|
+| 1 | **The expert's new job** | 11 min |
+| 2 | **Agents built to be checked** | 17 min |
+| 3 | **Seven strategies beyond skills and tools** | 20 min |
+| 4 | **Verify before you deploy** | 7 min |
+:::
+
+::: {.sources}
+Disclosure: Jimeng Sun is co-founder and CEO of Keiji AI, which builds TrialMind, the platform used in the demos.
+:::
+
+# The expert's new job {background-color="#385898"}
+
+::: section-brief
+Generating is cheap. Verifying is not.
+:::
+
+## 722 manuscripts in one day
+
+::: {.perf-callouts .bignums}
+::: {}
+::: big-number
+722
+:::
+::: metric-label
+math manuscripts from one AI model
+:::
+:::
+
+::: {}
+::: big-number
+42%
+:::
+::: metric-label
+checkable by computer (Lean)
+:::
+:::
+
+::: {}
+::: big-number
+3
+:::
+::: metric-label
+withdrawn the next day, for one sign error
+:::
+:::
+:::
+
+::: keyline
+Generating results is cheap. **Verifying them is not.**
+:::
+
+::: {.sources}
+OpenAI mathematics releases, Oct 2026 &middot; Retraction Watch, 8 Oct 2026
+:::
+
+## AI is moving the frontier in life science
+
+![](figures/p2-positive.svg){.r-stretch}
+
+::: keyline
+The opportunity is real. **What should experts do?**
+:::
+
+::: {.sources}
+AlphaFold Protein Structure Database (2022); Nobel Prize in Chemistry (2024) &middot; Xu Z, et al. Rentosertib in idiopathic pulmonary fibrosis: a randomized phase 2a trial. *Nat Med* (2025) &middot; FDA draft guidance on AI for regulatory decision-making (Jan 2025); FDA launch of Elsa (Jun 2025)
+:::
+
+## Six roles for the expert
+
+![](figures/lite-roles.svg){.r-stretch}
+
+::: keyline
+The job moves from **generating** to **certifying**.
+:::
+
+## 1. Questioner
+
+![](figures/lite-role-1.svg){.r-stretch}
+
+::: keyline
+Works while you know more. Fails when **wrong answers look right**.
+:::
+
+## 2. Learner
+
+![](figures/lite-role-2.svg){.r-stretch}
+
+::: keyline
+The test of understanding: **can you derive it by hand?**
+:::
+
+## 3. Verifier
+
+![](figures/lite-role-3.svg){.r-stretch}
+
+::: keyline
+Double programming, with an agent as **one of the programmers**.
+:::
+
+## 4. Manager
+
+![](figures/lite-role-6.svg){.r-stretch}
+
+::: keyline
+You can delegate the work. **You cannot delegate the responsibility.**
+:::
+
+## 5. Editor
+
+![](figures/lite-role-4.svg){.r-stretch}
+
+::: keyline
+Hundreds of tables become **the one paragraph a regulator reads**.
+:::
+
+## 6. Owner
+
+![](figures/lite-role-5.svg){.r-stretch}
+
+::: keyline
+The signature stays **with a person**.
+:::
+
+## The verifier steers the frontier
+
+![](figures/lite-verifier-timeline.svg){.r-stretch}
+
+::: keyline
+Whoever builds the verifier **shapes the field**.
+:::
+
+## Statisticians already have a verifier
+
+![](figures/p2-double.svg){.r-stretch}
+
+::: keyline
+Same protocol, one box changed: **people review the disagreements**.
+:::
+
+# Agents built to be checked {background-color="#385898"}
+
+::: section-brief
+Three agents, each built so a reviewer can check its work.
+:::
+
+## Three agents, three ways to check {.lite-table}
+
+::: roles
+| Agent | How a reviewer checks it |
+|---|---|
+| **Literature review** | Every number links to its source passage |
+| **TrialPanorama** | Every row cites its registry record |
+| **Statistical programming** | An independent QC program and a comparison decide |
+:::
+
+::: {.sources}
+Wang Z, et al. *npj Digit Med* 8, 509 (2025) &middot; Wang Z, et al. *Nat Commun* 16, 947 (2025) &middot; Wang Z, et al. *Nat Biomed Eng* (2025)
+:::
+
+## Demo 1: systematic literature review
+
+![](figures/p2-shot-slr.jpg){.r-stretch}
+
+::: keyline
+The reviewer no longer redoes the review. **They audit the leaves.**
+:::
+
+## Demo 2: TrialPanorama
+
+![](figures/p2-shot-tp.jpg){.r-stretch}
+
+::: keyline
+An answer you can check in minutes: **the query, the counts, and the record.**
+:::
+
+## Demo 3: statistical programming agent
+
+![](figures/p2-shot-sp.jpg){.r-stretch}
+
+::: keyline
+The checks, not the model, **decide what is correct.**
+:::
+
+# Seven strategies beyond skills and tools {background-color="#385898"}
+
+::: section-brief
+What makes an agent better, and its work easier to check.
+:::
+
+## Where can an agent be improved?
+
+![](figures/p2-levers7.svg){.r-stretch}
+
+::: keyline
+Beyond skills and tools: **seven strategies, by what they change.**
+:::
+
+## Complete the specification {.perf}
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-1.svg">
+```
+
+::: {.perf-grid}
+::: {.perf-panel}
+::: perf-title
+Same 134 tasks, same agent (Part 1)
+:::
+
+::: perf-group
+Python pass rate by prompt tier
+:::
+
+```{=html}
+<div class="perf-row yamaa"><span class="perf-label">Full</span><span class="perf-track"><span class="perf-bar" style="width: 99.3%"></span></span><span class="perf-value">133 / 134</span></div>
+<div class="perf-row"><span class="perf-label">Conventions</span><span class="perf-track"><span class="perf-bar" style="width: 35.8%"></span></span><span class="perf-value">48 / 134</span></div>
+<div class="perf-row"><span class="perf-label">Brief</span><span class="perf-track"><span class="perf-bar" style="width: 18.7%"></span></span><span class="perf-value">25 / 134</span></div>
+```
+
+::: perf-callouts
+::: {}
+::: big-number
+5.3x
+:::
+::: metric-label
+more tasks passed with the rules written down
+:::
+:::
+:::
+:::
+
+::: {.perf-panel}
+::: perf-title
+What to do
+:::
+
+- **Write the rules down** before tuning anything else.
+- What is left out is filled by a language default or by memory of a public program.
+- **Reward asking:** a flagged ambiguity is a question for the statistician, not a silent choice.
+:::
+:::
+
+## Engineer the context
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-2.svg">
+```
+
+![](figures/p2-context.svg){.r-stretch}
+
+> The model knows only its context. What the harness puts there is a design decision.
+
+## Restructure the output
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-3.svg">
+```
+
+![](figures/p2-structure.svg){.r-stretch}
+
+> Ask for what tested code can execute. With yamaa, every error became a **refusal with named issues**, never a wrong dataset.
+
+## Adapt the model
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-4.svg">
+```
+
+![](figures/p2-adapt.svg){.r-stretch}
+
+::: keyline
+Design first, choose where it runs, **fine-tune last.**
+:::
+
+## Feed back checkable signals
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-5.svg">
+```
+
+![](figures/p2-feedback2.svg){.r-stretch}
+
+::: keyline
+Every agent loops. What matters is **what comes back.**
+:::
+
+## Put the SOP in code
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-6.svg">
+```
+
+![](figures/p2-sop2.svg){.r-stretch}
+
+::: keyline
+Don't ask the agent to follow the SOP. **Make the SOP run the agent.**
+:::
+
+## When the data talk to the agent
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-6.svg">
+```
+
+![](figures/p2-injection2.svg){.r-stretch}
+
+::: keyline
+Make a successful injection **harmless**; don't rely on the model to resist it.
+:::
+
+## Check independently
+
+```{=html}
+<img class="minimap" src="figures/p2-mini-7.svg">
+```
+
+![](figures/p2-independence2.svg){.r-stretch}
+
+> A review that never changes anything is not a control. Track how often reviewers return agent output.
+
+## Where AI fits in a validated environment
+
+![](figures/p2-validated.svg){.r-stretch}
+
+::: keyline
+Validation follows one question: **does a person fully check the AI's output?**
+:::
+
+::: {.sources}
+FDA draft guidance on AI for regulatory decision-making (Jan 2025) &middot; EU GMP draft Annex 22 &middot; ICH E6(R3) &middot; 21 CFR Part 11
+:::
+
+## Seven strategies, in one slide
+
+![](figures/p2-levers7.svg){.r-stretch}
+
+::: keyline
+Each strategy makes the agent better **and its work easier to check.**
+:::
+
+# Verify before you deploy {background-color="#385898"}
+
+::: section-brief
+How to check any AI tool, and how checking itself fails.
+:::
+
+## Five questions for any AI tool
+
+![](figures/lite-checklist.svg){.r-stretch}
+
+::: keyline
+Ask every vendor, **including us**, and your own team.
+:::
+
+## Verification has its own failure modes
+
+::: {.perf-callouts .bignums}
+::: {}
+::: big-number
+82% vs 46%
+:::
+::: metric-label
+radiologists correct when AI advice was right vs wrong
+:::
+:::
+
+::: {}
+::: big-number
+28% &rarr; 22%
+:::
+::: metric-label
+adenoma detection without AI, after routine AI use
+:::
+:::
+:::
+
+::: keyline
+FAA, 2013: fly by hand more often, **because autopilot is so good**.
+:::
+
+::: {.sources}
+Dratsch T, et al. *Radiology* (2023) &middot; Budzy&#324; K, et al. *Lancet Gastroenterol Hepatol* (2025) &middot; FAA SAFO 13002 (2013)
+:::
+
+## Five first steps {.lite-list}
+
+1. **Pick one piece of work you check**, and write down the rule an AI would miss.
+2. **Write one set of rules down** so they can be checked.
+3. **Test one AI output** against a check you already trust.
+4. **Ask every AI vendor** where answers come from and what checks them.
+5. **Keep sign-off with a person.**
+
+## {background-color="#385898" .center}
+
+::: section-brief
+<p style="font-size:1.5em; line-height:1.4">"What I cannot create, I do not understand."<br><span style="font-size:0.7em">Richard Feynman</span></p>
+<p style="font-size:1.5em; line-height:1.4; margin-top:1.2em"><strong>What I cannot verify, I should not deploy.</strong></p>
+:::
+
+## References
+
+- **Companion tutorial:** Part III (Sections 8--15) for the seven strategies and case studies.
+- **Course slides:** <https://ai4csr.org/slides/asa-boston-2026-11-12/>
+- **The 722 manuscripts:** Retraction Watch, 8 Oct 2026; *Nature* news, Oct 2026.
+- **Verifiable rewards:** Guo D, et al. DeepSeek-R1. *Nature* 645:633--638 (2025) &middot; Arora RK, et al. HealthBench. OpenAI (2025).
+- **Reproducibility:** Buckheit JB, Donoho DL. WaveLab and reproducible research (1995) &middot; Begley CG, Ellis LM. *Nature* 483:531--533 (2012).
+- **Expert roles:** Sadler M, Regan N. *Game Changer* (2019).
+
+## Questions {.center background-color="#385898"}
+
+::: section-brief
+Thank you. Part 3 next: designing the evaluation of an AI agent as a study.
+:::
