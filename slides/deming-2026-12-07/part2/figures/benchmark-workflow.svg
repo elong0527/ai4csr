@@ -13,8 +13,8 @@
 
 <!-- Step 1 header -->
 <rect x="140" y="18" width="700" height="52" rx="10" fill="#F5D9D3" stroke="#C0614B" stroke-width="1"/>
-<text class="th" x="490" y="39" text-anchor="middle" dominant-baseline="central">Step 1: AI reproduction — set up prompt and rubrics</text>
-<text class="ts" x="490" y="56" text-anchor="middle" dominant-baseline="central">Select 100 trials across therapeutic areas · For each of 100 trials:</text>
+<text class="th" x="490" y="39" text-anchor="middle" dominant-baseline="central">Step 1: AI reproduction &#8212; set up prompt and rubrics</text>
+<text class="ts" x="490" y="56" text-anchor="middle" dominant-baseline="central">Select 100 trials across therapeutic areas &#183; For each of 100 trials:</text>
 <line x1="490" y1="70" x2="490" y2="92" class="arr"/>
 
 <!-- MODEL INPUTS TABLE -->
@@ -75,7 +75,7 @@
 <text class="ts" x="294" y="207" dominant-baseline="central">Extraction</text>
 <text class="ts" x="294" y="221" dominant-baseline="central">only</text>
 <text class="ts" x="408" y="214" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
-<text class="ts" x="488" y="214" text-anchor="middle" dominant-baseline="central" fill="#888">—</text>
+<text class="ts" x="488" y="214" text-anchor="middle" dominant-baseline="central" fill="#888">&#8212;</text>
 <text class="ts" x="534" y="214" dominant-baseline="central">Alpha to PFS = 0.0125</text>
 <text class="ts" x="780" y="214" text-anchor="middle" dominant-baseline="central">1pt / exact</text>
 <line x1="60" y1="230" x2="860" y2="230" stroke="#ddd" stroke-width="0.5"/>
@@ -89,14 +89,14 @@
 <text class="ts" x="408" y="252" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
 <text class="ts" x="488" y="252" text-anchor="middle" dominant-baseline="central" fill="#888">calc. value</text>
 <text class="ts" x="534" y="252" dominant-baseline="central">PFS events = 412</text>
-<text class="ts" x="780" y="252" text-anchor="middle" dominant-baseline="central">1pt / ±2</text>
+<text class="ts" x="780" y="252" text-anchor="middle" dominant-baseline="central">1pt / &#177;2</text>
 <line x1="60" y1="270" x2="860" y2="270" stroke="#ddd" stroke-width="0.5"/>
 
 <!-- P-002 inputs -->
 <text class="ts" x="408" y="292" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
 <text class="ts" x="488" y="292" text-anchor="middle" dominant-baseline="central" fill="#888">inputs_used</text>
 <text class="ts" x="534" y="285" dominant-baseline="central">HR=0.75, power=0.80,</text>
-<text class="ts" x="534" y="299" dominant-baseline="central">α=0.0125, ratio=2:1</text>
+<text class="ts" x="534" y="299" dominant-baseline="central">&#945;=0.0125, ratio=2:1</text>
 <text class="ts" x="780" y="292" text-anchor="middle" dominant-baseline="central">1pt / 0.5 partial</text>
 <line x1="60" y1="312" x2="860" y2="312" stroke="#ddd" stroke-width="0.5"/>
 
@@ -128,7 +128,7 @@
 <line x1="460" y1="468" x2="460" y2="494" class="arr"/>
 <rect x="240" y="494" width="440" height="52" rx="10" fill="#EDE9FD" stroke="#7C6EE8" stroke-width="1"/>
 <text class="th" x="460" y="512" text-anchor="middle" dominant-baseline="central">Step 2: Benchmark 1</text>
-<text class="ts" x="460" y="528" text-anchor="middle" dominant-baseline="central">One benchmark.json per trial · prompt + rubrics from step 1</text>
+<text class="ts" x="460" y="528" text-anchor="middle" dominant-baseline="central">One benchmark.json per trial &#183; prompt + rubrics from step 1</text>
 
 <!-- Three boxes: same row, symmetric around x=460 -->
 <line x1="460" y1="546" x2="460" y2="572" class="arr"/>
