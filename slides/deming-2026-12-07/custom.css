@@ -28,6 +28,42 @@
   margin-bottom: 0.45em;
 }
 
+.reveal .pass {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.reveal .fail {
+  color: #c62828;
+  font-weight: 700;
+}
+
+.reveal .progress-stat {
+  margin: 0.4em auto 1em;
+  max-width: 460px;
+  text-align: center;
+}
+
+.reveal .progress-bar {
+  background: #e8edf5;
+  border: 1px solid #c7d2e3;
+  border-radius: 8px;
+  height: 16px;
+  margin: 0.5em 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.reveal .progress-fill {
+  background: linear-gradient(90deg, var(--course-blue), #2e7d32);
+  height: 100%;
+}
+
+.reveal .progress-label {
+  color: var(--course-muted);
+  font-size: 0.65em;
+}
+
 .reveal table {
   font-size: 0.76em;
   line-height: 1.4;
@@ -47,6 +83,31 @@
   font-style: normal;
   padding: 0.4em 0.8em;
   width: 90%;
+}
+
+.reveal .demo-feature {
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+.reveal .demo-feature p:nth-child(1) {
+  font-size: 3em;
+  margin-bottom: 0.2em;
+}
+
+.reveal .demo-feature p:nth-child(2) {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.reveal .demo-feature p:nth-child(2) a {
+  color: var(--course-blue);
+}
+
+.reveal .demo-feature p:nth-child(3) {
+  color: var(--course-muted);
+  font-size: 0.65em;
+  margin-top: 0.6em;
 }
 
 .reveal .slides .columns > .column > .scenario {
@@ -486,6 +547,58 @@
   transform: translateY(-50%);
 }
 
+/* Worked example: one background/border colour per sub-agent, so a box's
+   owner is visible without reading its tag line. */
+.reveal .flow-step.build {
+  background: #e3f2fd;
+  border: 2px solid #1565c0;
+  color: #1565c0;
+}
+
+.reveal .flow-step.validate {
+  background: #e8f5e9;
+  border: 2px solid #2e7d32;
+  color: #1b5e20;
+}
+
+.reveal .flow-step.adjudicate {
+  background: #fff3e0;
+  border: 2px solid #fb8c00;
+  color: #e65100;
+}
+
+.reveal .flow-step.build .tag { color: #1565c0; }
+.reveal .flow-step.validate .tag { color: #1b5e20; }
+.reveal .flow-step.adjudicate .tag { color: #e65100; }
+
+/* Worked example: the closing takeaway line, set apart from the diagram
+   above it. */
+.reveal .highlight-note {
+  background: #e8f0fc;
+  border-radius: 0.4em;
+  color: var(--course-blue);
+  font-size: 0.8em;
+  font-weight: 700;
+  margin: 0.9em auto 0;
+  max-width: 34em;
+  padding: 0.5em 1.2em;
+  text-align: center;
+}
+
+/* Worked example: the overall skill guiding the whole workflow, a second
+   label chip beside "AI-native". */
+.reveal .skill-label {
+  background: #ffffff;
+  color: #0e7c86;
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0 0.6em;
+  position: absolute;
+  right: 1.6em;
+  top: -0.8em;
+}
+
 /* Mean arterial pressure: the shared prompt, then the three prompt tiers side
    by side, from the SLDS deck. */
 .reveal .map-prompts .map-shared {
@@ -552,6 +665,71 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
+/* Worked example: the second, four-step row of the daily dashboard flow. */
+.reveal .flow.flow-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Worked example: the dashed boundary around the AI-native step rows,
+   labelled the same way the short-course harness card is. */
+.reveal .ai-native {
+  border: 2.5px dashed #8e24aa;
+  border-radius: 16px;
+  margin: 0.8em 0 0.6em;
+  padding: 1.6em 1.3em 1.1em;
+  position: relative;
+}
+
+.reveal .ai-native-label {
+  background: #ffffff;
+  color: #6a1b9a;
+  font-size: 0.6em;
+  font-weight: 700;
+  left: 1.6em;
+  letter-spacing: 0.02em;
+  padding: 0 0.6em;
+  position: absolute;
+  top: -0.8em;
+}
+
+/* Worked example: the sub-agent / skill tag inside a step box, under its
+   grey descriptor line. */
+.reveal .flow-step .tag {
+  color: var(--course-blue);
+  display: block;
+  font-size: 0.78em;
+  font-weight: 700;
+  margin-top: 0.3em;
+}
+
+/* Worked example: the audit-trail strip under the step rows. */
+.reveal .audit-bar {
+  background: #eef1f6;
+  border: 1px solid #9aa3b2;
+  border-radius: 8px;
+  color: #444;
+  font-size: 0.62em;
+  font-weight: 700;
+  margin: 0.5em auto 0;
+  max-width: 30em;
+  padding: 0.4em 1em;
+  text-align: center;
+}
+
+/* Worked example: human review, deliberately styled outside the
+   AI-native box it sits below. */
+.reveal .human-review {
+  background: #ffebee;
+  border: 2px solid #c62828;
+  border-radius: 12px;
+  color: #b71c1c;
+  font-size: 0.72em;
+  margin: 0.7em auto 0;
+  max-width: 26em;
+  padding: 0.5em 1.1em;
+  text-align: center;
+}
+
 /* AI evaluation: the opening result, a second headline number in the muted
    colour, and a gap before it so the two read as separate results. */
 .reveal .big-number.muted {
@@ -589,4 +767,20 @@
 /* AI evaluation: the opening result's labels read at body size. */
 .reveal .sign-off .metric-label {
   font-size: 1.25rem;
+}
+
+/* Part 2 title: the heading is long, so it is set smaller than the default
+   section-divider size to fit on one or two lines without crowding the
+   section-brief below it. */
+.reveal .slides section#part2-title h1 {
+  font-size: 2em;
+}
+
+/* Part 2 title: the presenter's name, set apart from the section-brief
+   above it. */
+.reveal .slides section .section-brief.speaker {
+  font-size: 0.85em;
+  font-weight: 700;
+  margin-top: 1.4em;
+  opacity: 0.9;
 }

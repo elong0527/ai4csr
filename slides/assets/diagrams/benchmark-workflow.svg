@@ -1,0 +1,189 @@
+<svg width="980" height="1100" viewBox="0 0 980 1100" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+</marker>
+</defs>
+<style>
+  text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .th { font-size: 11px; font-weight: 700; fill: #222; }
+  .ts { font-size: 10px; fill: #555; }
+  .arr { stroke: #888; stroke-width: 1.4; fill: none; marker-end: url(#arr); }
+</style>
+
+<!-- Step 1 header -->
+<rect x="140" y="18" width="700" height="52" rx="10" fill="#F5D9D3" stroke="#C0614B" stroke-width="1"/>
+<text class="th" x="490" y="39" text-anchor="middle" dominant-baseline="central">Step 1: AI reproduction — set up prompt and rubrics</text>
+<text class="ts" x="490" y="56" text-anchor="middle" dominant-baseline="central">Select 100 trials across therapeutic areas · For each of 100 trials:</text>
+<line x1="490" y1="70" x2="490" y2="92" class="arr"/>
+
+<!-- MODEL INPUTS TABLE -->
+<!-- Cols: ID 60-115 | DesEl 115-195 | Question 195-290 | Qtype 290-370 || Art 370-445 | Dim 445-530 | Criterion 530-700 | Pts 700-860 -->
+<rect x="60" y="92" width="800" height="308" rx="8" fill="#f8f8f8" stroke="#ccc"/>
+
+<!-- title -->
+<text class="th" x="460" y="112" text-anchor="middle" dominant-baseline="central">Model Inputs  (collected via statistician intake form)</text>
+
+<!-- ROW 1: group labels -->
+<line x1="60" y1="122" x2="860" y2="122" stroke="#ccc" stroke-width="0.5"/>
+<rect x="62" y="123" width="306" height="20" fill="#BA7517" fill-opacity="0.18"/>
+<text x="215" y="133" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="700" fill="#BA7517">Prompt (eval questions)</text>
+<rect x="370" y="123" width="488" height="20" fill="#2a9d8f" fill-opacity="0.18"/>
+<text x="614" y="133" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="700" fill="#2a9d8f">Rubrics (grading guide)</text>
+<line x1="368" y1="122" x2="368" y2="400" stroke="#888" stroke-width="1.2"/>
+
+<!-- ROW 2: source labels -->
+<line x1="60" y1="143" x2="860" y2="143" stroke="#ccc" stroke-width="0.5"/>
+<rect x="62" y="144" width="306" height="18" fill="#BA7517" fill-opacity="0.80"/>
+<text x="215" y="153" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#fff">Provided by human</text>
+<rect x="370" y="144" width="158" height="18" fill="#999" fill-opacity="0.20"/>
+<text x="449" y="153" text-anchor="middle" dominant-baseline="central" font-size="9" fill="#555">Auto-generated</text>
+<rect x="530" y="144" width="328" height="18" fill="#2a9d8f" fill-opacity="0.75"/>
+<text x="694" y="153" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#fff">Provided by human</text>
+<line x1="528" y1="143" x2="528" y2="400" stroke="#bbb" stroke-width="1" stroke-dasharray="4 2"/>
+
+<!-- ROW 3: col headers -->
+<line x1="60" y1="162" x2="860" y2="162" stroke="#ccc" stroke-width="0.5"/>
+<text class="ts" x="88" y="174" text-anchor="middle" dominant-baseline="central" font-weight="600" fill="#333">ID</text>
+<text class="ts" x="155" y="174" text-anchor="middle" dominant-baseline="central" font-weight="600" fill="#333">Design element</text>
+<text class="ts" x="243" y="174" text-anchor="middle" dominant-baseline="central" font-weight="600" fill="#333">Question</text>
+<text class="ts" x="330" y="174" text-anchor="middle" dominant-baseline="central" font-weight="600" fill="#333">Q. type</text>
+<text font-size="10" fill="#2a9d8f" font-weight="600" x="408" y="174" text-anchor="middle" dominant-baseline="central">Artifact</text>
+<text font-size="10" fill="#2a9d8f" font-weight="600" x="488" y="174" text-anchor="middle" dominant-baseline="central">Dimension</text>
+<text class="ts" x="615" y="174" text-anchor="middle" dominant-baseline="central" font-weight="600" fill="#333">Criterion</text>
+<text class="ts" x="780" y="174" text-anchor="middle" dominant-baseline="central" font-weight="600" fill="#333">Points / Tolerance</text>
+<line x1="60" y1="184" x2="860" y2="184" stroke="#ccc" stroke-width="0.5"/>
+
+<!-- col dividers -->
+<line x1="115" y1="122" x2="115" y2="400" stroke="#ddd" stroke-width="0.5"/>
+<line x1="195" y1="122" x2="195" y2="400" stroke="#ddd" stroke-width="0.5"/>
+<line x1="290" y1="122" x2="290" y2="400" stroke="#ddd" stroke-width="0.5"/>
+<line x1="445" y1="162" x2="445" y2="400" stroke="#ddd" stroke-width="0.5"/>
+<line x1="700" y1="162" x2="700" y2="400" stroke="#ddd" stroke-width="0.5"/>
+
+<!-- amber highlight: prompt data -->
+<rect x="62" y="185" width="306" height="213" rx="3" fill="#FEF3E2" fill-opacity="0.6" stroke="#BA7517" stroke-width="1.5"/>
+<!-- teal highlight: rubrics data -->
+<rect x="370" y="185" width="488" height="213" rx="3" fill="#E6F5F3" fill-opacity="0.6" stroke="#2a9d8f" stroke-width="1.5"/>
+<!-- grey dashed inner: auto cols -->
+<rect x="372" y="187" width="154" height="209" rx="2" fill="#f4f4f4" fill-opacity="0.5" stroke="#bbb" stroke-width="0.8" stroke-dasharray="4 2"/>
+
+<!-- P-001 -->
+<text class="ts" x="68" y="214" dominant-baseline="central">P-001</text>
+<text class="ts" x="119" y="214" dominant-baseline="central">Alpha alloc.</text>
+<text class="ts" x="199" y="214" dominant-baseline="central">Alpha to PFS</text>
+<text class="ts" x="294" y="207" dominant-baseline="central">Extraction</text>
+<text class="ts" x="294" y="221" dominant-baseline="central">only</text>
+<text class="ts" x="408" y="214" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
+<text class="ts" x="488" y="214" text-anchor="middle" dominant-baseline="central" fill="#888">—</text>
+<text class="ts" x="534" y="214" dominant-baseline="central">Alpha to PFS = 0.0125</text>
+<text class="ts" x="780" y="214" text-anchor="middle" dominant-baseline="central">1pt / exact</text>
+<line x1="60" y1="230" x2="860" y2="230" stroke="#ddd" stroke-width="0.5"/>
+
+<!-- P-002 calc -->
+<text class="ts" x="68" y="252" dominant-baseline="central">P-002</text>
+<text class="ts" x="119" y="252" dominant-baseline="central">Sample size</text>
+<text class="ts" x="199" y="252" dominant-baseline="central">PFS events</text>
+<text class="ts" x="294" y="245" dominant-baseline="central">Derivation</text>
+<text class="ts" x="294" y="259" dominant-baseline="central">required</text>
+<text class="ts" x="408" y="252" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
+<text class="ts" x="488" y="252" text-anchor="middle" dominant-baseline="central" fill="#888">calc. value</text>
+<text class="ts" x="534" y="252" dominant-baseline="central">PFS events = 412</text>
+<text class="ts" x="780" y="252" text-anchor="middle" dominant-baseline="central">1pt / ±2</text>
+<line x1="60" y1="270" x2="860" y2="270" stroke="#ddd" stroke-width="0.5"/>
+
+<!-- P-002 inputs -->
+<text class="ts" x="408" y="292" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
+<text class="ts" x="488" y="292" text-anchor="middle" dominant-baseline="central" fill="#888">inputs_used</text>
+<text class="ts" x="534" y="285" dominant-baseline="central">HR=0.75, power=0.80,</text>
+<text class="ts" x="534" y="299" dominant-baseline="central">α=0.0125, ratio=2:1</text>
+<text class="ts" x="780" y="292" text-anchor="middle" dominant-baseline="central">1pt / 0.5 partial</text>
+<line x1="60" y1="312" x2="860" y2="312" stroke="#ddd" stroke-width="0.5"/>
+
+<!-- P-002 method -->
+<text class="ts" x="408" y="332" text-anchor="middle" dominant-baseline="central" fill="#888">output.json</text>
+<text class="ts" x="488" y="332" text-anchor="middle" dominant-baseline="central" fill="#888">method</text>
+<text class="ts" x="534" y="332" dominant-baseline="central">Schoenfeld approx. correctly applied</text>
+<text class="ts" x="780" y="325" text-anchor="middle" dominant-baseline="central">1pt / correct formula</text>
+<text class="ts" x="780" y="339" text-anchor="middle" dominant-baseline="central">or method name</text>
+<line x1="60" y1="350" x2="860" y2="350" stroke="#ddd" stroke-width="0.5"/>
+
+<!-- P-002 reproducibility -->
+<text class="ts" x="408" y="374" text-anchor="middle" dominant-baseline="central" fill="#888">output.R</text>
+<text class="ts" x="488" y="374" text-anchor="middle" dominant-baseline="central" fill="#888">reproducibility</text>
+<text class="ts" x="534" y="367" dominant-baseline="central">R script executes and</text>
+<text class="ts" x="534" y="381" dominant-baseline="central">reproduces value</text>
+<text class="ts" x="780" y="367" text-anchor="middle" dominant-baseline="central">1pt / exact number</text>
+<text class="ts" x="780" y="381" text-anchor="middle" dominant-baseline="central">to the calc value</text>
+
+<!-- Plus sign between table and system prompt -->
+<text x="460" y="414" text-anchor="middle" dominant-baseline="central" font-size="18" font-weight="700" fill="#666">+</text>
+
+<!-- System prompt box -->
+<rect x="270" y="428" width="380" height="44" rx="8" fill="#E0F2F0" stroke="#2a9d8f" stroke-width="1"/>
+<text class="th" x="460" y="443" text-anchor="middle" dominant-baseline="central">System prompt (auto-generated)</text>
+<text class="ts" x="460" y="458" text-anchor="middle" dominant-baseline="central">Input format clarification and output format requirements</text>
+
+<!-- Step 2: Benchmark 1 -->
+<line x1="460" y1="468" x2="460" y2="494" class="arr"/>
+<rect x="240" y="494" width="440" height="52" rx="10" fill="#EDE9FD" stroke="#7C6EE8" stroke-width="1"/>
+<text class="th" x="460" y="512" text-anchor="middle" dominant-baseline="central">Step 2: Benchmark 1</text>
+<text class="ts" x="460" y="528" text-anchor="middle" dominant-baseline="central">One benchmark.json per trial · prompt + rubrics from step 1</text>
+
+<!-- Three boxes: same row, symmetric around x=460 -->
+<line x1="460" y1="546" x2="460" y2="572" class="arr"/>
+<rect x="100" y="572" width="210" height="80" rx="8" fill="#E0F2F0" stroke="#2a9d8f" stroke-width="1"/>
+<text class="th" x="205" y="592" text-anchor="middle" dominant-baseline="central">Input document</text>
+<text class="ts" x="205" y="610" text-anchor="middle" dominant-baseline="central">SAP or protocol</text>
+<text class="ts" x="205" y="626" text-anchor="middle" dominant-baseline="central">closed-book reference</text>
+<text class="ts" x="205" y="642" text-anchor="middle" dominant-baseline="central">(filename reference)</text>
+
+<rect x="335" y="572" width="250" height="80" rx="8" fill="#E0F2F0" stroke="#2a9d8f" stroke-width="1"/>
+<text class="th" x="460" y="592" text-anchor="middle" dominant-baseline="central">Prompt</text>
+<text class="ts" x="460" y="610" text-anchor="middle" dominant-baseline="central">Structured eval questions</text>
+<text class="ts" x="460" y="626" text-anchor="middle" dominant-baseline="central">extraction + derivation</text>
+<text class="ts" x="460" y="642" text-anchor="middle" dominant-baseline="central">with null outputs</text>
+
+<rect x="610" y="572" width="210" height="80" rx="8" fill="#E0F2F0" stroke="#2a9d8f" stroke-width="1"/>
+<text class="th" x="715" y="592" text-anchor="middle" dominant-baseline="central">Rubrics</text>
+<text class="ts" x="715" y="610" text-anchor="middle" dominant-baseline="central">Criteria, tolerance, scoring</text>
+<text class="ts" x="715" y="626" text-anchor="middle" dominant-baseline="central">points per question</text>
+<text class="ts" x="715" y="642" text-anchor="middle" dominant-baseline="central">and dimension</text>
+
+<!-- Step 3: Benchmark 2 -->
+<line x1="460" y1="652" x2="460" y2="678" class="arr"/>
+<rect x="240" y="678" width="440" height="52" rx="10" fill="#EDE9FD" stroke="#7C6EE8" stroke-width="1"/>
+<text class="th" x="460" y="696" text-anchor="middle" dominant-baseline="central">Step 3: Benchmark 2</text>
+<text class="ts" x="460" y="712" text-anchor="middle" dominant-baseline="central">New trial design for same 100 trials, without SAP</text>
+
+<text class="ts" x="460" y="746" text-anchor="middle" dominant-baseline="central">Industry statisticians provide design context and evaluate outputs</text>
+<line x1="460" y1="738" x2="460" y2="766" class="arr"/>
+
+<!-- Context boxes: symmetric around x=460 -->
+<rect x="210" y="766" width="240" height="48" rx="8" fill="#f0f0f0" stroke="#aaa" stroke-width="1"/>
+<text class="th" x="330" y="786" text-anchor="middle" dominant-baseline="central">Disease setting</text>
+<text class="ts" x="330" y="802" text-anchor="middle" dominant-baseline="central">Indication, population, unmet need</text>
+
+<rect x="470" y="766" width="240" height="48" rx="8" fill="#f0f0f0" stroke="#aaa" stroke-width="1"/>
+<text class="th" x="590" y="786" text-anchor="middle" dominant-baseline="central">Treatment landscape</text>
+<text class="ts" x="590" y="802" text-anchor="middle" dominant-baseline="central">SoC, comparators, prior approvals</text>
+
+<rect x="213" y="828" width="155" height="48" rx="8" fill="#f0f0f0" stroke="#aaa" stroke-width="1"/>
+<text class="th" x="290" y="848" text-anchor="middle" dominant-baseline="central">Regulatory context</text>
+<text class="ts" x="290" y="864" text-anchor="middle" dominant-baseline="central">Agency, endpoints</text>
+
+<rect x="383" y="828" width="155" height="48" rx="8" fill="#f0f0f0" stroke="#aaa" stroke-width="1"/>
+<text class="th" x="460" y="848" text-anchor="middle" dominant-baseline="central">Prior evidence</text>
+<text class="ts" x="460" y="864" text-anchor="middle" dominant-baseline="central">Phase 1/2, biomarkers</text>
+
+<rect x="553" y="828" width="155" height="48" rx="8" fill="#f0f0f0" stroke="#aaa" stroke-width="1"/>
+<text class="th" x="630" y="848" text-anchor="middle" dominant-baseline="central">Sponsor context</text>
+<text class="ts" x="630" y="864" text-anchor="middle" dominant-baseline="central">Portfolio, timelines</text>
+
+<text class="ts" x="460" y="896" text-anchor="middle" dominant-baseline="central">+ other context as needed</text>
+<line x1="460" y1="906" x2="460" y2="930" class="arr"/>
+
+<rect x="200" y="930" width="520" height="52" rx="10" fill="#F5D9D3" stroke="#C0614B" stroke-width="1"/>
+<text class="th" x="460" y="950" text-anchor="middle" dominant-baseline="central">AI generates new trial design</text>
+<text class="ts" x="460" y="966" text-anchor="middle" dominant-baseline="central">Evaluated for realism, relevance, feasibility</text>
+</svg>
