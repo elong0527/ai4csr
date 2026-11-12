@@ -347,21 +347,8 @@ Human and AI review the specification during planning; the engine executes the a
 
 ## yamaa: YAML specification example
 
+::: {.spec-code}
 ```yaml
-yamaa: "1.0"
-type: spec
-model: ADaM
-domain: ADSL
-keys: [STUDYID, USUBJID]
-input:
-  SOURCE:
-    path: input/adsl.csv
-    types: {HEIGHTCM: float, WEIGHTKG: float}
-
-output:
-  path: adsl.csv
-  columns: [STUDYID, USUBJID, BMI]
-
 columns:
   - {name: STUDYID, type: str, label: Study Identifier, derivation: SOURCE.STUDYID}
   - {name: USUBJID, type: str, label: Unique Subject Identifier, derivation: SOURCE.USUBJID}
@@ -372,6 +359,7 @@ columns:
     label: Body Mass Index (kg/m2)
     derivation: "WEIGHTKG / POWER(NULLIF(HEIGHTCM, 0) / 100, 2)"
 ```
+:::
 
 ## yamaa: core principle
 
