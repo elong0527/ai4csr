@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="430" viewBox="0 0 1300 430" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="430" fill="#ffffff"/><text x="40" y="34" font-size="14" fill="#888" text-anchor="start" font-weight="bold">WHAT THE MODEL WRITES</text>
+<text x="1015" y="34" font-size="14" fill="#888" text-anchor="start" font-weight="bold">ADSL, 17 VARIABLES</text>
+<line x1="40" y1="46" x2="1280" y2="46" stroke="#bdbdbd" stroke-width="1.5"/>
+<text x="1050" y="72" font-size="13.5" fill="#555" text-anchor="middle" font-weight="bold">3B open</text>
+<text x="1138" y="72" font-size="13.5" fill="#555" text-anchor="middle" font-weight="bold">Haiku 5.5</text>
+<text x="1226" y="72" font-size="13.5" fill="#555" text-anchor="middle" font-weight="bold">Opus 5.5</text>
+<text x="40" y="142" font-size="19" fill="#385898" text-anchor="start" font-weight="bold">A program</text>
+<rect x="215" y="100" width="120" height="84" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="275.0" y="147.0" font-size="16" fill="#e65100" text-anchor="middle" font-weight="bold">LLM</text>
+<path d="M 337 142 L 386 142" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="390" y="100" width="210" height="84" rx="10" fill="#f5f5f5" stroke="#777777" stroke-width="2.5"/>
+<text x="495.0" y="137.0" font-size="16" fill="#222222" text-anchor="middle" font-weight="bold">R program</text>
+<text x="495.0" y="161.0" font-size="13" fill="#555" text-anchor="middle">free text</text>
+<path d="M 602 142 L 646 142" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="650" y="100" width="220" height="84" rx="10" fill="#ffebee" stroke="#e53935" stroke-width="2.5"/>
+<text x="760.0" y="127.0" font-size="16" fill="#b71c1c" text-anchor="middle" font-weight="bold">Runs or stops</text>
+<text x="760.0" y="151.0" font-size="13" fill="#555" text-anchor="middle">one error costs</text>
+<text x="760.0" y="171.0" font-size="13" fill="#555" text-anchor="middle">all 17 variables</text>
+<path d="M 872 142 L 1000 142" fill="none" stroke="#9e9e9e" stroke-width="1.5" marker-end="url(#m_grey)"/>
+<text x="1050" y="142" font-size="17" fill="#b71c1c" text-anchor="middle" font-weight="bold">0/20 ran</text>
+<text x="1138" y="142" font-size="17" fill="#222" text-anchor="middle" font-weight="bold">16/20</text>
+<text x="1226" y="142" font-size="17" fill="#b71c1c" text-anchor="middle" font-weight="bold">2/10</text>
+<text x="1138" y="170" font-size="12.5" fill="#888" text-anchor="middle">exact programs</text>
+<line x1="40" y1="200" x2="1280" y2="200" stroke="#eeeeee" stroke-width="1.5"/>
+<text x="40" y="262" font-size="19" fill="#385898" text-anchor="start" font-weight="bold">A structure</text>
+<rect x="215" y="220" width="120" height="84" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="275.0" y="267.0" font-size="16" fill="#e65100" text-anchor="middle" font-weight="bold">LLM</text>
+<path d="M 337 262 L 386 262" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="390" y="220" width="210" height="84" rx="10" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+<text x="495.0" y="247.0" font-size="16" fill="#1565c0" text-anchor="middle" font-weight="bold">JSON per variable</text>
+<text x="495.0" y="271.0" font-size="13" fill="#555" text-anchor="middle">method &#183; dataset &#183; filter</text>
+<text x="495.0" y="291.0" font-size="13" fill="#555" text-anchor="middle">order &#183; imputation</text>
+<path d="M 602 262 L 646 262" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="650" y="220" width="220" height="84" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="760.0" y="247.0" font-size="16" fill="#1b5e20" text-anchor="middle" font-weight="bold">Tested generator</text>
+<text x="760.0" y="271.0" font-size="13" fill="#555" text-anchor="middle">written once by people</text>
+<text x="760.0" y="291.0" font-size="13" fill="#555" text-anchor="middle">&#8594; admiral code</text>
+<path d="M 872 262 L 1000 262" fill="none" stroke="#9e9e9e" stroke-width="1.5" marker-end="url(#m_grey)"/>
+<text x="1050" y="262" font-size="17" fill="#222" text-anchor="middle" font-weight="bold">10/10 ran</text>
+<text x="1138" y="262" font-size="17" fill="#1b5e20" text-anchor="middle" font-weight="bold">10/10</text>
+<text x="1226" y="262" font-size="17" fill="#1b5e20" text-anchor="middle" font-weight="bold">5/5</text>
+<text x="1138" y="290" font-size="12.5" fill="#888" text-anchor="middle">exact programs</text>
+<line x1="40" y1="320" x2="1280" y2="320" stroke="#eeeeee" stroke-width="1.5"/>
+<text x="40" y="382" font-size="19" fill="#385898" text-anchor="start" font-weight="bold">A specification</text>
+<rect x="215" y="340" width="120" height="84" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="275.0" y="387.0" font-size="16" fill="#e65100" text-anchor="middle" font-weight="bold">LLM</text>
+<path d="M 337 382 L 386 382" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="390" y="340" width="210" height="84" rx="10" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2.5"/>
+<text x="495.0" y="377.0" font-size="16" fill="#1565c0" text-anchor="middle" font-weight="bold">yamaa spec</text>
+<text x="495.0" y="401.0" font-size="13" fill="#555" text-anchor="middle">plain-text YAML</text>
+<path d="M 602 382 L 646 382" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="650" y="340" width="220" height="84" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="760.0" y="367.0" font-size="16" fill="#1b5e20" text-anchor="middle" font-weight="bold">yamaa engine</text>
+<text x="760.0" y="391.0" font-size="13" fill="#555" text-anchor="middle">checks, then runs;</text>
+<text x="760.0" y="411.0" font-size="13" fill="#555" text-anchor="middle">issues returned</text>
+<path d="M 872 382 L 1000 382" fill="none" stroke="#9e9e9e" stroke-width="1.5" marker-end="url(#m_grey)"/>
+<text x="1050" y="382" font-size="17" fill="#222" text-anchor="middle" font-weight="bold">all refused</text>
+<text x="1138" y="382" font-size="17" fill="#1b5e20" text-anchor="middle" font-weight="bold">10/10</text>
+<text x="1226" y="382" font-size="17" fill="#1b5e20" text-anchor="middle" font-weight="bold">5/5</text>
+<text x="1138" y="410" font-size="12.5" fill="#888" text-anchor="middle">exact, with feedback</text></svg>
