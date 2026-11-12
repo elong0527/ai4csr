@@ -400,8 +400,7 @@ the planning stage, while the study is ongoing.
 # Benchmarks {background-color="#385898"}
 
 ::: {.section-brief}
-**You will:** see what a benchmark measures, how Harbor grades an agent, and
-what a pass rate cannot tell you.
+**You will:** explore benchmark for AI evaluation
 :::
 
 ## What is a benchmark?
@@ -414,6 +413,10 @@ what a pass rate cannot tell you.
 **Like double programming:** the agent is the production programmer, the
 expected output is the independent QC, and the grader compares the two
 datasets value by value.
+
+## Benchmark is a trial
+
+![](../assets/diagrams/evaluate-trial.svg)
 
 ## Benchmark for SDTM and ADaM
 
