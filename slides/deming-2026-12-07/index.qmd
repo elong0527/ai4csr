@@ -1172,6 +1172,10 @@ the life of the trial, giving two things in real time:
 - **Skills, hook-written logs, and sub-agents sharpen that context** — one
   skill per domain task, one log entry per hooked event, one sub-agent per
   task in the workflow — so every step runs with just the context it needs.
+- **The harness itself can be packaged and shared.** The AI-native harness
+  you build in your working directory can naturally be packaged as a
+  skill or an MCP server — served up as a plug-in another agency can
+  connect to their own AI system.
 
 ## Topic 2: Building skills to bring domain knowledge into context
 
