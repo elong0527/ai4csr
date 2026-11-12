@@ -27,3 +27,6 @@ examples/sap-change/benchmark/runs/
 /slides/*/index.html
 /slides/*/index_files/
 /slides/*/.quarto/
+/slides/*/*/index.html
+/slides/*/*/index_files/
+/slides/*/*/.quarto/

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="440" viewBox="0 0 1300 440" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="440" fill="#ffffff"/><text x="40" y="32" font-size="15" fill="#b71c1c" text-anchor="start" font-weight="bold">SOP IN THE PROMPT: THE AGENT DECIDES</text>
+<line x1="40" y1="44" x2="600" y2="44" stroke="#bdbdbd" stroke-width="1.5"/>
+<rect x="40" y="64" width="262" height="180" rx="10" fill="#fafafa" stroke="#777777" stroke-width="1.8"/>
+<text x="58" y="92" font-size="15.5" fill="#222" text-anchor="start" font-weight="bold">Instructions in the prompt</text>
+<text x="58" y="124" font-size="15" fill="#444" text-anchor="start">1. Write the program</text>
+<text x="58" y="152" font-size="15" fill="#444" text-anchor="start">2. Run independent QC</text>
+<text x="58" y="180" font-size="15" fill="#444" text-anchor="start">3. Check CDISC rules</text>
+<text x="58" y="208" font-size="15" fill="#444" text-anchor="start">4. Compare; ask for sign-off</text>
+<path d="M 304 154 L 352 154" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="356" y="104" width="230" height="100" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="471" y="142" font-size="17" fill="#e65100" text-anchor="middle" font-weight="bold">One agent in a loop</text>
+<text x="471" y="168" font-size="14.5" fill="#555" text-anchor="middle">chooses its own</text>
+<text x="471" y="188" font-size="14.5" fill="#555" text-anchor="middle">next step</text>
+<path d="M 430 102 L 430 74 L 520 74 L 520 100" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<text x="475" y="66" font-size="13.5" fill="#444" text-anchor="middle" font-style="italic">next step?</text>
+<rect x="40" y="268" width="560" height="140" rx="10" fill="#ffebee" stroke="#e53935" stroke-width="2"/>
+<text x="60" y="298" font-size="16.5" fill="#b71c1c" text-anchor="start" font-weight="bold">What can go wrong</text>
+<text x="60" y="328" font-size="15.5" fill="#222" text-anchor="start">&#8226; Skips QC, or writes QC after reading its own program</text>
+<text x="60" y="354" font-size="15.5" fill="#222" text-anchor="start">&#8226; Stops early and reports "done"</text>
+<text x="60" y="380" font-size="15.5" fill="#222" text-anchor="start">&#8226; Nothing guarantees a step ran, or records that it did</text>
+<text x="690" y="32" font-size="15" fill="#1b5e20" text-anchor="start" font-weight="bold">SOP IN CODE: THE WORKFLOW DECIDES</text>
+<line x1="690" y1="44" x2="1270" y2="44" stroke="#bdbdbd" stroke-width="1.5"/>
+<rect x="680" y="64" width="590" height="180" rx="10" fill="#fcf8fd" stroke="#8e24aa" stroke-width="2" stroke-dasharray="7,5"/>
+<text x="975" y="90" font-size="14.5" fill="#6a1b9a" text-anchor="middle" font-weight="bold">The workflow, written in code, runs every step in order</text>
+<rect x="690" y="110" width="100" height="96" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="740.0" y="153.0" font-size="15" fill="#e65100" text-anchor="middle" font-weight="bold">Program</text>
+<text x="740.0" y="177.0" font-size="12.5" fill="#555" text-anchor="middle">agent</text>
+<path d="M 791 158 L 810 158" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="811" y="110" width="100" height="96" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="861.0" y="143.0" font-size="15" fill="#e65100" text-anchor="middle" font-weight="bold">QC program</text>
+<text x="861.0" y="167.0" font-size="12.5" fill="#555" text-anchor="middle">agent, blind to</text>
+<text x="861.0" y="187.0" font-size="12.5" fill="#555" text-anchor="middle">production</text>
+<path d="M 912 158 L 931 158" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="932" y="110" width="100" height="96" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="982.0" y="153.0" font-size="15" fill="#1b5e20" text-anchor="middle" font-weight="bold">CDISC rules</text>
+<text x="982.0" y="177.0" font-size="12.5" fill="#555" text-anchor="middle">code</text>
+<path d="M 1033 158 L 1052 158" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="1053" y="110" width="100" height="96" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="1103.0" y="143.0" font-size="15" fill="#1b5e20" text-anchor="middle" font-weight="bold">Compare</text>
+<text x="1103.0" y="167.0" font-size="12.5" fill="#555" text-anchor="middle">code, cell</text>
+<text x="1103.0" y="187.0" font-size="12.5" fill="#555" text-anchor="middle">by cell</text>
+<path d="M 1154 158 L 1173 158" fill="none" stroke="#444" stroke-width="2" marker-end="url(#m_k)"/>
+<rect x="1174" y="110" width="100" height="96" rx="10" fill="#f5f5f5" stroke="#777777" stroke-width="2.5"/>
+<text x="1224.0" y="153.0" font-size="15" fill="#222222" text-anchor="middle" font-weight="bold">Sign-off</text>
+<text x="1224.0" y="177.0" font-size="12.5" fill="#555" text-anchor="middle">person</text>
+<text x="975" y="230" font-size="13.5" fill="#c62828" text-anchor="middle" font-weight="bold">mismatch &#8594; agents revise once &#8594; a person decides</text>
+<rect x="680" y="268" width="590" height="140" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+<text x="700" y="298" font-size="16.5" fill="#1b5e20" text-anchor="start" font-weight="bold">What you get</text>
+<text x="700" y="328" font-size="15.5" fill="#222" text-anchor="start">&#8226; Every step runs, every time, in the same order</text>
+<text x="700" y="354" font-size="15.5" fill="#222" text-anchor="start">&#8226; Each step leaves a record a reviewer can audit</text>
+<text x="700" y="380" font-size="15.5" fill="#222" text-anchor="start">&#8226; Agents only do what needs language; code checks; a person signs</text></svg>

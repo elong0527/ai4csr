@@ -12,7 +12,6 @@ book:
   author:
     - Yilong Zhang
     - Pingye Zhang
-    - Nan Xiao
   description: |
     Learn how to design trustworthy AI-first workflows for clinical study
     reporting and regulatory submission, combining agent-assisted execution,

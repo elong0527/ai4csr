@@ -164,23 +164,6 @@
   margin-right: 1.2em;
 }
 
-/* Short course: a time tag on each hands-on exercise and discussion, the
-   first line under the slide title. */
-.reveal .slides .pill {
-  background: #e8f0fc;
-  border-radius: 1em;
-  color: var(--course-blue);
-  display: inline-block;
-  font-size: 0.75em;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 0.15em 0.8em;
-}
-
-.reveal .slides p:has(> .pill) {
-  margin: 0 0 0.4em;
-}
-
 /* Short course: an exercise slide holds a code tabset, numbered steps and a
    takeaway, so its blocks sit closer together than on a talk slide. */
 .reveal .slides section.compact h2 {
@@ -243,45 +226,45 @@
   text-decoration: underline;
 }
 
-/* Short course: the schedule, with its part column kept on one line and the
-   minutes right-aligned. */
-.reveal .schedule table {
-  font-size: 0.62em;
-  line-height: 1.3;
-  table-layout: fixed;
-}
-
-.reveal .schedule th,
-.reveal .schedule td {
-  padding: 0.3em 0.5em;
-}
-
-.reveal .schedule th:nth-child(1) { width: 10%; }
-.reveal .schedule th:nth-child(2) { width: 62%; }
-.reveal .schedule th:nth-child(3) { width: 28%; }
-
-.reveal .schedule td:first-child {
-  color: var(--course-blue);
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-/* Short course: the vocabulary, two tables side by side, each term in the
-   course colour. */
+/* Short course: the agent and evaluation vocabularies, one table per slide,
+   each term in the course colour. The separator row in index.qmd sets the
+   column widths, a narrow term column, so each meaning fits on one line. */
 .reveal .glossary table {
-  font-size: 0.58em;
+  font-size: 0.8em;
   line-height: 1.3;
 }
 
 .reveal .glossary th,
 .reveal .glossary td {
-  padding: 0.3em 0.5em;
+  padding: 0.4em 0.6em;
 }
 
 .reveal .glossary td:first-child {
   color: var(--course-blue);
   font-weight: 700;
   white-space: nowrap;
+}
+
+/* Short course: the design principles, each beside the goal it serves, with
+   the principle in the course colour and space before the recommendations
+   that follow. Sized so the slide fits without scrolling. */
+.reveal .principles table {
+  font-size: 0.82em;
+  margin-bottom: 0.6em;
+}
+
+.reveal .principles th,
+.reveal .principles td {
+  padding: 0.3em 0.65em;
+}
+
+.reveal .principles td:first-child {
+  color: var(--course-blue);
+  font-weight: 700;
+}
+
+.reveal .principles td:last-child {
+  color: var(--course-muted);
 }
 
 /* Short course: who does what, one row per workflow step. */
@@ -314,8 +297,20 @@
 
 .reveal .metric-label {
   color: var(--course-muted);
-  font-size: 0.78rem;
+  font-size: 0.8em;
   margin-top: 0.35rem;
+}
+
+/* yamaa: YAML specification example: the full 23-line specification, set
+   larger than the default code size and without Quarto's code-block height
+   cap, so every line shows on the slide without scrolling. */
+.reveal .spec-code pre {
+  font-size: 0.66em;
+}
+
+.reveal .spec-code div.sourceCode pre,
+.reveal .spec-code div.sourceCode pre code {
+  max-height: none;
 }
 
 .reveal .benchmark-embed {
@@ -384,24 +379,6 @@
   background: var(--course-blue);
 }
 
-.reveal .perf-callouts {
-  border-top: 1px solid #dce4f0;
-  display: flex;
-  gap: 2rem;
-  margin-top: 0.6rem;
-  padding-top: 0.4rem;
-}
-
-.reveal .perf-callouts .big-number {
-  font-size: 2.6rem;
-  font-weight: 700;
-}
-
-.reveal .perf-callouts .metric-label {
-  font-size: 0.95rem;
-  margin-top: 0.15rem;
-}
-
 /* R Consortium pilots: hex stickers in rows of five, centered, each with its
    pilot name and years. Each sticker links to its pilot's page. Sized so two
    rows fit under a two-line title and a nested bullet. */
@@ -432,50 +409,6 @@
 .reveal .hex-grid .hex-item p:last-child {
   color: var(--course-muted);
   font-size: 0.85em;
-}
-
-/* AI-first workflow: the six steps of a run as one strip of boxes joined by
-   arrows, each with a one-line note. Adapted from the SLDS deck's flow. */
-.reveal .flow {
-  align-items: stretch;
-  display: grid;
-  gap: 1.1rem;
-  grid-template-columns: repeat(6, 1fr);
-  margin: 0.6em 0 1em;
-}
-
-.reveal .flow-step {
-  background: #e8f0fc;
-  border-radius: 0.3em;
-  color: var(--course-ink);
-  font-size: 0.85em;
-  font-weight: 700;
-  line-height: 1.25;
-  padding: 0.6em 0.5em;
-  position: relative;
-  text-align: center;
-}
-
-.reveal .flow-step p {
-  margin: 0;
-}
-
-.reveal .flow-step .small {
-  color: var(--course-muted);
-  display: block;
-  font-size: 0.85em;
-  font-weight: 400;
-  margin-top: 0.35em;
-}
-
-.reveal .flow-step:not(:last-child)::after {
-  color: var(--course-blue);
-  content: "\2192";
-  font-size: 1.2em;
-  position: absolute;
-  right: -0.95em;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 /* Mean arterial pressure: the shared prompt, then the three prompt tiers side
@@ -539,11 +472,6 @@
   margin: 0;
 }
 
-/* Harbor: a five-step strip. */
-.reveal .flow.flow-5 {
-  grid-template-columns: repeat(5, 1fr);
-}
-
 /* AI evaluation: the opening result, a second headline number in the muted
    colour, and a gap before it so the two read as separate results. */
 .reveal .big-number.muted {
@@ -581,4 +509,86 @@
 /* AI evaluation: the opening result's labels read at body size. */
 .reveal .sign-off .metric-label {
   font-size: 1.25rem;
+}
+
+/* Verify the GitHub Codespace: the expected result sits apart from the code
+   or prompt above it, so each step reads as action, then check. */
+.reveal .slides .expect {
+  margin-top: 1.5em;
+}
+
+/* Benchmark review progress: one square per benchmark in GitHub's
+   contribution-graph style, seven rows filling column by column, one block
+   per standard. review-heatmap.js draws it. */
+.reveal .review-heatmap {
+  margin-top: 1.2em;
+}
+
+.reveal .heatmap-groups {
+  align-items: flex-start;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.reveal .heatmap-label {
+  color: var(--course-ink);
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-bottom: 0.4em;
+}
+
+.reveal .heatmap-label span {
+  color: var(--course-muted);
+  font-weight: 400;
+}
+
+.reveal .heatmap-grid {
+  display: grid;
+  gap: 5px;
+  grid-auto-columns: 26px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 26px);
+}
+
+.reveal .heatmap-cell {
+  border-radius: 4px;
+  display: inline-block;
+  height: 26px;
+  outline: 1px solid rgba(27, 31, 36, 0.06);
+  outline-offset: -1px;
+  width: 26px;
+}
+
+.reveal .heatmap-cell.level-0 {
+  background: #ebedf0;
+}
+
+.reveal .heatmap-cell.level-1 {
+  background: #9be9a8;
+}
+
+.reveal .heatmap-cell.level-2 {
+  background: #30a14e;
+}
+
+.reveal a.heatmap-cell:hover {
+  outline: 2px solid var(--course-blue);
+}
+
+.reveal .heatmap-legend {
+  align-items: center;
+  color: var(--course-muted);
+  display: flex;
+  font-size: 0.7em;
+  gap: 0.35em;
+  margin-top: 0.9em;
+}
+
+.reveal .heatmap-legend .heatmap-cell {
+  height: 16px;
+  width: 16px;
+}
+
+.reveal .heatmap-summary {
+  margin-top: 0.8em;
 }

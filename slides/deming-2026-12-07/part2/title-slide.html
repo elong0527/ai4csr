@@ -1,0 +1,9 @@
+<section id="$idprefix$title-slide"$for(title-slide-attributes/pairs)$ $it.key$="$it.value$"$endfor$ class="quarto-title-block center">
+$if(kicker)$
+  <p class="kicker">$kicker$</p>
+$endif$
+  <h1 class="title">$title$</h1>
+  <div class="rule"></div>
+  <p class="authors">$for(by-author)$$by-author.name.literal$$sep$ &middot; $endfor$</p>
+  <p class="venue">$venue$ &middot; $date$</p>
+</section>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="500" viewBox="0 0 1300 500" font-family="Helvetica, Arial, sans-serif"><defs><marker id="m_k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker><marker id="m_grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9e9e9e"/></marker></defs><rect width="1300" height="500" fill="#ffffff"/><text x="650" y="28" font-size="16" fill="#385898" text-anchor="middle" font-weight="bold">ONE QUESTION: IS THE AI'S OUTPUT FULLY CHECKED BEFORE IT IS USED?</text>
+<rect x="40" y="44" width="600" height="40" rx="8" fill="#2e7d32"/>
+<text x="340" y="70" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">YES  &#8594;  The AI drafts; people check</text>
+<rect x="660" y="44" width="600" height="40" rx="8" fill="#fb8c00"/>
+<text x="960" y="70" font-size="17" fill="#fff" text-anchor="middle" font-weight="bold">NO  &#8594;  The AI is part of the process</text>
+<rect x="52" y="132" width="120" height="70" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="112.0" y="162.0" font-size="15.5" fill="#e65100" text-anchor="middle" font-weight="bold">AI tool</text>
+<text x="112.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">drafts code</text>
+<rect x="208" y="100" width="440" height="136" rx="10" fill="#fcf8fd" stroke="#8e24aa" stroke-width="2" stroke-dasharray="7,5"/>
+<text x="222" y="120" font-size="13" fill="#6a1b9a" text-anchor="start" font-weight="bold">validated boundary</text>
+<path d="M 174 167 L 236 167" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="240" y="130" width="180" height="74" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="330.0" y="162.0" font-size="15.5" fill="#1b5e20" text-anchor="middle" font-weight="bold">Review + QC</text>
+<text x="330.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">as for any program</text>
+<path d="M 422 167 L 452 167" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="456" y="130" width="180" height="74" rx="10" fill="#f5f5f5" stroke="#777777" stroke-width="2.5"/>
+<text x="546.0" y="162.0" font-size="15.5" fill="#222222" text-anchor="middle" font-weight="bold">Frozen program</text>
+<text x="546.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">+ outputs = the record</text>
+<rect x="668" y="100" width="592" height="136" rx="10" fill="#fcf8fd" stroke="#8e24aa" stroke-width="2" stroke-dasharray="7,5"/>
+<text x="682" y="120" font-size="13" fill="#6a1b9a" text-anchor="start" font-weight="bold">validated boundary: the AI is inside it</text>
+<rect x="684" y="130" width="90" height="74" rx="10" fill="#f5f5f5" stroke="#777777" stroke-width="2.5"/>
+<text x="729.0" y="162.0" font-size="15.5" fill="#222222" text-anchor="middle" font-weight="bold">Spec</text>
+<text x="729.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">reviewed</text>
+<path d="M 776 167 L 798 167" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="800" y="130" width="132" height="74" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+<text x="866.0" y="162.0" font-size="15.5" fill="#e65100" text-anchor="middle" font-weight="bold">AI agent</text>
+<text x="866.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">programs or QCs</text>
+<path d="M 934 167 L 956 167" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="958" y="130" width="120" height="74" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="1018.0" y="162.0" font-size="15.5" fill="#1b5e20" text-anchor="middle" font-weight="bold">Checks</text>
+<text x="1018.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">deterministic</text>
+<path d="M 1080 167 L 1102 167" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#m_k)"/>
+<rect x="1104" y="130" width="136" height="74" rx="10" fill="#f5f5f5" stroke="#777777" stroke-width="2.5"/>
+<text x="1172.0" y="162.0" font-size="15.5" fill="#222222" text-anchor="middle" font-weight="bold">Output used</text>
+<text x="1172.0" y="186.0" font-size="13" fill="#555" text-anchor="middle">no re-derivation</text>
+<line x1="40" y1="262" x2="1260" y2="262" stroke="#e0e0e0" stroke-width="1.5"/>
+<text x="40" y="284" font-size="12.5" fill="#888" text-anchor="start" font-weight="bold">WHAT YOU VALIDATE</text>
+<text x="40" y="308" font-size="15.5" fill="#222" text-anchor="start">The program and its outputs, as today.</text>
+<text x="40" y="330" font-size="15.5" fill="#222" text-anchor="start">The AI tool itself is not validated.</text>
+<text x="660" y="284" font-size="12.5" fill="#888" text-anchor="start" font-weight="bold">WHAT YOU VALIDATE</text>
+<text x="660" y="308" font-size="15.5" fill="#222" text-anchor="start">The process, for a defined context of use: known-answer</text>
+<text x="660" y="330" font-size="15.5" fill="#222" text-anchor="start">tests, pinned model and package versions, logs, checks.</text>
+<line x1="40" y1="342" x2="1260" y2="342" stroke="#e0e0e0" stroke-width="1.5"/>
+<text x="40" y="364" font-size="12.5" fill="#888" text-anchor="start" font-weight="bold">EXAMPLE</text>
+<text x="40" y="388" font-size="15.5" fill="#222" text-anchor="start">The agent drafts the ADSL program; a programmer</text>
+<text x="40" y="410" font-size="15.5" fill="#222" text-anchor="start">reviews it and independent QC compares.</text>
+<text x="660" y="364" font-size="12.5" fill="#888" text-anchor="start" font-weight="bold">EXAMPLE</text>
+<text x="660" y="388" font-size="15.5" fill="#222" text-anchor="start">The agent is the QC programmer; its comparison is</text>
+<text x="660" y="410" font-size="15.5" fill="#222" text-anchor="start">the only check of the production dataset.</text>
+<line x1="40" y1="422" x2="1260" y2="422" stroke="#e0e0e0" stroke-width="1.5"/>
+<text x="40" y="444" font-size="12.5" fill="#888" text-anchor="start" font-weight="bold">WHERE IT STANDS</text>
+<text x="40" y="468" font-size="15.5" fill="#222" text-anchor="start">Most organizations today; matches the human-in-</text>
+<text x="40" y="490" font-size="15.5" fill="#222" text-anchor="start">the-loop clause of EU GMP draft Annex 22.</text>
+<text x="660" y="444" font-size="12.5" fill="#888" text-anchor="start" font-weight="bold">WHERE IT STANDS</text>
+<text x="660" y="468" font-size="15.5" fill="#222" text-anchor="start">Needs evidence: FDA draft credibility assessment;</text>
+<text x="660" y="490" font-size="15.5" fill="#222" text-anchor="start">a benchmark run as a study (Part 3).</text></svg>
