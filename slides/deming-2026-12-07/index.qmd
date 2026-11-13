@@ -40,7 +40,7 @@ The course runs about three hours, with a break after Parts 1 and 2.
 | Part 1 | **AI agents and AI-first workflow** | Yilong |
 | Part 1 | **Agentic CDISC data standardization** | Yilong |
 | Break | | |
-| Part 2 | **LLM and agents for statistical programming** | Eric |
+| Part 2 | [**Giving agents the right context for domain-specific workflows**](part2/) | Eric |
 | Break | | |
 | Part 3 | **Benchmarks** | Yilong |
 | Part 3 | **Case study: reviewing benchmarks** | Eric and Yilong |

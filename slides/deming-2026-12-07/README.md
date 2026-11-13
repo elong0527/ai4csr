@@ -19,6 +19,10 @@ was on 2026-11-11 (`index.qmd`, `custom.css`, `title-slide.html` and
 To carry later ASA Boston changes over, copy those files again and reapply
 the changes above.
 
+Part 2, "Giving Agents the Right Context for Domain-Specific Workflows" by
+Eric Zhang, is its own deck in [`part2/`](part2/); the outline slide links
+to it.
+
 [View the rendered slides](https://ai4csr.org/slides/deming-2026-12-07/)
 
 ## Build
