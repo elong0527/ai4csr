@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="660" viewBox="0 0 950 660" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="sa0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+    <marker id="sa1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e24aa"/></marker>
+  </defs>
+  <rect width="950" height="660" fill="#ffffff"/>
+
+  <!-- Main agent -->
+  <rect x="395" y="20" width="200" height="72" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="495" y="52" font-size="18" fill="#1565c0" text-anchor="middle" font-weight="bold">Main agent</text>
+  <text x="495" y="74" font-size="12" fill="#555" text-anchor="middle">your request + workspace rules</text>
+
+  <!-- trunk 1 (bidirectional: delegates / reports back) -->
+  <path d="M 495 92 L 495 150" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#sa0)" marker-start="url(#sa0)"/>
+  <text x="495" y="122" font-size="12.5" fill="#444" font-style="italic" text-anchor="middle" stroke="#ffffff" stroke-width="5" paint-order="stroke">delegates &#8644; reports back</text>
+
+  <!-- bus 1 -->
+  <path d="M 200 150 L 790 150" fill="none" stroke="#444" stroke-width="2"/>
+  <path d="M 200 150 L 200 170" fill="none" stroke="#444" stroke-width="2" marker-end="url(#sa0)"/>
+  <path d="M 410 150 L 410 170" fill="none" stroke="#444" stroke-width="2" marker-end="url(#sa0)"/>
+  <path d="M 620 150 L 620 170" fill="none" stroke="#444" stroke-width="2" marker-end="url(#sa0)"/>
+  <path d="M 790 150 L 790 170" fill="none" stroke="#444" stroke-width="2" marker-end="url(#sa0)"/>
+
+  <!-- Study sub-agents -->
+  <rect x="105" y="170" width="190" height="70" rx="10" fill="#f5f5f5" stroke="#777" stroke-width="1.5"/>
+  <text x="200" y="202" font-size="15" fill="#333" text-anchor="middle" font-weight="bold">STUDY-001</text>
+  <text x="200" y="222" font-size="11" fill="#777" text-anchor="middle">context: its own quirks</text>
+
+  <rect x="315" y="170" width="190" height="70" rx="10" fill="#f5f5f5" stroke="#777" stroke-width="1.5"/>
+  <text x="410" y="202" font-size="15" fill="#333" text-anchor="middle" font-weight="bold">STUDY-002</text>
+  <text x="410" y="222" font-size="11" fill="#777" text-anchor="middle">context: its own quirks</text>
+
+  <rect x="525" y="170" width="190" height="70" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.5"/>
+  <text x="620" y="202" font-size="15" fill="#1565c0" text-anchor="middle" font-weight="bold">STUDY-003</text>
+  <text x="620" y="222" font-size="11" fill="#555" text-anchor="middle">context: its own quirks</text>
+
+  <rect x="735" y="170" width="110" height="70" rx="10" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="6,5"/>
+  <text x="790" y="206" font-size="18" fill="#777" text-anchor="middle" font-weight="bold">&#8230;</text>
+  <text x="790" y="224" font-size="10" fill="#777" text-anchor="middle">more studies</text>
+
+  <!-- trunk 2: STUDY-003 branches into task sub-agents -->
+  <path d="M 620 240 L 620 270" fill="none" stroke="#444" stroke-width="2.5" marker-end="url(#sa0)" marker-start="url(#sa0)"/>
+  <text x="695" y="260" font-size="12.5" fill="#444" font-style="italic" text-anchor="middle" stroke="#ffffff" stroke-width="5" paint-order="stroke">one sub-agent per task</text>
+  <path d="M 520 270 L 740 270" fill="none" stroke="#444" stroke-width="2"/>
+  <path d="M 520 270 L 520 300" fill="none" stroke="#444" stroke-width="2" marker-end="url(#sa0)"/>
+  <path d="M 740 270 L 740 300" fill="none" stroke="#444" stroke-width="2" marker-end="url(#sa0)"/>
+
+  <!-- Task sub-agents -->
+  <rect x="420" y="300" width="200" height="86" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2.5"/>
+  <text x="520" y="332" font-size="16" fill="#e65100" text-anchor="middle" font-weight="bold">Build sub-agent</text>
+  <text x="520" y="356" font-size="12" fill="#555" text-anchor="middle">context: pipeline code</text>
+  <text x="520" y="374" font-size="12" fill="#555" text-anchor="middle">one task in the workflow</text>
+
+  <rect x="640" y="300" width="200" height="86" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="740" y="332" font-size="16" fill="#1b5e20" text-anchor="middle" font-weight="bold">Validate sub-agent</text>
+  <text x="740" y="356" font-size="12" fill="#555" text-anchor="middle">context: raw data only,</text>
+  <text x="740" y="374" font-size="12" fill="#555" text-anchor="middle">never the pipeline code</text>
+
+  <!-- Why split callout, below -->
+  <path d="M 630 390 L 630 420" fill="none" stroke="#8e24aa" stroke-width="2.5" marker-end="url(#sa1)" stroke-dasharray="6,5"/>
+  <rect x="285" y="424" width="380" height="150" rx="12" fill="#faf5fc" stroke="#8e24aa" stroke-width="2.5" stroke-dasharray="8,6"/>
+  <text x="475" y="460" font-size="17" fill="#6a1b9a" text-anchor="middle" font-weight="bold">Why split?</text>
+  <text x="475" y="492" font-size="13.5" fill="#555" text-anchor="middle">Sub-agents don&#8217;t need each other&#8217;s context.</text>
+  <text x="475" y="518" font-size="13.5" fill="#555" text-anchor="middle">Smaller context, by design &#8212; fewer tokens</text>
+  <text x="475" y="544" font-size="13.5" fill="#555" text-anchor="middle">spent, sharper focus kept.</text>
+
+  <!-- caption -->
+  <text x="475" y="620" font-size="14" fill="#333" text-anchor="middle"><tspan font-weight="bold" fill="#1565c0">Main agent</tspan><tspan> orchestrates; each study gets its own sub-agent,</tspan></text>
+  <text x="475" y="642" font-size="14" fill="#333" text-anchor="middle">and a study&#8217;s workflow splits again by task.</text>
+</svg>
