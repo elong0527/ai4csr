@@ -14,14 +14,28 @@ was on 2026-11-11 (`index.qmd`, `custom.css`, `title-slide.html` and
 - the title, the second presenter, the venue and the date;
 - Eric presents Part 2 and co-presents the case study, the parts Jimeng Sun
   had in Boston;
-- `custom.css` sets the long title smaller on the title slide.
+- `custom.css` sets the long title smaller on the title slide;
+- Part 2 is this deck's own content, below.
 
 To carry later ASA Boston changes over, copy those files again and reapply
 the changes above.
 
 Part 2, "Giving Agents the Right Context for Domain-Specific Workflows" by
-Eric Zhang, is its own deck in [`part2/`](part2/); the outline slide links
-to it.
+Eric Zhang, is a section of this deck, between the CDISC data
+standardization and Benchmarks sections. It has two topics:
+
+- **Topic 1 -- a workflow:** the harness for a medical monitoring
+  dashboard (folder structure, `CLAUDE.md`, the audit trail, sub-agents,
+  skills, evaluation), then a worked example and its real-time
+  signal-finding / TFL-maturity timeline across the trial.
+- **Topic 2 -- a skill:** the `group-sequential-design` skill as an
+  encoded design philosophy, its benchmark results against
+  TrialDesignBench, and best practices for building a skill.
+
+Its styles are the last block of `custom.css`. `figures/` holds the
+diagrams its slides use, including a copy of TrialDesignBench's
+`benchmark-workflow.svg` and `tdb-logo.svg`. When carrying ASA Boston
+changes over, keep that block and the Part 2 section.
 
 [View the rendered slides](https://ai4csr.org/slides/deming-2026-12-07/)
 
