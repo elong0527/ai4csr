@@ -449,45 +449,51 @@ and checks. Build that well, and the workflow takes care of itself.
 
 ::::
 
-## One folder per study, one shape for every study
+## One folder per study, on a shared AWS platform
 
 :::: {.columns}
 
 ::: {.column width="55%"}
 ```text
-~/                             workspace root
-|-- CLAUDE.md                  workspace rules, read every session
-|-- STUDY-001/
-|-- STUDY-002/                 one self-contained folder per study
-|-- STUDY-003/
-|   |-- CLAUDE.md                verified study quirks, auto-loaded here
-|   |-- data/<snapshot>/         dated EDC cuts, read-only
-|   |-- scripts/                 pipeline, report, weekly refresh
-|   |-- output/                  dated reports, publish staging
-|   `-- docs/session_log.md      append-only history
-|-- .claude/
-|   |-- agents/                 separate sub-agent(s) per study
-|   |-- skills/                 reusable playbooks
-|   `-- hooks/                  session-log enforcement
-`-- ...
+AWS Cloud                     conceptual illustration
+|-- Compute (isolated per user, autoscaled)
+|   |-- Alice's session + AI    own container, own limits
+|   `-- Bob's session + AI      own container, own limits
+|
+|-- IAM + POSIX / EFS access points
+|   |-- home/<user>/              read-write: owner only
+|   |-- shared/.../development/   read-write: study team
+|   `-- shared/.../production/    read-only; write via QC gate
+|
+`-- Storage
+    |-- EFS  shared/studies/STUDY-001/
+    |   |-- development/  raw -> sdtm -> adam -> qc
+    |   |-- [[ QC-reviewed promotion ]]
+    |   |-- production/   adam, logs   (audit-logged)
+    |   `-- git/study-code.git         central bare repo
+    `-- EBS  home/
+        |-- alice/STUDY-001/        personal git clone
+        `-- bob/STUDY-001/          personal git clone
 ```
 :::
 
 ::: {.column width="45%"}
-- **Self-contained.** A study owns its data, scripts, outputs, and docs.
-- **Isolated.** Nothing leaks between studies: one study's quirks, fixes,
-  and history never enter another's context.
-- **Separate sub-agents per study.** Each study gets its own agent --- often
-  more than one, e.g. build and validate --- so its context only ever holds
-  that study's facts.
-- **Repeatable.** A new study is the same shape, copied.
+- **Self-contained per study, shared by the team.** Each study still owns
+  its data, scripts, and history --- now on storage sized for many users
+  and many studies at once.
+- **Isolated compute per user.** No shared box to contend for; one user's
+  heavy job can't starve another's session.
+- **Access-controlled, not just folder-shaped.** IAM + POSIX gates who can
+  read/write home, development, and production separately.
+- **Production is a gate, not a folder an agent writes to.** Promotion out
+  of development is a reviewed QC step.
 :::
 
 ::::
 
-> Physical isolation is what makes the context isolation reliable: an agent
-> working in `STUDY-003/` cannot accidentally see `STUDY-001/`'s data,
-> fixes, or history.
+> Physical isolation plus access control is what makes context isolation
+> reliable at platform scale: an agent in Alice's session cannot reach
+> Bob's data, or write into production directly.
 
 ## Initialize with one prompt
 
@@ -723,7 +729,7 @@ Summary &#129302;&#128736;
 :::
 :::
 
-::: {.flow .flow-4}
+::: {.flow .flow-5}
 ::: {.flow-step .validate .fragment}
 Validate &#129302;&#128269;
 [recompute from raw]{.small}
@@ -734,6 +740,11 @@ Adjudicate &#129302;&#9878;&#65039;
 [resolve flagged items]{.small}
 [skill ref: validation]{.tag}
 :::
+::: {.flow-step .eval .fragment}
+Eval &#129302;&#127919;
+[vs. benchmark cases]{.small}
+[miss &#8594; loop back]{.tag}
+:::
 ::: {.flow-step .fragment}
 Publish &#129302;
 [one stable URL]{.small}
@@ -742,6 +753,11 @@ Publish &#129302;
 Notify &#129302;
 [reviewers alerted]{.small}
 :::
+:::
+
+::: {.feedback-loop .fragment}
+&#8635; Output misses expectation &#8594; agents go back, find why, fix,
+re-run: a feedback loop
 :::
 
 ::: {.audit-bar .fragment}
@@ -1088,6 +1104,16 @@ design.
   don't start from a blank page.
 - **Build a benchmark for any mission-critical skill --- don't assume it
   helps.** With-vs-without, like TrialDesignBench did here: 90% vs. 62%.
+
+## Final thoughts
+
+- **Build an evaluation-driven development framework.** Treat the benchmark
+  like an RL environment: the cases define what "meets expectation" means,
+  and development runs against them until it does.
+- **Build high-quality domain-specific data.** Models get stronger on their
+  own; domain knowledge is what we add. Data that captures it --- protocols,
+  SAPs, rubrics, worked cases --- serves both evaluation and the context
+  agents develop from.
 
 # Benchmarks {background-color="#385898"}
 
