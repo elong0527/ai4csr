@@ -769,9 +769,29 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
-/* Worked example: the second, four-step row of the daily dashboard flow. */
-.reveal .flow.flow-4 {
-  grid-template-columns: repeat(4, 1fr);
+/* Worked example: the eval step, in the AI-native purple so it reads as the
+   loop's own check rather than another sub-agent. */
+.reveal .flow-step.eval {
+  background: #f3e5f5;
+  border: 2px solid #8e24aa;
+  color: #6a1b9a;
+}
+
+.reveal .flow-step.eval .tag { color: #6a1b9a; }
+
+/* Worked example: the feedback-loop strip under the step rows, when an
+   output misses a benchmark case. */
+.reveal .feedback-loop {
+  background: #f3e5f5;
+  border: 1.5px solid #8e24aa;
+  border-radius: 8px;
+  color: #6a1b9a;
+  font-size: 0.62em;
+  font-weight: 700;
+  margin: 0.5em auto 0;
+  max-width: 48em;
+  padding: 0.4em 1em;
+  text-align: center;
 }
 
 /* Worked example: the dashed boundary around the AI-native step rows,
